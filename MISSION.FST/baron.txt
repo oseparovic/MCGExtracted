@@ -1,0 +1,48 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      MechWarrior:  103   Name: Baron  Callsign: BARON
+//
+//      Creation Date: 12/15/98   By: jon marcus
+//
+// -------------------------------------------------------------------------
+
+
+
+[General]
+st Brain = "pbrain"
+st Name =                                                  "Baron"
+l Rank =                                                    1 
+st Callsign =                                              "BARON"
+ul ID =                                                     103 
+l NameIndex =                                               9 
+l DescIndex =                                               344 
+ul HeadIcon =                                               0 
+l paintScheme =                                             68 
+st pilotAudio =                                            "pilotj"
+st pilotVideo =                                            "PILOT09"
+st Picture =                                               "Pilot09.TGA"
+
+[PersonalityTraits]
+c Professionalism =                                         50 
+c Decorum =                                                 50 
+c Aggressiveness =                                          50 
+c Courage =                                                 50 
+
+[Skills]
+c Piloting =                                                45 
+c Jumping =                                                 45 
+c Sensors =                                                 65 
+c Gunnery =                                                 50 
+
+[Affinities]
+c MechClass =                                               0 
+c MechType =                                                0 
+c WeaponClass =                                             0 
+uc[2] WeaponTypes =                                        0,0
+
+[Status]
+c Wounds =                                                  0 
+
+FITEnd

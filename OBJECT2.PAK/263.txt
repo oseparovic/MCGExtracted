@@ -1,0 +1,27 @@
+FITini
+
+// This is the Covered Nest Object
+
+[ObjectClass]
+l ObjectTypeNum = 18			//Misc Terrain Object
+
+[ObjectType]
+st Name 		= "nest"		// Text string giving a descriptive name  (only 8 chars long!!)
+l Type		= 0x7
+l Appearance	= 0x02000100
+l Duration		= -1			// Lasts forever = -1
+l MaxDamage		= 0				// Number of damage points before BOOM!
+l ExplosionObject	= 42			// Object Class Number of explosion for this building
+l DestroyedObject	= 0				// Object Class Number of Destroyed shape for building
+f ExtentRadius	= 10			// Extent Radius in Meters
+
+[TreeData]
+l BuildingName = 391
+ul DmgLevel		= 5			// How much damage before changing to destroyed shape
+l SetImpassable	= 1
+l XImpasse		= 1
+l YImpasse		= 1
+l LowTemplate	= 0x00000000
+l HighTemplate	= 0x00000010
+
+FITendndmplate	= 0x00000010

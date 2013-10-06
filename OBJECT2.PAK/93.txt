@@ -1,0 +1,34 @@
+FITini
+
+// This is the hbtrkbnk_a1 Building Data File
+
+[ObjectClass]
+l ObjectTypeNum = 1
+
+[ObjectType]
+st Name                         = "hbtrkbnk_a1"            // Text string giving a descriptive name  (only 8 chars long!!)
+l Type				= 19
+l Appearance                    = 0x0700004E
+l Duration			= -1			// Lasts forever = -1
+l MaxDamage			= 0			// Number of damage points before BOOM!
+l ExplosionObject		= 727			// Object Class Number of explosion for this building
+l DestroyedObject		= 0			// Object Class Number of Destroyed shape for building
+f ExtentRadius			= 35			// Extent Radius in Meters
+
+[BuildingData]
+l BuildingName = 282
+ul DmgLevel			= 33
+ul BlownEffectId		= -1			//Sound Effect played when building dies.
+ul NormalEffectId		= -1			//Sound Effect played when building is normal.
+ul DamageEffectId		= -1			//Sound Effect Played when building is dmg/destroyed.
+st NormalShadow                 = "hbtrkbnk_a1_gt"          //Tile to draw under building -- Not Required
+st DestroyedShadow              = "hbtrkbnk_a1_gt_dmg"       //Tile to draw under destroyed buiding -- Not required.
+l BasePixelOffsetX              = 6                   //Where on tile to draw this building.
+l BasePixelOffsetY              = 61                    //
+l CollisionOffsetX		= 4				//Some buildings were not rendered to spec.  This fixes the problem.
+l CollisionOffsetY		= 46
+l LowTemplate		= 0x38000000
+l HighTemplate		= 0x00003838
+
+
+FITend

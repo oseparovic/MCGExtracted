@@ -1,0 +1,48 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      MechWarrior:  65   Name: Hunter  Callsign: HUNTER
+//
+//      Creation Date: 12/15/98   By: jon marcus
+//
+// -------------------------------------------------------------------------
+
+
+
+[General]
+st Brain = "pbrain"
+st Name =                                                  "Hunter"
+l Rank =                                                    1 
+st Callsign =                                              "HUNTER"
+ul ID =                                                     65 
+l NameIndex =                                               14 
+l DescIndex =                                               315 
+ul HeadIcon =                                               0 
+l paintScheme =                                             68 
+st pilotAudio =                                            "pilotO"
+st pilotVideo =                                            "PILOT14"
+st Picture =                                               "pilot14.TGA"
+
+[PersonalityTraits]
+c Professionalism =                                         50 
+c Decorum =                                                 50 
+c Aggressiveness =                                          50 
+c Courage =                                                 50 
+
+[Skills]
+c Piloting =                                                55 
+c Jumping =                                                 40 
+c Sensors =                                                 45 
+c Gunnery =                                                 60 
+
+[Affinities]
+c MechClass =                                               0 
+c MechType =                                                0 
+c WeaponClass =                                             0 
+uc[2] WeaponTypes =                                        0,0
+
+[Status]
+c Wounds =                                                  0 
+
+FITEnd

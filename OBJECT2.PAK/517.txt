@@ -1,0 +1,29 @@
+FITini
+
+//---------------------------------------------------------------------------
+//
+//				VEHICLE:		Camera Drone
+//
+//---------------------------------------------------------------------------
+
+// This is kinda like a Vehicle Data File, but camera drones are their own type.
+
+[ObjectClass]
+l ObjectTypeNum = 19
+
+[ObjectType]
+st Name 						= "camdrone"		// Text string giving a descriptive name  (only 8 chars long!!)
+l Type 							= 43				// ID number for this mech type, whatever than means
+l Appearance					= 0x0500025C		// Real Shape Now!!
+l Duration						= -1				// Lasts forever = -1
+l MaxDamage						= 5					// Number of damage points before BOOM!
+l ExplosionObject				= 449				// Object Class Number of explosion
+l DestroyedObject				= -1				// Object Class Number of Destroyed shape
+f ExtentRadius					= 0					// Extent Radius in Meters
+
+[General]
+f maxVelocity					= 12.0
+l MaxDamage						= 5					// Number of damage points before BOOM!
+l BRValue 						= 50
+
+FITEnd

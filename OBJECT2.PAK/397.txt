@@ -1,0 +1,34 @@
+FITini
+
+// This is the urbnhm_a4 Building Data File
+
+[ObjectClass]
+l ObjectTypeNum = 1
+
+[ObjectType]
+st Name 			= "urbnhm_a8"		// Text string giving a descriptive name  (only 8 chars long!!)
+l Type				= 19
+l Appearance			= 0x0700016E
+l Duration			= -1			// Lasts forever = -1
+l MaxDamage			= 0			// Number of damage points before BOOM!
+l ExplosionObject		= 42			// Object Class Number of explosion for this building
+l DestroyedObject		= 0			// Object Class Number of Destroyed shape for building
+f ExtentRadius			= 35			// Extent Radius in Meters
+
+[BuildingData]
+l BuildingName = 454
+b BlocksLineOfFire = FALSE
+ul DmgLevel			= 6
+ul BlownEffectId		= -1			//Sound Effect played when building dies.
+ul NormalEffectId		= -1			//Sound Effect played when building is normal.
+ul DamageEffectId		= -1			//Sound Effect Played when building is dmg/destroyed.
+//st NormalShadow			= "urbanb_a4_gt"		//Tile to draw under building -- Not Required
+//st DestroyedShadow		= "urbanb_a4_gt_dmg"	//Tile to draw under destroyed buiding -- Not required.
+l BasePixelOffsetX		= -2			//Where on tile to draw this building.
+l BasePixelOffsetY		= 65			//
+l CollisionOffsetX		= 2				//Some buildings were not rendered to spec.  This fixes the problem.
+l CollisionOffsetY		= 42
+l LowTemplate		= 0x18000000
+l HighTemplate		= 0x00000038
+
+FITend

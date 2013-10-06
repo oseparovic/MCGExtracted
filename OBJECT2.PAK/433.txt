@@ -1,0 +1,39 @@
+FITini
+
+//---------------------------------------------------------------------------
+//
+//				VEHICLE:		Train Engine
+//
+//				BASE ID:		500
+//
+//---------------------------------------------------------------------------
+
+// This is a Vehicle File.
+[ObjectClass]
+l ObjectTypeNum = 20
+
+[Header]
+st FileType							= "TrainType"
+
+[Train]
+l Name 								= 621
+uc Explosion Chance					= 0
+uc Explosion Damage					= 0
+uc Velocity Multiplier				= 5
+l Damage							= 90
+f TonnageClass						= 80.0				// 80 tons
+f Acceleration						= 5.0
+f Deceleration						= 1.0
+f TopSpeed							= 45.0
+
+[ObjectType]
+st Name 							= "traineng"		// Text string giving a descriptive name  (only 8 chars long!!)
+l Type 								= 43			// ID number for this mech type
+l Appearance						= 0x05000193
+l Duration							= -1			// Lasts forever = -1
+l MaxDamage							= 200			// Number of damage points before BOOM!
+l ExplosionObject					= 703			// Object Class Number of explosion for Mech
+l DestroyedObject					= 101			// Object Class Number of Destroyed shape for Mech
+f ExtentRadius						= 35			// Extent Radius in Meters
+l IconNumber						= 0
+FITEnd

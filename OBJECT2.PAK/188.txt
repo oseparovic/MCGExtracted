@@ -1,0 +1,40 @@
+FITini
+
+// This is the Flamer FX File
+
+[ObjectClass]
+l ObjectTypeNum = 17
+
+[ObjectType]
+st Name 					= "flamer"			// Text string giving a descriptive name  (only 8 chars long!!)
+l Type 						= 25					// ID number for this mech type
+l Appearance				= 0x06000271
+l Duration					= 2				// Lasts forever = -1
+l MaxDamage					= 0					// Number of damage points before BOOM!
+l ExplosionObject			= 0					// Object Class Number of explosion for Mech
+l DestroyedObject			= 0					// Object Class Number of Destroyed shape for Mech
+f ExtentRadius				= 0					// Extent Radius in Meters
+
+[ProjectileLaserData]
+f Velocity					= 250.0				// m/s
+f ProjectileLength			= 2.0				// w.u.
+f BulgeLength				= 0.5				// w.u.
+f BulgeWidth				= 1.0				// w.u.
+uc f0Color					= 71
+uc f1Color					= 70
+uc f2Color					= 69
+uc f3Color					= 71
+uc e0Color					= 71
+uc e1Color					= 70
+uc e2Color					= 69
+uc e3Color					= 71
+f CloseDistance				= 5.0
+ul SmokeObjectId			= 662				
+ul SoundEffectId			= 6					// Id of soundEffect to play on Fire.
+ul ProjectileMissEffect		= 661
+ul ProjectileHitEffect		= 658
+ul LightObjectId			= 681
+
+FITend
+
+

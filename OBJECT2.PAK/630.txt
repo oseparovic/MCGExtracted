@@ -1,0 +1,31 @@
+FITini
+
+// This is the Oil Derrick data file
+
+[ObjectClass]
+l ObjectTypeNum = 18
+
+[ObjectType]
+st Name 			= "derrick"	// Text string giving a descriptive name  (only 8 chars long!!)
+l Type				= 0x7
+l Appearance		= 0x0200024a
+l Duration			= -1			// Lasts forever = -1
+l MaxDamage			= 25				// Number of damage points before BOOM!
+l ExplosionObject	= 703			// Object Class Number of explosion for Mech
+l DestroyedObject	= 0				// Object Class Number of Destroyed shape for Mech
+f ExtentRadius		= 5			// Extent Radius in Meters
+
+[TreeData]
+l BuildingName 		= 574
+b BlocksLineOfFire 	= TRUE
+ul DmgLevel			= 13
+ul BlownEffectId	= 727
+l LowTemplate		= 0x38000000
+l HighTemplate		= 0x00003838
+f ExplosionDamage	= 25.0				//When the building dies, it does this much damage
+f ExplosionRadius	= 125.0				//in this radius.  Radius is World Units.  
+f TimeToBurnDamage	= 0.5				//Ok.  This means that at 30 points of damage, the building bursts
+f BurnDamagePerTime	= 3.0				//info flame.  Each half second its on fire, the building takes
+f DamageLvlForBurn	= 1.0
+
+FITend

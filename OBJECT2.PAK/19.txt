@@ -1,0 +1,35 @@
+FITini
+
+// This is the BarnA_a1 Building Data File
+
+[ObjectClass]
+l ObjectTypeNum = 1
+
+[ObjectType]
+st Name             = "barna_a1"            // Text string giving a descriptive name  (only 8 chars long!!)
+l Type				= 19
+l Appearance        = 0x07000019
+l Duration			= -1			// Lasts forever = -1
+l MaxDamage			= 0			// Number of damage points before BOOM!
+l ExplosionObject	= 727			// Object Class Number of explosion for this building
+l DestroyedObject	= 0			// Object Class Number of Destroyed shape for building
+f ExtentRadius		= 35			// Extent Radius in Meters
+
+[BuildingData]
+l BuildingName 		= 202
+b BlocksLineOfFire 	= FALSE
+ul DmgLevel			= 13
+ul BlownEffectId	= -1			//Sound Effect played when building dies.
+ul NormalEffectId	= -1			//Sound Effect played when building is normal.
+ul DamageEffectId	= -1			//Sound Effect Played when building is dmg/destroyed.
+st NormalShadow		= "barna_a1_gt"		//Tile to draw under building -- Not Required
+st DestroyedShadow	= "barna_a1_gt_dmg"	//Tile to draw under destroyed buiding -- Not required.
+l BasePixelOffsetX  = -19               //Where on tile to draw this building.
+l BasePixelOffsetY  = 60                  //
+l CollisionOffsetX	= -26				//Some buildings were not rendered to spec.  This fixes the problem.
+l CollisionOffsetY	= 32
+l LowTemplate		= 0x1c080000
+l HighTemplate		= 0x00001c1c
+
+
+FITend

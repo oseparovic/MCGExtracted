@@ -1,0 +1,48 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      MechWarrior:  88   Name: Isis  Callsign: ISIS
+//
+//      Creation Date: 2/10/99   By: david abzug
+//
+// -------------------------------------------------------------------------
+
+
+
+[General]
+st Brain = "pbrain"
+st Name =                                                  "Isis"
+l Rank =                                                    0 
+st Callsign =                                              "ISIS"
+ul ID =                                                     88 
+l NameIndex =                                               4 
+l DescIndex =                                               305 
+ul HeadIcon =                                               0 
+l paintScheme =                                             68 
+st pilotAudio =                                            "pilote"
+st pilotVideo =                                            "PILOT04"
+st Picture =                                               "Pilot04.TGA"
+
+[PersonalityTraits]
+c Professionalism =                                         50 
+c Decorum =                                                 50 
+c Aggressiveness =                                          50 
+c Courage =                                                 50 
+
+[Skills]
+c Piloting =                                                42 
+c Jumping =                                                 38 
+c Sensors =                                                 55 
+c Gunnery =                                                 40 
+
+[Affinities]
+c MechClass =                                               0 
+c MechType =                                                0 
+c WeaponClass =                                             0 
+uc[2] WeaponTypes =                                        0,0
+
+[Status]
+c Wounds =                                                  0 
+
+FITEnd

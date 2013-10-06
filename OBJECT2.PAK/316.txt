@@ -1,0 +1,33 @@
+FITini
+
+// This is the hbwarehse_a6 Building Data File
+
+[ObjectClass]
+l ObjectTypeNum = 1
+
+[ObjectType]
+st Name 			= "hbwarehse_a6"		// Text string giving a descriptive name  (only 8 chars long!!)
+l BuildingName = 295
+l Type				= 19
+l Appearance			= 0x07000119
+l Duration			= -1			// Lasts forever = -1
+l MaxDamage			= 0			// Number of damage points before BOOM!
+l ExplosionObject		= 727			// Object Class Number of explosion for this building
+l DestroyedObject		= 0			// Object Class Number of Destroyed shape for building
+f ExtentRadius			= 35			// Extent Radius in Meters
+
+[BuildingData]
+l BuildingName = 290
+ul DmgLevel			= 97
+ul BlownEffectId		= -1			//Sound Effect played when building dies.
+ul NormalEffectId		= -1			//Sound Effect played when building is normal.
+ul DamageEffectId		= -1			//Sound Effect Played when building is dmg/destroyed.
+//st NormalShadow			= "hbwarehsea_a2_gt"		//Tile to draw under building -- Not Required
+//st DestroyedShadow		= "hbwarehsea_a2_gt_dmg"	//Tile to draw under destroyed buiding -- Not required.
+l BasePixelOffsetX		= -6			//Where on tile to draw this building.
+l BasePixelOffsetY		= 47			//
+l CollisionOffsetX		= -8				//Some buildings were not rendered to spec.  This fixes the problem.
+l CollisionOffsetY		= 35
+f ExtentRadius			= 110
+
+FITend

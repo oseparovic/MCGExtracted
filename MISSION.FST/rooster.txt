@@ -1,0 +1,48 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      MechWarrior:  87   Name: Rooster  Callsign: ROOSTER
+//
+//      Creation Date: 2/10/99   By: david abzug
+//
+// -------------------------------------------------------------------------
+
+
+
+[General]
+st Brain = "pbrain"
+st Name =                                                  "Rooster"
+l Rank =                                                    0 
+st Callsign =                                              "ROOSTER"
+ul ID =                                                     87 
+l NameIndex =                                               3 
+l DescIndex =                                               304 
+ul HeadIcon =                                               0 
+l paintScheme =                                             68 
+st pilotAudio =                                            "pilotd"
+st pilotVideo =                                            "PILOT03"
+st Picture =                                               "Pilot03.TGA"
+
+[PersonalityTraits]
+c Professionalism =                                         50 
+c Decorum =                                                 50 
+c Aggressiveness =                                          50 
+c Courage =                                                 50 
+
+[Skills]
+c Piloting =                                                51 
+c Jumping =                                                 40 
+c Sensors =                                                 35 
+c Gunnery =                                                 43 
+
+[Affinities]
+c MechClass =                                               0 
+c MechType =                                                0 
+c WeaponClass =                                             0 
+uc[2] WeaponTypes =                                        0,0
+
+[Status]
+c Wounds =                                                  0 
+
+FITEnd

@@ -1,0 +1,40 @@
+FITini
+
+//---------------------------------------------------------------------------
+//
+//				MapIcon:	Misc Terrain Object
+//				BASE ID:	448
+//
+//---------------------------------------------------------------------------
+
+[ObjectClass]
+l ObjectTypeNum = 15
+
+[BridgeData]
+ul WallDmgLevel = 96
+ul MediumWallDmgLevel = 48
+ul LightWallDmgLevel = 2
+ul BridgeDmgLevel = 48
+ul ForestDmgLevel = 24
+
+ul ForestFireFX = 613
+ul WallFireFX = 613
+ul BridgeFireFX = 613
+
+ul BlownEffectId = -1 
+ul NormalEffectId = -1
+ul DamageEffectId = -1
+
+st ForestEdges = "forest"
+	
+[ObjectType]
+st Name 							= "MISCT"		// Text string giving a descriptive name  (only 8 chars long!!)
+l Type 								= 448			// ID number for this mech type
+l Appearance						= 0
+l Duration							= -1			// Lasts forever = -1
+l MaxDamage							= 0				// Amount of damage mine does on impact
+l ExplosionObject					= -1			// Object Class Number of explosion
+l DestroyedObject					= -1			// Object Class Number of Destroyed shape
+f ExtentRadius						= 50			// Extent Radius in Meters (0 Can't hit hit ever)
+
+FITEnd

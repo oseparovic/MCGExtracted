@@ -1,0 +1,48 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      MechWarrior:  57   Name: Mystique  Callsign: MYSTIQUE
+//
+//      Creation Date: 12/15/98   By: jon marcus
+//
+// -------------------------------------------------------------------------
+
+
+
+[General]
+st Brain = "pbrain"
+st Name =                                                  "Mystique"
+l Rank =                                                    0 
+st Callsign =                                              "MYSTIQUE"
+ul ID =                                                     57 
+l NameIndex =                                               6 
+l DescIndex =                                               307 
+ul HeadIcon =                                               0 
+l paintScheme =                                             68 
+st pilotAudio =                                            "pilotg"
+st pilotVideo =                                            "PILOT06"
+st Picture =                                               "Pilot06.TGA"
+
+[PersonalityTraits]
+c Professionalism =                                         50 
+c Decorum =                                                 50 
+c Aggressiveness =                                          50 
+c Courage =                                                 50 
+
+[Skills]
+c Piloting =                                                35 
+c Jumping =                                                 50 
+c Sensors =                                                 35 
+c Gunnery =                                                 40 
+
+[Affinities]
+c MechClass =                                               0 
+c MechType =                                                0 
+c WeaponClass =                                             0 
+uc[2] WeaponTypes =                                        0,0
+
+[Status]
+c Wounds =                                                  0 
+
+FITEnd

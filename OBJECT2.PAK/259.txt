@@ -1,0 +1,21 @@
+FITini
+
+// This is the Covered Machine Gun Nest Object
+
+[ObjectClass]
+l ObjectTypeNum = 11				//Misc Terrain Object
+
+[ObjectType]
+st Name 			= "mgun"		// Text string giving a descriptive name  (only 8 chars long!!)
+l Type				= 19
+l Appearance		= 0x020000FC
+l Duration			= -1			// Lasts forever = -1
+l MaxDamage			= 0				// Number of damage points before BOOM!
+l ExplosionObject	= 42			// Object Class Number of explosion for this building
+l DestroyedObject	= 0				// Object Class Number of Destroyed shape for building
+f ExtentRadius		= 35			// Extent Radius in Meters
+
+[TerrainObjectData]
+ul DmgLevel			= 20			// How much damage before changing to destroyed shape
+
+FITend

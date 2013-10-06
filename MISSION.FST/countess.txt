@@ -1,0 +1,48 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      MechWarrior:  91   Name: Countess  Callsign: COUNTESS
+//
+//      Creation Date: 2/10/99   By: david abzug
+//
+// -------------------------------------------------------------------------
+
+
+
+[General]
+st Brain = "pbrain"
+st Name =                                                  "Countess"
+l Rank =                                                    1 
+st Callsign =                                              "COUNTESS"
+ul ID =                                                     91 
+l NameIndex =                                               17 
+l DescIndex =                                               318 
+ul HeadIcon =                                               0 
+l paintScheme =                                             68 
+st pilotAudio =                                            "pilotR"
+st pilotVideo =                                            "PILOT17"
+st Picture =                                               "pilot17.TGA"
+
+[PersonalityTraits]
+c Professionalism =                                         50 
+c Decorum =                                                 50 
+c Aggressiveness =                                          50 
+c Courage =                                                 50 
+
+[Skills]
+c Piloting =                                                63 
+c Jumping =                                                 48 
+c Sensors =                                                 48 
+c Gunnery =                                                 53 
+
+[Affinities]
+c MechClass =                                               0 
+c MechType =                                                0 
+c WeaponClass =                                             0 
+uc[2] WeaponTypes =                                        0,0
+
+[Status]
+c Wounds =                                                  0 
+
+FITEnd

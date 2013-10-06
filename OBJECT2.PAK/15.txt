@@ -1,0 +1,89 @@
+FITini
+
+//---------------------------------------------------------------------------
+//
+//				MECH:			ULLER
+//
+//				BASE ID:		16
+//
+//---------------------------------------------------------------------------
+
+// This is a sample MechBase Data File.
+[ObjectClass]
+l ObjectTypeNum = 2
+
+[Header]
+st FileType							= "MechType"
+
+[General]
+ul ID								= 16			// ID number for this mech type
+uc Type								= 1				// 0 = Inner Sphere, 1 = Clan
+st Name								= "Uller"		// mech type description
+uc Chassis							= 0				// Standard Chassis		
+f TonnageClass						= 30.0			// 30 tons
+uc EndoSteel						= 1				// does have EndoSteel IS	
+f InternalStructureTonnage			= 1.5			// 1.5 tons
+
+[InternalStructure]
+//------------------------------------------------------------------------
+// In theory, the following should be dictated by the MaxTonnage, correct?
+uc Head								= 3
+uc CenterTorso						= 10
+uc LeftTorso						= 7
+uc RightTorso						= 7
+uc LeftArm							= 5
+uc RightArm							= 5
+uc LeftLeg							= 7
+uc RightLeg							= 7
+
+[Debris]
+ul RightArmPiece					= 0x000000B6
+ul LeftArmPiece						= 0x000000B5
+ul DestroyedPiece					= 0x0000003A
+
+[HotSpots]
+st HotSpotFileName					= "ul"
+l FootprintType						= 5
+ul Weapon0							= 3				// Which part is this weapon attached to.  3 = Right Arm
+ul Weapon1							= 3				// Which part is this weapon attached to.  2 = Right Arm
+ul Weapon2							= 2				// Which part is this weapon attached to.  1 = Left Arm
+ul Weapon3							= 2				// Which part is this weapon attached to.  1 = Left Arm
+ul Weapon4							= 1				// Which part is this weapon attached to.  1 = Torso
+ul Weapon5							= 1				// Which part is this weapon attached to.  1 = Torso
+ul Weapon6							= 1				// Which part is this weapon attached to.  1 = Torso
+ul Weapon7							= 0				// Which part is this weapon attached to.  1 = Torso
+ul Weapon8							= 0				// Which part is this weapon attached to.  1 = Torso
+
+[ObjectType]
+st Name 							= "Uller"		// Text string giving a descriptive name  (only 8 chars long!!)
+l Type 								= 15				// ID number for this mech type
+l Appearance						= 0x01000008
+l Duration							= -1			// Lasts forever = -1
+l MaxDamage							= 200			// Number of damage points before BOOM!
+l ExplosionObject					= 41			// Object Class Number of explosion for Mech
+l DestroyedObject					= 101			// Object Class Number of Destroyed shape for Mech
+f ExtentRadius						= 12			// Extent Radius in Meters
+l IconNumber						= 16
+
+[Control]
+ul Type								= 2				//player = 1, ai = 2, net = 3
+ul DataType							= 1				//mech control data = 1
+
+[Dynamics]
+ul Type								= 1				//Mech dynamics = 1
+
+[MechDynamics]
+l maxTorsoYawRate					= 360			//Degrees per sec
+l maxTorsoYaw						= 120			//(+/-)Degrees
+l maxArmYaw							= 60			//(+/-)Degrees
+l maxMechYawRate					= 180			//Degrees per sec
+l maxRightArmYawRate				= 180			//Degrees per sec
+l maxLeftArmYawRate					= 180			//Degrees per sec
+f maxAccel							= 3.0			//Meters per sec per sec
+f maxVelocity						= 40.0			//Meters per sec
+
+[AudioVisual]
+st Anim =							"animString"
+uc[3] MoveAnimSpeed =				0,2,1
+
+FITEnd

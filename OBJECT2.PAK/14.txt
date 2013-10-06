@@ -1,0 +1,32 @@
+FITini
+
+// This is the SRM projectile Data File
+
+[ObjectClass]
+l ObjectTypeNum = 8
+
+[ObjectType]
+st Name 					= "srm"				// Text string giving a descriptive name  (only 8 chars long!!)
+l Type						= 25				// ID number for this object type
+l Appearance				= 0x00000000 		// was 0x060001A6
+l Duration					= 2					// Lasts forever = -1 (s)  2 second burst
+l MaxDamage					= 0					// Number of damage points before BOOM!
+l ExplosionObject			= 0					// Object Class Number of explosion for Mech
+l DestroyedObject			= 0					// Object Class Number of Destroyed shape for Mech
+f ExtentRadius				= 0					// Extent Radius in Meters
+
+[BulletData]
+f Velocity				= 460.0				// m/s
+f BulletsPerSecond			= 2					// number of spheres per second.
+ul maxBullets				= 20				// max number of spheres around.
+ul DmgLevel				= 20				// Damage per Round??
+ul SoundEffectId			= 11				// Id of soundEffect to play on Fire.
+f BulletLength				= 8.0				// Length of Bullet Effect
+f BulletWidth				= 2.0				// Width of Bullet Effect
+uc BulletColor				= 10				// Yellow for now
+f CloseDistance				= 25.0				// Distance from target when bullet goes away.
+ul SmokeObjectId			= 701				// No smoke on a bullet?
+ul LightObjectId			= 697
+ul BulletHitEffect			= 657
+ul BulletMissEffect			= 481				// Effect to play when SRM hits ground
+FITend

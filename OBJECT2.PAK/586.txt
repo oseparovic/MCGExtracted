@@ -1,0 +1,27 @@
+FITini
+
+// This is the Residential Train Station data file
+
+[ObjectClass]
+l ObjectTypeNum = 18
+
+[ObjectType]
+st Name 			= "trainstres"	// Text string giving a descriptive name  (only 8 chars long!!)
+l Type			= 0x7
+l Appearance		= 0x0200021e
+l Duration			= -1			// Lasts forever = -1
+l MaxDamage			= 0				// Number of damage points before BOOM!
+l ExplosionObject	   	= 42			// Object Class Number of explosion for Mech
+l DestroyedObject	   	= 0				// Object Class Number of Destroyed shape for Mech
+f ExtentRadius		= 35			// Extent Radius in Meters
+
+[TreeData]
+l BuildingName = 548
+ul DmgLevel			= 13
+l SetImpassable		= 1
+// l XImpasse			= 3
+// l YImpasse			= 3
+l LowTemplate		= 0x38000000
+l HighTemplate	= 0x0000387C
+			
+FITend

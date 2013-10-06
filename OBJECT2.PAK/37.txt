@@ -1,0 +1,34 @@
+FITini
+
+// This is the tomsilo_a1 Building Data File
+
+[ObjectClass]
+l ObjectTypeNum = 1
+
+[ObjectType]
+st Name 			= "tomsilo_a1"		// Text string giving a descriptive name  (only 8 chars long!!)
+l Type				= 19
+l Appearance			= 0x0700002D
+l Duration			= -1			// Lasts forever = -1
+l MaxDamage			= 0			// Number of damage points before BOOM!
+l ExplosionObject		= 42			// Object Class Number of explosion for this building
+l DestroyedObject		= 0			// Object Class Number of Destroyed shape for building
+f ExtentRadius			= 35			// Extent Radius in Meters
+
+[BuildingData]
+l BuildingName = 441
+b BlocksLineOfFire = t
+ul DmgLevel			= 15
+ul BlownEffectId		= -1			//Sound Effect played when building dies.
+ul NormalEffectId		= -1			//Sound Effect played when building is normal.
+ul DamageEffectId		= -1			//Sound Effect Played when building is dmg/destroyed.
+st NormalShadow			= "tomsilo_a1_gt"		//Tile to draw under building -- Not Required
+st DestroyedShadow		= "tomsilo_a1_gt_dmg"	//Tile to draw under destroyed buiding -- Not required.
+l BasePixelOffsetX		= -24			//Where on tile to draw this building.
+l BasePixelOffsetY		= 100			//
+l CollisionOffsetX		= -15				//Some buildings were not rendered to spec.  This fixes the problem.
+l CollisionOffsetY		= 85
+l LowTemplate		= 0x1e0e0000
+l HighTemplate		= 0x0000001c
+
+FITendndmplate		= 0x0000001c

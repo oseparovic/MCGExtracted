@@ -1,0 +1,34 @@
+FITini
+
+// This is the hbmperm2_a4 Building Data File
+
+[ObjectClass]
+l ObjectTypeNum = 1
+
+[ObjectType]
+st Name             = "hbmperm2_a4"            // Text string giving a descriptive name  (only 8 chars long!!)
+l Type				= 19
+l Appearance        = 0x0700004D
+l Duration			= -1			// Lasts forever = -1
+l MaxDamage			= 0			// Number of damage points before BOOM!
+l ExplosionObject	= 42			// Object Class Number of explosion for this building
+l DestroyedObject	= 0			// Object Class Number of Destroyed shape for building
+f ExtentRadius		= 35			// Extent Radius in Meters
+
+[BuildingData]
+l BuildingName 		= 278
+ul DmgLevel			= 6
+ul BlownEffectId	= -1			//Sound Effect played when building dies.
+ul NormalEffectId	= -1			//Sound Effect played when building is normal.
+ul DamageEffectId	= -1			//Sound Effect Played when building is dmg/destroyed.
+st NormalShadow     = "hbmperm2_a4_gt"          //Tile to draw under building -- Not Required
+st DestroyedShadow  = "hbmperm2_a4_gt_dmg"       //Tile to draw under destroyed buiding -- Not required.
+l BasePixelOffsetX  = 6                   //1 
+l BasePixelOffsetY  = 57                    //63
+//l CollisionOffsetX	= 0				//Some buildings were not rendered to spec.  This fixes the problem.
+//l CollisionOffsetY	= 34
+l LowTemplate		= 0x20000000
+l HighTemplate		= 0x0000003c
+
+
+FITend

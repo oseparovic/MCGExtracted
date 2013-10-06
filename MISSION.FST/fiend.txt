@@ -1,0 +1,48 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      MechWarrior:  104   Name: Fiend  Callsign: FIEND
+//
+//      Creation Date: 12/15/98   By: jon marcus
+//
+// -------------------------------------------------------------------------
+
+
+
+[General]
+st Brain = "pbrain"
+st Name =                                                  "Fiend"
+l Rank =                                                    1 
+st Callsign =                                              "FIEND"
+ul ID =                                                     104 
+l NameIndex =                                               10 
+l DescIndex =                                               345 
+ul HeadIcon =                                               0 
+l paintScheme =                                             68 
+st pilotAudio =                                            "pilotk"
+st pilotVideo =                                            "PILOT10"
+st Picture =                                               "Pilot10.TGA"
+
+[PersonalityTraits]
+c Professionalism =                                         50 
+c Decorum =                                                 50 
+c Aggressiveness =                                          50 
+c Courage =                                                 50 
+
+[Skills]
+c Piloting =                                                60 
+c Jumping =                                                 50 
+c Sensors =                                                 45 
+c Gunnery =                                                 45 
+
+[Affinities]
+c MechClass =                                               0 
+c MechType =                                                0 
+c WeaponClass =                                             0 
+uc[2] WeaponTypes =                                        0,0
+
+[Status]
+c Wounds =                                                  0 
+
+FITEnd

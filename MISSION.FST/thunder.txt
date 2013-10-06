@@ -1,0 +1,48 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      MechWarrior:  96   Name: Thunder  Callsign: THUNDER
+//
+//      Creation Date: 2/10/99   By: david abzug
+//
+// -------------------------------------------------------------------------
+
+
+
+[General]
+st Brain = "pbrain"
+st Name =                                                  "Thunder"
+l Rank =                                                    2 
+st Callsign =                                              "THUNDER"
+ul ID =                                                     96 
+l NameIndex =                                               26 
+l DescIndex =                                               327 
+ul HeadIcon =                                               0 
+l paintScheme =                                             68 
+st pilotAudio =                                            "pilotAA"
+st pilotVideo =                                            "PILOT26"
+st Picture =                                               "pilot26.TGA"
+
+[PersonalityTraits]
+c Professionalism =                                         50 
+c Decorum =                                                 50 
+c Aggressiveness =                                          50 
+c Courage =                                                 50 
+
+[Skills]
+c Piloting =                                                63 
+c Jumping =                                                 70 
+c Sensors =                                                 68 
+c Gunnery =                                                 55 
+
+[Affinities]
+c MechClass =                                               0 
+c MechType =                                                0 
+c WeaponClass =                                             0 
+uc[2] WeaponTypes =                                        0,0
+
+[Status]
+c Wounds =                                                  0 
+
+FITEnd

@@ -1,0 +1,36 @@
+FITini
+
+// This is the Clan Heavy LBX Projectile
+
+[ObjectClass]
+l ObjectTypeNum = 17
+
+[ObjectType]
+st Name 					= "Chvylbx"				// Text string giving a descriptive name  (only 8 chars long!!)
+l Type						= 882				// ID number for this object type
+l Appearance				= 0x06000018		// dec: 24
+l Duration					= 2					// Lasts forever = -1 (s)  2 second burst
+l MaxDamage					= 0					// Number of damage points before BOOM!
+l ExplosionObject			= 0					// Object Class Number of explosion for Mech
+l DestroyedObject			= 0					// Object Class Number of Destroyed shape for Mech
+f ExtentRadius				= 0					// Extent Radius in Meters
+
+[ProjectileLaserData]
+f Velocity					= 300.0				// m/s
+f ProjectileLength			= 20.0				// w.u.
+f BulgeLength				= 5.0				// w.u.
+f BulgeWidth				= 2.5				// w.u.
+uc f0Color					= 242
+uc f1Color					= 241
+uc f2Color					= 240
+uc f3Color					= 242
+uc e0Color					= 242
+uc e1Color					= 241
+uc e2Color					= 240
+uc e3Color					= 242
+f CloseDistance				= 25.0
+ul SoundEffectId			= 76				// Id of soundEffect to play on Fire.
+ul ProjectileMissEffect		= 398
+ul ProjectileHitEffect		= 894
+
+FITend

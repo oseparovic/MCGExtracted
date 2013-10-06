@@ -1,0 +1,32 @@
+FITini
+
+// This is the ugstr_a5 Building Data File
+
+[ObjectClass]
+l ObjectTypeNum = 1
+
+[ObjectType]
+st Name 			= "ugstr_a5"		// Text string giving a descriptive name  (only 8 chars long!!)
+l Type				= 19
+l Appearance		= 0x07000163
+l Duration			= -1			// Lasts forever = -1
+l MaxDamage			= 0			// Number of damage points before BOOM!
+l ExplosionObject	= 727			// Object Class Number of explosion for this building
+l DestroyedObject	= 0			// Object Class Number of Destroyed shape for building
+f ExtentRadius		= 35			// Extent Radius in Meters
+
+[BuildingData]
+l BuildingName 		= 448
+b BlocksLineOfFire 	= TRUE
+ul DmgLevel			= 33
+ul BlownEffectId	= -1			//Sound Effect played when building dies.
+ul NormalEffectId	= -1			//Sound Effect played when building is normal.
+ul DamageEffectId	= -1			//Sound Effect Played when building is dmg/destroyed.
+l BasePixelOffsetX	= 21			//Where on tile to draw this building.
+l BasePixelOffsetY	= 55			//
+l CollisionOffsetX	= 46				//Some buildings were not rendered to spec.  This fixes the problem.
+l CollisionOffsetY	= 44
+l LowTemplate		= 0x38000000
+l HighTemplate		= 0x00001038
+
+FITend

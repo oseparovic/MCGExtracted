@@ -1,0 +1,35 @@
+FITini
+
+// This is the HBwinmill_a6 Building Data File
+
+[ObjectClass]
+l ObjectTypeNum = 1
+
+[ObjectType]
+st Name 			= "HBwinmill_a6"		// Text string giving a descriptive name  (only 8 chars long!!)
+//l Type			= 0x7
+//l Appearance		= 0x02000257
+l Type				= 19
+l Appearance			= 0x0700014A
+l Duration			= -1			// Lasts forever = -1
+l MaxDamage			= 0			// Number of damage points before BOOM!
+l ExplosionObject		= 42			// Object Class Number of explosion for this building
+l DestroyedObject		= 0			// Object Class Number of Destroyed shape for building
+f ExtentRadius			= 35			// Extent Radius in Meters
+
+[BuildingData]
+ul DmgLevel			= 1
+ul BlownEffectId		= -1			//Sound Effect played when building dies.
+ul NormalEffectId		= -1			//Sound Effect played when building is normal.
+ul DamageEffectId		= -1			//Sound Effect Played when building is dmg/destroyed.
+//st NormalShadow			= "wtrtwr_a1_gt"		//Tile to draw under building -- Not Required
+//st DestroyedShadow		= "wtrtwr_a1_gt_dmg"	//Tile to draw under destroyed buiding -- Not required.
+l BasePixelOffsetX		= 1			//Where on tile to draw this building.
+l BasePixelOffsetY		= 75			//
+l CollisionOffsetX		= 1				//Some buildings were not rendered to spec.  This fixes the problem.
+l CollisionOffsetY		= 57
+l LowTemplate		= 0x18000000
+l HighTemplate		= 0x00000018
+f ExtentRadius			= 12
+
+FITend

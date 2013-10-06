@@ -1,0 +1,37 @@
+FITini
+
+// This is the Heavy Gauss Rifle Projectile Data File
+
+[ObjectClass]
+l ObjectTypeNum = 17
+
+[ObjectType]
+st Name 					= "hvygauss"				// Text string giving a descriptive name  (only 8 chars long!!)
+l Type						= 888				// ID number for this object type
+l Appearance				= 0x06000297
+l Duration					= 2					// Lasts forever = -1 (s)  2 second burst
+l MaxDamage					= 0					// Number of damage points before BOOM!
+l ExplosionObject			= 0					// Object Class Number of explosion for Mech
+l DestroyedObject			= 0					// Object Class Number of Destroyed shape for Mech
+f ExtentRadius				= 0					// Extent Radius in Meters
+
+[ProjectileLaserData]
+f Velocity					= 800.0				// m/s
+f ProjectileLength			= 45.0				// w.u.
+f BulgeLength				= 10.0				// w.u.
+f BulgeWidth				= 0.75				// w.u.
+uc f0Color					= 95  // lead
+uc f1Color					= 93  // sides
+uc f2Color					= 91  // tail
+uc f3Color					= 95  // center
+uc e0Color					= 95
+uc e1Color					= 93
+uc e2Color					= 91
+uc e3Color					= 95
+f CloseDistance				= 25.0
+ul SoundEffectId			= 80				// Id of soundEffect to play on Fire.
+ul SmokeObjectId			= 920
+ul ProjectileMissEffect		= 398
+ul ProjectileHitEffect		= 900
+
+FITend

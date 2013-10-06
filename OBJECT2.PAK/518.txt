@@ -1,0 +1,30 @@
+FITini
+
+// This is the Smoke Jaguar Government Building Object
+
+[ObjectClass]
+l ObjectTypeNum = 18				//Misc Terrain Object
+
+[ObjectType]
+st Name 			= "govbldg"		// Text string giving a descriptive name  (only 8 chars long!!)
+l Type				= 0x7
+l Appearance    	= 0x020001DB
+l Duration			= -1			// Lasts forever = -1
+l MaxDamage			= 0			// Number of damage points before BOOM!
+l ExplosionObject	= 0			// Object Class Number of explosion for this building
+l DestroyedObject	= 0			// Object Class Number of Destroyed shape for building
+f ExtentRadius		= 75			// Extent Radius in Meters
+
+[TreeData]
+l BuildingName 		= 469
+l BattleRating		= 2000
+b BlocksLineOfFire 	= FALSE
+ul DmgLevel			= 97			// How much damage before changing to destroyed shape
+ul BlownEffectId	= -1			//Sound Effect played when building dies.
+ul NormalEffectId	= -1			//Sound Effect played when building is normal.
+ul DamageEffectId	= 73			//Sound Effect Played when building is dmg/destroyed.
+l NumMarines 		= 10				//Little guys will come running out
+l LowTemplate		= 0x7c3c0000
+l HighTemplate		= 0x00003c7c
+
+FITend

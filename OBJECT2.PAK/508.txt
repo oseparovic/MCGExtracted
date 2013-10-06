@@ -1,0 +1,74 @@
+FITini
+
+//---------------------------------------------------------------------------
+//
+//				MapIcon:	Small Artillery Strike Indicator
+//
+//				BASE ID:	58
+//
+//---------------------------------------------------------------------------
+
+[ObjectClass]
+l ObjectTypeNum = 12
+
+[Artillery]
+st ArtillerySpriteName 	= "airstrk"					//Name of Sprite .SHP file with waypoint icon in it.
+ul StartFrame			= 0							//Frame to start at
+ul FrameCount 			= 30							//Number of frames of animation.
+f FrameRate 			= 15.0						//Frame Rate to playback animation at.
+f NominalTimeToImpact	= 7.0						//Time it takes strike to arrive.
+f NominalDamage			= 5.0						//Points of Damage per hit.
+f nominalMajorRange		= 30.0						//This is in Meters
+f nominalMajorHits		= 4.0						//Number of hits inside Major Range
+f nominalMinorRange		= 60.0						//This is in Meters
+f nominalMinorHits		= 2.0						//Number of hits inside Minor Range
+
+f NominalSensorTime		= 0.0
+f NominalSensorRange	= 0.0
+	
+f fontScale				= 1.7
+f fontXOffset			= -14.0
+f fontYOffset			= -5.0
+ul fontColor			= 242
+	
+l NumExplosions			= 6
+f ExplosionDelay0		= 0.0
+f ExplosionDelay1		= 0.2
+f ExplosionDelay2		= 0.6
+f ExplosionDelay3		= 1.0
+f ExplosionDelay4		= 1.5
+f ExplosionDelay5		= 2.0
+
+f ExplosionOffsetX0		= -75
+f ExplosionOffsetY0		= 0
+
+f ExplosionOffsetX1		= -50
+f ExplosionOffsetY1		= 0
+
+f ExplosionOffsetX2		= -25
+f ExplosionOffsetY2		= -0
+
+f ExplosionOffsetX3		= 0
+f ExplosionOffsetY3		= 0
+
+f ExplosionOffsetX4		= 25
+f ExplosionOffsetY4		= 0
+
+f ExplosionOffsetX5		= 50
+f ExplosionOffsetY5		= 0
+
+l ExplosionsPerExplosion = 2
+l ExplosionRandomOffsetX = 15
+l ExplosionRandomOffsetY = 15
+
+[ObjectType]
+st Name 				= "SmlStrike"		// Text string giving a descriptive name  (only 8 chars long!!)
+l Type 					= 58			// ID number for this mech type
+l Appearance			= 0x00000000
+l Duration				= -1			// Lasts forever = -1
+l MaxDamage				= 0				// Number of damage points before BOOM!
+l ExplosionObject		= 41			// Object Class Number of explosion
+l DestroyedObject		= -1			// Object Class Number of Destroyed shape
+f ExtentRadius			= 150			// Extent Radius in Meters (0 Can't hit hit ever)
+
+FITEnd

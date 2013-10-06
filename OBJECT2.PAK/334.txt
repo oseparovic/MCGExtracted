@@ -1,0 +1,34 @@
+FITini
+
+// This is the hvindyc_a4 Building Data File
+
+[ObjectClass]
+l ObjectTypeNum = 1
+
+[ObjectType]
+st Name 			= "hvindyc_a8"		// Text string giving a descriptive name  (only 8 chars long!!)
+l Type				= 19
+l Appearance			= 0x07000127
+l Duration			= -1			// Lasts forever = -1
+l MaxDamage			= 0			// Number of damage points before BOOM!
+l ExplosionObject		= 727			// Object Class Number of explosion for this building
+l DestroyedObject		= 0			// Object Class Number of Destroyed shape for building
+f ExtentRadius			= 35			// Extent Radius in Meters
+
+[BuildingData]
+l BuildingName = 305
+b BlocksLineOfFire = TRUE
+ul DmgLevel			= 46
+ul BlownEffectId		= -1			//Sound Effect played when building dies.
+ul NormalEffectId		= -1			//Sound Effect played when building is normal.
+ul DamageEffectId		= -1			//Sound Effect Played when building is dmg/destroyed.
+//st NormalShadow			= "hvindyc_a4_gt"		//Tile to draw under building -- Not Required
+//st DestroyedShadow		= "hvindyc_a4_gt_dmg"	//Tile to draw under destroyed buiding -- Not required.
+l BasePixelOffsetX		= 26			//Where on tile to draw this building.
+l BasePixelOffsetY		= 72			//
+l CollisionOffsetX		= -6				//Some buildings were not rendered to spec.  This fixes the problem.
+l CollisionOffsetY		= 51
+l LowTemplate		= 0x38100000
+l HighTemplate		= 0x00003838
+
+FITend

@@ -1,0 +1,29 @@
+FITini
+
+// This is the Dye Grenade Object
+
+[ObjectClass]
+l ObjectTypeNum = 18				//Misc Terrain Object
+
+[ObjectType]
+st Name 		= "dyegren"		// Text string giving a descriptive name  (only 8 chars long!!)
+l Type			= 0x7
+l Appearance	= 0x02000263
+l Duration		= -1			// Lasts forever = -1
+l MaxDamage		= 0				// Number of damage points before BOOM!
+l ExplosionObject	= 0			// Object Class Number of explosion for this building
+l DestroyedObject	= 0			// Object Class Number of Destroyed shape for building
+f ExtentRadius	= 0				// Extent Radius in Meters
+
+[TreeData]
+l BuildingName = 598
+ul DmgLevel		= 0			// How much damage before changing to destroyed shape
+l SetImpassable	= 0
+// l XImpasse		= 3
+// l YImpasse		= 3
+//l LowTemplate		= 0x18000000
+//l HighTemplate		= 0x00000018
+
+FITendndTemplate		= 0x00000018
+
+

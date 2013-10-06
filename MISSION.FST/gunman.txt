@@ -1,0 +1,48 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      MechWarrior:  89   Name: Gunman  Callsign: GUNMAN
+//
+//      Creation Date: 2/10/99   By: david abzug
+//
+// -------------------------------------------------------------------------
+
+
+
+[General]
+st Brain = "pbrain"
+st Name =                                                  "Gunman"
+l Rank =                                                    0 
+st Callsign =                                              "GUNMAN"
+ul ID =                                                     89 
+l NameIndex =                                               5 
+l DescIndex =                                               306 
+ul HeadIcon =                                               0 
+l paintScheme =                                             68 
+st pilotAudio =                                            "pilotf"
+st pilotVideo =                                            "PILOT05"
+st Picture =                                               "Pilot05.TGA"
+
+[PersonalityTraits]
+c Professionalism =                                         50 
+c Decorum =                                                 50 
+c Aggressiveness =                                          50 
+c Courage =                                                 50 
+
+[Skills]
+c Piloting =                                                40 
+c Jumping =                                                 35 
+c Sensors =                                                 35 
+c Gunnery =                                                 57 
+
+[Affinities]
+c MechClass =                                               0 
+c MechType =                                                0 
+c WeaponClass =                                             0 
+uc[2] WeaponTypes =                                        0,0
+
+[Status]
+c Wounds =                                                  0 
+
+FITEnd

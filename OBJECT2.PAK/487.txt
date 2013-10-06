@@ -1,0 +1,28 @@
+FITini
+
+// This is the istower2 data file
+
+[ObjectClass]
+l ObjectTypeNum = 18
+
+[ObjectType]
+st Name 			= "istower2"		// Text string giving a descriptive name  (only 8 chars long!!)
+l Type				= 0x7
+l Appearance		= 0x020001c0
+l Duration			= -1			// Lasts forever = -1
+l MaxDamage			= 0				// Number of damage points before BOOM!
+l ExplosionObject	= 727			// Object Class Number of explosion for Mech
+l DestroyedObject	= 0				// Object Class Number of Destroyed shape for Mech
+f ExtentRadius		= 35			// Extent Radius in Meters
+
+[TreeData]
+l BuildingName		= 355
+b BlocksLineOfFire 	= TRUE
+l BattleRating	   	= 500
+ul DmgLevel			= 33
+l LowTemplate		= 0x00000000
+l HighTemplate		= 0x00303818
+l TeamId			= 1			//0 is inner sphere, 2 is allies, 1 is clans
+f SensorRange		= 600.0
+			
+FITend

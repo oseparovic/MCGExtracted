@@ -1,0 +1,48 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      MechWarrior:  97   Name: Goblin  Callsign: GOBLIN
+//
+//      Creation Date: 2/10/99   By: david abzug
+//
+// -------------------------------------------------------------------------
+
+
+
+[General]
+st Brain = "pbrain"
+st Name =                                                  "Goblin"
+l Rank =                                                    2 
+st Callsign =                                              "GOBLIN"
+ul ID =                                                     97 
+l NameIndex =                                               22 
+l DescIndex =                                               323 
+ul HeadIcon =                                               0 
+l paintScheme =                                             68 
+st pilotAudio =                                            "pilotW"
+st pilotVideo =                                            "PILOT22"
+st Picture =                                               "pilot22.TGA"
+
+[PersonalityTraits]
+c Professionalism =                                         50 
+c Decorum =                                                 50 
+c Aggressiveness =                                          50 
+c Courage =                                                 50 
+
+[Skills]
+c Piloting =                                                67 
+c Jumping =                                                 65 
+c Sensors =                                                 60 
+c Gunnery =                                                 60 
+
+[Affinities]
+c MechClass =                                               0 
+c MechType =                                                0 
+c WeaponClass =                                             0 
+uc[2] WeaponTypes =                                        0,0
+
+[Status]
+c Wounds =                                                  0 
+
+FITEnd

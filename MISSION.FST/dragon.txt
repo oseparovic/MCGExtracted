@@ -1,0 +1,48 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      MechWarrior:  94   Name: Dragon  Callsign: DRAGON
+//
+//      Creation Date: 2/10/99   By: david abzug
+//
+// -------------------------------------------------------------------------
+
+
+
+[General]
+st Brain = "pbrain"
+st Name =                                                  "Dragon"
+l Rank =                                                    2 
+st Callsign =                                              "DRAGON"
+ul ID =                                                     94 
+l NameIndex =                                               24 
+l DescIndex =                                               325 
+ul HeadIcon =                                               0 
+l paintScheme =                                             68 
+st pilotAudio =                                            "pilotY"
+st pilotVideo =                                            "PILOT24"
+st Picture =                                               "pilot24.TGA"
+
+[PersonalityTraits]
+c Professionalism =                                         50 
+c Decorum =                                                 50 
+c Aggressiveness =                                          50 
+c Courage =                                                 50 
+
+[Skills]
+c Piloting =                                                74 
+c Jumping =                                                 54 
+c Sensors =                                                 59 
+c Gunnery =                                                 64 
+
+[Affinities]
+c MechClass =                                               0 
+c MechType =                                                0 
+c WeaponClass =                                             0 
+uc[2] WeaponTypes =                                        0,0
+
+[Status]
+c Wounds =                                                  0 
+
+FITEnd

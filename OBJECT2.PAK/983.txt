@@ -1,0 +1,30 @@
+FITini
+
+// This is the xperimeter_alarm data file
+
+[ObjectClass]
+l ObjectTypeNum = 18
+
+[ObjectType]
+st Name 			= "xperimeter_alarm_1"		// Text string giving a descriptive name  (only 8 chars long!!)
+l Type				= 0x7
+l Appearance		= 0x02000364
+l Duration			= -1			// Lasts forever = -1
+l MaxDamage			= 0			// Number of damage points before BOOM!
+l ExplosionObject	= 42			// Object Class Number of explosion for Mech
+l DestroyedObject	= 0			// Object Class Number of Destroyed shape for Mech
+f ExtentRadius		= 20			// Extent Radius in Meters
+
+[TreeData]
+l BuildingName 		= 410
+b BlocksLineOfFire 	= FALSE
+ul DmgLevel			= 13
+ul BlownEffectId	= -1			//Sound Effect played when building dies.
+ul NormalEffectId	= -1			//Sound Effect played when building is normal.
+ul DamageEffectId	= -1			//Sound Effect Played when building is dmg/destroyed.
+l LowTemplate		= 0x08000000
+l HighTemplate		= 0x00000010
+
+FITend
+
+FITend

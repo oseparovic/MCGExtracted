@@ -1,0 +1,37 @@
+FITini
+
+// This is the medium Pulse Laser Projectile
+
+[ObjectClass]
+l ObjectTypeNum = 17
+
+[ObjectType]
+st Name 					= "mdPul"			// Text string giving a descriptive name  (only 8 chars long!!)
+l Type						= 25				// ID number for this object type
+l Appearance				= 0x0600026F				// This can be a flash FX
+l Duration					= 2					// Lasts forever = -1 (s)  2 second burst
+l MaxDamage					= 0					// Number of damage points before BOOM!
+l ExplosionObject			= 0					// Object Class Number of explosion for Mech
+l DestroyedObject			= 0					// Object Class Number of Destroyed shape for Mech
+f ExtentRadius				= 0					// Extent Radius in Meters
+
+[ProjectileLaserData]
+f Velocity					= 700.0				// m/s
+f ProjectileLength			= 20.0				// w.u.
+f BulgeLength				= 4.0				// w.u.
+f BulgeWidth				= 0.6				// w.u.
+uc f0Color					= 224
+uc f1Color					= 225
+uc f2Color					= 226
+uc f3Color					= 225
+uc e0Color					= 224
+uc e1Color					= 225
+uc e2Color					= 226
+uc e3Color					= 225
+f CloseDistance				= 50.0
+ul SoundEffectId			= 3					// Id of soundEffect to play on Fire.
+ul LightObjectId			= 685
+ul ProjectileMissEffect		= 482
+ul ProjectileHitEffect		= 657
+
+FITend

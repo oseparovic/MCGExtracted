@@ -1,0 +1,37 @@
+FITini
+
+// This is the Sniper Cannon Projectile
+
+[ObjectClass]
+l ObjectTypeNum = 17
+
+[ObjectType]
+st Name 					= "sniper"			// Text string giving a descriptive name  (only 8 chars long!!)
+l Type						= 889				// ID number for this object type
+l Appearance				= 0x06000018		// dec: 24
+l Duration					= 2					// Lasts forever = -1 (s)  2 second burst
+l MaxDamage					= 0					// Number of damage points before BOOM!
+l ExplosionObject			= 0					// Object Class Number of explosion for Mech
+l DestroyedObject			= 0					// Object Class Number of Destroyed shape for Mech
+f ExtentRadius				= 0					// Extent Radius in Meters
+
+[ProjectileLaserData]
+f Velocity					= 1200.0				// m/s
+f ProjectileLength			= 45.0				// w.u.
+f BulgeLength				= 12.0				// w.u.
+f BulgeWidth				= 5.25				// w.u.
+uc f0Color					= 245  // point 
+uc f1Color					= 243  // tail
+uc f2Color					= 243  // sides
+uc f3Color					= 244  // center
+
+uc e0Color					= 246
+uc e1Color					= 243
+uc e2Color					= 243
+uc e3Color					= 244
+f CloseDistance				= 25.0
+ul SoundEffectId			= 78					// Id of soundEffect to play on Fire.
+ul ProjectileMissEffect		= 901
+ul ProjectileHitEffect		= 901
+
+FITend

@@ -1,0 +1,48 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      MechWarrior:  95   Name: Blaze  Callsign: BLAZE
+//
+//      Creation Date: 2/10/99   By: david abzug
+//
+// -------------------------------------------------------------------------
+
+
+
+[General]
+st Brain = "pbrain"
+st Name =                                                  "Blaze"
+l Rank =                                                    2 
+st Callsign =                                              "BLAZE"
+ul ID =                                                     95 
+l NameIndex =                                               25 
+l DescIndex =                                               326 
+ul HeadIcon =                                               0 
+l paintScheme =                                             68 
+st pilotAudio =                                            "pilotZ"
+st pilotVideo =                                            "PILOT25"
+st Picture =                                               "pilot25.TGA"
+
+[PersonalityTraits]
+c Professionalism =                                         50 
+c Decorum =                                                 50 
+c Aggressiveness =                                          50 
+c Courage =                                                 50 
+
+[Skills]
+c Piloting =                                                65 
+c Jumping =                                                 65 
+c Sensors =                                                 69 
+c Gunnery =                                                 59 
+
+[Affinities]
+c MechClass =                                               0 
+c MechType =                                                0 
+c WeaponClass =                                             0 
+uc[2] WeaponTypes =                                        0,0
+
+[Status]
+c Wounds =                                                  0 
+
+FITEnd

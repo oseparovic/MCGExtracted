@@ -1,0 +1,36 @@
+FITini
+
+// This is the Small ER Laser Projectile
+
+[ObjectClass]
+l ObjectTypeNum = 17
+
+[ObjectType]
+st Name 					= "smer"				// Text string giving a descriptive name  (only 8 chars long!!)
+l Type						= 25				// ID number for this object type
+l Appearance				= 0					// This can be a flash FX
+l Duration					= 2					// Lasts forever = -1 (s)  2 second burst
+l MaxDamage					= 0					// Number of damage points before BOOM!
+l ExplosionObject			= 0					// Object Class Number of explosion for Mech
+l DestroyedObject			= 0					// Object Class Number of Destroyed shape for Mech
+f ExtentRadius				= 0					// Extent Radius in Meters
+
+[ProjectileLaserData]
+f Velocity					= 400.0				// m/s
+f ProjectileLength			= 24.0				// w.u.
+f BulgeLength				= 4.0				// w.u.
+f BulgeWidth				= 1.5				// w.u.
+uc f0Color					= 225
+uc f1Color					= 226
+uc f2Color					= 226
+uc f3Color					= 224
+uc e0Color					= 212
+uc e1Color					= 213
+uc e2Color					= 213
+uc e3Color					= 211
+f CloseDistance				= 25.0
+ul SoundEffectId			= 3					// Id of soundEffect to play on Fire.
+ul ProjectileMissEffect		= 482
+ul ProjectileHitEffect		= 40
+
+FITend

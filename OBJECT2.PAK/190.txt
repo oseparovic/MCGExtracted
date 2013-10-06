@@ -1,0 +1,34 @@
+FITini
+
+// This is the LRM projectile Data File
+
+[ObjectClass]
+l ObjectTypeNum = 8
+
+[ObjectType]
+st Name 					= "lrm"				// Text string giving a descriptive name  (only 8 chars long!!)
+l Type						= 25				// ID number for this object type
+l Appearance				= 0x00000000 		// was 0x060001A4
+l Duration					= 2					// Lasts forever = -1 (s)  2 second burst
+l MaxDamage					= 0					// Number of damage points before BOOM!
+l ExplosionObject			= 0					// Object Class Number of explosion for Mech
+l DestroyedObject			= 0					// Object Class Number of Destroyed shape for Mech
+f ExtentRadius				= 0					// Extent Radius in Meters
+
+[BulletData]
+f Velocity					= 200.0				// m/s
+f BulletsPerSecond			= 2					// number of spheres per second.
+ul maxBullets				= 20				// max number of spheres around.
+ul DmgLevel					= 20				// Damage per Round??
+ul SoundEffectId			= 8					// Id of soundEffect to play on Fire.
+f BulletLength				= 8.0				// Length of Bullet Effect
+f BulletWidth				= 2.0				// Width of Bullet Effect
+uc BulletColor				= 10				// Yellow for now
+f CloseDistance				= 25.0				// Distance from target when bullet goes away.
+ul SmokeObjectId			= 652				// No smoke on a bullet?
+ul BulletHitEffect			= 656
+ul BulletMissEffect			= 481				// Effect to play when LRM misses.
+ul LightObjectId			= 697
+FITend
+
+

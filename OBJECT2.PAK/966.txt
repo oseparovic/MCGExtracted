@@ -1,0 +1,28 @@
+FITini
+
+// This is the xgenerator_main data file
+
+[ObjectClass]
+l ObjectTypeNum = 18
+
+[ObjectType]
+st Name 			= "xgenerator_main_1"		// Text string giving a descriptive name  (only 8 chars long!!)
+l Type				= 0x7
+l Appearance		= 0x02000353
+l Duration			= -1				// Lasts forever = -1
+l MaxDamage			= 0				// Number of damage points before BOOM!
+l ExplosionObject	= 41				// Object Class Number of explosion for Mech
+l DestroyedObject	= 0				// Object Class Number of Destroyed shape for Mech
+f ExtentRadius		= 5				// Extent Radius in Meters
+
+[TreeData]
+l BuildingName 		= 588
+b BlocksLineOfFire 	= TRUE
+ul DmgLevel			= 61
+ul BlownEffectId	= -1			//Sound Effect played when building dies.
+ul NormalEffectId	= 37			//Sound Effect played when building is normal.
+ul DamageEffectId	= 35			//Sound Effect Played when building is dmg/destroyed.
+l LowTemplate		= 0x38000000
+l HighTemplate		= 0x00003838
+
+FITend

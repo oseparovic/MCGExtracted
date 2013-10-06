@@ -1,0 +1,36 @@
+FITini
+
+// This is the Large Extended Range Pulse Laser Projectile
+
+[ObjectClass]
+l ObjectTypeNum = 17
+
+[ObjectType]
+st Name 					= "XLPlaser"		// Text string giving a descriptive name  (only 8 chars long!!)
+l Type						= 885				// ID number for this object type
+l Appearance				= 0x0600026C				// This can be a flash FX
+l Duration					= 2					// Lasts forever = -1 (s)  2 second burst
+l MaxDamage					= 0					// Number of damage points before BOOM!
+l ExplosionObject			= 0					// Object Class Number of explosion for Mech
+l DestroyedObject			= 0					// Object Class Number of Destroyed shape for Mech
+f ExtentRadius				= 0					// Extent Radius in Meters
+
+[ProjectileLaserData]
+f Velocity					= 850.0				// m/s
+f ProjectileLength			= 30.0				// w.u.
+f BulgeLength				= 10.0				// w.u.
+f BulgeWidth				= 0.45				// w.u.
+uc f0Color					= 211
+uc f1Color					= 212
+uc f2Color					= 213
+uc f3Color					= 212
+uc e0Color					= 211
+uc e1Color					= 212
+uc e2Color					= 213
+uc e3Color					= 212
+f CloseDistance				= 50.0
+ul SoundEffectId			= 81					// Id of soundEffect to play on Fire.
+ul LightObjectId			= 684
+ul ProjectileMissEffect		= 482
+ul ProjectileHitEffect		= 657
+FITend

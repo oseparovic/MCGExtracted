@@ -1,0 +1,37 @@
+FITini
+
+// This is the Ejection Pod Projectile
+
+[ObjectClass]
+l ObjectTypeNum = 17
+
+[ObjectType]
+st Name 					= "ejectp"			// Text string giving a descriptive name  (only 8 chars long!!)
+l Type						= 25				// ID number for this object type
+l Appearance				= 0					// This can be a flash FX
+l Duration					= 2					// Lasts forever = -1 (s)  2 second burst
+l MaxDamage					= 0					// Number of damage points before BOOM!
+l ExplosionObject			= 0					// Object Class Number of explosion for Mech
+l DestroyedObject			= 0					// Object Class Number of Destroyed shape for Mech
+f ExtentRadius				= 0					// Extent Radius in Meters
+
+[ProjectileLaserData]
+f Velocity					= 250.0				// m/s
+f ProjectileLength			= 24.0				// w.u.
+f BulgeLength				= 6.0				// w.u.
+f BulgeWidth				= 2.0				// w.u.
+uc f0Color					= 16
+uc f1Color					= 16
+uc f2Color					= 31
+uc f3Color					= 8
+uc e0Color					= 16
+uc e1Color					= 16
+uc e2Color					= 31
+uc e3Color					= 8
+f CloseDistance				= 25.0
+ul SmokeObjectId			= 11
+ul SoundEffectId			= 27				// Id of soundEffect to play on Fire.
+ul ProjectileMissEffect		= -1
+ul ProjectileHitEffect		= -1
+
+FITend

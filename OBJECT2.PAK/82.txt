@@ -1,0 +1,34 @@
+FITini
+
+// This is the hbbarrack_a3 Building Data File
+
+[ObjectClass]
+l ObjectTypeNum = 1
+
+[ObjectType]
+st Name             = "hbbarrack_a3"        // Text string giving a descriptive name  (only 8 chars long!!)
+l Type				= 19
+l Appearance        = 0x07000043
+l Duration			= -1			// Lasts forever = -1
+l MaxDamage			= 0			// Number of damage points before BOOM!
+l ExplosionObject	= 42			// Object Class Number of explosion for this building
+l DestroyedObject	= 0			// Object Class Number of Destroyed shape for building
+f ExtentRadius		= 35			// Extent Radius in Meters
+
+[BuildingData]
+l BuildingName 		= 260
+ul DmgLevel			= 13
+l BattleRating		= 0
+ul BlownEffectId	= -1			//Sound Effect played when building dies.
+ul NormalEffectId	= -1			//Sound Effect played when building is normal.
+ul DamageEffectId	= -1			//Sound Effect Played when building is dmg/destroyed.
+st NormalShadow     = "hbbarrack_a3_gt"     //Tile to draw under building -- Not Required
+st DestroyedShadow  = "hbbarrack_a3_gt_dmg" //Tile to draw under destroyed buiding -- Not required.
+l BasePixelOffsetX  = 31                   	//Where on tile to draw this building.
+l BasePixelOffsetY  = 54                    //
+l CollisionOffsetX	= 46			//Some buildings were not rendered to spec.  This fixes the problem.
+l CollisionOffsetY	= 48
+l LowTemplate		= 0x00000000
+l HighTemplate		= 0x00003030
+
+FITend

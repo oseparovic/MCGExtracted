@@ -1,0 +1,34 @@
+FITini
+
+// This is the hvindyb_a3 Building Data File
+
+[ObjectClass]
+l ObjectTypeNum = 1
+
+[ObjectType]
+st Name 			= "hvindyb_a3"		// Text string giving a descriptive name  (only 8 chars long!!)
+l Type				= 19
+l Appearance			= 0x07000065
+l Duration			= -1			// Lasts forever = -1
+l MaxDamage			= 0			// Number of damage points before BOOM!
+l ExplosionObject		= 727			// Object Class Number of explosion for this building
+l DestroyedObject		= 0			// Object Class Number of Destroyed shape for building
+f ExtentRadius			= 35			// Extent Radius in Meters
+
+[BuildingData]
+l BuildingName = 305
+b BlocksLineOfFire = TRUE
+ul DmgLevel			= 61
+ul BlownEffectId		= -1			//Sound Effect played when building dies.
+ul NormalEffectId		= -1			//Sound Effect played when building is normal.
+ul DamageEffectId		= -1			//Sound Effect Played when building is dmg/destroyed.
+st NormalShadow			= "hvindyb_a3_gt"		//Tile to draw under building -- Not Required
+st DestroyedShadow		= "hvindyb_a3_gt_dmg"	//Tile to draw under destroyed buiding -- Not required.
+l BasePixelOffsetX		= 4			//Where on tile to draw this building.
+l BasePixelOffsetY		= 56			//
+l CollisionOffsetX		= 6				//Some buildings were not rendered to spec.  This fixes the problem.
+l CollisionOffsetY		= 34
+l LowTemplate		= 0x3C080000
+l HighTemplate		= 0x0020307C
+
+FITend
