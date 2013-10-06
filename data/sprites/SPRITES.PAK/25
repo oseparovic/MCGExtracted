@@ -1,0 +1,12 @@
+FITini 
+[Main Info]
+st Name="barna_a1"
+ul NumFrames=16
+
+[Bounds]
+l UpperLeftX = -60.0
+l UpperLeftY = -60.0
+l LowerRightX = 60.0
+l LowerRightY = 10.0
+
+FITend 

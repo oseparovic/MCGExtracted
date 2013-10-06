@@ -1,0 +1,12 @@
+FITini 
+[Main Info]
+st Name="HydroPmpsA_a5"
+ul NumFrames=16
+
+[Bounds]
+l UpperLeftX = -30.0
+l UpperLeftY = -35.0
+l LowerRightX = 30.0
+l LowerRightY = 25.0
+
+FITend 

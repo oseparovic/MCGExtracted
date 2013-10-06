@@ -1,0 +1,12 @@
+FITini 
+[Main Info]
+st Name="indyhouse_a2"
+ul NumFrames=16
+
+[Bounds]
+l UpperLeftX = 15.0
+l UpperLeftY = -55.0
+l LowerRightX = 55.0
+l LowerRightY = -10.0
+
+FITend 

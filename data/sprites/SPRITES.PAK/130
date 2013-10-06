@@ -1,0 +1,12 @@
+FITini 
+[Main Info]
+st Name="urbanA_a2"
+ul NumFrames=16
+
+[Bounds]
+l UpperLeftX = -30.0
+l UpperLeftY = -50.0
+l LowerRightX = 50.0
+l LowerRightY = 20.0
+
+FITend 

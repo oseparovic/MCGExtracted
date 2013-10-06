@@ -1,0 +1,12 @@
+FITini 
+[Main Info]
+st Name="frmhsD_a6"
+ul NumFrames=16
+
+[Bounds]
+l UpperLeftX = -30.0
+l UpperLeftY = -30.0
+l LowerRightX = 25.0
+l LowerRightY = 15.0
+
+FITend 

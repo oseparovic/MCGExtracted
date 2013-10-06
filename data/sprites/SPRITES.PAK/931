@@ -1,0 +1,835 @@
+FITini 
+
+[Main Info]
+st Name="Mauler"
+ul HeapSize=4095
+ul legFileNumber=17
+ul torsoFileNumber=22
+ul rightArmFileNumber=22
+ul leftArmFileNumber=22
+
+[HotSpots]
+st HotSpotFileName				= "k"
+l FootprintType	  				= 3
+ul Weapon0						= 3				// Which part is this weapon attached to.  3 = Right Arm
+ul Weapon1						= 2				// Which part is this weapon attached to.  2 = Left Arm
+ul Weapon2						= 1				// Which part is this weapon attached to.  1 = Torso
+ul Weapon3						= 1				// Which part is this weapon attached to.  1 = Torso
+ul Weapon4						= 1				// Which part is this weapon attached to.  1 = Torso
+ul Weapon5						= 1				// Which part is this weapon attached to.  1 = Torso
+ul Weapon6						= 1				// Which part is this weapon attached to.  1 = Torso
+ul Weapon7						= 0				// Which part is this weapon attached to.  0 = Bottom
+ul Weapon8						= 0				// Which part is this weapon attached to.  0 = Bottom
+
+[Parts]
+uc NumParts=4
+st PartAbbrev="btlr"
+
+[SpecialInfo]
+f fb_d_xlat=2.000000
+ul jumpAirborne=0
+ul jumpHold=15
+f jumpStartLandTime=1.000000
+f jumpMaxDistance=30.000000
+f jumpGravity=9.800000
+f jumpStartVel=-2.000000
+ul r_fb_w_fb_frame=32
+ul r_ff_w_ff_frame=27
+ul s_fb_w_fb_frame=32
+ul s_ff_w_ff_frame=27
+ul walk_to_w_r_frame=13
+ul run_to_r_w_frame=0
+
+[Gestures]
+uc NumGestures=28
+
+[Gestures0]
+uc State=0
+ul NumFrames=1
+f FrameRate=15.000000
+uc[4] NumRotations=16, 32, 32, 32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=0
+f StartVelocity=-1999.9
+f EndVelocity=-1999.9
+uc ForwardResult=255
+uc ReverseResult=255
+
+[Build0]
+st Directory="J:\mauler\sprenders\s_p\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\s_p\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpecialFrameNum="030"
+st SpriteOutputName="park"
+st SpriteGestureName="s_p"
+st Name="ml.1"
+ul TotalFrames=1
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures1]
+uc State=1
+ul NumFrames=16
+f FrameRate=15.000000
+uc[4] NumRotations=16, 32, 32, 32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=60
+f StartVelocity=-1999.9
+f EndVelocity=0.000000
+uc ForwardResult=0
+uc ReverseResult=2
+
+[Build1]
+st Directory="J:\mauler\sprenders\s_p\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\s_p\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpriteGestureName="s_p"
+st Name="ml.1"
+ul TotalFrames=30
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures2]
+uc State=2
+ul NumFrames=1
+f FrameRate=15.000000
+uc[4] NumRotations=16, 32, 32, 32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=120
+f StartVelocity=0.000000
+f EndVelocity=0.000000
+uc ForwardResult=255
+uc ReverseResult=255
+
+[Build2]
+st Directory="J:\mauler\sprenders\s_p\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\s_p\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpecialFrameNum="000"
+st SpriteOutputName="stand"
+st SpriteGestureName="s_p"
+st Name="ml.1"
+ul TotalFrames=1
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures3]
+uc State=3
+ul NumFrames=9
+f FrameRate=15.000000
+uc[4] NumRotations=16, 32, 32, 32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=180
+f StartVelocity=0.000000
+f EndVelocity=7.500000
+uc ForwardResult=4
+uc ReverseResult=255
+
+[Build3]
+st Directory="J:\mauler\sprenders\s_w\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\s_w\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpriteGestureName="s_w"
+st Name="ml.1"
+ul TotalFrames=20
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures4]
+uc State=4
+ul NumFrames=28
+f FrameRate=15.000000
+uc[4] NumRotations=16, 32, 32, 32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=240
+f StartVelocity=7.500000
+f EndVelocity=7.500000
+uc ForwardResult=255
+uc ReverseResult=255
+
+[Build4]
+st Directory="J:\mauler\sprenders\walk\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\walk\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpriteGestureName="walk"
+st Name="ml.1"
+ul TotalFrames=54
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures5]
+uc State=5
+ul NumFrames=10
+f FrameRate=15.000000
+uc[4] NumRotations=16, 32, 32, 32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=300
+f StartVelocity=7.500000
+f EndVelocity=7.500000
+uc ForwardResult=2
+uc ReverseResult=255
+
+[Build5]
+st Directory="J:\mauler\sprenders\w_s\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\w_s\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpriteGestureName="w_s"
+st Name="ml.1"
+ul TotalFrames=18
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures6]
+uc State=6
+ul NumFrames=14
+f FrameRate=15.000000
+uc[4] NumRotations=16, 32, 32, 32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=360
+f StartVelocity=7.500000
+f EndVelocity=7.500000
+uc ForwardResult=7
+uc ReverseResult=255
+
+[Build6]
+st Directory="J:\mauler\sprenders\w_r\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\w_r\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpriteGestureName="w_r"
+st Name="ml.1"
+ul TotalFrames=26
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures7]
+uc State=7
+ul NumFrames=20
+f FrameRate=15.000000
+uc[4] NumRotations=16, 32, 32, 32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=450
+f StartVelocity=15.000000
+f EndVelocity=15.000000
+uc ForwardResult=255
+uc ReverseResult=255
+
+[Build7]
+st Directory="J:\mauler\sprenders\run\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\run\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpriteGestureName="run"
+st Name="ml.1"
+ul TotalFrames=38
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures8]
+uc State=8
+ul NumFrames=6
+f FrameRate=15.000000
+uc[4] NumRotations=16, 32, 32, 32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=540
+f StartVelocity=15.000000
+f EndVelocity=15.000000
+uc ForwardResult=4
+uc ReverseResult=255
+
+[Build8]
+st Directory="J:\mauler\sprenders\r_w\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\r_w\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpriteGestureName="r_w"
+st Name="ml.1"
+ul TotalFrames=10
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures9]
+uc State=9
+ul NumFrames=28
+f FrameRate=-15.000000
+uc[4] NumRotations=16, 32, 32, 32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=240
+f StartVelocity=-7.500000
+f EndVelocity=-7.500000
+uc ForwardResult=255
+uc ReverseResult=255
+
+[Build9]
+st Directory="J:\mauler\sprenders\walk\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\walk\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpriteGestureName="walk"
+st Name="ml.1"
+ul TotalFrames=54
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures10]
+uc State=10
+ul NumFrames=9
+f FrameRate=15.000000
+uc[4] NumRotations=16, 32, 32, 32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=300
+f StartVelocity=0.000000
+f EndVelocity=-7.500000
+uc ForwardResult=255
+uc ReverseResult=9
+
+[Build10]
+st Directory="J:\mauler\sprenders\w_s\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\w_s\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpriteGestureName="w_s"
+st Name="ml.1"
+ul TotalFrames=20
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures11]
+uc State=11
+ul NumFrames=28
+f FrameRate=15.000000
+uc[4] NumRotations=16, 32, 32, 32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=630
+f StartVelocity=3.000000
+f EndVelocity=3.000000
+uc ForwardResult=255
+uc ReverseResult=255
+
+[Build11]
+st Directory="J:\mauler\sprenders\limpl\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\limpl\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpriteGestureName="limpl"
+st Name="ml.1"
+ul TotalFrames=54
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures12]
+uc State=12
+ul NumFrames=6
+f FrameRate=15.000000
+uc[4] NumRotations=16, 32, 32, 32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=720
+f StartVelocity=-1999.000000
+f EndVelocity=-1999.000000
+uc ForwardResult=255
+uc ReverseResult=255
+
+[Build12]
+st Directory="J:\mauler\sprenders\w_hb\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\w_hb\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpriteGestureName="w_hb"
+st Name="ml.1"
+ul TotalFrames=10
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures13]
+uc State=13
+ul NumFrames=6
+f FrameRate=15.000000
+uc[4] NumRotations=16, 32, 32, 32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=780
+f StartVelocity=-1999.000000
+f EndVelocity=-1999.000000
+uc ForwardResult=255
+uc ReverseResult=255
+
+[Build13]
+st Directory="J:\mauler\sprenders\w_hf\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\w_hf\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpriteGestureName="w_hf"
+st Name="ml.1"
+ul TotalFrames=10
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures14]
+uc State=14
+ul NumFrames=32
+f FrameRate=15.000000
+uc[4] NumRotations=16,32,32,32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=840
+f StartVelocity=7.500000
+f EndVelocity=7.500000
+uc ForwardResult=21
+uc ReverseResult=255
+
+[Build14]
+st Directory="J:\mauler\sprenders\w_fb\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\w_fb\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpriteGestureName="w_fb"
+st Name="ml.1"
+ul TotalFrames=64
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures15]
+uc State=15
+ul NumFrames=27
+f FrameRate=15.000000
+uc[4] NumRotations=16,32,32,32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=900
+f StartVelocity=7.500000
+f EndVelocity=7.500000
+uc ForwardResult=21
+uc ReverseResult=255
+
+[Build15]
+st Directory="J:\mauler\sprenders\w_ff\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\w_ff\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpriteGestureName="w_ff"
+st Name="ml.1"
+ul TotalFrames=54
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures16]
+uc State=16
+ul NumFrames=32
+f FrameRate=15.000000
+uc[4] NumRotations=16,32,32,32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=960
+f StartVelocity=15.000000
+f EndVelocity=15.000000
+uc ForwardResult=21
+uc ReverseResult=255
+
+[Build16]
+st Directory="J:\mauler\sprenders\r_fb\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\r_fb\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpriteGestureName="r_fb"
+st Name="ml.1"
+ul TotalFrames=10
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures17]
+uc State=17
+ul NumFrames=27
+f FrameRate=15.000000
+uc[4] NumRotations=16,32,32,32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=1020
+f StartVelocity=15.000000
+f EndVelocity=15.000000
+uc ForwardResult=21
+uc ReverseResult=255
+
+[Build17]
+st Directory="J:\mauler\sprenders\r_ff\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\r_ff\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpriteGestureName="r_ff"
+st Name="ml.1"
+ul TotalFrames=10
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures18]
+uc State=18
+ul NumFrames=32
+f FrameRate=15.000000
+uc[4] NumRotations=16,32,32,32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=1080
+f StartVelocity=0.000000
+f EndVelocity=0.000000
+uc ForwardResult=21
+uc ReverseResult=255
+
+[Build18]
+st Directory="J:\mauler\sprenders\s_fb\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\s_fb\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpriteGestureName="s_fb"
+st Name="ml.1"
+ul TotalFrames=10
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures19]
+uc State=19
+ul NumFrames=27
+f FrameRate=15.000000
+uc[4] NumRotations=16,32,32,32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=1140
+f StartVelocity=0.000000
+f EndVelocity=0.000000
+uc ForwardResult=21
+uc ReverseResult=255
+
+[Build19]
+st Directory="J:\mauler\sprenders\s_ff\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\s_ff\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpriteGestureName="s_ff"
+st Name="ml.1"
+ul TotalFrames=10
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures20]
+uc State=20
+ul NumFrames=56
+f FrameRate=15.000000
+uc[4] NumRotations=16, 32, 32, 32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=1200
+f StartVelocity=0.000000
+f EndVelocity=0.000000
+uc ForwardResult=255
+uc ReverseResult=255
+
+[Build20]
+st Directory="J:\mauler\sprenders\jump\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\jump\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpriteGestureName="jump"
+st Name="ml.1"
+ul TotalFrames=110
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures21]
+uc State=21
+ul NumFrames=32
+f FrameRate=15.000000
+uc[4] NumRotations=16,32,32,32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=1260
+f StartVelocity=0.000000
+f EndVelocity=0.000000
+uc ForwardResult=22
+uc ReverseResult=255
+
+[Build21]
+st Directory="J:\mauler\sprenders\fb_d\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\fb_d\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpriteGestureName="fb_d"
+st Name="ml.1"
+ul TotalFrames=62
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures22]
+uc State=22
+ul NumFrames=36
+f FrameRate=15.000000
+uc[4] NumRotations=16,32,32,32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=1320
+f StartVelocity=0.000000
+f EndVelocity=0.000000
+uc ForwardResult=2
+uc ReverseResult=255
+
+[Build22]
+st Directory="J:\mauler\sprenders\d_s\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\d_s\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpriteGestureName="d_s"
+st Name="ml.1"
+ul TotalFrames=70
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures23]
+uc State=23
+ul NumFrames=27
+f FrameRate=15.000000
+uc[4] NumRotations=16,32,32,32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=900
+f StartVelocity=0.000000
+f EndVelocity=0.000000
+uc ForwardResult=22
+uc ReverseResult=255
+
+[Build23]
+st Directory="J:\mauler\sprenders\w_ff\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\w_ff\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpriteGestureName="w_ff"
+st Name="ml.1"
+ul TotalFrames=10
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures24]
+uc State=24
+ul NumFrames=32
+f FrameRate=15.000000
+uc[4] NumRotations=16,32,32,32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=840
+f StartVelocity=0.000000
+f EndVelocity=0.000000
+uc ForwardResult=21
+uc ReverseResult=255
+
+[Build24]
+st Directory="J:\mauler\sprenders\w_fb\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\w_fb\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpriteGestureName="w_fb"
+st Name="ml.1"
+ul TotalFrames=10
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures25]
+uc State=25
+ul NumFrames=19
+f FrameRate=15.000000
+uc[4] NumRotations=16, 32, 32, 32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=0
+f StartVelocity=0.000000
+f EndVelocity=0.000000
+uc ForwardResult=255
+uc ReverseResult=255
+
+[Build25]
+st Directory="J:\mauler\sprenders\armfalls\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\armfalls\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpriteGestureName="armfalls"
+st Name="ml.1"
+ul TotalFrames=36
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures26]
+uc State=26
+ul NumFrames=1
+f FrameRate=15.000000
+uc[4] NumRotations=16, 32, 32, 32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=1380
+f StartVelocity=-1999.000000
+f EndVelocity=-1999.000000
+uc ForwardResult=255
+uc ReverseResult=255
+
+[Build26]
+st Directory="J:\mauler\sprenders\r_g\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\r_g\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpecialFrameNum="010"
+st SpriteOutputName="pose"
+st SpriteGestureName="r_g"
+st Name="ml.1"
+ul TotalFrames=1
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+
+[Gestures27]
+uc State=27
+ul NumFrames=6
+f FrameRate=15.000000
+uc[4] NumRotations=16, 32, 32, 32,
+uc Symmetrical=1
+uc ArmSymmetrical=1
+ul BasePacketNumber=1440
+f StartVelocity=-1999.000000
+f EndVelocity=-1999.000000
+uc ForwardResult=26
+uc ReverseResult=255
+
+[Build27]
+st Directory="J:\mauler\sprenders\r_g\45.sprites.out\pix\"
+st MatteDir="J:\mauler\sprenders\r_g\45.sprites.out\mask\"
+st HSDir="j:\mauler\outdata\"
+st SpriteGestureName="r_g"
+st Name="ml.1"
+ul TotalFrames=10
+ul FrameRate=15
+f GammaLevel=0.000000
+uc paletteNum=1
+uc StartIndex=0
+uc RangeSize=159
+ul HotSpotX=75
+ul HotSpotY=104
+FITend 

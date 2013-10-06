@@ -1,0 +1,49 @@
+FITini
+
+[Main Info]
+st Name = "smokepf"
+ul HeapSize = 51200
+
+[States]
+uc NumStates = 3
+
+[State0]			//Normal Draw
+uc State = 0
+ul NumFrames = 7
+f FrameRate = 6.0
+ul BasePacketNumber = 0
+uc NumRotations = 1
+uc Symmetrical = 0
+l MaxFadeTables = 0
+l FadeTableOffset = 0
+l PixelOffset = 0
+l MaxPixel = 0
+l SingleColor = 16
+
+[State1]			//Translucent Draw
+uc State = 1
+ul NumFrames = 7
+f FrameRate = 6.0
+ul BasePacketNumber = 0
+uc NumRotations = 1
+uc Symmetrical = 0
+l MaxFadeTables = 8
+l FadeTableOffset = 0
+l PixelOffset = 0
+l MaxPixel = 31
+l SingleColor = 16
+
+[State2]			//Solid Color Draw
+uc State = 2
+ul NumFrames = 7
+f FrameRate = 6.0
+ul BasePacketNumber = 0
+uc NumRotations = 1
+uc Symmetrical = 0
+l MaxFadeTables = 0
+l FadeTableOffset = 0
+l PixelOffset = 0
+l MaxPixel = 0
+l SingleColor = 16
+
+FITend

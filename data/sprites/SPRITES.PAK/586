@@ -1,0 +1,66 @@
+FITini
+
+[Main Info]
+st Name = "Oil Derrick"
+ul HeapSize = 51200
+l Delta = 1
+
+[Bounds]
+l UpperLeftX = -50.0
+l UpperLeftY = -50.0
+l LowerRightX = 50.0
+l LowerRightY = 30.0
+
+[States]
+uc NumStates = 6
+uc Scaled = 1
+
+[State0]
+uc State = 0
+ul NumFrames = 20
+f FrameRate = 15.0
+ul BasePacketNumber = 0
+uc NumRotations = 1
+uc Symmetrical = 0
+
+[State1]
+uc State = 1
+ul NumFrames = 1
+f FrameRate = 15.0
+ul BasePacketNumber = 2
+uc NumRotations = 1
+uc Symmetrical = 0
+
+[State2]
+uc State = 2
+ul NumFrames = 1
+f FrameRate = 15.0
+ul BasePacketNumber = 2
+uc NumRotations = 1
+uc Symmetrical = 0
+
+[State3]
+uc State = 3
+ul NumFrames = 1
+f FrameRate = 15.0
+ul BasePacketNumber = 2
+uc NumRotations = 1
+uc Symmetrical = 0
+
+[State4]
+uc State = 4
+ul NumFrames = 1
+f FrameRate = 15.0
+ul BasePacketNumber = 2
+uc NumRotations = 1
+uc Symmetrical = 0
+
+[State5]
+uc State = 5
+ul NumFrames = 1
+f FrameRate = 15.0
+ul BasePacketNumber = 2
+uc NumRotations = 1
+uc Symmetrical = 0
+
+FITend

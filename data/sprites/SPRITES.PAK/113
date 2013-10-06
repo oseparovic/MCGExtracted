@@ -1,0 +1,12 @@
+FITini 
+[Main Info]
+st Name="pwrplt_a4"
+ul NumFrames=16
+
+[Bounds]
+l UpperLeftX = -50.0
+l UpperLeftY = -60.0
+l LowerRightX = 50.0
+l LowerRightY = 30.0
+
+FITend 

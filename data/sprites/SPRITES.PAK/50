@@ -1,0 +1,14 @@
+FITini
+
+[Main Info]
+st Name = "thorleftarm"
+ul HeapSize = 150000
+
+[State]	
+ul NumFrames = 16
+f FrameRate = 7.0
+ul BasePacketNumber = 0
+uc NumRotations = 32
+ul Symmetrical = 1
+
+FITend

@@ -1,0 +1,865 @@
+FITini
+
+[Main Info]
+st Name = "vulture"
+ul HeapSize = 51200
+ul legFileNumber = 10;
+ul torsoFileNumber = 15;
+ul rightArmFileNumber = 15;
+ul leftArmFileNumber = 15;
+
+[Parts]
+uc NumParts = 4
+st PartAbbrev = "btlr"
+
+[SpecialInfo]
+f fb_d_xlat = 2.0				//Velocity along i mech assumes at start of animation.
+ul jumpAirborne = 0			//Frame at which mech leaves the ground.
+ul jumpHold = 15				//Frame to hold at until mech gets back to landing altitude.
+f jumpStartLandTime = 1.0		//Altitude at which to continue jump animation.
+f jumpMaxDistance = 30.0			//in m  Used to calculate velocity by jumpMaxDistance / 10.0(s)
+f jumpGravity = 9.8			//Acceleration of gravity.  Used to determine height of parabola.
+f jumpStartVel = -2.0			//Startup Velocity in jump gesture.
+ul r_fb_w_fb_frame = 33			//Once r_fb gesture is complete, which frames do we need fom w_fb
+ul r_ff_w_ff_frame = 21			//Once r_ff gesture is complete, which frames do we need fom w_ff
+ul s_fb_w_fb_frame = 33			//Once S_fb gesture is complete, which frames do we need fom w_fb
+ul s_ff_w_ff_frame = 21			//Once S_ff gesture is complete, which frames do we need fom w_ff
+ul walk_to_w_r_frame = 26		//If going to w_r, what frame do we transition on in walk.
+ul run_to_r_w_frame = 19   		//If going to r_w, what frame do we transition on in run.
+
+[TransitionTable]
+uc[810] TransitionArray = 
+	-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,		//0,0	From Park to Park (NULL)
+	 1, 2,-1,-1,-1,-1,-1,-1,-1,-1,		//0,1	From Park to Stand 
+	 1, 2, 3, 4,-1,-1,-1,-1,-1,-1,		//0,2	From Park to Walk
+	 1, 2, 3, 4, 6, 7,-1,-1,-1,-1,		//0,3	From Park to Run
+	 1, 2,10, 9,-1,-1,-1,-1,-1,-1,		//0,4	From Park to Reverse
+	 1, 2, 3,11,-1,-1,-1,-1,-1,-1,		//0,5	From Park to Limp
+	 1, 2,20, 2,-1,-1,-1,-1,-1,-1,		//0,6	From Park to Jump
+	19,15,23,-1,-1,-1,-1,-1,-1,-1,		//0,7	From Park to Fall Forward 
+	18,14,24,-1,-1,-1,-1,-1,-1,-1,		//0,8	From Park to Fall Backward 
+//--------------------------------------------------------------------------------	 
+	 1, 0,-1,-1,-1,-1,-1,-1,-1,-1,		//1,0	From Stand to Park
+	-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,		//1,1	From Stand to Stand (NULL)
+	 3, 4,-1,-1,-1,-1,-1,-1,-1,-1,		//1,2	From Stand to Walk
+	 3, 4, 6, 7,-1,-1,-1,-1,-1,-1,		//1,3	From Stand to Run
+	10, 9,-1,-1,-1,-1,-1,-1,-1,-1,		//1,4	From Stand to Reverse
+	 3,11,-1,-1,-1,-1,-1,-1,-1,-1,		//1,5	From Stand to Limp
+	20, 2,-1,-1,-1,-1,-1,-1,-1,-1,		//1,6	From Stand to Jump
+	19,15,23,-1,-1,-1,-1,-1,-1,-1,		//1,7	From Stand to Fall Forward 
+	18,14,24,-1,-1,-1,-1,-1,-1,-1,		//1,8	From Stand to Fall Backward 
+//--------------------------------------------------------------------------------	 
+	 5, 2, 1, 0,-1,-1,-1,-1,-1,-1,		//2,0	From Walk to Park 
+	 5, 2,-1,-1,-1,-1,-1,-1,-1,-1,		//2,1	From Walk to Stand 
+	-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,		//2,2	From Walk to Walk (NULL)
+	 6, 7,-1,-1,-1,-1,-1,-1,-1,-1,		//2,3	From Walk to Run
+	 5,10, 9,-1,-1,-1,-1,-1,-1,-1,		//2,4	From Walk to Reverse
+	11,-1,-1,-1,-1,-1,-1,-1,-1,-1,		//2,5	From Walk to Limp
+	 5, 2,20, 2,-1,-1,-1,-1,-1,-1,		//2,6	From Walk to Jump
+	15,23,-1,-1,-1,-1,-1,-1,-1,-1,		//2,7	From Walk to Fall Forward 
+	14,24,-1,-1,-1,-1,-1,-1,-1,-1,		//2,8	From Walk to Fall Backward 
+//--------------------------------------------------------------------------------	 
+	 8, 4, 5, 2, 1, 0,-1,-1,-1,-1,		//3,0	From Run to Park
+	 8, 4, 5, 2,-1,-1,-1,-1,-1,-1,		//3,1	From Run to Stand 
+	 8, 4,-1,-1,-1,-1,-1,-1,-1,-1,		//3,2	From Run to Walk
+	-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,		//3,3	From Run to Run	(NULL)
+	 8, 5,10, 9,-1,-1,-1,-1,-1,-1,		//3,4	From Run to Reverse
+	 8,11,-1,-1,-1,-1,-1,-1,-1,-1,		//3,5	From Run to Limp
+	 8, 5,20, 2,-1,-1,-1,-1,-1,-1,		//3,6	From Run to Jump
+	17,15,23,-1,-1,-1,-1,-1,-1,-1,		//3,7	From Run to Fall Forward 
+	16,14,24,-1,-1,-1,-1,-1,-1,-1,		//3,8	From Run to Fall Backward 
+//--------------------------------------------------------------------------------	 
+	 5, 2, 1, 0,-1,-1,-1,-1,-1,-1,		//4,0	From Reverse to Park 
+	 5, 2,-1,-1,-1,-1,-1,-1,-1,-1,		//4,1	From Reverse to Stand 
+	 5, 2, 3, 4,-1,-1,-1,-1,-1,-1,		//4,2	From Reverse to Walk
+	 5, 2, 3, 4, 6, 7,-1,-1,-1,-1,		//4,3	From Reverse to Run
+	-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,		//4,4	From Reverse to Reverse (NULL)
+	 5, 3,11,-1,-1,-1,-1,-1,-1,-1,		//4,5	From Reverse to Limp
+	 5,20, 2,-1,-1,-1,-1,-1,-1,-1,		//4,6	From Reverse to Jump
+	 5, 3,15,23,-1,-1,-1,-1,-1,-1,		//4,7	From Reverse to Fall Forward 
+	 5, 3,14,24,-1,-1,-1,-1,-1,-1,		//4,8	From Reverse to Fall backward 
+//--------------------------------------------------------------------------------	 
+	 5, 2, 1, 0,-1,-1,-1,-1,-1,-1,		//5,0	From Limp to Park 
+	 5, 2,-1,-1,-1,-1,-1,-1,-1,-1,		//5,1	From Limp to Stand 
+	 4,-1,-1,-1,-1,-1,-1,-1,-1,-1,		//5,2	From Limp to Walk
+	 6, 7,-1,-1,-1,-1,-1,-1,-1,-1,		//5,3	From Limp to Run
+	 5,10, 9,-1,-1,-1,-1,-1,-1,-1,		//5,4	From Limp to Reverse
+	-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,		//5,5	From Limp to Limp	(NULL)
+	 5, 2,20, 2,-1,-1,-1,-1,-1,-1,		//5,6	From Limp to Jump
+	15,23,-1,-1,-1,-1,-1,-1,-1,-1,		//5,7	From Limp to Fall Forward 
+	14,24,-1,-1,-1,-1,-1,-1,-1,-1,		//5,8	From Limp to Fall Backward 
+//--------------------------------------------------------------------------------
+	 1, 0,-1,-1,-1,-1,-1,-1,-1,-1,		//6,0	From Jump to Park
+	-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,		//6,1	From Jump to Stand (NULL)
+	 3, 4,-1,-1,-1,-1,-1,-1,-1,-1,		//6,2	From Jump to Walk
+	 3, 4, 6, 7,-1,-1,-1,-1,-1,-1,		//6,3	From Jump to Run
+	10, 9,-1,-1,-1,-1,-1,-1,-1,-1,		//6,4	From Jump to Reverse
+	 3,11,-1,-1,-1,-1,-1,-1,-1,-1,		//6,5	From Jump to Limp
+	-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,		//6,6	From Jump to Jump (NULL)
+	-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,		//6,7	From Jump to Fall Forward 
+	-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,		//6,8	From Jump to Fall Backward 
+//--------------------------------------------------------------------------------	 
+	21,22, 1, 0,-1,-1,-1,-1,-1,-1,		//7,0	From Fall Forward to Park
+	21,22, 2,-1,-1,-1,-1,-1,-1,-1,		//7,1	From Fall Forward to Stand 
+	21,22, 3, 4,-1,-1,-1,-1,-1,-1,		//7,2	From Fall Forward to Walk	
+	21,22, 3, 4, 6, 7,-1,-1,-1,-1,		//7,3	From Fall Forward to Run
+	21,22,10, 9,-1,-1,-1,-1,-1,-1,		//7,4	From Fall Forward to Reverse
+	21,22, 3,11,-1,-1,-1,-1,-1,-1,		//7,5	From Fall Forward to Limp
+	21,22,20, 2,-1,-1,-1,-1,-1,-1,		//7,6	From Fall Forward to Jump
+	-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,		//7,7	From Fall Forward to Fall Forward (NULL)
+	-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,		//7,8	From Fall Forward to Fall Backward (NULL)
+//--------------------------------------------------------------------------------	 
+	22, 1, 0,-1,-1,-1,-1,-1,-1,-1,		//8,0	From Fall Backward to Park 
+	22, 2,-1,-1,-1,-1,-1,-1,-1,-1,		//8,1	From Fall Backward to Stand 
+	22, 3, 4,-1,-1,-1,-1,-1,-1,-1,		//8,2	From Fall Backward to Walk
+	22, 3, 4, 6, 7,-1,-1,-1,-1,-1,		//8,3	From Fall Backward to Run
+	22,10, 9,-1,-1,-1,-1,-1,-1,-1,		//8,4	From Fall Backward to Reverse
+	22, 3,11,-1,-1,-1,-1,-1,-1,-1,		//8,5	From Fall Backward to Limp
+	22,20, 2,-1,-1,-1,-1,-1,-1,-1,		//8,6	From Fall Backward to Jump
+	-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,		//8,7	From Fall Backward to Fall Forward 
+	-1,-1,-1,-1,-1,-1,-1,-1,-1,-1		//8,8	From Fall Backward to Fall Backward (NULL)
+
+[Gestures]
+uc NumGestures = 26
+
+[Gestures0]
+uc State = 0				// What Gesture Number -- Park
+ul NumFrames = 1			// Number of frames to playback
+f FrameRate = 15.0			// Intended Frame rate of Playback
+uc[4] NumRotations = 16,32,32,32		// bottom = 16, others = 32
+uc Symmetrical = 1			// symmetrical Flag for Torso.
+uc ArmSymmetrical = 1			// Arms are symmetrical
+ul BasePacketNumber = 0			// Index into packet file for this gesture
+f StartVelocity = -1999.9			// Velocity this gesture starts at
+f EndVelocity = -1999.9			// Velocity this gesture finishes at
+uc ForwardResult = -1			// If we play this gesture, which is next, -1 means not a transition.
+uc ReverseResult = -1			// If we play this gesture backwards, which is nest, -1 means not a transition.
+
+[Build0]		   			//this is used to build the sprite gesture
+st Directory = "R:\v\s_p.90\pix\"
+st MatteDir = "R:\v\s_p.90\mask\"
+st HSDir = "R:\v\hotspots\"
+st SpecialFrameNum = "034"		//This is used when we only have one frame for this gesture.
+st SpriteGestureName = "s_p"
+st SpriteOutputName = "park"
+st Name = "v.1"
+ul TotalFrames = 1			// Total frames @ 30 fps
+ul FrameRate = 15			// Intended Frame rate of Playback
+f GammaLevel = 0.0
+uc paletteNum = 1
+uc StartIndex = 0
+uc RangeSize = 159
+ul HotSpotX = 75
+ul HotSpotY = 104
+
+[Gestures1]
+uc State = 1				// What Gesture Number -- StandtoPark
+ul NumFrames = 18			// Number of frames to playback
+f FrameRate = 15.0			// Intended Frame rate of Playback
+uc[4] NumRotations = 16,32,32,32		// bottom = 16, others = 32
+uc Symmetrical = 1			// symmetrical Flag.
+uc ArmSymmetrical = 1			// Arms are NOT symmetrical
+ul BasePacketNumber = 60		// Index into packet file for this gesture
+f StartVelocity = -1999.9			// Velocity this gesture starts at
+f EndVelocity = 0.0			// Velocity this gesture finishes at
+uc ForwardResult = 0			// If we play this gesture, which is next, -1 means not a transition.
+uc ReverseResult = 2			// If we play this gesture backwards, which is nest, -1 means not a transition.
+
+[Build1]		   			//this is used to build the sprite gesture
+st Directory = "R:\v\s_p.90\pix\"
+st MatteDir = "R:\v\s_p.90\mask\"
+st HSDir = "R:\v\hotspots\"
+st SpriteGestureName = "s_p"
+st Name = "v.1"
+ul TotalFrames = 35			// Total frames @ 30 fps
+ul FrameRate = 15			// Intended Frame rate of Playback
+f GammaLevel = 0.0
+uc StartIndex = 0
+uc paletteNum = 1
+uc RangeSize = 159			
+ul HotSpotX = 75
+ul HotSpotY = 104
+
+[Gestures2]
+uc State = 2				// What Gesture Number -- Stand
+ul NumFrames = 1			// Number of frames to playback
+f FrameRate = 15.0			// Intended Frame rate of Playback
+uc[4] NumRotations = 16,32,32,32		// bottom = 16, others = 32
+uc Symmetrical = 1			// symmetrical Flag.
+ul BasePacketNumber = 120		// Index into packet file for this gesture
+uc ArmSymmetrical = 1			// Arms are NOT symmetrical
+f StartVelocity = 0.0			// Velocity this gesture starts at
+f EndVelocity = 0.0			// Velocity this gesture finishes at
+uc ForwardResult = -1			// If we play this gesture, which is next, -1 means not a transition.
+uc ReverseResult = -1			// If we play this gesture backwards, which is nest, -1 means not a transition.
+
+[Build2]		   			//this is used to build the sprite gesture
+st Directory = "R:\v\s_p.90\pix\"
+st MatteDir = "R:\v\s_p.90\mask\"
+st HSDir = "R:\v\hotspots\"
+st SpecialFrameNum = "000"		//This is used when we only have one frame for this gesture.
+st SpriteGestureName = "s_p"
+st SpriteOutputName = "stand"
+st Name = "v.1"
+ul TotalFrames = 1			// Total frames @ 30 fps
+ul FrameRate = 15			// Intended Frame rate of Playback
+f GammaLevel = 0.0
+uc paletteNum = 1
+uc StartIndex = 0
+uc RangeSize = 159			
+ul HotSpotX = 75
+ul HotSpotY = 104
+
+[Gestures3]
+uc State = 3				// What Gesture Number -- StandToWamc
+ul NumFrames = 9			// Number of frames to playback
+f FrameRate = 15.0			// Intended Frame rate of Playback
+uc[4] NumRotations = 16,32,32,32		// bottom = 16, others = 32
+uc Symmetrical = 1			// symmetrical Flag.
+ul BasePacketNumber = 180		// Index into packet file for this gesture
+uc ArmSymmetrical = 1			// Arms are NOT symmetrical
+f StartVelocity = 0.0			// Velocity this gesture starts at
+f EndVelocity = 12.0			// Velocity this gesture finishes at
+uc ForwardResult = 4			// If we play this gesture, which is next, -1 means not a transition.
+uc ReverseResult = -1			// If we play this gesture backwards, which is nest, -1 means not a transition.
+
+[Build3]		   			//this is used to build the sprite gesture
+st Directory = "R:\v\s_w.90\pix\"
+st MatteDir = "R:\v\s_w.90\mask\"
+st HSDir = "R:\v\hotspots\"
+st SpriteGestureName = "s_w"
+st Name = "v.1"
+ul TotalFrames = 17			// Total frames @ 30 fps
+ul FrameRate = 15			// Intended Frame rate of Playback
+f GammaLevel = 0.0
+uc StartIndex = 0
+uc paletteNum = 1
+uc RangeSize = 159			
+ul HotSpotX = 75
+ul HotSpotY = 104
+
+[Gestures4]
+uc State = 4				// What Gesture Number -- Wamc
+ul NumFrames = 28			// Number of frames to playback
+f FrameRate = 15.0			// Intended Frame rate of Playback
+uc[4] NumRotations = 16,32,32,32		// bottom = 16, others = 32
+uc Symmetrical = 1			// symmetrical Flag.
+ul BasePacketNumber = 240		// Index into packet file for this gesture
+uc ArmSymmetrical = 1			// Arms are NOT symmetrical
+f StartVelocity = 12.0			// Velocity this gesture starts at
+f EndVelocity = 12.0			// Velocity this gesture finishes at
+uc ForwardResult = -1			// If we play this gesture, which is next, -1 means not a transition.
+uc ReverseResult = -1			// If we play this gesture backwards, which is nest, -1 means not a transition.
+
+[Build4]		   			//this is used to build the sprite gesture
+st Directory = "R:\v\walk.90\pix\"
+st MatteDir = "R:\v\walk.90\mask\"
+st HSDir = "R:\v\hotspots\"
+st SpriteGestureName = "walk"
+st Name = "v.1"
+ul TotalFrames = 54			// Total frames @ 30 fps
+ul FrameRate = 15			// Intended Frame rate of Playback
+f GammaLevel = 0.0
+uc StartIndex = 0
+uc RangeSize = 159
+uc paletteNum = 1
+ul HotSpotX = 75
+ul HotSpotY = 104
+
+[Gestures5]
+uc State = 5				// What Gesture Number -- WamcToStand
+ul NumFrames = 12  			// Number of frames to playback
+f FrameRate = 15.0			// Intended Frame rate of Playback
+uc[4] NumRotations = 16,32,32,32		// bottom = 16, others = 32
+uc Symmetrical = 1			// symmetrical Flag.
+ul BasePacketNumber = 300		// Index into packet file for this gesture
+uc ArmSymmetrical = 1			// Arms are NOT symmetrical
+f StartVelocity = 12.0			// Velocity this gesture starts at
+f EndVelocity = 0.0			// Velocity this gesture finishes at
+uc ForwardResult = 2			// If we play this gesture, which is next, -1 means not a transition.
+uc ReverseResult = -1			// If we play this gesture backwards, which is nest, -1 means not a transition.
+
+[Build5]		   			//this is used to build the sprite gesture
+st Directory = "R:\v\w_s.90\pix\"
+st MatteDir = "R:\v\w_s.90\mask\"
+st HSDir = "R:\v\hotspots\"
+st SpriteGestureName = "w_s"
+st Name = "v.1"
+ul TotalFrames = 22			// Total frames @ 30 fps
+ul FrameRate = 15			// Intended Frame rate of Playback
+f GammaLevel = 0.0
+uc StartIndex = 0
+uc RangeSize = 159			
+ul HotSpotX = 75
+uc paletteNum = 1
+ul HotSpotY = 104
+
+[Gestures6]
+uc State = 6				// What Gesture Number -- WamcToRun
+ul NumFrames = 26			// Number of frames to playback
+f FrameRate = 15.0 			// Intended Frame rate of Playback
+uc[4] NumRotations = 16,32,32,32		// bottom = 16, others = 32
+uc Symmetrical = 1			// symmetrical Flag.
+ul BasePacketNumber = 360		// Index into packet file for this gesture
+uc ArmSymmetrical = 1			// Arms are NOT symmetrical
+f StartVelocity = 12.0			// Velocity this gesture starts at
+f EndVelocity = 24.0			// Velocity this gesture finishes at
+uc ForwardResult = 7			// If we play this gesture, which is next, -1 means not a transition.
+uc ReverseResult = -1			// If we play this gesture backwards, which is nest, -1 means not a transition.
+
+[Build6]		   			//this is used to build the sprite gesture
+st Directory = "R:\v\w_r.90\pix\"
+st MatteDir = "R:\v\w_r.90\mask\"
+st HSDir = "R:\v\hotspots\"
+st SpriteGestureName = "w_r"
+st Name = "v.1"
+ul TotalFrames = 50			// Total frames @ 30 fps
+ul FrameRate = 15			// Intended Frame rate of Playback
+f GammaLevel = 0.0
+uc StartIndex = 0
+uc RangeSize = 159			
+uc paletteNum = 1
+ul HotSpotX = 75
+ul HotSpotY = 104
+
+[Gestures7]
+uc State = 4				// What Gesture Number -- Run
+ul NumFrames = 20			// Number of frames to playback
+f FrameRate = 15.0			// Intended Frame rate of Playback
+uc[4] NumRotations = 16,32,32,32		// bottom = 16, others = 32
+uc Symmetrical = 1			// symmetrical Flag.
+ul BasePacketNumber = 420		// Index into packet file for this gesture
+uc ArmSymmetrical = 1			// Arms are NOT symmetrical
+f StartVelocity = 24.0			// Velocity this gesture starts at
+f EndVelocity = 24.0			// Velocity this gesture finishes at
+uc ForwardResult = -1			// If we play this gesture, which is next, -1 means not a transition.
+uc ReverseResult = -1			// If we play this gesture backwards, which is nest, -1 means not a transition.
+
+[Build7]		   			//this is used to build the sprite gesture
+st Directory = "R:\v\run.90\pix\"
+st MatteDir = "R:\v\run.90\mask\"
+st HSDir = "R:\v\hotspots\"
+st SpriteGestureName = "run"
+st Name = "v.1"
+ul TotalFrames = 39			// Total frames @ 30 fps
+ul FrameRate = 15			// Intended Frame rate of Playback
+uc paletteNum = 1
+f GammaLevel = 0.0
+uc StartIndex = 0
+uc RangeSize = 159			
+ul HotSpotX = 75
+ul HotSpotY = 104
+
+[Gestures8]
+uc State = 8				// What Gesture Number -- RunToWamc
+ul NumFrames = 20			// Number of frames to playback
+f FrameRate = 15.0			// Intended Frame rate of Playback
+uc[4] NumRotations = 16,32,32,32		// bottom = 16, others = 32
+uc Symmetrical = 1			// symmetrical Flag.
+ul BasePacketNumber = 480		// Index into packet file for this gesture
+uc ArmSymmetrical = 1			// Arms are NOT symmetrical
+f StartVelocity = 24.0			// Velocity this gesture starts at
+f EndVelocity = 12.0			// Velocity this gesture finishes at
+uc ForwardResult = 4			// If we play this gesture, which is next, -1 means not a transition.
+uc ReverseResult = -1			// If we play this gesture backwards, which is nest, -1 means not a transition.
+
+[Build8]		   			//this is used to build the sprite gesture
+st Directory = "R:\v\r_w.90\pix\"
+st MatteDir = "R:\v\r_w.90\mask\"
+st HSDir = "R:\v\hotspots\"
+st SpriteGestureName = "r_w"
+st Name = "v.1"
+ul TotalFrames = 39			// Total frames @ 30 fps
+ul FrameRate = 15			// Intended Frame rate of Playback
+f GammaLevel = 0.0
+uc paletteNum = 1
+uc StartIndex = 0
+uc RangeSize = 159			
+ul HotSpotX = 75
+ul HotSpotY = 104
+
+[Gestures9]
+uc State = 9				// What Gesture Number -- Reverse
+ul NumFrames = 28			// Number of frames to playback
+f FrameRate = -15.0			// Intended Frame rate of Playback
+uc[4] NumRotations = 16,32,32,32		// bottom = 16, others = 32
+uc Symmetrical = 1			// symmetrical Flag.
+ul BasePacketNumber = 240		// Index into packet file for this gesture
+uc ArmSymmetrical = 1			// Arms are NOT symmetrical
+f StartVelocity = -12.0			// Velocity this gesture starts at
+f EndVelocity = -12.0			// Velocity this gesture finishes at
+uc ForwardResult = -1			// If we play this gesture, which is next, -1 means not a transition.
+uc ReverseResult = -1			// If we play this gesture backwards, which is nest, -1 means not a transition.
+
+//DO NOT BUILD GESTURE 9 -- IT IS THE SAME AS WALK!!!
+//MODIFY CODE TO MAKE THIS GO!
+[Build9]		   			//this is used to build the sprite gesture
+uc NoBuild = 1				//Check for this in mksprite
+st Directory = "R:\v\walk.90\pix\"
+st MatteDir = "R:\v\walk.90\mask\"
+st HSDir = "R:\v\hotspots\"
+st SpriteGestureName = "walk"
+st Name = "v.1"
+ul TotalFrames = 54			// Total frames @ 30 fps
+ul FrameRate = 15			// Intended Frame rate of Playback
+uc paletteNum = 1
+f GammaLevel = 0.0
+uc StartIndex = 0
+uc RangeSize = 159			
+ul HotSpotX = 75
+ul HotSpotY = 104
+
+[Gestures10]
+uc State = 10				// What Gesture Number -- StandToReverse
+ul NumFrames = 12  			// Number of frames to playback
+f FrameRate = 15.0			// Intended Frame rate of Playback
+uc[4] NumRotations = 16,32,32,32		// bottom = 16, others = 32
+uc Symmetrical = 1			// symmetrical Flag.
+ul BasePacketNumber = 300		// Index into packet file for this gesture
+uc ArmSymmetrical = 1			// Arms are NOT symmetrical
+f StartVelocity = 0.0			// Velocity this gesture starts at
+f EndVelocity = -12.0			// Velocity this gesture finishes at
+uc ForwardResult = -1			// If we play this gesture, which is next, -1 means not a transition.
+uc ReverseResult = 9			// If we play this gesture backwards, which is nest, -1 means not a transition.
+
+[Build10]		   		//this is used to build the sprite gesture
+uc NoBuild = 1
+st Directory = "R:\v\w_s.90\pix\"
+st MatteDir = "R:\v\w_s.90\mask\"
+st HSDir = "R:\v\hotspots\"
+st SpriteGestureName = "w_s"
+st Name = "v.1"
+ul TotalFrames = 22			// Total frames @ 30 fps
+ul FrameRate = 15			// Intended Frame rate of Playback
+f GammaLevel = 0.0
+uc paletteNum = 1
+uc StartIndex = 0
+uc RangeSize = 159			
+ul HotSpotX = 75
+ul HotSpotY = 104
+
+[Gestures11]
+uc State = 11				// What Gesture Number -- Limp
+ul NumFrames = 30  			// Number of frames to playback
+f FrameRate = 15.0			// Intended Frame rate of Playback
+uc[4] NumRotations = 16,32,32,32		// bottom = 16, others = 32
+uc Symmetrical = 1			// symmetrical Flag.
+ul BasePacketNumber = 540		// Index into packet file for this gesture
+uc ArmSymmetrical = 1			// Arms are NOT symmetrical
+f StartVelocity = 3.0			// Velocity this gesture starts at
+f EndVelocity = 3.0			// Velocity this gesture finishes at
+uc ForwardResult = -1			// If we play this gesture, which is next, -1 means not a transition.
+uc ReverseResult = -1			// If we play this gesture backwards, which is nest, -1 means not a transition.
+
+[Build11]		   		//this is used to build the sprite gesture
+st Directory = "R:\v\limpl.90\pix\"
+st MatteDir = "R:\v\limpl.90\mask\"
+st HSDir = "R:\v\hotspots\"
+st SpriteGestureName = "limpl"
+st Name = "v.1"
+ul TotalFrames = 59			// Total frames @ 30 fps
+ul FrameRate = 15			// Intended Frame rate of Playback
+f GammaLevel = 0.0
+uc StartIndex = 0
+uc paletteNum = 1
+uc RangeSize = 159			
+ul HotSpotX = 75
+ul HotSpotY = 104
+
+[Gestures12]
+uc State = 12				// What Gesture Number -- WamcToHitBack/Recover
+ul NumFrames = 23  			// Number of frames to playback
+f FrameRate = 15.0			// Intended Frame rate of Playback
+uc[4] NumRotations = 16,32,32,32		// bottom = 16, others = 32
+uc Symmetrical = 1			// symmetrical Flag.
+ul BasePacketNumber = 600		// Index into packet file for this gesture
+uc ArmSymmetrical = 1			// Arms are NOT symmetrical
+f StartVelocity = 12.0			// Velocity this gesture starts at
+f EndVelocity = 12.0			// Velocity this gesture finishes at
+uc ForwardResult = 4			// If we play this gesture, which is next, -1 means not a transition.
+uc ReverseResult = -1			// If we play this gesture backwards, which is nest, -1 means not a transition.
+
+[Build12]		   		//this is used to build the sprite gesture
+st Directory = "R:\v\w_hb.90\pix\"
+st MatteDir = "R:\v\w_hb.90\mask\"
+st HSDir = "R:\v\hotspots\"
+st SpriteGestureName = "w_hb"
+st Name = "v.1"
+ul TotalFrames = 44			// Total frames @ 30 fps
+ul FrameRate = 15			// Intended Frame rate of Playback
+f GammaLevel = 0.0
+uc StartIndex = 0
+uc RangeSize = 159			
+uc paletteNum = 1
+ul HotSpotX = 75
+ul HotSpotY = 104
+
+[Gestures13]
+uc State = 13				// What Gesture Number -- WamcToHitFront/Recover
+ul NumFrames = 17  			// Number of frames to playback
+f FrameRate = 15.0			// Intended Frame rate of Playback
+uc[4] NumRotations = 16,32,32,32		// bottom = 16, others = 32
+uc Symmetrical = 1			// symmetrical Flag.
+ul BasePacketNumber = 660		// Index into packet file for this gesture
+uc ArmSymmetrical = 1			// Arms are NOT symmetrical
+f StartVelocity = 12.0			// Velocity this gesture starts at
+f EndVelocity = 12.0			// Velocity this gesture finishes at
+uc ForwardResult = 4			// If we play this gesture, which is next, -1 means not a transition.
+uc ReverseResult = -1			// If we play this gesture backwards, which is nest, -1 means not a transition.
+
+[Build13]		   		//this is used to build the sprite gesture
+st Directory = "R:\v\w_hf.90\pix\"
+st MatteDir = "R:\v\w_hf.90\mask\"
+st HSDir = "R:\v\hotspots\"
+st SpriteGestureName = "w_hf"
+st Name = "v.1"
+ul TotalFrames = 32			// Total frames @ 30 fps
+ul FrameRate = 15			// Intended Frame rate of Playback
+f GammaLevel = 0.0
+uc StartIndex = 0
+uc RangeSize = 159			
+ul HotSpotX = 75
+uc paletteNum = 1
+ul HotSpotY = 104
+
+[Gestures14]
+uc State = 14				// What Gesture Number -- WamcToFallBack
+ul NumFrames = 33  			// Number of frames to playback
+f FrameRate = 10.0			// Intended Frame rate of Playback
+uc[4] NumRotations = 16,32,32,32		// bottom = 16, others = 32
+uc Symmetrical = 1			// symmetrical Flag.
+ul BasePacketNumber = 720		// Index into packet file for this gesture
+uc ArmSymmetrical = 1			// Arms are NOT symmetrical
+f StartVelocity = 12.0			// Velocity this gesture starts at
+f EndVelocity = 0.0			// Velocity this gesture finishes at
+uc ForwardResult = 21			// If we play this gesture, which is next, -1 means not a transition.
+uc ReverseResult = -1			// If we play this gesture backwards, which is nest, -1 means not a transition.
+
+[Build14]		   		//this is used to build the sprite gesture
+st Directory = "R:\v\w_fb.90\pix\"
+st MatteDir = "R:\v\w_fb.90\mask\"
+st HSDir = "R:\v\hotspots\"
+st SpriteGestureName = "w_fb"
+st Name = "v.1"
+ul TotalFrames = 64			// Total frames @ 30 fps
+ul FrameRate = 15			// Intended Frame rate of Playback
+f GammaLevel = 0.0
+uc paletteNum = 1
+uc StartIndex = 0
+uc RangeSize = 159			
+ul HotSpotX = 75
+ul HotSpotY = 104
+
+[Gestures15]
+uc State = 15				// What Gesture Number -- WamcToFallForward
+ul NumFrames = 21  			// Number of frames to playback
+f FrameRate = 10.0			// Intended Frame rate of Playback
+uc[4] NumRotations = 16,32,32,32		// bottom = 16, others = 32
+uc Symmetrical = 1			// symmetrical Flag.
+ul BasePacketNumber = 780		// Index into packet file for this gesture
+uc ArmSymmetrical = 1			// Arms are NOT symmetrical
+f StartVelocity = 12.0			// Velocity this gesture starts at
+f EndVelocity = 0.0			// Velocity this gesture finishes at
+uc ForwardResult = 22			// If we play this gesture, which is next, -1 means not a transition.
+uc ReverseResult = -1			// If we play this gesture backwards, which is nest, -1 means not a transition.
+
+[Build15]		   		//this is used to build the sprite gesture
+st Directory = "R:\v\w_ff.90\pix\"
+st MatteDir = "R:\v\w_ff.90\mask\"
+st HSDir = "R:\v\hotspots\"
+st SpriteGestureName = "w_ff"
+st Name = "v.1"
+ul TotalFrames = 40			// Total frames @ 30 fps
+ul FrameRate = 15			// Intended Frame rate of Playback
+f GammaLevel = 0.0
+uc StartIndex = 0
+uc paletteNum = 1
+uc RangeSize = 159			
+ul HotSpotX = 75
+ul HotSpotY = 104
+
+[Gestures16]
+uc State = 16				// What Gesture Number -- RunToHit/FallBack
+ul NumFrames = 19  			// Number of frames to playback
+f FrameRate = 10.0			// Intended Frame rate of Playback
+uc[4] NumRotations = 16,32,32,32		// bottom = 16, others = 32
+uc Symmetrical = 1			// symmetrical Flag.
+ul BasePacketNumber = 840		// Index into packet file for this gesture
+uc ArmSymmetrical = 1			// Arms are NOT symmetrical
+f StartVelocity = 15			// Velocity this gesture starts at
+f EndVelocity = 0.0			// Velocity this gesture finishes at
+uc ForwardResult = 21			// If we play this gesture, which is next, -1 means not a transition.
+uc ReverseResult = -1			// If we play this gesture backwards, which is nest, -1 means not a transition.
+
+[Build16]		   		//this is used to build the sprite gesture
+st Directory = "R:\v\r_fb.90\pix\"
+st MatteDir = "R:\v\r_fb.90\mask\"
+st HSDir = "R:\v\hotspots\"
+st SpriteGestureName = "r_fb"
+st Name = "v.1"
+ul TotalFrames = 36			// Total frames @ 30 fps
+ul FrameRate = 15			// Intended Frame rate of Playback
+f GammaLevel = 0.0
+uc StartIndex = 0
+uc RangeSize = 159			
+uc paletteNum = 1
+ul HotSpotX = 75
+ul HotSpotY = 104
+
+[Gestures17]
+uc State = 17				// What Gesture Number -- RunToHit/FallForward
+ul NumFrames = 21  			// Number of frames to playback
+f FrameRate = 10.0			// Intended Frame rate of Playback
+uc[4] NumRotations = 16,32,32,32		// bottom = 16, others = 32
+uc Symmetrical = 1			// symmetrical Flag.
+ul BasePacketNumber = 900		// Index into packet file for this gesture
+uc ArmSymmetrical = 1			// Arms are NOT symmetrical
+f StartVelocity = 24.0			// Velocity this gesture starts at
+f EndVelocity = 0.0			// Velocity this gesture finishes at
+uc ForwardResult = 22			// If we play this gesture, which is next, -1 means not a transition.
+uc ReverseResult = -1			// If we play this gesture backwards, which is nest, -1 means not a transition.
+
+[Build17]		   		//this is used to build the sprite gesture
+st Directory = "R:\v\r_ff.90\pix\"
+st MatteDir = "R:\v\r_ff.90\mask\"
+st HSDir = "R:\v\hotspots\"
+st SpriteGestureName = "r_ff"
+st Name = "v.1"
+ul TotalFrames = 0			// Total frames @ 30 fps
+ul FrameRate = 15			// Intended Frame rate of Playback
+f GammaLevel = 0.0
+uc paletteNum = 1
+uc StartIndex = 0
+uc RangeSize = 159			
+ul HotSpotX = 75
+ul HotSpotY = 104
+
+[Gestures18]
+uc State = 18				// What Gesture Number -- StandToFallBack
+ul NumFrames = 28  			// Number of frames to playback
+f FrameRate = 10.0			// Intended Frame rate of Playback
+uc[4] NumRotations = 16,32,32,32		// bottom = 16, others = 32
+uc Symmetrical = 1			// symmetrical Flag.
+ul BasePacketNumber = 960		// Index into packet file for this gesture
+uc ArmSymmetrical = 1			// Arms are NOT symmetrical
+f StartVelocity = 0.0			// Velocity this gesture starts at
+f EndVelocity = 0.0			// Velocity this gesture finishes at
+uc ForwardResult = 21			// If we play this gesture, which is next, -1 means not a transition.
+uc ReverseResult = -1			// If we play this gesture backwards, which is nest, -1 means not a transition.
+
+[Build18]		   		//this is used to build the sprite gesture
+st Directory = "R:\v\s_fb.90\pix\"
+st MatteDir = "R:\v\s_fb.90\mask\"
+st HSDir = "R:\v\hotspots\"
+st SpriteGestureName = "s_fb"
+st Name = "v.1"
+ul TotalFrames = 55			// Total frames @ 30 fps
+ul FrameRate = 15			// Intended Frame rate of Playback
+f GammaLevel = 0.0
+uc paletteNum = 1
+uc StartIndex = 0
+uc RangeSize = 159			
+ul HotSpotX = 75
+ul HotSpotY = 104
+
+[Gestures19]
+uc State = 19				// What Gesture Number -- StandToFallForward
+ul NumFrames = 22  			// Number of frames to playback
+f FrameRate = 10.0			// Intended Frame rate of Playback
+uc[4] NumRotations = 16,32,32,32		// bottom = 16, others = 32
+uc Symmetrical = 1			// symmetrical Flag.
+ul BasePacketNumber = 1020		// Index into packet file for this gesture
+uc ArmSymmetrical = 1			// Arms are NOT symmetrical
+f StartVelocity = 0.0			// Velocity this gesture starts at
+f EndVelocity = 0.0			// Velocity this gesture finishes at
+uc ForwardResult = 21			// If we play this gesture, which is next, -1 means not a transition.
+uc ReverseResult = -1			// If we play this gesture backwards, which is nest, -1 means not a transition.
+
+[Build19]		   		//this is used to build the sprite gesture
+st Directory = "R:\v\s_ff.90\pix\"
+st MatteDir = "R:\v\s_ff.90\mask\"
+st HSDir = "R:\v\hotspots\"
+st SpriteGestureName = "s_ff"
+st Name = "v.1"
+ul TotalFrames = 43			// Total frames @ 30 fps
+ul FrameRate = 15			// Intended Frame rate of Playback
+f GammaLevel = 0.0
+uc paletteNum = 1
+uc StartIndex = 0
+uc RangeSize = 159			
+ul HotSpotX = 75
+ul HotSpotY = 104
+
+[Gestures20]
+uc State = 20				// What Gesture Number -- Jump
+ul NumFrames = 41  			// Number of frames to playback
+f FrameRate = 15.0			// Intended Frame rate of Playback
+uc[4] NumRotations = 16,32,32,32		// bottom = 16, others = 32
+uc Symmetrical = 1			// symmetrical Flag.
+ul BasePacketNumber = 1080		// Index into packet file for this gesture
+uc ArmSymmetrical = 1			// Arms are NOT symmetrical
+f StartVelocity = 0.0			// Velocity this gesture starts at
+f EndVelocity = 0.0			// Velocity this gesture finishes at
+uc ForwardResult = -1			// If we play this gesture, which is next, -1 means not a transition.
+uc ReverseResult = -1			// If we play this gesture backwards, which is nest, -1 means not a transition.
+
+[Build20]		   		//this is used to build the sprite gesture
+st Directory = "R:\v\jump.90\pix\"
+st MatteDir = "R:\v\jump.90\mask\"
+st HSDir = "R:\v\hotspots\"
+st SpriteGestureName = "jump"
+st Name = "v.1"
+ul TotalFrames = 80			// Total frames @ 30 fps
+ul FrameRate = 15			// Intended Frame rate of Playback
+f GammaLevel = 0.0
+uc paletteNum = 1
+uc StartIndex = 0
+uc RangeSize = 159			
+ul HotSpotX = 75
+ul HotSpotY = 104
+
+[Gestures21]
+uc State = 21				// What Gesture Number -- RollOverfromfftofb
+ul NumFrames = 26  			// Number of frames to playback
+f FrameRate = 15.0			// Intended Frame rate of Playback
+uc[4] NumRotations = 16,32,32,32		// bottom = 16, others = 32
+uc Symmetrical = 1			// symmetrical Flag.
+ul BasePacketNumber = 1140		// Index into packet file for this gesture
+uc ArmSymmetrical = 1			// Arms are NOT symmetrical
+f StartVelocity = 0.0			// Velocity this gesture starts at
+f EndVelocity = 0.0			// Velocity this gesture finishes at
+uc ForwardResult = 22			// If we play this gesture, which is next, -1 means not a transition.
+uc ReverseResult = -1			// If we play this gesture backwards, which is nest, -1 means not a transition.
+
+[Build21]		   		//this is used to build the sprite gesture
+st Directory = "R:\v\ff_d.90\pix\"
+st MatteDir = "R:\v\ff_d.90\mask\"
+st HSDir = "R:\v\hotspots\"
+st SpriteGestureName = "ff_d"
+st Name = "v.1"
+ul TotalFrames = 50			// Total frames @ 30 fps
+ul FrameRate = 15			// Intended Frame rate of Playback
+f GammaLevel = 0.0
+uc paletteNum = 1
+uc StartIndex = 0
+uc RangeSize = 159			
+ul HotSpotX = 75
+ul HotSpotY = 104
+
+[Gestures22]
+uc State = 22				// What Gesture Number -- Get Up, dammit
+ul NumFrames = 34  			// Number of frames to playback
+f FrameRate = 15.0			// Intended Frame rate of Playback
+uc[4] NumRotations = 16,32,32,32		// bottom = 16, others = 32
+uc Symmetrical = 1			// symmetrical Flag.
+ul BasePacketNumber = 1200		// Index into packet file for this gesture
+uc ArmSymmetrical = 1			// Arms are NOT symmetrical
+f StartVelocity = 0.0			// Velocity this gesture starts at
+f EndVelocity = 0.0			// Velocity this gesture finishes at
+uc ForwardResult = 2			// If we play this gesture, which is next, -1 means not a transition.
+uc ReverseResult = -1			// If we play this gesture backwards, which is nest, -1 means not a transition.
+
+[Build22]		   		//this is used to build the sprite gesture
+st Directory = "R:\v\d_s.90\pix\"
+st MatteDir = "R:\v\d_s.90\mask\"
+st HSDir = "R:\v\hotspots\"
+st SpriteGestureName = "d_s"
+st Name = "v.1"
+ul TotalFrames = 66			// Total frames @ 30 fps
+ul FrameRate = 15			// Intended Frame rate of Playback
+f GammaLevel = 0.0
+uc paletteNum = 1
+uc StartIndex = 0
+uc RangeSize = 159			
+ul HotSpotX = 75
+ul HotSpotY = 104
+
+[Gestures23]
+uc State = 15				// What Gesture Number -- FallenForward
+ul NumFrames = 21  			// Number of frames to playback
+f FrameRate = 15.0			// Intended Frame rate of Playback
+uc[4] NumRotations = 16,32,32,32		// bottom = 16, others = 32
+uc Symmetrical = 1			// symmetrical Flag.
+ul BasePacketNumber = 780		// Index into packet file for this gesture
+uc ArmSymmetrical = 1			// Arms are NOT symmetrical
+f StartVelocity = 0.0			// Velocity this gesture starts at
+f EndVelocity = 0.0			// Velocity this gesture finishes at
+uc ForwardResult = 22			// If we play this gesture, which is next, -1 means not a transition.
+uc ReverseResult = -1			// If we play this gesture backwards, which is nest, -1 means not a transition.
+
+[Build23]		   		//this is used to build the sprite gesture
+uc NoBuild = 1
+st Directory = "R:\v\w_ff.90\pix\"
+st MatteDir = "R:\v\w_ff.90\mask\"
+st HSDir = "R:\v\hotspots\"
+st SpriteGestureName = "w_ff"
+st Name = "v.1"
+ul TotalFrames = 40			// Total frames @ 30 fps
+ul FrameRate = 15			// Intended Frame rate of Playback
+f GammaLevel = 0.0
+uc paletteNum = 1
+uc StartIndex = 0
+uc RangeSize = 159			
+ul HotSpotX = 75
+ul HotSpotY = 104
+
+[Gestures24]
+uc State = 24				// What Gesture Number -- FallenBack
+ul NumFrames = 33  			// Number of frames to playback
+f FrameRate = 15.0			// Intended Frame rate of Playback
+uc[4] NumRotations = 16,32,32,32		// bottom = 16, others = 32
+uc Symmetrical = 1			// symmetrical Flag.
+ul BasePacketNumber = 720		// Index into packet file for this gesture
+uc ArmSymmetrical = 1			// Arms are NOT symmetrical
+f StartVelocity = 0.0			// Velocity this gesture starts at
+f EndVelocity = 0.0			// Velocity this gesture finishes at
+uc ForwardResult = 21			// If we play this gesture, which is next, -1 means not a transition.
+uc ReverseResult = -1			// If we play this gesture backwards, which is nest, -1 means not a transition.
+
+[Build24]		   		//this is used to build the sprite gesture
+uc NoBuild = 1
+st Directory = "R:\v\w_fb.90\pix\"
+st MatteDir = "R:\v\w_fb.90\mask\"
+st HSDir = "R:\v\hotspots\"
+st SpriteGestureName = "w_fb"
+st Name = "v.1"
+ul TotalFrames = 64			// Total frames @ 30 fps
+ul FrameRate = 15			// Intended Frame rate of Playback
+f GammaLevel = 0.0
+uc paletteNum = 1
+uc StartIndex = 0
+uc RangeSize = 159			
+ul HotSpotX = 75
+ul HotSpotY = 104
+
+[Gestures25]
+uc State = 25							// What Gesture Number -- Not A REAL Gesture!!!   Armfalls
+ul NumFrames = 11  						// Number of frames to playback
+f FrameRate = 15.0						// Intended Frame rate of Playback
+uc[4] NumRotations = 16,32,32,32		// bottom = 16, others = 32
+uc Symmetrical = 0						// symmetrical Flag.
+uc ArmSymmetrical = 1					// However, arms are symmetrical.
+ul BasePacketNumber = 0					// Index into packet file for this gesture
+st BasePacketName = "vulture.armfalls"	// Special name to use for the armfall shape file.
+f StartVelocity = 0.0					// Velocity this gesture starts at
+f EndVelocity = 0.0						// Velocity this gesture finishes at
+uc ForwardResult = -1					// If we play this gesture, which is next, -1 means not a transition.
+uc ReverseResult = -1					// If we play this gesture backwards, which is nest, -1 means not a transition.
+
+[Build25]		   						//this is used to build the sprite gesture
+st Directory = "R:\v\armfalls.90\pix\"
+st MatteDir = "R:\v\armfalls.90\mask\"
+st HSDir = "R:\v\hotspots\"
+st SpriteGestureName = "armfalls"
+st Name = "v.1"
+ul TotalFrames = 20						// Total frames @ 30 fps
+ul FrameRate = 15						// Intended Frame rate of Playback
+f GammaLevel = 0.0
+uc StartIndex = 0
+uc RangeSize = 159			
+uc paletteNum = 1
+ul HotSpotX = 75
+ul HotSpotY = 104
+
+FITend
+

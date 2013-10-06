@@ -1,0 +1,12 @@
+FITini 
+[Main Info]
+st Name="LarryHouse_a7"
+ul NumFrames=16
+
+[Bounds]
+l UpperLeftX = -50.0
+l UpperLeftY = -30.0
+l LowerRightX = 20.0
+l LowerRightY = 30.0
+
+FITend 

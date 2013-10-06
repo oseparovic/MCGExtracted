@@ -1,0 +1,15 @@
+FITini
+
+[Main Info]
+st Name = "jfx"
+ul HeapSize = 51200
+
+[State]	
+ul NumFrames = 10
+f FrameRate = 15.0
+ul BasePacketNumber = 0
+uc NumRotations = 16
+ul Symmetrical = 0
+uc CheckForHeader = 0
+
+FITend

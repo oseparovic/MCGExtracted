@@ -1,0 +1,14 @@
+FITini 
+[Main Info]
+st Name="StrA_a7"
+ul NumFrames=16
+
+[Bounds]
+l UpperLeftX = -20.0
+l UpperLeftY = -30.0
+l LowerRightX = 30.0
+l LowerRightY = 20.0
+
+//these are the numbers for Object 36 Field Office SE with underlay.
+
+FITend 
