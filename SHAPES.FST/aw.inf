@@ -1,0 +1,44 @@
+FITini 
+[Gesture0]
+ul numFramesPerHotSpot=15
+[Gesture1]
+ul numFramesPerHotSpot=9
+[Gesture2]
+ul numFramesPerHotSpot=25
+[Gesture3]
+ul numFramesPerHotSpot=13
+[Gesture4]
+ul numFramesPerHotSpot=12
+[Gesture5]
+ul numFramesPerHotSpot=17
+[Gesture6]
+ul numFramesPerHotSpot=12
+[Gesture7]
+ul numFramesPerHotSpot=28
+[Gesture8]
+ul numFramesPerHotSpot=21
+[Gesture9]
+ul numFramesPerHotSpot=28
+[Gesture10]
+ul numFramesPerHotSpot=27
+[Gesture11]
+ul numFramesPerHotSpot=28
+[Gesture12]
+ul numFramesPerHotSpot=27
+[Gesture13]
+ul numFramesPerHotSpot=28
+[Gesture14]
+ul numFramesPerHotSpot=27
+[Gesture15]
+ul numFramesPerHotSpot=25
+[Gesture16]
+ul numFramesPerHotSpot=54
+[Gesture17]
+ul numFramesPerHotSpot=41
+[Gesture18]
+ul numFramesPerHotSpot=42
+[Info]
+ul numWeapons=9
+ul numOthers=3
+ul numHotSpotPackets=19
+FITend 

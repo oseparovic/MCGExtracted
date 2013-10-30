@@ -1,0 +1,91 @@
+FITini 
+
+[TerrainData]
+l VerticesBlockSide=20
+l BlocksMapSide=9
+f MetersPerElevLevel=22.000000
+f MetersPerVertex=128.000000
+l VisibleVerticesPerSide=30
+l NumberOfWindows=4
+ul TerrainHeapSize=1023999
+l HighestPoint=31
+l LowestPoint=1
+
+[TileData]
+ul TerrainTileHeapSize=3072000
+st TerrainTileFile="tiles"
+st TileListFile="tilelist"
+
+[TacticalMap]
+l xPos=0
+l yPos=0
+l width=402
+l height=402
+uc numTerrains=64
+uc numOverlays=0
+l ColorsPerElev=2
+uc terrainColor0=151
+uc terrainColor1=103
+uc terrainColor2=103
+uc terrainColor3=135
+uc terrainColor4=194
+uc terrainColor5=120
+uc terrainColor6=194
+uc terrainColor7=120
+uc terrainColor8=194
+uc terrainColor9=120
+uc terrainColor10=194
+uc terrainColor11=120
+uc terrainColor12=106
+uc terrainColor13=106
+uc terrainColor14=106
+uc terrainColor15=106
+uc terrainColor16=107
+uc terrainColor17=122
+uc terrainColor18=107
+uc terrainColor19=122
+uc terrainColor20=107
+uc terrainColor21=122
+uc terrainColor22=107
+uc terrainColor23=122
+uc terrainColor24=192
+uc terrainColor25=192
+uc terrainColor26=192
+uc terrainColor27=192
+uc terrainColor28=135
+uc terrainColor29=183
+uc terrainColor30=135
+uc terrainColor31=183
+uc terrainColor32=135
+uc terrainColor33=183
+uc terrainColor34=135
+uc terrainColor35=183
+uc terrainColor36=193
+uc terrainColor37=193
+uc terrainColor38=193
+uc terrainColor39=193
+uc terrainColor40=175
+uc terrainColor41=175
+uc terrainColor42=249
+uc terrainColor43=39
+uc terrainColor44=21
+uc terrainColor45=39
+uc terrainColor46=21
+uc terrainColor47=39
+uc terrainColor48=21
+uc terrainColor50=39
+uc terrainColor49=21
+uc terrainColor51=39
+uc terrainColor52=21
+uc terrainColor53=92
+uc terrainColor54=92
+uc terrainColor55=92
+uc terrainColor56=92
+uc terrainColor57=92
+uc terrainColor58=92
+uc terrainColor59=92
+uc terrainColor60=92
+uc terrainColor61=92
+uc terrainColor62=19
+uc terrainColor63=92
+FITend 

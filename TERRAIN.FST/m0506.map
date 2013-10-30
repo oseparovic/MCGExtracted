@@ -1,0 +1,74 @@
+FITini
+
+[DesignBlock]
+st MapName					= "Unnamed"
+st Designer					= ""
+st Version					= ""
+
+[GenBlock]
+l RandomSeed					= 50
+l RoughPass						= 1
+l SeaLevel						= 1
+l Ceiling						= 2
+l BaseType						= 1
+
+l ElevationScale				= 22
+uc WriteMap?					= 0
+
+[TerrainIniData]
+f UnitsPerMeter					= 1.0
+l VisibleVerticesSide			= 30
+l UnitsPerVertex				= 127
+l BlocksMapSide					= 12
+l VerticesBlockSide				= 20
+l NumTerrainWindows				= 4
+ul TerrainHeapSize				= 524288
+
+[TileData]
+ul TerrainTileHeapSize			= 3072000
+st TerrainTileFile				= "tiles"
+st TileListFile					= "tilelist"
+
+[Skew and Roughness]
+s SkewXRes						= 14
+s SkewYRes						= 14
+s RoughnessXRes					= 14
+s RoughnessYRes					= 14
+
+c[196] SkewGrid = 
+
+ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+
+
+uc[196] RoughGrid = 
+
+ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+
+
+FITEnd
