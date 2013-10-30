@@ -1,0 +1,99 @@
+//*********************************************************************************
+// Creation Include file for mission 1_5
+
+if ((gametime > 2) AND (gametime < 10)) then
+     if (gametime > 3) then
+           objectCreate(VehicleID(CLAN_STAR0,1,0));
+     endif;
+     if (gametime > 6) then
+           objectCreate(VehicleID(CLAN_STAR0,2,0));
+     endif;
+     if (gametime > 9) then
+           objectCreate(VehicleID(CLAN_STAR0,3,0));
+     endif;
+endif;
+if ((gametime > 31) AND (gametime < 33)) then
+     if (gametime > 32) then
+           objectCreate(VehicleID(CLAN_STAR1,0,0));
+     endif;
+     if (gametime > 32) then
+           objectCreate(VehicleID(CLAN_STAR1,1,0));
+     endif;
+     if (gametime > 32) then
+           objectCreate(VehicleID(CLAN_STAR1,2,0));
+     endif;
+     if (gametime > 32) then
+           objectCreate(VehicleID(CLAN_STAR1,3,0));
+     endif;
+endif;
+if ((gametime > 89) AND (gametime < 91)) then
+     if (gametime > 90) then
+           objectCreate(VehicleID(CLAN_STAR7 + 3,0,0));
+     endif;
+endif;
+if ((gametime > 286) AND (gametime < 297)) then
+     if (gametime > 287) then
+           objectCreate(VehicleID(CLAN_STAR7 + 1,0,0));
+     endif;
+     if (gametime > 289) then
+           objectCreate(VehicleID(CLAN_STAR7 + 1,1,0));
+     endif;
+     if (gametime > 292) then
+           objectCreate(VehicleID(CLAN_STAR7 + 1,2,0));
+     endif;
+     if (gametime > 294) then
+           objectCreate(VehicleID(CLAN_STAR7,0,0));
+     endif;
+     if (gametime > 296) then
+           objectCreate(VehicleID(CLAN_STAR7,1,0));
+     endif;
+endif;
+if ((gametime > 304) AND (gametime < 311)) then
+     if (gametime > 305) then
+           objectCreate(VehicleID(CLAN_STAR5,0,0));
+     endif;
+     if (gametime > 305) then
+           objectCreate(VehicleID(CLAN_STAR5,1,0));
+     endif;
+     if (gametime > 305) then
+           objectCreate(VehicleID(CLAN_STAR5,2,0));
+     endif;
+     if (gametime > 310) then
+           objectCreate(VehicleID(CLAN_STAR6,0,0));
+     endif;
+     if (gametime > 310) then
+           objectCreate(VehicleID(CLAN_STAR6,1,0));
+     endif;
+     if (gametime > 310) then
+           objectCreate(VehicleID(CLAN_STAR6,2,0));
+     endif;
+     if (gametime > 310) then
+           objectCreate(VehicleID(CLAN_STAR6,3,0));
+     endif;
+endif;
+if ((gametime > 354) AND (gametime < 356)) then
+     if (gametime > 355) then
+           objectCreate(VehicleID(CLAN_STAR4,0,0));
+     endif;
+endif;
+if ((gametime > 379) AND (gametime < 381)) then
+     if (gametime > 380) then
+           objectCreate(VehicleID(CLAN_STAR2,0,0));
+     endif;
+     if (gametime > 380) then
+           objectCreate(VehicleID(CLAN_STAR2,1,0));
+     endif;
+endif;
+if ((gametime > 454) AND (gametime < 456)) then
+     if (gametime > 455) then
+           objectCreate(VehicleID(CLAN_STAR3,0,0));
+     endif;
+     if (gametime > 455) then
+           objectCreate(VehicleID(CLAN_STAR3,1,0));
+     endif;
+endif;
+if ((gametime > 504) AND (gametime < 506)) then
+     if (gametime > 505) then
+           objectCreate(VehicleID(CLAN_STAR4,1,0));
+     endif;
+endif;

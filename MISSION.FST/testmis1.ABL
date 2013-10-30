@@ -1,0 +1,258 @@
+//*********************************************************************************
+
+module MissionBrain_9_3 : integer;
+
+     //--------------------------------------------------------
+     // Operation:  9                  Mission:  3 
+     // MissionID:  175                Name: Test ABL Library
+     // Designer: Tim Ryan
+     // Created: 3/7/98                By: Tim Ryan
+     //--------------------------------------------------------
+
+//------------------------------------------------------------------
+//
+//     Constant Definitions
+//
+//------------------------------------------------------------------
+     const
+
+          #include_ "misconst.abi"
+
+          //------------------
+          // Objective IDs
+          //------------------
+           OBJ0_Kill                     = 0;
+
+//------------------------------------------------------------------
+//
+//     Type Definitions
+//
+//------------------------------------------------------------------
+     type
+
+
+//------------------------------------------------------------------
+//
+//     Variable Declarations
+//
+//------------------------------------------------------------------
+      var
+
+            #include_ "9_3VAR.ABI"
+
+            static integer      ScenarioResult;
+            eternal boolean     ExitTimerSet;
+            static integer      VictoryLevel;
+            char[40]            dstring;
+            eternal real        gametime;
+            static real         nextsecond;
+            integer             x;
+            integer             y;
+            Position            aPoint;
+            eternal boolean     PlayerForceDead;
+            eternal boolean     ClanForceDead;
+            eternal boolean     AlliedForceDead;
+            eternal boolean     GeneralAlarm;
+            eternal boolean     Flag1;
+            eternal boolean     Flag2;
+            eternal boolean     Flag3;
+            eternal boolean     Flag4;
+            eternal boolean     Flag5;
+            eternal boolean     Flag6;
+            eternal boolean     Flag7;
+            eternal boolean     Flag8;
+            eternal boolean     Flag9;
+            eternal boolean     Flag10;
+            eternal integer     GeneralAlarmCounter;
+            static boolean      Objective_0_Decided;
+
+//------------------------------------------------------------------
+//
+//     Init Function    (automatically run first time through)
+//
+//------------------------------------------------------------------
+function init;
+
+       code
+
+            #include_ "9_3INIT.ABI"
+
+            ScenarioResult = PLAYING;
+            PlayerForceDead = FALSE;
+            ClanForceDead = FALSE;
+            AlliedForceDead = FALSE;
+            ExitTimerSet = FALSE;
+            VictoryLevel = 1;
+            NextSecond = 1.0;
+            GeneralAlarmCounter = -1;
+            GeneralAlarm = FALSE;
+            Flag1 = FALSE;
+            Flag2 = FALSE;
+            Flag3 = FALSE;
+            Flag4 = FALSE;
+            Flag5 = FALSE;
+            Flag6 = FALSE;
+            Flag7 = FALSE;
+            Flag8 = FALSE;
+            Flag9 = FALSE;
+            Flag10 = FALSE;
+            Objective_0_Decided = FALSE;
+
+endfunction;
+
+//------------------------------------------------------------------
+//
+//     Main Code
+//
+//------------------------------------------------------------------
+       code
+
+            //------------------------------------------------
+            // Debug Window Game Clock Second Counter
+            // Note:  This is used by some included functions.
+            //------------------------------------------------
+            gametime = gettime;
+            If (gametime >= nextsecond) Then
+                  nextsecond = gametime + 1;
+                  If (GeneralAlarm) then
+                       GeneralAlarmCounter = GeneralAlarmCounter + 1;
+                  endif;
+                  // dstring = "Gametime: ";
+                  // concat(dstring,gametime);
+                  // Print (dstring);
+            endif;
+
+            //---------------------------------------
+            // Create Non-Existing Vehicles
+            //---------------------------------------
+            #include_ "9_3CRE.ABI"
+
+            //---------------------------------------
+            // Activate inactive vehicles
+            //---------------------------------------
+            #include_ "9_3ACT.ABI"
+
+            //---------------------------------------
+            // Structure
+            //---------------------------------------
+            #include_ "9_3STR.ABI"
+
+            //---------------------------------------
+            // Lookout Points
+            //---------------------------------------
+            #include_ "9_3LOP.ABI"
+
+            //---------------------------------------
+            // Force Dead Checks
+            //---------------------------------------
+            if (isDead(PLAYER_FORCE)) then
+                  PlayerForceDead = TRUE;
+            endif;
+            if (isDead(CLAN_FORCE)) then
+                  ClanForceDead = TRUE;
+            endif;
+            if (isDead(ALLIED_FORCE)) then
+                  AlliedForceDead = TRUE;
+            endif;
+
+            //---------------------------------------
+            // SET EXIT TIMER IF PLAYER DEAD/DISABLED
+            //---------------------------------------
+
+            if ((NOT ExitTimerSet) AND (PlayerForceDead)) then
+                  setTimer(EXIT_TIMER,2.0);
+                  ExitTimerSet = TRUE;
+                  PlayDigitalMusic(DEFEAT_MUSIC);
+                  // Fail any Undecided Objectives
+                  if (checkObjectiveStatus(0) == INCOMPLETE) then
+                        setObjectiveStatus(0, FAILED);
+                  endif;
+            endif;
+
+            //---------------------------------------
+            // Custom ABL Code
+            //---------------------------------------
+
+            if ((NOT flag1) and (GameTime > 10.0)) then
+                 //SetAnimation(Mbay,0,0);
+                 Flag1 = TRUE;
+            endif;
+
+            if ((NOT flag4) and (GameTime > 10.0)) then
+                 //SetAnimation(Vbay,0,0);
+                 Flag4 = TRUE;
+            endif;
+
+            if ((NOT flag2) and (GameTime > 20.0)) then
+                 //SetAnimation(Mbay,0,1);
+                 Flag2 = TRUE;
+            endif;
+
+            if ((NOT flag5) and (GameTime > 20.0)) then
+                 //SetAnimation(Vbay,0,1);
+                 Flag5 = TRUE;
+            endif;
+
+            if ((NOT flag3) and (GameTime > 30.0)) then
+                 //SetAnimation(Mbay,0,2);
+                 Flag3 = TRUE;
+            endif;
+
+            if ((NOT flag6) and (GameTime > 30.0)) then
+                 //SetAnimation(Vbay,0,2);
+                 Flag6 = TRUE;
+            endif;
+
+            //---------------------------------------
+            // Objective Resolution
+            //---------------------------------------
+
+            if (checkObjectiveStatus(0) == INCOMPLETE) then
+
+                 if (isDead(CLAN_FORCE)) then
+                       SetObjectiveStatus(0,SUCCESS);
+                       playBetty(BETTY_OBJECTIVE_COMPLETE);
+                       VictoryLevel = VictoryLevel + 3;
+                       Objective_0_Decided = TRUE;
+                       PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                 else
+                       if (gettimeleft == 0.0) then  // supposedly will not happen unless time limit is set
+                             SetObjectiveStatus(0,FAILED);
+                             playBetty(BETTY_CANNOT_COMP_OBJ);
+                             Objective_0_Decided = TRUE;
+                             PlayDigitalMusic(OBJECTIVE_FAIL_MUSIC);
+                       endif;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(0) == FAILED) then
+                              setTimer(EXIT_TIMER,2.0);
+                              ExitTimerSet = TRUE;
+                              PlayDigitalMusic(DEFEAT_MUSIC);
+                        endif;
+                  endif;
+            endif;
+
+            if ((NOT ExitTimerSet) AND (Objective_0_Decided)) then
+                  setTimer(EXIT_TIMER,2.0);
+                  ExitTimerSet = TRUE;
+                  PlayDigitalMusic(VICTORY_MUSIC); // Need to make this conditional based on success
+            endif;
+
+            //---------------------------------------
+            // END SCENARIO
+            //---------------------------------------
+
+            if ((ExitTimerSet) AND (CheckTimer(EXIT_TIMER) == 0.0)) then
+                  ScenarioResult = VictoryLevel;
+            endif;
+
+            //---------------------------------------
+            // RETURN RESULT
+            //---------------------------------------
+
+            return (ScenarioResult);
+endmodule.
+//******************************************************************

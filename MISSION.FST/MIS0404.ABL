@@ -1,0 +1,429 @@
+//*********************************************************************************
+
+module MissionBrain_4_4 : integer;
+
+     //--------------------------------------------------------
+     // Operation:  4                  Mission:  4 
+     // MissionID:  198                Name: Seek And Destroy
+     // Designer: Tim Ryan
+     // Created: 5/8/98                By: Tim Ryan
+     //--------------------------------------------------------
+
+//------------------------------------------------------------------
+//
+//     Constant Definitions
+//
+//------------------------------------------------------------------
+     const
+
+          #include_ "misconst.abi"
+
+          //------------------
+          // Objective IDs
+          //------------------
+           OBJ0_Capture_Industrial_Comp  = 0;
+           OBJ1_Defend_Industrial_Compl  = 1;
+           OBJ2_Destroy_All_Enemy_Force  = 2;
+
+//------------------------------------------------------------------
+//
+//     Type Definitions
+//
+//------------------------------------------------------------------
+     type
+
+
+//------------------------------------------------------------------
+//
+//     Variable Declarations
+//
+//------------------------------------------------------------------
+      var
+
+            #include_ "4_4VAR.ABI"
+
+            static integer      ScenarioResult;
+            eternal boolean     ExitTimerSet;
+            static integer      VictoryLevel;
+            char[40]            dstring;
+            eternal real        gametime;
+            static real         nextsecond;
+            integer             x;
+            integer             y;
+            Position            aPoint;
+            eternal boolean     PlayerForceDead;
+            eternal boolean     ClanForceDead;
+            eternal boolean     AlliedForceDead;
+            eternal boolean     GeneralAlarm;
+            eternal boolean     Flag1;
+            eternal boolean     Flag2;
+            eternal boolean     Flag3;
+            eternal boolean     Flag4;
+            eternal boolean     Flag5;
+            eternal boolean     Flag6;
+            eternal boolean     Flag7;
+            eternal boolean     Flag8;
+            eternal boolean     Flag9;
+            eternal boolean     Flag10;
+            static boolean      PlayPASound;
+            static boolean      PlayGASound;
+            eternal integer     GeneralAlarmCounter;
+            boolean             PerimeterBreach;
+            static boolean      Objective_0_Decided;
+            static boolean      Obj_0_Action_1_Success;
+            static boolean      Obj_0_Action_2_Success;
+            static boolean      Objective_1_Decided;
+            static boolean      Obj_1_Action_1_Success;
+            static boolean      Obj_1_Action_2_Success;
+            static boolean      Objective_2_Decided;
+
+//------------------------------------------------------------------
+//
+//     Init Function    (automatically run first time through)
+//
+//------------------------------------------------------------------
+function init;
+
+       code
+
+            ScenarioResult = PLAYING;
+            PlayerForceDead = FALSE;
+            ClanForceDead = FALSE;
+            AlliedForceDead = FALSE;
+            ExitTimerSet = FALSE;
+            VictoryLevel = 0; // New Scheme
+            NextSecond = 1.0;
+            GeneralAlarmCounter = -1;
+            GeneralAlarm = FALSE;
+            Flag1 = FALSE;
+            Flag2 = FALSE;
+            Flag3 = FALSE;
+            Flag4 = FALSE;
+            Flag5 = FALSE;
+            Flag6 = FALSE;
+            Flag7 = FALSE;
+            Flag8 = FALSE;
+            Flag9 = FALSE;
+            Flag10 = FALSE;
+            PlayPASound = FALSE;
+            PlayGASound = FALSE;
+            Objective_0_Decided = FALSE;
+            Obj_0_Action_1_Success = FALSE;
+            Obj_0_Action_2_Success = FALSE;
+            Objective_1_Decided = FALSE;
+            Obj_1_Action_1_Success = FALSE;
+            Obj_1_Action_2_Success = FALSE;
+            Objective_2_Decided = FALSE;
+
+            #include_ "4_4INIT.ABI"
+
+endfunction;
+
+//------------------------------------------------------------------
+//
+//     Main Code
+//
+//------------------------------------------------------------------
+      code
+
+            //------------------------------------------------
+            // Debug Window Game Clock Second Counter
+            // Note:  This is used by some included functions.
+            //------------------------------------------------
+            gametime = gettime;
+            If (gametime >= nextsecond) Then
+                  nextsecond = gametime + 1;
+                  If (GeneralAlarm) then
+                       GeneralAlarmCounter = GeneralAlarmCounter + 1;
+                  endif;
+                  // dstring = "Gametime: ";
+                  // concat(dstring,gametime);
+                  // Print (dstring);
+            endif;
+            if ((PlayGASound) and (NextSecond == gametime + 1)) then
+                  playSoundEffect(GENERAL_ALARM_SOUND);
+            endif;
+            if (PlayPASound) then
+                  playSoundEffect(PERIMETER_ALARM_SOUND);
+            endif;
+            PerimeterBreach = FALSE;
+
+            //---------------------------------------
+            // Create Non-Existing Vehicles
+            //---------------------------------------
+            #include_ "4_4CRE.ABI"
+
+            //---------------------------------------
+            // Activate inactive vehicles
+            //---------------------------------------
+            #include_ "4_4ACT.ABI"
+
+            //---------------------------------------
+            // Structure
+            //---------------------------------------
+            #include_ "4_4STR.ABI"
+
+            //---------------------------------------
+            // Lookout Points
+            //---------------------------------------
+            #include_ "4_4LOP.ABI"
+
+            //---------------------------------------
+            // Force Dead Checks
+            //---------------------------------------
+            if (isDeadorFled(PLAYER_FORCE)) then
+                  PlayerForceDead = TRUE;
+            endif;
+            if (isDeadorFled(CLAN_FORCE)) then
+                  ClanForceDead = TRUE;
+            endif;
+            if (isDeadorFled(ALLIED_FORCE)) then
+                  AlliedForceDead = TRUE;
+            endif;
+
+            //---------------------------------------
+            // SET EXIT TIMER IF PLAYER DEAD/DISABLED
+            //---------------------------------------
+
+            if ((NOT ExitTimerSet) AND (PlayerForceDead)) then
+                  // Fail any Undecided Player Objectives
+                  if (checkObjectiveStatus(0) == INCOMPLETE) then
+                        setObjectiveStatus(0, FAILED);
+                  endif;
+                  if (checkObjectiveStatus(1) == INCOMPLETE) then
+                        setObjectiveStatus(1, FAILED);
+                  endif;
+                  if (checkObjectiveStatus(2) == INCOMPLETE) then
+                        setObjectiveStatus(2, FAILED);
+                  endif;
+            endif;
+
+            //---------------------------------------
+            // Custom ABL Code
+            //---------------------------------------
+
+            if (NOT flag9) then
+                 IF ((isCaptured(ubunker) == 1) AND (isCaptured(ubunker2) == 1)) THEN
+                       FLAG9 = TRUE;
+                 ELSE
+                       IF (NumAlive(CLAN_FORCE) - 2 < NumAlive(PLAYER_FORCE)) THEN
+                             FLAG9 = TRUE;
+                       ELSE
+                             IF (NumAlive(CLAN_FORCE) - 2 < NumAlive(CLAN_STAR0))  THEN
+                                   FLAG9 = TRUE;
+                             ENDIF;
+                       ENDIF;
+                 ENDIF;
+            endif;
+
+            if (NOT flag8) then
+                 IF (isCaptured(MBay1) == 1) THEN
+                       // setPotentialContact(BoomTank,1);  // weirdness
+                       SetRevealed(-1,75.0,ObjectPosition[ObjPos(MBay1)]);
+                       FLAG8 = TRUE;
+                 ENDIF;
+            endif;
+
+            if ((EndGroupCreateTime == -1.0) AND (checkObjectiveStatus(0) == SUCCESS)) then
+                 EndGroupCreateTime = gametime;
+            endif;
+
+            if ((EndGroupCreateTime == -1.0) AND (gametime > 360)) then
+                 EndGroupCreateTime = gametime;
+            endif;
+
+            if ((EndGroupCreateTime > -1.0) and (Not MostlyDead)) then
+                 CreateNow = gameTime - EndGroupCreateTime;
+                 if ((CreateNow > 3.0) AND (CreateNow < 4.0)) then
+                       objectCreate(VehicleID(CLAN_STAR4,0,0));
+                       NumCreated = 1;
+                 endif;
+                 if ((CreateNow > 45.0) AND (CreateNow < 46.0)) then
+                       objectCreate(VehicleID(CLAN_STAR4,1,0));
+                       NumCreated = 2;
+                 endif;
+                 if ((CreateNow > 56.0) AND (CreateNow < 57.0)) then
+                       objectCreate(VehicleID(CLAN_STAR4,2,0));
+                       NumCreated = 3;
+                 endif;
+                 if ((CreateNow > 120.0) AND (CreateNow < 121.0)) then
+                       objectCreate(VehicleID(CLAN_STAR4,3,0));
+                       NumCreated = 4;
+                 endif;
+                 if ((CreateNow > 125.0) AND (CreateNow < 126.0)) then
+                       objectCreate(VehicleID(CLAN_STAR4,4,0));
+                       NumCreated = 5;
+                 endif;
+                 if ((CreateNow > 185.0) AND (CreateNow < 186.0)) then
+                       objectCreate(VehicleID(CLAN_STAR4,5,0));
+                       NumCreated = 6;
+                 endif;
+                 if ((CreateNow > 245.0) AND (CreateNow < 246.0)) then
+                       objectCreate(VehicleID(CLAN_STAR4,6,0));
+                       NumCreated = 7;
+                 endif;
+                 if ((CreateNow > 250.0) AND (CreateNow < 251.0)) then
+                       objectCreate(VehicleID(CLAN_STAR4,7,0));
+                       NumCreated = 8;
+                 endif;
+                 if ((CreateNow > 310.0) AND (CreateNow < 311.0)) then
+                       objectCreate(VehicleID(CLAN_STAR4,8,0));
+                       NumCreated = 9;
+                 endif;
+            endif;
+
+            if (NOT MostlyDead) then
+                 IF ((isDead(CLAN_STAR0)) and (isDead(CLAN_STAR1)) and 
+                       (isDead(CLAN_STAR2)) and (isDead(CLAN_STAR3)) and
+                       (NumDead(CLAN_STAR4) == NumCreated) and
+                       (Objective_0_Decided) and (Objective_1_Decided)) THEN
+                       MostlyDead = TRUE;
+                 ENDIF;
+            endif;
+
+            //---------------------------------------
+            // Objective Resolution
+            //---------------------------------------
+
+            if (checkObjectiveStatus(0) == INCOMPLETE) then
+
+                 x = getterrainobjectpartid(29,198);
+                 if (IsCaptured(x) == 1) then
+                       Obj_0_Action_1_Success = TRUE;
+                 else
+                       if ((gettimeleft == 0.0) OR (getObjectDamage(x) > 99)) then
+                             SetObjectiveStatus(0,FAILED);
+                             playBetty(BETTY_CANNOT_COMP_OBJ);
+                             Objective_0_Decided = TRUE;
+                       endif;
+                 endif;
+
+                 x = getTerrainObjectPartID(29,119);
+                 if (IsCaptured(x) == 1) then
+                       Obj_0_Action_2_Success = TRUE;
+                 else
+                       if ((gettimeleft == 0.0) OR (getObjectDamage(x) > 99)) then
+                             SetObjectiveStatus(0,FAILED);
+                             playBetty(BETTY_CANNOT_COMP_OBJ);
+                             Objective_0_Decided = TRUE;
+                       endif;
+                 endif;
+
+                 if ((Obj_0_Action_1_Success) AND (Obj_0_Action_2_Success)) then
+                       SetObjectiveStatus(0,SUCCESS);
+                       playBetty(BETTY_OBJECTIVE_COMPLETE);
+                       VictoryLevel = VictoryLevel + 1;
+                       Objective_0_Decided = TRUE;
+                       if (VictoryLevel < 3) then
+                             PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                       endif;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(0) == FAILED) then
+                              setTimer(EXIT_TIMER,2.0);
+                              ExitTimerSet = TRUE;
+                        endif;
+                  endif;
+            endif;
+
+            if (checkObjectiveStatus(1) == INCOMPLETE) then
+
+                 x = getTerrainObjectPartID(29,198);
+                 if (isDead(x)) then
+                       SetObjectiveStatus(1,FAILED);
+                       playBetty(BETTY_CANNOT_COMP_OBJ);
+                       Objective_1_Decided = TRUE;
+                 else
+                       if ((gettimeleft == 0.0) OR (ClanForceDead)) then  // supposedly will not happen unless time limit is set
+                             Obj_1_Action_1_Success = TRUE;
+                       endif;
+                 endif;
+
+                 x = getTerrainObjectPartID(29,119);
+                 if (isDead(x)) then
+                       SetObjectiveStatus(1,FAILED);
+                       playBetty(BETTY_CANNOT_COMP_OBJ);
+                       Objective_1_Decided = TRUE;
+                 else
+                       if ((gettimeleft == 0.0) OR (ClanForceDead)) then  // supposedly will not happen unless time limit is set
+                             Obj_1_Action_2_Success = TRUE;
+                       endif;
+                 endif;
+
+                 if ((Obj_1_Action_1_Success) AND (Obj_1_Action_2_Success)) then
+                       SetObjectiveStatus(1,SUCCESS);
+                       playBetty(BETTY_OBJECTIVE_COMPLETE);
+                       VictoryLevel = VictoryLevel + 1;
+                       Objective_1_Decided = TRUE;
+                       if (VictoryLevel < 3) then
+                             PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                       endif;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(1) == FAILED) then
+                              setTimer(EXIT_TIMER,2.0);
+                              ExitTimerSet = TRUE;
+                        endif;
+                  endif;
+            endif;
+
+            if (checkObjectiveStatus(2) == INCOMPLETE) then
+
+                 if (MostlyDead) then
+                       SetObjectiveStatus(2,SUCCESS);
+                       playBetty(BETTY_OBJECTIVE_COMPLETE);
+                       VictoryLevel = VictoryLevel + 1;
+                       Objective_2_Decided = TRUE;
+                       if (VictoryLevel < 3) then
+                             PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                       endif;
+                 else
+                       if (PlayerForceDead) then
+                             SetObjectiveStatus(2,FAILED);
+                             playBetty(BETTY_CANNOT_COMP_OBJ);
+                             Objective_2_Decided = TRUE;
+                       endif;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(2) == FAILED) then
+                              setTimer(EXIT_TIMER,2.0);
+                              ExitTimerSet = TRUE;
+                        endif;
+                  endif;
+            endif;
+
+            if ((NOT ExitTimerSet) AND (Objective_0_Decided) AND (Objective_1_Decided) AND (Objective_2_Decided)) then
+                  setTimer(EXIT_TIMER,2.0);
+                  ExitTimerSet = TRUE;
+            endif;
+
+            //---------------------------------------
+            // END SCENARIO
+            //---------------------------------------
+
+            if ((ExitTimerSet) AND (CheckTimer(EXIT_TIMER) == 0.0)) then
+                  if (VictoryLevel >= 3) then
+                        ScenarioResult = PLAYER_WIN_BIG;
+                        PlayDigitalMusic(VICTORY_MUSIC);
+                  else
+                        ScenarioResult = PLAYER_LOST_BIG;
+                        PlayDigitalMusic(DEFEAT_MUSIC);
+                  endif;
+            endif;
+
+            //---------------------------------------
+            // RETURN RESULT
+            //---------------------------------------
+
+            return (ScenarioResult);
+endmodule.
+//******************************************************************

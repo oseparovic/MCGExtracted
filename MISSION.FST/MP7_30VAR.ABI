@@ -1,0 +1,7 @@
+//*********************************************************************************
+// Variable Include file for mission 7_30
+
+     eternal integer                   RBIS;
+     static integer                    RBISAlignment;
+     eternal integer                   RBClan;
+     static integer                    RBClanAlignment;

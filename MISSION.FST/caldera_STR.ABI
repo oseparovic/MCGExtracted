@@ -1,0 +1,184 @@
+//*********************************************************************************
+// Structure Include file for mission caldera
+
+
+if ((isdead(Turret_Control_007313000)) AND (Turret_Control_007313000Alignment <> -2)) then
+     SendMessage(9,0);
+     HandleMessage;
+else
+     if ((IsCaptured(Turret_Control_007313000) == 1) AND (objectSide(Turret_Control_007313000) <> Turret_Control_007313000Alignment) AND (Turret_Control_007313000Alignment <> -2)) then
+           SendMessage(10,ObjectSide(Turret_Control_007313000));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(Gate_Control_008241000)) AND (Gate_Control_008241000Alignment <> -2)) then
+     if (isGateOpen(31480)) then
+           sendMessage(11,0);
+           handleMessage;
+     else
+           sendMessage(12,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(Gate_Control_008241000) == 1) AND (objectSide(Gate_Control_008241000) <> Gate_Control_008241000Alignment) AND (Gate_Control_008241000Alignment <> -2)) then
+           sendMessage(13,ObjectSide(Gate_Control_008241000));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(Turret_Control_014317000)) AND (Turret_Control_014317000Alignment <> -2)) then
+     SendMessage(14,0);
+     HandleMessage;
+else
+     if ((IsCaptured(Turret_Control_014317000) == 1) AND (objectSide(Turret_Control_014317000) <> Turret_Control_014317000Alignment) AND (Turret_Control_014317000Alignment <> -2)) then
+           SendMessage(15,ObjectSide(Turret_Control_014317000));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(Gate_Control_014316000)) AND (Gate_Control_014316000Alignment <> -2)) then
+     if (isGateOpen(51096)) then
+           sendMessage(16,0);
+           handleMessage;
+     else
+           sendMessage(17,0);
+           handleMessage;
+     endif;
+     if (isGateOpen(51728)) then
+           sendMessage(18,0);
+           handleMessage;
+     else
+           sendMessage(19,0);
+           handleMessage;
+     endif;
+     if (isGateOpen(52056)) then
+           sendMessage(20,0);
+           handleMessage;
+     else
+           sendMessage(21,0);
+           handleMessage;
+     endif;
+     if (isGateOpen(54824)) then
+           sendMessage(22,0);
+           handleMessage;
+     else
+           sendMessage(23,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(Gate_Control_014316000) == 1) AND (objectSide(Gate_Control_014316000) <> Gate_Control_014316000Alignment) AND (Gate_Control_014316000Alignment <> -2)) then
+           sendMessage(24,ObjectSide(Gate_Control_014316000));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(Turret_Control_022282000)) AND (Turret_Control_022282000Alignment <> -2)) then
+     SendMessage(25,0);
+     HandleMessage;
+else
+     if ((IsCaptured(Turret_Control_022282000) == 1) AND (objectSide(Turret_Control_022282000) <> Turret_Control_022282000Alignment) AND (Turret_Control_022282000Alignment <> -2)) then
+           SendMessage(26,ObjectSide(Turret_Control_022282000));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(Gate_Control_022342000)) AND (Gate_Control_022342000Alignment <> -2)) then
+     if (isGateOpen(74328)) then
+           sendMessage(27,0);
+           handleMessage;
+     else
+           sendMessage(28,0);
+           handleMessage;
+     endif;
+     if (isGateOpen(76304)) then
+           sendMessage(29,0);
+           handleMessage;
+     else
+           sendMessage(30,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(Gate_Control_022342000) == 1) AND (objectSide(Gate_Control_022342000) <> Gate_Control_022342000Alignment) AND (Gate_Control_022342000Alignment <> -2)) then
+           sendMessage(31,ObjectSide(Gate_Control_022342000));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(Turret_Control_010242000)) AND (Turret_Control_010242000Alignment <> -2)) then
+     SendMessage(32,0);
+     HandleMessage;
+else
+     if ((IsCaptured(Turret_Control_010242000) == 1) AND (objectSide(Turret_Control_010242000) <> Turret_Control_010242000Alignment) AND (Turret_Control_010242000Alignment <> -2)) then
+           SendMessage(33,ObjectSide(Turret_Control_010242000));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(Turret_Control_019333000)) AND (Turret_Control_019333000Alignment <> -2)) then
+     SendMessage(34,0);
+     HandleMessage;
+else
+     if ((IsCaptured(Turret_Control_019333000) == 1) AND (objectSide(Turret_Control_019333000) <> Turret_Control_019333000Alignment) AND (Turret_Control_019333000Alignment <> -2)) then
+           SendMessage(35,ObjectSide(Turret_Control_019333000));
+           HandleMessage;
+     endif;
+endif;
+
+if (isdead(Mech_Bay_007212000)) then
+
+else
+     if ((IsCaptured(Mech_Bay_007212000) == 1) AND (objectSide(Mech_Bay_007212000) <> Mech_Bay_007212000Alignment) AND (Mech_Bay_007212000Alignment <> -2)) then
+           sendMessage(36,ObjectSide(Mech_Bay_007212000));
+           handleMessage;
+     endif;
+endif;
+
+if (isAlive(Artillery_Crate_014336000)) then
+     if ((IsCaptured(Artillery_Crate_014336000) == 1) AND (Artillery_Crate_014336000Alignment > -2)) then
+           X = Random(STRIKE_TYPE_LIMIT);
+           sendMessage(37,(((objectCommander(Artillery_Crate_014336000)+1)*10)+X));
+           handleMessage;
+     else
+           if (Artillery_Crate_014336000Alignment < -1) then
+                 if (Artillery_Crate_014336000Alignment > -59) then
+                       if (gametime == nextsecond - 1.0) then
+                             sendMessage(38,0);
+                             handleMessage;
+                       endif;
+                 else
+                       sendMessage(39,0);
+                       handleMessage;
+                 endif;
+           endif;
+     endif;
+endif;
+
+if (isAlive(Artillery_Crate_014339000)) then
+     if ((IsCaptured(Artillery_Crate_014339000) == 1) AND (Artillery_Crate_014339000Alignment > -2)) then
+           X = Random(STRIKE_TYPE_LIMIT);
+           sendMessage(40,(((objectCommander(Artillery_Crate_014339000)+1)*10)+X));
+           handleMessage;
+     else
+           if (Artillery_Crate_014339000Alignment < -1) then
+                 if (Artillery_Crate_014339000Alignment > -59) then
+                       if (gametime == nextsecond - 1.0) then
+                             sendMessage(41,0);
+                             handleMessage;
+                       endif;
+                 else
+                       sendMessage(42,0);
+                       handleMessage;
+                 endif;
+           endif;
+     endif;
+endif;
+
+if (isdead(Mech_Bay_022345000)) then
+
+else
+     if ((IsCaptured(Mech_Bay_022345000) == 1) AND (objectSide(Mech_Bay_022345000) <> Mech_Bay_022345000Alignment) AND (Mech_Bay_022345000Alignment <> -2)) then
+           sendMessage(43,ObjectSide(Mech_Bay_022345000));
+           handleMessage;
+     endif;
+endif;

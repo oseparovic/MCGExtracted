@@ -1,0 +1,114 @@
+//*********************************************************************************
+// Structure Include file for mission 7_28
+
+
+if ((isdead(TCT1)) AND (TCT1Alignment <> -2)) then
+     SendMessage(7,0);
+     HandleMessage;
+else
+     if ((IsCaptured(TCT1) == 1) AND (objectSide(TCT1) <> TCT1Alignment) AND (TCT1Alignment <> -2)) then
+           SendMessage(8,ObjectSide(TCT1));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(TCT2)) AND (TCT2Alignment <> -2)) then
+     SendMessage(9,0);
+     HandleMessage;
+else
+     if ((IsCaptured(TCT2) == 1) AND (objectSide(TCT2) <> TCT2Alignment) AND (TCT2Alignment <> -2)) then
+           SendMessage(10,ObjectSide(TCT2));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(TCT3)) AND (TCT3Alignment <> -2)) then
+     SendMessage(11,0);
+     HandleMessage;
+else
+     if ((IsCaptured(TCT3) == 1) AND (objectSide(TCT3) <> TCT3Alignment) AND (TCT3Alignment <> -2)) then
+           SendMessage(12,ObjectSide(TCT3));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(TCT4)) AND (TCT4Alignment <> -2)) then
+     SendMessage(13,0);
+     HandleMessage;
+else
+     if ((IsCaptured(TCT4) == 1) AND (objectSide(TCT4) <> TCT4Alignment) AND (TCT4Alignment <> -2)) then
+           SendMessage(14,ObjectSide(TCT4));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(TCT5)) AND (TCT5Alignment <> -2)) then
+     SendMessage(15,0);
+     HandleMessage;
+else
+     if ((IsCaptured(TCT5) == 1) AND (objectSide(TCT5) <> TCT5Alignment) AND (TCT5Alignment <> -2)) then
+           SendMessage(16,ObjectSide(TCT5));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(TCT6)) AND (TCT6Alignment <> -2)) then
+     SendMessage(17,0);
+     HandleMessage;
+else
+     if ((IsCaptured(TCT6) == 1) AND (objectSide(TCT6) <> TCT6Alignment) AND (TCT6Alignment <> -2)) then
+           SendMessage(18,ObjectSide(TCT6));
+           HandleMessage;
+     endif;
+endif;
+
+if (isdead(RB1)) then
+
+else
+     if ((IsCaptured(RB1) == 1) AND (objectSide(RB1) <> RB1Alignment) AND (RB1Alignment <> -2)) then
+           sendMessage(19,ObjectSide(RB1));
+           handleMessage;
+     endif;
+endif;
+
+if (isdead(RB2)) then
+
+else
+     if ((IsCaptured(RB2) == 1) AND (objectSide(RB2) <> RB2Alignment) AND (RB2Alignment <> -2)) then
+           sendMessage(20,ObjectSide(RB2));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(GC1)) AND (GC1Alignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(21,398))) then
+           sendMessage(21,0);
+           handleMessage;
+     else
+           sendMessage(22,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(GC1) == 1) AND (objectSide(GC1) <> GC1Alignment) AND (GC1Alignment <> -2)) then
+           sendMessage(23,ObjectSide(GC1));
+           handleMessage;
+     endif;
+endif;
+if (isAlive(HQ1)) then
+     if ((IsCaptured(HQ1) == 1) AND (objectSide(HQ1) <> HQ1Alignment) AND (HQ1Alignment <> -2)) then
+           SendMessage(24,objectSide(HQ1));
+           HandleMessage;
+     endif;
+endif;
+if (isAlive(HQ2)) then
+     if ((IsCaptured(HQ2) == 1) AND (objectSide(HQ2) <> HQ2Alignment) AND (HQ2Alignment <> -2)) then
+           SendMessage(25,objectSide(HQ2));
+           HandleMessage;
+     endif;
+endif;
+if (isAlive(HQ3)) then
+     if ((IsCaptured(HQ3) == 1) AND (objectSide(HQ3) <> HQ3Alignment) AND (HQ3Alignment <> -2)) then
+           SendMessage(26,objectSide(HQ3));
+           HandleMessage;
+     endif;
+endif;

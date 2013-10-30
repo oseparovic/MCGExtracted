@@ -1,0 +1,653 @@
+//*********************************************************************************
+
+module MissionBrain_2_3 : integer;
+
+     //--------------------------------------------------------
+     // Operation:  2                  Mission:  3 
+     // MissionID:  84                 Name: Convoy Shuffle
+     // Designer: Tim Ryan
+     // Created: 5/8/97                By: Tim Ryan
+     //--------------------------------------------------------
+
+//------------------------------------------------------------------
+//
+//     Constant Definitions
+//
+//------------------------------------------------------------------
+     const
+
+          #include_ "misconst.abi"
+
+          //------------------
+          // Objective IDs
+          //------------------
+           OBJ1_Capture_Supply_Trucks_   = 0;
+
+		   CAPTURETRUCKS = 10;
+		   NUMTRUCKS = 7;
+		   NUMTOWIN = 4;
+
+		   TRUCK_CAPTURED = 3;
+		   TRUCK_DEAD = 2;
+		   TRUCK_WITHDRAWN = 1;
+
+			YES = 1;
+			NO = 0;
+
+//------------------------------------------------------------------
+//
+//     Type Definitions
+//
+//------------------------------------------------------------------
+     type
+
+            Position = real[3];
+
+//------------------------------------------------------------------
+//
+//     Variable Declarations
+//
+//------------------------------------------------------------------
+      var
+
+			Position			apoint;
+            static integer      ScenarioResult;
+            static boolean      ExitTimerSet;
+            static integer      VictoryLevel;
+            char[40]            dstring;
+            real                gametime;
+            static real         nextsecond;
+            static boolean      Objective_0_Decided;
+            static boolean      Objective_1_Decided;
+			boolean				MissionWon;
+			static integer[NUMTRUCKS]	TruckStatus;
+			integer				x;
+			static integer		NumCaptured;
+			integer				NumTDead;
+			static boolean		AllTrucksHandled;
+			static real[3]		LookOutPoint;
+			static boolean		Revealed;
+			real				aReal;
+//			static boolean[25]	created;
+			static boolean		ElementalsCreated;
+			static boolean		BridgeAttacked;
+			eternal boolean[NUMTRUCKS]	TruckCaptured;
+			eternal boolean		CLAN_STAR3_dead;
+			eternal boolean		CLAN_STAR4_dead;
+			eternal boolean		CLAN_STAR5_dead;
+			eternal boolean		BridgeOneDestroyed;
+			static integer		BridgeOneA;
+			static integer		BridgeOneB;
+			static integer		BridgeOneC;
+			static integer		BridgeOneD;
+			static integer		BridgeOneE;
+			static integer		BridgeOneF;
+			eternal boolean		BridgeTwoDestroyed;
+			static integer		BridgeTwoA;
+			static integer		BridgeTwoB;
+			static integer		BridgeTwoC;
+			static integer		BridgeTwoD;
+			static integer		BridgeTwoE;
+			static integer		BridgeTwoF;
+			static integer		BridgeTwoG;
+			static integer		BridgeTwoH;
+			eternal boolean		BridgeThreeDestroyed;
+			static integer		BridgeThreeA;
+			static integer		BridgeThreeB;
+			static integer		BridgeThreeC;
+			static integer		BridgeThreeD;
+			static integer		BridgeThreeE;
+			static integer		BridgeThreeF;
+			static integer		Nest;
+			static boolean		NestDestroyed;
+			eternal boolean		ConvoyAGone;
+			eternal boolean		ConvoyBGone;
+			eternal boolean		ConvoyCGone;						
+			eternal boolean		StopAtBridgeA;
+			eternal boolean		StopAtBridgeB;
+
+			static integer		Tower;
+			static boolean		TowerAlive;
+			static boolean		TowerTimerSet;
+			eternal boolean		SoundAlarm;
+			static integer		TowerSound;
+			static integer		Bunker;
+			static boolean		BunkerAlive;
+			static integer		BunkerCounter;
+
+#include_ "MiscFunc.ABI"
+
+//------------------------------------------------------------------
+//
+//     Init Function    (automatically run first time through)
+//
+//------------------------------------------------------------------
+function init;
+
+       code
+            ScenarioResult = PLAYING;
+            ExitTimerSet = FALSE;
+            VictoryLevel = 1;
+            NextSecond = 1.0;
+            Objective_0_Decided = FALSE;
+            Objective_1_Decided = FALSE;
+			AllTrucksHandled = FALSE;
+			NumCaptured = 0;
+			StopAtBridgeA = FALSE;
+			StopAtBridgeB = FALSE;
+			LookOutPoint[0] = -634.0;
+			LookOutPoint[1] = 1526.0;
+			LookOutPoint[2] = 0.0;
+			Revealed = FALSE;
+			for x = 0 to (NUMTRUCKS - 1) do
+				setGlobalValue(CAPTURETRUCKS + x, NO);
+				TruckStatus[x] = 0;
+				TruckCaptured[x] = FALSE;
+			endfor;
+//			for x = 0 to 24 do
+//				created[x] = FALSE;
+//			endfor;
+			ElementalsCreated = FALSE;
+			BridgeAttacked = FALSE;
+			CLAN_STAR3_dead = FALSE;
+			CLAN_STAR4_dead = FALSE;
+			CLAN_STAR5_dead = FALSE;
+			ConvoyAGone = FALSE;
+			ConvoyBGone = FALSE;
+			ConvoyCGone = FALSE;
+			BridgeOneDestroyed = FALSE;
+			BridgeOneA = getTerrainObjectPartID(8,146);
+			BridgeOneB = getTerrainObjectPartID(8,147);
+			BridgeOneC = getTerrainObjectPartID(8,148);
+			BridgeOneD = getTerrainObjectPartID(8,149);
+			BridgeOneE = getTerrainObjectPartID(8,150);
+			BridgeOneF = getTerrainObjectPartID(8,151);		
+			BridgeTwoDestroyed = FALSE;
+			BridgeTwoA = getTerrainObjectPartID(20,206);
+			BridgeTwoB = getTerrainObjectPartID(20,226);
+			BridgeTwoC = getTerrainObjectPartID(20,246);
+			BridgeTwoD = getTerrainObjectPartID(20,266);
+			BridgeTwoE = getTerrainObjectPartID(20,286);
+			BridgeTwoF = getTerrainObjectPartID(20,306);
+			BridgeTwoG = getTerrainObjectPartID(20,326);		
+			BridgeTwoH = getTerrainObjectPartID(20,346);		
+			BridgeThreeDestroyed = FALSE;
+			BridgeThreeA = getTerrainObjectPartID(8,146);
+			BridgeThreeB = getTerrainObjectPartID(8,147);
+			BridgeThreeC = getTerrainObjectPartID(8,148);
+			BridgeThreeD = getTerrainObjectPartID(8,149);
+			BridgeThreeE = getTerrainObjectPartID(8,150);
+			BridgeThreeF = getTerrainObjectPartID(8,151);		
+
+			Nest = getTerrainObjectPartID(20,327);
+			NestDestroyed = FALSE;
+
+			TowerAlive = TRUE;
+			TowerTimerSet = FALSE;
+			SoundAlarm = FALSE;
+			Tower = getTerrainObjectPartID(26,191);
+			objectChangeSides(Tower,CLAN); 
+//			SetPotentialContact(
+			TowerSound = 0;
+			BunkerAlive = TRUE;
+			Bunker = getTerrainObjectPartID(26,210);
+			objectChangeSides(Bunker,CLAN); 
+			BunkerCounter = 0;
+
+endfunction;
+
+//------------------------------------------------------------------
+//
+//     Main Code
+//
+//------------------------------------------------------------------
+       code
+
+            //------------------------------------------------
+            // Debug Window Game Clock Second Counter
+            // Note:  This is used by some included functions.
+            //------------------------------------------------
+            gametime = gettime;
+            If (gametime >= nextsecond) Then
+                nextsecond = gametime + 1;
+				if (SoundAlarm) then
+					BunkerCounter = BunkerCounter + 1;
+				endif;
+				if (TowerSound == 2) then
+					playSoundEffect(18);
+				endif;
+            endif;                     
+
+			if (TowerSound == 1) then
+				playSoundEffect(20);
+			endif;
+
+
+			if (NOT isAlive(CLAN_STAR3)) then
+				CLAN_STAR3_dead = TRUE;
+			endif;
+
+			if (NOT isAlive(CLAN_STAR4)) then
+				CLAN_STAR4_dead = TRUE;
+			endif;
+
+			if (NOT isAlive(CLAN_STAR5)) then
+				CLAN_STAR5_dead = TRUE;
+			endif;
+
+			if (NOT isAlive(CLAN_STAR0)) then
+				ConvoyAGone = TRUE;
+			endif;
+
+			if (NOT isAlive(CLAN_STAR1)) then
+				ConvoyBGone = TRUE;
+			endif;
+
+			if (NOT isAlive(CLAN_STAR2)) then
+				ConvoyCGone = TRUE;
+			endif;
+
+			if (TowerAlive) then
+				if ((getObjectDamage(Tower) > 99) OR (objectStatus(Tower) == OBJECT_STATUS_DESTROYED)) then
+					TowerAlive = FALSE;
+					TowerSound = 0;
+				endif;
+			endif;
+
+			getObjectPosition(Tower, apoint);
+			if ((TowerAlive) and (distancetoposition(PLAYER_FORCE,apoint) < 125)) then
+				if (SoundAlarm) then
+					TowerSound = 2;
+				else
+					if (TowerTimerSet) then
+						if (checkTimer(SCENARIO_TIMER_1) == 0.0) then
+							SoundAlarm = TRUE;
+							TowerSound = 2;
+							setObjectActive(CLAN_VEHICLE0_STAR7,TRUE);
+						endif;
+					else
+						setTimer(SCENARIO_TIMER_1,20.0);
+						TowerTimerSet = TRUE;
+						TowerSound = 1;
+					endif;
+				endif;
+			else
+				TowerSound = 0;
+				if (TowerTimerSet) then
+					TowerTimerSet = FALSE;
+					endTimer(SCENARIO_TIMER_1);
+				endif;
+			endif;
+
+			if (BunkerAlive) then
+				if (objectStatus(Bunker) == OBJECT_STATUS_DESTROYED) then
+					BunkerAlive = FALSE;
+				endif;
+			endif;
+
+			if ((SoundAlarm) AND (BunkerAlive)) then
+				Switch (BunkerCounter)
+					case 5 :					
+						objectcreate(VehicleID(CLAN_STAR7 + 1,0,0));
+						endcase;
+					case 10 :
+						objectcreate(VehicleID(CLAN_STAR7 + 1,1,0));
+						endcase;
+					case 12 :
+						objectcreate(VehicleID(CLAN_STAR7 + 1,2,0));
+						endcase;
+					case 20 :
+						objectcreate(VehicleID(CLAN_STAR7 + 1,3,0));
+						endcase;
+					case 25 :
+						objectcreate(VehicleID(CLAN_STAR7 + 1,4,0));
+						endcase;
+				endSwitch;
+			endif;
+
+
+			if (NOT BridgeOneDestroyed) then
+				if (getObjectDamage(BridgeOneA) > 99) then
+					BridgeOneDestroyed = TRUE;
+				else
+					if (getObjectDamage(BridgeOneB) > 99) then
+						BridgeOneDestroyed = TRUE;
+					else
+						if (getObjectDamage(BridgeOneC) > 99) then
+							BridgeOneDestroyed = TRUE;
+						else
+							if (getObjectDamage(BridgeOneD) > 99) then
+								BridgeOneDestroyed = TRUE;
+							else
+								if (getObjectDamage(BridgeOneE) > 99) then
+									BridgeOneDestroyed = TRUE;
+								else
+									if (getObjectDamage(BridgeOneF) > 99) then
+										BridgeOneDestroyed = TRUE;
+									endif;
+								endif;
+							endif;
+						endif;
+					endif;
+				endif;
+			endif;
+
+			if (NOT BridgeTwoDestroyed) then
+				if (getObjectDamage(BridgeTwoA) > 99) then
+					BridgeTwoDestroyed = TRUE;
+				else
+					if (getObjectDamage(BridgeTwoB) > 99) then
+						BridgeTwoDestroyed = TRUE;
+					else
+						if (getObjectDamage(BridgeTwoC) > 99) then
+							BridgeTwoDestroyed = TRUE;
+						else
+							if (getObjectDamage(BridgeTwoD) > 99) then
+								BridgeTwoDestroyed = TRUE;
+							else
+								if (getObjectDamage(BridgeTwoE) > 99) then
+									BridgeTwoDestroyed = TRUE;
+								else
+									if (getObjectDamage(BridgeTwoF) > 99) then
+										BridgeTwoDestroyed = TRUE;
+									else
+										if (getObjectDamage(BridgeTwoG) > 99) then
+											BridgeTwoDestroyed = TRUE;
+										else
+											if (getObjectDamage(BridgeTwoH) > 99) then
+												BridgeTwoDestroyed = TRUE;
+											endif;
+										endif;
+									endif;
+								endif;
+							endif;
+						endif;
+					endif;
+				endif;
+			endif;
+
+			if (NOT BridgeThreeDestroyed) then
+				if (getObjectDamage(BridgeThreeA) > 99) then
+					BridgeThreeDestroyed = TRUE;
+				else
+					if (getObjectDamage(BridgeThreeB) > 99) then
+						BridgeThreeDestroyed = TRUE;
+					else
+						if (getObjectDamage(BridgeThreeC) > 99) then
+							BridgeThreeDestroyed = TRUE;
+						else
+							if (getObjectDamage(BridgeThreeD) > 99) then
+								BridgeThreeDestroyed = TRUE;
+							else
+								if (getObjectDamage(BridgeThreeE) > 99) then
+									BridgeThreeDestroyed = TRUE;
+								else
+									if (getObjectDamage(BridgeThreeF) > 99) then
+										BridgeThreeDestroyed = TRUE;
+									endif;
+								endif;
+							endif;
+						endif;
+					endif;
+				endif;
+			endif;
+
+            //---------------------------------------
+            // Create Non-Existing Vehicles
+            //---------------------------------------
+            #include_ "123_2CRE.ABI"
+
+            //---------------------------------------
+            // Activate inactive vehicles
+            //---------------------------------------
+            #include_ "123_2ACT.ABI"
+
+
+			if (NOT BridgeAttacked) then
+				if (getObjectDamage(BridgeTwoA) > 0) then
+					BridgeAttacked = TRUE;
+				else
+					if (getObjectDamage(BridgeTwoB) > 0) then
+						BridgeAttacked = TRUE;
+					else
+						if (getObjectDamage(BridgeTwoC) > 0) then
+							BridgeAttacked = TRUE;
+						else
+							if (getObjectDamage(BridgeTwoD) > 0) then
+								BridgeAttacked = TRUE;
+							else
+								if (getObjectDamage(BridgeTwoE) > 0) then
+									BridgeAttacked = TRUE;
+								else
+									if (getObjectDamage(BridgeTwoF) > 0) then
+										BridgeAttacked = TRUE;
+									else
+										if (getObjectDamage(BridgeTwoG) > 0) then
+											BridgeAttacked = TRUE;
+										else
+											if (getObjectDamage(BridgeTwoH) > 0) then
+												BridgeAttacked = TRUE;
+											endif;
+										endif;
+									endif;
+								endif;
+							endif;
+						endif;
+					endif;
+				endif;
+			endif;
+
+			if (NOT NestDestroyed) then
+				if (objectStatus(Nest) == OBJECT_STATUS_DESTROYED) then
+					NestDestroyed = TRUE;
+				endif;
+			endif;
+
+			if ((BridgeAttacked) AND (NOT ElementalsCreated) AND (NOT NestDestroyed)) then
+				objectcreate(VehicleID(CLAN_STAR6,0,0));
+				objectcreate(VehicleID(CLAN_STAR6,1,0));
+				objectcreate(VehicleID(CLAN_STAR6,2,0));
+				objectcreate(VehicleID(CLAN_STAR6,3,0));
+				objectcreate(VehicleID(CLAN_STAR6,4,0));
+				ElementalsCreated = TRUE;
+			endif;
+
+			if ((NOT ElementalsCreated) AND (NOT NestDestroyed)) then
+				aReal = (distancetoobject(CLAN_STAR1, Nest));
+				if (aReal == -1) then
+//					print ("Problems getting star1's distance from bridge2c");
+				else
+					if (aReal < 250) then
+						objectcreate(VehicleID(CLAN_STAR6,0,0));
+						objectcreate(VehicleID(CLAN_STAR6,1,0));
+						objectcreate(VehicleID(CLAN_STAR6,2,0));
+						objectcreate(VehicleID(CLAN_STAR6,3,0));
+						objectcreate(VehicleID(CLAN_STAR6,4,0));
+						ElementalsCreated = TRUE;
+						NestDestroyed = TRUE;
+					endif;
+				endif
+			endif;											
+
+            //---------------------------------------
+            // LookOut Point
+            //---------------------------------------
+
+			if (NOT Revealed) then
+				if (distanceToPosition(PLAYER_FORCE,LookOutPoint) < 50) then
+					Revealed = TRUE;
+					setRevealed(1,550.0,LookOutPoint);
+				endif;
+			endif;
+
+            //---------------------------------------
+            // SET EXIT TIMER IF PLAYER DEAD/DISABLED
+            //---------------------------------------
+
+            if ((NOT ExitTimerSet) AND (NOT isalive(PLAYER_FORCE))) then
+//                  setTimer(EXIT_TIMER,10.0);
+//                  ExitTimerSet = TRUE;
+//                  PlayDigitalMusic(DEFEAT_MUSIC);
+                  // Fail any Undecided Objectives
+                  if (checkObjectiveStatus(0) == INCOMPLETE) then
+                        setObjectiveStatus(0, FAILED);
+						Objective_0_Decided = TRUE;
+						MissionWon = FALSE;
+                  endif;
+                  if (checkObjectiveStatus(1) == INCOMPLETE) then
+                        setObjectiveStatus(1, FAILED);
+						Objective_1_Decided = TRUE;
+                  endif;
+            endif;
+
+            //---------------------------------------
+            // Objective Resolution
+            //---------------------------------------
+            if ((checkObjectiveStatus(0) == INCOMPLETE) OR (checkObjectiveStatus(1) == INCOMPLETE)) then
+
+				for x = 0 to (NUMTRUCKS - 1) do
+					if (TruckStatus[x] == 0) then
+						if (getGlobalValue(CAPTURETRUCKS + x) == YES) then
+							TruckStatus[x] = TRUCK_CAPTURED;
+//		                    PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+							PlaySoundEffect(31);
+						endif;
+					endif;
+				endfor;
+
+				if (objectStatus(CLAN_VEHICLE0_STAR0) == 2) then
+					TruckStatus[0] = TRUCK_DEAD;
+				endif;
+				if (objectStatus(CLAN_VEHICLE1_STAR0) == 2) then
+					TruckStatus[1] = TRUCK_DEAD;
+				endif;
+				if (objectStatus(CLAN_VEHICLE2_STAR0) == 2) then
+					TruckStatus[2] = TRUCK_DEAD;
+				endif;
+				if (objectStatus(CLAN_VEHICLE0_STAR1) == 2) then
+					TruckStatus[3] = TRUCK_DEAD;
+				endif;
+				if (objectStatus(CLAN_VEHICLE1_STAR1) == 2) then
+					TruckStatus[4] = TRUCK_DEAD;
+				endif;
+				if (objectStatus(CLAN_VEHICLE0_STAR2) == 2) then
+					TruckStatus[5] = TRUCK_DEAD;
+				endif;
+				if (objectStatus(CLAN_VEHICLE1_STAR2) == 2) then
+					TruckStatus[6] = TRUCK_DEAD;
+				endif;
+/*			
+				if (objectInWithdrawal(CLAN_VEHICLE0_STAR0) == 1) then
+					TruckStatus[0] = TRUCK_WITHDRAWN;
+				endif;
+				if (objectInWithdrawal(CLAN_VEHICLE1_STAR0) == 1) then
+					TruckStatus[1] = TRUCK_WITHDRAWN;
+				endif;
+				if (objectInWithdrawal(CLAN_VEHICLE2_STAR0) == 1) then
+					TruckStatus[2] = TRUCK_WITHDRAWN;
+				endif;
+				if (objectInWithdrawal(CLAN_VEHICLE0_STAR1) == 1) then
+					TruckStatus[3] = TRUCK_WITHDRAWN;
+				endif;
+				if (objectInWithdrawal(CLAN_VEHICLE1_STAR1) == 1) then
+					TruckStatus[4] = TRUCK_WITHDRAWN;
+				endif;
+				if (objectInWithdrawal(CLAN_VEHICLE0_STAR2) == 1) then
+					TruckStatus[5] = TRUCK_WITHDRAWN;
+				endif;
+				if (objectInWithdrawal(CLAN_VEHICLE1_STAR2) == 1) then
+					TruckStatus[6] = TRUCK_WITHDRAWN;
+				endif;
+*/
+				NumCaptured = 0;
+				NumTDead = 0;
+				AllTrucksHandled = TRUE;
+				for x = 0 to (NUMTRUCKS - 1) do
+					if (TruckStatus[x] == 0) then
+						AllTrucksHandled = FALSE;
+					endif;
+					if (TruckStatus[x] == TRUCK_CAPTURED) then
+						NumCaptured = NumCaptured + 1;
+					else
+						if (TruckStatus[x] == TRUCK_DEAD) then
+							NumTDead = NumTDead + 1;
+						endif;
+					endif;
+				endfor;
+
+				if ((NOT Objective_0_Decided) AND (NumCaptured >= NUMTOWIN)) then
+                    SetObjectiveStatus(0,SUCCESS);
+                    Objective_0_Decided = TRUE;
+					MissionWon = TRUE;
+	            	PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+					VictoryLevel = PLAYER_WIN_SMALL;
+	            endif;
+
+				if ((Objective_0_Decided) AND (NumCaptured < NUMTOWIN)) then
+                    SetObjectiveStatus(0,INCOMPLETE);
+                    Objective_0_Decided = FALSE;
+					MissionWon = FALSE;
+	            	PlayDigitalMusic(OBJECTIVE_FAIL_MUSIC);
+					VictoryLevel = PLAYING;
+				endif;
+
+				if ((AllTrucksHandled) AND (NumCaptured == NUMTRUCKS)) then
+                    SetObjectiveStatus(1,SUCCESS);
+                    Objective_1_Decided = TRUE;
+					MissionWon = TRUE;
+					VictoryLevel = PLAYER_WIN_BIG;
+				else
+					if ((AllTrucksHandled) AND (NumCaptured >= NUMTOWIN)) then
+	                    SetObjectiveStatus(1,FAILED);
+    	                Objective_1_Decided = TRUE;
+						MissionWon = TRUE;
+						VictoryLevel = 3;
+					endif;
+	            endif;
+
+				if ((AllTrucksHandled) AND (NumCaptured < NUMTOWIN)) then
+                    SetObjectiveStatus(0,FAILED);
+                    SetObjectiveStatus(1,FAILED);
+                    Objective_0_Decided = TRUE;
+                    Objective_1_Decided = TRUE;
+					MissionWon = FALSE;
+					VictoryLevel = 1;
+				endif;
+
+				if (NumTDead >= NUMTOWIN) then
+                    SetObjectiveStatus(0,FAILED);
+                    SetObjectiveStatus(1,FAILED);
+                    Objective_0_Decided = TRUE;
+                    Objective_1_Decided = TRUE;
+					MissionWon = FALSE;
+					VictoryLevel = 1;
+	            endif;					
+
+			endif;
+
+            if ((NOT ExitTimerSet) AND (Objective_0_Decided) AND (Objective_1_Decided)) then
+                ExitTimerSet = TRUE;
+				if (MissionWon) then
+	                setTimer(EXIT_TIMER,10.0); // 60.0
+	            	PlayDigitalMusic(VICTORY_MUSIC);
+				else
+	                setTimer(EXIT_TIMER,10.0); // 40.0
+	            	PlayDigitalMusic(DEFEAT_MUSIC);
+				endif;
+            endif;
+
+            //---------------------------------------
+            // END SCENARIO
+            //---------------------------------------
+
+            if ((ExitTimerSet) AND (CheckTimer(EXIT_TIMER) == 0.0)) then
+                  ScenarioResult = VictoryLevel;
+            endif;
+
+            //---------------------------------------
+            // RETURN RESULT
+            //---------------------------------------
+
+            return (ScenarioResult);
+endmodule.
+//******************************************************************

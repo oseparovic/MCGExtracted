@@ -1,0 +1,47 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      MechWarrior:  416   Name: Allied Regular (C/G)  Callsign: Allied
+//
+//      Creation Date: 1/28/99   By: Mike Lee
+//
+// -------------------------------------------------------------------------
+
+
+
+[General]
+st Name =                                                  "Allied Regular (C/G)"
+l Rank =                                                    2 
+st Callsign =                                              "Allied"
+ul ID =                                                     416 
+l NameIndex =                                               0 
+l DescIndex =                                               0 
+ul HeadIcon =                                               0 
+l paintScheme =                                             54 
+st pilotAudio =                                            "PILOTA"
+st pilotVideo =                                            "PILOT00"
+st Picture =                                               "pilot00.tga"
+
+[PersonalityTraits]
+c Professionalism =                                         50 
+c Decorum =                                                 50 
+c Aggressiveness =                                          50 
+c Courage =                                                 50 
+
+[Skills]
+c Piloting =                                                50 
+c Jumping =                                                 50 
+c Sensors =                                                 50 
+c Gunnery =                                                 50 
+
+[Affinities]
+c MechClass =                                               0 
+c MechType =                                                0 
+c WeaponClass =                                             0 
+uc[2] WeaponTypes =                                        0,0
+
+[Status]
+c Wounds =                                                  0 
+
+FITEnd

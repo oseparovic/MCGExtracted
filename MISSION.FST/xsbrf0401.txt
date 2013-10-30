@@ -1,0 +1,22 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cSTARCOM:SOLO/04PRDN01%n
+%fc5%c----------%n
+%fc6%c***DESTROY ALL ACES***%n
+%fc21-Destroy Ace Madcat%n
+%fc22-Take Out Three Ace Ullers%n
+%fc23-Eliminate Ace Masakari%n
+%fc24-Destroy Ace Cougar%n
+%fc25-Eliminate two Ace Shadowcats%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 1 Small  0 Large%n
+%t12SENSOR PROBE: 2%n
+%t12CAMERA DRONE: 0%n%n
+%fc6%cMISSION LEVEL: DIFFICULT%n%n
+%fc5%c----------%n
+%fc4What if a group of Wolf-Clan-In-Exile Ace Pilots were trapped in Jade Falcon territory.  How well would they acquit themselves when the Falcons came after them?%n%n
+In this simulation you play a Jade Falcon commander who stumbles across a small group of Wolf-Clan-In-Exile Aces.  Can you take them out?%n%n
+North of you somewhere is an ace Madcat pilot in an LRM-equipped Madcat J with extra armor.  There are three Ullers somewhere to the west and to the northwest is a Masakari driving ace with some Long Toms stolen from the Inner Sphere.  Finally, in the northeast quadrant are the last three aces, a Cougar and two Shadowcats.%n%n
+They're all aces.  All of their 'Mechs are custom built and tweaked to within an inch of their lives.  They know you're coming.  They've prepared surprises.%n%n
+Good Hunting, Commander.%n%n
+%fc5%c----------%n
+%fc6<<<<END DISPATCH

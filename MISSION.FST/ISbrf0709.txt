@@ -1,0 +1,9 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cMISSION COMMAND:GAMBIT/7PRDN9%n
+%fc5%c----------%n
+%fc6%c*** FORTRESS ASSAULT ***%n
+%fc21-Capture and Hold Command Building%n%n
+%fc5%c----------%n
+%fc4Our forces must have the secrets of this ancient Star League facility. Capture and hold the Command Building before the timer expires.%n%n
+%fc6<<<<END DISPATCH
+

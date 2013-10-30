@@ -1,0 +1,33 @@
+//*********************************************************************************
+// Variable Include file for mission 3_2
+
+     eternal integer                   TCBridge;
+     static integer                    TCBridgeAlignment;
+     eternal integer                   GCBridge;
+     static integer                    GCBridgeAlignment;
+     eternal integer                   Salvage1;
+     static integer                    Salvage1Alignment;
+     eternal integer                   GCRepairBay;
+     static integer                    GCRepairBayAlignment;
+     eternal integer                   TCRepairBay;
+     static integer                    TCRepairBayAlignment;
+     eternal integer                   RepairBay;
+     static integer                    RepairBayAlignment;
+     eternal integer                   Vault1;
+     static integer                    Vault1Alignment;
+     eternal integer                   Vault2;
+     static integer                    Vault2Alignment;
+     eternal integer                   VehDepotSalvage;
+     static integer                    VehDepotSalvageAlignment;
+     eternal integer                   VehDepotTC;
+     static integer                    VehDepotTCAlignment;
+     eternal integer                   VehDepotGC;
+     static integer                    VehDepotGCAlignment;
+     eternal integer                   EndGC;
+     static integer                    EndGCAlignment;
+     eternal integer                   EndTC;
+     static integer                    EndTCAlignment;
+     eternal integer                   VehDepotRB;
+     static integer                    VehDepotRBAlignment;
+     eternal integer                   randomsalvage;
+     static integer                    randomsalvageAlignment;

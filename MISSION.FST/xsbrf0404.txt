@@ -1,0 +1,22 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cSTARCOM:SOLO/04PRDN04%n
+%fc5%c----------%n
+%fc6%c***PORT ARTHUR REDUX***%n
+%fc21-Take Out all four Ambulances%n
+%fc22-Destroy the eight Farm Buildings%n
+%fc23-Destroy all three Oil Derricks%n
+%fc24-Destroy Cpt. Nairn's Atlas%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 3 Small  1 Large%n
+%t12SENSOR PROBE: 1%n
+%t12CAMERA DRONE: 0%n%n
+%fc5%c----------%n
+%fc4Hmmm, Deja Vu.  Sorry, Commander. For some reason this map looked familiar.  No worry. I shall pin down the feeling later.  For now, you have a job to do.%n%n
+As you know, a group of Inner Sphere dogs have attacked us here on Port Arthur.  We need you to take your forces and clear out a group of the vermin in the area.%n%n
+Some of the IS forces are escorting a group of four Ambulances along the west end of your quadrant.  We need those ambulances destroyed before they get off the northern end of of the map grid.  Is that clear, Commander?%n%n
+In addition, a group of revolutionaries that have surfaced once the "Star League" troops landed are currently holes up in some farm buildings to the north.  They are protected by three lances of IS dogs and a minelayer.  Take out those buildings. %n%n
+Third, enemy forces have captured a group of our oil derricks to the NW.  Take those derricks out.%n%n
+Finally, a Cpt. Nairn has been chased into that area by a different binary but they are too shot up to follow him into such a heavily defended sector.  It is imperative that Cpt. Nairn's Atlas be reduced to nothing but component parts.%n%n
+That is all.  Good Hunting, Commander.%n%n
+%fc5%c----------%n
+%fc6<<<<END DISPATCH

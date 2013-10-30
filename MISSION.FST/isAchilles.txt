@@ -1,0 +1,16 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc5%c----------%n
+%fc6%c***Achilles***%n
+%fc2(1) Destroy HQ building on west edge of map.%n(2) Take out Mobile Orbital Gun in South.%n(3) Destroy Powerplant in east Quadrant.%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY:    0 Small    0 Large%n
+%t12SENSOR PROBE:   0%n
+%t12CAMERA DRONE:    0%n%n
+%fc5%c----------%n
+%fc4The enemy is near completion of a new industrial stronghold. Destroying the base Primary Power Generator will stop all efforts on the base. There is also a new HQ building that is relatively unsupported in the West. Lastly, they have moved a new Mobile Orbital Gun into position in the South. These key targets must be eliminated.%n%n%n
+%fc5%c----------%n
+%fc1%fm%c**TACTICAL WARNING**%n
+%fc2%fs*There are artillery crates in the area so be careful, Commander.%n%n
+%fm%fc6%c**TACTICAL NOTICE**%n
+%fs%fc2*None%n%n
+%fc6<<<<END DISPATCH

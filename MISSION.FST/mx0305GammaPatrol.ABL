@@ -1,0 +1,145 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:11/18/98   BY:david abzug
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBmx0305GammaPatrol : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+    static integer                     Order6Status;
+    static integer                     Order7Status;
+
+    // PATHS
+    static path                        Path1;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+         Order6Status = INCOMPLETE;
+         Order7Status = INCOMPLETE;
+
+         // Paths
+
+         Path1[0,0] = -2184; // X
+         Path1[0,1] = 2345; // Y
+
+         Path1[1,0] = -2732; // X
+         Path1[1,1] = 1442; // Y
+
+         Path1[2,0] = -3748; // X
+         Path1[2,1] = 1753; // Y
+
+         Path1[3,0] = -4075; // X
+         Path1[3,1] = 2471; // Y
+
+         Path1[4,0] = -3404; // X
+         Path1[4,1] = 3091; // Y
+
+         Path1[5,0] = -2665; // X
+         Path1[5,1] = 3163; // Y
+
+         SetEngageRadius(125);
+         SetDisEngageRadius(525);
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (beenHit) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              Flag1 = TRUE;
+              Order3Status = SUCCESS;
+         endif;
+    endif;
+    if (numDead(clan_star0) >= 1) then
+         // Order  4 
+         if (Order4Status == INCOMPLETE) then
+              Flag1 = TRUE;
+              Order4Status = SUCCESS;
+         endif;
+    endif;
+    if (flag1) then
+         // Order  5 
+         if (Order5Status == INCOMPLETE) then
+              SetEngageRadius(425);
+              Order5Status = SUCCESS;
+         endif;
+    endif;
+    if (flag1) then
+         // Order  6 
+         if (Order6Status == INCOMPLETE) then
+              SetSpeed(RUN);
+              Order6Status = SUCCESS;
+         endif;
+    endif;
+    if (GeneralAlarm) then
+         // Order  7 
+         if (Order7Status == INCOMPLETE) then
+              Flag1 = TRUE;
+              Order7Status = SUCCESS;
+         endif;
+    endif;
+    if (gametime > 5) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              Order2Status = Patrol(Path1,6,PATROL_CIRCLE, 50000);
+              if (Order2Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = Attack;
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

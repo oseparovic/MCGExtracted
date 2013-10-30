@@ -1,0 +1,10 @@
+%fl%fc1%c****CLASSIFIED****%n
+%fm%fc4FEDCOM:HUNTER/03PRDN04%n%n
+%fc6DISPATCH>>%n
+%fc2***ARTILLERY Available%n
+%fc2***SENSOR PROBE Available%n%n
+%fc4Liberate "Re-education" camp.%n%n
+We need to liberate a so-called reeducation camp, where loyal Inner Sphere warriors are being held. It's time we repay them for their loyalty. The camp is secluded within the Mayan Canyons. You are to operate out of a nearby field base and recon the area.%n%n
+Be warned, however, there are reports of patrols in the area that might locate the field base before you are able to liberate the camp. Protection of the field base is vital.%n%n
+%fc6<<END DISPATCH
+

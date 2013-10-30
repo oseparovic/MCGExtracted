@@ -1,0 +1,612 @@
+//*********************************************************************************
+
+module MissionBrain_3_5 : integer;
+
+     //--------------------------------------------------------
+     // Operation:  3                  Mission:  5 
+     // MissionID:  270                Name: Him Give me Smaller Banana
+     // Designer: Mike Lee
+     // Created: 1/29/99               By: Mike Lee
+     //--------------------------------------------------------
+
+//------------------------------------------------------------------
+//
+//     Constant Definitions
+//
+//------------------------------------------------------------------
+     const
+
+          #include_ "misconst.abi"
+
+          //------------------
+          // Objective IDs
+          //------------------
+           OBJ0_Destroy_Hidden_Vault_Dr  = 0;
+           OBJ1_Destroy_Drill_Group_Bet  = 1;
+           OBJ2_Destroy_Drill_Group_Gam  = 2;
+           OBJ3_Destroy_Drill_Group_Del  = 3;
+
+//------------------------------------------------------------------
+//
+//     Type Definitions
+//
+//------------------------------------------------------------------
+     type
+
+
+//------------------------------------------------------------------
+//
+//     Variable Declarations
+//
+//------------------------------------------------------------------
+      var
+
+            #include_ "3_5MXVR.ABI"
+
+            static integer      ScenarioResult;
+            eternal boolean     ExitTimerSet;
+            static integer      VictoryLevel;
+            char[40]            dstring;
+            eternal real        gametime;
+            static real         nextsecond;
+            integer             x;
+            integer             y;
+            Position            aPoint;
+            eternal boolean     PlayerForceDead;
+            eternal boolean     ClanForceDead;
+            eternal boolean     AlliedForceDead;
+            eternal boolean     GeneralAlarm;
+            eternal boolean     Flag1;
+            eternal boolean     Flag2;
+            eternal boolean     Flag3;
+            eternal boolean     Flag4;
+            eternal boolean     Flag5;
+            eternal boolean     Flag6;
+            eternal boolean     Flag7;
+            eternal boolean     Flag8;
+            eternal boolean     Flag9;
+            eternal boolean     Flag10;
+            static boolean      PlayPASound;
+            static boolean      PlayGASound;
+            eternal integer     GeneralAlarmCounter;
+            boolean             PerimeterBreach;
+            static boolean      Objective_0_Decided;
+            static boolean      Objective_1_Decided;
+            static boolean      Obj_1_Action_1_Success;
+            static boolean      Obj_1_Action_2_Success;
+            static boolean      Objective_2_Decided;
+            static boolean      Obj_2_Action_1_Success;
+            static boolean      Obj_2_Action_2_Success;
+            static boolean      Objective_3_Decided;
+            static boolean      Obj_3_Action_1_Success;
+            static boolean      Obj_3_Action_2_Success;
+            static boolean      Obj_3_Action_3_Success;
+
+//------------------------------------------------------------------
+//
+//     Init Function    (automatically run first time through)
+//
+//------------------------------------------------------------------
+function init;
+
+       code
+
+            ScenarioResult = PLAYING;
+            PlayerForceDead = FALSE;
+            ClanForceDead = FALSE;
+            AlliedForceDead = FALSE;
+            ExitTimerSet = FALSE;
+            VictoryLevel = 0; // New Scheme
+            NextSecond = 1.0;
+            GeneralAlarmCounter = -1;
+            GeneralAlarm = FALSE;
+            Flag1 = FALSE;
+            Flag2 = FALSE;
+            Flag3 = FALSE;
+            Flag4 = FALSE;
+            Flag5 = FALSE;
+            Flag6 = FALSE;
+            Flag7 = FALSE;
+            Flag8 = FALSE;
+            Flag9 = FALSE;
+            Flag10 = FALSE;
+            PlayPASound = FALSE;
+            PlayGASound = FALSE;
+            Objective_0_Decided = FALSE;
+            Objective_1_Decided = FALSE;
+            Obj_1_Action_1_Success = FALSE;
+            Obj_1_Action_2_Success = FALSE;
+            Objective_2_Decided = FALSE;
+            Obj_2_Action_1_Success = FALSE;
+            Obj_2_Action_2_Success = FALSE;
+            Objective_3_Decided = FALSE;
+            Obj_3_Action_1_Success = FALSE;
+            Obj_3_Action_2_Success = FALSE;
+            Obj_3_Action_3_Success = FALSE;
+
+            #include_ "3_5MXIN.ABI"
+
+            //---------------------------------------
+            // Custom ABL INIT Code
+            //---------------------------------------
+
+            //deactivate popups
+            
+            setObjectActive(getterrainobjectpartid(14,241),FALSE);
+            setObjectActive(getterrainobjectpartid(14,165),FALSE);
+            setObjectActive(getterrainobjectpartid(14,86),FALSE);
+            setObjectActive(getterrainobjectpartid(14,26),FALSE);
+            setObjectActive(getterrainobjectpartid(8,345),FALSE);
+            setObjectActive(getterrainobjectpartid(8,263),FALSE);
+            setObjectActive(getterrainobjectpartid(7,257),FALSE);
+            setObjectActive(getterrainobjectpartid(7,233),FALSE);
+            setObjectActive(getterrainobjectpartid(7,271),FALSE);
+            setObjectActive(getterrainobjectpartid(7,287),FALSE);
+            setObjectActive(getterrainobjectpartid(7,345),FALSE);
+            setObjectActive(getterrainobjectpartid(13,44),FALSE);
+            setObjectActive(getterrainobjectpartid(13,105),FALSE);
+            setObjectActive(getterrainobjectpartid(13,189),FALSE);
+            setObjectActive(getterrainobjectpartid(13,232),FALSE);
+            setObjectActive(getterrainobjectpartid(13,258),FALSE);
+            setObjectActive(getterrainobjectpartid(14,241),FALSE);
+            setObjectActive(getterrainobjectpartid(13,219),FALSE);
+            setObjectActive(getterrainobjectpartid(13,199),FALSE);
+            setObjectActive(getterrainobjectpartid(13,158),FALSE);
+            setObjectActive(getterrainobjectpartid(14,160),FALSE);
+            setObjectActive(getterrainobjectpartid(14,143),FALSE);
+            setObjectActive(getterrainobjectpartid(14,123),FALSE);
+            setObjectActive(getterrainobjectpartid(14,103),FALSE);
+            setObjectActive(getterrainobjectpartid(14,104),FALSE);
+            setObjectActive(getterrainobjectpartid(14,21),FALSE);
+            setObjectActive(getterrainobjectpartid(14,4 ),FALSE);
+            setObjectActive(getterrainobjectpartid( 8,381),FALSE);
+            setObjectActive(getterrainobjectpartid( 8,343),FALSE);
+            setObjectActive(getterrainobjectpartid(8,320 ),FALSE);
+            setObjectActive(getterrainobjectpartid( 8,260),FALSE);
+            setObjectActive(getterrainobjectpartid(7,298 ),FALSE);
+            setObjectActive(getterrainobjectpartid(7,296 ),FALSE);
+            setObjectActive(getterrainobjectpartid(7,273 ),FALSE);
+            setObjectActive(getterrainobjectpartid(7,334 ),FALSE);
+            setObjectActive(getterrainobjectpartid( 7,351),FALSE);
+            setObjectActive(getterrainobjectpartid(7,309 ),FALSE);
+            setObjectActive(getterrainobjectpartid(7,389 ),FALSE);
+            setObjectActive(getterrainobjectpartid(7,386 ),FALSE);
+            setObjectActive(getterrainobjectpartid(13,29 ),FALSE);
+            setObjectActive(getterrainobjectpartid(13,69 ),FALSE);
+            setObjectActive(getterrainobjectpartid(13,26 ),FALSE);
+            setObjectActive(getterrainobjectpartid(13,66 ),FALSE);
+            setObjectActive(getterrainobjectpartid(13,128 ),FALSE);
+            setObjectActive(getterrainobjectpartid(13,192 ),FALSE);
+            setObjectActive(getterrainobjectpartid(13,216 ),FALSE);
+            setObjectActive(getterrainobjectpartid(13,219 ),FALSE);
+            setObjectActive(getterrainobjectpartid(13,199 ),FALSE);
+            setObjectActive(getterrainobjectpartid(13,158 ),FALSE);
+            setObjectActive(getterrainobjectpartid(14,160 ),FALSE);
+            setObjectActive(getterrainobjectpartid(14,281 ),FALSE);
+            setObjectActive(getterrainobjectpartid(14,283 ),FALSE);
+            setObjectActive(getterrainobjectpartid(14,265 ),FALSE);
+            setObjectActive(getterrainobjectpartid(14,227 ),FALSE);
+            setObjectActive(getterrainobjectpartid(14,187 ),FALSE);
+
+endfunction;
+
+//------------------------------------------------------------------
+//
+//     Main Code
+//
+//------------------------------------------------------------------
+      code
+
+            //------------------------------------------------
+            // Debug Window Game Clock Second Counter
+            // Note:  This is used by some included functions.
+            //------------------------------------------------
+            gametime = gettime;
+            If (gametime >= nextsecond) Then
+                  nextsecond = gametime + 1;
+                  If (GeneralAlarm) then
+                       GeneralAlarmCounter = GeneralAlarmCounter + 1;
+                  endif;
+                  // dstring = "Gametime: ";
+                  // concat(dstring,gametime);
+                  // Print (dstring);
+            endif;
+            if ((PlayGASound) and (NextSecond == gametime + 1)) then
+                  playSoundEffect(GENERAL_ALARM_SOUND);
+            endif;
+            if (PlayPASound) then
+                  playSoundEffect(PERIMETER_ALARM_SOUND);
+            endif;
+            PerimeterBreach = FALSE;
+
+            //---------------------------------------
+            // Create Non-Existing Vehicles
+            //---------------------------------------
+            #include_ "3_5MXCR.ABI"
+
+            //---------------------------------------
+            // Activate inactive vehicles
+            //---------------------------------------
+            #include_ "3_5MXAC.ABI"
+
+            //---------------------------------------
+            // Structure
+            //---------------------------------------
+            #include_ "3_5MXST.ABI"
+
+            //---------------------------------------
+            // Lookout Points
+            //---------------------------------------
+            #include_ "3_5MXLP.ABI"
+
+            //---------------------------------------
+            // Force Dead Checks
+            //---------------------------------------
+            if (isDeadorFled(PLAYER_FORCE)) then
+                  PlayerForceDead = TRUE;
+            endif;
+            if (isDeadorFled(CLAN_FORCE)) then
+                  ClanForceDead = TRUE;
+            endif;
+            if (isDeadorFled(ALLIED_FORCE)) then
+                  AlliedForceDead = TRUE;
+            endif;
+
+            //---------------------------------------
+            // SET EXIT TIMER IF PLAYER DEAD/DISABLED
+            //---------------------------------------
+
+            if ((NOT ExitTimerSet) AND (PlayerForceDead)) then
+                  // Fail any Undecided Player Objectives
+                  if (checkObjectiveStatus(0) == INCOMPLETE) then
+                        setObjectiveStatus(0, FAILED);
+                  endif;
+                  if (checkObjectiveStatus(1) == INCOMPLETE) then
+                        setObjectiveStatus(1, FAILED);
+                  endif;
+                  if (checkObjectiveStatus(2) == INCOMPLETE) then
+                        setObjectiveStatus(2, FAILED);
+                  endif;
+                  if (checkObjectiveStatus(3) == INCOMPLETE) then
+                        setObjectiveStatus(3, FAILED);
+                  endif;
+            endif;
+
+            //---------------------------------------
+            // Custom ABL Code
+            //---------------------------------------
+
+            if (inHotSpot(PLAYER_FORCE,-3059,2301,250.0)) then
+                 Flag8 = TRUE;
+            endif;
+
+            if (isDead(popupgenerator)) then
+                 if (not powergone) then
+                 
+                 powergone = true;
+                 setObjectActive(getterrainobjectpartid(14,241),FALSE);
+                 setObjectActive(getterrainobjectpartid(14,165),FALSE);
+                 setObjectActive(getterrainobjectpartid(14,86),FALSE);
+                 setObjectActive(getterrainobjectpartid(14,26),FALSE);
+                 setObjectActive(getterrainobjectpartid(8,345),FALSE);
+                 setObjectActive(getterrainobjectpartid(8,263),FALSE);
+                 setObjectActive(getterrainobjectpartid(7,257),FALSE);
+                 setObjectActive(getterrainobjectpartid(7,233),FALSE);
+                 setObjectActive(getterrainobjectpartid(7,271),FALSE);
+                 setObjectActive(getterrainobjectpartid(7,287),FALSE);
+                 setObjectActive(getterrainobjectpartid(7,345),FALSE);
+                 setObjectActive(getterrainobjectpartid(13,44),FALSE);
+                 setObjectActive(getterrainobjectpartid(13,105),FALSE);
+                 setObjectActive(getterrainobjectpartid(13,189),FALSE);
+                 setObjectActive(getterrainobjectpartid(13,232),FALSE);
+                 setObjectActive(getterrainobjectpartid(13,258),FALSE);
+                 setObjectActive(getterrainobjectpartid(14,241),FALSE);
+                 setObjectActive(getterrainobjectpartid(13,219),FALSE);
+                 setObjectActive(getterrainobjectpartid(13,199),FALSE);
+                 setObjectActive(getterrainobjectpartid(13,158),FALSE);
+                 setObjectActive(getterrainobjectpartid(14,160),FALSE);
+                 setObjectActive(getterrainobjectpartid(14,143),FALSE);
+                 setObjectActive(getterrainobjectpartid(14,123),FALSE);
+                 setObjectActive(getterrainobjectpartid(14,103),FALSE);
+                 setObjectActive(getterrainobjectpartid(14,104),FALSE);
+                 setObjectActive(getterrainobjectpartid(14,21),FALSE);
+                 setObjectActive(getterrainobjectpartid(14,4 ),FALSE);
+                 setObjectActive(getterrainobjectpartid( 8,381),FALSE);
+                 setObjectActive(getterrainobjectpartid( 8,343),FALSE);
+                 setObjectActive(getterrainobjectpartid(8,320 ),FALSE);
+                 setObjectActive(getterrainobjectpartid( 8,260),FALSE);
+                 setObjectActive(getterrainobjectpartid(7,298 ),FALSE);
+                 setObjectActive(getterrainobjectpartid(7,296 ),FALSE);
+                 setObjectActive(getterrainobjectpartid(7,273 ),FALSE);
+                 setObjectActive(getterrainobjectpartid(7,334 ),FALSE);
+                 setObjectActive(getterrainobjectpartid( 7,351),FALSE);
+                 setObjectActive(getterrainobjectpartid(7,309 ),FALSE);
+                 setObjectActive(getterrainobjectpartid(7,389 ),FALSE);
+                 setObjectActive(getterrainobjectpartid(7,386 ),FALSE);
+                 setObjectActive(getterrainobjectpartid(13,29 ),FALSE);
+                 setObjectActive(getterrainobjectpartid(13,69 ),FALSE);
+                 setObjectActive(getterrainobjectpartid(13,26 ),FALSE);
+                 setObjectActive(getterrainobjectpartid(13,66 ),FALSE);
+                 setObjectActive(getterrainobjectpartid(13,128 ),FALSE);
+                 setObjectActive(getterrainobjectpartid(13,192 ),FALSE);
+                 setObjectActive(getterrainobjectpartid(13,216 ),FALSE);
+                 setObjectActive(getterrainobjectpartid(13,219 ),FALSE);
+                 setObjectActive(getterrainobjectpartid(13,199 ),FALSE);
+                 setObjectActive(getterrainobjectpartid(13,158 ),FALSE);
+                 setObjectActive(getterrainobjectpartid(14,160 ),FALSE);
+                 setObjectActive(getterrainobjectpartid(14,281 ),FALSE);
+                 setObjectActive(getterrainobjectpartid(14,283 ),FALSE);
+                 setObjectActive(getterrainobjectpartid(14,265 ),FALSE);
+                 setObjectActive(getterrainobjectpartid(14,227 ),FALSE);
+                 setObjectActive(getterrainobjectpartid(14,187 ),FALSE);
+                 
+                 endif;
+            endif;
+
+            if (GeneralAlarm) then
+                 if (not turretsup) then
+                 if (not isdead(popupgenerator)) then
+                 
+                 turretsup = true;
+                 setObjectActive(getterrainobjectpartid(14,241),TRUE);
+                 setObjectActive(getterrainobjectpartid(14,165),TRUE);
+                 setObjectActive(getterrainobjectpartid(14,86),TRUE);
+                 setObjectActive(getterrainobjectpartid(14,26),TRUE);
+                 setObjectActive(getterrainobjectpartid(8,345),TRUE);
+                 setObjectActive(getterrainobjectpartid(8,263),TRUE);
+                 setObjectActive(getterrainobjectpartid(7,257),TRUE);
+                 setObjectActive(getterrainobjectpartid(7,233),TRUE);
+                 setObjectActive(getterrainobjectpartid(7,271),TRUE);
+                 setObjectActive(getterrainobjectpartid(7,287),TRUE);
+                 setObjectActive(getterrainobjectpartid(7,345),TRUE);
+                 setObjectActive(getterrainobjectpartid(13,44),TRUE);
+                 setObjectActive(getterrainobjectpartid(13,105),TRUE);
+                 setObjectActive(getterrainobjectpartid(13,189),TRUE);
+                 setObjectActive(getterrainobjectpartid(13,232),TRUE);
+                 setObjectActive(getterrainobjectpartid(13,258),TRUE);
+                 setObjectActive(getterrainobjectpartid(14,241),TRUE);
+                 setObjectActive(getterrainobjectpartid(13,219),TRUE);
+                 setObjectActive(getterrainobjectpartid(13,199),TRUE);
+                 setObjectActive(getterrainobjectpartid(13,158),TRUE);
+                 setObjectActive(getterrainobjectpartid(14,160),TRUE);
+                 setObjectActive(getterrainobjectpartid(14,143),TRUE);
+                 setObjectActive(getterrainobjectpartid(14,123),TRUE);
+                 setObjectActive(getterrainobjectpartid(14,103),TRUE);
+                 setObjectActive(getterrainobjectpartid(14,104),TRUE);
+                 setObjectActive(getterrainobjectpartid(14,21),TRUE);
+                 setObjectActive(getterrainobjectpartid(14,4 ),TRUE);
+                 setObjectActive(getterrainobjectpartid( 8,381),TRUE);
+                 setObjectActive(getterrainobjectpartid( 8,343),TRUE);
+                 setObjectActive(getterrainobjectpartid(8,320 ),TRUE);
+                 setObjectActive(getterrainobjectpartid( 8,260),TRUE);
+                 setObjectActive(getterrainobjectpartid(7,298 ),TRUE);
+                 setObjectActive(getterrainobjectpartid(7,296 ),TRUE);
+                 setObjectActive(getterrainobjectpartid(7,273 ),TRUE);
+                 setObjectActive(getterrainobjectpartid(7,334 ),TRUE);
+                 setObjectActive(getterrainobjectpartid( 7,351),TRUE);
+                 setObjectActive(getterrainobjectpartid(7,309 ),TRUE);
+                 setObjectActive(getterrainobjectpartid(7,389 ),TRUE);
+                 setObjectActive(getterrainobjectpartid(7,386 ),TRUE);
+                 setObjectActive(getterrainobjectpartid(13,29 ),TRUE);
+                 setObjectActive(getterrainobjectpartid(13,69 ),TRUE);
+                 setObjectActive(getterrainobjectpartid(13,26 ),TRUE);
+                 setObjectActive(getterrainobjectpartid(13,66 ),TRUE);
+                 setObjectActive(getterrainobjectpartid(13,128 ),TRUE);
+                 setObjectActive(getterrainobjectpartid(13,192 ),TRUE);
+                 setObjectActive(getterrainobjectpartid(13,216 ),TRUE);
+                 setObjectActive(getterrainobjectpartid(13,219 ),TRUE);
+                 setObjectActive(getterrainobjectpartid(13,199 ),TRUE);
+                 setObjectActive(getterrainobjectpartid(13,158 ),TRUE);
+                 setObjectActive(getterrainobjectpartid(14,160 ),TRUE);
+                 setObjectActive(getterrainobjectpartid(14,281 ),TRUE);
+                 setObjectActive(getterrainobjectpartid(14,283 ),TRUE);
+                 setObjectActive(getterrainobjectpartid(14,265 ),TRUE);
+                 setObjectActive(getterrainobjectpartid(14,227 ),TRUE);
+                 setObjectActive(getterrainobjectpartid(14,187 ),TRUE);
+                 
+                 endif;
+                 endif;
+            endif;
+
+            if ((getObjectDamage(delta1) > 0) or (getObjectDamage(delta2) > 0) or (getObjectDamage(delta3) > 0)) then
+                 Flag2 = TRUE;
+                 flag6 = true;
+            endif;
+
+            if ((getObjectDamage(objectlist[0]) > 0) or (getObjectDamage(objectlist[1]) > 0) or (getObjectDamage(objectlist[2]) > 0)) then
+                 Flag5 = TRUE;
+            endif;
+
+            if (checkObjectiveStatus(1) == SUCCESS) then
+                 Flag10 = TRUE;
+            endif;
+
+            //---------------------------------------
+            // Objective Resolution
+            //---------------------------------------
+
+            if (checkObjectiveStatus(0) == INCOMPLETE) then
+
+                 x = getTerrainObjectPartID(15,182);
+                 if (isDead(x)) then
+                       SetObjectiveStatus(0,SUCCESS);
+                       playBetty(BETTY_OBJECTIVE_COMPLETE);
+                       VictoryLevel = VictoryLevel + 1;
+                       Objective_0_Decided = TRUE;
+                       if (VictoryLevel < 4) then
+                             PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                       endif;
+                 else
+                       if (gettimeleft == 0.0) then
+                             SetObjectiveStatus(0,FAILED);
+                             playBetty(BETTY_CANNOT_COMP_OBJ);
+                             Objective_0_Decided = TRUE;
+                       endif;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(0) == FAILED) then
+                              setTimer(EXIT_TIMER,2.0);
+                              ExitTimerSet = TRUE;
+                        endif;
+                  endif;
+            endif;
+
+            if (checkObjectiveStatus(1) == INCOMPLETE) then
+
+                 if (NumObjectListDead >= ObjectListSize) then
+                       Obj_1_Action_1_Success = TRUE;
+                 else
+                       if (gettimeleft == 0.0) then
+                             SetObjectiveStatus(1,FAILED);
+                             playBetty(BETTY_CANNOT_COMP_OBJ);
+                             Objective_1_Decided = TRUE;
+                       endif;
+                 endif;
+
+
+                 if ((Obj_1_Action_1_Success) AND (Obj_1_Action_2_Success)) then
+                       SetObjectiveStatus(1,SUCCESS);
+                       playBetty(BETTY_OBJECTIVE_COMPLETE);
+                       VictoryLevel = VictoryLevel + 1;
+                       Objective_1_Decided = TRUE;
+                       if (VictoryLevel < 4) then
+                             PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                       endif;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(1) == FAILED) then
+                              setTimer(EXIT_TIMER,2.0);
+                              ExitTimerSet = TRUE;
+                        endif;
+                  endif;
+            endif;
+
+            if (checkObjectiveStatus(2) == INCOMPLETE) then
+
+                 x = getterrainobjectpartid(13,13);
+                 if (isDead(x)) then
+                       Obj_2_Action_1_Success = TRUE;
+                 else
+                       if (gettimeleft == 0.0) then
+                             SetObjectiveStatus(2,FAILED);
+                             playBetty(BETTY_CANNOT_COMP_OBJ);
+                             Objective_2_Decided = TRUE;
+                       endif;
+                 endif;
+
+                 x = getTerrainObjectPartID(13,57);
+                 if (isDead(x)) then
+                       Obj_2_Action_2_Success = TRUE;
+                 else
+                       if (gettimeleft == 0.0) then
+                             SetObjectiveStatus(2,FAILED);
+                             playBetty(BETTY_CANNOT_COMP_OBJ);
+                             Objective_2_Decided = TRUE;
+                       endif;
+                 endif;
+
+                 if ((Obj_2_Action_1_Success) AND (Obj_2_Action_2_Success)) then
+                       SetObjectiveStatus(2,SUCCESS);
+                       playBetty(BETTY_OBJECTIVE_COMPLETE);
+                       VictoryLevel = VictoryLevel + 1;
+                       Objective_2_Decided = TRUE;
+                       if (VictoryLevel < 4) then
+                             PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                       endif;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(2) == FAILED) then
+                              setTimer(EXIT_TIMER,2.0);
+                              ExitTimerSet = TRUE;
+                        endif;
+                  endif;
+            endif;
+
+            if (checkObjectiveStatus(3) == INCOMPLETE) then
+
+                 if (isDead(Delta1)) then
+                       Obj_3_Action_1_Success = TRUE;
+                 else
+                       if (gettimeleft == 0.0) then
+                             SetObjectiveStatus(3,FAILED);
+                             playBetty(BETTY_CANNOT_COMP_OBJ);
+                             Objective_3_Decided = TRUE;
+                       endif;
+                 endif;
+
+                 x = getterrainobjectpartid(19,235);
+                 if (isDead(x)) then
+                       Obj_3_Action_2_Success = TRUE;
+                 else
+                       if (gettimeleft == 0.0) then
+                             SetObjectiveStatus(3,FAILED);
+                             playBetty(BETTY_CANNOT_COMP_OBJ);
+                             Objective_3_Decided = TRUE;
+                       endif;
+                 endif;
+
+                 if (isDead(Delta3)) then
+                       Obj_3_Action_3_Success = TRUE;
+                 else
+                       if (gettimeleft == 0.0) then
+                             SetObjectiveStatus(3,FAILED);
+                             playBetty(BETTY_CANNOT_COMP_OBJ);
+                             Objective_3_Decided = TRUE;
+                       endif;
+                 endif;
+
+                 if ((Obj_3_Action_1_Success) AND (Obj_3_Action_2_Success) AND (Obj_3_Action_3_Success)) then
+                       SetObjectiveStatus(3,SUCCESS);
+                       playBetty(BETTY_OBJECTIVE_COMPLETE);
+                       VictoryLevel = VictoryLevel + 1;
+                       Objective_3_Decided = TRUE;
+                       if (VictoryLevel < 4) then
+                             PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                       endif;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(3) == FAILED) then
+                              setTimer(EXIT_TIMER,2.0);
+                              ExitTimerSet = TRUE;
+                        endif;
+                  endif;
+            endif;
+
+            if ((NOT ExitTimerSet) AND (Objective_0_Decided) AND (Objective_1_Decided) AND (Objective_2_Decided) AND (Objective_3_Decided)) then
+                  setTimer(EXIT_TIMER,2.0);
+                  ExitTimerSet = TRUE;
+            endif;
+
+            //---------------------------------------
+            // END SCENARIO
+            //---------------------------------------
+
+            if ((ExitTimerSet) AND (CheckTimer(EXIT_TIMER) == 0.0)) then
+                  if (VictoryLevel >= 4) then
+                        ScenarioResult = PLAYER_WIN_BIG;
+                        PlayDigitalMusic(VICTORY_MUSIC);
+                  else
+                        ScenarioResult = PLAYER_LOST_BIG;
+                        PlayDigitalMusic(DEFEAT_MUSIC);
+                  endif;
+            endif;
+
+            //---------------------------------------
+            // RETURN RESULT
+            //---------------------------------------
+
+            return (ScenarioResult);
+endmodule.
+//******************************************************************

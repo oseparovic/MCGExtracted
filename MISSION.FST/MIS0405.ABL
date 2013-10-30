@@ -1,0 +1,288 @@
+//*********************************************************************************
+
+module MissionBrain_4_5 : integer;
+
+     //--------------------------------------------------------
+     // Operation:  4                  Mission:  5 
+     // MissionID:  199                Name: Red Rover, Red Rover
+     // Designer: david abzug
+     // Created: 5/6/98                By: david abzug
+     //--------------------------------------------------------
+
+//------------------------------------------------------------------
+//
+//     Constant Definitions
+//
+//------------------------------------------------------------------
+     const
+
+          #include_ "misconst.abi"
+
+          //------------------
+          // Objective IDs
+          //------------------
+           OBJ0_Destroy_All_Enemy_Mechs  = 0;
+
+//------------------------------------------------------------------
+//
+//     Type Definitions
+//
+//------------------------------------------------------------------
+     type
+
+
+//------------------------------------------------------------------
+//
+//     Variable Declarations
+//
+//------------------------------------------------------------------
+      var
+
+            #include_ "4_5VAR.ABI"
+
+            static integer      ScenarioResult;
+            eternal boolean     ExitTimerSet;
+            static integer      VictoryLevel;
+            char[40]            dstring;
+            eternal real        gametime;
+            static real         nextsecond;
+            integer             x;
+            integer             y;
+            Position            aPoint;
+            eternal boolean     PlayerForceDead;
+            eternal boolean     ClanForceDead;
+            eternal boolean     AlliedForceDead;
+            eternal boolean     GeneralAlarm;
+            eternal boolean     Flag1;
+            eternal boolean     Flag2;
+            eternal boolean     Flag3;
+            eternal boolean     Flag4;
+            eternal boolean     Flag5;
+            eternal boolean     Flag6;
+            eternal boolean     Flag7;
+            eternal boolean     Flag8;
+            eternal boolean     Flag9;
+            eternal boolean     Flag10;
+            static boolean      PlayPASound;
+            static boolean      PlayGASound;
+            eternal integer     GeneralAlarmCounter;
+            boolean             PerimeterBreach;
+            static boolean      Objective_0_Decided;
+            static boolean      Obj_0_Action_1_Success;
+            static boolean      Obj_0_Action_2_Success;
+
+//------------------------------------------------------------------
+//
+//     Init Function    (automatically run first time through)
+//
+//------------------------------------------------------------------
+function init;
+
+       code
+
+            ScenarioResult = PLAYING;
+            PlayerForceDead = FALSE;
+            ClanForceDead = FALSE;
+            AlliedForceDead = FALSE;
+            ExitTimerSet = FALSE;
+            VictoryLevel = 0; // New Scheme
+            NextSecond = 1.0;
+            GeneralAlarmCounter = -1;
+            GeneralAlarm = FALSE;
+            Flag1 = FALSE;
+            Flag2 = FALSE;
+            Flag3 = FALSE;
+            Flag4 = FALSE;
+            Flag5 = FALSE;
+            Flag6 = FALSE;
+            Flag7 = FALSE;
+            Flag8 = FALSE;
+            Flag9 = FALSE;
+            Flag10 = FALSE;
+            PlayPASound = FALSE;
+            PlayGASound = FALSE;
+            Objective_0_Decided = FALSE;
+            Obj_0_Action_1_Success = FALSE;
+            Obj_0_Action_2_Success = FALSE;
+
+            #include_ "4_5INIT.ABI"
+
+endfunction;
+
+//------------------------------------------------------------------
+//
+//     Main Code
+//
+//------------------------------------------------------------------
+      code
+
+            //------------------------------------------------
+            // Debug Window Game Clock Second Counter
+            // Note:  This is used by some included functions.
+            //------------------------------------------------
+            gametime = gettime;
+            If (gametime >= nextsecond) Then
+                  nextsecond = gametime + 1;
+                  If (GeneralAlarm) then
+                       GeneralAlarmCounter = GeneralAlarmCounter + 1;
+                  endif;
+                  // dstring = "Gametime: ";
+                  // concat(dstring,gametime);
+                  // Print (dstring);
+            endif;
+            if ((PlayGASound) and (NextSecond == gametime + 1)) then
+                  playSoundEffect(GENERAL_ALARM_SOUND);
+            endif;
+            if (PlayPASound) then
+                  playSoundEffect(PERIMETER_ALARM_SOUND);
+            endif;
+            PerimeterBreach = FALSE;
+
+            //---------------------------------------
+            // Create Non-Existing Vehicles
+            //---------------------------------------
+            #include_ "4_5CRE.ABI"
+
+            //---------------------------------------
+            // Activate inactive vehicles
+            //---------------------------------------
+            #include_ "4_5ACT.ABI"
+
+            //---------------------------------------
+            // Structure
+            //---------------------------------------
+            #include_ "4_5STR.ABI"
+
+            //---------------------------------------
+            // Lookout Points
+            //---------------------------------------
+            #include_ "4_5LOP.ABI"
+
+            //---------------------------------------
+            // Force Dead Checks
+            //---------------------------------------
+            if (isDeadorFled(PLAYER_FORCE)) then
+                  PlayerForceDead = TRUE;
+            endif;
+            if (isDeadorFled(CLAN_FORCE)) then
+                  ClanForceDead = TRUE;
+            endif;
+            if (isDeadorFled(ALLIED_FORCE)) then
+                  AlliedForceDead = TRUE;
+            endif;
+
+            //---------------------------------------
+            // SET EXIT TIMER IF PLAYER DEAD/DISABLED
+            //---------------------------------------
+
+            if ((NOT ExitTimerSet) AND (PlayerForceDead)) then
+                  // Fail any Undecided Player Objectives
+                  if (checkObjectiveStatus(0) == INCOMPLETE) then
+                        setObjectiveStatus(0, FAILED);
+                  endif;
+            endif;
+
+            //---------------------------------------
+            // Custom ABL Code
+            //---------------------------------------
+
+            if (inHotSpot(ClanStar(1),1633,2096,250.0)) then
+                 Flag1 = TRUE;
+            endif;
+
+            if (inHotSpot(ClanStar(2),1633,2096,250.0)) then
+                 Flag1 = TRUE;
+            endif;
+
+            if (inHotSpot(ClanStar(3),1633,2096,250.0)) then
+                 Flag1 = TRUE;
+            endif;
+
+            if (inHotSpot(ClanStar(2),1858,-2100,250.0)) then
+                 Flag3 = TRUE;
+            endif;
+
+            if (inHotSpot(ClanStar(3),1858,-2100,250.0)) then
+                 Flag3 = TRUE;
+            endif;
+
+            if (inHotSpot(ClanStar(2),1083,2900,250.0)) then
+                 Flag4 = TRUE;
+            endif;
+
+            if (inHotSpot(ClanStar(3),1083,2900,250.0)) then
+                 Flag4 = TRUE;
+            endif;
+
+            //---------------------------------------
+            // Objective Resolution
+            //---------------------------------------
+
+            if (checkObjectiveStatus(0) == INCOMPLETE) then
+
+                 if (isDead(CLAN_FORCE)) then
+                       Obj_0_Action_1_Success = TRUE;
+                 else
+                       if (gettimeleft == 0.0) then  // supposedly will not happen unless time limit is set
+                             SetObjectiveStatus(0,FAILED);
+                             playBetty(BETTY_CANNOT_COMP_OBJ);
+                             Objective_0_Decided = TRUE;
+                       endif;
+                 endif;
+
+                 if (NumWithdrawn(CLAN_FORCE) > 0) then
+                       SetObjectiveStatus(0,FAILED);
+                       playBetty(BETTY_CANNOT_COMP_OBJ);
+                       Objective_0_Decided = TRUE;
+                 else
+                       if ((gettimeleft == 0.0) OR (Obj_0_Action_1_Success)) then
+                             Obj_0_Action_2_Success = TRUE;
+                       endif;
+                 endif;
+
+                 if ((Obj_0_Action_1_Success) AND (Obj_0_Action_2_Success)) then
+                       SetObjectiveStatus(0,SUCCESS);
+                       playBetty(BETTY_OBJECTIVE_COMPLETE);
+                       VictoryLevel = VictoryLevel + 1;
+                       Objective_0_Decided = TRUE;
+                       if (VictoryLevel < 1) then
+                             PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                       endif;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(0) == FAILED) then
+                              setTimer(EXIT_TIMER,2.0);
+                              ExitTimerSet = TRUE;
+                        endif;
+                  endif;
+            endif;
+
+            if ((NOT ExitTimerSet) AND (Objective_0_Decided)) then
+                  setTimer(EXIT_TIMER,2.0);
+                  ExitTimerSet = TRUE;
+            endif;
+
+            //---------------------------------------
+            // END SCENARIO
+            //---------------------------------------
+
+            if ((ExitTimerSet) AND (CheckTimer(EXIT_TIMER) == 0.0)) then
+                  if (VictoryLevel >= 1) then
+                        ScenarioResult = PLAYER_WIN_BIG;
+                        PlayDigitalMusic(VICTORY_MUSIC);
+                  else
+                        ScenarioResult = PLAYER_LOST_BIG;
+                        PlayDigitalMusic(DEFEAT_MUSIC);
+                  endif;
+            endif;
+
+            //---------------------------------------
+            // RETURN RESULT
+            //---------------------------------------
+
+            return (ScenarioResult);
+endmodule.
+//******************************************************************

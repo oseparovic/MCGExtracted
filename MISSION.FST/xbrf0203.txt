@@ -1,0 +1,21 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:GORGON/02PRDN03%n
+%fc5%c----------%n
+%fc6%c***ELIMINATE ORBITAL GUNS***%n
+%fc21-Capture the Base HQ%n
+%fc22-Destroy MOG & Targeting Computer 1%n
+%fc23-Destroy MOG & Targeting Computer 2%n
+%fc24-Destroy MOG & Targeting Computer 3%n
+%fc25-Destroy MOG & Targeting Computer 4%n
+%fc26-Destroy MOG & Targeting Computer 5%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 2 Small 1 Large%n
+%t12SENSOR PROBE: 2%n
+%t12CAMERA DRONE: 2%n%n
+%fm%fc1%cTIME LIMIT: 30 MINUTES%n%n
+%fs%fc5%c----------%n
+%fc4The main offensive against the Clan is commencing.  Strategic has already committed the bulk of our forces which are being transported via Dropships.  Your mission here in Azimuth sector is critical to the success of the entire operation.  Strategic is relying on your strikeforce to eliminate all six %fc2Mobile Orbital Gun%fc4 and%n%fc2Targeting Computer%fc4 sites in order to open a clear aerial alley into the heart of Clan territory.  If these Mobile Orbital Guns remain operational the Dropships already en route will be destroyed.%n%n
+%fc5%c----------%n
+%fc6%c**TACTICAL NOTICE**%n%n
+%fc6*%fc2 Recon reports %fc6Artillery Turrets%fc2 in this sector.%n%n
+%fc6<<<<END DISPATCH

@@ -1,0 +1,241 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:4/30/98   BY:Mike Lee
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0201_Airstrike3 : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+    static integer                     Order6Status;
+    static integer                     Order7Status;
+    static integer                     Order8Status;
+    static integer                     Order9Status;
+    static integer                     Order10Status;
+    static integer                     Order11Status;
+    static integer                     Order12Status;
+    static integer                     Order13Status;
+    static integer                     Order14Status;
+    static integer                     Order15Status;
+    static integer                     Order16Status;
+
+    // PATHS
+    static path                        pause1;
+    static path                        pause3;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+         Order6Status = INCOMPLETE;
+         Order7Status = INCOMPLETE;
+         Order8Status = INCOMPLETE;
+         Order9Status = INCOMPLETE;
+         Order10Status = INCOMPLETE;
+         Order11Status = INCOMPLETE;
+         Order12Status = INCOMPLETE;
+         Order13Status = INCOMPLETE;
+         Order14Status = INCOMPLETE;
+         Order15Status = INCOMPLETE;
+         Order16Status = INCOMPLETE;
+
+         // Paths
+
+         pause1[0,0] = -1960; // X
+         pause1[0,1] = 220; // Y
+
+         pause3[0,0] = -1960; // X
+         pause3[0,1] = 220; // Y
+
+         pause3[1,0] = -1960; // X
+         pause3[1,1] = 220; // Y
+
+         pause3[2,0] = -1960; // X
+         pause3[2,1] = 220; // Y
+
+         SetEngageRadius(150);
+         IdentifySensorContactsOFF;
+         SetSpeed(RUN);
+         StickToTargetON;
+         ReturnFireOFF;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (inHotSpot(PLAYER_FORCE,-1960,220,100)) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Flag5 = TRUE;
+              Order1Status = SUCCESS;
+         endif;
+    endif;
+    if (isDead(GetTerrainObjectPartID(20,4))) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              Flag5 = FALSE;
+              Order2Status = SUCCESS;
+         else
+              if (Order2Status <> INCOMPLETE) then
+                   // Order  3 
+                   if (Order3Status == INCOMPLETE) then
+                        Flag6 = TRUE;
+                        Order3Status = SUCCESS;
+                   endif;
+              endif;
+         endif;
+    endif;
+    if (flag5) then
+         // Order  4 
+         if (Order4Status == INCOMPLETE) then
+              SetEngageRadius(0);
+              Order4Status = SUCCESS;
+         else
+              if (Order4Status <> INCOMPLETE) then
+                   // Order  5 
+                   if (Order5Status == INCOMPLETE) then
+                        Order5Status = MovePath(pause3,3);
+                        if (Order5Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   else
+                        if (Order5Status == SUCCESS) then
+                             // Order  6 
+                             if (Order6Status == INCOMPLETE) then
+                                  CallStrikeEx(507,-1,-2036.0,-178.0,-1.0,TRUE,4.0);
+                                  Order6Status = SUCCESS;
+                             else
+                                  if (Order6Status <> INCOMPLETE) then
+                                       // Order  7 
+                                       if (Order7Status == INCOMPLETE) then
+                                            Order7Status = MovePath(pause3,3);
+                                            if (Order7Status == INCOMPLETE) then
+                                                 return(1);
+                                            endif;
+                                       else
+                                            if (Order7Status <> INCOMPLETE) then
+                                                 // Order  8 
+                                                 if (Order8Status == INCOMPLETE) then
+                                                      CallStrikeEx(507,-1,-2036.0,-178.0,-1.0,TRUE,4.0);
+                                                      Order8Status = SUCCESS;
+                                                 else
+                                                      if (Order8Status <> INCOMPLETE) then
+                                                           // Order  9 
+                                                           if (Order9Status == INCOMPLETE) then
+                                                                Order9Status = MovePath(pause3,3);
+                                                                if (Order9Status == INCOMPLETE) then
+                                                                     return(1);
+                                                                endif;
+                                                           else
+                                                                if (Order9Status <> INCOMPLETE) then
+                                                                     // Order  10 
+                                                                     if (Order10Status == INCOMPLETE) then
+                                                                          CallStrikeEx(507,-1,-2036.0,-178.0,-1.0,TRUE,4.0);
+                                                                          Order10Status = SUCCESS;
+                                                                     else
+                                                                          if (Order10Status <> INCOMPLETE) then
+                                                                               // Order  11 
+                                                                               if (Order11Status == INCOMPLETE) then
+                                                                                    Order11Status = MovePath(pause1,1);
+                                                                                    if (Order11Status == INCOMPLETE) then
+                                                                                         return(1);
+                                                                                    endif;
+                                                                               else
+                                                                                    if (Order11Status <> INCOMPLETE) then
+                                                                                         // Order  12 
+                                                                                         if (Order12Status == INCOMPLETE) then
+                                                                                              Flag6 = TRUE;
+                                                                                              Order12Status = SUCCESS;
+                                                                                         endif;
+                                                                                    endif;
+                                                                               endif;
+                                                                          endif;
+                                                                     endif;
+                                                                endif;
+                                                           endif;
+                                                      endif;
+                                                 endif;
+                                            endif;
+                                       endif;
+                                  endif;
+                             endif;
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+    if (beenHit) then
+         // Order  13 
+         if (Order13Status == INCOMPLETE) then
+              Flag6 = TRUE;
+              Order13Status = SUCCESS;
+         endif;
+    endif;
+    if (flag6) then
+         // Order  14 
+         if (Order14Status == INCOMPLETE) then
+              SetEngageRadius(150);
+              Order14Status = SUCCESS;
+         endif;
+    endif;
+    if (flag6) then
+         // Order  15 
+         if (Order15Status == INCOMPLETE) then
+              Order15Status = Sentry(-1960,220);
+              if (Order15Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  16 
+         if (Order16Status == INCOMPLETE) then
+              Order16Status = Attack;
+              if (Order16Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

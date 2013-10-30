@@ -1,0 +1,670 @@
+//*********************************************************************************
+
+module MissionBrainE3_0101 : integer;
+
+     //--------------------------------------------------------
+     // Operation:  1                  Mission:  1 
+     // MissionID:  61                 Name: Rescue 'Mechs
+     // Designer: Rob Nicholls
+     // Created: 5/7/97                By: ROB NICHOLLS
+     //--------------------------------------------------------
+
+//------------------------------------------------------------------
+//
+//     Constant Definitions
+//
+//------------------------------------------------------------------
+     const
+
+          #include_ "misconst.abi"
+
+//------------------------------------------------------------------
+//
+//     Type Definitions
+//
+//------------------------------------------------------------------
+     type
+
+            Position = real[3];
+
+//------------------------------------------------------------------
+//
+//     Variable Declarations
+//
+//------------------------------------------------------------------
+      var
+
+            static integer      ScenarioResult;
+            static boolean      ExitTimerSet;
+            static integer      VictoryLevel;
+            char[40]            dstring;
+            real                gametime;
+            static real         nextsecond;
+            static boolean      Objective_0_Decided;
+			static boolean      Objective_1_Decided;
+			static boolean		Objective_2_Decided;
+
+//		Mission Specific Variables
+		
+			static real[3]		Guardpoint1;
+			static real[3]		Guardpoint2;
+			static real[3]		Revealpoint;
+			static integer		ClanAlarm;
+			static integer		TurretControl;
+			static integer		GovBldg;
+			static integer		VehicleBrk1;
+			static integer		VehicleBrk2;
+			static integer		MWBarracks;
+			static integer		ToadHall;
+			static integer		ClanHQ;
+
+			static boolean		Timer1Set;
+			static boolean		Timer3Set;
+			static boolean		AlarmDone;
+			static boolean		WakeUpCall;
+			static boolean		TowerDead;
+			eternal boolean		SoundAlarm;
+
+			static integer		HPG1;
+			static boolean		HPG1state0On;
+			static boolean		HPG1state1On;
+			static boolean		HPG1state2On;
+			static boolean		HPG1state3On;
+			static boolean		HPG1state4On;
+			static boolean		HPG1state5On;
+			static boolean		HPG1state6On;
+
+			static integer		CorralMark1;
+			static boolean		CorralMark1state0On;
+			static boolean		CorralMark1state1On;
+			static boolean		CorralMark1state2On;
+
+			static integer		CorralMark2;
+			static boolean		CorralMark2state0On;
+			static boolean		CorralMark2state1On;
+			static boolean		CorralMark2state2On;
+
+			static integer		AuxGen1;
+			static boolean		AuxGen1state0On;
+			static boolean		AuxGen1state1On;
+			static boolean		AuxGen1state2On;
+
+			static integer		AuxGen2;
+			static boolean		AuxGen2state0On;
+			static boolean		AuxGen2state1On;
+			static boolean		AuxGen2state2On;
+
+			static integer		ClanBay1;
+			static boolean		ClanBay1state2On;
+
+			static integer		ClanBay2;
+			static boolean		ClanBay2state2On;
+
+			static integer		ASG1;
+			static boolean		ASG1state0On;
+			static boolean		ASG1state1On;
+			static boolean		ASG1state2On;
+			static boolean		ASG1state3On;
+
+			static integer		ASG2;
+			static boolean		ASG2state0On;
+			static boolean		ASG2state1On;
+			static boolean		ASG2state2On;
+			static boolean		ASG2state3On;
+
+			static integer		northGate;
+			static integer		southGate;
+			static integer		eastGate;
+			static integer		westGate;
+			static integer		baseEastGate;
+			static integer		baseWestGate;
+			static integer		baseGateControl;
+			static boolean		GateControlDead;
+
+			static integer		ASG3;
+			static boolean		ASG3state0On;
+			static boolean		ASG3state1On;
+			static boolean		ASG3state2On;
+			static boolean		ASG3state3On;
+
+			static integer		smallTurret;
+			static integer		LRMTurret;
+			static integer		medTurret;
+
+		   	static boolean		Timer2Set;
+			real				Showtime;
+
+#include_ "MiscFunc.ABI"
+
+//------------------------------------------------------------------
+//
+//     Init Function    (automatically run first time through)
+//
+//------------------------------------------------------------------
+function init;
+
+       code
+            ScenarioResult = PLAYING;
+            ExitTimerSet = FALSE;
+
+			Timer1Set = FALSE;
+			Timer3Set = FALSE;
+			AlarmDone = FALSE;
+			WakeUpCall = FALSE;
+			TowerDead = FALSE;
+		  	SoundAlarm = FALSE;
+            
+            VictoryLevel = 1;
+            NextSecond = 1.0;
+            
+            Objective_0_Decided = FALSE;
+			Objective_1_Decided = FALSE;
+
+			Revealpoint[0] = -1505.0;
+			Revealpoint[1] = 2540.0;
+			Revealpoint[2] = 0.0;
+			setRevealed(1,125.0,Revealpoint);
+
+			Guardpoint1[0] = -158.0;
+			Guardpoint1[1] = -671.0;
+			Guardpoint1[2] = 0.0;
+
+			Guardpoint2[0] = -1505.0;
+			Guardpoint2[1] = 2540.0;
+			Guardpoint2[2] = 0.0;
+
+			ClanAlarm=getTerrainObjectPartId(20,118);
+			TurretControl=getTerrainObjectPartId(14,27);
+			GovBldg=getTerrainObjectPartId(8,288);
+			VehicleBrk1=getTerrainObjectPartId(14,7);
+			VehicleBrk2=getTerrainObjectPartId(14,6);
+			MWBarracks=getTerrainObjectPartId(14,47);
+			ToadHall=getTerrainObjectPartId(8,387);
+			ClanHQ=getTerrainObjectPartId(8,349);
+
+			HPG1=getTerrainObjectPartId(14,46);
+			HPG1state0On = FALSE;
+			HPG1state1On = FALSE;
+			HPG1state2On = FALSE;
+			HPG1state3On = FALSE;
+			HPG1state4On = FALSE;
+			HPG1state5On = FALSE;
+			HPG1state6On = FALSE;
+
+			CorralMark1=getTerrainObjectPartId(14,25);
+			CorralMark1state0On = FALSE;
+			CorralMark1state1On = FALSE;
+			CorralMark1state2On = FALSE;
+
+			CorralMark2=getTerrainObjectPartId(8,385);
+			CorralMark2state0On = FALSE;
+			CorralMark2state1On = FALSE;
+			CorralMark2state2On = FALSE;
+
+			AuxGen1=getTerrainObjectPartId(8,369);
+			AuxGen1state0On = FALSE;
+			AuxGen1state1On = FALSE;
+			AuxGen1state2On = FALSE;
+
+			AuxGen2=getTerrainObjectPartId(8,386);
+			AuxGen2state0On = FALSE;
+			AuxGen2state1On = FALSE;
+			AuxGen2state2On = FALSE;
+
+			ClanBay1=getTerrainObjectPartId(14,67);
+			ClanBay1state2On = FALSE;
+
+			ClanBay2=getTerrainObjectPartId(14,68);
+			ClanBay2state2On = FALSE;
+
+			ASG1=getTerrainObjectPartId(8,366);
+			ASG1state0On = FALSE;
+			ASG1state1On = FALSE;
+			ASG1state2On = FALSE;
+			ASG1state3On = FALSE;
+
+			ASG2=getTerrainObjectPartId(8,367);
+			ASG2state0On = FALSE;
+			ASG2state1On = FALSE;
+			ASG2state2On = FALSE;
+			ASG2state3On = FALSE;
+
+			ASG3=getTerrainObjectPartId(8,347);
+			ASG3state0On = FALSE;
+			ASG3state1On = FALSE;
+			ASG3state2On = FALSE;
+			ASG3state3On = FALSE;
+			
+			northGate=getTerrainObjectPartId(26,324);
+			southGate=getTerrainObjectPartId(26,246);
+			eastGate=getTerrainObjectPartId(26,243);
+			westGate=getTerrainObjectPartId(26,224);
+
+			baseWestGate=getTerrainObjectPartId(14,3);
+			baseEastGate=getTerrainObjectPartId(14,11);
+			baseGateControl=getTerrainObjectPartId(8,382);
+
+			LRMTurret=getTerrainObjectPartId(26,167);
+			MedTurret=getTerrainObjectPartId(26,188);
+			smallTurret=getTerrainObjectPartId(26,187);
+
+			lockGateClosed(baseWestGate);
+			lockGateClosed(baseEastGate);
+			GateControlDead = FALSE;
+
+			Timer2Set = FALSE;
+
+			objectChangeSides(ClanAlarm,-1);
+			objectChangeSides(GovBldg,-1);
+			objectChangeSides(HPG1,-1);
+			objectChangeSides(AuxGen1,-1);
+			objectChangeSides(AuxGen2,-1);
+			objectChangeSides(ClanBay1,-1);
+			objectChangeSides(ClanBay2,-1);
+			objectChangeSides(ASG1,-1);
+			objectChangeSides(ASG2,-1);
+			objectChangeSides(ASG3,-1);
+			objectChangeSides(TurretControl,-1);
+			objectChangeSides(VehicleBrk1,-1);
+			objectChangeSides(VehicleBrk2,-1);
+			objectChangeSides(MWBarracks,-1);
+			objectChangeSides(ToadHall,-1);
+			objectChangeSides(ClanHQ,-1);
+
+			objectChangeSides(northGate,1);
+			objectChangeSides(southGate,1);
+			objectChangeSides(eastGate,1);
+			objectChangeSides(westGate,1);
+
+ 			SetObjectActive(clan_star4,FALSE);
+			SetObjectActive(clan_star5,FALSE);
+
+endfunction;
+
+//------------------------------------------------------------------
+//
+//     Main Code
+//
+//------------------------------------------------------------------
+       code
+
+            //------------------------------------------------
+            // Debug Window Game Clock Second Counter
+            // Note:  This is used by some included functions.
+            //------------------------------------------------
+            gametime = gettime;
+			If (gametime >= nextsecond) Then
+                  nextsecond = gametime + 1;
+                  dstring = "Gametime: ";
+                  concat(dstring,gametime);
+            //      Print (dstring);
+            endif;
+
+            //---------------------------------------
+            // Create Non-Existing Vehicles
+            //---------------------------------------
+
+            //---------------------------------------
+            // Activate inactive vehicles
+            //---------------------------------------
+
+			//---------------------------------------
+            // SET EXIT TIMER IF PLAYER FORCE DEAD/DISABLED
+            //---------------------------------------
+
+			if ((NOT ExitTimerSet) AND (NOT isalive(PLAYER_FORCE))) then
+                  setTimer(EXIT_TIMER,20.0);
+                  ExitTimerSet = TRUE;
+                  PlayDigitalMusic(DEFEAT_MUSIC);
+                  // Fail any Undecided Objectives
+                  if (checkObjectiveStatus(0) == INCOMPLETE) then
+                        setObjectiveStatus(0, FAILED);
+                  endif;
+				  if (checkObjectiveStatus(1) == INCOMPLETE) then
+                        setObjectiveStatus(1, FAILED);
+				  endif;
+				 
+				  VictoryLevel = 0;
+
+            endif;
+
+
+			//---------------------------------------
+            // Radio Silence for Recon Lance
+            //---------------------------------------
+            
+			//If Strikers alive - Shut up! If not, you can talk...
+			if ((isalive(CLAN_STAR0)) AND (NOT(Objective_0_Decided))) then
+				setRadio(27,FALSE);
+				setRadio(28,FALSE);
+			else
+				setRadio(27,TRUE);
+				setRadio(28,TRUE);
+			endif;
+
+			//---------------------------------------
+			//Turret Control Resolution
+			//---------------------------------------
+
+ 			if (NOT TowerDead) then
+				if (objectStatus(TurretControl) == OBJECT_STATUS_DESTROYED) then
+ 					TowerDead = TRUE;
+ 					setobjectactive(clan_star2,FALSE);
+  				endif;
+ 			endif;
+
+			//---------------------------------------
+			//Gate Control Resolution
+			//---------------------------------------
+
+ 			if (NOT GateControlDead) then
+				if (objectStatus(baseGateControl) == OBJECT_STATUS_DESTROYED) then
+ 					gateControlDead = TRUE;
+					lockGateOpen(baseWestGate);
+					lockGateOpen(baseEastGate);
+  				endif;
+ 			endif;
+
+		    //---------------------------------------
+            // Perimeter Alarm Resolution
+            //---------------------------------------
+            
+			//Are any of the player's forces near the alarm?
+			if ((distancetoPosition(PLAYER_FORCE,Guardpoint1) <= 50) AND (NOT Timer1Set)) then
+			   setTimer(Scenario_Timer_1, 15.0);
+			   Timer1Set = TRUE;
+			endif;
+
+			//Is the alarm intact? If not destroyed in time, sound alarm!
+			if (objectStatus(ClanAlarm) <> OBJECT_STATUS_DESTROYED) then
+				if ((Timer1Set) AND (NOT AlarmDone)) then
+				  if (checkTimer (Scenario_Timer_1) < 3.0) then
+				  	playSoundEffect(18);
+				  else
+					playSoundEffect(20);
+				  endif;
+				  if (checkTimer (Scenario_Timer_1) == 0.0) then
+				    AlarmDone = TRUE;
+				  endif;
+				endif;
+			endif;
+
+			//If Barracks intact and lights red, vehicles move!
+			if ((WakeUpCall) AND (NOT SoundAlarm) AND ((objectStatus(VehicleBrk1) <> OBJECT_STATUS_DESTROYED)
+			  OR (objectStatus(VehicleBrk2) <> OBJECT_STATUS_DESTROYED))) then
+ 				SetObjectActive(clan_star4,TRUE);
+				SetObjectActive(clan_star5,TRUE);
+				SoundAlarm = TRUE;
+			endif;
+
+			//---------------------------------------
+			// Corral Marker Animation Control
+			//---------------------------------------
+
+			//If alarm is sounded, start up the lights!
+			if (((AlarmDone) OR (distancetoPosition(PLAYER_FORCE,Guardpoint2) <= 150)) AND (NOT Timer3Set)) then
+				setTimer(Scenario_Timer_3, 35.0);
+				Timer3Set = TRUE;
+			endif;
+
+			if ((Timer3Set) AND (NOT WakeUpCall)) then
+  			  if (objectStatus(CorralMark1) <> OBJECT_STATUS_DESTROYED) then
+   		   		if ((checkTimer (Scenario_Timer_3) < 35.0) AND (NOT CorralMark1state0On)) then
+   		    		setAnimation(CorralMark1,0,0);
+   					CorralMark1state0On = TRUE;	//Green
+   				endif;
+   				if ((checkTimer (Scenario_Timer_3) < 20.0) AND (NOT CorralMark1state1On)) then
+   					setAnimation(CorralMark1,0,1);
+  					CorralMark1state1On = TRUE;	//Yellow
+   			  	endif;
+   				if ((checkTimer (Scenario_Timer_3) < 5.0) AND (NOT CorralMark1state2On)) then
+   					setAnimation(CorralMark1,0,2);
+   					CorralMark1state2On = TRUE;	//Red
+					WakeUpCall = TRUE;
+   				endif;
+   			  endif;
+ 
+   			  if (objectStatus(CorralMark2) <> OBJECT_STATUS_DESTROYED) then
+   		   		if ((checkTimer (Scenario_Timer_3) < 35.0) AND (NOT CorralMark2state0On)) then
+   		    		setAnimation(CorralMark2,0,0);
+   					CorralMark2state0On = TRUE;	//Green
+   				endif;
+   				if ((checkTimer (Scenario_Timer_3) < 20.0) AND (NOT CorralMark2state1On)) then
+   					setAnimation(CorralMark2,0,1);
+  					CorralMark2state1On = TRUE;	//Yellow
+   			  	endif;
+   				if ((checkTimer (Scenario_Timer_3) < 5.0) AND (NOT CorralMark2state2On)) then
+   					setAnimation(CorralMark2,0,2);
+   					CorralMark2state2On = TRUE;	//Red
+					WakeUpCall = TRUE;
+   				endif;
+   			  endif;
+			endif;
+
+			//---------------------------------------
+			// Timer Control
+			//---------------------------------------
+		
+			if (NOT Timer2Set) then
+				setTimer (Scenario_Timer_2, 65.0);
+				Timer2Set = TRUE;
+				print("Time Is Set!!");
+			endif;
+ 	
+			//--------------------------------------
+			// Turret Test Code
+			//--------------------------------------
+			//if (checkTimer(Scenario_Timer_2) < 5.0) then
+			//	SetObjectActive(SmallTurret,TRUE);
+			//	SetObjectActive(MedTurret,TRUE);
+			//endif;
+
+			//---------------------------------------
+			// HPG Animation Control
+			//---------------------------------------
+		  	if (objectStatus(HPG1) <> OBJECT_STATUS_DESTROYED) then
+		   		if ((checkTimer (Scenario_Timer_2) < 30.0) AND (NOT HPG1state0On)) then
+		    		setAnimation(HPG1,0,0);
+					HPG1state0On = TRUE;	//Rotate into position
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 25.0) AND (NOT HPG1state1On)) then
+					setAnimation(HPG1,0,1);
+					HPG1state1On = TRUE;	//White Lights
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 20.0) AND (NOT HPG1state2On)) then
+					setAnimation(HPG1,0,2);
+					HPG1state2On = TRUE;	//Blue Lights
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 18.0) AND (NOT HPG1state3On)) then
+					setAnimation(HPG1,0,3);
+					HPG1state3On = TRUE;	//Blue light Ring
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 17.0) AND (NOT HPG1state4On)) then
+					setAnimation(HPG1,0,4);
+					HPG1state4On = TRUE;	//Pulse
+					playSoundEffect(1);
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 16.0) AND (NOT HPG1state5On)) then
+					setAnimation(HPG1,0,5);
+					HPG1state5On = TRUE;	//Cool Down
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 14.0) AND (NOT HPG1state6On)) then
+					setAnimation(HPG1,0,6);
+					HPG1state6On = TRUE;	//Return to Start
+				endif;
+			endif;
+
+			//---------------------------------------
+			// Aux Generator Animation Control
+			//---------------------------------------
+
+			if (objectStatus(AuxGen1) <> OBJECT_STATUS_DESTROYED) then
+		   		if ((checkTimer (Scenario_Timer_2) < 45.0) AND (NOT AuxGen1state0On)) then
+		    		setAnimation(AuxGen1,0,0);
+					AuxGen1state0On = TRUE;	//StartUp
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 44.5) AND (NOT AuxGen1state1On)) then
+					setAnimation(AuxGen1,0,1);
+					AuxGen1state1On = TRUE;	//Running
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 5.5) AND (NOT AuxGen1state2On)) then
+					setAnimation(AuxGen1,0,2);
+					AuxGen1state2On = TRUE;	//ShutDown
+				endif;
+			endif;
+
+			if (objectStatus(AuxGen2) <> OBJECT_STATUS_DESTROYED) then
+		   		if ((checkTimer (Scenario_Timer_2) < 40.0) AND (NOT AuxGen2state0On)) then
+		    		setAnimation(AuxGen2,0,0);
+					AuxGen2state0On = TRUE;	//StartUp
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 39.5) AND (NOT AuxGen2state1On)) then
+					setAnimation(AuxGen2,0,1);
+					AuxGen2state1On = TRUE;	//Running
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 0.5) AND (NOT AuxGen2state2On)) then
+					setAnimation(AuxGen2,0,2);
+					AuxGen2state2On = TRUE;	//ShutDown
+					Timer2Set=FALSE;
+				endif;
+			endif;
+
+			//---------------------------------------
+			// Clan Mech Bay Animation Control
+			//---------------------------------------
+
+			if (objectStatus(ClanBay1) <> OBJECT_STATUS_DESTROYED) then
+				if ((checkTimer (Scenario_Timer_2) < 60.0) AND (NOT ClanBay1state2On)) then 
+					setAnimation(ClanBay1,0,2);
+					ClanBay1state2On = TRUE;	//Red
+				endif;
+			endif;
+
+			if (objectStatus(ClanBay2) <> OBJECT_STATUS_DESTROYED) then
+				if ((checkTimer (Scenario_Timer_2) < 60.0) AND (NOT ClanBay2state2On)) then 
+					setAnimation(ClanBay2,0,2);
+					ClanBay2state2On = TRUE;	//Red
+				endif;
+			endif;
+
+ 			//---------------------------------------
+			// Planetary Orbital Gun Animation Control
+			//---------------------------------------
+		  	if (objectStatus(ASG1) <> OBJECT_STATUS_DESTROYED) then
+		   		if ((checkTimer (Scenario_Timer_2) < 45.0) AND (NOT ASG1state0On)) then
+		    		setAnimation(ASG1,0,0);
+					ASG1state0On = TRUE;	//Rotate into position
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 43.0) AND (NOT ASG1state1On)) then
+					setAnimation(ASG1,0,1);
+					ASG1state1On = TRUE;	//Charging
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 35.0) AND (NOT ASG1state2On)) then
+					setAnimation(ASG1,0,2);
+					playSoundEffect(3);
+					ASG1state2On = TRUE;	//Firing
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 34.0) AND (NOT ASG1state3On)) then
+					setAnimation(ASG1,0,3);
+					ASG1state3On = TRUE;	//Shutdown
+				endif;
+			 endif;
+
+		  	if (objectStatus(ASG2) <> OBJECT_STATUS_DESTROYED) then
+		   		if ((checkTimer (Scenario_Timer_2) < 40.0) AND (NOT ASG2state0On)) then
+		    		setAnimation(ASG2,0,0);
+					ASG2state0On = TRUE;	//Rotate into position
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 38.0) AND (NOT ASG2state1On)) then
+					setAnimation(ASG2,0,1);
+					ASG2state1On = TRUE;	//Charging
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 30.0) AND (NOT ASG2state2On)) then
+					setAnimation(ASG2,0,2);
+					playSoundEffect(3);
+					ASG2state2On = TRUE;	//Firing
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 29.0) AND (NOT ASG2state3On)) then
+					setAnimation(ASG2,0,3);
+					ASG2state3On = TRUE;	//Shutdown
+				endif;
+			 endif;
+
+		  	if (objectStatus(ASG3) <> OBJECT_STATUS_DESTROYED) then
+		   		if ((checkTimer (Scenario_Timer_2) < 35.0) AND (NOT ASG3state0On)) then
+		    		setAnimation(ASG3,0,0);
+					ASG3state0On = TRUE;	//Rotate into position
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 33.0) AND (NOT ASG3state1On)) then
+					setAnimation(ASG3,0,1);
+					ASG3state1On = TRUE;	//Charging
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 25.0) AND (NOT ASG3state2On)) then
+					setAnimation(ASG3,0,2);
+					playSoundEffect(3);
+					ASG3state2On = TRUE;	//Firing
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 24.0) AND (NOT ASG3state3On)) then
+					setAnimation(ASG3,0,3);
+					ASG3state3On = TRUE;	//Shutdown
+				endif;
+			 endif;
+
+
+			//---------------------------------------
+            // Objective Resolution
+            //---------------------------------------
+            
+            if (checkObjectiveStatus(0) == INCOMPLETE) then
+
+            	//Are the POGs at base destroyed?
+            	if ((objectStatus(ASG1) == OBJECT_STATUS_DESTROYED) 
+            	  AND (objectStatus(ASG2) == OBJECT_STATUS_DESTROYED) 
+            	  AND (objectStatus(ASG3) == OBJECT_STATUS_DESTROYED)) then
+					SetObjectiveStatus(0,SUCCESS);
+                	Objective_0_Decided = TRUE;
+                	PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);	
+
+				 VictoryLevel = VictoryLevel + 2;
+
+				endif;
+			endif;
+
+			
+			if (checkObjectiveStatus(1) == INCOMPLETE) then
+			
+            	//Is the Government Building at base destroyed?
+            	if (objectStatus(GovBldg) == OBJECT_STATUS_DESTROYED) then
+					SetObjectiveStatus(1,SUCCESS);
+                	Objective_1_Decided = TRUE;
+                	PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);	
+
+				 VictoryLevel = VictoryLevel + 2;
+
+				endif;
+			endif;
+
+			
+            if ((NOT ExitTimerSet) AND (Objective_0_Decided) AND (Objective_1_Decided)) then
+                  setTimer(EXIT_TIMER,20.0);
+                  ExitTimerSet = TRUE;
+                  PlayDigitalMusic(VICTORY_MUSIC); // Need to make this conditional based on success
+            endif;
+
+
+
+            //---------------------------------------
+            // END SCENARIO
+            //---------------------------------------
+
+            if ((ExitTimerSet) AND (CheckTimer(EXIT_TIMER) == 0.0)) then
+                  ScenarioResult = VictoryLevel;
+            endif;
+
+            //---------------------------------------
+            // RETURN RESULT
+            //---------------------------------------
+
+            return (ScenarioResult);
+endmodule.
+//******************************************************************

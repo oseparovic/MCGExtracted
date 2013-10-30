@@ -1,0 +1,13 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:LINCHPIN/04PRDN05%n
+%fc5%c----------%n
+%fc6%c***INTERCEPT ENEMY FORCE***%n
+%fc21-Destroy all enemy 'Mechs.%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 3 Small  4 Large%n
+%t12SENSOR PROBE: 2%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4Orbital Reconnaissance has spotted a sizable force of Jaguar `Mechs that has outflanked us and is rapidly approaching our rear area from the south. If that Clan force gets through it could wreak untold havoc with our supply lines, rear support bases, and even threaten our command structure. It must be stopped.%n%n
+Battalion Command can drop the majority of your force to the north end of the engagement area and they can drop two `Mechs into a forward scout point near some rugged hills. The clan force will be moving from south to north. None of them can be allowed to slip through or the damage will be considerable.%n%n
+%fc6<<<<END DISPATCH

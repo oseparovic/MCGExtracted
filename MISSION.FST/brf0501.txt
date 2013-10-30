@@ -1,0 +1,15 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:CUTTHROAT/05PRDN01%n
+%fc5%c----------%n
+%fc6%c***RESCUE ALLIED COMMANDER***%n
+%fc21-Escort Allied Captain to%n
+%t9Extraction Point.%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 4 Small  2 Large%n
+%t12SENSOR PROBE: 1%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4There is good news and bad news Commander. Captain Nairn of X-Ray Company and his men were dispatched to lure an elite Binary (2 Stars) of Clan OmniMechs normally tasked with guarding the Starbase out of position. They succeeded, but their withdrawal was interrupted by another Clan force that has pinned them down. His forces have taken the high ground and are executing a temporary defensive engagement, but he cannot hold out forever.%n%n
+Quickly deploy a relief force to the area, protect Nairn's Atlas, and escort him to the extraction point. Be warned, however, Nairn is a bit of a hot head and if he feels vengeful he may seek to strike a blow against the enemy before he withdraws.%n%n
+Fortunately, that Binary of 'Mechs is not in the immediate area. We'll worry about them once Nairn's safely back within our lines.%n%n
+%fc6<<<<END DISPATCH

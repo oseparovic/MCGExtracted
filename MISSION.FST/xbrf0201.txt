@@ -1,0 +1,28 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:GORGON/02PRDN01%n
+%fc5%c----------%n
+%fc6%c***TARGETS OF OPPORTUNITY***%n
+%fc21-Move All Units to Extraction Point%n
+%fc22-Destroy OmniMech Star%n
+%fc8   (secondary)%n
+%fc23-Destroy Bridge%n
+%fc8   (secondary)%n
+%fc24-Destroy Research Complexes (2)%n
+%fc8   (secondary)%n
+%fc25-Capture Component Vaults (2)%n
+%fc8   (secondary)%n
+%fc26-Complete all Secondary Objectives%n
+%fc8   (secondary)%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 3 Small  2 Large%n
+%t12SENSOR PROBE: 0%n
+%t12CAMERA DRONE: 0%n%n
+%fm%fc1%cTIME LIMIT: 25 MINUTES%n
+%fc5%fs%c----------%n
+%fc4With the destruction of base Ogre, Strategic plans to take advantage of the Clan's confusion to strike deeply into their territory.  This requires the immediate transport of our forces through Azimuth sector, which still contains a significant Clan presence.  Your mission is to reach the %fc2Extraction Point%fc4 with all your units in %fc225 minutes%fc4.%n%n
+%fc4Even though your primary goal is to simply reach the Extraction Point, Strategic would like you to hit as many targets of opportunity in the process as possible.  Along the southwest end of Azimuth sector Clan forces are possibly gathering for a strike across the river east of your drop zones.  Blowing the%n%fc2Bridge%fc4 spanning that river would severely hamper Clan counterattacks.  In addition, there is a %fc2Clan OmniMech Star%fc4 positioned west of your location.%n%n
+%fc4Intelligence has located additional Clan forces to the north excavating and researching ancient Star League facilities. This may help reveal why the Clanners are on this planet. Deny the Clan the two Star League %fc2Research Complexes%fc4 by destroying them and then capture the two%n%fc2Component Vaults%fc4.%n%n
+%fc5%c----------%n
+%fc6%c**TACTICAL WARNING**%n%n
+%fc6*%fc2 Recon reports both %fc6Mad Cat%fc2 and %fc6Loki%fc2%nclass OmniMechs in the Azimuth sector.%n%n
+%fc6<<<<END DISPATCH

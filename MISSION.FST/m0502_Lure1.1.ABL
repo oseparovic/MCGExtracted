@@ -1,0 +1,132 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:4/29/98   BY:Mike Lee
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0502_Lure1.1 : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+
+    // PATHS
+    static path                        runaway;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+
+         // Paths
+
+         runaway[0,0] = 1460; // X
+         runaway[0,1] = -1300; // Y
+
+         runaway[1,0] = 860; // X
+         runaway[1,1] = -1600; // Y
+
+         runaway[2,0] = -1190; // X
+         runaway[2,1] = -1360; // Y
+
+         runaway[3,0] = -1720; // X
+         runaway[3,1] = -1515; // Y
+
+         runaway[4,0] = -3225; // X
+         runaway[4,1] = -1165; // Y
+
+         SetEngageRadius(225);
+         SetDisEngageRadius(450);
+         SetSpeed(RUN);
+         SetConcentrateFireMod(1.0);
+         SelectWeakest;
+         MoveAndFireON;
+         ReturnFireOFF;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (flag4) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              SetEngageRadius(450);
+              Order2Status = SUCCESS;
+         endif;
+    endif;
+    if (numDead(CLAN_STAR0) > 0) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              Order3Status = MovePath(runaway,5);
+              if (Order3Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order3Status == SUCCESS) then
+                   // Order  4 
+                   if (Order4Status == INCOMPLETE) then
+                        SetEngageRadius(225);
+                        Order4Status = SUCCESS;
+                   endif;
+              endif;
+         endif;
+    endif;
+    if (getTarget(CUR_OBJECT_ID) > 0) then
+         // Order  5 
+         if (Order5Status == INCOMPLETE) then
+              Order5Status = MoveTo(1500,-1300);
+              if (Order5Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = Attack;
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

@@ -1,0 +1,21 @@
+//*********************************************************************************
+// Structure Include file for mission 7_30
+
+
+if (isdead(RBIS)) then
+
+else
+     if ((IsCaptured(RBIS) == 1) AND (objectSide(RBIS) <> RBISAlignment) AND (RBISAlignment <> -2)) then
+           sendMessage(9,ObjectSide(RBIS));
+           handleMessage;
+     endif;
+endif;
+
+if (isdead(RBClan)) then
+
+else
+     if ((IsCaptured(RBClan) == 1) AND (objectSide(RBClan) <> RBClanAlignment) AND (RBClanAlignment <> -2)) then
+           sendMessage(10,ObjectSide(RBClan));
+           handleMessage;
+     endif;
+endif;

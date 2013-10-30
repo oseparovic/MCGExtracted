@@ -1,0 +1,11 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc5%c----------%n
+%fc6%c***Caldera***%n%n
+%fc5%c----------%n
+%fc4Kill them.  Kill them all.  It doesn't get any simpler than that.%n%n
+%fc5%c----------%n
+%fc1%fm%c**TACTICAL WARNING**%n
+%fc2%fs*The only artillery crates on the map are on the island in the middle.%n%n
+%fm%fc6%c**TACTICAL NOTICE**%n
+%fs%fc2* If the bridges are blown you will still be able to make it around the map but only by burning through the woods at the north and south ends.%n%n
+%fc6<<<<END DISPATCH

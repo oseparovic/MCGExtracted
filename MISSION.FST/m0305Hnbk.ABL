@@ -1,0 +1,120 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:3/11/98   BY:Rob Nicholls
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0305Hnbk : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+
+    // PATHS
+    static path                        HunchPath;
+    static path                        PastGate;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+
+         // Paths
+
+         HunchPath[0,0] = 832; // X
+         HunchPath[0,1] = -5623; // Y
+
+         HunchPath[1,0] = 1841; // X
+         HunchPath[1,1] = -4648; // Y
+
+         HunchPath[2,0] = 1727; // X
+         HunchPath[2,1] = -4118; // Y
+
+         PastGate[0,0] = 85; // X
+         PastGate[0,1] = -2523; // Y
+
+         IdentifySensorContactsOFF;
+         SetSpeed(RUN);
+         MoveAndFireON;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = MovePath(HunchPath,3);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order1Status <> INCOMPLETE) then
+                   // Order  2 
+                   if (Order2Status == INCOMPLETE) then
+                        Order2Status = AttackObject(GateSW,FALSE,TRUE);
+                        if (Order2Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   else
+                        if (Order2Status <> INCOMPLETE) then
+                             // Order  3 
+                             if (Order3Status == INCOMPLETE) then
+                                  Order3Status = MovePath(PastGate,1);
+                                  if (Order3Status == INCOMPLETE) then
+                                       return(1);
+                                  endif;
+                             else
+                                  if (Order3Status <> INCOMPLETE) then
+                                       // Order  4 
+                                       if (Order4Status == INCOMPLETE) then
+                                            Order4Status = ClearArea;
+                                            if (Order4Status == INCOMPLETE) then
+                                                 return(1);
+                                            endif;
+                                       endif;
+                                  endif;
+                             endif;
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

@@ -1,0 +1,10 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cCOMMAND DESIGNATION:GAMBIT/7PRDN12%n
+%fc5%c----------%n
+%fc6%c*** BLOOD MAKES THE GRASS GROW ***%n
+%fc21-Destroy All Enemy Forces%n%n
+%fc5%c----------%n
+%fc4the rules are simple here.  Kill them all.%n%n
+%fc6<<<<END DISPATCH
+
+

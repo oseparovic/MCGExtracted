@@ -1,0 +1,107 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:9/15/98   BY:joe sislow
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBmx0203PatrolS : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+
+    // PATHS
+    static path                        PatrolS;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+
+         // Paths
+
+         PatrolS[0,0] = 804; // X
+         PatrolS[0,1] = 2267; // Y
+
+         PatrolS[1,0] = 1870; // X
+         PatrolS[1,1] = 2267; // Y
+
+         PatrolS[2,0] = 3243; // X
+         PatrolS[2,1] = 2267; // Y
+
+         PatrolS[3,0] = 3243; // X
+         PatrolS[3,1] = 866; // Y
+
+         PatrolS[4,0] = 3243; // X
+         PatrolS[4,1] = 333; // Y
+
+         SetEngageRadius(200);
+         SetDisEngageRadius(550);
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (beenHit) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              SetEngageRadius(450);
+              Order3Status = SUCCESS;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = Patrol(PatrolS,5,PATROL_BACK_AND_FORTH, 800000);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order1Status == FAILED) then
+                   // Order  2 
+                   if (Order2Status == INCOMPLETE) then
+                        Order2Status = Attack;
+                        if (Order2Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

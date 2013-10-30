@@ -1,0 +1,28 @@
+//*********************************************************************************
+// Structure Include file for mission 3_2
+
+
+if ((isdead(Tcontrol)) AND (TcontrolAlignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(46,28),FALSE);
+     setObjectActive(getterrainobjectpartid(46,65),FALSE);
+     setObjectActive(getterrainobjectpartid(46,153),FALSE);
+     setObjectActive(getterrainobjectpartid(46,233),FALSE);
+     setObjectActive(getterrainobjectpartid(46,253),FALSE);
+     TcontrolAlignment = -2;
+else
+     if ((IsCaptured(Tcontrol) == 1) AND (objectSide(Tcontrol) <> TcontrolAlignment) AND (TcontrolAlignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(46,28),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(46,28),2);
+           objectChangeSides(getterrainobjectpartid(46,65),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(46,65),2);
+           objectChangeSides(getterrainobjectpartid(46,153),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(46,153),2);
+           objectChangeSides(getterrainobjectpartid(46,233),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(46,233),2);
+           objectChangeSides(getterrainobjectpartid(46,253),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(46,253),2);
+           objectChangeSides(Tcontrol,INNER_SPHERE);
+           TcontrolAlignment = INNER_SPHERE;
+           setPotentialContact(Tcontrol,2);
+     endif;
+endif;

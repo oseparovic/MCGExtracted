@@ -1,0 +1,25 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:BEACHHEAD/01PRDN03%n
+%fc5%c----------%n
+%fc6%c***ESCORT RAVEN 'MECH TO SAFETY***%n
+%fc21-Link up with Raven%n
+2-Escort Raven to extraction point%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 2 Small  3 Large%n
+%t12SENSOR PROBE: 0%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4One of our valuable Raven scout 'Mechs, separated during the initial combat drop, has been located. The 'Mech's powerful sensors are intact, but its pilot, Mystique, has powered it down to avoid detection by a nearby enemy cargo transfer post. We know she's somewhere near the northwest end of the island we're dropping you on.%n%n
+Get one of your units near the Raven, and Mystique will power up and give you command authority. Then, protect Mystique and escort her to the extraction point immediately southeast of your drop point.%n%n
+There is a large quantity of Smoke Jaguar and Bondsman mechanized forces in the area, along with some 'Mechs. Pick your fights carefully and use the terrain to give yourself every advantage possible. Remember, Mystique must live to get to the extraction point along with your forces. Good luck.%n%n
+%fc1%fm%c**TACTICAL WARNING**%n
+%fc2%fs*The Smoke Jaguars have air superiority,%n
+%t9so watch out for airstrikes.%n%n
+%fm%fc6%c**TACTICAL NOTICE**%n
+%fs%fc2*Choose your fights wisely: You do%n
+%t9not need to fight or destroy all enemy%n
+%t9units to complete missions.%n
+*The Raven carries an advanced ECM Suite%n
+%t9which jams enemy sensors, reducing their%n
+%t9effective range by 50% %n%n
+%fc6<<<<END DISPATCH

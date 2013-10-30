@@ -1,0 +1,20 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:VANGUARD/03PRDN02%n
+%fc5%c----------%n
+%fc6%c***DESTROY ENEMY COMMAND UNIT***%n
+%fc21-Destroy 2 Industrial Complexes%n
+2-Destroy Major Piotrev's Unit%n
+3-Destroy Primary Turret Power%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 1 Small  0 Large%n
+%t12SENSOR PROBE: 0%n
+%t12CAMERA DRONE: 1%n
+%fc5%c----------%n
+%fc4Intelligence has confirmed that Bondsman Major Piotrev's command unit was heavily damaged in battle with our forces and is on its way to a repair base in the enemy's rear area. Your mission is to preemptively take that base and provide a warm welcome for Piotrev upon his arrival.%n%n
+The base is heavily defended by turrets, but there is a weak point in the Jaguar's defense. Primary power for the base is maintained by a series of geothermal generators to the east. Taking these out will deactivate the base turrets for a minute or two until secondary power comes on line.%n%n
+Take out the primary power, destroy the two industrial complexes that are producing spare parts for the base, and destroy the Major's command unit.%n%n
+%fm%fc1%c**TACTICAL WARNING**%n
+%fs%fc2*Though damaged, Piotrev's unit should not%n
+%t9be underestimated. Heavy and Assault%n
+%t9`Mechs have been reported.%n%n
+%fc6<<<<END DISPATCH

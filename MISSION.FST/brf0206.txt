@@ -1,0 +1,16 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:SKYHOOK/02PRDN06%n
+%fc5%c----------%n
+%fc6%c***CAPTURE AND DEFEND BASE***%n
+%fc21-Capture Enemy Base HQ%n
+%t9OBJECTIVE TIME LIMIT- 06:00%n
+%fc22-Defend Captured Base HQ%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 2 Small  2 Large%n
+%t12SENSOR PROBE: 0%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4All allied forces are beginning a coordinated offensive against Clan positions. The initial stages of this operation require precise timing. Any deviation from the timing will mean the failure of the operation.%n%n
+Your objective is the Clan base at Serpent Bay, a key supply and logistics center for the area. Battalion will drop your select strike force to take and hold the base.%n%n
+Be prepared for aggressive Clan defense of the area. Gaining control of the enemy sensor and turret control could be crucial to your success.%n%n
+%fc6<<<<END DISPATCH

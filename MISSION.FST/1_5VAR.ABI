@@ -1,0 +1,27 @@
+//*********************************************************************************
+// Variable Include file for mission 1_5
+
+     static boolean                    flag11;
+     static boolean                    flag12;
+     eternal integer                   HouseN;
+     eternal integer                   SiloN;
+     eternal integer                   DblSiloN;
+     eternal integer                   BarnN;
+     eternal integer                   StorM;
+     eternal integer                   SiloM;
+     eternal integer                   HouseM;
+     eternal integer                   BarnM;
+     eternal integer                   LilBarnS;
+     eternal integer                   SiloS;
+     eternal integer                   HouseS;
+     eternal integer                   BarnS;
+     eternal integer                   wh1;
+     static integer                    wh1Alignment;
+     eternal integer                   wh2;
+     static integer                    wh2Alignment;
+     static boolean                    LOP0;
+     static boolean                    LOP1;
+     static boolean                    LOP2;
+     static boolean                    LOP3;
+     static boolean                    LOP4;
+     static boolean                    LOP5;

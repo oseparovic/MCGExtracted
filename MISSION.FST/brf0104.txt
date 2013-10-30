@@ -1,0 +1,39 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:BEACHHEAD/01PRDN04%n
+%fc5%c----------%n
+%fc6%c***DESTROY CLAN***%n
+%c***HEADQUARTERS BUILDING***%n
+%fc21-Destroy Clan Base Headquarters%n
+2-Withdraw to Extraction Point for%n
+%t9recovery%n
+3-Defend Allied Support Building%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 3 Small  0 Large%n
+%t12SENSOR PROBE: 0%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4Intelligence has requested a strike against the Clan Headquarters building in Clairesfield. Our forces have hastily erected a temporary base in preparation for a sneak attack upon the small stronghold. Your team must eliminate the guarding forces, destroy the building, and then withdraw for extraction.%n%n
+The enemy base will most certainly have scouting patrols guarding the obvious access routes. Stop them from returning and warning the base or it will be prepared for your assault. Destroying enemy patrols will also give you enough time to recon the base from higher elevations. Intelligence reports only one Power Generator. Destroying that Generator will undoubtedly cripple the base's perimeter defenses, which includes automated turrets and Turret Control Towers.%n%n
+Once you have destroyed the Headquarters building, return to the temporary base for extraction. Since there are active enemy patrols we recommend that you divide your force and send one force to attack the enemy base while holding some units behind to guard the Support Building.%n%n
+%fm%fc6%c**TACTICAL NOTICE**%n
+%fs%fc2*Capturing or destroying a Turret Control%n
+%t9Tower disables nearby enemy turrets.%n
+*Defensive gates are controlled by%n
+%t9Gate Control Buildings located nearby.%n
+%t9Capturing the Control Building will make%n
+%t9the gate it controls open automatically%n
+%t9for your forces and stay closed for the%n
+%t9enemy.%n
+*Once alerted, vehicle crews housed in%n
+%t9Barracks take time to power-up their%n
+%t9vehicles, signified by the Activation%n
+%t9Markers located near the vehicles.%n
+%t9When the Marker color is green, the%n
+%t9vehicle is powered-down. When it%n
+%t9turns yellow, the crew is getting%n
+%t9ready. When it turns red, the vehicle%n
+%t9activates. At any time before the%n
+%t9Marker turns red, destroying the%n
+%t9Barrack building prevents the%n
+%t9vehicle from activating.%n%n
+%fc6<<<<END DISPATCH

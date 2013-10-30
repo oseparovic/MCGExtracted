@@ -1,0 +1,24 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:BEACHHEAD/01PRDN06%n
+%fc5%c----------%n
+%fc6%c***LIBERATE KAIO***%n
+%c***INDUSTRIAL ZONE***%n
+%fc21-Destroy all enemy `Mechs defending%n
+%t9Industrial Zone.%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 1 Small  0 Large%n
+%t12SENSOR PROBE: 0%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4Consolidation of the area and completion of this phase of the invasion hinges on control of the Kaio Industrial Zone.%n%n
+Unfortunately, the Smoke Jaguars have recognized the importance of the area and have entrenched Bondsman forces to defend it. Reconnaissance shows that the area is well protected by natural barriers as well as constructed fortifications manned by combat units and automated defenses.%n%n
+Since this region contains vital approaches required to continue the invasion, we must take control of the area. In order to accomplish this you must destroy all the `Mechs defending the area.%n%n
+Good luck.%n
+%fc5%c----------%n
+%fc1%fm%c**TACTICAL WARNING**%n
+%fc2%fs*The infamous Captain Akodo%n
+%t9Haru has been spotted in this area%n
+%t9overseeing the defenses. Be warned%n
+%t9that Captain Haru pilots a Heavy%n
+%t9'Mech, the LRM-equipped CATAPULT.%n%n
+%fc6<<<<END DISPATCH

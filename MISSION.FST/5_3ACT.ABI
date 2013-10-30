@@ -1,0 +1,191 @@
+//*********************************************************************************
+// Activation Include file for mission 5_3
+
+if (isDead(MWB1)) then
+     if (isAlive(getTerrainObjectPartID(21,275))) then
+           setAnimation(getTerrainObjectPartID(21,275),0,-1);
+     endif;
+     if (isAlive(getTerrainObjectPartID(21,276))) then
+           setAnimation(getTerrainObjectPartID(21,276),0,-1);
+     endif;
+     if (isAlive(getTerrainObjectPartID(21,277))) then
+           setAnimation(getTerrainObjectPartID(21,277),0,-1);
+     endif;
+     if (isAlive(getTerrainObjectPartID(21,295))) then
+           setAnimation(getTerrainObjectPartID(21,295),0,-1);
+     endif;
+     if (isAlive(getTerrainObjectPartID(21,297))) then
+           setAnimation(getTerrainObjectPartID(21,297),0,-1);
+     endif;
+     if (isAlive(getTerrainObjectPartID(21,315))) then
+           setAnimation(getTerrainObjectPartID(21,315),0,-1);
+     endif;
+     if (isAlive(getTerrainObjectPartID(21,316))) then
+           setAnimation(getTerrainObjectPartID(21,316),0,-1);
+     endif;
+     if (isAlive(getTerrainObjectPartID(21,317))) then
+           setAnimation(getTerrainObjectPartID(21,317),0,-1);
+     endif;
+else
+     if ((GeneralAlarmCounter == 0) AND (isAlive(getTerrainObjectPartID(21,275)))) then
+           setAnimation(getTerrainObjectPartID(21,275),0,1);
+     endif;
+     if ((GeneralAlarmCounter == 0) AND (isAlive(getTerrainObjectPartID(21,276)))) then
+           setAnimation(getTerrainObjectPartID(21,276),0,1);
+     endif;
+     if ((GeneralAlarmCounter == 0) AND (isAlive(getTerrainObjectPartID(21,277)))) then
+           setAnimation(getTerrainObjectPartID(21,277),0,1);
+     endif;
+     if ((GeneralAlarmCounter == 0) AND (isAlive(getTerrainObjectPartID(21,295)))) then
+           setAnimation(getTerrainObjectPartID(21,295),0,1);
+     endif;
+     if ((GeneralAlarmCounter == 0) AND (isAlive(getTerrainObjectPartID(21,297)))) then
+           setAnimation(getTerrainObjectPartID(21,297),0,1);
+     endif;
+     if ((GeneralAlarmCounter == 0) AND (isAlive(getTerrainObjectPartID(21,315)))) then
+           setAnimation(getTerrainObjectPartID(21,315),0,1);
+     endif;
+     if ((GeneralAlarmCounter == 0) AND (isAlive(getTerrainObjectPartID(21,316)))) then
+           setAnimation(getTerrainObjectPartID(21,316),0,1);
+     endif;
+     if ((GeneralAlarmCounter == 0) AND (isAlive(getTerrainObjectPartID(21,317)))) then
+           setAnimation(getTerrainObjectPartID(21,317),0,1);
+     endif;
+endif;
+if ((NOT isDead(MWB1)) AND (GeneralAlarm) AND (GeneralAlarmCounter > 4) AND (GeneralAlarmCounter < 36)) then
+     if (GeneralAlarmCounter == 5) then
+           if (isAlive(getTerrainObjectPartID(21,275))) then
+                 setAnimation(getTerrainObjectPartID(21,275),0,2);
+           endif;
+           if (isAlive(getTerrainObjectPartID(21,276))) then
+                 setAnimation(getTerrainObjectPartID(21,276),0,2);
+           endif;
+           if (isAlive(getTerrainObjectPartID(21,277))) then
+                 setAnimation(getTerrainObjectPartID(21,277),0,2);
+           endif;
+           if (isAlive(getTerrainObjectPartID(21,295))) then
+                 setAnimation(getTerrainObjectPartID(21,295),0,2);
+           endif;
+           if (isAlive(getTerrainObjectPartID(21,297))) then
+                 setAnimation(getTerrainObjectPartID(21,297),0,2);
+           endif;
+           if (isAlive(getTerrainObjectPartID(21,315))) then
+                 setAnimation(getTerrainObjectPartID(21,315),0,2);
+           endif;
+           if (isAlive(getTerrainObjectPartID(21,316))) then
+                 setAnimation(getTerrainObjectPartID(21,316),0,2);
+           endif;
+           if (isAlive(getTerrainObjectPartID(21,317))) then
+                 setAnimation(getTerrainObjectPartID(21,317),0,2);
+           endif;
+           setobjectActive(getVehicleID(CLAN_FORCE,7,0),TRUE);
+     endif;
+     if (GeneralAlarmCounter == 15) then
+           setobjectActive(getVehicleID(CLAN_FORCE,7,1),TRUE);
+     endif;
+     if (GeneralAlarmCounter == 25) then
+           setobjectActive(getVehicleID(CLAN_FORCE,7,2),TRUE);
+     endif;
+     if (GeneralAlarmCounter == 35) then
+           setobjectActive(getVehicleID(CLAN_FORCE,7,3),TRUE);
+     endif;
+endif;
+if ((NOT isDead(MWB1)) AND (GeneralAlarm) AND (GeneralAlarmCounter > 44) AND (GeneralAlarmCounter < 46)) then
+     if (GeneralAlarmCounter == 45) then
+           setobjectActive(getVehicleID(CLAN_FORCE,7,4),TRUE);
+     endif;
+endif;
+if (isDead(MWB2)) then
+     if (isAlive(getTerrainObjectPartID(21,319))) then
+           setAnimation(getTerrainObjectPartID(21,319),0,-1);
+     endif;
+     if (isAlive(getTerrainObjectPartID(21,339))) then
+           setAnimation(getTerrainObjectPartID(21,339),0,-1);
+     endif;
+     if (isAlive(getTerrainObjectPartID(21,359))) then
+           setAnimation(getTerrainObjectPartID(21,359),0,-1);
+     endif;
+     if (isAlive(getTerrainObjectPartID(22,300))) then
+           setAnimation(getTerrainObjectPartID(22,300),0,-1);
+     endif;
+     if (isAlive(getTerrainObjectPartID(22,301))) then
+           setAnimation(getTerrainObjectPartID(22,301),0,-1);
+     endif;
+     if (isAlive(getTerrainObjectPartID(22,321))) then
+           setAnimation(getTerrainObjectPartID(22,321),0,-1);
+     endif;
+     if (isAlive(getTerrainObjectPartID(22,340))) then
+           setAnimation(getTerrainObjectPartID(22,340),0,-1);
+     endif;
+     if (isAlive(getTerrainObjectPartID(22,341))) then
+           setAnimation(getTerrainObjectPartID(22,341),0,-1);
+     endif;
+else
+     if ((GeneralAlarmCounter == 0) AND (isAlive(getTerrainObjectPartID(21,319)))) then
+           setAnimation(getTerrainObjectPartID(21,319),0,1);
+     endif;
+     if ((GeneralAlarmCounter == 0) AND (isAlive(getTerrainObjectPartID(21,339)))) then
+           setAnimation(getTerrainObjectPartID(21,339),0,1);
+     endif;
+     if ((GeneralAlarmCounter == 0) AND (isAlive(getTerrainObjectPartID(21,359)))) then
+           setAnimation(getTerrainObjectPartID(21,359),0,1);
+     endif;
+     if ((GeneralAlarmCounter == 0) AND (isAlive(getTerrainObjectPartID(22,300)))) then
+           setAnimation(getTerrainObjectPartID(22,300),0,1);
+     endif;
+     if ((GeneralAlarmCounter == 0) AND (isAlive(getTerrainObjectPartID(22,301)))) then
+           setAnimation(getTerrainObjectPartID(22,301),0,1);
+     endif;
+     if ((GeneralAlarmCounter == 0) AND (isAlive(getTerrainObjectPartID(22,321)))) then
+           setAnimation(getTerrainObjectPartID(22,321),0,1);
+     endif;
+     if ((GeneralAlarmCounter == 0) AND (isAlive(getTerrainObjectPartID(22,340)))) then
+           setAnimation(getTerrainObjectPartID(22,340),0,1);
+     endif;
+     if ((GeneralAlarmCounter == 0) AND (isAlive(getTerrainObjectPartID(22,341)))) then
+           setAnimation(getTerrainObjectPartID(22,341),0,1);
+     endif;
+endif;
+if ((NOT isDead(MWB2)) AND (GeneralAlarm) AND (GeneralAlarmCounter > 7) AND (GeneralAlarmCounter < 39)) then
+     if (GeneralAlarmCounter == 8) then
+           if (isAlive(getTerrainObjectPartID(21,319))) then
+                 setAnimation(getTerrainObjectPartID(21,319),0,2);
+           endif;
+           if (isAlive(getTerrainObjectPartID(21,339))) then
+                 setAnimation(getTerrainObjectPartID(21,339),0,2);
+           endif;
+           if (isAlive(getTerrainObjectPartID(21,359))) then
+                 setAnimation(getTerrainObjectPartID(21,359),0,2);
+           endif;
+           if (isAlive(getTerrainObjectPartID(22,300))) then
+                 setAnimation(getTerrainObjectPartID(22,300),0,2);
+           endif;
+           if (isAlive(getTerrainObjectPartID(22,301))) then
+                 setAnimation(getTerrainObjectPartID(22,301),0,2);
+           endif;
+           if (isAlive(getTerrainObjectPartID(22,321))) then
+                 setAnimation(getTerrainObjectPartID(22,321),0,2);
+           endif;
+           if (isAlive(getTerrainObjectPartID(22,340))) then
+                 setAnimation(getTerrainObjectPartID(22,340),0,2);
+           endif;
+           if (isAlive(getTerrainObjectPartID(22,341))) then
+                 setAnimation(getTerrainObjectPartID(22,341),0,2);
+           endif;
+           setobjectActive(getVehicleID(CLAN_FORCE,8,0),TRUE);
+     endif;
+     if (GeneralAlarmCounter == 18) then
+           setobjectActive(getVehicleID(CLAN_FORCE,8,1),TRUE);
+     endif;
+     if (GeneralAlarmCounter == 28) then
+           setobjectActive(getVehicleID(CLAN_FORCE,8,2),TRUE);
+     endif;
+     if (GeneralAlarmCounter == 38) then
+           setobjectActive(getVehicleID(CLAN_FORCE,8,3),TRUE);
+     endif;
+endif;
+if ((NOT isDead(MWB2)) AND (GeneralAlarm) AND (GeneralAlarmCounter > 47) AND (GeneralAlarmCounter < 49)) then
+     if (GeneralAlarmCounter == 48) then
+           setobjectActive(getVehicleID(CLAN_FORCE,8,4),TRUE);
+     endif;
+endif;

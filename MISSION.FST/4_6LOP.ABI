@@ -1,0 +1,66 @@
+//*********************************************************************************
+// Lookout Point Include file for mission 4_6
+
+if (LOP0) then
+      aPoint[0] = -3100;
+      aPoint[1] = -5300;
+      aPoint[2] = 0.0;
+      if (distanceToPosition(PLAYER_FORCE, aPoint) < 10000) then
+            setRevealed(1,100.0,aPoint);
+            LOP0 = FALSE;
+      endif;
+endif;
+if (LOP1) then
+      aPoint[0] = -3100;
+      aPoint[1] = -5800;
+      aPoint[2] = 0.0;
+      if (distanceToPosition(PLAYER_FORCE, aPoint) < 10000) then
+            setRevealed(1,150.0,aPoint);
+            LOP1 = FALSE;
+      endif;
+endif;
+if (LOP2) then
+      aPoint[0] = -3100;
+      aPoint[1] = -6300;
+      aPoint[2] = 0.0;
+      if (distanceToPosition(PLAYER_FORCE, aPoint) < 10000) then
+            setRevealed(1,200.0,aPoint);
+            LOP2 = FALSE;
+      endif;
+endif;
+if (LOP3) then
+      aPoint[0] = -3100;
+      aPoint[1] = -6800;
+      aPoint[2] = 0.0;
+      if (distanceToPosition(PLAYER_FORCE, aPoint) < 10000) then
+            setRevealed(1,250.0,aPoint);
+            LOP3 = FALSE;
+      endif;
+endif;
+if (LOP4) then
+      aPoint[0] = -3100;
+      aPoint[1] = -7300;
+      aPoint[2] = 0.0;
+      if (distanceToPosition(PLAYER_FORCE, aPoint) < 10000) then
+            setRevealed(1,300.0,aPoint);
+            LOP4 = FALSE;
+      endif;
+endif;
+if (LOP5) then
+      aPoint[0] = -3100;
+      aPoint[1] = -7800;
+      aPoint[2] = 0.0;
+      if (distanceToPosition(PLAYER_FORCE, aPoint) < 10000) then
+            setRevealed(1,350.0,aPoint);
+            LOP5 = FALSE;
+      endif;
+endif;
+if (LOP6) then
+      aPoint[0] = -3100;
+      aPoint[1] = -8300;
+      aPoint[2] = 0.0;
+      if (distanceToPosition(PLAYER_FORCE, aPoint) < 10000) then
+            setRevealed(1,400.0,aPoint);
+            LOP6 = FALSE;
+      endif;
+endif;

@@ -1,0 +1,21 @@
+//*********************************************************************************
+// Lookout Point Include file for mission 3_1
+
+if (LOP0) then
+      aPoint[0] = 0;
+      aPoint[1] = 0;
+      aPoint[2] = 0.0;
+      if (distanceToPosition(PLAYER_FORCE, aPoint) < 0) then
+            setRevealed(1,20000.0,aPoint);
+            LOP0 = FALSE;
+      endif;
+endif;
+if (LOP1) then
+      aPoint[0] = 8650;
+      aPoint[1] = -850;
+      aPoint[2] = 0.0;
+      if (isCaptured(HQMain1) == 1) then
+            setRevealed(1,400.0,aPoint);
+            LOP1 = FALSE;
+      endif;
+endif;

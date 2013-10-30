@@ -1,0 +1,135 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:1/13/98   BY:tom dowd
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0101truck : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+
+    // PATHS
+    static path                        Path1;
+    static path                        path2;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+
+         // Paths
+
+         Path1[0,0] = 321; // X
+         Path1[0,1] = 832; // Y
+
+         Path1[1,0] = -597; // X
+         Path1[1,1] = 731; // Y
+
+         Path1[2,0] = -727; // X
+         Path1[2,1] = 233; // Y
+
+         Path1[3,0] = -725; // X
+         Path1[3,1] = -1545; // Y
+
+         Path1[4,0] = 1054; // X
+         Path1[4,1] = -1573; // Y
+
+         Path1[5,0] = 1070; // X
+         Path1[5,1] = -2433; // Y
+
+         Path1[6,0] = 3346; // X
+         Path1[6,1] = -2570; // Y
+
+         Path1[7,0] = 4110; // X
+         Path1[7,1] = -1780; // Y
+
+         Path1[8,0] = 4122; // X
+         Path1[8,1] = 2684; // Y
+
+         path2[0,0] = -735; // X
+         path2[0,1] = 490; // Y
+
+         path2[1,0] = -717; // X
+         path2[1,1] = -1544; // Y
+
+         path2[2,0] = 1037; // X
+         path2[2,1] = -1588; // Y
+
+         path2[3,0] = 1074; // X
+         path2[3,1] = -2441; // Y
+
+         path2[4,0] = 1070; // X
+         path2[4,1] = -2433; // Y
+
+         path2[5,0] = 2342; // X
+         path2[5,1] = -2463; // Y
+
+         path2[6,0] = 1973; // X
+         path2[6,1] = -417; // Y
+
+         path2[7,0] = 2593; // X
+         path2[7,1] = -549; // Y
+
+         IdentifySensorContactsOFF;
+         MoveToEngageOFF;
+         StopFighting;
+         SetSpeed(RUN);
+         SetTactic(TACTIC_OPTIMAL);
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (inHotSpot(PLAYER_FORCE,322,1150,120)) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Flag4 = TRUE;
+              Order1Status = SUCCESS;
+         endif;
+    endif;
+    if (flag4) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              Order2Status = MovePath(path2,8);
+              if (Order2Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+
+         return(1);
+endmodule.

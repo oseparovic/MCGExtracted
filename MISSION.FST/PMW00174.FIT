@@ -1,0 +1,47 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      MechWarrior:  174   Name: Allied Green (T/G)  Callsign: ALLIED GREEN
+//
+//      Creation Date: 12/15/98   By: jon marcus
+//
+// -------------------------------------------------------------------------
+
+
+
+[General]
+st Name =                                                  "Allied Green (T/G)"
+l Rank =                                                    0 
+st Callsign =                                              "ALLIED GREEN"
+ul ID =                                                     174 
+l NameIndex =                                               0 
+l DescIndex =                                               0 
+ul HeadIcon =                                               0 
+l paintScheme =                                             25 
+st pilotAudio =                                            "PILOTA"
+st pilotVideo =                                            "PILOT00"
+st Picture =                                               "pilot00.tga"
+
+[PersonalityTraits]
+c Professionalism =                                         50 
+c Decorum =                                                 50 
+c Aggressiveness =                                          50 
+c Courage =                                                 50 
+
+[Skills]
+c Piloting =                                                50 
+c Jumping =                                                 50 
+c Sensors =                                                 50 
+c Gunnery =                                                 35 
+
+[Affinities]
+c MechClass =                                               0 
+c MechType =                                                0 
+c WeaponClass =                                             0 
+uc[2] WeaponTypes =                                        0,0
+
+[Status]
+c Wounds =                                                  0 
+
+FITEnd

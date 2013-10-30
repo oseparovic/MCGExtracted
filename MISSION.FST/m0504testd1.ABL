@@ -1,0 +1,89 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:3/24/98   BY:david abzug
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0504testd1 : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+
+    // PATHS
+    static path                        Path1;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+
+         // Paths
+
+         Path1[0,0] = 962; // X
+         Path1[0,1] = -5463; // Y
+
+         Path1[1,0] = -854; // X
+         Path1[1,1] = -5463; // Y
+
+         Path1[2,0] = -854; // X
+         Path1[2,1] = -4764; // Y
+
+         StopFighting;
+         SetSpeed(RUN);
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (inHotSpot(me,-854,-4764,30.0)) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              setobjectdamage((getterrainobjectpartid(26,353)),100);
+              Order2Status = SUCCESS;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = MovePath(Path1,3);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

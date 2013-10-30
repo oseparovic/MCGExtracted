@@ -1,0 +1,34 @@
+//*********************************************************************************
+// Variable Include file for mission 5_1
+
+     eternal integer                   tctnorth;
+     static integer                    tctnorthAlignment;
+     eternal integer                   tctsouth;
+     static integer                    tctsouthAlignment;
+     eternal integer                   Gcnorth;
+     static integer                    GcnorthAlignment;
+     eternal integer                   Gcsouth;
+     static integer                    GcsouthAlignment;
+     eternal integer                   sensorC;
+     static integer                    sensorCAlignment;
+     eternal integer                   wh1;
+     static integer                    wh1Alignment;
+     eternal integer                   wh2;
+     static integer                    wh2Alignment;
+     eternal integer                   wh4;
+     static integer                    wh4Alignment;
+     eternal integer                   wh3;
+     static integer                    wh3Alignment;
+     eternal integer                   Hardwh1;
+     static integer                    Hardwh1Alignment;
+     eternal integer                   hardwh2;
+     static integer                    hardwh2Alignment;
+     eternal integer                   hardwh3;
+     static integer                    hardwh3Alignment;
+     eternal integer                   hardwh4;
+     static integer                    hardwh4Alignment;
+     eternal integer                   repairbay1;
+     static integer                    repairbay1Alignment;
+     eternal integer                   repairbay2;
+     static integer                    repairbay2Alignment;
+     static boolean                    LOP0;

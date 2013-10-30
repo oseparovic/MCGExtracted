@@ -1,0 +1,147 @@
+//*********************************************************************************
+// Activation Include file for mission 5_6
+
+if (isDead(MainGateBarrackW)) then
+     if (isAlive(getTerrainObjectPartID(90,88))) then
+           setAnimation(getTerrainObjectPartID(90,88),0,-1);
+     endif;
+else
+     if ((GeneralAlarmCounter == 0) AND (isAlive(getTerrainObjectPartID(90,88)))) then
+           setAnimation(getTerrainObjectPartID(90,88),0,1);
+     endif;
+endif;
+if ((NOT isDead(MainGateBarrackW)) AND (GeneralAlarm) AND (GeneralAlarmCounter > 19) AND (GeneralAlarmCounter < 21)) then
+     if (GeneralAlarmCounter == 20) then
+           if (isAlive(getTerrainObjectPartID(90,88))) then
+                 setAnimation(getTerrainObjectPartID(90,88),0,2);
+           endif;
+           setobjectActive(getVehicleID(CLAN_FORCE,0,0),TRUE);
+     endif;
+endif;
+if (isDead(MainGateBarrackE)) then
+     if (isAlive(getTerrainObjectPartID(90,68))) then
+           setAnimation(getTerrainObjectPartID(90,68),0,-1);
+     endif;
+else
+     if ((GeneralAlarmCounter == 0) AND (isAlive(getTerrainObjectPartID(90,68)))) then
+           setAnimation(getTerrainObjectPartID(90,68),0,1);
+     endif;
+endif;
+if ((NOT isDead(MainGateBarrackE)) AND (GeneralAlarm) AND (GeneralAlarmCounter > 24) AND (GeneralAlarmCounter < 26)) then
+     if (GeneralAlarmCounter == 25) then
+           if (isAlive(getTerrainObjectPartID(90,68))) then
+                 setAnimation(getTerrainObjectPartID(90,68),0,2);
+           endif;
+           setobjectActive(getVehicleID(CLAN_FORCE,0,1),TRUE);
+     endif;
+endif;
+if (isDead(SEGateBarracksA)) then
+     if (isAlive(getTerrainObjectPartID(68,237))) then
+           setAnimation(getTerrainObjectPartID(68,237),0,-1);
+     endif;
+else
+     if ((GeneralAlarmCounter == 0) AND (isAlive(getTerrainObjectPartID(68,237)))) then
+           setAnimation(getTerrainObjectPartID(68,237),0,1);
+     endif;
+endif;
+if ((NOT isDead(SEGateBarracksA)) AND (GeneralAlarm) AND (GeneralAlarmCounter > 19) AND (GeneralAlarmCounter < 21)) then
+     if (GeneralAlarmCounter == 20) then
+           if (isAlive(getTerrainObjectPartID(68,237))) then
+                 setAnimation(getTerrainObjectPartID(68,237),0,2);
+           endif;
+           setobjectActive(getVehicleID(CLAN_FORCE,0,2),TRUE);
+     endif;
+endif;
+if (isDead(NEGateBarracksA)) then
+     if (isAlive(getTerrainObjectPartID(43,296))) then
+           setAnimation(getTerrainObjectPartID(43,296),0,-1);
+     endif;
+else
+     if ((GeneralAlarmCounter == 0) AND (isAlive(getTerrainObjectPartID(43,296)))) then
+           setAnimation(getTerrainObjectPartID(43,296),0,1);
+     endif;
+endif;
+if ((NOT isDead(NEGateBarracksA)) AND (GeneralAlarm) AND (GeneralAlarmCounter > 19) AND (GeneralAlarmCounter < 21)) then
+     if (GeneralAlarmCounter == 20) then
+           if (isAlive(getTerrainObjectPartID(43,296))) then
+                 setAnimation(getTerrainObjectPartID(43,296),0,2);
+           endif;
+           setobjectActive(getVehicleID(CLAN_FORCE,0,3),TRUE);
+     endif;
+endif;
+if (isDead(NEGateBarracksB)) then
+     if (isAlive(getTerrainObjectPartID(43,254))) then
+           setAnimation(getTerrainObjectPartID(43,254),0,-1);
+     endif;
+else
+     if ((GeneralAlarmCounter == 0) AND (isAlive(getTerrainObjectPartID(43,254)))) then
+           setAnimation(getTerrainObjectPartID(43,254),0,1);
+     endif;
+endif;
+if ((NOT isDead(NEGateBarracksB)) AND (GeneralAlarm) AND (GeneralAlarmCounter > 19) AND (GeneralAlarmCounter < 21)) then
+     if (GeneralAlarmCounter == 20) then
+           if (isAlive(getTerrainObjectPartID(43,254))) then
+                 setAnimation(getTerrainObjectPartID(43,254),0,2);
+           endif;
+           setobjectActive(getVehicleID(CLAN_FORCE,0,4),TRUE);
+     endif;
+endif;
+if (isDead(SEGateBarracksB)) then
+     if (isAlive(getTerrainObjectPartID(68,135))) then
+           setAnimation(getTerrainObjectPartID(68,135),0,-1);
+     endif;
+else
+     if ((GeneralAlarmCounter == 0) AND (isAlive(getTerrainObjectPartID(68,135)))) then
+           setAnimation(getTerrainObjectPartID(68,135),0,1);
+     endif;
+endif;
+if ((NOT isDead(SEGateBarracksB)) AND (GeneralAlarm) AND (GeneralAlarmCounter > 19) AND (GeneralAlarmCounter < 21)) then
+     if (GeneralAlarmCounter == 20) then
+           if (isAlive(getTerrainObjectPartID(68,135))) then
+                 setAnimation(getTerrainObjectPartID(68,135),0,2);
+           endif;
+           setobjectActive(getVehicleID(CLAN_FORCE,0,5),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[0]) then
+     if ((NOT isDead(MainGateBarrackW)) AND (distancetoobject(PLAYER_FORCE,VehicleID(CLAN_STAR0,0,0)) < 75)) then
+           VehicleActivated[0] = TRUE;
+           setobjectActive(VehicleID(CLAN_STAR0,0,0),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[1]) then
+     if ((NOT isDead(MainGateBarrackE)) AND (distancetoobject(PLAYER_FORCE,VehicleID(CLAN_STAR0,1,0)) < 75)) then
+           VehicleActivated[1] = TRUE;
+           setobjectActive(VehicleID(CLAN_STAR0,1,0),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[2]) then
+     if ((NOT isDead(SEGateBarracksA)) AND (distancetoobject(PLAYER_FORCE,VehicleID(CLAN_STAR0,2,0)) < 75)) then
+           VehicleActivated[2] = TRUE;
+           setobjectActive(VehicleID(CLAN_STAR0,2,0),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[3]) then
+     if ((NOT isDead(NEGateBarracksA)) AND (distancetoobject(PLAYER_FORCE,VehicleID(CLAN_STAR0,3,0)) < 75)) then
+           VehicleActivated[3] = TRUE;
+           setobjectActive(VehicleID(CLAN_STAR0,3,0),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[4]) then
+     if ((NOT isDead(NEGateBarracksB)) AND (distancetoobject(PLAYER_FORCE,VehicleID(CLAN_STAR0,4,0)) < 75)) then
+           VehicleActivated[4] = TRUE;
+           setobjectActive(VehicleID(CLAN_STAR0,4,0),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[5]) then
+     if ((NOT isDead(SEGateBarracksB)) AND (distancetoobject(PLAYER_FORCE,VehicleID(CLAN_STAR0,5,0)) < 75)) then
+           VehicleActivated[5] = TRUE;
+           setobjectActive(VehicleID(CLAN_STAR0,5,0),TRUE);
+     endif;
+endif;

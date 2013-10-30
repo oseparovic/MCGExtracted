@@ -1,0 +1,148 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:4/7/98   BY:Tim Ryan
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0203t2 : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+
+    // PATHS
+    static path                        NewSteps;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+
+         // Paths
+
+         NewSteps[0,0] = -6334; // X
+         NewSteps[0,1] = 3279; // Y
+
+         NewSteps[1,0] = -4436; // X
+         NewSteps[1,1] = 6601; // Y
+
+         NewSteps[2,0] = -2539; // X
+         NewSteps[2,1] = 7392; // Y
+
+         NewSteps[3,0] = -756; // X
+         NewSteps[3,1] = 7505; // Y
+
+         NewSteps[4,0] = -586; // X
+         NewSteps[4,1] = 5364; // Y
+
+         NewSteps[5,0] = -92; // X
+         NewSteps[5,1] = 4248; // Y
+
+         NewSteps[6,0] = -220; // X
+         NewSteps[6,1] = 2915; // Y
+
+         NewSteps[7,0] = 147; // X
+         NewSteps[7,1] = 2550; // Y
+
+         NewSteps[8,0] = 810; // X
+         NewSteps[8,1] = 3177; // Y
+
+         NewSteps[9,0] = 1595; // X
+         NewSteps[9,1] = 2543; // Y
+
+         NewSteps[10,0] = 1970; // X
+         NewSteps[10,1] = 2170; // Y
+
+         NewSteps[11,0] = 2802; // X
+         NewSteps[11,1] = 2144; // Y
+
+         NewSteps[12,0] = 3742; // X
+         NewSteps[12,1] = 2140; // Y
+
+         NewSteps[13,0] = 4616; // X
+         NewSteps[13,1] = 2159; // Y
+
+         NewSteps[14,0] = 4666; // X
+         NewSteps[14,1] = 2640; // Y
+
+         NewSteps[15,0] = 5653; // X
+         NewSteps[15,1] = 2641; // Y
+
+         NewSteps[16,0] = 6076; // X
+         NewSteps[16,1] = 2030; // Y
+
+         NewSteps[17,0] = 6874; // X
+         NewSteps[17,1] = 1893; // Y
+
+         NewSteps[18,0] = 8335; // X
+         NewSteps[18,1] = 1491; // Y
+
+         NewSteps[19,0] = 8490; // X
+         NewSteps[19,1] = 366; // Y
+
+         NewSteps[20,0] = 10700; // X
+         NewSteps[20,1] = 570; // Y
+
+         SetEngageRadius(150);
+         SetDisEngageRadius(250);
+         IdentifySensorContactsOFF;
+         MoveToEngageOFF;
+         ReturnFireOFF;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = MovePath(NewSteps,21);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order1Status == SUCCESS) then
+                   // Order  2 
+                   if (Order2Status == INCOMPLETE) then
+                        Order2Status = Withdraw;
+                        if (Order2Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

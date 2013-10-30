@@ -1,0 +1,1711 @@
+//*********************************************************************************
+// Structure Include file for mission 3_1
+
+
+if ((isdead(TC1rdblck)) AND (TC1rdblckAlignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(67,142),FALSE);
+     setObjectActive(getterrainobjectpartid(67,143),FALSE);
+     setObjectActive(getterrainobjectpartid(67,144),FALSE);
+     setObjectActive(getterrainobjectpartid(67,182),FALSE);
+     setObjectActive(getterrainobjectpartid(67,183),FALSE);
+     setObjectActive(getterrainobjectpartid(67,184),FALSE);
+     TC1rdblckAlignment = -2;
+else
+     if ((IsCaptured(TC1rdblck) == 1) AND (objectSide(TC1rdblck) <> TC1rdblckAlignment) AND (TC1rdblckAlignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(67,142),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(67,142),2);
+           objectChangeSides(getterrainobjectpartid(67,143),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(67,143),2);
+           objectChangeSides(getterrainobjectpartid(67,144),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(67,144),2);
+           objectChangeSides(getterrainobjectpartid(67,182),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(67,182),2);
+           objectChangeSides(getterrainobjectpartid(67,183),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(67,183),2);
+           objectChangeSides(getterrainobjectpartid(67,184),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(67,184),2);
+           objectChangeSides(TC1rdblck,INNER_SPHERE);
+           TC1rdblckAlignment = INNER_SPHERE;
+           setPotentialContact(TC1rdblck,2);
+     endif;
+endif;
+
+if ((isdead(TC2rdblck)) AND (TC2rdblckAlignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(67,147),FALSE);
+     setObjectActive(getterrainobjectpartid(67,148),FALSE);
+     setObjectActive(getterrainobjectpartid(67,149),FALSE);
+     setObjectActive(getterrainobjectpartid(67,187),FALSE);
+     setObjectActive(getterrainobjectpartid(67,188),FALSE);
+     setObjectActive(getterrainobjectpartid(67,189),FALSE);
+     TC2rdblckAlignment = -2;
+else
+     if ((IsCaptured(TC2rdblck) == 1) AND (objectSide(TC2rdblck) <> TC2rdblckAlignment) AND (TC2rdblckAlignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(67,147),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(67,147),2);
+           objectChangeSides(getterrainobjectpartid(67,148),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(67,148),2);
+           objectChangeSides(getterrainobjectpartid(67,149),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(67,149),2);
+           objectChangeSides(getterrainobjectpartid(67,187),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(67,187),2);
+           objectChangeSides(getterrainobjectpartid(67,188),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(67,188),2);
+           objectChangeSides(getterrainobjectpartid(67,189),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(67,189),2);
+           objectChangeSides(TC2rdblck,INNER_SPHERE);
+           TC2rdblckAlignment = INNER_SPHERE;
+           setPotentialContact(TC2rdblck,2);
+     endif;
+endif;
+
+if ((isdead(GC1rdblck)) AND (GC1rdblckAlignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(67,105))) then
+           LockGateOpen(getterrainobjectpartid(67,105));
+           GC1rdblckAlignment = -2;
+     else
+           LockGateClosed(getterrainobjectpartid(67,105));
+           objectChangeSides(getterrainobjectpartid(67,105),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(67,105),2);
+           GC1rdblckAlignment = -2;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(67,106))) then
+           LockGateOpen(getterrainobjectpartid(67,106));
+           GC1rdblckAlignment = -2;
+     else
+           LockGateClosed(getterrainobjectpartid(67,106));
+           objectChangeSides(getterrainobjectpartid(67,106),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(67,106),2);
+           GC1rdblckAlignment = -2;
+     endif;
+else
+     if ((IsCaptured(GC1rdblck) == 1) AND (objectSide(GC1rdblck) <> GC1rdblckAlignment) AND (GC1rdblckAlignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(67,105),INNER_SPHERE);
+           ReleaseGateLock(getterrainobjectpartid(67,105));
+           setPotentialContact(getterrainobjectpartid(67,105),2);
+           objectChangeSides(getterrainobjectpartid(67,106),INNER_SPHERE);
+           ReleaseGateLock(getterrainobjectpartid(67,106));
+           setPotentialContact(getterrainobjectpartid(67,106),2);
+           GC1rdblckAlignment = INNER_SPHERE;
+     endif;
+endif;
+
+if (isdead(Power1rdblck)) then
+     setObjectActive(getterrainobjectpartid(67,142),FALSE);
+     setObjectActive(getterrainobjectpartid(67,143),FALSE);
+     setObjectActive(getterrainobjectpartid(67,144),FALSE);
+     setObjectActive(getterrainobjectpartid(67,147),FALSE);
+     setObjectActive(getterrainobjectpartid(67,148),FALSE);
+     setObjectActive(getterrainobjectpartid(67,149),FALSE);
+     setObjectActive(getterrainobjectpartid(67,182),FALSE);
+     setObjectActive(getterrainobjectpartid(67,183),FALSE);
+     setObjectActive(getterrainobjectpartid(67,184),FALSE);
+     setObjectActive(getterrainobjectpartid(67,187),FALSE);
+     setObjectActive(getterrainobjectpartid(67,188),FALSE);
+     setObjectActive(getterrainobjectpartid(67,189),FALSE);
+endif;
+
+if ((isdead(TCcheck1)) AND (TCcheck1Alignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(49,264),FALSE);
+     setObjectActive(getterrainobjectpartid(49,267),FALSE);
+     setObjectActive(getterrainobjectpartid(49,284),FALSE);
+     setObjectActive(getterrainobjectpartid(49,287),FALSE);
+     setObjectActive(getterrainobjectpartid(49,304),FALSE);
+     setObjectActive(getterrainobjectpartid(49,307),FALSE);
+     TCcheck1Alignment = -2;
+else
+     if ((IsCaptured(TCcheck1) == 1) AND (objectSide(TCcheck1) <> TCcheck1Alignment) AND (TCcheck1Alignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(49,264),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(49,264),2);
+           objectChangeSides(getterrainobjectpartid(49,267),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(49,267),2);
+           objectChangeSides(getterrainobjectpartid(49,284),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(49,284),2);
+           objectChangeSides(getterrainobjectpartid(49,287),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(49,287),2);
+           objectChangeSides(getterrainobjectpartid(49,304),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(49,304),2);
+           objectChangeSides(getterrainobjectpartid(49,307),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(49,307),2);
+           objectChangeSides(TCcheck1,INNER_SPHERE);
+           TCcheck1Alignment = INNER_SPHERE;
+           setPotentialContact(TCcheck1,2);
+     endif;
+endif;
+
+if (isAlive(per1)) then
+     getObjectPosition(per1,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per1TripTime == -1.0) then
+               per1TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per1TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per1TripTime <> -1.0) AND (gametime - per1TripTime < 12.0)) then
+               per1TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per2)) then
+     getObjectPosition(per2,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per2TripTime == -1.0) then
+               per2TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per2TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per2TripTime <> -1.0) AND (gametime - per2TripTime < 12.0)) then
+               per2TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per3)) then
+     getObjectPosition(per3,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per3TripTime == -1.0) then
+               per3TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per3TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per3TripTime <> -1.0) AND (gametime - per3TripTime < 12.0)) then
+               per3TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per4)) then
+     getObjectPosition(per4,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per4TripTime == -1.0) then
+               per4TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per4TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per4TripTime <> -1.0) AND (gametime - per4TripTime < 12.0)) then
+               per4TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per5)) then
+     getObjectPosition(per5,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per5TripTime == -1.0) then
+               per5TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per5TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per5TripTime <> -1.0) AND (gametime - per5TripTime < 12.0)) then
+               per5TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per6)) then
+     getObjectPosition(per6,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per6TripTime == -1.0) then
+               per6TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per6TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per6TripTime <> -1.0) AND (gametime - per6TripTime < 12.0)) then
+               per6TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per7)) then
+     getObjectPosition(per7,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per7TripTime == -1.0) then
+               per7TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per7TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per7TripTime <> -1.0) AND (gametime - per7TripTime < 12.0)) then
+               per7TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per8)) then
+     getObjectPosition(per8,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per8TripTime == -1.0) then
+               per8TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per8TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per8TripTime <> -1.0) AND (gametime - per8TripTime < 12.0)) then
+               per8TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per9)) then
+     getObjectPosition(per9,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per9TripTime == -1.0) then
+               per9TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per9TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per9TripTime <> -1.0) AND (gametime - per9TripTime < 12.0)) then
+               per9TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per10)) then
+     getObjectPosition(per10,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per10TripTime == -1.0) then
+               per10TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per10TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per10TripTime <> -1.0) AND (gametime - per10TripTime < 12.0)) then
+               per10TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per11)) then
+     getObjectPosition(per11,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per11TripTime == -1.0) then
+               per11TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per11TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per11TripTime <> -1.0) AND (gametime - per11TripTime < 12.0)) then
+               per11TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per12)) then
+     getObjectPosition(per12,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per12TripTime == -1.0) then
+               per12TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per12TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per12TripTime <> -1.0) AND (gametime - per12TripTime < 12.0)) then
+               per12TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per13)) then
+     getObjectPosition(per13,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per13TripTime == -1.0) then
+               per13TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per13TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per13TripTime <> -1.0) AND (gametime - per13TripTime < 12.0)) then
+               per13TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per14)) then
+     getObjectPosition(per14,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per14TripTime == -1.0) then
+               per14TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per14TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per14TripTime <> -1.0) AND (gametime - per14TripTime < 12.0)) then
+               per14TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per15)) then
+     getObjectPosition(per15,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per15TripTime == -1.0) then
+               per15TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per15TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per15TripTime <> -1.0) AND (gametime - per15TripTime < 12.0)) then
+               per15TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per16)) then
+     getObjectPosition(per16,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per16TripTime == -1.0) then
+               per16TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per16TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per16TripTime <> -1.0) AND (gametime - per16TripTime < 12.0)) then
+               per16TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per17)) then
+     getObjectPosition(per17,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per17TripTime == -1.0) then
+               per17TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per17TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per17TripTime <> -1.0) AND (gametime - per17TripTime < 12.0)) then
+               per17TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per18)) then
+     getObjectPosition(per18,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per18TripTime == -1.0) then
+               per18TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per18TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per18TripTime <> -1.0) AND (gametime - per18TripTime < 12.0)) then
+               per18TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per19)) then
+     getObjectPosition(per19,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per19TripTime == -1.0) then
+               per19TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per19TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per19TripTime <> -1.0) AND (gametime - per19TripTime < 12.0)) then
+               per19TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per20)) then
+     getObjectPosition(per20,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per20TripTime == -1.0) then
+               per20TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per20TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per20TripTime <> -1.0) AND (gametime - per20TripTime < 12.0)) then
+               per20TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per21)) then
+     getObjectPosition(per21,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per21TripTime == -1.0) then
+               per21TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per21TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per21TripTime <> -1.0) AND (gametime - per21TripTime < 12.0)) then
+               per21TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per22)) then
+     getObjectPosition(per22,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per22TripTime == -1.0) then
+               per22TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per22TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per22TripTime <> -1.0) AND (gametime - per22TripTime < 12.0)) then
+               per22TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per23)) then
+     getObjectPosition(per23,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per23TripTime == -1.0) then
+               per23TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per23TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per23TripTime <> -1.0) AND (gametime - per23TripTime < 12.0)) then
+               per23TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per24)) then
+     getObjectPosition(per24,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per24TripTime == -1.0) then
+               per24TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per24TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per24TripTime <> -1.0) AND (gametime - per24TripTime < 12.0)) then
+               per24TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per25)) then
+     getObjectPosition(per25,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per25TripTime == -1.0) then
+               per25TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per25TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per25TripTime <> -1.0) AND (gametime - per25TripTime < 12.0)) then
+               per25TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per26)) then
+     getObjectPosition(per26,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per26TripTime == -1.0) then
+               per26TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per26TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per26TripTime <> -1.0) AND (gametime - per26TripTime < 12.0)) then
+               per26TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per27)) then
+     getObjectPosition(per27,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per27TripTime == -1.0) then
+               per27TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per27TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per27TripTime <> -1.0) AND (gametime - per27TripTime < 12.0)) then
+               per27TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per28)) then
+     getObjectPosition(per28,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per28TripTime == -1.0) then
+               per28TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per28TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per28TripTime <> -1.0) AND (gametime - per28TripTime < 12.0)) then
+               per28TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(per29)) then
+     getObjectPosition(per29,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (per29TripTime == -1.0) then
+               per29TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - per29TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((per29TripTime <> -1.0) AND (gametime - per29TripTime < 12.0)) then
+               per29TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isdead(PowerMain1)) then
+     setObjectActive(getterrainobjectpartid(28,390),FALSE);
+     setObjectActive(getterrainobjectpartid(28,393),FALSE);
+     setObjectActive(getterrainobjectpartid(28,396),FALSE);
+     setObjectActive(getterrainobjectpartid(37,29),FALSE);
+     setObjectActive(getterrainobjectpartid(37,89),FALSE);
+     setObjectActive(getterrainobjectpartid(37,149),FALSE);
+     setObjectActive(getterrainobjectpartid(37,188),FALSE);
+     setObjectActive(getterrainobjectpartid(37,248),FALSE);
+     setObjectActive(getterrainobjectpartid(37,308),FALSE);
+     setObjectActive(getterrainobjectpartid(37,330),FALSE);
+     setObjectActive(getterrainobjectpartid(37,332),FALSE);
+     setObjectActive(getterrainobjectpartid(37,395),FALSE);
+     setObjectActive(getterrainobjectpartid(37,397),FALSE);
+endif;
+
+if (isdead(PowerMain2)) then
+     setObjectActive(getterrainobjectpartid(37,399),FALSE);
+     setObjectActive(getterrainobjectpartid(38,166),FALSE);
+     setObjectActive(getterrainobjectpartid(38,207),FALSE);
+     setObjectActive(getterrainobjectpartid(38,267),FALSE);
+     setObjectActive(getterrainobjectpartid(38,327),FALSE);
+     setObjectActive(getterrainobjectpartid(38,342),FALSE);
+     setObjectActive(getterrainobjectpartid(38,344),FALSE);
+     setObjectActive(getterrainobjectpartid(38,346),FALSE);
+     setObjectActive(getterrainobjectpartid(38,381),FALSE);
+endif;
+
+if ((isdead(TCMain1)) AND (TCMain1Alignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(28,390),FALSE);
+     setObjectActive(getterrainobjectpartid(28,393),FALSE);
+     setObjectActive(getterrainobjectpartid(28,396),FALSE);
+     setObjectActive(getterrainobjectpartid(37,29),FALSE);
+     setObjectActive(getterrainobjectpartid(37,89),FALSE);
+     setObjectActive(getterrainobjectpartid(37,149),FALSE);
+     setObjectActive(getterrainobjectpartid(37,188),FALSE);
+     setObjectActive(getterrainobjectpartid(37,248),FALSE);
+     setObjectActive(getterrainobjectpartid(37,308),FALSE);
+     setObjectActive(getterrainobjectpartid(37,330),FALSE);
+     setObjectActive(getterrainobjectpartid(37,332),FALSE);
+     setObjectActive(getterrainobjectpartid(37,395),FALSE);
+     setObjectActive(getterrainobjectpartid(37,397),FALSE);
+     setObjectActive(getterrainobjectpartid(37,399),FALSE);
+     setObjectActive(getterrainobjectpartid(38,166),FALSE);
+     setObjectActive(getterrainobjectpartid(38,207),FALSE);
+     setObjectActive(getterrainobjectpartid(38,267),FALSE);
+     setObjectActive(getterrainobjectpartid(38,327),FALSE);
+     setObjectActive(getterrainobjectpartid(38,342),FALSE);
+     setObjectActive(getterrainobjectpartid(38,344),FALSE);
+     setObjectActive(getterrainobjectpartid(38,346),FALSE);
+     setObjectActive(getterrainobjectpartid(38,381),FALSE);
+     TCMain1Alignment = -2;
+else
+     if ((IsCaptured(TCMain1) == 1) AND (objectSide(TCMain1) <> TCMain1Alignment) AND (TCMain1Alignment <> -2)) then
+           setObjectActive(getterrainobjectpartid(28,390),TRUE);
+           objectChangeSides(getterrainobjectpartid(28,390),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(28,390),2);
+           setObjectActive(getterrainobjectpartid(28,393),TRUE);
+           objectChangeSides(getterrainobjectpartid(28,393),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(28,393),2);
+           setObjectActive(getterrainobjectpartid(28,396),TRUE);
+           objectChangeSides(getterrainobjectpartid(28,396),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(28,396),2);
+           setObjectActive(getterrainobjectpartid(37,29),TRUE);
+           objectChangeSides(getterrainobjectpartid(37,29),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(37,29),2);
+           setObjectActive(getterrainobjectpartid(37,89),TRUE);
+           objectChangeSides(getterrainobjectpartid(37,89),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(37,89),2);
+           setObjectActive(getterrainobjectpartid(37,149),TRUE);
+           objectChangeSides(getterrainobjectpartid(37,149),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(37,149),2);
+           setObjectActive(getterrainobjectpartid(37,188),TRUE);
+           objectChangeSides(getterrainobjectpartid(37,188),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(37,188),2);
+           setObjectActive(getterrainobjectpartid(37,248),TRUE);
+           objectChangeSides(getterrainobjectpartid(37,248),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(37,248),2);
+           setObjectActive(getterrainobjectpartid(37,308),TRUE);
+           objectChangeSides(getterrainobjectpartid(37,308),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(37,308),2);
+           setObjectActive(getterrainobjectpartid(37,330),TRUE);
+           objectChangeSides(getterrainobjectpartid(37,330),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(37,330),2);
+           setObjectActive(getterrainobjectpartid(37,332),TRUE);
+           objectChangeSides(getterrainobjectpartid(37,332),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(37,332),2);
+           setObjectActive(getterrainobjectpartid(37,395),TRUE);
+           objectChangeSides(getterrainobjectpartid(37,395),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(37,395),2);
+           setObjectActive(getterrainobjectpartid(37,397),TRUE);
+           objectChangeSides(getterrainobjectpartid(37,397),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(37,397),2);
+           setObjectActive(getterrainobjectpartid(37,399),TRUE);
+           objectChangeSides(getterrainobjectpartid(37,399),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(37,399),2);
+           setObjectActive(getterrainobjectpartid(38,166),TRUE);
+           objectChangeSides(getterrainobjectpartid(38,166),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(38,166),2);
+           setObjectActive(getterrainobjectpartid(38,207),TRUE);
+           objectChangeSides(getterrainobjectpartid(38,207),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(38,207),2);
+           setObjectActive(getterrainobjectpartid(38,267),TRUE);
+           objectChangeSides(getterrainobjectpartid(38,267),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(38,267),2);
+           setObjectActive(getterrainobjectpartid(38,327),TRUE);
+           objectChangeSides(getterrainobjectpartid(38,327),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(38,327),2);
+           setObjectActive(getterrainobjectpartid(38,342),TRUE);
+           objectChangeSides(getterrainobjectpartid(38,342),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(38,342),2);
+           setObjectActive(getterrainobjectpartid(38,344),TRUE);
+           objectChangeSides(getterrainobjectpartid(38,344),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(38,344),2);
+           setObjectActive(getterrainobjectpartid(38,346),TRUE);
+           objectChangeSides(getterrainobjectpartid(38,346),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(38,346),2);
+           setObjectActive(getterrainobjectpartid(38,381),TRUE);
+           objectChangeSides(getterrainobjectpartid(38,381),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(38,381),2);
+           objectChangeSides(TCMain1,INNER_SPHERE);
+           TCMain1Alignment = INNER_SPHERE;
+           setPotentialContact(TCMain1,2);
+     endif;
+endif;
+
+if ((isdead(GCMain1)) AND (GCMain1Alignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(37,114))) then
+           LockGateOpen(getterrainobjectpartid(37,114));
+           GCMain1Alignment = -2;
+     else
+           LockGateClosed(getterrainobjectpartid(37,114));
+           objectChangeSides(getterrainobjectpartid(37,114),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(37,114),2);
+           GCMain1Alignment = -2;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(37,137))) then
+           LockGateOpen(getterrainobjectpartid(37,137));
+           GCMain1Alignment = -2;
+     else
+           LockGateClosed(getterrainobjectpartid(37,137));
+           objectChangeSides(getterrainobjectpartid(37,137),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(37,137),2);
+           GCMain1Alignment = -2;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(37,235))) then
+           LockGateOpen(getterrainobjectpartid(37,235));
+           GCMain1Alignment = -2;
+     else
+           LockGateClosed(getterrainobjectpartid(37,235));
+           objectChangeSides(getterrainobjectpartid(37,235),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(37,235),2);
+           GCMain1Alignment = -2;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(37,278))) then
+           LockGateOpen(getterrainobjectpartid(37,278));
+           GCMain1Alignment = -2;
+     else
+           LockGateClosed(getterrainobjectpartid(37,278));
+           objectChangeSides(getterrainobjectpartid(37,278),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(37,278),2);
+           GCMain1Alignment = -2;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(37,318))) then
+           LockGateOpen(getterrainobjectpartid(37,318));
+           GCMain1Alignment = -2;
+     else
+           LockGateClosed(getterrainobjectpartid(37,318));
+           objectChangeSides(getterrainobjectpartid(37,318),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(37,318),2);
+           GCMain1Alignment = -2;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(37,358))) then
+           LockGateOpen(getterrainobjectpartid(37,358));
+           GCMain1Alignment = -2;
+     else
+           LockGateClosed(getterrainobjectpartid(37,358));
+           objectChangeSides(getterrainobjectpartid(37,358),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(37,358),2);
+           GCMain1Alignment = -2;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(38,123))) then
+           LockGateOpen(getterrainobjectpartid(38,123));
+           GCMain1Alignment = -2;
+     else
+           LockGateClosed(getterrainobjectpartid(38,123));
+           objectChangeSides(getterrainobjectpartid(38,123),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(38,123),2);
+           GCMain1Alignment = -2;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(38,222))) then
+           LockGateOpen(getterrainobjectpartid(38,222));
+           GCMain1Alignment = -2;
+     else
+           LockGateClosed(getterrainobjectpartid(38,222));
+           objectChangeSides(getterrainobjectpartid(38,222),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(38,222),2);
+           GCMain1Alignment = -2;
+     endif;
+else
+     if ((IsCaptured(GCMain1) == 1) AND (objectSide(GCMain1) <> GCMain1Alignment) AND (GCMain1Alignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(37,114),INNER_SPHERE);
+           ReleaseGateLock(getterrainobjectpartid(37,114));
+           setPotentialContact(getterrainobjectpartid(37,114),2);
+           objectChangeSides(getterrainobjectpartid(37,137),INNER_SPHERE);
+           ReleaseGateLock(getterrainobjectpartid(37,137));
+           setPotentialContact(getterrainobjectpartid(37,137),2);
+           objectChangeSides(getterrainobjectpartid(37,235),INNER_SPHERE);
+           ReleaseGateLock(getterrainobjectpartid(37,235));
+           setPotentialContact(getterrainobjectpartid(37,235),2);
+           objectChangeSides(getterrainobjectpartid(37,278),INNER_SPHERE);
+           ReleaseGateLock(getterrainobjectpartid(37,278));
+           setPotentialContact(getterrainobjectpartid(37,278),2);
+           objectChangeSides(getterrainobjectpartid(37,318),INNER_SPHERE);
+           ReleaseGateLock(getterrainobjectpartid(37,318));
+           setPotentialContact(getterrainobjectpartid(37,318),2);
+           objectChangeSides(getterrainobjectpartid(37,358),INNER_SPHERE);
+           ReleaseGateLock(getterrainobjectpartid(37,358));
+           setPotentialContact(getterrainobjectpartid(37,358),2);
+           objectChangeSides(getterrainobjectpartid(38,123),INNER_SPHERE);
+           ReleaseGateLock(getterrainobjectpartid(38,123));
+           setPotentialContact(getterrainobjectpartid(38,123),2);
+           objectChangeSides(getterrainobjectpartid(38,222),INNER_SPHERE);
+           ReleaseGateLock(getterrainobjectpartid(38,222));
+           setPotentialContact(getterrainobjectpartid(38,222),2);
+           GCMain1Alignment = INNER_SPHERE;
+     endif;
+endif;
+
+if (isdead(RepairMain1)) then
+     removeMechBay(RepairMain1);
+     RepairMain1Alignment = -2;
+else
+     if ((IsCaptured(RepairMain1) == 1) AND (objectSide(RepairMain1) <> RepairMain1Alignment) AND (RepairMain1Alignment <> -2)) then
+           RepairMain1Alignment = INNER_SPHERE;
+           setPotentialContact(RepairMain1,2);
+     endif;
+endif;
+
+if ((isdead(HQrdblk)) AND (HQrdblkAlignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(12,366),FALSE);
+     setObjectActive(getterrainobjectpartid(22,94),FALSE);
+     setObjectActive(getterrainobjectpartid(30,257),FALSE);
+     setObjectActive(getterrainobjectpartid(41,108),FALSE);
+     setObjectActive(getterrainobjectpartid(51,105),FALSE);
+     setObjectActive(getterrainobjectpartid(58,98),FALSE);
+     HQrdblkAlignment = -2;
+else
+     if ((IsCaptured(HQrdblk) == 1) AND (objectSide(HQrdblk) <> HQrdblkAlignment)) then
+           objectChangeSides(getterrainobjectpartid(12,366),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(12,366),2);
+           objectChangeSides(getterrainobjectpartid(22,94),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(22,94),2);
+           objectChangeSides(getterrainobjectpartid(30,257),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(30,257),2);
+           objectChangeSides(getterrainobjectpartid(41,108),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(41,108),2);
+           objectChangeSides(getterrainobjectpartid(51,105),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(51,105),2);
+           objectChangeSides(getterrainobjectpartid(58,98),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(58,98),2);
+           objectChangeSides(HQrdblk,INNER_SPHERE);
+           HQrdblkAlignment = INNER_SPHERE;
+     endif;
+endif;
+
+if ((isdead(TCway1)) AND (TCway1Alignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(49,264),FALSE);
+     setObjectActive(getterrainobjectpartid(49,267),FALSE);
+     setObjectActive(getterrainobjectpartid(49,284),FALSE);
+     setObjectActive(getterrainobjectpartid(49,287),FALSE);
+     setObjectActive(getterrainobjectpartid(49,304),FALSE);
+     setObjectActive(getterrainobjectpartid(49,307),FALSE);
+     TCway1Alignment = -2;
+else
+     if ((IsCaptured(TCway1) == 1) AND (objectSide(TCway1) <> TCway1Alignment) AND (TCway1Alignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(49,264),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(49,264),2);
+           objectChangeSides(getterrainobjectpartid(49,267),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(49,267),2);
+           objectChangeSides(getterrainobjectpartid(49,284),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(49,284),2);
+           objectChangeSides(getterrainobjectpartid(49,287),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(49,287),2);
+           objectChangeSides(getterrainobjectpartid(49,304),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(49,304),2);
+           objectChangeSides(getterrainobjectpartid(49,307),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(49,307),2);
+           objectChangeSides(TCway1,INNER_SPHERE);
+           TCway1Alignment = INNER_SPHERE;
+           setPotentialContact(TCway1,2);
+     endif;
+endif;
+
+if ((isdead(TCway2)) AND (TCway2Alignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(40,153),FALSE);
+     setObjectActive(getterrainobjectpartid(40,168),FALSE);
+     setObjectActive(getterrainobjectpartid(40,169),FALSE);
+     setObjectActive(getterrainobjectpartid(40,170),FALSE);
+     setObjectActive(getterrainobjectpartid(40,173),FALSE);
+     setObjectActive(getterrainobjectpartid(40,208),FALSE);
+     setObjectActive(getterrainobjectpartid(40,209),FALSE);
+     setObjectActive(getterrainobjectpartid(40,210),FALSE);
+     setObjectActive(getterrainobjectpartid(40,233),FALSE);
+     setObjectActive(getterrainobjectpartid(40,253),FALSE);
+     TCway2Alignment = -2;
+else
+     if ((IsCaptured(TCway2) == 1) AND (objectSide(TCway2) <> TCway2Alignment) AND (TCway2Alignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(40,153),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(40,153),2);
+           objectChangeSides(getterrainobjectpartid(40,168),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(40,168),2);
+           objectChangeSides(getterrainobjectpartid(40,169),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(40,169),2);
+           objectChangeSides(getterrainobjectpartid(40,170),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(40,170),2);
+           objectChangeSides(getterrainobjectpartid(40,173),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(40,173),2);
+           objectChangeSides(getterrainobjectpartid(40,208),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(40,208),2);
+           objectChangeSides(getterrainobjectpartid(40,209),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(40,209),2);
+           objectChangeSides(getterrainobjectpartid(40,210),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(40,210),2);
+           objectChangeSides(getterrainobjectpartid(40,233),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(40,233),2);
+           objectChangeSides(getterrainobjectpartid(40,253),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(40,253),2);
+           objectChangeSides(TCway2,INNER_SPHERE);
+           TCway2Alignment = INNER_SPHERE;
+           setPotentialContact(TCway2,2);
+     endif;
+endif;
+
+if ((isdead(GCWay3)) AND (GCWay3Alignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(22,385))) then
+           LockGateOpen(getterrainobjectpartid(22,385));
+           GCWay3Alignment = -2;
+     else
+           LockGateClosed(getterrainobjectpartid(22,385));
+           objectChangeSides(getterrainobjectpartid(22,385),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(22,385),2);
+           GCWay3Alignment = -2;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(22,386))) then
+           LockGateOpen(getterrainobjectpartid(22,386));
+           GCWay3Alignment = -2;
+     else
+           LockGateClosed(getterrainobjectpartid(22,386));
+           objectChangeSides(getterrainobjectpartid(22,386),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(22,386),2);
+           GCWay3Alignment = -2;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(31,145))) then
+           LockGateOpen(getterrainobjectpartid(31,145));
+           GCWay3Alignment = -2;
+     else
+           LockGateClosed(getterrainobjectpartid(31,145));
+           objectChangeSides(getterrainobjectpartid(31,145),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(31,145),2);
+           GCWay3Alignment = -2;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(31,146))) then
+           LockGateOpen(getterrainobjectpartid(31,146));
+           GCWay3Alignment = -2;
+     else
+           LockGateClosed(getterrainobjectpartid(31,146));
+           objectChangeSides(getterrainobjectpartid(31,146),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(31,146),2);
+           GCWay3Alignment = -2;
+     endif;
+else
+     if ((IsCaptured(GCWay3) == 1) AND (objectSide(GCWay3) <> GCWay3Alignment) AND (GCWay3Alignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(22,385),INNER_SPHERE);
+           ReleaseGateLock(getterrainobjectpartid(22,385));
+           setPotentialContact(getterrainobjectpartid(22,385),2);
+           objectChangeSides(getterrainobjectpartid(22,386),INNER_SPHERE);
+           ReleaseGateLock(getterrainobjectpartid(22,386));
+           setPotentialContact(getterrainobjectpartid(22,386),2);
+           objectChangeSides(getterrainobjectpartid(31,145),INNER_SPHERE);
+           ReleaseGateLock(getterrainobjectpartid(31,145));
+           setPotentialContact(getterrainobjectpartid(31,145),2);
+           objectChangeSides(getterrainobjectpartid(31,146),INNER_SPHERE);
+           ReleaseGateLock(getterrainobjectpartid(31,146));
+           setPotentialContact(getterrainobjectpartid(31,146),2);
+           GCWay3Alignment = INNER_SPHERE;
+     endif;
+endif;
+
+if ((isdead(TCWay3)) AND (TCWay3Alignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(31,3),FALSE);
+     setObjectActive(getterrainobjectpartid(31,8),FALSE);
+     setObjectActive(getterrainobjectpartid(31,23),FALSE);
+     setObjectActive(getterrainobjectpartid(31,28),FALSE);
+     setObjectActive(getterrainobjectpartid(31,103),FALSE);
+     setObjectActive(getterrainobjectpartid(31,108),FALSE);
+     setObjectActive(getterrainobjectpartid(31,123),FALSE);
+     setObjectActive(getterrainobjectpartid(31,128),FALSE);
+     TCWay3Alignment = -2;
+else
+     if ((IsCaptured(TCWay3) == 1) AND (objectSide(TCWay3) <> TCWay3Alignment) AND (TCWay3Alignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(31,3),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(31,3),2);
+           objectChangeSides(getterrainobjectpartid(31,8),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(31,8),2);
+           objectChangeSides(getterrainobjectpartid(31,23),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(31,23),2);
+           objectChangeSides(getterrainobjectpartid(31,28),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(31,28),2);
+           objectChangeSides(getterrainobjectpartid(31,103),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(31,103),2);
+           objectChangeSides(getterrainobjectpartid(31,108),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(31,108),2);
+           objectChangeSides(getterrainobjectpartid(31,123),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(31,123),2);
+           objectChangeSides(getterrainobjectpartid(31,128),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(31,128),2);
+           objectChangeSides(TCWay3,INNER_SPHERE);
+           TCWay3Alignment = INNER_SPHERE;
+           setPotentialContact(TCWay3,2);
+     endif;
+endif;
+
+if ((isdead(TCWay4)) AND (TCWay4Alignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(12,32),FALSE);
+     setObjectActive(getterrainobjectpartid(12,33),FALSE);
+     setObjectActive(getterrainobjectpartid(12,34),FALSE);
+     setObjectActive(getterrainobjectpartid(12,37),FALSE);
+     setObjectActive(getterrainobjectpartid(12,38),FALSE);
+     setObjectActive(getterrainobjectpartid(12,39),FALSE);
+     TCWay4Alignment = -2;
+else
+     if ((IsCaptured(TCWay4) == 1) AND (objectSide(TCWay4) <> TCWay4Alignment) AND (TCWay4Alignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(12,32),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(12,32),2);
+           objectChangeSides(getterrainobjectpartid(12,33),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(12,33),2);
+           objectChangeSides(getterrainobjectpartid(12,34),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(12,34),2);
+           objectChangeSides(getterrainobjectpartid(12,37),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(12,37),2);
+           objectChangeSides(getterrainobjectpartid(12,38),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(12,38),2);
+           objectChangeSides(getterrainobjectpartid(12,39),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(12,39),2);
+           objectChangeSides(TCWay4,INNER_SPHERE);
+           TCWay4Alignment = INNER_SPHERE;
+           setPotentialContact(TCWay4,2);
+     endif;
+endif;
+
+if ((isdead(GCWay4)) AND (GCWay4Alignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(12,15))) then
+           LockGateOpen(getterrainobjectpartid(12,15));
+           GCWay4Alignment = -2;
+     else
+           LockGateClosed(getterrainobjectpartid(12,15));
+           objectChangeSides(getterrainobjectpartid(12,15),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(12,15),2);
+           GCWay4Alignment = -2;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(12,16))) then
+           LockGateOpen(getterrainobjectpartid(12,16));
+           GCWay4Alignment = -2;
+     else
+           LockGateClosed(getterrainobjectpartid(12,16));
+           objectChangeSides(getterrainobjectpartid(12,16),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(12,16),2);
+           GCWay4Alignment = -2;
+     endif;
+else
+     if ((IsCaptured(GCWay4) == 1) AND (objectSide(GCWay4) <> GCWay4Alignment) AND (GCWay4Alignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(12,15),INNER_SPHERE);
+           ReleaseGateLock(getterrainobjectpartid(12,15));
+           setPotentialContact(getterrainobjectpartid(12,15),2);
+           objectChangeSides(getterrainobjectpartid(12,16),INNER_SPHERE);
+           ReleaseGateLock(getterrainobjectpartid(12,16));
+           setPotentialContact(getterrainobjectpartid(12,16),2);
+           GCWay4Alignment = INNER_SPHERE;
+     endif;
+endif;
+
+if (isdead(GenWay4)) then
+     setObjectActive(getterrainobjectpartid(12,32),FALSE);
+     setObjectActive(getterrainobjectpartid(12,33),FALSE);
+     setObjectActive(getterrainobjectpartid(12,34),FALSE);
+     setObjectActive(getterrainobjectpartid(12,37),FALSE);
+     setObjectActive(getterrainobjectpartid(12,38),FALSE);
+     setObjectActive(getterrainobjectpartid(12,39),FALSE);
+endif;
+
+if (isdead(RepairWay4)) then
+     removeMechBay(RepairWay4);
+     RepairWay4Alignment = -2;
+else
+     if ((IsCaptured(RepairWay4) == 1) AND (objectSide(RepairWay4) <> RepairWay4Alignment) AND (RepairWay4Alignment <> -2)) then
+           RepairWay4Alignment = INNER_SPHERE;
+           setPotentialContact(RepairWay4,2);
+     endif;
+endif;
+
+if ((isdead(TCBase)) AND (TCBaseAlignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(43,217),FALSE);
+     setObjectActive(getterrainobjectpartid(43,219),FALSE);
+     setObjectActive(getterrainobjectpartid(43,235),FALSE);
+     setObjectActive(getterrainobjectpartid(43,254),FALSE);
+     setObjectActive(getterrainobjectpartid(43,314),FALSE);
+     setObjectActive(getterrainobjectpartid(43,354),FALSE);
+     setObjectActive(getterrainobjectpartid(43,395),FALSE);
+     setObjectActive(getterrainobjectpartid(52,17),FALSE);
+     setObjectActive(getterrainobjectpartid(52,39),FALSE);
+     TCBaseAlignment = -2;
+else
+     if ((IsCaptured(TCBase) == 1) AND (objectSide(TCBase) <> TCBaseAlignment) AND (TCBaseAlignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(43,217),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(43,217),2);
+           objectChangeSides(getterrainobjectpartid(43,219),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(43,219),2);
+           objectChangeSides(getterrainobjectpartid(43,235),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(43,235),2);
+           objectChangeSides(getterrainobjectpartid(43,254),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(43,254),2);
+           objectChangeSides(getterrainobjectpartid(43,314),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(43,314),2);
+           objectChangeSides(getterrainobjectpartid(43,354),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(43,354),2);
+           objectChangeSides(getterrainobjectpartid(43,395),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(43,395),2);
+           objectChangeSides(getterrainobjectpartid(52,17),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(52,17),2);
+           objectChangeSides(getterrainobjectpartid(52,39),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(52,39),2);
+           objectChangeSides(TCBase,INNER_SPHERE);
+           TCBaseAlignment = INNER_SPHERE;
+           setPotentialContact(TCBase,2);
+     endif;
+endif;
+
+if ((isdead(GC1Base)) AND (GC1BaseAlignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(43,273))) then
+           LockGateOpen(getterrainobjectpartid(43,273));
+           GC1BaseAlignment = -2;
+     else
+           LockGateClosed(getterrainobjectpartid(43,273));
+           objectChangeSides(getterrainobjectpartid(43,273),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(43,273),2);
+           GC1BaseAlignment = -2;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(43,293))) then
+           LockGateOpen(getterrainobjectpartid(43,293));
+           GC1BaseAlignment = -2;
+     else
+           LockGateClosed(getterrainobjectpartid(43,293));
+           objectChangeSides(getterrainobjectpartid(43,293),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(43,293),2);
+           GC1BaseAlignment = -2;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(44,161))) then
+           LockGateOpen(getterrainobjectpartid(44,161));
+           GC1BaseAlignment = -2;
+     else
+           LockGateClosed(getterrainobjectpartid(44,161));
+           objectChangeSides(getterrainobjectpartid(44,161),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(44,161),2);
+           GC1BaseAlignment = -2;
+     endif;
+else
+     if ((IsCaptured(GC1Base) == 1) AND (objectSide(GC1Base) <> GC1BaseAlignment) AND (GC1BaseAlignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(43,273),INNER_SPHERE);
+           ReleaseGateLock(getterrainobjectpartid(43,273));
+           setPotentialContact(getterrainobjectpartid(43,273),2);
+           objectChangeSides(getterrainobjectpartid(43,293),INNER_SPHERE);
+           ReleaseGateLock(getterrainobjectpartid(43,293));
+           setPotentialContact(getterrainobjectpartid(43,293),2);
+           objectChangeSides(getterrainobjectpartid(44,161),INNER_SPHERE);
+           ReleaseGateLock(getterrainobjectpartid(44,161));
+           setPotentialContact(getterrainobjectpartid(44,161),2);
+           GC1BaseAlignment = INNER_SPHERE;
+     endif;
+endif;
+
+if ((isdead(GC2Base)) AND (GC2BaseAlignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(44,1))) then
+           LockGateOpen(getterrainobjectpartid(44,1));
+           GC2BaseAlignment = -2;
+     else
+           LockGateClosed(getterrainobjectpartid(44,1));
+           objectChangeSides(getterrainobjectpartid(44,1),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(44,1),2);
+           GC2BaseAlignment = -2;
+     endif;
+else
+     if ((IsCaptured(GC2Base) == 1) AND (objectSide(GC2Base) <> GC2BaseAlignment) AND (GC2BaseAlignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(44,1),INNER_SPHERE);
+           ReleaseGateLock(getterrainobjectpartid(44,1));
+           setPotentialContact(getterrainobjectpartid(44,1),2);
+           GC2BaseAlignment = INNER_SPHERE;
+     endif;
+endif;
+
+if (isdead(PowerBase)) then
+     setObjectActive(getterrainobjectpartid(43,217),FALSE);
+     setObjectActive(getterrainobjectpartid(43,219),FALSE);
+     setObjectActive(getterrainobjectpartid(43,235),FALSE);
+     setObjectActive(getterrainobjectpartid(43,254),FALSE);
+     setObjectActive(getterrainobjectpartid(43,314),FALSE);
+     setObjectActive(getterrainobjectpartid(43,354),FALSE);
+     setObjectActive(getterrainobjectpartid(43,395),FALSE);
+     setObjectActive(getterrainobjectpartid(52,17),FALSE);
+     setObjectActive(getterrainobjectpartid(52,39),FALSE);
+endif;
+
+if (NOT PerimeterBreach) then
+      if (PlayGASound) then
+            PlayGASound = FALSE;
+      endif;
+      if (PlayPASound) then
+            PlayPASound = FALSE;
+      endif;
+endif;

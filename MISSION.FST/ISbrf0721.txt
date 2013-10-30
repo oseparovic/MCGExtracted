@@ -1,0 +1,11 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cMISSION COMMAND:GAMBIT/7PRDN21%n
+%fc5%c----------%n
+%fc6%c*** CACHE & KILL ***%n
+%fc21-Protect Container Stacks%n%n
+%fc5%c----------%n
+%fc4The enemy has learned of our artillery supply caches scattered in the western hills of this area. Defend at least 2 of the Container Stacks in these caches before the mission timer expires.%n%n
+%fc4The Headquarters Building in our southern base will reveal the locations of the caches, so prevent its capture.%n%n
+%fc6<<<<END DISPATCH
+
+

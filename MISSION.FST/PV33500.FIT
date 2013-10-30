@@ -1,0 +1,115 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      Ground Vehicle Profile:  33500   'Manticore'  Type:  905 
+//
+//      Creation Date: 8/27/98      Creator: david abzug
+//
+//
+// -------------------------------------------------------------------------
+
+[Header]
+st FileType = "GroundVehicleProfile"
+
+
+[General]
+ul ID =                                                     33500 
+st Crew =                                                  "PCREWC"
+ul Chassis =                                                905 
+st Name =                                                  "Manticore"
+ul VehicleTypeID =                                          905 
+l NameIndex =                                               31 
+l DescIndex =                                               552 
+f CurTonnage =                                              60 
+st icon =                                                  "na.gif"
+c Status =                                                  0 
+l ResourcePoints =                                          800 
+l BattleRating =                                            200 
+l Morale =                                                  0 
+l MoraleModifier =                                          0 
+
+[Engine]
+f Tonnage =                                                 17.5 
+ul Rating =                                                 240 
+uc MaxMoveSpeed =                                           15 
+
+[Armor]
+uc Type =                                                   0 
+f Tonnage =                                                 10 
+
+[Front]
+uc CurInternalStructure =                                   1 
+uc MaxArmorPoints =                                         25 
+uc CurArmorPoints =                                         25 
+
+[Left]
+uc CurInternalStructure =                                   1 
+uc MaxArmorPoints =                                         25 
+uc CurArmorPoints =                                         25 
+
+[Right]
+uc CurInternalStructure =                                   1 
+uc MaxArmorPoints =                                         25 
+uc CurArmorPoints =                                         25 
+
+[Rear]
+uc CurInternalStructure =                                   1 
+uc MaxArmorPoints =                                         15 
+uc CurArmorPoints =                                         15 
+
+[Turret]
+uc CurInternalStructure =                                   1 
+uc MaxArmorPoints =                                         20 
+uc CurArmorPoints =                                         20 
+
+[InventoryInfo]
+uc NumOther =                                               3 
+uc NumWeapons =                                             4 
+uc NumAmmo =                                                2 
+
+// Inventory
+
+// Other
+
+
+[Item:0]
+uc MasterID =                                               1 
+
+[Item:1]
+uc MasterID =                                               6 
+
+[Item:2]
+uc MasterID =                                               35 
+
+// Weapons
+
+
+[Item:3]
+uc MasterID =                                               145 
+uc FacesForward =                                           1 
+
+[Item:4]
+uc MasterID =                                               142 
+uc FacesForward =                                           1 
+
+[Item:5]
+uc MasterID =                                               123 
+uc FacesForward =                                           1 
+
+[Item:6]
+uc MasterID =                                               123 
+uc FacesForward =                                           1 
+
+// Ammo
+
+
+[Item:7]
+uc MasterID =                                               223 
+l Amount =                                                 -1 
+
+[Item:8]
+uc MasterID =                                               223 
+l Amount =                                                 -1 
+
+FITEnd

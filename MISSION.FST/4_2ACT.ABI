@@ -1,0 +1,89 @@
+//*********************************************************************************
+// Activation Include file for mission 4_2
+
+if ((gametime > 299) AND (gametime < 301)) then
+     if (gametime > 300) then
+           setobjectActive(VehicleID(CLAN_STAR4,3,0),TRUE);
+     endif;
+endif;
+if ((gametime > 399) AND (gametime < 401)) then
+     if (gametime > 400) then
+           setobjectActive(VehicleID(CLAN_STAR4,2,0),TRUE);
+     endif;
+endif;
+if (isDead(TankBarracks)) then
+     if (isAlive(getTerrainObjectPartID(13,295))) then
+           setAnimation(getTerrainObjectPartID(13,295),0,-1);
+     endif;
+     if (isAlive(getTerrainObjectPartID(13,335))) then
+           setAnimation(getTerrainObjectPartID(13,335),0,-1);
+     endif;
+     if (isAlive(getTerrainObjectPartID(13,395))) then
+           setAnimation(getTerrainObjectPartID(13,395),0,-1);
+     endif;
+else
+     if ((GeneralAlarmCounter == 0) AND (isAlive(getTerrainObjectPartID(13,295)))) then
+           setAnimation(getTerrainObjectPartID(13,295),0,1);
+     endif;
+     if ((GeneralAlarmCounter == 0) AND (isAlive(getTerrainObjectPartID(13,335)))) then
+           setAnimation(getTerrainObjectPartID(13,335),0,1);
+     endif;
+     if ((GeneralAlarmCounter == 0) AND (isAlive(getTerrainObjectPartID(13,395)))) then
+           setAnimation(getTerrainObjectPartID(13,395),0,1);
+     endif;
+endif;
+if ((NOT isDead(TankBarracks)) AND (GeneralAlarm) AND (GeneralAlarmCounter > 7) AND (GeneralAlarmCounter < 13)) then
+     if (GeneralAlarmCounter == 8) then
+           if (isAlive(getTerrainObjectPartID(13,295))) then
+                 setAnimation(getTerrainObjectPartID(13,295),0,2);
+           endif;
+           if (isAlive(getTerrainObjectPartID(13,335))) then
+                 setAnimation(getTerrainObjectPartID(13,335),0,2);
+           endif;
+           if (isAlive(getTerrainObjectPartID(13,395))) then
+                 setAnimation(getTerrainObjectPartID(13,395),0,2);
+           endif;
+           setobjectActive(getVehicleID(CLAN_FORCE,6,0),TRUE);
+     endif;
+     if (GeneralAlarmCounter == 10) then
+           setobjectActive(getVehicleID(CLAN_FORCE,6,1),TRUE);
+     endif;
+     if (GeneralAlarmCounter == 12) then
+           setobjectActive(getVehicleID(CLAN_FORCE,6,2),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[0]) then
+     if (distancetoobject(PLAYER_FORCE,VehicleID(CLAN_STAR4,2,0)) < 200) then
+           VehicleActivated[0] = TRUE;
+           setobjectActive(VehicleID(CLAN_STAR4,2,0),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[1]) then
+     if (distancetoobject(PLAYER_FORCE,VehicleID(CLAN_STAR4,3,0)) < 200) then
+           VehicleActivated[1] = TRUE;
+           setobjectActive(VehicleID(CLAN_STAR4,3,0),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[2]) then
+     if ((NOT isDead(TankBarracks)) AND (distancetoobject(PLAYER_FORCE,VehicleID(CLAN_STAR6,0,0)) < 150)) then
+           VehicleActivated[2] = TRUE;
+           setobjectActive(VehicleID(CLAN_STAR6,0,0),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[3]) then
+     if ((NOT isDead(TankBarracks)) AND (distancetoobject(PLAYER_FORCE,VehicleID(CLAN_STAR6,1,0)) < 150)) then
+           VehicleActivated[3] = TRUE;
+           setobjectActive(VehicleID(CLAN_STAR6,1,0),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[4]) then
+     if ((NOT isDead(TankBarracks)) AND (distancetoobject(PLAYER_FORCE,VehicleID(CLAN_STAR6,2,0)) < 150)) then
+           VehicleActivated[4] = TRUE;
+           setobjectActive(VehicleID(CLAN_STAR6,2,0),TRUE);
+     endif;
+endif;

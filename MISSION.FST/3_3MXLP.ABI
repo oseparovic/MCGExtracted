@@ -1,0 +1,39 @@
+//*********************************************************************************
+// Lookout Point Include file for mission 3_3
+
+if (LOP0) then
+      aPoint[0] = -4537;
+      aPoint[1] = 5308;
+      aPoint[2] = 0.0;
+      if (isCaptured(getVehicleID(CLAN_FORCE,2,5)) == 1) then
+            setRevealed(1,100.0,aPoint);
+            LOP0 = FALSE;
+      endif;
+endif;
+if (LOP1) then
+      aPoint[0] = -7496;
+      aPoint[1] = 1480;
+      aPoint[2] = 0.0;
+      if (isCaptured(getVehicleID(CLAN_FORCE,2,5)) == 1) then
+            setRevealed(1,100.0,aPoint);
+            LOP1 = FALSE;
+      endif;
+endif;
+if (LOP2) then
+      aPoint[0] = 3536;
+      aPoint[1] = -2637;
+      aPoint[2] = 0.0;
+      if (isCaptured(getVehicleID(CLAN_FORCE,2,5)) == 1) then
+            setRevealed(1,150.0,aPoint);
+            LOP2 = FALSE;
+      endif;
+endif;
+if (LOP3) then
+      aPoint[0] = 636;
+      aPoint[1] = 7940;
+      aPoint[2] = 0.0;
+      if (isCaptured(HQ) == 1) then
+            setRevealed(1,325.0,aPoint);
+            LOP3 = FALSE;
+      endif;
+endif;

@@ -1,0 +1,174 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:10/26/98   BY:rob nicholls
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBMX0202scout : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+
+    // PATHS
+    static path                        ScoutPath;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+
+         // Paths
+
+         ScoutPath[0,0] = 717; // X
+         ScoutPath[0,1] = -4151; // Y
+
+         ScoutPath[1,0] = 717; // X
+         ScoutPath[1,1] = -4151; // Y
+
+         ScoutPath[2,0] = 1997; // X
+         ScoutPath[2,1] = -5562; // Y
+
+         ScoutPath[3,0] = 717; // X
+         ScoutPath[3,1] = -4151; // Y
+
+         ScoutPath[4,0] = -187; // X
+         ScoutPath[4,1] = -1472; // Y
+
+         ScoutPath[5,0] = -187; // X
+         ScoutPath[5,1] = -1472; // Y
+
+         ScoutPath[6,0] = 2874; // X
+         ScoutPath[6,1] = -1472; // Y
+
+         ScoutPath[7,0] = 2884; // X
+         ScoutPath[7,1] = -685; // Y
+
+         ScoutPath[8,0] = 2884; // X
+         ScoutPath[8,1] = -685; // Y
+
+         ScoutPath[9,0] = -187; // X
+         ScoutPath[9,1] = -1472; // Y
+
+         ScoutPath[10,0] = 717; // X
+         ScoutPath[10,1] = -4151; // Y
+
+         ScoutPath[11,0] = 2884; // X
+         ScoutPath[11,1] = -685; // Y
+
+         ScoutPath[12,0] = 2884; // X
+         ScoutPath[12,1] = 1996; // Y
+
+         ScoutPath[13,0] = 2884; // X
+         ScoutPath[13,1] = 4034; // Y
+
+         ScoutPath[14,0] = 2884; // X
+         ScoutPath[14,1] = 4034; // Y
+
+         ScoutPath[15,0] = 732; // X
+         ScoutPath[15,1] = 4034; // Y
+
+         ScoutPath[16,0] = 732; // X
+         ScoutPath[16,1] = 4034; // Y
+
+         ScoutPath[17,0] = 2884; // X
+         ScoutPath[17,1] = 4034; // Y
+
+         ScoutPath[18,0] = 2884; // X
+         ScoutPath[18,1] = 4034; // Y
+
+         ScoutPath[19,0] = 732; // X
+         ScoutPath[19,1] = 4034; // Y
+
+         ScoutPath[20,0] = -1604; // X
+         ScoutPath[20,1] = 4034; // Y
+
+         ScoutPath[21,0] = -1604; // X
+         ScoutPath[21,1] = 4034; // Y
+
+         ScoutPath[22,0] = -1604; // X
+         ScoutPath[22,1] = 1957; // Y
+
+         ScoutPath[23,0] = -1604; // X
+         ScoutPath[23,1] = 4034; // Y
+
+         ScoutPath[24,0] = -1604; // X
+         ScoutPath[24,1] = 1957; // Y
+
+         ScoutPath[25,0] = -3357; // X
+         ScoutPath[25,1] = 1957; // Y
+
+         ScoutPath[26,0] = -5432; // X
+         ScoutPath[26,1] = -964; // Y
+
+         ScoutPath[27,0] = -3357; // X
+         ScoutPath[27,1] = 1957; // Y
+
+         ScoutPath[28,0] = -6594; // X
+         ScoutPath[28,1] = -941; // Y
+
+         ScoutPath[29,0] = -5302; // X
+         ScoutPath[29,1] = -851; // Y
+
+         MoveToEngageOFF;
+         SetSpeed(RUN);
+         SetTactic(TACTIC_OPTIMAL);
+         ReturnFireOFF;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = Patrol(ScoutPath,30,PATROL_AND_STOP, 1);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order1Status <> INCOMPLETE) then
+                   // Order  2 
+                   if (Order2Status == INCOMPLETE) then
+                        Order2Status = MoveTo(-5302,-851);
+                        if (Order2Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

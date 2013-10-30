@@ -1,0 +1,26 @@
+FITini
+
+[Header]
+
+l NumCampaignMissions = 31
+st MultiplayerFile = ""
+
+[PurchaseCosts]
+l Armor = 40
+l Internal = 50
+l Engine = 750
+f clan = 4.0
+
+[PilotCosts]
+
+l Green = 3200
+l Regular = 5000
+l Veteran = 7200
+l Elite = 9800
+
+[Mission0] //0101
+
+st PurchaseFile = "NetPur"
+l Operation = 1
+
+[FITend]

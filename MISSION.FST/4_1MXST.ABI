@@ -1,0 +1,41 @@
+//*********************************************************************************
+// Structure Include file for mission 4_1
+
+
+if (isdead(RBBoomBoom)) then
+     removeMechBay(RBBoomBoom);
+     RBBoomBoomAlignment = -2;
+else
+     if ((IsCaptured(RBBoomBoom) == 1) AND (objectSide(RBBoomBoom) <> RBBoomBoomAlignment) AND (RBBoomBoomAlignment <> -2)) then
+           RBBoomBoomAlignment = INNER_SPHERE;
+           setPotentialContact(RBBoomBoom,2);
+     endif;
+endif;
+
+if ((isdead(TCBoomBoom)) AND (TCBoomBoomAlignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(25,57),FALSE);
+     setObjectActive(getterrainobjectpartid(25,59),FALSE);
+     setObjectActive(getterrainobjectpartid(25,139),FALSE);
+     setObjectActive(getterrainobjectpartid(25,157),FALSE);
+     setObjectActive(getterrainobjectpartid(26,42),FALSE);
+     setObjectActive(getterrainobjectpartid(26,81),FALSE);
+     TCBoomBoomAlignment = -2;
+else
+     if ((IsCaptured(TCBoomBoom) == 1) AND (objectSide(TCBoomBoom) <> TCBoomBoomAlignment) AND (TCBoomBoomAlignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(25,57),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(25,57),2);
+           objectChangeSides(getterrainobjectpartid(25,59),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(25,59),2);
+           objectChangeSides(getterrainobjectpartid(25,139),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(25,139),2);
+           objectChangeSides(getterrainobjectpartid(25,157),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(25,157),2);
+           objectChangeSides(getterrainobjectpartid(26,42),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(26,42),2);
+           objectChangeSides(getterrainobjectpartid(26,81),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(26,81),2);
+           objectChangeSides(TCBoomBoom,INNER_SPHERE);
+           TCBoomBoomAlignment = INNER_SPHERE;
+           setPotentialContact(TCBoomBoom,2);
+     endif;
+endif;

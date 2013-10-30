@@ -1,0 +1,216 @@
+FITini
+
+[Header]
+
+l NumCampaignMissions = 32
+st MultiplayerFile = ""
+
+[PurchaseCosts]
+l Armor = 40
+l Internal = 50
+l Engine = 750
+f clan = 4.0
+
+[PilotCosts]
+
+l Green = 3200
+l Regular = 5000
+l Veteran = 7200
+l Elite = 9800
+
+[Mission0] //0101
+
+st PurchaseFile = "purchase00"
+st OperationCinema = "opvid1"
+l Operation = 1
+l AutoPlay = 1
+
+[Mission1] //0102
+
+st PurchaseFile = "purchase01"
+st OperationCinema = "opvid1"
+l Operation = 1
+
+[Mission2] //0103
+
+st PurchaseFile = "purchase02"
+st OperationCinema = "opvid1"
+l Operation = 1
+
+[Mission3] //0104
+
+st PurchaseFile = "purchase03"
+st OperationCinema = "opvid1"
+l Operation = 1
+
+[Mission4] //0105
+
+st PurchaseFile = "purchase04"
+st OperationCinema = "opvid1"
+l Operation = 1
+
+[Mission5] //0106
+						   
+st PurchaseFile = "purchase05"
+st OperationCinema = "opvid1"
+l Operation = 1
+
+[Mission6] //0201
+
+st PurchaseFile = "purchase06"
+st OperationCinema = "opvid2"
+l AutoPlay = 1
+l Operation = 2
+
+[Mission7] //0202
+
+st PurchaseFile = "purchase07"
+st OperationCinema = "opvid2"
+l Operation = 2
+
+[Mission8] //0203
+
+st PurchaseFile = "purchase08"
+st OperationCinema = "opvid2"
+l Operation = 2
+
+[Mission9] //0204
+
+st PurchaseFile = "purchase09"
+st OperationCinema = "opvid2"
+l Operation = 2
+
+[Mission10]	//0205
+
+st PurchaseFile = "purchase10"
+st OperationCinema = "opvid2"
+l Operation = 2
+
+[Mission11]	//0206
+
+st PurchaseFile = "purchase11"
+st OperationCinema = "opvid2"
+l Operation = 2
+
+[Mission12]
+
+st PurchaseFile = "purchase12"
+st OperationCinema = "opvid3"
+l AutoPlay = 1
+l Operation = 3
+
+[Mission13]
+
+st PurchaseFile = "purchase13"
+st OperationCinema = "opvid3"
+l Operation = 3
+
+[Mission14]
+
+st PurchaseFile = "purchase14"
+st OperationCinema = "opvid3"
+l Operation = 3
+
+[Mission15]
+
+st PurchaseFile = "purchase15"
+st OperationCinema = "opvid3"
+l Operation = 3
+
+[Mission16]
+
+st PurchaseFile = "purchase16"
+st OperationCinema = "opvid3"
+l Operation = 3
+
+[Mission17]
+
+st PurchaseFile = "purchase17"
+st OperationCinema = "opvid3"
+l Operation = 3
+
+[Mission18]
+
+st PurchaseFile = "purchase18"
+st OperationCinema = "opvid4"
+l AutoPlay = 1
+l Operation = 4
+
+[Mission19]
+
+st PurchaseFile = "purchase19"
+st OperationCinema = "opvid4"
+l Operation = 4
+
+[Mission20]
+
+st PurchaseFile = "purchase20"
+st OperationCinema = "opvid4"
+l Operation = 4
+
+[Mission21]
+
+st PurchaseFile = "purchase21"
+st OperationCinema = "opvid4"
+l Operation = 4
+
+[Mission22]
+
+st PurchaseFile = "purchase22"
+st OperationCinema = "opvid4"
+l Operation = 4
+
+[Mission23]
+
+st PurchaseFile = "purchase23"
+st OperationCinema = "opvid4"
+l Operation = 4
+
+[Mission24]
+
+st PurchaseFile = "purchase24"
+st OperationCinema = "opvid5"
+l AutoPlay = 1
+l Operation = 5
+
+[Mission25]
+
+st PurchaseFile = "purchase25"
+st OperationCinema = "opvid5"
+l Operation = 5
+
+[Mission26]//0503
+
+st PurchaseFile = "purchase26"
+st OperationCinema = "opvid5"
+l Operation = 5
+
+[Mission27]  
+
+st PurchaseFile = "purchase27"
+st OperationCinema = "opvid5"
+l Operation = 5
+
+[Mission28]
+
+st PurchaseFile = "purchase28"
+st OperationCinema = "opvid5"
+l Operation = 5
+
+[Mission29]
+
+st PurchaseFile = "purchase29"
+st OperationCinema = "opvid5"
+l Operation = 5
+
+[Mission30]
+
+st PurchaseFile = "purchase30"
+st OperationCinema = "opvid5"
+l Operation = 5
+
+[Mission31]
+
+st PurchaseFile = "NetPur"
+
+[FITend]

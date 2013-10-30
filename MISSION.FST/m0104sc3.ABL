@@ -1,0 +1,113 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:3/14/98   BY:Mike Lee
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0104sc3 : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+
+    // PATHS
+    static path                        pathtobase;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+
+         // Paths
+
+         pathtobase[0,0] = 2100; // X
+         pathtobase[0,1] = -3250; // Y
+
+         SetEngageRadius(0);
+         SetSpeed(RUN);
+         ReturnFireOFF;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (inHotSpot(PLAYER_FORCE,3650,-370,100)) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Flag2 = TRUE;
+              Order1Status = SUCCESS;
+         endif;
+    endif;
+    if (beenHit) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              Flag2 = TRUE;
+              Order2Status = SUCCESS;
+         endif;
+    endif;
+    if (GeneralAlarm) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              SetEngageRadius(350);
+              Order3Status = SUCCESS;
+         endif;
+    endif;
+    if (GeneralAlarm) then
+         // Order  4 
+         if (Order4Status == INCOMPLETE) then
+              Order4Status = Attack;
+              if (Order4Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+    if (flag2) then
+         // Order  5 
+         if (Order5Status == INCOMPLETE) then
+              Order5Status = MoveTo(2100,-3300);
+              if (Order5Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+
+         return(1);
+endmodule.

@@ -1,0 +1,27 @@
+//*********************************************************************************
+// Variable Include file for mission 2_6
+
+     static boolean                    ThirtySecGiven;
+     static boolean                    TwoMinuteGiven;
+     eternal integer                   ClanCom;
+     static integer                    ClanComAlignment;
+     eternal integer                   turcon1;
+     static integer                    turcon1Alignment;
+     eternal integer                   turcon2;
+     static integer                    turcon2Alignment;
+     eternal integer                   senscontrol;
+     static integer                    senscontrolAlignment;
+     eternal integer                   CompWareHs1;
+     static integer                    CompWareHs1Alignment;
+     eternal integer                   CompWareHs2;
+     static integer                    CompWareHs2Alignment;
+     eternal integer                   CompWareHs3;
+     static integer                    CompWareHs3Alignment;
+     eternal integer                   Stack1;
+     static integer                    Stack1Alignment;
+     eternal integer                   Stack2;
+     static integer                    Stack2Alignment;
+     eternal integer                   BFEStack1;
+     static integer                    BFEStack1Alignment;
+     eternal integer                   BFEStack2;
+     static integer                    BFEStack2Alignment;

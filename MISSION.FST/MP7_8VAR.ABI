@@ -1,0 +1,45 @@
+//*********************************************************************************
+// Variable Include file for mission 7_8
+
+     integer                           numbunkersgone;
+     integer                           numgunsgone;
+     eternal integer                   arty1;
+     static integer                    arty1Alignment;
+     eternal integer                   arty2;
+     static integer                    arty2Alignment;
+     eternal integer                   arty5;
+     static integer                    arty5Alignment;
+     eternal integer                   ClanMechbay;
+     static integer                    ClanMechbayAlignment;
+     eternal integer                   ISMechbay;
+     static integer                    ISMechbayAlignment;
+     eternal integer                   Mechbay3;
+     static integer                    Mechbay3Alignment;
+     eternal integer                   Mechbay4;
+     static integer                    Mechbay4Alignment;
+     eternal integer                   ISBaseGC;
+     static integer                    ISBaseGCAlignment;
+     eternal integer                   ISIndGC1;
+     static integer                    ISIndGC1Alignment;
+     eternal integer                   ISIndGC2;
+     static integer                    ISIndGC2Alignment;
+     eternal integer                   ClanBaseGC;
+     static integer                    ClanBaseGCAlignment;
+     eternal integer                   ClanHillGC;
+     static integer                    ClanHillGCAlignment;
+     eternal integer                   ISTC1;
+     static integer                    ISTC1Alignment;
+     eternal integer                   ISTC2;
+     static integer                    ISTC2Alignment;
+     eternal integer                   ISTC3;
+     static integer                    ISTC3Alignment;
+     eternal integer                   ISTC4;
+     static integer                    ISTC4Alignment;
+     eternal integer                   ClanTC1;
+     static integer                    ClanTC1Alignment;
+     eternal integer                   ClanTC2;
+     static integer                    ClanTC2Alignment;
+     eternal integer                   ClanTC3;
+     static integer                    ClanTC3Alignment;
+     eternal integer                   ClanTC4;
+     static integer                    ClanTC4Alignment;

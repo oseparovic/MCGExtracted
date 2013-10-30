@@ -1,0 +1,40 @@
+FITini
+
+[HeapInfo]
+ul heapSize = 8192
+
+[Movies]
+ul numMovies = 5
+
+st movie0 = "logos1"
+st movie1 = "opening"
+st movie2 = "credits"
+st movie3 = "closing"
+st movie4 = "credits"
+
+[Scenarios]
+ul numScenarios = 1
+ul LastScenario = 0
+
+st Scenario0 = "PARedux"	// name of the scenario file
+
+
+[OpInfo]
+l Scenario0Operation = 1
+l Scenario0Mission = 1
+
+[GameSegment0]
+ul GameState = 0
+ul NextGameState = 10
+ul NextGameSegment = 1
+ul SmackerMovieId = 0
+ul ScenarioId = 0
+
+[GameSegment1]
+ul GameState = 3
+ul NextGameState = 16
+ul NextGameSegment = 2
+ul SmackerMovieId = -1
+ul ScenarioId = 0
+
+FITend

@@ -1,0 +1,74 @@
+//*********************************************************************************
+// Structure Include file for mission 1_1
+
+
+if ((isdead(TurCon1)) AND (TurCon1Alignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(14,107),FALSE);
+     setObjectActive(getterrainobjectpartid(14,127),FALSE);
+     setObjectActive(getterrainobjectpartid(14,147),FALSE);
+     setObjectActive(getterrainobjectpartid(14,166),FALSE);
+     setObjectActive(getterrainobjectpartid(14,184),FALSE);
+     setObjectActive(getterrainobjectpartid(14,185),FALSE);
+     TurCon1Alignment = -2;
+else
+     if ((IsCaptured(TurCon1) == 1) AND (objectSide(TurCon1) <> TurCon1Alignment) AND (TurCon1Alignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(14,107),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(14,107),2);
+           objectChangeSides(getterrainobjectpartid(14,127),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(14,127),2);
+           objectChangeSides(getterrainobjectpartid(14,147),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(14,147),2);
+           objectChangeSides(getterrainobjectpartid(14,166),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(14,166),2);
+           objectChangeSides(getterrainobjectpartid(14,184),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(14,184),2);
+           objectChangeSides(getterrainobjectpartid(14,185),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(14,185),2);
+           objectChangeSides(TurCon1,INNER_SPHERE);
+           TurCon1Alignment = INNER_SPHERE;
+           setPotentialContact(TurCon1,2);
+     endif;
+endif;
+
+if ((isdead(TurCon2)) AND (TurCon2Alignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(13,117),FALSE);
+     setObjectActive(getterrainobjectpartid(13,137),FALSE);
+     setObjectActive(getterrainobjectpartid(13,158),FALSE);
+     setObjectActive(getterrainobjectpartid(13,179),FALSE);
+     setObjectActive(getterrainobjectpartid(14,180),FALSE);
+     setObjectActive(getterrainobjectpartid(14,181),FALSE);
+     TurCon2Alignment = -2;
+else
+     if ((IsCaptured(TurCon2) == 1) AND (objectSide(TurCon2) <> TurCon2Alignment) AND (TurCon2Alignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(13,117),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(13,117),2);
+           objectChangeSides(getterrainobjectpartid(13,137),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(13,137),2);
+           objectChangeSides(getterrainobjectpartid(13,158),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(13,158),2);
+           objectChangeSides(getterrainobjectpartid(13,179),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(13,179),2);
+           objectChangeSides(getterrainobjectpartid(14,180),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(14,180),2);
+           objectChangeSides(getterrainobjectpartid(14,181),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(14,181),2);
+           objectChangeSides(TurCon2,INNER_SPHERE);
+           TurCon2Alignment = INNER_SPHERE;
+           setPotentialContact(TurCon2,2);
+     endif;
+endif;
+
+if (isdead(power)) then
+     setObjectActive(getterrainobjectpartid(13,117),FALSE);
+     setObjectActive(getterrainobjectpartid(13,137),FALSE);
+     setObjectActive(getterrainobjectpartid(13,158),FALSE);
+     setObjectActive(getterrainobjectpartid(13,179),FALSE);
+     setObjectActive(getterrainobjectpartid(14,107),FALSE);
+     setObjectActive(getterrainobjectpartid(14,127),FALSE);
+     setObjectActive(getterrainobjectpartid(14,147),FALSE);
+     setObjectActive(getterrainobjectpartid(14,166),FALSE);
+     setObjectActive(getterrainobjectpartid(14,180),FALSE);
+     setObjectActive(getterrainobjectpartid(14,181),FALSE);
+     setObjectActive(getterrainobjectpartid(14,184),FALSE);
+     setObjectActive(getterrainobjectpartid(14,185),FALSE);
+endif;

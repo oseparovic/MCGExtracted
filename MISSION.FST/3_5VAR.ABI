@@ -1,0 +1,46 @@
+//*********************************************************************************
+// Variable Include file for mission 3_5
+
+     boolean                           PlayerVehicles;
+     eternal integer                   tc1;
+     static integer                    tc1Alignment;
+     eternal integer                   tc2;
+     static integer                    tc2Alignment;
+     eternal integer                   tc3;
+     static integer                    tc3Alignment;
+     eternal integer                   tc4;
+     static integer                    tc4Alignment;
+     eternal integer                   tc5;
+     static integer                    tc5Alignment;
+     eternal integer                   wh1;
+     eternal integer                   wh2;
+     eternal integer                   wh3;
+     eternal integer                   wh4;
+     eternal integer                   wh5;
+     eternal integer                   wh6;
+     eternal integer                   wh7;
+     static integer                    wh7Alignment;
+     eternal integer                   wh8;
+     eternal integer                   st1;
+     eternal integer                   st2;
+     eternal integer                   st3;
+     eternal integer                   st4;
+     eternal integer                   st5;
+     eternal integer                   st6;
+     eternal integer                   GateSW;
+     eternal integer                   GateNW;
+     eternal integer                   Spower;
+     eternal integer                   SenCntrl;
+     static integer                    SenCntrlAlignment;
+     eternal integer                   Npower;
+     eternal integer                   HQbldg;
+     eternal integer                   GateControlNW;
+     static integer                    GateControlNWAlignment;
+     eternal integer                   GateControlSW;
+     static integer                    GateControlSWAlignment;
+     eternal integer                   st7;
+     eternal integer                   Repair1;
+     static integer                    Repair1Alignment;
+     eternal integer                   Repair2;
+     static integer                    Repair2Alignment;
+     static boolean                    LOP0;

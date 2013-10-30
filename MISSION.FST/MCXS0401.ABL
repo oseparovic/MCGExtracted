@@ -1,0 +1,409 @@
+//*********************************************************************************
+
+module MissionBrain_4_1 : integer;
+
+     //--------------------------------------------------------
+     // Operation:  4                  Mission:  1 
+     // MissionID:  264                Name: Destroy All Aces
+     // Designer: david abzug
+     // Created: 11/7/98               By: david abzug
+     //--------------------------------------------------------
+
+//------------------------------------------------------------------
+//
+//     Constant Definitions
+//
+//------------------------------------------------------------------
+     const
+
+          #include_ "misconst.abi"
+
+          //------------------
+          // Objective IDs
+          //------------------
+           OBJ0_Destroy_Ace_Madcat       = 0;
+           OBJ1_Take_Out_three_Ace_Ulle  = 1;
+           OBJ2_Eliminate_Ace_Masakari   = 2;
+           OBJ3_Kill_Ace_Cougar          = 3;
+           OBJ4_Destroy_two_Ace_Shadowc  = 4;
+
+//------------------------------------------------------------------
+//
+//     Type Definitions
+//
+//------------------------------------------------------------------
+     type
+
+
+//------------------------------------------------------------------
+//
+//     Variable Declarations
+//
+//------------------------------------------------------------------
+      var
+
+            #include_ "4_1MXVR.ABI"
+
+            static integer      ScenarioResult;
+            eternal boolean     ExitTimerSet;
+            static integer      VictoryLevel;
+            char[40]            dstring;
+            eternal real        gametime;
+            static real         nextsecond;
+            integer             x;
+            integer             y;
+            Position            aPoint;
+            eternal boolean     PlayerForceDead;
+            eternal boolean     ClanForceDead;
+            eternal boolean     AlliedForceDead;
+            eternal boolean     GeneralAlarm;
+            eternal boolean     Flag1;
+            eternal boolean     Flag2;
+            eternal boolean     Flag3;
+            eternal boolean     Flag4;
+            eternal boolean     Flag5;
+            eternal boolean     Flag6;
+            eternal boolean     Flag7;
+            eternal boolean     Flag8;
+            eternal boolean     Flag9;
+            eternal boolean     Flag10;
+            static boolean      PlayPASound;
+            static boolean      PlayGASound;
+            eternal integer     GeneralAlarmCounter;
+            boolean             PerimeterBreach;
+            static boolean      Objective_0_Decided;
+            static boolean      Objective_1_Decided;
+            static boolean      Objective_2_Decided;
+            static boolean      Objective_3_Decided;
+            static boolean      Objective_4_Decided;
+
+//------------------------------------------------------------------
+//
+//     Init Function    (automatically run first time through)
+//
+//------------------------------------------------------------------
+function init;
+
+       code
+
+            ScenarioResult = PLAYING;
+            PlayerForceDead = FALSE;
+            ClanForceDead = FALSE;
+            AlliedForceDead = FALSE;
+            ExitTimerSet = FALSE;
+            VictoryLevel = 0; // New Scheme
+            NextSecond = 1.0;
+            GeneralAlarmCounter = -1;
+            GeneralAlarm = FALSE;
+            Flag1 = FALSE;
+            Flag2 = FALSE;
+            Flag3 = FALSE;
+            Flag4 = FALSE;
+            Flag5 = FALSE;
+            Flag6 = FALSE;
+            Flag7 = FALSE;
+            Flag8 = FALSE;
+            Flag9 = FALSE;
+            Flag10 = FALSE;
+            PlayPASound = FALSE;
+            PlayGASound = FALSE;
+            Objective_0_Decided = FALSE;
+            Objective_1_Decided = FALSE;
+            Objective_2_Decided = FALSE;
+            Objective_3_Decided = FALSE;
+            Objective_4_Decided = FALSE;
+
+            #include_ "4_1MXIN.ABI"
+
+endfunction;
+
+//------------------------------------------------------------------
+//
+//     Main Code
+//
+//------------------------------------------------------------------
+      code
+
+            //------------------------------------------------
+            // Debug Window Game Clock Second Counter
+            // Note:  This is used by some included functions.
+            //------------------------------------------------
+            gametime = gettime;
+            If (gametime >= nextsecond) Then
+                  nextsecond = gametime + 1;
+                  If (GeneralAlarm) then
+                       GeneralAlarmCounter = GeneralAlarmCounter + 1;
+                  endif;
+                  // dstring = "Gametime: ";
+                  // concat(dstring,gametime);
+                  // Print (dstring);
+            endif;
+            if ((PlayGASound) and (NextSecond == gametime + 1)) then
+                  playSoundEffect(GENERAL_ALARM_SOUND);
+            endif;
+            if (PlayPASound) then
+                  playSoundEffect(PERIMETER_ALARM_SOUND);
+            endif;
+            PerimeterBreach = FALSE;
+
+            //---------------------------------------
+            // Create Non-Existing Vehicles
+            //---------------------------------------
+            #include_ "4_1MXCR.ABI"
+
+            //---------------------------------------
+            // Activate inactive vehicles
+            //---------------------------------------
+            #include_ "4_1MXAC.ABI"
+
+            //---------------------------------------
+            // Structure
+            //---------------------------------------
+            #include_ "4_1MXST.ABI"
+
+            //---------------------------------------
+            // Lookout Points
+            //---------------------------------------
+            #include_ "4_1MXLP.ABI"
+
+            //---------------------------------------
+            // Force Dead Checks
+            //---------------------------------------
+            if (isDeadorFled(PLAYER_FORCE)) then
+                  PlayerForceDead = TRUE;
+            endif;
+            if (isDeadorFled(CLAN_FORCE)) then
+                  ClanForceDead = TRUE;
+            endif;
+            if (isDeadorFled(ALLIED_FORCE)) then
+                  AlliedForceDead = TRUE;
+            endif;
+
+            //---------------------------------------
+            // SET EXIT TIMER IF PLAYER DEAD/DISABLED
+            //---------------------------------------
+
+            if ((NOT ExitTimerSet) AND (PlayerForceDead)) then
+                  // Fail any Undecided Player Objectives
+                  if (checkObjectiveStatus(0) == INCOMPLETE) then
+                        setObjectiveStatus(0, FAILED);
+                  endif;
+                  if (checkObjectiveStatus(1) == INCOMPLETE) then
+                        setObjectiveStatus(1, FAILED);
+                  endif;
+                  if (checkObjectiveStatus(2) == INCOMPLETE) then
+                        setObjectiveStatus(2, FAILED);
+                  endif;
+                  if (checkObjectiveStatus(3) == INCOMPLETE) then
+                        setObjectiveStatus(3, FAILED);
+                  endif;
+                  if (checkObjectiveStatus(4) == INCOMPLETE) then
+                        setObjectiveStatus(4, FAILED);
+                  endif;
+            endif;
+
+            //---------------------------------------
+            // Custom ABL Code
+            //---------------------------------------
+
+            if (isAlive(Tower)) then
+                 if (not bombsdropped) then
+                             if (inHotSpot(PLAYER_FORCE,-931,-1340,60.0)) then
+                             
+                                   Bombsdropped = true;
+                                   CallStrikeEx(508,-1,-200.0,-1460.0,-1.0,TRUE,4.0);
+                                   CallStrikeEx(508,-1,-329.0,-1400.0,-1.0,TRUE,5.5);
+                                   CallStrikeEx(508,-1,-460.0,-1485.0,-1.0,TRUE,6.75);
+                                   CallStrikeEx(508,-1,-604.0,-1450.0,-1.0,TRUE,7.9);
+                                   CallStrikeEx(508,-1,-717.0,-1496.0,-1.0,TRUE,9.0);
+                                   CallStrikeEx(508,-1,-880.0,-1424.0,-1.0,TRUE,10.25);
+                                   CallStrikeEx(508,-1,-958.0,-1502.0,-1.0,TRUE,11.0);
+                                   CallStrikeEx(508,-1,-931.0,-1340.0,-1.0,TRUE,12.4);
+                                   CallStrikeEx(508,-1,-998.0,-1163.0,-1.0,TRUE,13.0);
+                                   CallStrikeEx(508,-1,-930.0,-1050.0,-1.0,TRUE,14.9);
+                                   CallStrikeEx(508,-1,-987.0,-945.0,-1.0,TRUE,16.5);
+                                   CallStrikeEx(508,-1,-1103.0,-969.0,-1.0,TRUE,17.2);
+                                   CallStrikeEx(508,-1,-1236.0,-971.0,-1.0,TRUE,19.0);
+                                   CallStrikeEx(508,-1,-1372.0,-938.0,-1.0,TRUE,21.5);
+                                   CallStrikeEx(508,-1,-1470.0,-992.0,-1.0,TRUE,23.1);
+                                   CallStrikeEx(508,-1,-1510.0,-992.0,-1.0,TRUE,24.7);
+                                   CallStrikeEx(508,-1,-1619.0,-945.0,-1.0,TRUE,27.2);
+                 
+                             endif;
+                 endif;
+            endif;
+
+            if (isDead(Tower)) then
+                 bombsdropped = true;
+            endif;
+
+            //---------------------------------------
+            // Objective Resolution
+            //---------------------------------------
+
+            if (checkObjectiveStatus(0) == INCOMPLETE) then
+
+                 if (isDead(ClanStar(0))) then
+                       SetObjectiveStatus(0,SUCCESS);
+                       playBetty(BETTY_OBJECTIVE_COMPLETE);
+                       VictoryLevel = VictoryLevel + 1;
+                       Objective_0_Decided = TRUE;
+                       if (VictoryLevel < 5) then
+                             PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                       endif;
+                 else
+                       if (gettimeleft == 0.0) then
+                             SetObjectiveStatus(0,FAILED);
+                             playBetty(BETTY_CANNOT_COMP_OBJ);
+                             Objective_0_Decided = TRUE;
+                       endif;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(0) == FAILED) then
+                              setTimer(EXIT_TIMER,2.0);
+                              ExitTimerSet = TRUE;
+                        endif;
+                  endif;
+            endif;
+
+            if (checkObjectiveStatus(1) == INCOMPLETE) then
+
+                 if (isDead(ClanStar(1))) then
+                       SetObjectiveStatus(1,SUCCESS);
+                       playBetty(BETTY_OBJECTIVE_COMPLETE);
+                       VictoryLevel = VictoryLevel + 1;
+                       Objective_1_Decided = TRUE;
+                       if (VictoryLevel < 5) then
+                             PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                       endif;
+                 else
+                       if (gettimeleft == 0.0) then
+                             SetObjectiveStatus(1,FAILED);
+                             playBetty(BETTY_CANNOT_COMP_OBJ);
+                             Objective_1_Decided = TRUE;
+                       endif;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(1) == FAILED) then
+                              setTimer(EXIT_TIMER,2.0);
+                              ExitTimerSet = TRUE;
+                        endif;
+                  endif;
+            endif;
+
+            if (checkObjectiveStatus(2) == INCOMPLETE) then
+
+                 if (isDead(ClanStar(2))) then
+                       SetObjectiveStatus(2,SUCCESS);
+                       playBetty(BETTY_OBJECTIVE_COMPLETE);
+                       VictoryLevel = VictoryLevel + 1;
+                       Objective_2_Decided = TRUE;
+                       if (VictoryLevel < 5) then
+                             PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                       endif;
+                 else
+                       if (gettimeleft == 0.0) then
+                             SetObjectiveStatus(2,FAILED);
+                             playBetty(BETTY_CANNOT_COMP_OBJ);
+                             Objective_2_Decided = TRUE;
+                       endif;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(2) == FAILED) then
+                              setTimer(EXIT_TIMER,2.0);
+                              ExitTimerSet = TRUE;
+                        endif;
+                  endif;
+            endif;
+
+            if (checkObjectiveStatus(3) == INCOMPLETE) then
+
+                 if (isDead(ClanStar(4))) then
+                       SetObjectiveStatus(3,SUCCESS);
+                       playBetty(BETTY_OBJECTIVE_COMPLETE);
+                       VictoryLevel = VictoryLevel + 1;
+                       Objective_3_Decided = TRUE;
+                       if (VictoryLevel < 5) then
+                             PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                       endif;
+                 else
+                       if (gettimeleft == 0.0) then
+                             SetObjectiveStatus(3,FAILED);
+                             playBetty(BETTY_CANNOT_COMP_OBJ);
+                             Objective_3_Decided = TRUE;
+                       endif;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(3) == FAILED) then
+                              setTimer(EXIT_TIMER,2.0);
+                              ExitTimerSet = TRUE;
+                        endif;
+                  endif;
+            endif;
+
+            if (checkObjectiveStatus(4) == INCOMPLETE) then
+
+                 if (isDead(ClanStar(3))) then
+                       SetObjectiveStatus(4,SUCCESS);
+                       playBetty(BETTY_OBJECTIVE_COMPLETE);
+                       VictoryLevel = VictoryLevel + 1;
+                       Objective_4_Decided = TRUE;
+                       if (VictoryLevel < 5) then
+                             PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                       endif;
+                 else
+                       if (gettimeleft == 0.0) then
+                             SetObjectiveStatus(4,FAILED);
+                             playBetty(BETTY_CANNOT_COMP_OBJ);
+                             Objective_4_Decided = TRUE;
+                       endif;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(4) == FAILED) then
+                              setTimer(EXIT_TIMER,2.0);
+                              ExitTimerSet = TRUE;
+                        endif;
+                  endif;
+            endif;
+
+            if ((NOT ExitTimerSet) AND (Objective_0_Decided) AND (Objective_1_Decided) AND (Objective_2_Decided) AND (Objective_3_Decided) AND (Objective_4_Decided)) then
+                  setTimer(EXIT_TIMER,2.0);
+                  ExitTimerSet = TRUE;
+            endif;
+
+            //---------------------------------------
+            // END SCENARIO
+            //---------------------------------------
+
+            if ((ExitTimerSet) AND (CheckTimer(EXIT_TIMER) == 0.0)) then
+                  if (VictoryLevel >= 5) then
+                        ScenarioResult = PLAYER_WIN_BIG;
+                        PlayDigitalMusic(VICTORY_MUSIC);
+                  else
+                        ScenarioResult = PLAYER_LOST_BIG;
+                        PlayDigitalMusic(DEFEAT_MUSIC);
+                  endif;
+            endif;
+
+            //---------------------------------------
+            // RETURN RESULT
+            //---------------------------------------
+
+            return (ScenarioResult);
+endmodule.
+//******************************************************************

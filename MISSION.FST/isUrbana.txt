@@ -1,0 +1,16 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc5%c----------%n
+%fc6%c***Urbana***%n
+%fc2(1) Destroy all enemy forces.%n%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY:    0 Small    0 Large%n
+%t12SENSOR PROBE:   0%n
+%t12CAMERA DRONE:    0%n%n
+%fc5%c----------%n
+%fc4You will be dropped in the Northern base. It is equipped with a Mech Repair Bay, an Artillery Crate and some turrets. You must hunt down the opposing forces and destroy them.%n%n
+%fc5%c----------%n
+%fc1%fm%c**TACTICAL WARNING**%n
+%fc2%fs*The enemy will also be trying to destroy your forces, so be careful.%n%n
+%fm%fc6%c**TACTICAL NOTICE**%n
+%fs%fc2*There are unclaimed turrets somewhere in the middle of the map.%n%n
+%fc6<<<<END DISPATCH

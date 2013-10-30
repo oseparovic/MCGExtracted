@@ -1,0 +1,170 @@
+//*********************************************************************************
+// Activation Include file for mission 3_5
+
+if ((gametime > 0) AND (gametime < 11)) then
+     if (gametime > 1) then
+           setobjectActive(VehicleID(PLAYER_LANCE2,0,0),TRUE);
+     endif;
+     if (gametime > 1) then
+           setobjectActive(VehicleID(PLAYER_LANCE2,1,0),TRUE);
+     endif;
+     if (gametime > 1) then
+           setobjectActive(VehicleID(PLAYER_LANCE2,2,0),TRUE);
+     endif;
+     if (gametime > 2) then
+           setobjectActive(VehicleID(CLAN_STAR1,1,0),TRUE);
+     endif;
+     if (gametime > 4) then
+           setobjectActive(VehicleID(CLAN_STAR1,2,0),TRUE);
+     endif;
+     if (gametime > 6) then
+           setobjectActive(VehicleID(CLAN_STAR1,3,0),TRUE);
+     endif;
+     if (gametime > 10) then
+           setobjectActive(VehicleID(CLAN_STAR0,0,0),TRUE);
+     endif;
+endif;
+if ((gametime > 11) AND (gametime < 21)) then
+     if (gametime > 12) then
+           setobjectActive(VehicleID(CLAN_STAR0,1,0),TRUE);
+     endif;
+     if (gametime > 14) then
+           setobjectActive(VehicleID(CLAN_STAR0,2,0),TRUE);
+     endif;
+     if (gametime > 16) then
+           setobjectActive(VehicleID(CLAN_STAR0,3,0),TRUE);
+     endif;
+     if (gametime > 18) then
+           setobjectActive(VehicleID(CLAN_STAR0,4,0),TRUE);
+     endif;
+     if (gametime > 20) then
+           setobjectActive(VehicleID(CLAN_STAR0,5,0),TRUE);
+     endif;
+endif;
+if ((gametime > 441) AND (gametime < 453)) then
+     if (gametime > 442) then
+           setobjectActive(VehicleID(CLAN_STAR5,0,0),TRUE);
+     endif;
+     if (gametime > 444) then
+           setobjectActive(VehicleID(CLAN_STAR5,1,0),TRUE);
+     endif;
+     if (gametime > 446) then
+           setobjectActive(VehicleID(CLAN_STAR5,2,0),TRUE);
+     endif;
+     if (gametime > 448) then
+           setobjectActive(VehicleID(CLAN_STAR5,3,0),TRUE);
+     endif;
+     if (gametime > 450) then
+           setobjectActive(VehicleID(CLAN_STAR4,1,0),TRUE);
+     endif;
+     if (gametime > 450) then
+           setobjectActive(VehicleID(CLAN_STAR5,4,0),TRUE);
+     endif;
+     if (gametime > 452) then
+           setobjectActive(VehicleID(CLAN_STAR4,3,0),TRUE);
+     endif;
+endif;
+if ((gametime > 453) AND (gametime < 461)) then
+     if (gametime > 454) then
+           setobjectActive(VehicleID(CLAN_STAR4,4,0),TRUE);
+     endif;
+     if (gametime > 460) then
+           setobjectActive(VehicleID(CLAN_STAR4,0,0),TRUE);
+     endif;
+endif;
+if ((gametime > 464) AND (gametime < 466)) then
+     if (gametime > 465) then
+           setobjectActive(VehicleID(CLAN_STAR4,2,0),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[0]) then
+     if (distancetoobject(PLAYER_FORCE,VehicleID(CLAN_STAR4,0,0)) < 350) then
+           VehicleActivated[0] = TRUE;
+           setobjectActive(VehicleID(CLAN_STAR4,0,0),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[1]) then
+     if (distancetoobject(PLAYER_FORCE,VehicleID(CLAN_STAR4,1,0)) < 350) then
+           VehicleActivated[1] = TRUE;
+           setobjectActive(VehicleID(CLAN_STAR4,1,0),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[2]) then
+     if (distancetoobject(PLAYER_FORCE,VehicleID(CLAN_STAR4,2,0)) < 350) then
+           VehicleActivated[2] = TRUE;
+           setobjectActive(VehicleID(CLAN_STAR4,2,0),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[3]) then
+     if (distancetoobject(PLAYER_FORCE,VehicleID(CLAN_STAR4,3,0)) < 350) then
+           VehicleActivated[3] = TRUE;
+           setobjectActive(VehicleID(CLAN_STAR4,3,0),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[4]) then
+     if (distancetoobject(PLAYER_FORCE,VehicleID(CLAN_STAR4,4,0)) < 350) then
+           VehicleActivated[4] = TRUE;
+           setobjectActive(VehicleID(CLAN_STAR4,4,0),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[5]) then
+     if (distancetoobject(PLAYER_FORCE,VehicleID(CLAN_STAR5,0,0)) < 350) then
+           VehicleActivated[5] = TRUE;
+           setobjectActive(VehicleID(CLAN_STAR5,0,0),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[6]) then
+     if (distancetoobject(PLAYER_FORCE,VehicleID(CLAN_STAR5,1,0)) < 350) then
+           VehicleActivated[6] = TRUE;
+           setobjectActive(VehicleID(CLAN_STAR5,1,0),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[7]) then
+     if (distancetoobject(PLAYER_FORCE,VehicleID(CLAN_STAR5,2,0)) < 350) then
+           VehicleActivated[7] = TRUE;
+           setobjectActive(VehicleID(CLAN_STAR5,2,0),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[8]) then
+     if (distancetoobject(PLAYER_FORCE,VehicleID(CLAN_STAR5,3,0)) < 350) then
+           VehicleActivated[8] = TRUE;
+           setobjectActive(VehicleID(CLAN_STAR5,3,0),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[9]) then
+     if (distancetoobject(PLAYER_FORCE,VehicleID(CLAN_STAR5,4,0)) < 350) then
+           VehicleActivated[9] = TRUE;
+           setobjectActive(VehicleID(CLAN_STAR5,4,0),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[10]) then
+     if (distancetoobject(PLAYER_FORCE,VehicleID(PLAYER_LANCE2,0,0)) < 10000) then
+           VehicleActivated[10] = TRUE;
+           setobjectActive(VehicleID(PLAYER_LANCE2,0,0),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[11]) then
+     if (distancetoobject(PLAYER_FORCE,VehicleID(PLAYER_LANCE2,1,0)) < 10000) then
+           VehicleActivated[11] = TRUE;
+           setobjectActive(VehicleID(PLAYER_LANCE2,1,0),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[12]) then
+     if (distancetoobject(PLAYER_FORCE,VehicleID(PLAYER_LANCE2,2,0)) < 100000) then
+           VehicleActivated[12] = TRUE;
+           setobjectActive(VehicleID(PLAYER_LANCE2,2,0),TRUE);
+     endif;
+endif;

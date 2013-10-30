@@ -1,0 +1,111 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:11/1/98   BY:rob nicholls
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBmx0102mech2 : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+
+    // PATHS
+    static path                        Mechpath;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+
+         // Paths
+
+         Mechpath[0,0] = -3144; // X
+         Mechpath[0,1] = -826; // Y
+
+         Mechpath[1,0] = -2997; // X
+         Mechpath[1,1] = -1627; // Y
+
+         Mechpath[2,0] = -1843; // X
+         Mechpath[2,1] = -1981; // Y
+
+         Mechpath[3,0] = -734; // X
+         Mechpath[3,1] = -3626; // Y
+
+         Mechpath[4,0] = 3307; // X
+         Mechpath[4,1] = -2881; // Y
+
+         Mechpath[5,0] = 4141; // X
+         Mechpath[5,1] = -407; // Y
+
+         SetEngageRadius(250);
+         SetSpeed(RUN);
+         SetTactic(TACTIC_MEDIUM);
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (getHits >= 9) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              MoveAndFireON;
+              Order3Status = SUCCESS;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = Patrol(Mechpath,6,PATROL_AND_STOP, 1);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order1Status <> INCOMPLETE) then
+                   // Order  2 
+                   if (Order2Status == INCOMPLETE) then
+                        Order2Status = ClearArea;
+                        if (Order2Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

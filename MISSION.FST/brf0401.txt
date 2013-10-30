@@ -1,0 +1,20 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:LINCHPIN/04PRDN01%n
+%fc5%c----------%n
+%fc6%c***CAPTURE MASAKARI***%n
+%c****DESTROY ORBITAL GUNS***%n
+%fc21-Link up APC with Masakari,%n
+%t9then use Masakari to%n
+%t9complete Objective 2.%n
+%fc22-Destroy Orbital Guns%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 3 Small  0 Large%n
+%t12SENSOR PROBE: 0%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc6FROM COLONEL REESE:%n
+%fc4%t9Battalion Intelligence have outdone themselves on this one, Commander. The location of two of the fixed orbital guns that harassed us during our landing have been pinpointed, but they are so far behind enemy lines that no large-scale combat drop is feasible into the area. Intelligence is confident, however, that a small-scale stealth drop could go initially undetected.%n%n
+Fortunately, intelligence has also discovered that a Smoke Jaguar Masakari Assault-class OmniMech, is undergoing field repairs in that area.%n%n
+We have no available Battalion Transport, but we have commandeered a civilian cargo plane that can airdrop up to fifteen tons of combat vehicles. At the drop point your vehicle will be met by an APC carrying Firestorm, one of our best pilots and qualified to pilot the Masakari. Just get the APC near the Masakari and Firestorm should be able to bring its systems on line in seconds. Then get him to the orbital guns and have him take them out.%n%n
+You are starting with fifteen tons of vehicle on this mission. Clan Aerospace Spotters as well as light 'Mechs have been reported in the vicinity. Partisans in the area also report that enemy has mined the road leading to the Masakari. You have some artillery strikes to take the mines out. I'd say good luck but that probably wouldn't cover what you need on this one, Commander.%n%n
+%fc6<<<<<END DISPATCH

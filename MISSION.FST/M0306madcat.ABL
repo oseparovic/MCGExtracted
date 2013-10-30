@@ -1,0 +1,98 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:3/23/98   BY:Rob Nicholls
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBM0306madcat : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+
+    // PATHS
+    static path                        Prowl;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+
+         // Paths
+
+         Prowl[0,0] = -2656; // X
+         Prowl[0,1] = 1371; // Y
+
+         Prowl[1,0] = 2304; // X
+         Prowl[1,1] = 1371; // Y
+
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (flag1) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              Order2Status = Guard(AdminBldg);
+              if (Order2Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order2Status == FAILED) then
+                   // Order  3 
+                   if (Order3Status == INCOMPLETE) then
+                        Order3Status = Patrol(Prowl,2,PATROL_BACK_AND_FORTH, 999);
+                        if (Order3Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = Attack;
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

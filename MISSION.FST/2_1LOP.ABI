@@ -1,0 +1,48 @@
+//*********************************************************************************
+// Lookout Point Include file for mission 2_1
+
+if (LOP0) then
+      aPoint[0] = -5000;
+      aPoint[1] = 700;
+      aPoint[2] = 0.0;
+      if (distanceToPosition(CLAN_FORCE, aPoint) < 4000) then
+            setRevealed(-1,250.0,aPoint);
+            LOP0 = FALSE;
+      endif;
+endif;
+if (LOP1) then
+      aPoint[0] = 2128;
+      aPoint[1] = -3923;
+      aPoint[2] = 0.0;
+      if (distanceToPosition(PLAYER_FORCE, aPoint) < 25) then
+            setRevealed(1,300.0,aPoint);
+            LOP1 = FALSE;
+      endif;
+endif;
+if (LOP2) then
+      aPoint[0] = -2020;
+      aPoint[1] = -485;
+      aPoint[2] = 0.0;
+      if (distanceToPosition(PLAYER_FORCE, aPoint) < 125) then
+            setRevealed(1,150.0,aPoint);
+            LOP2 = FALSE;
+      endif;
+endif;
+if (LOP3) then
+      aPoint[0] = -2020;
+      aPoint[1] = 0;
+      aPoint[2] = 0.0;
+      if (distanceToPosition(PLAYER_FORCE, aPoint) < 125) then
+            setRevealed(1,150.0,aPoint);
+            LOP3 = FALSE;
+      endif;
+endif;
+if (LOP4) then
+      aPoint[0] = -732;
+      aPoint[1] = -1187;
+      aPoint[2] = 0.0;
+      if (distanceToPosition(PLAYER_FORCE, aPoint) < 50) then
+            setRevealed(1,250.0,aPoint);
+            LOP4 = FALSE;
+      endif;
+endif;

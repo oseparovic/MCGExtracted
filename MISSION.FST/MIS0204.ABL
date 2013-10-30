@@ -1,0 +1,370 @@
+//*********************************************************************************
+
+module MissionBrain_2_4 : integer;
+
+     //--------------------------------------------------------
+     // Operation:  2                  Mission:  4 
+     // MissionID:  158                Name: Attack HPG Base
+     // Designer: Tim Ryan
+     // Created: 5/19/98               By: Tim Ryan
+     //--------------------------------------------------------
+
+//------------------------------------------------------------------
+//
+//     Constant Definitions
+//
+//------------------------------------------------------------------
+     const
+
+          #include_ "misconst.abi"
+
+          //------------------
+          // Objective IDs
+          //------------------
+           OBJ0_Destroy_Hyperpulse_Gene  = 0;
+
+//------------------------------------------------------------------
+//
+//     Type Definitions
+//
+//------------------------------------------------------------------
+     type
+
+
+//------------------------------------------------------------------
+//
+//     Variable Declarations
+//
+//------------------------------------------------------------------
+      var
+
+            #include_ "2_4VAR.ABI"
+
+            static integer      ScenarioResult;
+            eternal boolean     ExitTimerSet;
+            static integer      VictoryLevel;
+            char[40]            dstring;
+            eternal real        gametime;
+            static real         nextsecond;
+            integer             x;
+            integer             y;
+            Position            aPoint;
+            eternal boolean     PlayerForceDead;
+            eternal boolean     ClanForceDead;
+            eternal boolean     AlliedForceDead;
+            eternal boolean     GeneralAlarm;
+            eternal boolean     Flag1;
+            eternal boolean     Flag2;
+            eternal boolean     Flag3;
+            eternal boolean     Flag4;
+            eternal boolean     Flag5;
+            eternal boolean     Flag6;
+            eternal boolean     Flag7;
+            eternal boolean     Flag8;
+            eternal boolean     Flag9;
+            eternal boolean     Flag10;
+            static boolean      PlayPASound;
+            static boolean      PlayGASound;
+            eternal integer     GeneralAlarmCounter;
+            boolean             PerimeterBreach;
+            static boolean      Objective_0_Decided;
+            static boolean      Obj_0_Action_1_Success;
+            static boolean      Obj_0_Action_2_Success;
+
+//------------------------------------------------------------------
+//
+//     Init Function    (automatically run first time through)
+//
+//------------------------------------------------------------------
+function init;
+
+       code
+
+            ScenarioResult = PLAYING;
+            PlayerForceDead = FALSE;
+            ClanForceDead = FALSE;
+            AlliedForceDead = FALSE;
+            ExitTimerSet = FALSE;
+            VictoryLevel = 0; // New Scheme
+            NextSecond = 1.0;
+            GeneralAlarmCounter = -1;
+            GeneralAlarm = FALSE;
+            Flag1 = FALSE;
+            Flag2 = FALSE;
+            Flag3 = FALSE;
+            Flag4 = FALSE;
+            Flag5 = FALSE;
+            Flag6 = FALSE;
+            Flag7 = FALSE;
+            Flag8 = FALSE;
+            Flag9 = FALSE;
+            Flag10 = FALSE;
+            PlayPASound = FALSE;
+            PlayGASound = FALSE;
+            Objective_0_Decided = FALSE;
+            Obj_0_Action_1_Success = FALSE;
+            Obj_0_Action_2_Success = FALSE;
+
+            #include_ "2_4INIT.ABI"
+
+endfunction;
+
+//------------------------------------------------------------------
+//
+//     Main Code
+//
+//------------------------------------------------------------------
+      code
+
+            //------------------------------------------------
+            // Debug Window Game Clock Second Counter
+            // Note:  This is used by some included functions.
+            //------------------------------------------------
+            gametime = gettime;
+            If (gametime >= nextsecond) Then
+                  nextsecond = gametime + 1;
+                  If (GeneralAlarm) then
+                       GeneralAlarmCounter = GeneralAlarmCounter + 1;
+                  endif;
+                  // dstring = "Gametime: ";
+                  // concat(dstring,gametime);
+                  // Print (dstring);
+            endif;
+            if ((PlayGASound) and (NextSecond == gametime + 1)) then
+                  playSoundEffect(GENERAL_ALARM_SOUND);
+            endif;
+            if (PlayPASound) then
+                  playSoundEffect(PERIMETER_ALARM_SOUND);
+            endif;
+            PerimeterBreach = FALSE;
+
+            //---------------------------------------
+            // Create Non-Existing Vehicles
+            //---------------------------------------
+            #include_ "2_4CRE.ABI"
+
+            //---------------------------------------
+            // Activate inactive vehicles
+            //---------------------------------------
+            #include_ "2_4ACT.ABI"
+
+            //---------------------------------------
+            // Structure
+            //---------------------------------------
+            #include_ "2_4STR.ABI"
+
+            //---------------------------------------
+            // Lookout Points
+            //---------------------------------------
+            #include_ "2_4LOP.ABI"
+
+            //---------------------------------------
+            // Force Dead Checks
+            //---------------------------------------
+            if (isDeadorFled(PLAYER_FORCE)) then
+                  PlayerForceDead = TRUE;
+            endif;
+            if (isDeadorFled(CLAN_FORCE)) then
+                  ClanForceDead = TRUE;
+            endif;
+            if (isDeadorFled(ALLIED_FORCE)) then
+                  AlliedForceDead = TRUE;
+            endif;
+
+            //---------------------------------------
+            // SET EXIT TIMER IF PLAYER DEAD/DISABLED
+            //---------------------------------------
+
+            if ((NOT ExitTimerSet) AND (PlayerForceDead)) then
+                  // Fail any Undecided Player Objectives
+                  if (checkObjectiveStatus(0) == INCOMPLETE) then
+                        setObjectiveStatus(0, FAILED);
+                  endif;
+            endif;
+
+            //---------------------------------------
+            // Custom ABL Code
+            //---------------------------------------
+
+            if (isAlive(HPG)) then
+                       Switch (HPGState)
+                             case 1:
+                                   if  (gametime >= 881) then
+                                         SetAnimation(HPG,0,0); // move
+                                         HPGState = 2;
+                                   endif;
+                                   endcase;
+                             case 2:
+                                   if  (gametime >= 884) then
+                                         SetAnimation(HPG,0,1); // white
+                                         HPGState = 3;
+                                   endif;
+                                   endcase;
+                             case 3:
+                                   if  (gametime >= 890) then
+                                         SetAnimation(HPG,0,2); // blue
+                                         HPGState = 4;
+                                   endif;
+                                   endcase;
+                             case 4:
+                                   if  (gametime >= 895) then
+                                         SetAnimation(HPG,0,3); // fade up
+                                         HPGState = 5;
+                                   endif;
+                                   endcase;
+                             case 5:
+                                   if  (gametime >= 896) then
+                                         SetAnimation(HPG,0,4); // pulse
+                                         playSoundEffect(HPG_SOUND);
+                                         HPGState = 6;
+                                   endif;
+                                   endcase;
+                             case 6:
+                                   if  (gametime >= 898.5) then
+                                         SetAnimation(HPG,0,5); //  fading
+                                         HPGState = 7;
+                                   endif;
+                                   endcase;
+                             case 7:
+                                   if  (gametime >= 899) then
+                                         SetAnimation(HPG,0,6); // cool down
+                                         HPGState = 8;
+                                   endif;
+                                   endcase;
+                             case 8:
+                                   if  (gametime >= 899.33) then
+                                         SetAnimation(HPG,0,7); // return
+                                         HPGState = 9;
+                                   endif;
+                                   endcase;
+                       endswitch;
+            endif;
+
+            if (isAlive(otherhpg)) then
+                       Switch (HPG2State)
+                             case 1:
+                                   if  (gametime >= 881) then
+                                         SetAnimation(otherhpg,0,0); // move
+                                         HPG2State = 2;
+                                   endif;
+                                   endcase;
+                             case 2:
+                                   if  (gametime >= 884) then
+                                         SetAnimation(otherhpg,0,1); // white
+                                         HPG2State = 3;
+                                   endif;
+                                   endcase;
+                             case 3:
+                                   if  (gametime >= 890) then
+                                         SetAnimation(otherhpg,0,2); // blue
+                                         HPG2State = 4;
+                                   endif;
+                                   endcase;
+                             case 4:
+                                   if  (gametime >= 895) then
+                                         SetAnimation(otherhpg,0,3); // fade up
+                                         HPG2State = 5;
+                                   endif;
+                                   endcase;
+                             case 5:
+                                   if  (gametime >= 896) then
+                                         SetAnimation(otherhpg,0,4); // pulse
+                                         playSoundEffect(HPG_SOUND);
+                                         HPG2State = 6;
+                                   endif;
+                                   endcase;
+                             case 6:
+                                   if  (gametime >= 898.5) then
+                                         SetAnimation(otherhpg,0,5); //  fading
+                                         HPG2State = 7;
+                                   endif;
+                                   endcase;
+                             case 7:
+                                   if  (gametime >= 899) then
+                                         SetAnimation(otherhpg,0,6); // cool down
+                                         HPG2State = 8;
+                                   endif;
+                                   endcase;
+                             case 8:
+                                   if  (gametime >= 899.33) then
+                                         SetAnimation(otherhpg,0,7); // return
+                                         HPG2State = 9;
+                                   endif;
+                                   endcase;
+                       endswitch;
+            endif;
+
+            //---------------------------------------
+            // Objective Resolution
+            //---------------------------------------
+
+            if (checkObjectiveStatus(0) == INCOMPLETE) then
+
+                 x = getterrainobjectpartid(8,352);
+                 if (isDead(x)) then
+                       Obj_0_Action_1_Success = TRUE;
+                 else
+                       if (gettimeleft == 0.0) then
+                             SetObjectiveStatus(0,FAILED);
+                             playBetty(BETTY_CANNOT_COMP_OBJ);
+                             Objective_0_Decided = TRUE;
+                       endif;
+                 endif;
+
+                 x = getTerrainObjectPartID(14,31);
+                 if (isDead(x)) then
+                       Obj_0_Action_2_Success = TRUE;
+                 else
+                       if (gettimeleft == 0.0) then
+                             SetObjectiveStatus(0,FAILED);
+                             playBetty(BETTY_CANNOT_COMP_OBJ);
+                             Objective_0_Decided = TRUE;
+                       endif;
+                 endif;
+
+                 if ((Obj_0_Action_1_Success) AND (Obj_0_Action_2_Success)) then
+                       SetObjectiveStatus(0,SUCCESS);
+                       playBetty(BETTY_OBJECTIVE_COMPLETE);
+                       VictoryLevel = VictoryLevel + 1;
+                       Objective_0_Decided = TRUE;
+                       if (VictoryLevel < 1) then
+                             PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                       endif;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(0) == FAILED) then
+                              setTimer(EXIT_TIMER,2.0);
+                              ExitTimerSet = TRUE;
+                        endif;
+                  endif;
+            endif;
+
+            if ((NOT ExitTimerSet) AND (Objective_0_Decided)) then
+                  setTimer(EXIT_TIMER,2.0);
+                  ExitTimerSet = TRUE;
+            endif;
+
+            //---------------------------------------
+            // END SCENARIO
+            //---------------------------------------
+
+            if ((ExitTimerSet) AND (CheckTimer(EXIT_TIMER) == 0.0)) then
+                  if (VictoryLevel >= 1) then
+                        ScenarioResult = PLAYER_WIN_BIG;
+                        PlayDigitalMusic(VICTORY_MUSIC);
+                  else
+                        ScenarioResult = PLAYER_LOST_BIG;
+                        PlayDigitalMusic(DEFEAT_MUSIC);
+                  endif;
+            endif;
+
+            //---------------------------------------
+            // RETURN RESULT
+            //---------------------------------------
+
+            return (ScenarioResult);
+endmodule.
+//******************************************************************

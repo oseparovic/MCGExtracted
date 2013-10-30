@@ -1,0 +1,10 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cCOMMAND DESIGNATION:GAMBIT/7PRDN1%n
+%fc5%c----------%n
+%fc6%c*** HOUNDS AND HARES ***%n
+%fc21-Hunt Down and Destroy Enemy%n%n
+%fc5%c----------%n
+%fc4Your team starts with both bases. You must try to hunt down Team 2 in this canyon environment. You have superior firepower, but Team 1 need only survive to win, so it is important to recon in force. Jump capability is highly recommended. Some inactive sensor towers and turrets may be captured to aid in your hunt.%n%n
+%fc6<<<<END DISPATCH
+
+

@@ -1,0 +1,444 @@
+//*********************************************************************************
+
+module MPMissionBrain_3_4 : integer;
+
+     //--------------------------------------------------------
+     // Operation:  3                  Mission:  4 
+     // MissionID:  178                Name: Liberate Education Camp
+     // Designer: Tim Ryan
+     // Created: 3/17/98               By: Tim Ryan
+     //--------------------------------------------------------
+
+//------------------------------------------------------------------
+//
+//     Constant Definitions
+//
+//------------------------------------------------------------------
+     const
+
+          #include_ "misconst.abi"
+
+          // Message Codes
+          MSG_GENERAL_ALARM_ON = 255;
+          MSG_GENERAL_ALARM_OFF = 254;
+          MSG_PERIMETER_ALARM_ON = 253;
+          MSG_PERIMETER_ALARM_OFF = 252;
+          MSG_SET_EXIT_TIMER = 251;
+          MSG_PLAY_END_MUSIC = 250;
+
+          // Multiplayer Victory Codes
+          INNER_SPHERE_VICTORY = 1;
+          CLAN_VICTORY = 2;
+          JOINT_LOSS = 3;
+          JOINT_VICTORY = 4;
+          //------------------
+          // Objective IDs
+          //------------------
+           OBJ0_Capture_ReEducation_Cam  = 0;
+           OBJ1_Protect_Base_HQ          = 1;
+           OBJ2_Capture_Inner_Sphere_HQ  = 2;
+           OBJ3_Protect_Base_HQ          = 3;
+
+//------------------------------------------------------------------
+//
+//     Type Definitions
+//
+//------------------------------------------------------------------
+     type
+
+
+//------------------------------------------------------------------
+//
+//     Variable Declarations
+//
+//------------------------------------------------------------------
+      var
+
+            #include_ "MP3_4VAR.ABI"
+
+            static integer      ScenarioResult;
+            eternal boolean     ExitTimerSet;
+            static integer      VictoryLevel;
+            static integer      ClanVictoryLevel;
+            char[40]            dstring;
+            eternal real        gametime;
+            static real         nextsecond;
+            integer             x;
+            integer             y;
+            Position            aPoint;
+            eternal boolean     PlayerForceDead;
+            eternal boolean     ClanForceDead;
+            eternal boolean     AlliedForceDead;
+            eternal boolean     GeneralAlarm;
+            eternal boolean     Flag1;
+            eternal boolean     Flag2;
+            eternal boolean     Flag3;
+            eternal boolean     Flag4;
+            eternal boolean     Flag5;
+            eternal boolean     Flag6;
+            eternal boolean     Flag7;
+            eternal boolean     Flag8;
+            eternal boolean     Flag9;
+            eternal boolean     Flag10;
+            static boolean      PlayPASound;
+            static boolean      PlayGASound;
+            eternal integer     GeneralAlarmCounter;
+            boolean             PerimeterBreach;
+            static boolean      Objective_0_Decided;
+            static boolean      Obj_0_Action_1_Success;
+            static boolean      Obj_0_Action_2_Success;
+            static boolean      Objective_1_Decided;
+            static boolean      Obj_1_Action_1_Success;
+            static boolean      Obj_1_Action_2_Success;
+            static boolean      Objective_2_Decided;
+            static boolean      Obj_2_Action_1_Success;
+            static boolean      Obj_2_Action_2_Success;
+            static boolean      Objective_3_Decided;
+            static boolean      Obj_3_Action_1_Success;
+            static boolean      Obj_3_Action_2_Success;
+
+//------------------------------------------------------------------
+//
+//     Init Function    (automatically run first time through)
+//
+//------------------------------------------------------------------
+function init;
+
+       code
+
+            ScenarioResult = PLAYING;
+            PlayerForceDead = FALSE;
+            ClanForceDead = FALSE;
+            AlliedForceDead = FALSE;
+            ExitTimerSet = FALSE;
+            VictoryLevel = 0; // New Scheme
+            ClanVictoryLevel = 0; // New Scheme
+            NextSecond = 1.0;
+            GeneralAlarmCounter = -1;
+            GeneralAlarm = FALSE;
+            Flag1 = FALSE;
+            Flag2 = FALSE;
+            Flag3 = FALSE;
+            Flag4 = FALSE;
+            Flag5 = FALSE;
+            Flag6 = FALSE;
+            Flag7 = FALSE;
+            Flag8 = FALSE;
+            Flag9 = FALSE;
+            Flag10 = FALSE;
+            PlayPASound = FALSE;
+            PlayGASound = FALSE;
+            Objective_0_Decided = FALSE;
+            Obj_0_Action_1_Success = FALSE;
+            Obj_0_Action_2_Success = FALSE;
+            Objective_1_Decided = FALSE;
+            Obj_1_Action_1_Success = FALSE;
+            Obj_1_Action_2_Success = FALSE;
+            Objective_2_Decided = FALSE;
+            Obj_2_Action_1_Success = FALSE;
+            Obj_2_Action_2_Success = FALSE;
+            Objective_3_Decided = FALSE;
+            Obj_3_Action_1_Success = FALSE;
+            Obj_3_Action_2_Success = FALSE;
+
+            #include_ "MP3_4INIT.ABI"
+
+endfunction;
+
+//****************************
+// Multiplayer Event Handling
+//****************************
+#include_ "MP3_4MP.ABI"
+
+//------------------------------------------------------------------
+//
+//     Main Code
+//
+//------------------------------------------------------------------
+      code
+
+            //------------------------------------------------
+            // Debug Window Game Clock Second Counter
+            // Note:  This is used by some included functions.
+            //------------------------------------------------
+            gametime = gettime;
+            If (gametime >= nextsecond) Then
+                  nextsecond = gametime + 1;
+                  If (GeneralAlarm) then
+                       GeneralAlarmCounter = GeneralAlarmCounter + 1;
+                  endif;
+                  // dstring = "Gametime: ";
+                  // concat(dstring,gametime);
+                  // Print (dstring);
+            endif;
+            if ((PlayGASound) and (NextSecond == gametime + 1)) then
+                  playSoundEffect(GENERAL_ALARM_SOUND);
+            endif;
+            if (PlayPASound) then
+                  playSoundEffect(PERIMETER_ALARM_SOUND);
+            endif;
+            PerimeterBreach = FALSE;
+
+         //*********************
+         // SERVER CODE
+         //*********************
+         if (isServer) then
+
+            //---------------------------------------
+            // Create Non-Existing Vehicles
+            //---------------------------------------
+            #include_ "MP3_4CRE.ABI"
+
+            //---------------------------------------
+            // Activate inactive vehicles
+            //---------------------------------------
+            #include_ "MP3_4ACT.ABI"
+
+            //---------------------------------------
+            // Structure
+            //---------------------------------------
+            #include_ "MP3_4STR.ABI"
+
+            //---------------------------------------
+            // Lookout Points
+            //---------------------------------------
+            #include_ "MP3_4LOP.ABI"
+
+            //---------------------------------------
+            // Force Dead Checks
+            //---------------------------------------
+            if (isDeadorFled(PLAYER_FORCE)) then
+                  PlayerForceDead = TRUE;
+            endif;
+            if (isDeadorFled(CLAN_FORCE)) then
+                  ClanForceDead = TRUE;
+            endif;
+            if (isDeadorFled(ALLIED_FORCE)) then
+                  AlliedForceDead = TRUE;
+            endif;
+
+            //---------------------------------------
+            // FAIL OBJECTIVES IF TEAM DIES
+            //---------------------------------------
+
+            if (PlayerForceDead) then
+                  if (checkObjectiveStatus(0) == INCOMPLETE) then
+                        sendMessage(1,0);
+                        handleMessage;
+                  endif;
+                  if (checkObjectiveStatus(1) == INCOMPLETE) then
+                        sendMessage(2,0);
+                        handleMessage;
+                  endif;
+            endif;
+
+            if (ClanForceDead) then
+                  if (checkObjectiveStatus(2) == INCOMPLETE) then
+                        sendMessage(3,0);
+                        handleMessage;
+                  endif;
+                  if (checkObjectiveStatus(3) == INCOMPLETE) then
+                        sendMessage(4,0);
+                        handleMessage;
+                  endif;
+            endif;
+
+            //---------------------------------------
+            // Objective Resolution
+            //---------------------------------------
+
+            if (checkObjectiveStatus(0) == INCOMPLETE) then
+
+                 x = getterrainobjectpartid(9,20);
+                 if (IsCaptured(x) == 1) then
+                       sendMessage(5,0);
+                       handleMessage;
+                 else
+                       if ((gettimeleft == 0.0) OR (getObjectDamage(x) > 99)) then
+                             sendMessage(6,0);
+                             handleMessage;
+                       endif;
+                 endif;
+
+                 x = getTerrainObjectPartID(26,368);
+                 if (getObjectDamage(x) > 99) then
+                       sendMessage(7,0);
+                       handleMessage;
+                 else
+                       if ((gettimeleft == 0.0) OR (Obj_0_Action_1_Success)) then
+                             sendMessage(8,0);
+                             handleMessage;
+                       endif;
+                 endif;
+
+                 if ((Obj_0_Action_1_Success) AND (Obj_0_Action_2_Success)) then
+                       sendMessage(9,0);
+                       handleMessage;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(0) == FAILED) then
+                              sendMessage(MSG_SET_EXIT_TIMER,0);
+                              handleMessage;
+                        endif;
+                  endif;
+            endif;
+
+            if (checkObjectiveStatus(1) == INCOMPLETE) then
+
+                 x = getTerrainObjectPartID(26,368);
+                 if (getObjectDamage(x) > 99) then
+                       sendMessage(10,0);
+                       handleMessage;
+                 else
+                       if ((gettimeleft == 0.0) OR (Objective_0_Decided)) then
+                             sendMessage(11,0);
+                             handleMessage;
+                       endif;
+                 endif;
+
+                 x = getTerrainObjectPartID(9,20);
+                 if (getObjectDamage(x) > 99) then
+                       sendMessage(12,0);
+                       handleMessage;
+                 else
+                       if ((gettimeleft == 0.0) OR (Obj_1_Action_1_Success)) then
+                             sendMessage(13,0);
+                             handleMessage;
+                       endif;
+                 endif;
+
+                 if ((Obj_1_Action_1_Success) AND (Obj_1_Action_2_Success)) then
+                       sendMessage(14,0);
+                       handleMessage;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(1) == FAILED) then
+                              sendMessage(MSG_SET_EXIT_TIMER,0);
+                              handleMessage;
+                        endif;
+                  endif;
+            endif;
+
+            if (checkObjectiveStatus(2) == INCOMPLETE) then
+
+                 x = getterrainobjectpartid(26,368);
+                 if (IsCaptured(x) == 1) then
+                       sendMessage(15,0);
+                       handleMessage;
+                 else
+                       if ((gettimeleft == 0.0) OR (getObjectDamage(x) > 99)) then
+                             sendMessage(16,0);
+                             handleMessage;
+                       endif;
+                 endif;
+
+                 x = getTerrainObjectPartID(9,20);
+                 if (getObjectDamage(x) > 99) then
+                       sendMessage(17,0);
+                       handleMessage;
+                 else
+                       if ((gettimeleft == 0.0) OR (Obj_2_Action_1_Success)) then
+                             sendMessage(18,0);
+                             handleMessage;
+                       endif;
+                 endif;
+
+                 if ((Obj_2_Action_1_Success) AND (Obj_2_Action_2_Success)) then
+                       sendMessage(19,0);
+                       handleMessage;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(2) == FAILED) then
+                              sendMessage(MSG_SET_EXIT_TIMER,0);
+                              handleMessage;
+                        endif;
+                  endif;
+            endif;
+
+            if (checkObjectiveStatus(3) == INCOMPLETE) then
+
+                 x = getTerrainObjectPartID(9,20);
+                 if (getObjectDamage(x) > 99) then
+                       sendMessage(20,0);
+                       handleMessage;
+                 else
+                       if ((gettimeleft == 0.0) OR (Objective_2_Decided)) then
+                             sendMessage(21,0);
+                             handleMessage;
+                       endif;
+                 endif;
+
+                 x = getTerrainObjectPartID(26,368);
+                 if (getObjectDamage(x) > 99) then
+                       sendMessage(22,0);
+                       handleMessage;
+                 else
+                       if ((gettimeleft == 0.0) OR (Obj_3_Action_1_Success)) then
+                             sendMessage(23,0);
+                             handleMessage;
+                       endif;
+                 endif;
+
+                 if ((Obj_3_Action_1_Success) AND (Obj_3_Action_2_Success)) then
+                       sendMessage(24,0);
+                       handleMessage;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(3) == FAILED) then
+                              sendMessage(MSG_SET_EXIT_TIMER,0);
+                              handleMessage;
+                        endif;
+                  endif;
+            endif;
+
+            if ((NOT ExitTimerSet) AND (Objective_0_Decided) AND (Objective_1_Decided) AND (Objective_2_Decided) AND (Objective_3_Decided)) then
+                  sendMessage(MSG_SET_EXIT_TIMER,0);
+                  handleMessage;
+            endif;
+
+            //---------------------------------------
+            // END SCENARIO
+            //---------------------------------------
+
+            if ((ExitTimerSet) AND (CheckTimer(EXIT_TIMER) == 0.0)) then
+                  if ((VictoryLevel >= 2) AND (ClanVictoryLevel < 2)) then
+                       ScenarioResult = INNER_SPHERE_VICTORY;
+                  else
+                       if ((ClanVictoryLevel >= 2) AND (VictoryLevel < 2)) then
+                            ScenarioResult = CLAN_VICTORY;
+                       else
+                            if ((ClanVictoryLevel >= 2) AND (VictoryLevel >= 2)) then
+                                 ScenarioResult = JOINT_VICTORY;
+                            else
+                                 ScenarioResult = JOINT_LOSS;
+                            endif;
+                       endif;
+                  endif;
+
+                  sendMessage(MSG_PLAY_END_MUSIC,ScenarioResult);
+                  handleMessage;
+            endif;
+
+         endif;
+         //*********************
+         //  End of Server Code
+         //*********************
+            //---------------------------------------
+            // RETURN RESULT
+            //---------------------------------------
+
+            return (ScenarioResult);
+endmodule.
+//******************************************************************

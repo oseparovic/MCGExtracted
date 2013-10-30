@@ -1,0 +1,288 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      Mission Name: HvrDmmt  Creation Date: 1/4/99   
+//
+// -------------------------------------------------------------------------
+
+
+[Output]
+
+[GameScale]                     //For 90 Pixel mechs
+f WorldUnitsPerMeter = 5.01
+f MetersPerWorldUnit = 0.2
+ul Duration = 60
+f CycleLength = 0.125
+
+[Artillery]
+l NumLargeStrikes =  0 
+l NumSmallStrikes =  0 
+l NumSensorStrikes =  0 
+l NumCameraStrikes =  0 
+
+[ISArtillery]
+l NumLargeStrikes =  0 
+l NumSmallStrikes =  0 
+l NumSensorStrikes =  0 
+l NumCameraStrikes =  0 
+
+[ClanArtillery]
+l NumLargeStrikes =  0 
+l NumSmallStrikes =  0 
+l NumSensorStrikes =  0 
+l NumCameraStrikes =  0 
+
+[ElementSystem]
+ul ElementHeapSize = 358399
+ul MaxElements = 2500
+ul MaxGroups = 1000
+
+[CraterSystem]
+l NumCraters = 100
+ul CraterShapeSize = 20479
+st CraterFile = "feet"
+
+[ContactManager]
+l MaxContacts = 1600
+
+[PotentialContactManager]
+l MaxPotentialContacts = 500
+
+[Smoke Manager]
+l NumSmokeTypes = 2
+l MaxSmokesPerType = 100
+ul SmokeSphereHeapSize = 50000
+
+[Smoke0]
+l SmokeType = 11
+
+[Smoke1]
+l SmokeType = 12
+
+[CameraSystem]
+ul CameraHeapSize = 8191
+st CameraFileName = "cameras"
+
+[ObjectSystem]
+ul ObjectHeapSize = 1535999
+ul ObjectTypeHeapSize = 716799
+ul NumObjects = 5000
+st ObjectFileName = "object2"
+
+[SpriteSystem]
+ul SpriteHeapSize = 524287
+st SpriteFileName = "sprites"
+
+ul SpriteManagerHeapSize = 2097151
+ul SpriteDataHeapSize = 65535
+st ShapeFileName = "shapes"
+
+[SpriteManager]
+ul LegHeapSize = 1572863
+ul TorsoHeapSize = 2097151
+ul RightArmHeapSize = 786431
+ul LeftArmHeapSize = 786431
+ul TotalMechs = 19
+ul Use90Pixel = 1
+
+[TerrainSystem]
+st TerrainFileName = "HvrDmmt"
+st TacMapGifName = "HvrDmmt"
+
+[PaletteSystem]
+st PaletteSystem = "palettex"
+
+[Music]
+uc scenarioTuneNum = 0
+
+[CollisionSystem]
+ul XGridSize =24
+ul YGridSize =24
+ul GridRadius = 200
+ul MaxObjects = 300
+ul MaxCollisions = 100
+ul MaxPending = 40
+ul CollisionHeapSize = 16383
+f WarningDist = 250.0                           //This is in world Units!!!
+f AlertTime = 2.5                                       //This is in seconds
+ul NumAlerts = 20
+
+[SensorContactShape]
+st shapeName = "blip"
+
+[ABLibraries]
+st Library0 = "orders"
+st Library1 = "miscfunc"
+
+[Script]
+st ScenarioScript = "HvrDmmt"
+
+[StatusWindow]
+ul PosX = 200
+ul PosY = 200
+ul Width = 300
+ul Height = 100
+
+[Teams]
+b AlliedTeam = FALSE
+
+[DropZone0]
+l NumSlots = 4
+
+f PositionX = -43
+f PositionY = -4906
+
+f OffsetX0 = 0
+f OffsetY0 = 0
+f Rotation0 = 0
+
+f OffsetX1 = 0
+f OffsetY1 = -100
+f Rotation1 = 0
+
+f OffsetX2 = 100
+f OffsetY2 = 0
+f Rotation2 = 0
+
+f OffsetX3 = 100
+f OffsetY3 = -100
+f Rotation3 = 0
+
+[DropZone1]
+l NumSlots = 4
+
+f PositionX = 255
+f PositionY = -5461
+
+f OffsetX0 = 0
+f OffsetY0 = 0
+f Rotation0 = 0
+
+f OffsetX1 = 0
+f OffsetY1 = -100
+f Rotation1 = 0
+
+f OffsetX2 = 100
+f OffsetY2 = 0
+f Rotation2 = 0
+
+f OffsetX3 = 100
+f OffsetY3 = -100
+f Rotation3 = 0
+
+[DropZone2]
+l NumSlots = 4
+
+f PositionX = 511
+f PositionY = -4778
+
+f OffsetX0 = 0
+f OffsetY0 = 0
+f Rotation0 = 0
+
+f OffsetX1 = 0
+f OffsetY1 = -100
+f Rotation1 = 0
+
+f OffsetX2 = 100
+f OffsetY2 = 0
+f Rotation2 = 0
+
+f OffsetX3 = 100
+f OffsetY3 = -100
+f Rotation3 = 0
+
+[DropZone3]
+l NumSlots = 4
+
+f PositionX = 5034
+f PositionY = -639
+
+f OffsetX0 = 0
+f OffsetY0 = 0
+f Rotation0 = 0
+
+f OffsetX1 = 0
+f OffsetY1 = -100
+f Rotation1 = 0
+
+f OffsetX2 = 100
+f OffsetY2 = 0
+f Rotation2 = 0
+
+f OffsetX3 = 100
+f OffsetY3 = -100
+f Rotation3 = 0
+
+[DropZone4]
+l NumSlots = 4
+
+f PositionX = 5077
+f PositionY = -213
+
+f OffsetX0 = 0
+f OffsetY0 = 0
+f Rotation0 = 0
+
+f OffsetX1 = 0
+f OffsetY1 = -100
+f Rotation1 = 0
+
+f OffsetX2 = 100
+f OffsetY2 = 0
+f Rotation2 = 0
+
+f OffsetX3 = 100
+f OffsetY3 = -100
+f Rotation3 = 0
+
+[DropZone5]
+l NumSlots = 4
+
+f PositionX = 5802
+f PositionY = -426
+
+f OffsetX0 = 0
+f OffsetY0 = 0
+f Rotation0 = 0
+
+f OffsetX1 = 0
+f OffsetY1 = -100
+f Rotation1 = 0
+
+f OffsetX2 = 100
+f OffsetY2 = 0
+f Rotation2 = 0
+
+f OffsetX3 = 100
+f OffsetY3 = -100
+f Rotation3 = 0
+
+[Objectives]
+ul NumObjectives = 2                            //There can be a maximum of eight objectives
+ul NumInnerSphereObjectives = 1
+ul NumClanObjectives = 1
+l TimeLeft =900
+
+[Objective0]
+st Name = "Capture Buildings"
+ul Type = 0                                                      //Types are 0=primary, 1=secondary, 2=other, -1=invisible
+f TimeLeft = -1                                        //Time to accomplish objective.  -1.0 means forever
+ul Status = 0                                            //Status are 0=incomplete, 1=success, 2=failed
+l Points = 0 
+
+[Objective1]
+st Name = "Capture Buildings"
+ul Type = 0                                                      //Types are 0=primary, 1=secondary, 2=other, -1=invisible
+f TimeLeft = -1                                        //Time to accomplish objective.  -1.0 means forever
+ul Status = 0                                            //Status are 0=incomplete, 1=success, 2=failed
+l Points = 0 
+
+[Campaign]
+l NumDropZones = 6
+st ISBriefingFile = "ISHvrDmmt.txt"
+st ClanBriefingFile = "CHvrDmmt.txt"
+st MapFile = "HvrDmmt"
+l MaxTonnage = 990
+FITend

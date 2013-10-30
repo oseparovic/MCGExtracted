@@ -1,0 +1,9 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cCOMMAND DESIGNATION:GAMBIT/7PRDN5%n
+%fc5%c----------%n
+%fc6%c*** BIG BASE TANGO ***%n
+%fc21-Capture Base HQ Building%n%n
+%fc5%c----------%n
+%fc4The enemy regional command headquarters must be captured in order to consolidate our control of this area.%n%n
+Three lances have been dispatched to ensure you do not fail.%n%n
+%fc6<<<<END DISPATCH

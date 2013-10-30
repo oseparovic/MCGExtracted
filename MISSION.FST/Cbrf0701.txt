@@ -1,0 +1,10 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cCOMMAND DESIGNATION:GAMBIT/07PRDN01%n
+%fc5%c----------%n
+%fc6%c*** CAPTURE ENEMY BASE ***%n
+%fc21-Capture Enemy Headquarters%n
+%fc22-Defend Our Headquarters%n%n
+%fc5%c----------%n
+%fc4Your team must try to capture the enemy base while protecting your own base. The headquarters buildings are critical to each base. Some inactive sensor towers and turrets may be captured to aid in your assault and defense. Be wary of the multiple approaches to your base and try to use them to outmaneuver the enemy. Jump capability is highly recommended.%n%n
+%fc6<<<<END DISPATCH
+

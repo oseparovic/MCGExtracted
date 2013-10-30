@@ -1,0 +1,16 @@
+FITini
+
+[Multiplayer]
+ul Protocol = 2
+st SessionName = "6 PLAYER GAME"		// used to to decide which session to create/join (w/o interface!)
+b Server = False				// True = You're server, False = You're not
+l NumPlayers = 6			// Number of players, including server
+st PlayerName = "Client 2"		// My name in this session
+l HomeTeam = 0				// 0 = IS, 1 = CLAN
+l CheckInId = 2
+f MoverUpdateFrequency = 0.50
+f TurretUpdateFrequency = 1.0
+f WorldStateUpdateFrequency = 0.50
+f WeaponFireUpdateFrequency = 0.25
+
+FITend

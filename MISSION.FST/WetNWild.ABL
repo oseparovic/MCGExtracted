@@ -1,0 +1,298 @@
+//*********************************************************************************
+
+module MissionBrain_WetNWild : integer;
+
+     //--------------------------------------------------------
+     // Mission Name: WetNWild
+     // Created: 2/4/99 
+     //--------------------------------------------------------
+
+//------------------------------------------------------------------
+//
+//     Constant Definitions
+//
+//------------------------------------------------------------------
+     const
+
+          #include_ "misconst.abi"
+
+          // Message Codes
+          MSG_GENERAL_ALARM_ON = 255;
+          MSG_GENERAL_ALARM_OFF = 254;
+          MSG_PERIMETER_ALARM_ON = 253;
+          MSG_PERIMETER_ALARM_OFF = 252;
+          MSG_SET_EXIT_TIMER = 251;
+          MSG_PLAY_END_MUSIC = 250;
+
+          // Multiplayer Victory Codes
+          INNER_SPHERE_VICTORY = 1;
+          CLAN_VICTORY = 2;
+          JOINT_LOSS = 3;
+          JOINT_VICTORY = 4;
+
+//------------------------------------------------------------------
+//
+//     Type Definitions
+//
+//------------------------------------------------------------------
+     type
+
+
+//------------------------------------------------------------------
+//
+//     Variable Declarations
+//
+//------------------------------------------------------------------
+      var
+
+            #include_ "WetNWild_VAR.ABI"
+
+            static integer      ScenarioResult;
+            eternal boolean     ExitTimerSet;
+            static integer      VictoryLevel;
+            static integer      ClanVictoryLevel;
+            char[40]            dstring;
+            eternal real        gametime;
+            static real         nextsecond;
+            integer             x;
+            integer             y;
+            Position            aPoint;
+            eternal boolean     PlayerForceDead;
+            eternal boolean     ClanForceDead;
+            eternal boolean     AlliedForceDead;
+            eternal boolean     GeneralAlarm;
+            eternal boolean     Flag1;
+            eternal boolean     Flag2;
+            eternal boolean     Flag3;
+            eternal boolean     Flag4;
+            eternal boolean     Flag5;
+            eternal boolean     Flag6;
+            eternal boolean     Flag7;
+            eternal boolean     Flag8;
+            eternal boolean     Flag9;
+            eternal boolean     Flag10;
+            static boolean      PlayPASound;
+            static boolean      PlayGASound;
+            eternal integer     GeneralAlarmCounter;
+            boolean             PerimeterBreach;
+
+//------------------------------------------------------------------
+//
+//     Init Function    (automatically run first time through)
+//
+//------------------------------------------------------------------
+function init;
+
+       code
+
+            ScenarioResult = PLAYING;
+            PlayerForceDead = FALSE;
+            ClanForceDead = FALSE;
+            AlliedForceDead = FALSE;
+            ExitTimerSet = FALSE;
+            VictoryLevel = 0; // New Scheme
+            ClanVictoryLevel = 0; // New Scheme
+            NextSecond = 1.0;
+            GeneralAlarmCounter = -1;
+            GeneralAlarm = FALSE;
+            Flag1 = FALSE;
+            Flag2 = FALSE;
+            Flag3 = FALSE;
+            Flag4 = FALSE;
+            Flag5 = FALSE;
+            Flag6 = FALSE;
+            Flag7 = FALSE;
+            Flag8 = FALSE;
+            Flag9 = FALSE;
+            Flag10 = FALSE;
+            PlayPASound = FALSE;
+            PlayGASound = FALSE;
+
+            #include_ "WetNWild_INIT.ABI"
+
+endfunction;
+
+//****************************
+// Multiplayer Event Handling
+//****************************
+#include_ "WetNWild_MP.ABI"
+
+//------------------------------------------------------------------
+//
+//     Main Code
+//
+//------------------------------------------------------------------
+      code
+
+            //------------------------------------------------
+            // Debug Window Game Clock Second Counter
+            // Note:  This is used by some included functions.
+            //------------------------------------------------
+            gametime = gettime;
+            If (gametime >= nextsecond) Then
+                  nextsecond = gametime + 1;
+                  If (GeneralAlarm) then
+                       GeneralAlarmCounter = GeneralAlarmCounter + 1;
+                  endif;
+                  // dstring = "Gametime: ";
+                  // concat(dstring,gametime);
+                  // Print (dstring);
+            endif;
+            if ((PlayGASound) and (NextSecond == gametime + 1)) then
+                  playSoundEffect(GENERAL_ALARM_SOUND);
+            endif;
+            if (PlayPASound) then
+                  playSoundEffect(PERIMETER_ALARM_SOUND);
+            endif;
+            PerimeterBreach = FALSE;
+
+         //*********************
+         // SERVER CODE
+         //*********************
+         if (isServer) then
+
+            //---------------------------------------
+            // Structure
+            //---------------------------------------
+            #include_ "WetNWild_STR.ABI"
+
+            //---------------------------------------
+            // Lookout Points
+            //---------------------------------------
+            #include_ "WetNWild_LOP.ABI"
+
+            //---------------------------------------
+            // Force Dead Checks
+            //---------------------------------------
+            if (isDeadorFled(PLAYER_FORCE)) then
+                  PlayerForceDead = TRUE;
+            endif;
+            if (isDeadorFled(CLAN_FORCE)) then
+                  ClanForceDead = TRUE;
+            endif;
+            if (isDeadorFled(ALLIED_FORCE)) then
+                  AlliedForceDead = TRUE;
+            endif;
+
+            //---------------------------------------
+            // FAIL OBJECTIVES IF TEAM DIES
+            //---------------------------------------
+
+            if (PlayerForceDead) then
+                  if (checkObjectiveStatus(0) == INCOMPLETE) then
+                        sendMessage(1,0);
+                        handleMessage;
+                  endif;
+            endif;
+
+            if (ClanForceDead) then
+                  if (checkObjectiveStatus(1) == INCOMPLETE) then
+                        sendMessage(2,0);
+                        handleMessage;
+                  endif;
+            endif;
+
+            //---------------------------------------
+            // Objective Resolution
+            //---------------------------------------
+
+            if (checkObjectiveStatus(0) == INCOMPLETE) then
+
+                 if (isDead(CLAN_FORCE)) then
+                       sendMessage(3,0);
+                       handleMessage;
+                 else
+                       if (gettimeleft == 0.0) then  // supposedly will not happen unless time limit is set
+                             sendMessage(4,0);
+                             handleMessage;
+                       endif;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(0) == FAILED) then
+                              if ((ClanVictoryLevel >= 1) OR (ClanForceDead)) then
+                                    sendMessage(MSG_SET_EXIT_TIMER,0);
+                                    handleMessage;
+                              endif;
+                        endif;
+                  endif;
+            endif;
+
+            if (checkObjectiveStatus(1) == INCOMPLETE) then
+
+                 if (isDead(PLAYER_FORCE)) then
+                       sendMessage(5,0);
+                       handleMessage;
+                 else
+                       if (gettimeleft == 0.0) then  // supposedly will not happen unless time limit is set
+                             sendMessage(6,0);
+                             handleMessage;
+                       endif;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(1) == FAILED) then
+                              if ((VictoryLevel >= 1) OR (PlayerForceDead)) then
+                                    sendMessage(MSG_SET_EXIT_TIMER,0);
+                                    handleMessage;
+                              endif;
+                        endif;
+                  endif;
+            endif;
+
+            if ((NOT ExitTimerSet) AND (Objective_0_Decided)) then
+                  if (checkObjectiveStatus(1) == INCOMPLETE) then
+                        sendMessage(7,0);
+                        handleMessage;
+                  endif;
+                  sendMessage(MSG_SET_EXIT_TIMER,0);
+                  handleMessage;
+            endif;
+
+            if ((NOT ExitTimerSet) AND (Objective_1_Decided)) then
+                  if (checkObjectiveStatus(0) == INCOMPLETE) then
+                        sendMessage(8,0);
+                        handleMessage;
+                  endif;
+                  sendMessage(MSG_SET_EXIT_TIMER,0);
+                  handleMessage;
+            endif;
+
+            //---------------------------------------
+            // END SCENARIO
+            //---------------------------------------
+
+            if ((ExitTimerSet) AND (CheckTimer(EXIT_TIMER) == 0.0)) then
+                  if ((VictoryLevel >= 1) AND (ClanVictoryLevel < 1)) then
+                       ScenarioResult = INNER_SPHERE_VICTORY;
+                  else
+                       if ((ClanVictoryLevel >= 1) AND (VictoryLevel < 1)) then
+                            ScenarioResult = CLAN_VICTORY;
+                       else
+                            if ((ClanVictoryLevel >= 1) AND (VictoryLevel >= 1)) then
+                                 ScenarioResult = JOINT_VICTORY;
+                            else
+                                 ScenarioResult = JOINT_LOSS;
+                            endif;
+                       endif;
+                  endif;
+
+                  sendMessage(MSG_PLAY_END_MUSIC,ScenarioResult);
+                  handleMessage;
+            endif;
+
+         endif;
+         //*********************
+         //  End of Server Code
+         //*********************
+            //---------------------------------------
+            // RETURN RESULT
+            //---------------------------------------
+
+            return (ScenarioResult);
+endmodule.
+//******************************************************************

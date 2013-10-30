@@ -1,0 +1,37 @@
+//*********************************************************************************
+// Variable Include file for mission 7_31
+
+     eternal integer                   TC1;
+     static integer                    TC1Alignment;
+     eternal integer                   TC2;
+     static integer                    TC2Alignment;
+     eternal integer                   TC3;
+     static integer                    TC3Alignment;
+     eternal integer                   TC4;
+     static integer                    TC4Alignment;
+     eternal integer                   TC5;
+     static integer                    TC5Alignment;
+     eternal integer                   TC6;
+     static integer                    TC6Alignment;
+     eternal integer                   TC7;
+     static integer                    TC7Alignment;
+     eternal integer                   GC1;
+     static integer                    GC1Alignment;
+     eternal integer                   GC2;
+     static integer                    GC2Alignment;
+     eternal integer                   SC1;
+     static integer                    SC1Alignment;
+     eternal integer                   SC2;
+     static integer                    SC2Alignment;
+     eternal integer                   Arty1;
+     static integer                    Arty1Alignment;
+     eternal integer                   Arty2;
+     static integer                    Arty2Alignment;
+     eternal integer                   Arty3;
+     static integer                    Arty3Alignment;
+     eternal integer                   Arty4;
+     static integer                    Arty4Alignment;
+     eternal integer                   RB1;
+     static integer                    RB1Alignment;
+     eternal integer                   RB2;
+     static integer                    RB2Alignment;

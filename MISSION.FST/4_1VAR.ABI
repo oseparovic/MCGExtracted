@@ -1,0 +1,31 @@
+//*********************************************************************************
+// Variable Include file for mission 4_1
+
+     static integer                    apc;
+     static boolean                    apcup;
+     static integer                    atlas;
+     static boolean                    atlasfound;
+     static boolean                    atlasup;
+     integer                           curobj;
+     static boolean                    firing1;
+     static boolean                    firing2;
+     static boolean                    gunset;
+     static integer                    numforce;
+     static integer                    orbitalgunsound;
+     static boolean                    shot1;
+     static boolean                    shot2;
+     static integer[12]                teamlist;
+     static boolean                    traingone;
+     static boolean                    trainstopped;
+     eternal integer                   end1;
+     eternal integer                   end2;
+     eternal integer                   rb;
+     static integer                    rbAlignment;
+     eternal integer                   tct;
+     static integer                    tctAlignment;
+     eternal integer                   ClanWH1;
+     static integer                    ClanWH1Alignment;
+     eternal integer                   ClanWH2;
+     static integer                    ClanWH2Alignment;
+     eternal integer                   ISWH1;
+     static integer                    ISWH1Alignment;

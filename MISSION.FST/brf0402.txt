@@ -1,0 +1,20 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:LINCHPIN/04PRDN02%n
+%fc5%c----------%n
+%fc6%c***INTERDICT CLAN SUPPLIES***%n
+%fc21-Destroy 7 of 12 Ordnance Trucks%n
+2-Destroy 12 of 12 Ordnance Trucks%n
+%t9for additional Resource Points%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 1 Small  0 Large%n
+%t12SENSOR PROBE: 2%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4Intelligence reports that a large number of ordnance trucks have arrived at the Kylemartin depot carrying supplies and munitions for the remaining Clan Orbital Guns. We cannot allow those guns to be supplied.%n%n
+Since you have already stopped one of their supply trains, the Jaguars will be more cautious in protecting these trucks. Once the Clan forces know you are in the area, the trucks will probably scatter to the west, south, and east to escape.%n%n
+%fm%fc6%c**TACTICAL NOTICE**%n
+%fs%fc2*Capturing the headquarters%n
+%t9at the depot will reveal the%n
+%t9location of the supply trucks at%n
+%t9that moment.%n%n
+%fc6>>>END DISPATCH%n%n

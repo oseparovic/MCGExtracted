@@ -1,0 +1,14 @@
+//*********************************************************************************
+// Variable Include file for mission 1_1
+
+     eternal integer                   CampHQ1;
+     eternal integer                   Garrison1;
+     eternal integer                   Garrison2;
+     eternal integer                   CampHQ2;
+     eternal integer                   Garrison3;
+     eternal integer                   Tower;
+     eternal integer                   LRMStack;
+     static integer                    LRMStackAlignment;
+     eternal integer                   Rbunker;
+     static integer                    RbunkerAlignment;
+     static boolean                    LOP0;

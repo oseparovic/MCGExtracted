@@ -1,0 +1,42 @@
+//*********************************************************************************
+// Activation Include file for mission 5_5
+
+if ((gametime > 0) AND (gametime < 2)) then
+     if (gametime > 1) then
+           setobjectActive(VehicleID(PLAYER_LANCE2,0,0),TRUE);
+     endif;
+     if (gametime > 1) then
+           setobjectActive(VehicleID(PLAYER_LANCE2,1,0),TRUE);
+     endif;
+     if (gametime > 1) then
+           setobjectActive(VehicleID(PLAYER_LANCE2,2,0),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[0]) then
+     if (distancetoobject(PLAYER_FORCE,VehicleID(PLAYER_LANCE2,0,0)) < 10000) then
+           VehicleActivated[0] = TRUE;
+           setobjectActive(VehicleID(PLAYER_LANCE2,0,0),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[1]) then
+     if (distancetoobject(PLAYER_FORCE,VehicleID(PLAYER_LANCE2,1,0)) < 10000) then
+           VehicleActivated[1] = TRUE;
+           setobjectActive(VehicleID(PLAYER_LANCE2,1,0),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[2]) then
+     if (distancetoobject(PLAYER_FORCE,VehicleID(PLAYER_LANCE2,2,0)) < 10000) then
+           VehicleActivated[2] = TRUE;
+           setobjectActive(VehicleID(PLAYER_LANCE2,2,0),TRUE);
+     endif;
+endif;
+
+if (NOT VehicleActivated[3]) then
+     if (distancetoobject(PLAYER_FORCE,VehicleID(PLAYER_LANCE2,3,0)) < 10000) then
+           VehicleActivated[3] = TRUE;
+           setobjectActive(VehicleID(PLAYER_LANCE2,3,0),TRUE);
+     endif;
+endif;

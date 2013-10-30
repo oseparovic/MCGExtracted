@@ -1,0 +1,99 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      Ground Vehicle Profile:  33400   'Regulator'  Type:  903 
+//
+//      Creation Date: 8/27/98      Creator: david abzug
+//
+//
+// -------------------------------------------------------------------------
+
+[Header]
+st FileType = "GroundVehicleProfile"
+
+
+[General]
+ul ID =                                                     33400 
+st Crew =                                                  "PCREWB"
+ul Chassis =                                                903 
+st Name =                                                  "Regulator"
+ul VehicleTypeID =                                          903 
+l NameIndex =                                               30 
+l DescIndex =                                               551 
+f CurTonnage =                                              45 
+st icon =                                                  "na.gif"
+c Status =                                                  0 
+l ResourcePoints =                                          1100 
+l BattleRating =                                            1000 
+l Morale =                                                  0 
+l MoraleModifier =                                          0 
+
+[Engine]
+f Tonnage =                                                 9 
+ul Rating =                                                 170 
+uc MaxMoveSpeed =                                           21 
+
+[Armor]
+uc Type =                                                   0 
+f Tonnage =                                                 5 
+
+[Front]
+uc CurInternalStructure =                                   1 
+uc MaxArmorPoints =                                         15 
+uc CurArmorPoints =                                         15 
+
+[Left]
+uc CurInternalStructure =                                   1 
+uc MaxArmorPoints =                                         15 
+uc CurArmorPoints =                                         15 
+
+[Right]
+uc CurInternalStructure =                                   1 
+uc MaxArmorPoints =                                         15 
+uc CurArmorPoints =                                         15 
+
+[Rear]
+uc CurInternalStructure =                                   1 
+uc MaxArmorPoints =                                         12 
+uc CurArmorPoints =                                         12 
+
+[Turret]
+uc CurInternalStructure =                                   1 
+uc MaxArmorPoints =                                         15 
+uc CurArmorPoints =                                         15 
+
+[InventoryInfo]
+uc NumOther =                                               3 
+uc NumWeapons =                                             1 
+uc NumAmmo =                                                1 
+
+// Inventory
+
+// Other
+
+
+[Item:0]
+uc MasterID =                                               1 
+
+[Item:1]
+uc MasterID =                                               6 
+
+[Item:2]
+uc MasterID =                                               35 
+
+// Weapons
+
+
+[Item:3]
+uc MasterID =                                               104 
+uc FacesForward =                                           1 
+
+// Ammo
+
+
+[Item:4]
+uc MasterID =                                               204 
+l Amount =                                                 -1 
+
+FITEnd

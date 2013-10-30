@@ -1,0 +1,16 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc5%c----------%n
+%fc6%c***Achilles***%n
+%fc2(1) Destroy all enemy forces.%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY:    0 Small    0 Large%n
+%t12SENSOR PROBE:   0%n
+%t12CAMERA DRONE:    0%n%n
+%fc5%c----------%n
+%fc4Our new industrial stronghold is nearly complete. We are moving new supplies into the area and expect resistance. You will be dropped next to three of our most crucial points:%n(1) The Base Primary Power Generator.%n(2) Our new HQ in the West.%n(3) A Mobile Orbital Gun in the South.%nThese must be protected. Should they be destroyed this mission will be considered a failure.  You will be picked up after all enemy forces have been destroyed.  %n%n
+%fc5%c----------%n
+%fc1%fm%c**TACTICAL WARNING**%n
+%fc2%fs*None%n%n
+%fm%fc6%c**TACTICAL NOTICE**%n
+%fs%fc2*None%n%n
+%fc6<<<<END DISPATCH

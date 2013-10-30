@@ -1,0 +1,17 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:VANGUARD/03PRDN04%n
+%fc5%c----------%n
+%fc6%c***LIBERATE RE-EDUCATION CAMP***%n
+%fc21-Capture Re-Education Camp HQ%n
+2-Escort Freed Prisoners to Base%n
+%fc23-Protect Base HQ%n
+MISSION TIME LIMIT- 15:00%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 1 Small  1 Large%n
+%t12SENSOR PROBE: 1%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4We need to liberate a so-called "re-education camp" where loyal Inner Sphere warriors are being held, and escort those prisoners to safety. It is time we repay them for their loyalty. The camp is secluded within the Mayan Canyons. You are to operate out of a nearby field base and return there with the rescued prisoners.%n%n
+Be warned, however, there are reports of patrols in the area that might locate the field base before you are able to return to it. Protection of the HQ building of the field base is vital.%n%n
+%fc6<<<<END DISPATCH
+

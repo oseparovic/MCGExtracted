@@ -1,0 +1,184 @@
+//*********************************************************************************
+// Structure Include file for mission 2_2
+
+
+if (isAlive(PA1)) then
+     getObjectPosition(PA1,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (PA1TripTime == -1.0) then
+               PA1TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - PA1TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((PA1TripTime <> -1.0) AND (gametime - PA1TripTime < 12.0)) then
+               PA1TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(PA2)) then
+     getObjectPosition(PA2,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (PA2TripTime == -1.0) then
+               PA2TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - PA2TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((PA2TripTime <> -1.0) AND (gametime - PA2TripTime < 12.0)) then
+               PA2TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(PA3)) then
+     getObjectPosition(PA3,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (PA3TripTime == -1.0) then
+               PA3TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - PA3TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((PA3TripTime <> -1.0) AND (gametime - PA3TripTime < 12.0)) then
+               PA3TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(PA4)) then
+     getObjectPosition(PA4,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (PA4TripTime == -1.0) then
+               PA4TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - PA4TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((PA4TripTime <> -1.0) AND (gametime - PA4TripTime < 12.0)) then
+               PA4TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if ((isdead(TC1)) AND (TC1Alignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(16,120),FALSE);
+     setObjectActive(getterrainobjectpartid(16,122),FALSE);
+     setObjectActive(getterrainobjectpartid(16,183),FALSE);
+     setObjectActive(getterrainobjectpartid(16,246),FALSE);
+     setObjectActive(getterrainobjectpartid(16,248),FALSE);
+     setObjectActive(getterrainobjectpartid(16,289),FALSE);
+     TC1Alignment = -2;
+else
+     if ((IsCaptured(TC1) == 1) AND (objectSide(TC1) <> TC1Alignment) AND (TC1Alignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(16,120),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(16,120),2);
+           objectChangeSides(getterrainobjectpartid(16,122),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(16,122),2);
+           objectChangeSides(getterrainobjectpartid(16,183),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(16,183),2);
+           objectChangeSides(getterrainobjectpartid(16,246),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(16,246),2);
+           objectChangeSides(getterrainobjectpartid(16,248),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(16,248),2);
+           objectChangeSides(getterrainobjectpartid(16,289),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(16,289),2);
+           objectChangeSides(TC1,INNER_SPHERE);
+           TC1Alignment = INNER_SPHERE;
+           setPotentialContact(TC1,2);
+     endif;
+endif;
+
+if (getObjectDamage(OUTPOST) > 0) then
+     GeneralAlarm = TRUE;
+endif;
+
+if (isdead(repair1)) then
+     removeVehicleBay(repair1);
+endif;
+
+if (isdead(repair2)) then
+     removeVehicleBay(repair2);
+endif;
+
+if (NOT PerimeterBreach) then
+      if (PlayGASound) then
+            PlayGASound = FALSE;
+      endif;
+      if (PlayPASound) then
+            PlayPASound = FALSE;
+      endif;
+endif;

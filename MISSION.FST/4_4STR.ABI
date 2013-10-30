@@ -1,0 +1,13 @@
+//*********************************************************************************
+// Structure Include file for mission 4_4
+
+
+if (isdead(MBay1)) then
+     removeMechBay(MBay1);
+     MBay1Alignment = -2;
+else
+     if ((IsCaptured(MBay1) == 1) AND (objectSide(MBay1) <> MBay1Alignment) AND (MBay1Alignment <> -2)) then
+           MBay1Alignment = INNER_SPHERE;
+           setPotentialContact(MBay1,2);
+     endif;
+endif;

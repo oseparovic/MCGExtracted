@@ -1,0 +1,65 @@
+//*********************************************************************************
+// Structure Include file for mission 3_4
+
+
+if ((isdead(IS_TC)) AND (IS_TCAlignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(26,228),FALSE);
+     setObjectActive(getterrainobjectpartid(26,307),FALSE);
+     setObjectActive(getterrainobjectpartid(26,333),FALSE);
+     setObjectActive(getterrainobjectpartid(26,385),FALSE);
+     setObjectActive(getterrainobjectpartid(26,392),FALSE);
+     setObjectActive(getterrainobjectpartid(32,48),FALSE);
+     IS_TCAlignment = -2;
+else
+     if ((IsCaptured(IS_TC) == 1) AND (objectSide(IS_TC) <> IS_TCAlignment) AND (IS_TCAlignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(26,228),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(26,228),2);
+           objectChangeSides(getterrainobjectpartid(26,307),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(26,307),2);
+           objectChangeSides(getterrainobjectpartid(26,333),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(26,333),2);
+           objectChangeSides(getterrainobjectpartid(26,385),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(26,385),2);
+           objectChangeSides(getterrainobjectpartid(26,392),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(26,392),2);
+           objectChangeSides(getterrainobjectpartid(32,48),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(32,48),2);
+           objectChangeSides(IS_TC,INNER_SPHERE);
+           IS_TCAlignment = INNER_SPHERE;
+           setPotentialContact(IS_TC,2);
+     endif;
+endif;
+
+if ((isdead(CLAN_TC)) AND (CLAN_TCAlignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(3,340),FALSE);
+     setObjectActive(getterrainobjectpartid(3,365),FALSE);
+     setObjectActive(getterrainobjectpartid(8,59),FALSE);
+     setObjectActive(getterrainobjectpartid(8,116),FALSE);
+     setObjectActive(getterrainobjectpartid(9,43),FALSE);
+     setObjectActive(getterrainobjectpartid(9,46),FALSE);
+     setObjectActive(getterrainobjectpartid(9,124),FALSE);
+     setObjectActive(getterrainobjectpartid(9,161),FALSE);
+     CLAN_TCAlignment = -2;
+else
+     if ((IsCaptured(CLAN_TC) == 1) AND (objectSide(CLAN_TC) <> CLAN_TCAlignment) AND (CLAN_TCAlignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(3,340),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(3,340),2);
+           objectChangeSides(getterrainobjectpartid(3,365),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(3,365),2);
+           objectChangeSides(getterrainobjectpartid(8,59),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(8,59),2);
+           objectChangeSides(getterrainobjectpartid(8,116),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(8,116),2);
+           objectChangeSides(getterrainobjectpartid(9,43),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(9,43),2);
+           objectChangeSides(getterrainobjectpartid(9,46),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(9,46),2);
+           objectChangeSides(getterrainobjectpartid(9,124),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(9,124),2);
+           objectChangeSides(getterrainobjectpartid(9,161),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(9,161),2);
+           objectChangeSides(CLAN_TC,INNER_SPHERE);
+           CLAN_TCAlignment = INNER_SPHERE;
+           setPotentialContact(CLAN_TC,2);
+     endif;
+endif;

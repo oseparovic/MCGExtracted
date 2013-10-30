@@ -1,0 +1,118 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:11/4/98   BY:rob nicholls
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBmx0303ace : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+
+    // PATHS
+    static path                        Ace1;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+
+         // Paths
+
+         Ace1[0,0] = -348; // X
+         Ace1[0,1] = -6808; // Y
+
+         Ace1[1,0] = -348; // X
+         Ace1[1,1] = -6808; // Y
+
+         Ace1[2,0] = -348; // X
+         Ace1[2,1] = -6808; // Y
+
+         Ace1[3,0] = -559; // X
+         Ace1[3,1] = -3580; // Y
+
+         SetEngageRadius(250);
+         SetSpeed(RUN);
+         MoveAndFireON;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (getHits >= 5) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              Order2Status = Sentry(-179,7603);
+              if (Order2Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+    if (beenHit) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              Order3Status = Sentry(-439,-818);
+              if (Order3Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = Patrol(Ace1,4,PATROL_AND_STOP, 1);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order1Status <> INCOMPLETE) then
+                   // Order  4 
+                   if (Order4Status == INCOMPLETE) then
+                        Order4Status = Sentry(currentX,currentY);
+                        if (Order4Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

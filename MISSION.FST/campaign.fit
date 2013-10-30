@@ -1,0 +1,16 @@
+FITini
+
+[Control]
+ul NumCampaigns = 1
+
+[Campaign0]
+st CampaignFile = "mechcmdr1.fit"
+st SplashScreen = ""			// name of splash screen FIT file that contains gif name and button coords
+
+// example for expansion disks
+//
+// [campaign1]
+// st CampaignFile = "MCExp1.fit"
+// st SplashScreen = "MCExp1SS.fit"	
+
+FITend

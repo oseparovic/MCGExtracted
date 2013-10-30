@@ -1,0 +1,22 @@
+//*********************************************************************************
+// Structure Include file for mission 2_3
+
+
+if ((isdead(GH)) AND (GHAlignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(44,109))) then
+           LockGateOpen(getterrainobjectpartid(44,109));
+           GHAlignment = -2;
+     else
+           LockGateClosed(getterrainobjectpartid(44,109));
+           objectChangeSides(getterrainobjectpartid(44,109),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(44,109),2);
+           GHAlignment = -2;
+     endif;
+else
+     if ((IsCaptured(GH) == 1) AND (objectSide(GH) <> GHAlignment) AND (GHAlignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(44,109),INNER_SPHERE);
+           ReleaseGateLock(getterrainobjectpartid(44,109));
+           setPotentialContact(getterrainobjectpartid(44,109),2);
+           GHAlignment = INNER_SPHERE;
+     endif;
+endif;

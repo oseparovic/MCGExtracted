@@ -1,0 +1,11 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cDESIGNATION:GAMBIT/7PRDN8%n
+%fc5%c----------%n
+%fc6%c*** GUNBUNK ***%n
+%fc21-Destroy 4 of 5 underground bunkers or take out all enemy forces%n%n
+%fc22-Defend at least two orbital guns%n%n
+%fc5%c----------%n
+%fc4Destroy four of the five underground bunkers along the east end of the map or take out all enemy forces.%n%n
+%fc4At least two of your orbital guns must survive as well.%n%n
+%fc6<<<<END DISPATCH
+

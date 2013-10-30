@@ -1,0 +1,67 @@
+//*********************************************************************************
+// Structure Include file for mission 5_2
+
+
+if ((isdead(TurCon2)) AND (TurCon2Alignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(39,331),FALSE);
+     setObjectActive(getterrainobjectpartid(39,338),FALSE);
+     setObjectActive(getterrainobjectpartid(48,71),FALSE);
+     setObjectActive(getterrainobjectpartid(48,78),FALSE);
+     TurCon2Alignment = -2;
+else
+     if ((IsCaptured(TurCon2) == 1) AND (objectSide(TurCon2) <> TurCon2Alignment)) then
+           setObjectActive(getterrainobjectpartid(39,331),TRUE);
+           objectChangeSides(getterrainobjectpartid(39,331),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(39,331),2);
+           setObjectActive(getterrainobjectpartid(39,338),TRUE);
+           objectChangeSides(getterrainobjectpartid(39,338),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(39,338),2);
+           setObjectActive(getterrainobjectpartid(48,71),TRUE);
+           objectChangeSides(getterrainobjectpartid(48,71),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(48,71),2);
+           setObjectActive(getterrainobjectpartid(48,78),TRUE);
+           objectChangeSides(getterrainobjectpartid(48,78),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(48,78),2);
+           objectChangeSides(TurCon2,INNER_SPHERE);
+           TurCon2Alignment = INNER_SPHERE;
+           setPotentialContact(TurCon2,2);
+     endif;
+endif;
+
+if (isdead(Repair1)) then
+     removeMechBay(Repair1);
+else
+     if ((IsCaptured(Repair1) == 1) AND (objectSide(Repair1) <> Repair1Alignment)) then
+           Repair1Alignment = INNER_SPHERE;
+     endif;
+endif;
+
+if (isdead(Repair2)) then
+     removeMechBay(Repair2);
+else
+     if ((IsCaptured(Repair2) == 1) AND (objectSide(Repair2) <> Repair2Alignment)) then
+           Repair2Alignment = INNER_SPHERE;
+     endif;
+endif;
+
+if (isdead(Gen1)) then
+     setObjectActive(getterrainobjectpartid(39,331),FALSE);
+     setObjectActive(getterrainobjectpartid(39,338),FALSE);
+     setObjectActive(getterrainobjectpartid(48,71),FALSE);
+     setObjectActive(getterrainobjectpartid(48,78),FALSE);
+endif;
+
+if ((isdead(sensor1)) AND (sensor1Alignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(29,348),FALSE);
+     setObjectActive(getterrainobjectpartid(37,269),FALSE);
+     sensor1Alignment = -2;
+else
+     if ((IsCaptured(sensor1) == 1) AND (objectSide(sensor1) <> sensor1Alignment)) then
+           objectChangeSides(getterrainobjectpartid(29,348),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,348),2);
+           objectChangeSides(getterrainobjectpartid(37,269),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(37,269),2);
+           objectChangeSides(sensor1,INNER_SPHERE);
+           sensor1Alignment = INNER_SPHERE;
+     endif;
+endif;

@@ -1,0 +1,145 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:11/1/98   BY:rob nicholls
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBmx0102tank : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+    static integer                     Order6Status;
+
+    // PATHS
+    static path                        FinalPath;
+    static path                        TankPath;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+         Order6Status = INCOMPLETE;
+
+         // Paths
+
+         FinalPath[0,0] = -3140; // X
+         FinalPath[0,1] = -825; // Y
+
+         FinalPath[1,0] = -660; // X
+         FinalPath[1,1] = -830; // Y
+
+         FinalPath[2,0] = 4000; // X
+         FinalPath[2,1] = -190; // Y
+
+         TankPath[0,0] = -3170; // X
+         TankPath[0,1] = 2875; // Y
+
+         TankPath[1,0] = -3144; // X
+         TankPath[1,1] = -826; // Y
+
+         TankPath[2,0] = -661; // X
+         TankPath[2,1] = -832; // Y
+
+         TankPath[3,0] = 4147; // X
+         TankPath[3,1] = -413; // Y
+
+         SetEngageRadius(250);
+         SelectWeakest;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (numDead(ClanStar(0)) >= 3) then
+         // Order  5 
+         if (Order5Status == INCOMPLETE) then
+              SetSpeed(RUN);
+              Order5Status = SUCCESS;
+         endif;
+    endif;
+    if (numDead(ClanStar(0)) >= 3) then
+         // Order  6 
+         if (Order6Status == INCOMPLETE) then
+              MoveAndFireON;
+              Order6Status = SUCCESS;
+         endif;
+    endif;
+    if (gametime > 460) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              Order2Status = Guard(HQ);
+              if (Order2Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order2Status <> INCOMPLETE) then
+                   // Order  3 
+                   if (Order3Status == INCOMPLETE) then
+                        Order3Status = ClearArea;
+                        if (Order3Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+    if (numDead(ClanStar(0)) >= 3) then
+         // Order  4 
+         if (Order4Status == INCOMPLETE) then
+              Order4Status = Guard(RuinTC);
+              if (Order4Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = Patrol(TankPath,4,PATROL_AND_STOP, 1);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

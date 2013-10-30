@@ -1,0 +1,115 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      Ground Vehicle Profile:  33700   'Alacorn'  Type:  906 
+//
+//      Creation Date: 9/3/98      Creator: Jon Marcus
+//
+//
+// -------------------------------------------------------------------------
+
+[Header]
+st FileType = "GroundVehicleProfile"
+
+
+[General]
+ul ID =                                                     33700 
+st Crew =                                                  "PCREWE"
+ul Chassis =                                                906 
+st Name =                                                  "Alacorn"
+ul VehicleTypeID =                                          906 
+l NameIndex =                                               32 
+l DescIndex =                                               554 
+f CurTonnage =                                              95 
+st icon =                                                  "na.gif"
+c Status =                                                  0 
+l ResourcePoints =                                          1000 
+l BattleRating =                                            400 
+l Morale =                                                  0 
+l MoraleModifier =                                          0 
+
+[Engine]
+f Tonnage =                                                 13 
+ul Rating =                                                 285 
+uc MaxMoveSpeed =                                           12 
+
+[Armor]
+uc Type =                                                   0 
+f Tonnage =                                                 13 
+
+[Front]
+uc CurInternalStructure =                                   1 
+uc MaxArmorPoints =                                         40 
+uc CurArmorPoints =                                         40 
+
+[Left]
+uc CurInternalStructure =                                   1 
+uc MaxArmorPoints =                                         40 
+uc CurArmorPoints =                                         40 
+
+[Right]
+uc CurInternalStructure =                                   1 
+uc MaxArmorPoints =                                         40 
+uc CurArmorPoints =                                         40 
+
+[Rear]
+uc CurInternalStructure =                                   1 
+uc MaxArmorPoints =                                         28 
+uc CurArmorPoints =                                         28 
+
+[Turret]
+uc CurInternalStructure =                                   1 
+uc MaxArmorPoints =                                         30 
+uc CurArmorPoints =                                         30 
+
+[InventoryInfo]
+uc NumOther =                                               3 
+uc NumWeapons =                                             3 
+uc NumAmmo =                                                3 
+
+// Inventory
+
+// Other
+
+
+[Item:0]
+uc MasterID =                                               1 
+
+[Item:1]
+uc MasterID =                                               6 
+
+[Item:2]
+uc MasterID =                                               35 
+
+// Weapons
+
+
+[Item:3]
+uc MasterID =                                               104 
+uc FacesForward =                                           1 
+
+[Item:4]
+uc MasterID =                                               104 
+uc FacesForward =                                           1 
+
+[Item:5]
+uc MasterID =                                               104 
+uc FacesForward =                                           1 
+
+// Ammo
+
+
+[Item:6]
+uc MasterID =                                               204 
+l Amount =                                                 -1 
+
+[Item:7]
+uc MasterID =                                               204 
+l Amount =                                                 -1 
+
+[Item:8]
+uc MasterID =                                               204 
+l Amount =                                                 -1 
+
+FITEnd

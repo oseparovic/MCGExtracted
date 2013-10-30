@@ -1,0 +1,106 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:4/30/98   BY:david abzug
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBM0306brdgkiller : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+
+    // PATHS
+    static path                        Path1;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+
+         // Paths
+
+         Path1[0,0] = 2339; // X
+         Path1[0,1] = 2294; // Y
+
+         SetEngageRadius(250);
+         SetDisEngageRadius(250);
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (inHotSpot(PLAYER_FORCE,2331,1514,100)) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              SetRevealed(1,75.0,CurrentPosition);
+              Order3Status = SUCCESS;
+         endif;
+    endif;
+    if (inHotSpot(PLAYER_FORCE,2331,1514,100)) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              Order2Status = AttackObject( BridgeSegment,FALSE,TRUE);
+              if (Order2Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order2Status <> INCOMPLETE) then
+                   // Order  4 
+                   if (Order4Status == INCOMPLETE) then
+                        Order4Status = Attack;
+                        if (Order4Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = Sentry(MyX,MyY);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

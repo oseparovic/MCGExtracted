@@ -1,0 +1,84 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:10/1/98   BY:david abzug
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBmx0104WCheck : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+
+         SetEngageRadius(125);
+         SetDisEngageRadius(500);
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if ((numDead(clan_star5) > 0) or (beenhit)) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Flag1 = TRUE;
+              Order1Status = SUCCESS;
+         endif;
+    endif;
+    if (flag1) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              SetEngageRadius(400);
+              Order2Status = SUCCESS;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              Order3Status = Attack;
+              if (Order3Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

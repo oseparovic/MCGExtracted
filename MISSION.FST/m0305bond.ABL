@@ -1,0 +1,171 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:4/1/98   BY:Rob Nicholls
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0305bond : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+    static integer                     Order6Status;
+    static integer                     Order7Status;
+    static integer                     Order8Status;
+    static integer                     Order9Status;
+
+    // PATHS
+    static path                        Path1;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+         Order6Status = INCOMPLETE;
+         Order7Status = INCOMPLETE;
+         Order8Status = INCOMPLETE;
+         Order9Status = INCOMPLETE;
+
+         // Paths
+
+         Path1[0,0] = 6330; // X
+         Path1[0,1] = -228; // Y
+
+         Path1[1,0] = 5970; // X
+         Path1[1,1] = -906; // Y
+
+         MoveAndFireON;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = MovePath(Path1,2);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order1Status <> INCOMPLETE) then
+                   // Order  2 
+                   if (Order2Status == INCOMPLETE) then
+                        Order2Status = ClearArea;
+                        if (Order2Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   else
+                        if (Order2Status <> INCOMPLETE) then
+                             // Order  3 
+                             if (Order3Status == INCOMPLETE) then
+                                  Order3Status = MoveTo(1505,-1872);
+                                  if (Order3Status == INCOMPLETE) then
+                                       return(1);
+                                  endif;
+                             else
+                                  if (Order3Status <> INCOMPLETE) then
+                                       // Order  4 
+                                       if (Order4Status == INCOMPLETE) then
+                                            Order4Status = AttackObject(getTerrainObjectPartID(50,80),FALSE,TRUE);
+                                            if (Order4Status == INCOMPLETE) then
+                                                 return(1);
+                                            endif;
+                                       else
+                                            if (Order4Status <> INCOMPLETE) then
+                                                 // Order  5 
+                                                 if (Order5Status == INCOMPLETE) then
+                                                      Order5Status = ClearArea;
+                                                      if (Order5Status == INCOMPLETE) then
+                                                           return(1);
+                                                      endif;
+                                                 else
+                                                      if (Order5Status <> INCOMPLETE) then
+                                                           // Order  6 
+                                                           if (Order6Status == INCOMPLETE) then
+                                                                Order6Status = MoveTo(1686,-3137);
+                                                                if (Order6Status == INCOMPLETE) then
+                                                                     return(1);
+                                                                endif;
+                                                           else
+                                                                if (Order6Status <> INCOMPLETE) then
+                                                                     // Order  7 
+                                                                     if (Order7Status == INCOMPLETE) then
+                                                                          Order7Status = ClearArea;
+                                                                          if (Order7Status == INCOMPLETE) then
+                                                                               return(1);
+                                                                          endif;
+                                                                     else
+                                                                          if (Order7Status <> INCOMPLETE) then
+                                                                               // Order  8 
+                                                                               if (Order8Status == INCOMPLETE) then
+                                                                                    Order8Status = MoveTo(56,1985);
+                                                                                    if (Order8Status == INCOMPLETE) then
+                                                                                         return(1);
+                                                                                    endif;
+                                                                               else
+                                                                                    if (Order8Status <> INCOMPLETE) then
+                                                                                         // Order  9 
+                                                                                         if (Order9Status == INCOMPLETE) then
+                                                                                              Order9Status = ClearArea;
+                                                                                              if (Order9Status == INCOMPLETE) then
+                                                                                                   return(1);
+                                                                                              endif;
+                                                                                         endif;
+                                                                                    endif;
+                                                                               endif;
+                                                                          endif;
+                                                                     endif;
+                                                                endif;
+                                                           endif;
+                                                      endif;
+                                                 endif;
+                                            endif;
+                                       endif;
+                                  endif;
+                             endif;
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

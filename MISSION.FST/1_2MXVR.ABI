@@ -1,0 +1,44 @@
+//*********************************************************************************
+// Variable Include file for mission 1_2
+
+     static boolean                    GuyDead;
+     integer                           ThatNumber;
+     integer                           TimeDead;
+     eternal integer                   BaseTC1;
+     static integer                    BaseTC1Alignment;
+     eternal integer                   BaseSC;
+     static integer                    BaseSCAlignment;
+     eternal integer                   HQ;
+     eternal integer                   SupplyDump;
+     static integer                    SupplyDumpAlignment;
+     eternal integer                   RuinTC;
+     static integer                    RuinTCAlignment;
+     eternal integer                   BaseTC2;
+     static integer                    BaseTC2Alignment;
+     eternal integer                   BaseTC3;
+     static integer                    BaseTC3Alignment;
+     eternal integer                   Power1;
+     eternal integer                   BridgeTC;
+     static integer                    BridgeTCAlignment;
+     eternal integer                   RepairBay;
+     static integer                    RepairBayAlignment;
+     eternal integer                   ComStat;
+     eternal integer                   BridgeDeadGate;
+     eternal integer                   Crate1;
+     static integer                    Crate1Alignment;
+     eternal integer                   Crate2;
+     static integer                    Crate2Alignment;
+     eternal integer                   Crate3;
+     static integer                    Crate3Alignment;
+     eternal integer                   Target1;
+     eternal integer                   Target2;
+     eternal integer                   Target3;
+     eternal integer                   Target4;
+     eternal integer                   Target5;
+     eternal integer                   Target6;
+     eternal integer                   BaseDeadGate1;
+     eternal integer                   BaseDeadGate2;
+     eternal integer                   BaseDeadGate3;
+     eternal integer                   BaseDeadGate4;
+     eternal integer                   BaseDeadGate5;
+     static boolean                    LOP0;

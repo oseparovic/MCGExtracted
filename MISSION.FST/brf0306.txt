@@ -1,0 +1,20 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:VANGUARD/03PRDN06%n
+%fc5%c----------%n
+%fc6%c***LIBERATE AFFENDALE***%n
+%fc21-Destroy Administration Building%n
+2-Get forces to Extraction Point%n
+3-Capture Sensor Control%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 1 Small  1 Large%n
+%t12SENSOR PROBE: 0%n
+%t12CAMERA DRONE: 1%n
+%fc5%c----------%n
+%fc4The culmination of phase three of our invasion is upon us. Your primary objective is to destroy the Smoke Jaguar Administration building in Affendale. It is within a heavily guarded complex on the foothills of Mount Samurai.%n%n
+Battalion Intelligence believes that taking control of the local Clan sensor grid would be invaluable in planning your assault on the Administration Building. The Sensor Control building is within a double-walled complex near the center of Affendale.%n%n
+Once the Administration building has been destroyed and its defenders dealt with make a statement by proceeding to the top of Mount Samurai, a local landmark, for extraction.%n%n
+%fm%fc6%c**TACTICAL NOTICE**%n
+%fs%fc2*Power generators for the turrets of%n
+%t9the Sensor Complex are located in the%n
+%t9southeast.%n%n
+%fc6<<<<END DISPATCH

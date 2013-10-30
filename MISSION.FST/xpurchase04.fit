@@ -1,0 +1,391 @@
+FITini
+
+
+[Header]
+
+l NumGifts = 0
+l NumMechs = 13
+l NumVehicles = 7
+l NumComponants = 27
+l NumWarriors = 20
+
+[Mech0]
+//Commando (IS)
+l TypeAAvailable = 1
+l TypeJAvailable = 0
+l TypeWAvailable = 0
+st TypeAFile = "PM100100"
+st TypeWFile = "PM100400"
+st TypeJFile = "PM100300"
+
+[Mech1]
+//Firestarter (IS)
+l TypeAAvailable = 1
+l TypeJAvailable = 0
+l TypeWAvailable = 0
+st TypeAFile = "PM101100"
+st TypeWFile = "PM101400"
+st TypeJFile = "PM101300"
+
+[Mech2]
+//Stiletto (IS)
+l TypeAAvailable = 1
+l TypeJAvailable = 0
+l TypeWAvailable = 0
+st TypeAFile = "PM110100"
+st TypeWFile = "PM110400"
+st TypeJFile = "PM110300"
+
+[Mech3]
+//Raven (IS)
+l TypeAAvailable = 0
+l TypeJAvailable = 1
+l TypeWAvailable = 0
+st TypeAFile = "PM102100"
+st TypeWFile = "PM102400"
+st TypeJFile = "PM102300"
+
+[Mech4]
+//Hollander (IS)
+l TypeAAvailable = 0
+l TypeJAvailable = 0
+l TypeWAvailable = 1
+st TypeAFile = "PM103100"
+st TypeWFile = "PM103400"
+st TypeJFile = "PM103300"
+
+[Mech5]
+//Hunchback (IS)
+l TypeAAvailable = 1
+l TypeJAvailable = 0
+l TypeWAvailable = 0
+st TypeAFile = "PM104100"
+st TypeWFile = "PM104400"
+st TypeJFile = "PM104300"
+
+[Mech6]
+//Bushwacker (IS)
+l TypeAAvailable = 0
+l TypeJAvailable = 1
+l TypeWAvailable = 0
+st TypeAFile = "PM111100"
+st TypeWFile = "PM111400"
+st TypeJFile = "PM111300"
+
+[Mech7]
+//Centurion (IS)
+l TypeAAvailable = 0
+l TypeJAvailable = 0
+l TypeWAvailable = 1
+st TypeAFile = "PM105100"
+st TypeWFile = "PM105400"
+st TypeJFile = "PM105300"
+
+[Mech8]
+//Catapult (IS)
+l TypeAAvailable = 0
+l TypeJAvailable = 1
+l TypeWAvailable = 0
+st TypeAFile = "PM106100"
+st TypeWFile = "PM106400"
+st TypeJFile = "PM106300"
+
+[Mech9]
+//Jagermech (IS)
+l TypeAAvailable = 0
+l TypeJAvailable = 0
+l TypeWAvailable = 1
+st TypeAFile = "PM107100"
+st TypeWFile = "PM107400"
+st TypeJFile = "PM107300"
+
+[Mech10]
+//Awesome (IS)
+l TypeAAvailable = 0
+l TypeJAvailable = 0
+l TypeWAvailable = 0
+st TypeAFile = "PM108100"
+st TypeWFile = "PM108400"
+st TypeJFile = "PM108300"
+
+[Mech11]
+//Mauler (IS)
+l TypeAAvailable = 0
+l TypeJAvailable = 0
+l TypeWAvailable = 0
+st TypeAFile = "PM112100"
+st TypeWFile = "PM112400"
+st TypeJFile = "PM112300"
+
+[Mech12]
+//Atlas (IS)
+l TypeAAvailable = 0
+l TypeJAvailable = 0
+l TypeWAvailable = 1
+st TypeAFile = "PM109100"
+st TypeWFile = "PM109400"
+st TypeJFile = "PM109300"
+
+//VEHICLES
+
+[Vehicle0]
+//Swiftwind (IS)
+l NumAvailable = 1
+st Filename = "20000"
+
+[Vehicle1]
+//Pegasus (IS)
+l NumAvailable = 1
+st Filename = "21800"
+
+[Vehicle2]
+//Centipede (IS)
+l NumAvailable = 1
+st Filename = "33300"
+
+[Vehicle3]
+//Ammo Truck (IS)
+l NumAvailable = 1
+st Filename = "33800"
+
+[Vehicle4]
+//Minelayer (IS)
+l NumAvailable = 1
+st Filename = "22900"
+
+[Vehicle5]
+//Minesweeper (IS)
+l NumAvailable = 1
+st Filename = "22800"
+
+[Vehicle6]
+//Refit Truck (IS)
+l NumAvailable = 0
+st Filename = "32300"
+
+//COMPONENTS
+//short range
+
+[Componant0]
+//Pulse Laser (IS) 
+uc ComponantID = 144
+l NumAvailable =3
+
+[Componant1]
+//Short-Range Missile Pack (IS)
+uc ComponantID = 123
+l NumAvailable =4
+
+[Componant2]
+//Laser (IS) 
+uc ComponantID = 143
+l NumAvailable =4
+
+[Componant3]
+//Streak Short-Range Missile Pack(IS) 
+uc ComponantID = 125
+l NumAvailable =3
+
+[Componant4]
+//Heavy Flamer (IS)
+uc ComponantID = 147
+l NumAvailable =3
+
+[Componant5]
+// Heavy Autocannon (IS)
+uc ComponantID = 102
+l NumAvailable =1
+
+//medium range
+
+[Componant6]
+//  Autocannon (IS)
+uc ComponantID = 101
+l NumAvailable =2
+
+[Componant7]
+// Large Laser (IS)
+uc ComponantID = 140
+l NumAvailable =3
+
+[Componant8]
+// Large Pulse Laser (IS)
+uc ComponantID = 142
+l NumAvailable =2
+
+[Componant9]
+// Particle Projector Cannon (IS)
+uc ComponantID = 145
+l NumAvailable =1
+
+//long range
+
+[Componant10]
+//Light Autocannon (IS)
+uc ComponantID = 100
+l NumAvailable =2
+
+[Componant11]
+// Long-Range Missile Rack (IS)
+uc ComponantID = 120
+l NumAvailable =4
+
+[Componant12]
+// Light Ultra Autocannon (IS)
+uc ComponantID = 103
+l NumAvailable =2
+
+[Componant13]
+// Large ER Laser (IS)
+uc ComponantID = 141
+l NumAvailable =2
+
+[Componant14]
+// ER Particle Projector Cannon (IS)
+uc ComponantID = 146
+l NumAvailable =1
+
+[Componant15]
+// Gauss Rifle (IS)
+uc ComponantID = 104
+l NumAvailable =1
+
+// Sensor
+
+[Componant16]
+// Sensor (Basic) (IS)
+uc ComponantID = 13
+l NumAvailable =3
+
+[Componant17]
+// Sensor (Intermediate) (IS)
+uc ComponantID = 14
+l NumAvailable =3
+
+[Componant18]
+// Sensor (Advanced) (IS)
+uc ComponantID = 15
+l NumAvailable =1
+
+[Componant19]
+// Beagle Probe (IS)
+uc ComponantID = 37
+l NumAvailable =1
+
+[Componant20]
+// Guardian ECM (IS)
+uc ComponantID = 38
+l NumAvailable =1
+
+[Componant21]
+// Light LBX AC(IS)
+uc ComponantID = 107
+l NumAvailable =2
+
+[Componant22]
+// LBX AC(IS)
+uc ComponantID = 108
+l NumAvailable =2
+
+[Componant23]
+// Hvy LBX AC(IS)
+uc ComponantID = 109
+l NumAvailable =1
+
+[Componant24]
+// Light Gauss(IS)
+uc ComponantID = 99
+l NumAvailable =1
+
+[Componant25]
+// Long Tom Cannon(IS)
+uc ComponantID = 160
+l NumAvailable =1
+
+[Componant26]
+// X Pulse(IS)
+uc ComponantID = 139
+l NumAvailable =1
+
+//pilots
+
+[Warrior0]
+st Profile ="pmw00086"
+l Status =0
+
+[Warrior1]
+st Profile ="pmw00087"
+l Status =0
+
+[Warrior2]
+st Profile ="pmw00088"
+l Status =0
+
+[Warrior3]
+st Profile ="pmw00089"
+l Status =0
+
+[Warrior4]
+st Profile ="pmw00090"
+l Status =0
+
+[Warrior5]
+st Profile ="pmw00102"
+l Status =0
+
+[Warrior6]
+st Profile ="pmw00103"
+l Status =0
+
+[Warrior7]
+st Profile ="pmw00104"
+l Status =0
+
+[Warrior8]
+st Profile ="pmw00105"
+l Status =0
+
+[Warrior9]
+st Profile ="pmw00106"
+l Status =0
+
+[Warrior10]
+st Profile ="pmw00107"
+l Status =0
+
+[Warrior11]
+st Profile ="pmw00091"
+l Status =0
+
+[Warrior12]
+st Profile ="pmw00092"
+l Status =0
+
+[Warrior13]
+st Profile ="pmw00108"
+l Status =0
+
+[Warrior14]
+st Profile ="pmw00109"
+l Status =0
+
+[Warrior15]
+st Profile ="pmw00093"
+l Status =0
+
+[Warrior16]
+st Profile ="pmw00094"
+l Status =4
+
+[Warrior17]
+st Profile ="pmw00095"
+l Status =0
+
+[Warrior18]
+st Profile ="pmw00096"
+l Status =4
+
+[Warrior19]
+st Profile ="pmw00097"
+l Status =4
+FITend

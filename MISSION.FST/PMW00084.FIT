@@ -1,0 +1,47 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      MechWarrior:  84   Name: Player Vehicle Crew D  Callsign: Crew
+//
+//      Creation Date: 10/30/97   By: tom dowd
+//
+// -------------------------------------------------------------------------
+
+
+
+[General]
+st Brain = "pbrain"
+st Name =                                                  "Player Vehicle Crew D"
+l Rank =                                                    1 
+st Callsign =                                              "Crew"
+ul ID =                                                     84 
+ul Profile =                                                0 
+ul HeadIcon =                                               0 
+l paintScheme =                                             17 
+st pilotAudio =                                            "crewD"
+st pilotVideo =                                            "plt1n001"
+st Picture =                                               "pilot03.gif"
+
+[PersonalityTraits]
+c Professionalism =                                         50 
+c Decorum =                                                 50 
+c Aggressiveness =                                          50 
+c Courage =                                                 50 
+
+[Skills]
+c Piloting =                                                45 
+c Jumping =                                                 45 
+c Sensors =                                                 45 
+c Gunnery =                                                 45 
+
+[Affinities]
+c MechClass =                                               0 
+c MechType =                                                0 
+c WeaponClass =                                             0 
+uc[2] WeaponTypes =                                        0,0
+
+[Status]
+c Wounds =                                                  0 
+
+FITEnd

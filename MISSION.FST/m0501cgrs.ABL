@@ -1,0 +1,102 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:3/16/98   BY:david abzug
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0501cgrs : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+
+    // PATHS
+    static path                        Path1;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+
+         // Paths
+
+         Path1[0,0] = -476; // X
+         Path1[0,1] = -4297; // Y
+
+         Path1[1,0] = 264; // X
+         Path1[1,1] = -4354; // Y
+
+         Path1[2,0] = 309; // X
+         Path1[2,1] = -2869; // Y
+
+         Path1[3,0] = 2576; // X
+         Path1[3,1] = -2824; // Y
+
+         Path1[4,0] = 3347; // X
+         Path1[4,1] = -2451; // Y
+
+         Path1[5,0] = 3326; // X
+         Path1[5,1] = 474; // Y
+
+         Path1[6,0] = 1675; // X
+         Path1[6,1] = 2513; // Y
+
+         Path1[7,0] = 547; // X
+         Path1[7,1] = 3445; // Y
+
+         Path1[8,0] = 537; // X
+         Path1[8,1] = 4326; // Y
+
+         Path1[9,0] = -2600; // X
+         Path1[9,1] = 4052; // Y
+
+         SetEngageRadius(5000);
+         SetDisEngageRadius(6500);
+         SetSpeed(RUN);
+         MoveAndFireON;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = AttackObject(getVehicleID(ALLIED_FORCE, 0, 0),FALSE,TRUE);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

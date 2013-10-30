@@ -1,0 +1,66 @@
+//*********************************************************************************
+// Lookout Point Include file for mission 1_3
+
+if (LOP0) then
+      aPoint[0] = 700;
+      aPoint[1] = 5960;
+      aPoint[2] = 0.0;
+      if (distanceToPosition(PLAYER_FORCE, aPoint) < 500000) then
+            setRevealed(1,100.0,aPoint);
+            LOP0 = FALSE;
+      endif;
+endif;
+if (LOP1) then
+      aPoint[0] = -4089;
+      aPoint[1] = 1152;
+      aPoint[2] = 0.0;
+      if (isCaptured(RedBaseHQ) == 1) then
+            setRevealed(1,225.0,aPoint);
+            LOP1 = FALSE;
+      endif;
+endif;
+if (LOP2) then
+      aPoint[0] = -175;
+      aPoint[1] = 2875;
+      aPoint[2] = 0.0;
+      if (isCaptured(BlueBaseHQ) == 1) then
+            setRevealed(1,275.0,aPoint);
+            LOP2 = FALSE;
+      endif;
+endif;
+if (LOP3) then
+      aPoint[0] = 3003;
+      aPoint[1] = 2427;
+      aPoint[2] = 0.0;
+      if (isCaptured(PurpleBaseHQ) == 1) then
+            setRevealed(1,225.0,aPoint);
+            LOP3 = FALSE;
+      endif;
+endif;
+if (LOP4) then
+      aPoint[0] = -370;
+      aPoint[1] = -1050;
+      aPoint[2] = 0.0;
+      if (distanceToPosition(PLAYER_FORCE, aPoint) < 75) then
+            setRevealed(1,845.0,aPoint);
+            LOP4 = FALSE;
+      endif;
+endif;
+if (LOP5) then
+      aPoint[0] = 4080;
+      aPoint[1] = 1170;
+      aPoint[2] = 0.0;
+      if (distanceToPosition(PLAYER_FORCE, aPoint) < 25) then
+            setRevealed(1,75.0,aPoint);
+            LOP5 = FALSE;
+      endif;
+endif;
+if (LOP6) then
+      aPoint[0] = -4089;
+      aPoint[1] = 1152;
+      aPoint[2] = 0.0;
+      if (distanceToPosition(CLAN_FORCE, aPoint) < 500000) then
+            setRevealed(-1,225.0,aPoint);
+            LOP6 = FALSE;
+      endif;
+endif;

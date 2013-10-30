@@ -1,0 +1,153 @@
+//*********************************************************************************
+// Structure Include file for mission 7_25
+
+if (isAlive(objectlist[3])) then
+     if ((IsCaptured(objectlist[3]) == 1) AND (objectSide(objectlist[3]) <> Object3Alignment) AND (Object3Alignment <> -2)) then
+           SendMessage(27,objectSide(objectlist[3]));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(ISBaseGC)) AND (ISBaseGCAlignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(59,307))) then
+           sendMessage(28,0);
+           handleMessage;
+     else
+           sendMessage(29,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(ISBaseGC) == 1) AND (objectSide(ISBaseGC) <> ISBaseGCAlignment) AND (ISBaseGCAlignment <> -2)) then
+           sendMessage(30,ObjectSide(ISBaseGC));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(ISBaseTC)) AND (ISBaseTCAlignment <> -2)) then
+     SendMessage(31,0);
+     HandleMessage;
+else
+     if ((IsCaptured(ISBaseTC) == 1) AND (objectSide(ISBaseTC) <> ISBaseTCAlignment) AND (ISBaseTCAlignment <> -2)) then
+           SendMessage(32,ObjectSide(ISBaseTC));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(ISMidTC1)) AND (ISMidTC1Alignment <> -2)) then
+     SendMessage(33,0);
+     HandleMessage;
+else
+     if ((IsCaptured(ISMidTC1) == 1) AND (objectSide(ISMidTC1) <> ISMidTC1Alignment) AND (ISMidTC1Alignment <> -2)) then
+           SendMessage(34,ObjectSide(ISMidTC1));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(ISMidTC2)) AND (ISMidTC2Alignment <> -2)) then
+     SendMessage(35,0);
+     HandleMessage;
+else
+     if ((IsCaptured(ISMidTC2) == 1) AND (objectSide(ISMidTC2) <> ISMidTC2Alignment) AND (ISMidTC2Alignment <> -2)) then
+           SendMessage(36,ObjectSide(ISMidTC2));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(ISMidGC)) AND (ISMidGCAlignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(49,50))) then
+           sendMessage(37,0);
+           handleMessage;
+     else
+           sendMessage(38,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(ISMidGC) == 1) AND (objectSide(ISMidGC) <> ISMidGCAlignment) AND (ISMidGCAlignment <> -2)) then
+           sendMessage(39,ObjectSide(ISMidGC));
+           handleMessage;
+     endif;
+endif;
+
+if (isdead(ISRB)) then
+
+else
+     if ((IsCaptured(ISRB) == 1) AND (objectSide(ISRB) <> ISRBAlignment) AND (ISRBAlignment <> -2)) then
+           sendMessage(40,ObjectSide(ISRB));
+           handleMessage;
+     endif;
+endif;
+if (isAlive(objectlist[7])) then
+     if ((IsCaptured(objectlist[7]) == 1) AND (objectSide(objectlist[7]) <> Object7Alignment) AND (Object7Alignment <> -2)) then
+           SendMessage(41,objectSide(objectlist[7]));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(ClanBaseGC)) AND (ClanBaseGCAlignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(32,48))) then
+           sendMessage(42,0);
+           handleMessage;
+     else
+           sendMessage(43,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(ClanBaseGC) == 1) AND (objectSide(ClanBaseGC) <> ClanBaseGCAlignment) AND (ClanBaseGCAlignment <> -2)) then
+           sendMessage(44,ObjectSide(ClanBaseGC));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(ClanBaseTC)) AND (ClanBaseTCAlignment <> -2)) then
+     SendMessage(45,0);
+     HandleMessage;
+else
+     if ((IsCaptured(ClanBaseTC) == 1) AND (objectSide(ClanBaseTC) <> ClanBaseTCAlignment) AND (ClanBaseTCAlignment <> -2)) then
+           SendMessage(46,ObjectSide(ClanBaseTC));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(ClanMidTC1)) AND (ClanMidTC1Alignment <> -2)) then
+     SendMessage(47,0);
+     HandleMessage;
+else
+     if ((IsCaptured(ClanMidTC1) == 1) AND (objectSide(ClanMidTC1) <> ClanMidTC1Alignment) AND (ClanMidTC1Alignment <> -2)) then
+           SendMessage(48,ObjectSide(ClanMidTC1));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(ClanMidTC2)) AND (ClanMidTC2Alignment <> -2)) then
+     SendMessage(49,0);
+     HandleMessage;
+else
+     if ((IsCaptured(ClanMidTC2) == 1) AND (objectSide(ClanMidTC2) <> ClanMidTC2Alignment) AND (ClanMidTC2Alignment <> -2)) then
+           SendMessage(50,ObjectSide(ClanMidTC2));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(ClanMidGC)) AND (ClanMidGCAlignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(40,50))) then
+           sendMessage(51,0);
+           handleMessage;
+     else
+           sendMessage(52,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(ClanMidGC) == 1) AND (objectSide(ClanMidGC) <> ClanMidGCAlignment) AND (ClanMidGCAlignment <> -2)) then
+           sendMessage(53,ObjectSide(ClanMidGC));
+           handleMessage;
+     endif;
+endif;
+
+if (isdead(ClanRB)) then
+
+else
+     if ((IsCaptured(ClanRB) == 1) AND (objectSide(ClanRB) <> ClanRBAlignment) AND (ClanRBAlignment <> -2)) then
+           sendMessage(54,ObjectSide(ClanRB));
+           handleMessage;
+     endif;
+endif;

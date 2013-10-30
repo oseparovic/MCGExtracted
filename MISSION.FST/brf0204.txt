@@ -1,0 +1,18 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:SKYHOOK/02PRDN04%n
+%fc5%c----------%n
+%fc6%c***DESTROY ENEMY ASSETS***%n
+%fc21-Destroy Smoke Jaguar Hyperpulse%n
+%t9Generators%n
+MISSION TIME LIMIT- 15:00%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 2 Small  0 Large%n
+%t12SENSOR PROBE: 1%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4We have intercepted enemy orders for an interstellar communique to be sent requesting additional Smoke Jaguar forces to help defend the planet. Our intelligence analysts consider this to be a clear sign of our impending success as the Port Arthur commander must know his situation to be desperate or he would never even consider dishonoring himself and his forces by requesting aid. Regardless, we must stop the hyperpulse communication to insure that a Galaxy or two of seasoned Jaguars don't descend on us at exactly the wrong moment.%n%n
+The hyperpulse generators (HPGs) are within the heavily defended, walled base at the edge of Yokohama. You will reach the city approximately fifteen minutes before intelligence reports the transmission system powers up, so there is not have much time. Destroy the HPGs before they transmit.%n%n
+%fm%fc1%c**TACTICAL WARNING**%n
+%fs%fc2*Bondsman HUNCHBACK IICs mounting Heavy%n
+%t9Ultra Autocannons reported in area.%n%n
+%fc6<<<<END DISPATCH

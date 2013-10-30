@@ -1,0 +1,116 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:5/14/98   BY:david abzug
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0303trucks3 : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+
+    // PATHS
+    static path                        Path3;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+
+         // Paths
+
+         Path3[0,0] = 1842; // X
+         Path3[0,1] = 1744; // Y
+
+         Path3[1,0] = 2805; // X
+         Path3[1,1] = 584; // Y
+
+         Path3[2,0] = 3053; // X
+         Path3[2,1] = -448; // Y
+
+         Path3[3,0] = 2869; // X
+         Path3[3,1] = -958; // Y
+
+         Path3[4,0] = 1095; // X
+         Path3[4,1] = -2764; // Y
+
+         Path3[5,0] = 546; // X
+         Path3[5,1] = -3717; // Y
+
+         Path3[6,0] = 674; // X
+         Path3[6,1] = -4541; // Y
+
+         Path3[7,0] = 788; // X
+         Path3[7,1] = -5644; // Y
+
+         Path3[8,0] = 297; // X
+         Path3[8,1] = -5725; // Y
+
+         Path3[9,0] = -93; // X
+         Path3[9,1] = -6088; // Y
+
+         Path3[10,0] = -691; // X
+         Path3[10,1] = -6636; // Y
+
+         IdentifySensorContactsOFF;
+         MoveToEngageOFF;
+         StopFighting;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = MovePath(Path3,11);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order1Status == SUCCESS) then
+                   // Order  2 
+                   if (Order2Status == INCOMPLETE) then
+                        Order2Status = Withdraw;
+                        if (Order2Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

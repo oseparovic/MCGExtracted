@@ -1,0 +1,10 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cCOMMAND DESIGNATION:GAMBIT/7PRDN23%n
+%fc5%c----------%n
+%fc6%c*** CAPTURE BASE DEATHMATCH ***%n
+%fc21-Destroy All Enemy Forces%n%n
+%fc5%c----------%n
+%fc4The rules are simple here.  Kill them all.%n%n
+%fc6<<<<END DISPATCH
+
+

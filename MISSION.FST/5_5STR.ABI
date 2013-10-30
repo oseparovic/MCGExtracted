@@ -1,0 +1,59 @@
+//*********************************************************************************
+// Structure Include file for mission 5_5
+
+
+if ((isdead(FieldBaseGateControl)) AND (FieldBaseGateControlAlignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(37,200))) then
+           LockGateOpen(getterrainobjectpartid(37,200));
+           FieldBaseGateControlAlignment = -2;
+     else
+           LockGateClosed(getterrainobjectpartid(37,200));
+           objectChangeSides(getterrainobjectpartid(37,200),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(37,200),2);
+           FieldBaseGateControlAlignment = -2;
+     endif;
+else
+     if ((IsCaptured(FieldBaseGateControl) == 1) AND (objectSide(FieldBaseGateControl) <> FieldBaseGateControlAlignment) AND (FieldBaseGateControlAlignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(37,200),INNER_SPHERE);
+           ReleaseGateLock(getterrainobjectpartid(37,200));
+           setPotentialContact(getterrainobjectpartid(37,200),2);
+           FieldBaseGateControlAlignment = INNER_SPHERE;
+     endif;
+endif;
+
+if ((isdead(TurretControl)) AND (TurretControlAlignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(36,155),FALSE);
+     setObjectActive(getterrainobjectpartid(36,157),FALSE);
+     setObjectActive(getterrainobjectpartid(36,174),FALSE);
+     setObjectActive(getterrainobjectpartid(36,178),FALSE);
+     setObjectActive(getterrainobjectpartid(36,213),FALSE);
+     setObjectActive(getterrainobjectpartid(36,234),FALSE);
+     setObjectActive(getterrainobjectpartid(36,255),FALSE);
+     setObjectActive(getterrainobjectpartid(36,257),FALSE);
+     setObjectActive(getterrainobjectpartid(36,258),FALSE);
+     TurretControlAlignment = -2;
+else
+     if ((IsCaptured(TurretControl) == 1) AND (objectSide(TurretControl) <> TurretControlAlignment) AND (TurretControlAlignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(36,155),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(36,155),2);
+           objectChangeSides(getterrainobjectpartid(36,157),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(36,157),2);
+           objectChangeSides(getterrainobjectpartid(36,174),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(36,174),2);
+           objectChangeSides(getterrainobjectpartid(36,178),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(36,178),2);
+           objectChangeSides(getterrainobjectpartid(36,213),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(36,213),2);
+           objectChangeSides(getterrainobjectpartid(36,234),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(36,234),2);
+           objectChangeSides(getterrainobjectpartid(36,255),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(36,255),2);
+           objectChangeSides(getterrainobjectpartid(36,257),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(36,257),2);
+           objectChangeSides(getterrainobjectpartid(36,258),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(36,258),2);
+           objectChangeSides(TurretControl,INNER_SPHERE);
+           TurretControlAlignment = INNER_SPHERE;
+           setPotentialContact(TurretControl,2);
+     endif;
+endif;

@@ -1,0 +1,1672 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      Operation:  4   Mission:  6   MissionID:  204 
+//
+//      Mission Name: MOG Hunt  Creation Date: 5/11/98   By: Mike Lee
+//
+// -------------------------------------------------------------------------
+
+
+[Output]
+
+[GameScale]                     //For 90 Pixel mechs
+f WorldUnitsPerMeter = 5.01
+f MetersPerWorldUnit = 0.2
+ul Duration = 60
+f CycleLength = 0.125
+
+[Artillery]
+l NumLargeStrikes =  0 
+l NumSmallStrikes =  3 
+l NumSensorStrikes =  0 
+l NumCameraStrikes =  0 
+
+[ElementSystem]
+ul ElementHeapSize = 358399
+ul MaxElements = 2500
+ul MaxGroups = 1000
+
+[CraterSystem]
+l NumCraters = 100
+ul CraterShapeSize = 20479
+st CraterFile = "feet"
+
+[ContactManager]
+l MaxContacts = 1600
+
+[PotentialContactManager]
+l MaxPotentialContacts = 500
+
+[Smoke Manager]
+l NumSmokeTypes = 2
+l MaxSmokesPerType = 100
+ul SmokeSphereHeapSize = 50000
+
+[Smoke0]
+l SmokeType = 11
+
+[Smoke1]
+l SmokeType = 12
+
+[CameraSystem]
+ul CameraHeapSize = 8191
+st CameraFileName = "cameras"
+
+[ObjectSystem]
+ul ObjectHeapSize = 1535999
+ul ObjectTypeHeapSize = 716799
+ul NumObjects = 5000
+st ObjectFileName = "object2"
+
+[SpriteSystem]
+ul SpriteHeapSize = 524287
+st SpriteFileName = "sprites"
+
+ul SpriteManagerHeapSize = 2097151
+ul SpriteDataHeapSize = 65535
+st ShapeFileName = "shapes"
+
+[SpriteManager]
+ul LegHeapSize = 1572863
+ul TorsoHeapSize = 2097151
+ul RightArmHeapSize = 786431
+ul LeftArmHeapSize = 786431
+ul TotalMechs = 19
+ul Use90Pixel = 1
+
+[TerrainSystem]
+st TerrainFileName = "m0406"
+
+[PaletteSystem]
+st PaletteSystem = "palette"
+
+[Music]
+uc scenarioTuneNum = 0
+
+[CollisionSystem]
+ul XGridSize = 36 
+ul YGridSize = 36 
+ul GridRadius = 200
+ul MaxObjects = 300
+ul MaxCollisions = 100
+ul MaxPending = 40
+ul CollisionHeapSize = 16383
+f WarningDist = 250.0                           //This is in world Units!!!
+f AlertTime = 2.5                                       //This is in seconds
+ul NumAlerts = 20
+
+[SensorContactShape]
+st shapeName = "blip"
+
+[ABLibraries]
+st Library0 = "orders"
+st Library1 = "miscfunc"
+
+[Script]
+st ScenarioScript = "MIS0406"
+
+[StatusWindow]
+ul PosX = 200
+ul PosY = 200
+ul Width = 300
+ul Height = 100
+
+[Campaign]
+st BriefingFile = "brf0406.txt"
+st MapFile = "M0406"
+l MaxTonnage = 560
+l NumDropZones = 2
+
+[DropZone0]
+l NumSlots = 4
+
+f PositionX = -3100
+f PositionY = -4800
+
+f OffsetX0 = 0
+f OffsetY0 = 0
+f Rotation0 = 0
+
+f OffsetX1 = 0
+f OffsetY1 = 100
+f Rotation1 = 0
+
+f OffsetX2 = -100
+f OffsetY2 = 0
+f Rotation2 = 0
+
+f OffsetX3 = -100
+f OffsetY3 = 100
+f Rotation3 = 0
+
+[DropZone1]
+l NumSlots = 4
+
+f PositionX = -3300
+f PositionY = -5000
+
+f OffsetX0 = 0
+f OffsetY0 = 0
+f Rotation0 = 0
+
+f OffsetX1 = 0
+f OffsetY1 = 100
+f Rotation1 = 0
+
+f OffsetX2 = -100
+f OffsetY2 = 0
+f Rotation2 = 0
+
+f OffsetX3 = -100
+f OffsetY3 = 100
+f Rotation3 = 0
+
+[Objectives]
+ul NumObjectives = 3                            //There can be a maximum of eight objectives
+
+[Objective0]
+st Name = "Destroy Mobile Orbital Gun Alpha"
+ul Type = 0                                                      //Types are 0=primary, 1=secondary, 2=other, -1=invisible
+f TimeLeft = -1                                        //Time to accomplish objective.  -1.0 means forever
+ul Status = 0                                            //Status are 0=incomplete, 1=success, 2=failed
+l Points = 7500 
+
+[Objective1]
+st Name = "Destroy Mobile Orbital Guns Beta"
+ul Type = 0                                                      //Types are 0=primary, 1=secondary, 2=other, -1=invisible
+f TimeLeft = -1                                        //Time to accomplish objective.  -1.0 means forever
+ul Status = 0                                            //Status are 0=incomplete, 1=success, 2=failed
+l Points = 15000 
+
+[Objective2]
+st Name = "Destroy Mobile Orbital Guns Gamma"
+ul Type = 0                                                      //Types are 0=primary, 1=secondary, 2=other, -1=invisible
+f TimeLeft = -1                                        //Time to accomplish objective.  -1.0 means forever
+ul Status = 0                                            //Status are 0=incomplete, 1=success, 2=failed
+l Points = 22500 
+
+[Warriors]
+ul NumWarriors = 62 
+uc CaptureChance = 0 
+
+[Warrior1]
+st Profile = "PMW00025"
+st Brain = "m0406_1Archer"
+
+[Warrior2]
+st Profile = "PMW00025"
+st Brain = "m0406_1Archer"
+
+[Warrior3]
+st Profile = "PMW00025"
+st Brain = "m0406_1Archer"
+
+[Warrior4]
+st Profile = "PMW00025"
+st Brain = "m0406_1Archer"
+
+[Warrior5]
+st Profile = "PMW00033"
+st Brain = "m0406_1Archer2"
+
+[Warrior6]
+st Profile = "PMW00033"
+st Brain = "m0406_1Archer3"
+
+[Warrior7]
+st Profile = "PMW00033"
+st Brain = "m0406_1Archer"
+
+[Warrior8]
+st Profile = "PMW00025"
+st Brain = "m0406_1Archer"
+
+[Warrior9]
+st Profile = "PMW00025"
+st Brain = "m0406_1Archer"
+
+[Warrior10]
+st Profile = "PMW00025"
+st Brain = "attackbrain"
+
+[Warrior11]
+st Profile = "PMW00025"
+st Brain = "attackbrain"
+
+[Warrior12]
+st Profile = "PMW00025"
+st Brain = "attackbrain"
+
+[Warrior13]
+st Profile = "PMW00025"
+st Brain = "attackbrain"
+
+[Warrior14]
+st Profile = "PMW00025"
+st Brain = "m0406_HQ"
+
+[Warrior15]
+st Profile = "PMW00025"
+st Brain = "attackbrain"
+
+[Warrior16]
+st Profile = "PMW00025"
+st Brain = "attackbrain"
+
+[Warrior17]
+st Profile = "PMW00025"
+st Brain = "attackbrain"
+
+[Warrior18]
+st Profile = "PMW00025"
+st Brain = "attackbrain"
+
+[Warrior19]
+st Profile = "PMW00025"
+st Brain = "m0406_Nuke2"
+
+[Warrior20]
+st Profile = "PMW00025"
+st Brain = "m0406_Nuke3"
+
+[Warrior21]
+st Profile = "PMW00033"
+st Brain = "m0406_2Jump"
+
+[Warrior22]
+st Profile = "PMW00033"
+st Brain = "m0406_2Archer"
+
+[Warrior23]
+st Profile = "PMW00033"
+st Brain = "m0406_2Archer"
+
+[Warrior24]
+st Profile = "PMW00025"
+st Brain = "m0406_2Archer"
+
+[Warrior25]
+st Profile = "PMW00025"
+st Brain = "m0406_2Archer"
+
+[Warrior26]
+st Profile = "PMW00025"
+st Brain = "m0406_2Archer"
+
+[Warrior27]
+st Profile = "PMW00025"
+st Brain = "m0406_Sentry1"
+
+[Warrior28]
+st Profile = "PMW00025"
+st Brain = "m0406_Sentry1"
+
+[Warrior29]
+st Profile = "PMW00025"
+st Brain = "M0406_Sentry2"
+
+[Warrior30]
+st Profile = "PMW00025"
+st Brain = "M0406_Sentry2"
+
+[Warrior31]
+st Profile = "PMW00025"
+st Brain = "attackbrain"
+
+[Warrior32]
+st Profile = "PMW00025"
+st Brain = "attackbrain"
+
+[Warrior33]
+st Profile = "PMW00025"
+st Brain = "attackbrain"
+
+[Warrior34]
+st Profile = "PMW00025"
+st Brain = "attackbrain"
+
+[Warrior35]
+st Profile = "PMW00033"
+st Brain = "m0406_Guard1"
+
+[Warrior36]
+st Profile = "PMW00033"
+st Brain = "m0406_Guard1"
+
+[Warrior37]
+st Profile = "PMW00033"
+st Brain = "m0406_Guard1"
+
+[Warrior38]
+st Profile = "PMW00033"
+st Brain = "m0406_Guard1"
+
+[Warrior39]
+st Profile = "PMW00033"
+st Brain = "m0406_Guard2"
+
+[Warrior40]
+st Profile = "PMW00033"
+st Brain = "m0406_Guard2"
+
+[Warrior41]
+st Profile = "PMW00025"
+st Brain = "m0406_Sentry3"
+
+[Warrior42]
+st Profile = "PMW00025"
+st Brain = "m0406_Sentry3"
+
+[Warrior43]
+st Profile = "PMW00025"
+st Brain = "m0406_Sentry3"
+
+[Warrior44]
+st Profile = "PMW00025"
+st Brain = "m0406_Sentry3"
+
+[Warrior45]
+st Profile = "PMW00025"
+st Brain = "m0406_Sentry3"
+
+[Warrior46]
+st Profile = "PMW00025"
+st Brain = "attackbrain"
+
+[Warrior47]
+st Profile = "PMW00025"
+st Brain = "attackbrain"
+
+[Warrior48]
+st Profile = "PMW00025"
+st Brain = "attackbrain"
+
+[Warrior49]
+st Profile = "PMW00025"
+st Brain = "attackbrain"
+
+[Warrior50]
+st Profile = "PMW00025"
+st Brain = "attackbrain"
+
+[Warrior51]
+st Profile = "PMW00025"
+st Brain = "attackbrain"
+
+[Warrior52]
+st Profile = "PMW00025"
+st Brain = "attackbrain"
+
+[Warrior53]
+st Profile = "PMW00025"
+st Brain = "attackbrain"
+
+[Warrior54]
+st Profile = "PMW00025"
+st Brain = "attackbrain"
+
+[Warrior55]
+st Profile = "PMW00080"
+st Brain = "pbrain"
+
+[Warrior56]
+st Profile = "PMW00079"
+st Brain = "pbrain"
+
+[Warrior57]
+st Profile = "PMW00074"
+st Brain = "pbrain"
+
+[Warrior58]
+st Profile = "PMW00075"
+st Brain = "pbrain"
+
+[Warrior59]
+st Profile = "PMW00073"
+st Brain = "pbrain"
+
+[Warrior60]
+st Profile = "PMW00077"
+st Brain = "pbrain"
+
+[Warrior61]
+st Profile = "PMW00076"
+st Brain = "pbrain"
+
+[Warrior62]
+st Profile = "PMW00072"
+st Brain = "pbrain"
+
+[Parts]
+ul NumParts = 62 
+b AlliedTeam = False
+
+[Part1]
+ul ObjectNumber         =  473 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV22000"        // VonLuckner
+ul Pilot                = 1 
+f PositionX             = -6550              // Starting position in world.
+f PositionY             = -2725 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -45               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part2]
+ul ObjectNumber         =  473 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV22000"        // VonLuckner
+ul Pilot                = 2 
+f PositionX             = -6450              // Starting position in world.
+f PositionY             = -2725 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -45               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part3]
+ul ObjectNumber         =  473 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV22000"        // VonLuckner
+ul Pilot                = 3 
+f PositionX             = -6550              // Starting position in world.
+f PositionY             = -2825 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -45               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part4]
+ul ObjectNumber         =  473 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV22000"        // VonLuckner
+ul Pilot                = 4 
+f PositionX             = -6450              // Starting position in world.
+f PositionY             = -2825 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -45               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part5]
+ul ObjectNumber         =  54 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 1                 // mech control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PM204300"        // Vulture J
+ul Pilot                = 5 
+f PositionX             = -7030              // Starting position in world.
+f PositionY             = -2400 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -45               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part6]
+ul ObjectNumber         =  54 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 1                 // mech control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PM204300"        // Vulture J
+ul Pilot                = 6 
+f PositionX             = -6710              // Starting position in world.
+f PositionY             = -2200 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              =  45               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part7]
+ul ObjectNumber         =  51 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 1                 // mech control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PM109400"        // AS7-W
+ul Pilot                = 7 
+f PositionX             = -6920              // Starting position in world.
+f PositionY             = -1865 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -45               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part8]
+ul ObjectNumber         =  420 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV21600"        // AeroSpace Spotter
+ul Pilot                = 8 
+f PositionX             = -6800              // Starting position in world.
+f PositionY             = -2590 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -90               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part9]
+ul ObjectNumber         =  420 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV21600"        // AeroSpace Spotter
+ul Pilot                = 9 
+f PositionX             = -6325              // Starting position in world.
+f PositionY             = -2345 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              =  0               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part10]
+ul ObjectNumber         =  406 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV20300"        // Fuel Truck
+ul Pilot                = 10 
+f PositionX             = -6260              // Starting position in world.
+f PositionY             = -1800 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  0 
+l Exists                =  1 
+
+[Part11]
+ul ObjectNumber         =  406 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV20300"        // Fuel Truck
+ul Pilot                = 11 
+f PositionX             = -6260              // Starting position in world.
+f PositionY             = -2000 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -90               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  0 
+l Exists                =  1 
+
+[Part12]
+ul ObjectNumber         =  475 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV22200"        // Ordnance Truck
+ul Pilot                = 12 
+f PositionX             = -6360              // Starting position in world.
+f PositionY             = -1950 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  0 
+l Exists                =  1 
+
+[Part13]
+ul ObjectNumber         =  406 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV20300"        // Fuel Truck
+ul Pilot                = 13 
+f PositionX             = -6400              // Starting position in world.
+f PositionY             = -1900 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  0 
+l Exists                =  1 
+
+[Part14]
+ul ObjectNumber         =  414 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV20200"        // Mobile HQ
+ul Pilot                = 14 
+f PositionX             = -6760              // Starting position in world.
+f PositionY             = -1950 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part15]
+ul ObjectNumber         =  406 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV20300"        // Fuel Truck
+ul Pilot                = 15 
+f PositionX             = -6400              // Starting position in world.
+f PositionY             = -2100 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  0 
+l Exists                =  1 
+
+[Part16]
+ul ObjectNumber         =  475 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV22200"        // Ordnance Truck
+ul Pilot                = 16 
+f PositionX             = -6260              // Starting position in world.
+f PositionY             = -1850 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  0 
+l Exists                =  1 
+
+[Part17]
+ul ObjectNumber         =  406 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV20300"        // Fuel Truck
+ul Pilot                = 17 
+f PositionX             = -6360              // Starting position in world.
+f PositionY             = -1800 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  0 
+l Exists                =  1 
+
+[Part18]
+ul ObjectNumber         =  406 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV20300"        // Fuel Truck
+ul Pilot                = 18 
+f PositionX             = -6420              // Starting position in world.
+f PositionY             = -2000 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              =  0               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  0 
+l Exists                =  1 
+
+[Part19]
+ul ObjectNumber         =  420 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV21600"        // AeroSpace Spotter
+ul Pilot                = 19 
+f PositionX             = -1750              // Starting position in world.
+f PositionY             =  200 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part20]
+ul ObjectNumber         =  420 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV21600"        // AeroSpace Spotter
+ul Pilot                = 20 
+f PositionX             = -1750              // Starting position in world.
+f PositionY             =  600 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part21]
+ul ObjectNumber         =  54 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 1                 // mech control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PM204300"        // Vulture J
+ul Pilot                = 21 
+f PositionX             = -1800              // Starting position in world.
+f PositionY             =  330 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part22]
+ul ObjectNumber         =  1 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 1                 // mech control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PM206400"        // Thor W
+ul Pilot                = 22 
+f PositionX             = -2193              // Starting position in world.
+f PositionY             =  1177 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -45               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part23]
+ul ObjectNumber         =  1 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 1                 // mech control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PM206400"        // Thor W
+ul Pilot                = 23 
+f PositionX             = -1000              // Starting position in world.
+f PositionY             =  635 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              =  0               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part24]
+ul ObjectNumber         =  473 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV22000"        // VonLuckner
+ul Pilot                = 24 
+f PositionX             = -1950              // Starting position in world.
+f PositionY             =  330 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part25]
+ul ObjectNumber         =  473 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV22000"        // VonLuckner
+ul Pilot                = 25 
+f PositionX             = -1950              // Starting position in world.
+f PositionY             =  430 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part26]
+ul ObjectNumber         =  473 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV22000"        // VonLuckner
+ul Pilot                = 26 
+f PositionX             = -1950              // Starting position in world.
+f PositionY             =  530 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part27]
+ul ObjectNumber         =  416 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV21000"        // LRM Carrier
+ul Pilot                = 27 
+f PositionX             = -1110              // Starting position in world.
+f PositionY             =  1010 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              =  0               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part28]
+ul ObjectNumber         =  416 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV21000"        // LRM Carrier
+ul Pilot                = 28 
+f PositionX             = -1110              // Starting position in world.
+f PositionY             =  1110 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              =  0               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part29]
+ul ObjectNumber         =  416 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV21000"        // LRM Carrier
+ul Pilot                = 29 
+f PositionX             = -175              // Starting position in world.
+f PositionY             =  320 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -90               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part30]
+ul ObjectNumber         =  416 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV21000"        // LRM Carrier
+ul Pilot                = 30 
+f PositionX             =  80              // Starting position in world.
+f PositionY             =  320 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -90               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part31]
+ul ObjectNumber         =  405 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV20800"        // Bulldog
+ul Pilot                = 31 
+f PositionX             = -4570              // Starting position in world.
+f PositionY             =  510 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -90               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part32]
+ul ObjectNumber         =  405 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV20800"        // Bulldog
+ul Pilot                = 32 
+f PositionX             = -4670              // Starting position in world.
+f PositionY             =  510 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -90               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part33]
+ul ObjectNumber         =  473 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV22000"        // VonLuckner
+ul Pilot                = 33 
+f PositionX             = -4500              // Starting position in world.
+f PositionY             =  510 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -90               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part34]
+ul ObjectNumber         =  473 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV22000"        // VonLuckner
+ul Pilot                = 34 
+f PositionX             = -4600              // Starting position in world.
+f PositionY             =  510 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -90               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part35]
+ul ObjectNumber         =  51 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 1                 // mech control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PM109100"        // AS7-A
+ul Pilot                = 35 
+f PositionX             =  5285              // Starting position in world.
+f PositionY             =  1660 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              =  0               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part36]
+ul ObjectNumber         =  51 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 1                 // mech control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PM109100"        // AS7-A
+ul Pilot                = 36 
+f PositionX             =  5200              // Starting position in world.
+f PositionY             = -50 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              =  0               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part37]
+ul ObjectNumber         =  51 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 1                 // mech control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PM109100"        // AS7-A
+ul Pilot                = 37 
+f PositionX             =  6990              // Starting position in world.
+f PositionY             =  2870 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              =  0               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part38]
+ul ObjectNumber         =  51 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 1                 // mech control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PM109100"        // AS7-A
+ul Pilot                = 38 
+f PositionX             =  5955              // Starting position in world.
+f PositionY             = -4080 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              =  0               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part39]
+ul ObjectNumber         =  1 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 1                 // mech control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PM206100"        // Thor A
+ul Pilot                = 39 
+f PositionX             =  8638              // Starting position in world.
+f PositionY             = -530 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -90               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part40]
+ul ObjectNumber         =  1 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 1                 // mech control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PM206100"        // Thor A
+ul Pilot                = 40 
+f PositionX             =  8838              // Starting position in world.
+f PositionY             = -530 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part41]
+ul ObjectNumber         =  473 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV22000"        // VonLuckner
+ul Pilot                = 41 
+f PositionX             =  4765              // Starting position in world.
+f PositionY             = -2350 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part42]
+ul ObjectNumber         =  473 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV22000"        // VonLuckner
+ul Pilot                = 42 
+f PositionX             =  4765              // Starting position in world.
+f PositionY             = -2225 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part43]
+ul ObjectNumber         =  473 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV22000"        // VonLuckner
+ul Pilot                = 43 
+f PositionX             =  4765              // Starting position in world.
+f PositionY             = -2100 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part44]
+ul ObjectNumber         =  416 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV21000"        // LRM Carrier
+ul Pilot                = 44 
+f PositionX             =  4910              // Starting position in world.
+f PositionY             = -2535 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part45]
+ul ObjectNumber         =  416 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV21000"        // LRM Carrier
+ul Pilot                = 45 
+f PositionX             =  4880              // Starting position in world.
+f PositionY             = -1875 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part46]
+ul ObjectNumber         =  405 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV20800"        // Bulldog
+ul Pilot                = 46 
+f PositionX             =  3635              // Starting position in world.
+f PositionY             =  1380 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part47]
+ul ObjectNumber         =  473 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV22000"        // VonLuckner
+ul Pilot                = 47 
+f PositionX             =  3700              // Starting position in world.
+f PositionY             =  1380 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part48]
+ul ObjectNumber         =  473 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV22000"        // VonLuckner
+ul Pilot                = 48 
+f PositionX             =  3700              // Starting position in world.
+f PositionY             =  1300 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part49]
+ul ObjectNumber         =  405 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV20800"        // Bulldog
+ul Pilot                = 49 
+f PositionX             =  3630              // Starting position in world.
+f PositionY             =  1300 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part50]
+ul ObjectNumber         =  473 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV22000"        // VonLuckner
+ul Pilot                = 50 
+f PositionX             =  820              // Starting position in world.
+f PositionY             = -1855 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part51]
+ul ObjectNumber         =  473 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV22000"        // VonLuckner
+ul Pilot                = 51 
+f PositionX             =  820              // Starting position in world.
+f PositionY             = -1745 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              = -135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part52]
+ul ObjectNumber         =  416 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV21000"        // LRM Carrier
+ul Pilot                = 52 
+f PositionX             = -274              // Starting position in world.
+f PositionY             = -2703 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              =  90               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part53]
+ul ObjectNumber         =  416 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV21000"        // LRM Carrier
+ul Pilot                = 53 
+f PositionX             = -224              // Starting position in world.
+f PositionY             = -2703 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              =  90               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part54]
+ul ObjectNumber         =  416 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = False
+ul ControlDataType      = 2                 // vehicle control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 1    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PV21000"        // LRM Carrier
+ul Pilot                = 54 
+f PositionX             = -174              // Starting position in world.
+f PositionY             = -2703 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              =  90               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part55]
+ul ObjectNumber         =  52 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = True
+ul ControlDataType      = 1                 // mech control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 0    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 0    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PM207400"        // Mad Cat W
+ul Pilot                = 55 
+f PositionX             = -3100              // Starting position in world.
+f PositionY             = -4800 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              =  135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part56]
+ul ObjectNumber         =  52 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = True
+ul ControlDataType      = 1                 // mech control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 0    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 0    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PM207100"        // Mad Cat A
+ul Pilot                = 56 
+f PositionX             = -3100              // Starting position in world.
+f PositionY             = -4700 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              =  135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part57]
+ul ObjectNumber         =  52 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = True
+ul ControlDataType      = 1                 // mech control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 0    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 0    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PM207300"        // Mad Cat J
+ul Pilot                = 57 
+f PositionX             = -3200              // Starting position in world.
+f PositionY             = -4800 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              =  135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part58]
+ul ObjectNumber         =  52 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = True
+ul ControlDataType      = 1                 // mech control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 0    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 0    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PM207300"        // Mad Cat J
+ul Pilot                = 58 
+f PositionX             = -3200              // Starting position in world.
+f PositionY             = -4700 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              =  135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part59]
+ul ObjectNumber         =  54 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = True
+ul ControlDataType      = 1                 // mech control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 0    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 0    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PM204100"        // Vulture A
+ul Pilot                = 59 
+f PositionX             = -3300              // Starting position in world.
+f PositionY             = -4900 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              =  90               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part60]
+ul ObjectNumber         =  54 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = True
+ul ControlDataType      = 1                 // mech control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 0    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 0    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PM204100"        // Vulture A
+ul Pilot                = 60 
+f PositionX             = -3300              // Starting position in world.
+f PositionY             = -5000 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              =  135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part61]
+ul ObjectNumber         =  54 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = True
+ul ControlDataType      = 1                 // mech control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 0    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 0    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PM204100"        // Vulture A
+ul Pilot                = 61 
+f PositionX             = -3400              // Starting position in world.
+f PositionY             = -4900 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              =  135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Part62]
+ul ObjectNumber         =  54 
+ul ControlType          = 2                 // player = 1, ai = 2, net = 3
+b PlayerPart            = True
+ul ControlDataType      = 1                 // mech control data = 1
+c MyIcon                = 0                 //
+c TeamID                = 0    // 0 = IS, 1 = CLAN, 2 = ALLIED
+c CommanderID           = 0    // 0 = IS, 1 = CLAN, 2 = ALLIED
+st ObjectProfile        = "PM204100"        // Vulture A
+ul Pilot                = 62 
+f PositionX             = -3400              // Starting position in world.
+f PositionY             = -5000 
+f PositionZ             = -1.0              // Elevation automatically set by terrain.
+f Rotation              =  135               // Rotation of Object in Degrees
+ul Gesture              = 2                 // Initial Sprite Gesture -- Determines velocity in Mechs -- non-mechs ignore
+f Velocity              = 0.0               // Initial Velocity -- Start velocity for non-mech objects -- mechs ignore
+l Active                =  1 
+l Exists                =  1 
+
+[Teams]
+b AlliedTeam = False
+
+[Commander0Group:0]
+l[12] Mates             = 55, 56, 57, 58, 0, 0, 0, 0, 0, 0, 0, 0
+
+[Commander0Group:1]
+l[12] Mates             = 59, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0
+
+[Commander1Group:0]
+l[12] Mates             = 1, 2, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0
+
+[Commander1Group:1]
+l[12] Mates             = 5, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0
+
+[Commander1Group:2]
+l[12] Mates             = 8, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+
+[Commander1Group:3]
+l[12] Mates             = 10, 11, 12, 13, 14, 15, 16, 17, 18, 0, 0, 0
+
+[Commander1Group:4]
+l[12] Mates             = 19, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+
+[Commander1Group:5]
+l[12] Mates             = 21, 22, 23, 24, 25, 26, 0, 0, 0, 0, 0, 0
+
+[Commander1Group:6]
+l[12] Mates             = 27, 28, 29, 30, 0, 0, 0, 0, 0, 0, 0, 0
+
+[Commander1Group:7]
+l[12] Mates             = 31, 32, 33, 34, 0, 0, 0, 0, 0, 0, 0, 0
+
+[Commander1Group:8]
+l[12] Mates             = 35, 36, 37, 38, 0, 0, 0, 0, 0, 0, 0, 0
+
+[Commander1Group:9]
+l[12] Mates             = 39, 40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+
+[Commander1Group:10]
+l[12] Mates             = 41, 42, 43, 44, 45, 0, 0, 0, 0, 0, 0, 0
+
+[Commander1Group:11]
+l[12] Mates             = 46, 47, 48, 49, 0, 0, 0, 0, 0, 0, 0, 0
+
+[Commander1Group:12]
+l[12] Mates             = 50, 51, 52, 53, 54, 0, 0, 0, 0, 0, 0, 0
+
+FITend

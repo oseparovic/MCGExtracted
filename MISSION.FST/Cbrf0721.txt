@@ -1,0 +1,11 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cMISSION COMMAND:GAMBIT/7PRDN21%n
+%fc5%c----------%n
+%fc6%c*** CACHE & KILL ***%n
+%fc21-Destroy Container Stacks%n%n
+%fc5%c----------%n
+%fc4The enemy has a number of artillery supply caches scattered in the western hills of this area. Seek out and destroy five of the Container Stacks in these caches before the mission timer expires.%n%n
+%fc4Intelligence reports that there is an enemy base in the south. Capturing the Headquarters Building there should reveal the locations of the caches.%n%n
+%fc6<<<<END DISPATCH
+
+

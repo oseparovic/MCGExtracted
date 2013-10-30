@@ -1,0 +1,127 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:1/16/98   BY:david abzug
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0105m2 : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+    static integer                     Order6Status;
+
+    // PATHS
+    static path                        Path1;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+         Order6Status = INCOMPLETE;
+
+         // Paths
+
+         Path1[0,0] = 1897; // X
+         Path1[0,1] = -174; // Y
+
+         Path1[1,0] = 1330; // X
+         Path1[1,1] = 2016; // Y
+
+         SetEngageRadius(180);
+         StopFighting;
+         SetTactic(TACTIC_REAR);
+         MoveAndFireON;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (beenHit) then
+         // Order  4 
+         if (Order4Status == INCOMPLETE) then
+              Flag4 = TRUE;
+              Order4Status = SUCCESS;
+         endif;
+    endif;
+    if (flag4) then
+         // Order  5 
+         if (Order5Status == INCOMPLETE) then
+              SetSpeed(RUN);
+              Order5Status = SUCCESS;
+         endif;
+    endif;
+    if (flag4) then
+         // Order  6 
+         if (Order6Status == INCOMPLETE) then
+              StartFighting;
+              Order6Status = SUCCESS;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = MovePath(Path1,2);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order1Status <> INCOMPLETE) then
+                   // Order  2 
+                   if (Order2Status == INCOMPLETE) then
+                        StartFighting;
+                        Order2Status = SUCCESS;
+                   endif;
+              endif;
+              if (Order2Status <> INCOMPLETE) then
+                   // Order  3 
+                   if (Order3Status == INCOMPLETE) then
+                        Order3Status = ClearArea;
+                        if (Order3Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

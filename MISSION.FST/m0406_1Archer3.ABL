@@ -1,0 +1,128 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:5/11/98   BY:Mike Lee
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0406_1Archer3 : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+    static integer                     Order6Status;
+    static integer                     Order7Status;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+         Order6Status = INCOMPLETE;
+         Order7Status = INCOMPLETE;
+
+         SetEngageRadius(150);
+         SetDisEngageRadius(500);
+         SetSpeed(RUN);
+         SetCurrentTargetMod(1.0);
+         SetConcentrateFireMod(1.0);
+         SetTactic(TACTIC_STOP_AND_ATTACK);
+         SelectWeakest;
+         MoveAndFireON;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (beenHit) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              Flag1 = TRUE;
+              Order3Status = SUCCESS;
+         endif;
+    endif;
+    if (numDead(CLAN_STAR0) >= 1) then
+         // Order  4 
+         if (Order4Status == INCOMPLETE) then
+              Flag1 = TRUE;
+              Order4Status = SUCCESS;
+         endif;
+    endif;
+    if (numDead(CLAN_STAR2) >= 1) then
+         // Order  5 
+         if (Order5Status == INCOMPLETE) then
+              Flag1 = TRUE;
+              Order5Status = SUCCESS;
+         endif;
+    endif;
+    if (getTarget(CUR_OBJECT_ID) > 0) then
+         // Order  6 
+         if (Order6Status == INCOMPLETE) then
+              Flag1 = TRUE;
+              Order6Status = SUCCESS;
+         endif;
+    endif;
+    if (flag1) then
+         // Order  7 
+         if (Order7Status == INCOMPLETE) then
+              SetEngageRadius(500);
+              Order7Status = SUCCESS;
+         endif;
+    endif;
+    if (inHotSpot(PLAYER_FORCE,-6495,-2910,100)) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              Order2Status = MoveTo(-6015,-2970);
+              if (Order2Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = Attack;
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

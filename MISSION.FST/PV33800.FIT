@@ -1,0 +1,85 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      Ground Vehicle Profile:  33800   'Ammo Truck'  Type:  908 
+//
+//      Creation Date: 12/16/98      Creator: Mike Lee
+//
+//
+// -------------------------------------------------------------------------
+
+[Header]
+st FileType = "GroundVehicleProfile"
+
+
+[General]
+ul ID =                                                     33800 
+st Crew =                                                  "PCREWA"
+ul Chassis =                                                908 
+st Name =                                                  "Ammo Truck"
+ul VehicleTypeID =                                          908 
+l NameIndex =                                               34 
+l DescIndex =                                               555 
+f CurTonnage =                                              10 
+st icon =                                                  "na.gif"
+c Status =                                                  0 
+l ResourcePoints =                                          500 
+l BattleRating =                                            200 
+l Morale =                                                  0 
+l MoraleModifier =                                          0 
+
+[Engine]
+f Tonnage =                                                 8 
+ul Rating =                                                 200 
+uc MaxMoveSpeed =                                           18 
+
+[Armor]
+uc Type =                                                   0 
+f Tonnage =                                                 4.5 
+
+[Front]
+uc CurInternalStructure =                                   1 
+uc MaxArmorPoints =                                         12 
+uc CurArmorPoints =                                         12 
+
+[Left]
+uc CurInternalStructure =                                   1 
+uc MaxArmorPoints =                                         12 
+uc CurArmorPoints =                                         12 
+
+[Right]
+uc CurInternalStructure =                                   1 
+uc MaxArmorPoints =                                         12 
+uc CurArmorPoints =                                         12 
+
+[Rear]
+uc CurInternalStructure =                                   1 
+uc MaxArmorPoints =                                         10 
+uc CurArmorPoints =                                         10 
+
+[Turret]
+uc CurInternalStructure =                                   1 
+uc MaxArmorPoints =                                         12 
+uc CurArmorPoints =                                         12 
+
+[InventoryInfo]
+uc NumOther =                                               3 
+uc NumWeapons =                                             0 
+uc NumAmmo =                                                0 
+
+// Inventory
+
+// Other
+
+
+[Item:0]
+uc MasterID =                                               1 
+
+[Item:1]
+uc MasterID =                                               6 
+
+[Item:2]
+uc MasterID =                                               35 
+
+FITEnd

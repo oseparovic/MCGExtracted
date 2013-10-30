@@ -1,0 +1,48 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      MechWarrior:  67   Name: Hitman  Callsign: HITMAN
+//
+//      Creation Date: 12/15/98   By: jon marcus
+//
+// -------------------------------------------------------------------------
+
+
+
+[General]
+st Brain = "pbrain"
+st Name =                                                  "Hitman"
+l Rank =                                                    1 
+st Callsign =                                              "HITMAN"
+ul ID =                                                     67 
+l NameIndex =                                               16 
+l DescIndex =                                               317 
+ul HeadIcon =                                               0 
+l paintScheme =                                             68 
+st pilotAudio =                                            "pilotQ"
+st pilotVideo =                                            "PILOT16"
+st Picture =                                               "pilot16.TGA"
+
+[PersonalityTraits]
+c Professionalism =                                         50 
+c Decorum =                                                 50 
+c Aggressiveness =                                          50 
+c Courage =                                                 50 
+
+[Skills]
+c Piloting =                                                40 
+c Jumping =                                                 45 
+c Sensors =                                                 50 
+c Gunnery =                                                 65 
+
+[Affinities]
+c MechClass =                                               0 
+c MechType =                                                0 
+c WeaponClass =                                             0 
+uc[2] WeaponTypes =                                        0,0
+
+[Status]
+c Wounds =                                                  0 
+
+FITEnd

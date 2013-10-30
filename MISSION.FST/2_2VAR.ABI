@@ -1,0 +1,37 @@
+//*********************************************************************************
+// Variable Include file for mission 2_2
+
+     eternal integer                   HQ;
+     static integer                    HQAlignment;
+     eternal integer                   PA1;
+     static real                       PA1TripTime;
+     eternal integer                   PA2;
+     static real                       PA2TripTime;
+     eternal integer                   PA3;
+     static real                       PA3TripTime;
+     eternal integer                   PA4;
+     static real                       PA4TripTime;
+     eternal integer                   TC1;
+     static integer                    TC1Alignment;
+     eternal integer                   OUTPOST;
+     eternal integer                   ELEM_CACHE;
+     static integer                    ELEM_CACHEAlignment;
+     eternal integer                   CARGO_STACK;
+     static integer                    CARGO_STACKAlignment;
+     eternal integer                   MINE_WAREHOUSE;
+     static integer                    MINE_WAREHOUSEAlignment;
+     eternal integer                   POWER1;
+     eternal integer                   POWER2;
+     eternal integer                   WH_POWER1;
+     static integer                    WH_POWER1Alignment;
+     eternal integer                   GEN2WH;
+     static integer                    GEN2WHAlignment;
+     eternal integer                   GEN2CARGO;
+     static integer                    GEN2CARGOAlignment;
+     eternal integer                   GEN2TH;
+     eternal integer                   CARGO_STACK2;
+     static integer                    CARGO_STACK2Alignment;
+     eternal integer                   repair1;
+     eternal integer                   repair2;
+     static boolean                    LOP0;
+     static boolean                    LOP1;

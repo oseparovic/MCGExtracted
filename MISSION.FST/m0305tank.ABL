@@ -1,0 +1,143 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:4/27/98   BY:Rob Nicholls
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0305tank : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+    static integer                     Order6Status;
+
+    // PATHS
+    static path                        Path1;
+    static path                        path2;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+         Order6Status = INCOMPLETE;
+
+         // Paths
+
+         Path1[0,0] = -4317; // X
+         Path1[0,1] = 4973; // Y
+
+         Path1[1,0] = -3538; // X
+         Path1[1,1] = 4472; // Y
+
+         path2[0,0] = -3730; // X
+         path2[0,1] = 722; // Y
+
+         path2[1,0] = -1221; // X
+         path2[1,1] = -1860; // Y
+
+         SetSpeed(RUN);
+         MoveAndFireON;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = MovePath(Path1,2);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order1Status <> INCOMPLETE) then
+                   // Order  2 
+                   if (Order2Status == INCOMPLETE) then
+                        Order2Status = AttackObject(st7,TRUE,TRUE);
+                        if (Order2Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   else
+                        if (Order2Status <> INCOMPLETE) then
+                             // Order  3 
+                             if (Order3Status == INCOMPLETE) then
+                                  Order3Status = MovePath(path2,2);
+                                  if (Order3Status == INCOMPLETE) then
+                                       return(1);
+                                  endif;
+                             else
+                                  if (Order3Status <> INCOMPLETE) then
+                                       // Order  4 
+                                       if (Order4Status == INCOMPLETE) then
+                                            Order4Status = AttackObject(GateNW,FALSE,FALSE);
+                                            if (Order4Status == INCOMPLETE) then
+                                                 return(1);
+                                            endif;
+                                       else
+                                            if (Order4Status <> INCOMPLETE) then
+                                                 // Order  5 
+                                                 if (Order5Status == INCOMPLETE) then
+                                                      Order5Status = MoveTo(-209,-2097);
+                                                      if (Order5Status == INCOMPLETE) then
+                                                           return(1);
+                                                      endif;
+                                                 else
+                                                      if (Order5Status <> INCOMPLETE) then
+                                                           // Order  6 
+                                                           if (Order6Status == INCOMPLETE) then
+                                                                Order6Status = ClearArea;
+                                                                if (Order6Status == INCOMPLETE) then
+                                                                     return(1);
+                                                                endif;
+                                                           endif;
+                                                      endif;
+                                                 endif;
+                                            endif;
+                                       endif;
+                                  endif;
+                             endif;
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

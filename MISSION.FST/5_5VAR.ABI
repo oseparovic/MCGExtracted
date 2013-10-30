@@ -1,0 +1,21 @@
+//*********************************************************************************
+// Variable Include file for mission 5_5
+
+     eternal integer                   ObTower1;
+     eternal integer                   ObTower2;
+     eternal integer                   ObTower3;
+     eternal integer                   ClanSensor1;
+     eternal integer                   ClanSensor2;
+     eternal integer                   ClanSensor3;
+     eternal integer                   FieldBaseGate;
+     eternal integer                   FieldBaseGateControl;
+     static integer                    FieldBaseGateControlAlignment;
+     eternal integer                   TurretControl;
+     static integer                    TurretControlAlignment;
+     static boolean                    LOP0;
+     static boolean                    LOP1;
+     static boolean                    LOP2;
+     static boolean                    LOP3;
+     static boolean                    LOP4;
+     static boolean                    LOP5;
+     static boolean                    LOP6;

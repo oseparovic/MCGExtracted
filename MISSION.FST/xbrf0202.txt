@@ -1,0 +1,22 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:GORGON/02PRDN02%n
+%fc5%c----------%n
+%fc6%c***CAPTURE ORDNANCE CONVOY***%n
+%fc21-Capture 4 of 7 Salvage Rigs%n
+%fc22-Capture 6 of 7 Salvage Rigs%n
+%fc8   (secondary)%n
+%fc23-Capture 7 of 7 Salvage Rigs%n
+%fc8   (secondary)%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 5 Small  1 Large%n
+%t12SENSOR PROBE: 0%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4Star Captain %fc2Marcus Osis%fc4 of the Smoke Jaguars has executed a surprise raid on our main supply depot. He and his forces are fleeing north through Jade sector with a large number of advanced weapon components.%n%n
+Our scouts have been through most of that area so a majority of your tactical map will be revealed. However, none of the buildings in Jade sector have been captured as of yet.%n%n
+Your strikeforce will be dropped into Jade sector only minutes ahead of the enemy convoy. Capture as many of the%n%fc2Salvage Rigs%fc4 as possible before they escape through the forest road in the northwest.%n%n
+%fc5%c----------%n
+%fc6%c**TACTICAL WARNING**%n%n
+%fc6*%fc2 Star Captain %fc6Marcus Osis%fc2 is piloting his customized Masakari, so be prepared for it to use the advanced weaponry the Salvage Rigs are transporting.%n%n
+%fc6*%fc2 Recon confirms that %fc6Nova Cat%fc2%nOmniMechs are among the forces guarding the convoy.  Records indicate that these heavy class OmniMechs are specialized short-range fighters.%n%n
+%fc6<<<<END DISPATCH

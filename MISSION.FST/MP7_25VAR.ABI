@@ -1,0 +1,29 @@
+//*********************************************************************************
+// Variable Include file for mission 7_25
+
+     static integer                    Object3Alignment;
+     eternal integer                   ISBaseGC;
+     static integer                    ISBaseGCAlignment;
+     eternal integer                   ISBaseTC;
+     static integer                    ISBaseTCAlignment;
+     eternal integer                   ISMidTC1;
+     static integer                    ISMidTC1Alignment;
+     eternal integer                   ISMidTC2;
+     static integer                    ISMidTC2Alignment;
+     eternal integer                   ISMidGC;
+     static integer                    ISMidGCAlignment;
+     eternal integer                   ISRB;
+     static integer                    ISRBAlignment;
+     static integer                    Object7Alignment;
+     eternal integer                   ClanBaseGC;
+     static integer                    ClanBaseGCAlignment;
+     eternal integer                   ClanBaseTC;
+     static integer                    ClanBaseTCAlignment;
+     eternal integer                   ClanMidTC1;
+     static integer                    ClanMidTC1Alignment;
+     eternal integer                   ClanMidTC2;
+     static integer                    ClanMidTC2Alignment;
+     eternal integer                   ClanMidGC;
+     static integer                    ClanMidGCAlignment;
+     eternal integer                   ClanRB;
+     static integer                    ClanRBAlignment;

@@ -1,0 +1,38 @@
+//*********************************************************************************
+// Creation Include file for mission 2_2
+
+
+if ((GeneralAlarm) OR (getObjectDamage(GEN2TH) > 0)) then
+     GeneralAlarm = TRUE;
+     if ((NOT isdead(GEN2TH)) AND (GeneralAlarmCounter > 5)) then
+           ObjectCreate(getVehicleID(CLAN_FORCE,7,0));
+     endif;
+endif;
+
+if ((GeneralAlarm) OR (getObjectDamage(GEN2TH) > 0)) then
+     GeneralAlarm = TRUE;
+     if ((NOT isdead(GEN2TH)) AND (GeneralAlarmCounter > 7)) then
+           ObjectCreate(getVehicleID(CLAN_FORCE,7,1));
+     endif;
+endif;
+
+if ((GeneralAlarm) OR (getObjectDamage(GEN2TH) > 0)) then
+     GeneralAlarm = TRUE;
+     if ((NOT isdead(GEN2TH)) AND (GeneralAlarmCounter > 10)) then
+           ObjectCreate(getVehicleID(CLAN_FORCE,7,2));
+     endif;
+endif;
+
+if ((GeneralAlarm) OR (getObjectDamage(GEN2TH) > 0)) then
+     GeneralAlarm = TRUE;
+     if ((NOT isdead(GEN2TH)) AND (GeneralAlarmCounter > 12)) then
+           ObjectCreate(getVehicleID(CLAN_FORCE,7,3));
+     endif;
+endif;
+
+if ((GeneralAlarm) OR (getObjectDamage(GEN2TH) > 0)) then
+     GeneralAlarm = TRUE;
+     if ((NOT isdead(GEN2TH)) AND (GeneralAlarmCounter > 15)) then
+           ObjectCreate(getVehicleID(CLAN_FORCE,7,4));
+     endif;
+endif;

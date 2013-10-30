@@ -1,0 +1,94 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:4/30/98   BY:Rob Nicholls
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0102HQVeh : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+
+    // PATHS
+    static path                        HQPath;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+
+         // Paths
+
+         HQPath[0,0] = -1139; // X
+         HQPath[0,1] = -2313; // Y
+
+         HQPath[1,0] = -1111; // X
+         HQPath[1,1] = 487; // Y
+
+         HQPath[2,0] = -115; // X
+         HQPath[2,1] = 3783; // Y
+
+         HQPath[3,0] = -1941; // X
+         HQPath[3,1] = 4952; // Y
+
+         SetEngageRadius(25);
+         IdentifySensorContactsOFF;
+         MoveToEngageOFF;
+         StopFighting;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (inHotSpot(PLAYER_FORCE,-1740,-2837,125)) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Flag5 = TRUE;
+              Order1Status = SUCCESS;
+         endif;
+    endif;
+    if (flag5) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              Order2Status = MovePath(HQPath,4);
+              if (Order2Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+
+         return(1);
+endmodule.

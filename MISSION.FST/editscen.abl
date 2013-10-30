@@ -1,0 +1,50 @@
+//***************************************************************************
+
+module ScenarioBrain : integer;
+
+	//--------------------------------------------------------
+	//
+	// Parameters:
+	//
+	//		None
+	//
+	//--------------------------------------------------------
+
+	const
+		PLAYING					  =	0;
+		PLAYER_LOST_BIG			  =	1;
+		PLAYER_LOST_SMALL		  =	2;
+		PLAYER_DRAW				  =	3;
+		PLAYER_WIN_SMALL 		  =	4;
+		PLAYER_WIN_BIG	 		  =	5;
+				
+	type
+	
+	var
+
+		static integer		scenarioResult;
+
+//---------------------------------------------------------------------------
+// INIT function -- Supposedly called the first time through, then never again
+//---------------------------------------------------------------------------
+
+function init;
+
+	code
+
+		scenarioResult = PLAYING;
+
+endfunction;
+
+//---------------------------------------------------------------------------
+// Scenario Victory conditions checked here
+//---------------------------------------------------------------------------
+
+	code
+
+		return (scenarioResult);
+
+endmodule.
+
+//***************************************************************************
+

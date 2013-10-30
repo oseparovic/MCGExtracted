@@ -1,0 +1,30 @@
+//*********************************************************************************
+// Init Include file for mission 7_29
+
+     salvage1 = getTerrainObjectPartId(14,162);
+     objectChangeSides(salvage1,NEUTRAL);
+     setPotentialContact(salvage1,0);
+     setCaptureable(salvage1, TRUE);
+     salvage1Alignment = NEUTRAL;
+     salvage2 = getTerrainObjectPartId(22,99);
+     objectChangeSides(salvage2,NEUTRAL);
+     setPotentialContact(salvage2,0);
+     setCaptureable(salvage2, TRUE);
+     salvage2Alignment = NEUTRAL;
+     salvage3 = getTerrainObjectPartId(27,248);
+     objectChangeSides(salvage3,NEUTRAL);
+     setPotentialContact(salvage3,0);
+     setCaptureable(salvage3, TRUE);
+     salvage3Alignment = NEUTRAL;
+     RBIS = getTerrainObjectPartId(26,161);
+     objectChangeSides(RBIS,INNER_SPHERE);
+     setPotentialContact(RBIS,0);
+     setCaptureable(RBIS, TRUE);
+     RBISAlignment = INNER_SPHERE;
+     RBClan = getTerrainObjectPartId(10,268);
+     objectChangeSides(RBClan,CLAN);
+     setPotentialContact(RBClan,0);
+     setCaptureable(RBClan, TRUE);
+     RBClanAlignment = CLAN;
+     MechBays[0] = RBClan;
+     TotalMechBays =  1;

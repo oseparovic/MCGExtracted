@@ -1,0 +1,94 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:10/1/98   BY:david abzug
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBmx0104base : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+
+         SetEngageRadius(175);
+         SetDisEngageRadius(650);
+         SetTactic(TACTIC_SHORT);
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (isCaptured(clan_vehicle0_star3) == 1) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              SetRevealed(1,50.0,CurrentPosition);
+              Order1Status = SUCCESS;
+         endif;
+    endif;
+    if ((GeneralAlarm) or (flag5)) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              SetEngageRadius(500);
+              Order3Status = SUCCESS;
+         endif;
+    endif;
+    if (beenHit) then
+         // Order  4 
+         if (Order4Status == INCOMPLETE) then
+              Flag5 = TRUE;
+              Order4Status = SUCCESS;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              Order2Status = Attack;
+              if (Order2Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

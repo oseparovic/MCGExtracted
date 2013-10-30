@@ -1,0 +1,150 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:4/7/98   BY:Tim Ryan
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0203tas : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+    static integer                     Order6Status;
+
+    // PATHS
+    static path                        NewSteps;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = 0;
+         Order4Status = 0;
+         Order5Status = 0;
+         Order6Status = INCOMPLETE;
+
+         // Paths
+
+         NewSteps[0,0] = -6334; // X
+         NewSteps[0,1] = 3279; // Y
+
+         NewSteps[1,0] = 147; // X
+         NewSteps[1,1] = 2550; // Y
+
+         NewSteps[2,0] = 6076; // X
+         NewSteps[2,1] = 2030; // Y
+
+         NewSteps[3,0] = 10364; // X
+         NewSteps[3,1] = 570; // Y
+
+         SetEngageRadius(150);
+         SetDisEngageRadius(250);
+         IdentifySensorContactsOFF;
+         MoveToEngageOFF;
+         StopFighting;
+         ReturnFireOFF;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (inHotSpot(PLAYER_FORCE,CurrentX + 350,CurrentY + 350,75.0)) then
+		if (Order3Status == 0) then
+	        CallStrikeEx(507,-1,CurrentX + 350,CurrentY + 350,-1.0,TRUE,3.0);
+			Order3Status = 1;
+		else
+			if (Order3Status >= 2) then
+				Order3Status = 0;
+			else
+				Order3Status = Order3Status + 1;
+			endif;
+		endif;
+    endif;
+
+    if (inHotSpot(PLAYER_FORCE,CurrentX + 350,CurrentY - 350,75.0)) then
+		if (Order4Status == 0) then
+        	CallStrikeEx(507,-1,CurrentX + 350,CurrentY - 350,-1.0,TRUE,3.0);
+			Order4Status = 1;
+		else
+			if (Order4Status >= 2) then
+				Order4Status = 0;
+			else
+				Order4Status = Order4Status + 1;
+			endif;
+		endif;
+    endif;
+
+    if (inHotSpot(PLAYER_FORCE,CurrentX,CurrentY + 450,75.0)) then
+		if (Order5Status == 0) then
+	        CallStrikeEx(507,-1,CurrentX,CurrentY + 450,-1.0,TRUE,3.0);
+			Order5Status = 1;
+		else
+			if (Order5Status >= 2) then
+				Order5Status = 0;
+			else
+				Order5Status = Order5Status + 1;
+			endif;
+		endif;
+    endif;
+
+	if ((Order6Status == INCOMPLETE) AND (CurrentStep >= 3)) then
+		ReleaseGateLock(getTerrainObjectPartID(44,109));
+		Order6Status = SUCCESS;
+	endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = MovePath(NewSteps,4);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order1Status == SUCCESS) then
+                   // Order  2 
+                   if (Order2Status == INCOMPLETE) then
+                        Order2Status = Withdraw;
+                        if (Order2Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

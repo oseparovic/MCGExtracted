@@ -1,0 +1,33 @@
+//*********************************************************************************
+// Variable Include file for mission 3_1
+
+     static boolean                    ambushactive;
+     static boolean                    hqcaptured;
+     static boolean                    secondarydead;
+     static boolean                    timerset;
+     static boolean                    turretbackup;
+     static boolean                    turretdown;
+     eternal integer                   tcWF;
+     static integer                    tcWFAlignment;
+     eternal integer                   tcEF;
+     static integer                    tcEFAlignment;
+     eternal integer                   tcCR;
+     static integer                    tcCRAlignment;
+     eternal integer                   tcER;
+     static integer                    tcERAlignment;
+     eternal integer                   tcWR;
+     static integer                    tcWRAlignment;
+     eternal integer                   pa2;
+     static real                       pa2TripTime;
+     eternal integer                   wh1;
+     static integer                    wh1Alignment;
+     eternal integer                   primary3;
+     eternal integer                   secondary;
+     eternal integer                   sensorcontrol;
+     static integer                    sensorcontrolAlignment;
+     eternal integer                   Bay1;
+     static integer                    Bay1Alignment;
+     eternal integer                   Bay2;
+     static integer                    Bay2Alignment;
+     eternal integer                   wh2;
+     static integer                    wh2Alignment;

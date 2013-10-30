@@ -1,0 +1,21 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:VANGUARD/03PRDN01%n
+%fc5%c----------%n
+%fc6%c***ESCORT MEDICAL CONVOY***%n
+%fc21-Escort 2 of the Ambulances%n
+%t9to the Extraction Point.%n
+2-Escort 5 of the Ambulances%n
+%t9to the Extraction Point%n
+%t9for additional Resource Points.%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 4 Small  0 Large%n
+%t12SENSOR PROBE: 0%n
+%t12CAMERA DRONE: 1%n
+%fc5%c----------%n
+%fc4After a severe Jaguar counterattack, perishable medical supplies are desperately needed at Field Hospital Delta. Unfortunately, the fastest route to the hospital is a paved road across Jaguar-controlled territory. A convoy of loaded ambulances will follow that road, but speed is critical so their crews have been ordered not to stop, regardless of any danger. Your task is to see that at least two ambulances get through the area safely.%n%n
+%fc1%fm%c**TACTICAL WARNING**%n
+%fc2%fs*A Clan VULTURE Heavy OmniMech%n
+%t9mounting primarily long-range%n
+%t9missiles has been reported in%n
+%t9the area.%n%n
+%fc6<<<<END DISPATCH

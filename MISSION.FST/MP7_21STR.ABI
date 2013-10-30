@@ -1,0 +1,250 @@
+//*********************************************************************************
+// Structure Include file for mission 7_21
+
+
+if (isAlive(Objectlist[0])) then
+     if ((IsCaptured(Objectlist[0]) == 1) AND (Object0Alignment > -2)) then
+           X = Random(STRIKE_TYPE_LIMIT);
+           sendMessage(8,(((objectCommander(Objectlist[0])+1)*10)+X));
+           handleMessage;
+     else
+           if (Object0Alignment < -1) then
+                 if (Object0Alignment > -59) then
+                       if (gametime == nextsecond - 1.0) then
+                             sendMessage(9,0);
+                             handleMessage;
+                       endif;
+                 else
+                       sendMessage(10,0);
+                       handleMessage;
+                 endif;
+           endif;
+     endif;
+endif;
+
+if (isAlive(Objectlist[1])) then
+     if ((IsCaptured(Objectlist[1]) == 1) AND (Object1Alignment > -2)) then
+           X = Random(STRIKE_TYPE_LIMIT);
+           sendMessage(11,(((objectCommander(Objectlist[1])+1)*10)+X));
+           handleMessage;
+     else
+           if (Object1Alignment < -1) then
+                 if (Object1Alignment > -59) then
+                       if (gametime == nextsecond - 1.0) then
+                             sendMessage(12,0);
+                             handleMessage;
+                       endif;
+                 else
+                       sendMessage(13,0);
+                       handleMessage;
+                 endif;
+           endif;
+     endif;
+endif;
+
+if (isAlive(Objectlist[2])) then
+     if ((IsCaptured(Objectlist[2]) == 1) AND (Object2Alignment > -2)) then
+           X = Random(STRIKE_TYPE_LIMIT);
+           sendMessage(14,(((objectCommander(Objectlist[2])+1)*10)+X));
+           handleMessage;
+     else
+           if (Object2Alignment < -1) then
+                 if (Object2Alignment > -59) then
+                       if (gametime == nextsecond - 1.0) then
+                             sendMessage(15,0);
+                             handleMessage;
+                       endif;
+                 else
+                       sendMessage(16,0);
+                       handleMessage;
+                 endif;
+           endif;
+     endif;
+endif;
+
+if (isAlive(Objectlist[3])) then
+     if ((IsCaptured(Objectlist[3]) == 1) AND (Object3Alignment > -2)) then
+           X = Random(STRIKE_TYPE_LIMIT);
+           sendMessage(17,(((objectCommander(Objectlist[3])+1)*10)+X));
+           handleMessage;
+     else
+           if (Object3Alignment < -1) then
+                 if (Object3Alignment > -59) then
+                       if (gametime == nextsecond - 1.0) then
+                             sendMessage(18,0);
+                             handleMessage;
+                       endif;
+                 else
+                       sendMessage(19,0);
+                       handleMessage;
+                 endif;
+           endif;
+     endif;
+endif;
+
+if (isAlive(Objectlist[4])) then
+     if ((IsCaptured(Objectlist[4]) == 1) AND (Object4Alignment > -2)) then
+           X = Random(STRIKE_TYPE_LIMIT);
+           sendMessage(20,(((objectCommander(Objectlist[4])+1)*10)+X));
+           handleMessage;
+     else
+           if (Object4Alignment < -1) then
+                 if (Object4Alignment > -59) then
+                       if (gametime == nextsecond - 1.0) then
+                             sendMessage(21,0);
+                             handleMessage;
+                       endif;
+                 else
+                       sendMessage(22,0);
+                       handleMessage;
+                 endif;
+           endif;
+     endif;
+endif;
+
+if (isAlive(Objectlist[5])) then
+     if ((IsCaptured(Objectlist[5]) == 1) AND (Object5Alignment > -2)) then
+           X = Random(STRIKE_TYPE_LIMIT);
+           sendMessage(23,(((objectCommander(Objectlist[5])+1)*10)+X));
+           handleMessage;
+     else
+           if (Object5Alignment < -1) then
+                 if (Object5Alignment > -59) then
+                       if (gametime == nextsecond - 1.0) then
+                             sendMessage(24,0);
+                             handleMessage;
+                       endif;
+                 else
+                       sendMessage(25,0);
+                       handleMessage;
+                 endif;
+           endif;
+     endif;
+endif;
+
+if (isdead(MechBay1)) then
+
+else
+     if ((IsCaptured(MechBay1) == 1) AND (objectSide(MechBay1) <> MechBay1Alignment) AND (MechBay1Alignment <> -2)) then
+           sendMessage(26,ObjectSide(MechBay1));
+           handleMessage;
+     endif;
+endif;
+
+if (isdead(MechBay2)) then
+
+else
+     if ((IsCaptured(MechBay2) == 1) AND (objectSide(MechBay2) <> MechBay2Alignment) AND (MechBay2Alignment <> -2)) then
+           sendMessage(27,ObjectSide(MechBay2));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(WayNorthGC)) AND (WayNorthGCAlignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(13,136))) then
+           sendMessage(28,0);
+           handleMessage;
+     else
+           sendMessage(29,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(WayNorthGC) == 1) AND (objectSide(WayNorthGC) <> WayNorthGCAlignment) AND (WayNorthGCAlignment <> -2)) then
+           sendMessage(30,ObjectSide(WayNorthGC));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(WayNorthTC)) AND (WayNorthTCAlignment <> -2)) then
+     SendMessage(31,0);
+     HandleMessage;
+else
+     if ((IsCaptured(WayNorthTC) == 1) AND (objectSide(WayNorthTC) <> WayNorthTCAlignment) AND (WayNorthTCAlignment <> -2)) then
+           SendMessage(32,ObjectSide(WayNorthTC));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(ForestCacheTC)) AND (ForestCacheTCAlignment <> -2)) then
+     SendMessage(33,0);
+     HandleMessage;
+else
+     if ((IsCaptured(ForestCacheTC) == 1) AND (objectSide(ForestCacheTC) <> ForestCacheTCAlignment) AND (ForestCacheTCAlignment <> -2)) then
+           SendMessage(34,ObjectSide(ForestCacheTC));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(CanyonCacheTC)) AND (CanyonCacheTCAlignment <> -2)) then
+     SendMessage(35,0);
+     HandleMessage;
+else
+     if ((IsCaptured(CanyonCacheTC) == 1) AND (objectSide(CanyonCacheTC) <> CanyonCacheTCAlignment) AND (CanyonCacheTCAlignment <> -2)) then
+           SendMessage(36,ObjectSide(CanyonCacheTC));
+           HandleMessage;
+     endif;
+endif;
+
+if (isdead(MainHQ)) then
+
+else
+     if ((IsCaptured(MainHQ) == 1) AND (objectSide(MainHQ) <> MainHQAlignment) AND (MainHQAlignment <> -2)) then
+           sendMessage(37,ObjectSide(MainHQ));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(MainGC)) AND (MainGCAlignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(60,43))) then
+           sendMessage(38,0);
+           handleMessage;
+     else
+           sendMessage(39,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(MainGC) == 1) AND (objectSide(MainGC) <> MainGCAlignment) AND (MainGCAlignment <> -2)) then
+           sendMessage(40,ObjectSide(MainGC));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(MainTC1)) AND (MainTC1Alignment <> -2)) then
+     SendMessage(41,0);
+     HandleMessage;
+else
+     if ((IsCaptured(MainTC1) == 1) AND (objectSide(MainTC1) <> MainTC1Alignment) AND (MainTC1Alignment <> -2)) then
+           SendMessage(42,ObjectSide(MainTC1));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(MainTC2)) AND (MainTC2Alignment <> -2)) then
+     SendMessage(43,0);
+     HandleMessage;
+else
+     if ((IsCaptured(MainTC2) == 1) AND (objectSide(MainTC2) <> MainTC2Alignment) AND (MainTC2Alignment <> -2)) then
+           SendMessage(44,ObjectSide(MainTC2));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(MainTC3)) AND (MainTC3Alignment <> -2)) then
+     SendMessage(45,0);
+     HandleMessage;
+else
+     if ((IsCaptured(MainTC3) == 1) AND (objectSide(MainTC3) <> MainTC3Alignment) AND (MainTC3Alignment <> -2)) then
+           SendMessage(46,ObjectSide(MainTC3));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(MainTC4)) AND (MainTC4Alignment <> -2)) then
+     SendMessage(47,0);
+     HandleMessage;
+else
+     if ((IsCaptured(MainTC4) == 1) AND (objectSide(MainTC4) <> MainTC4Alignment) AND (MainTC4Alignment <> -2)) then
+           SendMessage(48,ObjectSide(MainTC4));
+           HandleMessage;
+     endif;
+endif;

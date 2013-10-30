@@ -1,0 +1,106 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:4/28/98   BY:david abzug
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0205u1 : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+
+         SetSpeed(RUN);
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (inHotSpot(me,794,-11189,100)) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              Flag1 = TRUE;
+              Order2Status = SUCCESS;
+         endif;
+    endif;
+    if (flag1) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              Order3Status = Attack;
+              if (Order3Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+    if (flag2) then
+         // Order  5 
+         if (Order5Status == INCOMPLETE) then
+              Order5Status = Sentry(myx,myy);
+              if (Order5Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = Escort(512000,SOUTHWEST);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order1Status == FAILED) then
+                   // Order  4 
+                   if (Order4Status == INCOMPLETE) then
+                        Flag2 = TRUE;
+                        Order4Status = SUCCESS;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

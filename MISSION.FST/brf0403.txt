@@ -1,0 +1,18 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:LINCHPIN/04PRDN03%n
+%fc5%c----------%n
+%fc6%c***CAPTURE CLAN FIELD BASE***%n
+%fc21-Capture Base HQ Building%n
+%fc22-Destroy all enemy `Mechs in%n
+%t9the area.%n
+3-Protect all Base Turret Control%n
+%t9Towers (3)%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 2 Small  0 Large%n
+%t12SENSOR PROBE: 4%n
+%t12CAMERA DRONE: 1%n
+%fc5%c----------%n
+%fc4Reconnaissance has located a dormant fortified Clan field base in the Cambridge region. Tactical analysis shows that the area will become important in the coming days and we must insure that the Jaguars do not retain control of it.%n%n
+Your orders are to lead a force to that base, capture it, and reactivate what remains of it. Both can be achieved by ordering one of your units to "capture" the main HQ building in the base as well as the various support buildings.%n%n
+It is likely that our activity has alerted nearby Smoke Jaguar units, so be prepared to defend your newly acquired prize.%n%n
+%fc6<<<<END DISPATCH

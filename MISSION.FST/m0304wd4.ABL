@@ -1,0 +1,135 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:5/8/98   BY:Tim Ryan
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0304wd4 : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+
+    // PATHS
+    static path                        Path1;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+
+         // Paths
+
+         Path1[0,0] = 3161; // X
+         Path1[0,1] = 3229; // Y
+
+         Path1[1,0] = 3632; // X
+         Path1[1,1] = 1816; // Y
+
+         Path1[2,0] = 3551; // X
+         Path1[2,1] = 1081; // Y
+
+         Path1[3,0] = 3749; // X
+         Path1[3,1] = 628; // Y
+
+         Path1[4,0] = 3803; // X
+         Path1[4,1] = -79; // Y
+
+         Path1[5,0] = 3248; // X
+         Path1[5,1] = -230; // Y
+
+         Path1[6,0] = 3239; // X
+         Path1[6,1] = -822; // Y
+
+         Path1[7,0] = 3264; // X
+         Path1[7,1] = -1431; // Y
+
+         Path1[8,0] = 3524; // X
+         Path1[8,1] = -2284; // Y
+
+         Path1[9,0] = 3367; // X
+         Path1[9,1] = -2888; // Y
+
+         Path1[10,0] = 2633; // X
+         Path1[10,1] = -3597; // Y
+
+         Path1[11,0] = 1744; // X
+         Path1[11,1] = -4333; // Y
+
+         Path1[12,0] = -157; // X
+         Path1[12,1] = -4912; // Y
+
+         Path1[13,0] = -1424; // X
+         Path1[13,1] = -4821; // Y
+
+         SetEngageRadius(200);
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (gametime > 85) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              Order2Status = MovePath(Path1,14);
+              if (Order2Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order2Status <> INCOMPLETE) then
+                   // Order  3 
+                   if (Order3Status == INCOMPLETE) then
+                        Order3Status = AttackObject(getTerrainObjectPartID(26,368),TRUE,TRUE);
+                        if (Order3Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = Attack;
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

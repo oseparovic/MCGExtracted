@@ -1,0 +1,35 @@
+//*********************************************************************************
+// Variable Include file for mission WetNWild
+
+     static boolean                    Objective_0_Decided;
+     static boolean                    Objective_1_Decided;
+     eternal integer                   Gate_Control_012356000;
+     static integer                    Gate_Control_012356000Alignment;
+     eternal integer                   Turret_Control_012393000;
+     static integer                    Turret_Control_012393000Alignment;
+     eternal integer                   Sensor_Control_012292000;
+     static integer                    Sensor_Control_012292000Alignment;
+     eternal integer                   Turret_Control_019395000;
+     static integer                    Turret_Control_019395000Alignment;
+     eternal integer                   Turret_Control_032028000;
+     static integer                    Turret_Control_032028000Alignment;
+     eternal integer                   Turret_Control_014257000;
+     static integer                    Turret_Control_014257000Alignment;
+     eternal integer                   Turret_Control_002330000;
+     static integer                    Turret_Control_002330000Alignment;
+     eternal integer                   Gate_Control_009000000;
+     static integer                    Gate_Control_009000000Alignment;
+     eternal integer                   Sensor_Control_003264000;
+     static integer                    Sensor_Control_003264000Alignment;
+     eternal integer                   Turret_Control_015137000;
+     static integer                    Turret_Control_015137000Alignment;
+     eternal integer                   Mech_Bay_002332000;
+     static integer                    Mech_Bay_002332000Alignment;
+     eternal integer                   Artillery_Crate_007270000;
+     static integer                    Artillery_Crate_007270000Alignment;
+     eternal integer                   Artillery_Crate_022290000;
+     static integer                    Artillery_Crate_022290000Alignment;
+     eternal integer                   Mech_Bay_019338000;
+     static integer                    Mech_Bay_019338000Alignment;
+     eternal integer                   Artillery_Crate_028122000;
+     static integer                    Artillery_Crate_028122000Alignment;

@@ -1,0 +1,11 @@
+//*********************************************************************************
+// Variable Include file for mission 4_5
+
+     eternal integer                   tctnorth;
+     static integer                    tctnorthAlignment;
+     eternal integer                   tctsouth;
+     static integer                    tctsouthAlignment;
+     eternal integer                   wh1;
+     static integer                    wh1Alignment;
+     eternal integer                   wh2;
+     static integer                    wh2Alignment;

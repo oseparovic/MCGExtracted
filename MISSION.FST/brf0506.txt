@@ -1,0 +1,19 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:CUTTHROAT/05PRDN06%n
+%fc5%c----------%n
+%fc6%c***CAPTURE THE STARBASE***%n
+%fc21-Capture or neutralize perimeter%n
+%t9turrets.%n
+2-Destroy Center Mobile Orbital Gun%n
+3-Destroy NW Mobile Orbital Gun%n
+4-Destroy NE Mobile Orbital Gun%n
+MISSION TIME LIMIT- 35:00%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 3 Small  3 Large%n
+%t12SENSOR PROBE: 2%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4Deploy a company of your best pilots in your best `Mechs to the southern approach to the Starbase. Your mission is to destroy the six mobile orbital guns defending the base before our primary invasion force lands. Resistance is expected to be in-depth and fierce. Your previous actions have temporarily deactivated the outer turret defense ring, but Intelligence expects them to be re-powered about 1 minute after your deployment. Intelligence also reports that temporary Turret Control Towers have been erected near each other within the base while the perimeter turrets are recalibrated. Quick action may enable you to capture all of the perimeter turrets before they power up.%n%n
+Lastly, recon reports a group of Thor OmniMechs approaching the Starbase from the southwest. If you move quickly you may be able to ambush them before they reinforce the Starbase.%n%n
+%fc6<<<<END DISPATCH
+

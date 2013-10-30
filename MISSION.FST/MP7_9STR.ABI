@@ -1,0 +1,311 @@
+//*********************************************************************************
+// Structure Include file for mission 7_9
+
+if (isAlive(HQ)) then
+     if ((IsCaptured(HQ) == 1) AND (objectSide(HQ) <> HQAlignment) AND (HQAlignment <> -2)) then
+           SendMessage(9,objectSide(HQ));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(InnerGateLeft)) AND (InnerGateLeftAlignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(40,104))) then
+           sendMessage(10,0);
+           handleMessage;
+     else
+           sendMessage(11,0);
+           handleMessage;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(40,186))) then
+           sendMessage(12,0);
+           handleMessage;
+     else
+           sendMessage(13,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(InnerGateLeft) == 1) AND (objectSide(InnerGateLeft) <> InnerGateLeftAlignment) AND (InnerGateLeftAlignment <> -2)) then
+           sendMessage(14,ObjectSide(InnerGateLeft));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(InnerGateRight)) AND (InnerGateRightAlignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(40,85))) then
+           sendMessage(15,0);
+           handleMessage;
+     else
+           sendMessage(16,0);
+           handleMessage;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(40,129))) then
+           sendMessage(17,0);
+           handleMessage;
+     else
+           sendMessage(18,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(InnerGateRight) == 1) AND (objectSide(InnerGateRight) <> InnerGateRightAlignment) AND (InnerGateRightAlignment <> -2)) then
+           sendMessage(19,ObjectSide(InnerGateRight));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(LeftGate1)) AND (LeftGate1Alignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(40,266))) then
+           sendMessage(20,0);
+           handleMessage;
+     else
+           sendMessage(21,0);
+           handleMessage;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(40,346))) then
+           sendMessage(22,0);
+           handleMessage;
+     else
+           sendMessage(23,0);
+           handleMessage;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(49,26))) then
+           sendMessage(24,0);
+           handleMessage;
+     else
+           sendMessage(25,0);
+           handleMessage;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(49,106))) then
+           sendMessage(26,0);
+           handleMessage;
+     else
+           sendMessage(27,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(LeftGate1) == 1) AND (objectSide(LeftGate1) <> LeftGate1Alignment) AND (LeftGate1Alignment <> -2)) then
+           sendMessage(28,ObjectSide(LeftGate1));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(LeftGate2)) AND (LeftGate2Alignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(40,306))) then
+           sendMessage(29,0);
+           handleMessage;
+     else
+           sendMessage(30,0);
+           handleMessage;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(40,386))) then
+           sendMessage(31,0);
+           handleMessage;
+     else
+           sendMessage(32,0);
+           handleMessage;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(49,66))) then
+           sendMessage(33,0);
+           handleMessage;
+     else
+           sendMessage(34,0);
+           handleMessage;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(49,146))) then
+           sendMessage(35,0);
+           handleMessage;
+     else
+           sendMessage(36,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(LeftGate2) == 1) AND (objectSide(LeftGate2) <> LeftGate2Alignment) AND (LeftGate2Alignment <> -2)) then
+           sendMessage(37,ObjectSide(LeftGate2));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(RightGate1)) AND (RightGate1Alignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(41,183))) then
+           sendMessage(38,0);
+           handleMessage;
+     else
+           sendMessage(39,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(RightGate1) == 1) AND (objectSide(RightGate1) <> RightGate1Alignment) AND (RightGate1Alignment <> -2)) then
+           sendMessage(40,ObjectSide(RightGate1));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(RightGate2)) AND (RightGate2Alignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(40,73))) then
+           sendMessage(41,0);
+           handleMessage;
+     else
+           sendMessage(42,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(RightGate2) == 1) AND (objectSide(RightGate2) <> RightGate2Alignment) AND (RightGate2Alignment <> -2)) then
+           sendMessage(43,ObjectSide(RightGate2));
+           handleMessage;
+     endif;
+endif;
+
+if (isdead(NULL)) then
+
+else
+     if ((IsCaptured(NULL) == 1) AND (objectSide(NULL) <> NULLAlignment) AND (NULLAlignment <> -2)) then
+           sendMessage(44,ObjectSide(NULL));
+           handleMessage;
+     endif;
+endif;
+
+if (isdead(BaseBay2)) then
+
+else
+     if ((IsCaptured(BaseBay2) == 1) AND (objectSide(BaseBay2) <> BaseBay2Alignment) AND (BaseBay2Alignment <> -2)) then
+           sendMessage(45,ObjectSide(BaseBay2));
+           handleMessage;
+     endif;
+endif;
+
+if (isdead(RightOutBay)) then
+
+else
+     if ((IsCaptured(RightOutBay) == 1) AND (objectSide(RightOutBay) <> RightOutBayAlignment) AND (RightOutBayAlignment <> -2)) then
+           sendMessage(46,ObjectSide(RightOutBay));
+           handleMessage;
+     endif;
+endif;
+
+if (isdead(LeftOutBay)) then
+
+else
+     if ((IsCaptured(LeftOutBay) == 1) AND (objectSide(LeftOutBay) <> LeftOutBayAlignment) AND (LeftOutBayAlignment <> -2)) then
+           sendMessage(47,ObjectSide(LeftOutBay));
+           handleMessage;
+     endif;
+endif;
+
+if (isAlive(BaseCrate)) then
+     if ((IsCaptured(BaseCrate) == 1) AND (BaseCrateAlignment > -2)) then
+           X = Random(STRIKE_TYPE_LIMIT);
+           sendMessage(48,(((objectCommander(BaseCrate)+1)*10)+X));
+           handleMessage;
+     else
+           if (BaseCrateAlignment < -1) then
+                 if (BaseCrateAlignment > -59) then
+                       if (gametime == nextsecond - 1.0) then
+                             sendMessage(49,0);
+                             handleMessage;
+                       endif;
+                 else
+                       sendMessage(50,0);
+                       handleMessage;
+                 endif;
+           endif;
+     endif;
+endif;
+
+if (isAlive(ForestCrate)) then
+     if ((IsCaptured(ForestCrate) == 1) AND (ForestCrateAlignment > -2)) then
+           X = Random(STRIKE_TYPE_LIMIT);
+           sendMessage(51,(((objectCommander(ForestCrate)+1)*10)+X));
+           handleMessage;
+     else
+           if (ForestCrateAlignment < -1) then
+                 if (ForestCrateAlignment > -59) then
+                       if (gametime == nextsecond - 1.0) then
+                             sendMessage(52,0);
+                             handleMessage;
+                       endif;
+                 else
+                       sendMessage(53,0);
+                       handleMessage;
+                 endif;
+           endif;
+     endif;
+endif;
+
+if (isAlive(BoomCrate)) then
+     if ((IsCaptured(BoomCrate) == 1) AND (BoomCrateAlignment > -2)) then
+           X = Random(STRIKE_TYPE_LIMIT);
+           sendMessage(54,(((objectCommander(BoomCrate)+1)*10)+X));
+           handleMessage;
+     else
+           if (BoomCrateAlignment < -1) then
+                 if (BoomCrateAlignment > -59) then
+                       if (gametime == nextsecond - 1.0) then
+                             sendMessage(55,0);
+                             handleMessage;
+                       endif;
+                 else
+                       sendMessage(56,0);
+                       handleMessage;
+                 endif;
+           endif;
+     endif;
+endif;
+
+if ((isdead(HillTC1)) AND (HillTC1Alignment <> -2)) then
+     SendMessage(57,0);
+     HandleMessage;
+else
+     if ((IsCaptured(HillTC1) == 1) AND (objectSide(HillTC1) <> HillTC1Alignment) AND (HillTC1Alignment <> -2)) then
+           SendMessage(58,ObjectSide(HillTC1));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(HillTC2)) AND (HillTC2Alignment <> -2)) then
+     SendMessage(59,0);
+     HandleMessage;
+else
+     if ((IsCaptured(HillTC2) == 1) AND (objectSide(HillTC2) <> HillTC2Alignment) AND (HillTC2Alignment <> -2)) then
+           SendMessage(60,ObjectSide(HillTC2));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(BugTC1)) AND (BugTC1Alignment <> -2)) then
+     SendMessage(61,0);
+     HandleMessage;
+else
+     if ((IsCaptured(BugTC1) == 1) AND (objectSide(BugTC1) <> BugTC1Alignment) AND (BugTC1Alignment <> -2)) then
+           SendMessage(62,ObjectSide(BugTC1));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(BugTC2)) AND (BugTC2Alignment <> -2)) then
+     SendMessage(63,0);
+     HandleMessage;
+else
+     if ((IsCaptured(BugTC2) == 1) AND (objectSide(BugTC2) <> BugTC2Alignment) AND (BugTC2Alignment <> -2)) then
+           SendMessage(64,ObjectSide(BugTC2));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(WeaveTC1)) AND (WeaveTC1Alignment <> -2)) then
+     SendMessage(65,0);
+     HandleMessage;
+else
+     if ((IsCaptured(WeaveTC1) == 1) AND (objectSide(WeaveTC1) <> WeaveTC1Alignment) AND (WeaveTC1Alignment <> -2)) then
+           SendMessage(66,ObjectSide(WeaveTC1));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(WeaveTC2)) AND (WeaveTC2Alignment <> -2)) then
+     SendMessage(67,0);
+     HandleMessage;
+else
+     if ((IsCaptured(WeaveTC2) == 1) AND (objectSide(WeaveTC2) <> WeaveTC2Alignment) AND (WeaveTC2Alignment <> -2)) then
+           SendMessage(68,ObjectSide(WeaveTC2));
+           HandleMessage;
+     endif;
+endif;

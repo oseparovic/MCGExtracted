@@ -1,0 +1,12 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cDESIGNATION:GAMBIT/7PRDN20%n
+%fc5%c----------%n
+%fc6%c*** BREACH THE LINE ***%n
+%fc21-Destroy all three enemy industrial complexes%n%n
+%fc22-Capture enemy HQ%n%n
+%fc5%c----------%n
+%fc4Two things must be accomplished for this mission to be a success.  First, destroy the three enemy industrial complexes in order to deny them manufacturing capability.%n%n
+%fc4Second, capture the enemy HQ to gain valuable data.%n%n
+%fc4Intelligence reports that enemy forces are attempting the same to us.  Should they succeed this mission will be considered a failure.%n%n
+%fc6<<<<END DISPATCH
+

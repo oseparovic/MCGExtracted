@@ -1,0 +1,17 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:SKYHOOK/02PRDN02%n
+%fc5%c----------%n
+%fc6%c***DESTROY ENEMY ASSETS***%n
+%fc21-Destroy All Power Generators%n%n
+2-Get all units to Extraction Point.%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 2 Small  1 Large%n
+%t12SENSOR PROBE: 0%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4Based on information recovered from the DEST operative we've learned that the Jaguars are using the local industrial base to manufacture spare parts and fuels. Since we must maintain the local industrial base to help the planet rebuild after the invasion, Battalion has instead decided to destroy the two power generators along the Ai-Ki River that power the area.%n%n
+Intelligence has also heard rumors of Smoke Jaguar supply caches in the area. Verify their existence and capture if possible.%n%n
+%fc1%fm%c**TACTICAL WARNING**%n
+%fc2%fs*Perimeter Alarms will alert nearby%n
+%t9enemies if not destroyed quickly.%n%n
+%fc6<<<<END DISPATCH

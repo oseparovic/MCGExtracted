@@ -1,0 +1,24 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:HYDRA/01PRDN02%n
+%fc5%c----------%n
+%fc6%c***PROTECT BASE NOMAD***%n
+%fc21-Defend Base HQ%n
+%fc22-Defend Local Turret Power%n
+%fc8   (secondary)%n
+%fc23-Defend Sensor Control%n
+%fc8   (secondary)%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 3 Small  1 Large%n
+%t12SENSOR PROBE: 0%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4The sweep of our landing zone perimeter resulted in the location and reactivation of an abandoned base, base Nomad. However Recon is detecting three distinct enemy columns approaching with an attack vector directed at base Nomad. Protect the %fc2Base HQ%fc4 building at all costs.%n%n
+Base Nomad has %fc2Local Turret Power%fc4%nGenerators which provide power to the turret gun emplacements around the base's perimeter. Destruction of the Generators will deactivate the turrets, and as such their integrity will aid in your defense of the base.%n%n
+Additionally our engineering team has managed to erect Sensor Towers in this sector which are controlled by a %fc2Sensor Control%fc4 at the base itself. As long as the %fc2Sensor Control%fc4 is intact the Sensor Towers will be able to detect enemy units.%n%n
+Both the %fc2Local Turret Power%fc4 and %fc2Sensor Control%fc4 are valuable and may aid in your defense of the base but are not imperative to the mission's success.%n%n
+%fc5%c----------%n
+%fc6%c**TACTICAL NOTICE**%n%n
+%fc6%fs* Manticore Heavy Tanks%fc2, noted for their PPCs and thick armor, have been spotted in one of the enemy columns.%n%n
+%fc6%fs*%fc2 It has been confirmed that a %fc6Mad Cat%fc2%n class OmniMech is part of the enemy forces. Be prepared for its twin ER PPCs and numerous LRM racks.%n%n
+%fc6%fs*%fc2 A ruined outpost in the northwest is reported to still have functioning turrets.%n%n
+%fc6<<<<END DISPATCH

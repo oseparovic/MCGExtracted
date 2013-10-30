@@ -1,0 +1,12 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cMISSION COMMAND:GAMBIT/7PRDN28%n
+%fc5%c----------%n
+%fc6%c*** Three is a Magic Number ***%n
+%fc21-Capture and Hold at least two of the three HQs%n%n
+%fc5%c----------%n
+%fc4The three HQ buildings on this map hold essential data.  Your job is to capture and hold at least two of the three HQ buildings within the middle third of the map.%n%n
+%fc4There are two ways to win this mission.  If you are holding two HQs when the timer expires you win.  If you destroy the entire enemy force and then capture two HQs you will win early.%n%n
+%fc4There are no functioning artillery crates in this mission.%n%n
+%fc6<<<<END DISPATCH
+
+

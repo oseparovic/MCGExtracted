@@ -1,0 +1,90 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:11/12/98   BY:david abzug
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBMX0404Minelayer : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+
+    // PATHS
+    static path                        Path1;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+
+         // Paths
+
+         Path1[0,0] = -186; // X
+         Path1[0,1] = 1212; // Y
+
+         Path1[1,0] = 178; // X
+         Path1[1,1] = 1217; // Y
+
+         Path1[2,0] = 178; // X
+         Path1[2,1] = 849; // Y
+
+         Path1[3,0] = 1351; // X
+         Path1[3,1] = 838; // Y
+
+         Path1[4,0] = 1355; // X
+         Path1[4,1] = 1473; // Y
+
+         Path1[5,0] = 3503; // X
+         Path1[5,1] = 1481; // Y
+
+         Path1[6,0] = 3505; // X
+         Path1[6,1] = 703; // Y
+
+         StopFighting;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = Patrol(Path1,7,PATROL_BACK_AND_FORTH, 50000);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

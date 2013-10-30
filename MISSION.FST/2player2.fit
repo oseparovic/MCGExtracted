@@ -1,0 +1,16 @@
+FITini
+
+[Multiplayer]
+ul Protocol = 2
+st SessionName = "PHOTO"
+b Server = False
+l NumPlayers = 2
+st PlayerName = "shmoe"
+l HomeTeam = 1
+l CheckInId = 1
+f MoverUpdateFrequency = 0.50
+f TurretUpdateFrequency = 1.0
+f WorldStateUpdateFrequency = 0.50
+f WeaponFireUpdateFrequency = 0.25
+
+FITend

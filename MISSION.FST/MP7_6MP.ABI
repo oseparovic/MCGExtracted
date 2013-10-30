@@ -1,0 +1,539 @@
+//*********************************************************************************
+// MultiPlayer Include file for mission 7_6
+
+function handleMessage;
+
+     Var
+
+           integer MsgParams;
+           integer MsgCode;
+
+     Code
+
+           MsgCode = getMessage(MsgParams);
+
+           Switch (MsgCode)
+
+                 case MSG_GENERAL_ALARM_ON:
+
+                       GeneralAlarm = TRUE;
+                       PlayGASound = TRUE;
+                       PlayPASound = FALSE;
+                       endcase;
+
+                 case MSG_GENERAL_ALARM_OFF:
+
+                       PlayGASound = FALSE;
+                       endcase;
+
+                 case MSG_PERIMETER_ALARM_ON:
+
+                       PlayPASound = TRUE;
+                       endcase;
+
+                 case MSG_PERIMETER_ALARM_OFF:
+
+                       PlayPASound = FALSE;
+                       endcase;
+
+                 case MSG_SET_EXIT_TIMER:
+
+                       setTimer(EXIT_TIMER,2.0);
+                       ExitTimerSet = TRUE;
+                       endcase;
+
+                 case MSG_PLAY_END_MUSIC:
+
+                       switch (MsgParams)
+                             case INNER_SPHERE_VICTORY:
+                                   if (getHomeTeam == PLAYER_FORCE) then
+                                       PlayDigitalMusic(VICTORY_MUSIC);
+                                   else
+                                       PlayDigitalMusic(DEFEAT_MUSIC);
+                                   endif;
+                                   endcase;
+                             case CLAN_VICTORY:
+                                   if (getHomeTeam == CLAN_FORCE) then
+                                       PlayDigitalMusic(VICTORY_MUSIC);
+                                   else
+                                       PlayDigitalMusic(DEFEAT_MUSIC);
+                                   endif;
+                                   endcase;
+                             case JOINT_LOSS:
+                                   PlayDigitalMusic(DEFEAT_MUSIC);
+                                   endcase;
+                             case JOINT_VICTORY:
+                                   PlayDigitalMusic(VICTORY_MUSIC);
+                                   endcase;
+                       endswitch;
+                       endcase;
+
+                 Case 1:
+
+                       setObjectiveStatus(1, FAILED);
+                       endcase;
+
+                 Case 2:
+
+                       SetObjectiveStatus(0,FAILED);
+                       if (getHomeTeam == PLAYER_FORCE) then
+                            playBetty(BETTY_CANNOT_COMP_OBJ);
+                       endif;
+                       Objective_0_Decided = TRUE;
+                       endcase;
+
+                 Case 3:
+
+                       SetObjectiveStatus(0,SUCCESS);
+                       VictoryLevel = VictoryLevel + 1;
+                       if (getHomeTeam == PLAYER_FORCE) then
+                            playBetty(BETTY_OBJECTIVE_COMPLETE);
+                            if ((VictoryLevel < 1) AND (ClanVictoryLevel < 1)) then
+                                 PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                            endif;
+                       endif;
+                       Objective_0_Decided = TRUE;
+                       endcase;
+
+                 Case 4:
+
+                       SetObjectiveStatus(1,SUCCESS);
+                       ClanVictoryLevel = ClanVictoryLevel + 1;
+                       if (getHomeTeam == CLAN_FORCE) then
+                            playBetty(BETTY_OBJECTIVE_COMPLETE);
+                            if ((VictoryLevel < 1) AND (ClanVictoryLevel < 1)) then
+                                 PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                            endif;
+                       endif;
+                       Objective_1_Decided = TRUE;
+                       endcase;
+
+                 Case 5:
+
+                       SetObjectiveStatus(1,FAILED);
+                       if (getHomeTeam == CLAN_FORCE) then
+                            playBetty(BETTY_CANNOT_COMP_OBJ);
+                       endif;
+                       Objective_1_Decided = TRUE;
+                       endcase;
+
+                 Case 6:
+
+                       setObjectiveStatus(1, FAILED);
+                       endcase;
+
+                 Case 7:
+
+                       setObjectiveStatus(0, FAILED);
+                       endcase;
+
+                 Case 8:
+
+                       setObjectActive(getterrainobjectpartid(49,170),FALSE);
+                       setObjectActive(getterrainobjectpartid(49,172),FALSE);
+                       setObjectActive(getterrainobjectpartid(49,301),FALSE);
+                       setObjectActive(getterrainobjectpartid(49,303),FALSE);
+                       setObjectActive(getterrainobjectpartid(49,305),FALSE);
+                       setObjectActive(getterrainobjectpartid(49,307),FALSE);
+                       setObjectActive(getterrainobjectpartid(49,309),FALSE);
+                       setObjectActive(getterrainobjectpartid(49,311),FALSE);
+                       setObjectActive(getterrainobjectpartid(49,341),FALSE);
+                       setObjectActive(getterrainobjectpartid(49,351),FALSE);
+                       setObjectActive(getterrainobjectpartid(49,381),FALSE);
+                       TurCtrlWestAlignment = -2;
+                       endcase;
+
+                 Case 9:
+
+                       objectChangeSides(getterrainobjectpartid(49,170),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(49,172),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(49,301),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(49,303),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(49,305),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(49,307),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(49,309),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(49,311),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(49,341),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(49,351),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(49,381),MsgParams);
+                       TurCtrlWestAlignment = MsgParams;
+                       objectChangeSides(TurCtrlWest,MsgParams);
+                       endcase;
+
+                 Case 10:
+
+                       LockGateOpen(getterrainobjectpartid(49,390));
+                       GateCtrlWestAlignment = -2;
+                       endcase;
+
+                 Case 11:
+
+                       LockGateClosed(getterrainobjectpartid(49,390));
+                       GateCtrlWestAlignment = -2;
+                       endcase;
+
+                 Case 12:
+
+                       LockGateOpen(getterrainobjectpartid(49,392));
+                       GateCtrlWestAlignment = -2;
+                       endcase;
+
+                 Case 13:
+
+                       LockGateClosed(getterrainobjectpartid(49,392));
+                       GateCtrlWestAlignment = -2;
+                       endcase;
+
+                 Case 14:
+
+                       objectChangeSides(getterrainobjectpartid(49,390),MsgParams);
+                       ReleaseGateLock(getterrainobjectpartid(49,390));
+                       objectChangeSides(getterrainobjectpartid(49,392),MsgParams);
+                       ReleaseGateLock(getterrainobjectpartid(49,392));
+                       GateCtrlWestAlignment = MsgParams;
+                       objectChangeSides(GateCtrlWest,MsgParams);
+                       endcase;
+
+                 Case 15:
+
+                       setObjectActive(getterrainobjectpartid(20,279),FALSE);
+                       setObjectActive(getterrainobjectpartid(20,359),FALSE);
+                       setObjectActive(getterrainobjectpartid(20,379),FALSE);
+                       setObjectActive(getterrainobjectpartid(21,260),FALSE);
+                       setObjectActive(getterrainobjectpartid(21,340),FALSE);
+                       TurCtrlEastAAlignment = -2;
+                       endcase;
+
+                 Case 16:
+
+                       objectChangeSides(getterrainobjectpartid(20,279),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(20,359),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(20,379),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(21,260),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(21,340),MsgParams);
+                       TurCtrlEastAAlignment = MsgParams;
+                       objectChangeSides(TurCtrlEastA,MsgParams);
+                       endcase;
+
+                 Case 17:
+
+                       setObjectActive(getterrainobjectpartid(30,37),FALSE);
+                       setObjectActive(getterrainobjectpartid(30,39),FALSE);
+                       setObjectActive(getterrainobjectpartid(30,277),FALSE);
+                       setObjectActive(getterrainobjectpartid(30,279),FALSE);
+                       setObjectActive(getterrainobjectpartid(30,297),FALSE);
+                       setObjectActive(getterrainobjectpartid(30,299),FALSE);
+                       TurCtrlEastBAlignment = -2;
+                       endcase;
+
+                 Case 18:
+
+                       objectChangeSides(getterrainobjectpartid(30,37),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(30,39),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(30,277),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(30,279),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(30,297),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(30,299),MsgParams);
+                       TurCtrlEastBAlignment = MsgParams;
+                       objectChangeSides(TurCtrlEastB,MsgParams);
+                       endcase;
+
+                 Case 19:
+
+                       setObjectActive(getterrainobjectpartid(23,160),FALSE);
+                       setObjectActive(getterrainobjectpartid(23,169),FALSE);
+                       setObjectActive(getterrainobjectpartid(23,170),FALSE);
+                       setObjectActive(getterrainobjectpartid(23,200),FALSE);
+                       setObjectActive(getterrainobjectpartid(23,209),FALSE);
+                       setObjectActive(getterrainobjectpartid(23,210),FALSE);
+                       TurCtrlEastCAlignment = -2;
+                       endcase;
+
+                 Case 20:
+
+                       objectChangeSides(getterrainobjectpartid(23,160),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(23,169),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(23,170),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(23,200),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(23,209),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(23,210),MsgParams);
+                       TurCtrlEastCAlignment = MsgParams;
+                       objectChangeSides(TurCtrlEastC,MsgParams);
+                       endcase;
+
+                 Case 21:
+
+                       objectChangeSides(Mechbay2,MsgParams);
+                       Mechbay2Alignment = MsgParams;
+                       endcase;
+
+                 Case 22:
+
+                       setObjectActive(getterrainobjectpartid(31,366),FALSE);
+                       setObjectActive(getterrainobjectpartid(31,378),FALSE);
+                       setObjectActive(getterrainobjectpartid(40,6),FALSE);
+                       setObjectActive(getterrainobjectpartid(40,18),FALSE);
+                       setObjectActive(getterrainobjectpartid(40,130),FALSE);
+                       setObjectActive(getterrainobjectpartid(40,132),FALSE);
+                       CenterTCTAlignment = -2;
+                       endcase;
+
+                 Case 23:
+
+                       objectChangeSides(getterrainobjectpartid(31,366),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(31,378),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(40,6),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(40,18),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(40,130),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(40,132),MsgParams);
+                       CenterTCTAlignment = MsgParams;
+                       objectChangeSides(CenterTCT,MsgParams);
+                       endcase;
+
+                 Case 24:
+
+                       LockGateOpen(getterrainobjectpartid(31,387));
+                       CenterGCAlignment = -2;
+                       endcase;
+
+                 Case 25:
+
+                       LockGateClosed(getterrainobjectpartid(31,387));
+                       CenterGCAlignment = -2;
+                       endcase;
+
+                 Case 26:
+
+                       LockGateOpen(getterrainobjectpartid(31,397));
+                       CenterGCAlignment = -2;
+                       endcase;
+
+                 Case 27:
+
+                       LockGateClosed(getterrainobjectpartid(31,397));
+                       CenterGCAlignment = -2;
+                       endcase;
+
+                 Case 28:
+
+                       LockGateOpen(getterrainobjectpartid(40,111));
+                       CenterGCAlignment = -2;
+                       endcase;
+
+                 Case 29:
+
+                       LockGateClosed(getterrainobjectpartid(40,111));
+                       CenterGCAlignment = -2;
+                       endcase;
+
+                 Case 30:
+
+                       objectChangeSides(getterrainobjectpartid(31,387),MsgParams);
+                       ReleaseGateLock(getterrainobjectpartid(31,387));
+                       objectChangeSides(getterrainobjectpartid(31,397),MsgParams);
+                       ReleaseGateLock(getterrainobjectpartid(31,397));
+                       objectChangeSides(getterrainobjectpartid(40,111),MsgParams);
+                       ReleaseGateLock(getterrainobjectpartid(40,111));
+                       CenterGCAlignment = MsgParams;
+                       objectChangeSides(CenterGC,MsgParams);
+                       endcase;
+
+                 Case 31:
+
+                       objectChangeSides(Mechbay3,MsgParams);
+                       Mechbay3Alignment = MsgParams;
+                       endcase;
+
+                 Case 32:
+
+                       objectChangeSides(Mechbay5,MsgParams);
+                       Mechbay5Alignment = MsgParams;
+                       endcase;
+
+                 Case 33:
+
+                       objectChangeSides(Stack7, NEUTRAL);
+                       if (getStrikes(((MsgParams/10)-1),(MsgParams MOD 10)) < MAX_STRIKES) then
+                             addStrikes(((MsgParams/10)-1),(MsgParams MOD 10),1);
+                       endif;
+                       setCaptureable(Stack7, FALSE);
+                       Stack7Alignment = -2;
+                       endcase;
+
+                 Case 34:
+
+                       Stack7Alignment = Stack7Alignment - 1;
+                       endcase;
+
+                 Case 35:
+
+                       setCaptureable(Stack7, TRUE);
+                       Stack7Alignment = NEUTRAL;
+                       endcase;
+
+                 Case 36:
+
+                       objectChangeSides(Mechbay7,MsgParams);
+                       Mechbay7Alignment = MsgParams;
+                       endcase;
+
+                 Case 37:
+
+                       objectChangeSides(Stack1, NEUTRAL);
+                       if (getStrikes(((MsgParams/10)-1),(MsgParams MOD 10)) < MAX_STRIKES) then
+                             addStrikes(((MsgParams/10)-1),(MsgParams MOD 10),1);
+                       endif;
+                       setCaptureable(Stack1, FALSE);
+                       Stack1Alignment = -2;
+                       endcase;
+
+                 Case 38:
+
+                       Stack1Alignment = Stack1Alignment - 1;
+                       endcase;
+
+                 Case 39:
+
+                       setCaptureable(Stack1, TRUE);
+                       Stack1Alignment = NEUTRAL;
+                       endcase;
+
+                 Case 40:
+
+                       objectChangeSides(stack2, NEUTRAL);
+                       if (getStrikes(((MsgParams/10)-1),(MsgParams MOD 10)) < MAX_STRIKES) then
+                             addStrikes(((MsgParams/10)-1),(MsgParams MOD 10),1);
+                       endif;
+                       setCaptureable(stack2, FALSE);
+                       stack2Alignment = -2;
+                       endcase;
+
+                 Case 41:
+
+                       stack2Alignment = stack2Alignment - 1;
+                       endcase;
+
+                 Case 42:
+
+                       setCaptureable(stack2, TRUE);
+                       stack2Alignment = NEUTRAL;
+                       endcase;
+
+                 Case 43:
+
+                       objectChangeSides(stack3, NEUTRAL);
+                       if (getStrikes(((MsgParams/10)-1),(MsgParams MOD 10)) < MAX_STRIKES) then
+                             addStrikes(((MsgParams/10)-1),(MsgParams MOD 10),1);
+                       endif;
+                       setCaptureable(stack3, FALSE);
+                       stack3Alignment = -2;
+                       endcase;
+
+                 Case 44:
+
+                       stack3Alignment = stack3Alignment - 1;
+                       endcase;
+
+                 Case 45:
+
+                       setCaptureable(stack3, TRUE);
+                       stack3Alignment = NEUTRAL;
+                       endcase;
+
+                 Case 46:
+
+                       objectChangeSides(stack4, NEUTRAL);
+                       if (getStrikes(((MsgParams/10)-1),(MsgParams MOD 10)) < MAX_STRIKES) then
+                             addStrikes(((MsgParams/10)-1),(MsgParams MOD 10),1);
+                       endif;
+                       setCaptureable(stack4, FALSE);
+                       stack4Alignment = -2;
+                       endcase;
+
+                 Case 47:
+
+                       stack4Alignment = stack4Alignment - 1;
+                       endcase;
+
+                 Case 48:
+
+                       setCaptureable(stack4, TRUE);
+                       stack4Alignment = NEUTRAL;
+                       endcase;
+
+                 Case 49:
+
+                       setObjectActive(getterrainobjectpartid(58,21),FALSE);
+                       setObjectActive(getterrainobjectpartid(58,31),FALSE);
+                       setObjectActive(getterrainobjectpartid(58,61),FALSE);
+                       setObjectActive(getterrainobjectpartid(58,63),FALSE);
+                       setObjectActive(getterrainobjectpartid(58,65),FALSE);
+                       setObjectActive(getterrainobjectpartid(58,67),FALSE);
+                       setObjectActive(getterrainobjectpartid(58,69),FALSE);
+                       setObjectActive(getterrainobjectpartid(58,71),FALSE);
+                       setObjectActive(getterrainobjectpartid(58,141),FALSE);
+                       setObjectActive(getterrainobjectpartid(58,143),FALSE);
+                       setObjectActive(getterrainobjectpartid(58,145),FALSE);
+                       setObjectActive(getterrainobjectpartid(59,24),FALSE);
+                       setObjectActive(getterrainobjectpartid(59,64),FALSE);
+                       TurCtrlWestBAlignment = -2;
+                       endcase;
+
+                 Case 50:
+
+                       objectChangeSides(getterrainobjectpartid(58,21),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(58,31),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(58,61),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(58,63),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(58,65),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(58,67),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(58,69),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(58,71),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(58,141),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(58,143),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(58,145),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(59,24),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(59,64),MsgParams);
+                       TurCtrlWestBAlignment = MsgParams;
+                       objectChangeSides(TurCtrlWestB,MsgParams);
+                       endcase;
+
+                 Case 51:
+
+                       setObjectActive(getterrainobjectpartid(21,172),FALSE);
+                       setObjectActive(getterrainobjectpartid(21,176),FALSE);
+                       setObjectActive(getterrainobjectpartid(21,192),FALSE);
+                       setObjectActive(getterrainobjectpartid(21,196),FALSE);
+                       setObjectActive(getterrainobjectpartid(21,212),FALSE);
+                       setObjectActive(getterrainobjectpartid(21,216),FALSE);
+                       setObjectActive(getterrainobjectpartid(21,291),FALSE);
+                       setObjectActive(getterrainobjectpartid(21,295),FALSE);
+                       setObjectActive(getterrainobjectpartid(21,296),FALSE);
+                       setObjectActive(getterrainobjectpartid(21,297),FALSE);
+                       setObjectActive(getterrainobjectpartid(21,311),FALSE);
+                       setObjectActive(getterrainobjectpartid(21,312),FALSE);
+                       TCTEastGenAlignment = -2;
+                       endcase;
+
+                 Case 52:
+
+                       objectChangeSides(getterrainobjectpartid(21,172),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(21,176),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(21,192),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(21,196),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(21,212),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(21,216),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(21,291),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(21,295),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(21,296),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(21,297),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(21,311),MsgParams);
+                       objectChangeSides(getterrainobjectpartid(21,312),MsgParams);
+                       TCTEastGenAlignment = MsgParams;
+                       objectChangeSides(TCTEastGen,MsgParams);
+                       endcase;
+
+           endswitch;
+
+endfunction;
+

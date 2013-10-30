@@ -1,0 +1,12 @@
+//*********************************************************************************
+// Variable Include file for mission 4_1
+
+     eternal boolean                   Bombsdropped;
+     eternal integer                   Tower;
+     eternal integer                   RBBoomBoom;
+     static integer                    RBBoomBoomAlignment;
+     eternal integer                   TCBoomBoom;
+     static integer                    TCBoomBoomAlignment;
+     static boolean                    LOP0;
+     static boolean                    LOP1;
+     static boolean                    LOP2;

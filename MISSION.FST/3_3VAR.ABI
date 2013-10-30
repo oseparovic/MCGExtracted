@@ -1,0 +1,18 @@
+//*********************************************************************************
+// Variable Include file for mission 3_3
+
+     eternal integer                   wh1;
+     static integer                    wh1Alignment;
+     eternal integer                   tct1;
+     static integer                    tct1Alignment;
+     eternal integer                   barrack1;
+     eternal integer                   wh2;
+     static integer                    wh2Alignment;
+     eternal integer                   wh3;
+     static integer                    wh3Alignment;
+     eternal integer                   wh4;
+     static integer                    wh4Alignment;
+     eternal integer                   wh5;
+     static integer                    wh5Alignment;
+     eternal integer                   wh6;
+     static integer                    wh6Alignment;

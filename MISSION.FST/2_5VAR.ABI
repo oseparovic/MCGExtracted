@@ -1,0 +1,5 @@
+//*********************************************************************************
+// Variable Include file for mission 2_5
+
+     eternal integer                   carsdead;
+     static boolean                    LOP0;

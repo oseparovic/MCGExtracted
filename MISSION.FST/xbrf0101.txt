@@ -1,0 +1,21 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:HYDRA/01PRDN01%n
+%fc5%c----------%n
+%fc6%c***SECURE LANDING ZONE***%n
+%fc21-Capture HQ Vehicle%n
+%fc22-Capture Component Warehouses (2)%n
+%fc23-Move All Units to Extraction Point%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 4 Small  0 Large%n
+%t12SENSOR PROBE: 0%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4Your mission is to sweep and secure the immediate area around the landing zone.%n%n
+Your first objective is to capture a %fc2Clan HQ Vehicle%fc4. We require as much knowledge about this area as possible, and capture of this unit may give us some useful tactical information.%n%n
+Proceed then to the next objective, which is the capture of two %fc2Component Warehouses%fc4 inside a Clan outpost.  These Component Warehouses contain supplies and weapons which will prove useful in our upcoming engagements.  Be advised that Clan outposts are typically defended by Turrets and Turret Control Towers.%n%n
+The final objective is to move all your units to the %fc2Extraction  Point%fc4 near the main road accessing this area.%n%n
+%fc5%c----------%n
+%fc6%c**TACTICAL NOTICE**%n%n
+%fc6*%fc2 Capture of an %fc6HQ Vehicle%fc2 reveals a section of the surrounding terrain.  Due to their tactical importance HQ Vehicles are rarely left unguarded.%n%n
+%fc6*%fc2 %fc6Turret Control Towers%fc2 control the immediate set of turrets around the Tower.  Capturing a Turret Control Tower will cause the turrets to target opponents instead of you.  Destruction of a Turret Control Tower will force the turrets to deactivate.%n%n
+%fc6<<<<END DISPATCH

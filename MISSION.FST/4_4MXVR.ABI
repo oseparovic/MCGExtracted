@@ -1,0 +1,21 @@
+//*********************************************************************************
+// Variable Include file for mission 4_4
+
+     static boolean                    dicerolled;
+     real                              timereal;
+     eternal integer                   TCFront;
+     static integer                    TCFrontAlignment;
+     eternal integer                   TCDerrick;
+     static integer                    TCDerrickAlignment;
+     eternal integer                   RB;
+     static integer                    RBAlignment;
+     eternal integer                   TCSouth;
+     static integer                    TCSouthAlignment;
+     eternal integer                   TCEast;
+     static integer                    TCEastAlignment;
+     eternal integer                   TCNorth;
+     static integer                    TCNorthAlignment;
+     eternal integer                   RB2;
+     static integer                    RB2Alignment;
+     static boolean                    LOP0;
+     static boolean                    LOP1;

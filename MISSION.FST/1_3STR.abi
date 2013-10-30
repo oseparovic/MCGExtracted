@@ -1,0 +1,41 @@
+//*********************************************************************************
+// Structure Include file for mission 1_3
+
+
+if ((isdead(TCTmissile)) AND (TCTmissileAlignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(20,161),FALSE);
+     setObjectActive(getterrainobjectpartid(20,265),FALSE);
+     setObjectActive(getterrainobjectpartid(20,372),FALSE);
+     TCTmissileAlignment = -2;
+else
+     if ((IsCaptured(TCTmissile) == 1) AND (objectSide(TCTmissile) <> TCTmissileAlignment) AND (TCTmissileAlignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(20,161),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(20,161),2);
+           objectChangeSides(getterrainobjectpartid(20,265),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(20,265),2);
+           objectChangeSides(getterrainobjectpartid(20,372),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(20,372),2);
+           objectChangeSides(TCTmissile,INNER_SPHERE);
+           TCTmissileAlignment = INNER_SPHERE;
+           setPotentialContact(TCTmissile,2);
+     endif;
+endif;
+
+if ((isdead(TCTcannon)) AND (TCTcannonAlignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(15,219),FALSE);
+     setObjectActive(getterrainobjectpartid(15,339),FALSE);
+     setObjectActive(getterrainobjectpartid(16,205),FALSE);
+     TCTcannonAlignment = -2;
+else
+     if ((IsCaptured(TCTcannon) == 1) AND (objectSide(TCTcannon) <> TCTcannonAlignment) AND (TCTcannonAlignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(15,219),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(15,219),2);
+           objectChangeSides(getterrainobjectpartid(15,339),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(15,339),2);
+           objectChangeSides(getterrainobjectpartid(16,205),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(16,205),2);
+           objectChangeSides(TCTcannon,INNER_SPHERE);
+           TCTcannonAlignment = INNER_SPHERE;
+           setPotentialContact(TCTcannon,2);
+     endif;
+endif;

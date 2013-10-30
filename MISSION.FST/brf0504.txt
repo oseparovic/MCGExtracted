@@ -1,0 +1,18 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:CUTTHROAT/05PRDN03%n
+%fc5%c----------%n
+%fc6%c***CAPTURE AND DEFEND***%n
+%c***FUEL DEPOT***%n
+%fc21-Destroy All Enemy Forces%n
+2-Capture and Defend all four%n
+%t9oil derricks%n
+3-Capture Clan HQ Building to%n
+%t9gain valuable tactical data.%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 3 Small  3 Large%n
+%t12SENSOR PROBE: 0%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4The Smoke Jaguars have secured the Weisman Fuel Depot and Processing Station a few kilometers from the Starbase. Zulu Company is tasked with the capture and defense of the depot. Due to the strategic value of the depot Intelligence is certain that the Jaguars will not give it up without a fight. Based on the profiling done of the Smoke Jaguars it is likely that they will stop at nothing to regain the depot, or deny us its use.%n%n
+Be warned, the depot is an incredibly volatile environment- there is virtually nothing within it that does not burn or explode. Certainly, you will be able to use this to your advantage (as long as the primary derricks are protected) but do not make the mistake of assuming the Jaguars are stupid and will not take the same advantages themselves...%n%n 
+%fc6<<<<END DISPATCH

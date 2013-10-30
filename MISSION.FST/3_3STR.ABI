@@ -1,0 +1,32 @@
+//*********************************************************************************
+// Structure Include file for mission 3_3
+
+
+if ((isdead(tct1)) AND (tct1Alignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(26,188),FALSE);
+     setObjectActive(getterrainobjectpartid(26,195),FALSE);
+     setObjectActive(getterrainobjectpartid(26,213),FALSE);
+     setObjectActive(getterrainobjectpartid(26,229),FALSE);
+     setObjectActive(getterrainobjectpartid(26,271),FALSE);
+     tct1Alignment = -2;
+else
+     if ((IsCaptured(tct1) == 1) AND (objectSide(tct1) <> tct1Alignment) AND (tct1Alignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(26,188),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(26,188),2);
+           objectChangeSides(getterrainobjectpartid(26,195),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(26,195),2);
+           objectChangeSides(getterrainobjectpartid(26,213),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(26,213),2);
+           objectChangeSides(getterrainobjectpartid(26,229),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(26,229),2);
+           objectChangeSides(getterrainobjectpartid(26,271),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(26,271),2);
+           objectChangeSides(tct1,INNER_SPHERE);
+           tct1Alignment = INNER_SPHERE;
+           setPotentialContact(tct1,2);
+     endif;
+endif;
+
+if (getObjectDamage(barrack1) > 0) then
+     GeneralAlarm = TRUE;
+endif;

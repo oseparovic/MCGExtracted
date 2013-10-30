@@ -1,0 +1,101 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:3/11/98   BY:Mike Lee
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0201_Hunter3 : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+
+    // PATHS
+    static path                        Path1;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+
+         // Paths
+
+         Path1[0,0] = -2200; // X
+         Path1[0,1] = 3700; // Y
+
+         Path1[1,0] = -1250; // X
+         Path1[1,1] = 4380; // Y
+
+         Path1[2,0] = 25; // X
+         Path1[2,1] = 5400; // Y
+
+         SetEngageRadius(500);
+         SetDisEngageRadius(1000);
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              MakeTarget(getVehicleID(PLAYER_FORCE,1, 0),99999);
+              Order1Status = SUCCESS;
+         else
+              if (Order1Status <> INCOMPLETE) then
+                   // Order  2 
+                   if (Order2Status == INCOMPLETE) then
+                        Order2Status = Patrol(Path1,3,PATROL_BACK_AND_FORTH, 100);
+                        if (Order2Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   else
+                        if (Order2Status <> INCOMPLETE) then
+                             // Order  3 
+                             if (Order3Status == INCOMPLETE) then
+                                  Order3Status = Attack;
+                                  if (Order3Status == INCOMPLETE) then
+                                       return(1);
+                                  endif;
+                             endif;
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

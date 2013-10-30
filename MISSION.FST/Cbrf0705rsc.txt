@@ -1,0 +1,10 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cCOMMAND DESIGNATION:GAMBIT/7PRDN5%n
+%fc5%c----------%n
+%fc6%c*** BIG BASE TANGO ***%n
+%fc6%c**  ROBIN HOOD AND  **%n
+%fc6%c**   THE SHERIFF    **%n
+%fc21-Survive OR Capture Base HQ%n%n
+%fc5%c----------%n
+%fc4The defenders at the base outnumber you but must destroy you before the time limit expires. To win you must survive or sneak in to capture the Base HQ.%n%n
+%fc6<<<<END DISPATCH

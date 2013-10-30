@@ -1,0 +1,24 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:GORGON/02PRDN04%n
+%fc5%c----------%n
+%fc6%c***CAPTURE ENEMY COMMANDERS***%n
+%fc21-Capture Clan HQ building%n
+%fc22-Return Forces to Extraction Point%n
+%fc23-Capture Star League Command Center%n
+%fc8   (secondary)%n
+%fc24-Capture APC%n
+%fc8   (secondary)%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 3 Small  1 Large%n
+%t12SENSOR PROBE: 1%n
+%t12CAMERA DRONE: 1%n
+%fc5%c----------%n
+%fc4Intelligence has located three Clan Star Captains gathered at a base north of your position.  Your mission is to capture at least one of them for interrogation.%n%n
+Star Captain Rathbun is quartered in the %fc2Clan HQ%fc4 along the east side of the base and has valuable data regarding Jaguar troop movements.  Capture the HQ and get back to your %fc2Extraction Point%fc4.%n%n
+%fc4While the other two commanders are not as important they could be useful.  Star Captain Dulaney is sitting in the %fc2Star League Command Center%fc4 on the west side of the base and that Star Captain Kulin is preparing to leave in the %fc2Hover Limo%fc4 he took to the base.%n%n
+%fc5%c----------%n
+%fc6%c**TACTICAL NOTICE**%n%n
+%fc6*%fc2 Star Captain Kulin's Limo is sure to be guarded and may attempt to flee behind enemy lines as soon as any of the units inside the base begin fighting.%n%n
+%fc6*%fc2 While Star Captain Dulaney's capture is not essential to the success of the mission, Recon reports that the area containing the Star League Command building also contains weapon supplies.%n%n
+%fc6*%fc2 Recon reports %fc6Masakari%fc2 class assault Omnimechs in this sector.  These 'Mechs are armed with a variety of weapon types including ER PPCs and LRMs.%n%n
+%fc6<<<<END DISPATCH

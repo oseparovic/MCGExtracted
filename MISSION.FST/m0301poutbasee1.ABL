@@ -1,0 +1,117 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:4/28/98   BY:david abzug
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0301poutbasee1 : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+
+    // PATHS
+    static path                        Path1;
+    static path                        path2;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+
+         // Paths
+
+         Path1[0,0] = -800; // X
+         Path1[0,1] = -2200; // Y
+
+         Path1[1,0] = 0; // X
+         Path1[1,1] = -2200; // Y
+
+         Path1[2,0] = 600; // X
+         Path1[2,1] = -2200; // Y
+
+         path2[0,0] = -800; // X
+         path2[0,1] = -2200; // Y
+
+         path2[1,0] = -800; // X
+         path2[1,1] = -3000; // Y
+
+         path2[2,0] = -860; // X
+         path2[2,1] = -3800; // Y
+
+         path2[3,0] = -449; // X
+         path2[3,1] = -4238; // Y
+
+         path2[4,0] = 678; // X
+         path2[4,1] = -4238; // Y
+
+         path2[5,0] = -190; // X
+         path2[5,1] = -3678; // Y
+
+         SetEngageRadius(225);
+         SetDisEngageRadius(600);
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (flag5) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              SetEngageRadius(500);
+              Order2Status = SUCCESS;
+         endif;
+    endif;
+    if (flag5) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              SetSpeed(RUN);
+              Order3Status = SUCCESS;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = Patrol(Path1,3,PATROL_BACK_AND_FORTH, 5000);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

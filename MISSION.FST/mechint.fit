@@ -1,0 +1,147 @@
+FITini
+
+[Mech0]
+//Atlas
+
+l CenterTorso = 		31
+l SideTorso = 		21
+l Arm = 			17
+l Leg = 			21
+
+[Mech1]
+//Awesome
+
+l CenterTorso = 		25
+l SideTorso = 		17
+l Arm = 			13
+l Leg = 			17
+
+[Mech2]
+//Catapult
+
+l CenterTorso = 		21
+l SideTorso = 		15
+l Arm = 			10
+l Leg = 			15
+
+[Mech3]
+//Centurion
+
+l CenterTorso = 		18
+l SideTorso = 		13
+l Arm = 			9
+l Leg = 			13
+
+[Mech4]
+//Commando
+
+l CenterTorso = 		8
+l SideTorso = 		6
+l Arm = 			4
+l Leg = 			6
+
+[Mech5]
+//Cougar
+
+l CenterTorso = 		11
+l SideTorso = 		8
+l Arm = 			6
+l Leg = 			8
+
+[Mech6]
+// Firestarter
+
+l CenterTorso = 		10
+l SideTorso = 		7
+l Arm = 			5
+l Leg = 			7
+
+[Mech7]
+// Hollander
+
+l CenterTorso = 		14
+l SideTorso = 		11
+l Arm = 			7
+l Leg = 			11
+
+[Mech8]
+//Hunchback
+
+l CenterTorso = 		16
+l SideTorso = 		12
+l Arm = 			8
+l Leg = 			12
+
+[Mech9]
+// Hunchback IIC	3	16	12	12	8	8	12	12
+
+l CenterTorso = 		16
+l SideTorso = 		12
+l Arm = 			8
+l Leg = 			12
+
+[Mech10]
+// Jagermech
+
+l CenterTorso = 		22
+l SideTorso = 		15
+l Arm = 			11
+l Leg = 			15
+
+[Mech11]
+// Loki
+
+l CenterTorso = 		21
+l SideTorso = 		15
+l Arm = 			10
+l Leg = 			15
+
+[Mech12]
+// Madcat
+
+l CenterTorso = 		23
+l SideTorso = 		16
+l Arm = 			12
+l Leg = 			16
+
+[Mech13]
+// Masakari
+
+l CenterTorso = 		27
+l SideTorso = 		18
+l Arm = 			14
+l Leg = 			18
+
+[Mech14]
+// Raven
+
+l CenterTorso = 		11
+l SideTorso = 		8
+l Arm = 			6
+l Leg = 			8
+
+[Mech15]
+// Thor
+
+l CenterTorso = 		22
+l SideTorso = 		15
+l Arm = 			11
+l Leg = 			15
+
+[Mech16]
+// Uller
+
+l CenterTorso = 		10
+l SideTorso = 		7
+l Arm = 			5
+l Leg = 			7
+
+[Mech17]
+// Vulture
+
+l CenterTorso = 		20
+l SideTorso = 		14
+l Arm = 			10
+l Leg = 			14
+
+FITend

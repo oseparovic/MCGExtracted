@@ -1,0 +1,9 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cCOMMAND DESIGNATION:GAMBIT/7PRDN4%n
+%fc5%c----------%n
+%fc6%c*** OVER THE TOP ***%n
+%fc21-Destroy All Enemy Forces%n%n
+%fc5%c----------%n
+%fc4Our forward scouts have already grabbed three bases along the outer perimeter. Unfortunately, so has the enemy.%n%n
+%fc4Take out all enemy forces in the area.%n%n
+%fc6<<<<END DISPATCH

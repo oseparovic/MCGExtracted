@@ -1,0 +1,139 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:1/5/98   BY:Duri Price
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0502B2 : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+    static integer                     Order6Status;
+    static integer                     Order7Status;
+    static integer                     Order8Status;
+    static integer                     Order9Status;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+         Order6Status = INCOMPLETE;
+         Order7Status = INCOMPLETE;
+         Order8Status = INCOMPLETE;
+         Order9Status = INCOMPLETE;
+
+         SetTactic(TACTIC_OPTIMAL);
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (getHits >= 3) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              SetSpeed(RUN);
+              Order2Status = SUCCESS;
+         endif;
+    endif;
+    if (getHits >= 3) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              StopFighting;
+              Order3Status = SUCCESS;
+         endif;
+    endif;
+    if (getHits >= 3) then
+         // Order  4 
+         if (Order4Status == INCOMPLETE) then
+              MoveTo(-2886,-4366);
+              Order4Status = SUCCESS;
+         else
+              if (Order4Status <> INCOMPLETE) then
+                   // Order  5 
+                   if (Order5Status == INCOMPLETE) then
+                        StartFighting;
+                        Order5Status = SUCCESS;
+                   endif;
+              endif;
+         endif;
+    endif;
+    if (inHotSpot(PLAYER_FORCE,-1622,-4215,100)) then
+         // Order  6 
+         if (Order6Status == INCOMPLETE) then
+              StopFighting;
+              Order6Status = SUCCESS;
+         endif;
+    endif;
+    if (inHotSpot(PLAYER_FORCE,-1622,-4215,100)) then
+         // Order  7 
+         if (Order7Status == INCOMPLETE) then
+              MoveTo(-8275,-2460);
+              Order7Status = SUCCESS;
+         else
+              if (Order7Status <> INCOMPLETE) then
+                   // Order  8 
+                   if (Order8Status == INCOMPLETE) then
+                        FixEngagePoint(-8275,-2460);
+                        Order8Status = SUCCESS;
+                   endif;
+              endif;
+              if (Order7Status <> INCOMPLETE) then
+                   // Order  9 
+                   if (Order9Status == INCOMPLETE) then
+                        StartFighting;
+                        Order9Status = SUCCESS;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = Attack;
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

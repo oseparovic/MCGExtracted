@@ -1,0 +1,18 @@
+//*********************************************************************************
+// Variable Include file for mission 3_4
+
+     static integer                    APC;
+     static boolean                    APCcreated;
+     static real                       APCDelay;
+     static boolean                    APCSafe;
+     eternal integer                   IS_TC;
+     static integer                    IS_TCAlignment;
+     eternal integer                   CLAN_TC;
+     static integer                    CLAN_TCAlignment;
+     eternal integer                   BaseHQ;
+     eternal integer                   CampHQ;
+     static integer                    CampHQAlignment;
+     eternal integer                   wh1;
+     static integer                    wh1Alignment;
+     static boolean                    LOP0;
+     static boolean                    LOP1;

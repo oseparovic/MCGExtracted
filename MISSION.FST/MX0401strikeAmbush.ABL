@@ -1,0 +1,170 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:11/6/98   BY:david abzug
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBMX0401strikeAmbush : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+    static integer                     Order6Status;
+    static integer                     Order7Status;
+    static integer                     Order8Status;
+
+    // PATHS
+    static path                        boogaloo;
+    static path                        leadin2;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+         Order6Status = INCOMPLETE;
+         Order7Status = INCOMPLETE;
+         Order8Status = INCOMPLETE;
+
+         // Paths
+
+         boogaloo[0,0] = -1599; // X
+         boogaloo[0,1] = -966; // Y
+
+         boogaloo[1,0] = -1982; // X
+         boogaloo[1,1] = -965; // Y
+
+         boogaloo[2,0] = -2506; // X
+         boogaloo[2,1] = -1113; // Y
+
+         boogaloo[3,0] = -2506; // X
+         boogaloo[3,1] = -798; // Y
+
+         boogaloo[4,0] = -1494; // X
+         boogaloo[4,1] = -635; // Y
+
+         leadin2[0,0] = 1052; // X
+         leadin2[0,1] = -1602; // Y
+
+         leadin2[1,0] = -1599; // X
+         leadin2[1,1] = -966; // Y
+
+         leadin2[2,0] = -1480; // X
+         leadin2[2,1] = -966; // Y
+
+         SetEngageRadius(225);
+         SetDisEngageRadius(300);
+         SetSpeed(RUN);
+         MoveAndFireON;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (inHotSpot(PLAYER_FORCE,currentx,currenty,210.0)) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              Flag1 = TRUE;
+              Order2Status = SUCCESS;
+         endif;
+    endif;
+    if (beenHit) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              Flag1 = TRUE;
+              Order3Status = SUCCESS;
+         endif;
+    endif;
+    if (flag1) then
+         // Order  4 
+         if (Order4Status == INCOMPLETE) then
+              orderPowerUp;
+              Order4Status = SUCCESS;
+         else
+              if (Order4Status <> INCOMPLETE) then
+                   // Order  5 
+                   if (Order5Status == INCOMPLETE) then
+                        Order5Status = MovePath(leadin2,3);
+                        if (Order5Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   else
+                        if (Order5Status <> INCOMPLETE) then
+                             // Order  6 
+                             if (Order6Status == INCOMPLETE) then
+                                  Order6Status = Attack;
+                                  if (Order6Status == INCOMPLETE) then
+                                       return(1);
+                                  endif;
+                             else
+                                  if (Order6Status <> INCOMPLETE) then
+                                       // Order  8 
+                                       if (Order8Status == INCOMPLETE) then
+                                            Order8Status = Attack;
+                                            if (Order8Status == INCOMPLETE) then
+                                                 return(1);
+                                            endif;
+                                       endif;
+                                  endif;
+                             endif;
+                        endif;
+                        if ((Order6Status <> INCOMPLETE) and (bombsdropped)) then
+                             // Order  7 
+                             if (Order7Status == INCOMPLETE) then
+                                  Order7Status = MovePath(boogaloo,5);
+                                  if (Order7Status == INCOMPLETE) then
+                                       return(1);
+                                  endif;
+                             endif;
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              orderPowerDown;
+              Order1Status = SUCCESS;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

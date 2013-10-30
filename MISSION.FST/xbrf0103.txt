@@ -1,0 +1,29 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:HYDRA/01PRDN03%n
+%fc5%c----------%n
+%fc6%c***SECURE BAITAN SECTOR***%n
+%fc21-Capture/Destroy 2 HQ's and%n
+%fc2%t9Destroy Defenders%n
+%fc22-Move All Units to Extraction Point%n
+%fc23-Capture/Destroy 3 HQ's and%n
+%fc2%t9Destroy Defenders%n
+%fc8   (secondary)%n
+%fc24-Capture Component Vaults (2)%n
+%fc8   (secondary)%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 2 Small%n
+%t12SENSOR PROBE: 1%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4Intelligence has pinpointed the source of the attacks on base Nomad.  There are several Clan outposts in the Baitan sector which were used as a staging ground for the assaults.  Secure the Baitan sector by destroying or capturing at least two of the three %fc2Base HQ's%fc4 and then proceed to the %fc2Extraction Point%fc4.  Tactical advises that a frontal assault on the outposts may be very costly due to heavy Turret protection.%n%n
+Recon reports an unusual amount of security around certain structures, specifically two Clan %fc2Component Vaults%fc4.  Your secondary objective is to capture these two %fc2Component Vaults%fc4.%n%n
+%fc5%c----------%n
+%fc6%c**TACTICAL NOTICE**%n%n
+%fc6*%fc2 Cliffs and other rough terrain indicate that jump-capable 'Mechs may be valuable.%n%n
+
+%fc6*%fc2 Recon reports the presence of %fc6Heavy Turret Control Towers%fc2.  These towers operate identically to normal Turret Control Towers but possess superior armor fortifications.%n%n
+%fc6* Repair Bays%fc2 may be present inside the outposts.  They repair internal structure, armor, crippled legs, as well as replenish ammo for all weapons.  Repair Bays cannot repair destroyed weapons.%n%n
+%fc6*%fc2 Recon reports numbers of Clan %fc6Shadow Cats%fc2.  These medium OmniMechs boast superior speed and medium range energy weapons.%n%n
+%fc6* Minelayers%fc2 have been spotted in the area.  Mines are undetectable until triggered and are not set off by enemy units.  Mines can be triggered from a safe distance by firing weapons or dropping artillery on the suspected terrain.%n%n
+%fc6*%fc2 ENEMY ACE:  Clan Captain %fc6Katherine Furey%fc2 is known to be overseeing defense of Baitan sector.  Be advised that Enemy Aces often utilize custom configurations for their OmniMechs.%n%n
+%fc6<<<<END DISPATCH

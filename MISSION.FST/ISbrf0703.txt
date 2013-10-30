@@ -1,0 +1,10 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cCOMMAND DESIGNATION:GAMBIT/7PRDN3%n
+%fc5%c----------%n
+%fc6%c*** ARENA COMBAT ***%n
+%fc21-Fight to the Death%n%n
+%fc5%c----------%n
+%fc4This is a grueling fight to the death.  Have at it.%n%n
+%fc6<<<<END DISPATCH
+
+

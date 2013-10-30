@@ -1,0 +1,24 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:HYDRA/01PRDN04%n
+%fc5%c----------%n
+%fc6%c***ELIMINATE BASE OGRE***%n
+%fc21-Capture Mobile HQ%n
+%fc8   (secondary)%n
+%fc22-Destroy Command Building%n
+%fc23-Destroy All Enemy 'Mechs%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 3 Small  0 Large%n
+%t12SENSOR PROBE: 0%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4Our successful occupation of Baitan sector has presented an unexpected strategic opportunity.  Intelligence reports that Clan forces are in the midst of rebuilding an ancient Star League military area, identified as base Ogre.  Strike immediately before defensive fortifications are complete by destroying the %fc2Command Building%fc4 and %fc2All Enemy 'Mechs%fc4.  Be warned that preliminary scouting missions report that Turrets at base Ogre are live.%n%n
+Because base Ogre is still under construction the Clan forces are relying upon %fc2Perimeter Alarms%fc4 as an early warning system.  Destroy these Alarms before they alert the base to your presence.%n%n
+Tactical advises that your first course of action should be to capture the %fc2Mobile HQ%fc4%nvehicle.  It is most likely tracking units patrolling the area and it's capture may give us important data.%n%n
+%fc5%c----------%n
+%fc6%c**TACTICAL NOTICE**%n%n
+%fc6* Perimeter Alarms%fc2 detect the presence of hostile units and will transmit a General Alarm to all units in the area unless destroyed.%n%n
+%fc6* Command Buildings%fc2 are extremely hardened structures and designed to repel weaponfire even from heavy and assault BattleMechs. Only a long and sustained concentration of firepower will be enough to destroy such a structure.%n%n
+%fc6*%fc2 Recon has located two %fc6Repair Bays%fc2 in the area.  One south of the base and one in the base itself.%n%n
+%fc6*%fc2 Base Ogre is protected by %fc6Artillery Turrets%fc2.  These Turrets are housed underground for protection until activated, at which point they will reveal themselves and launch high-explosive shells at any hostiles.  Artillery Turret shells will fire over walls, trees, or any other intervening obstacles.%n%n
+%fc6*%fc2 Recon reports a %fc6Loki%fc2 Class heavy OmniMech in the area.  Loki's are typically outfitted with Gauss Rifles and long-range energy weaponry.%n%n
+%fc6<<<<END DISPATCH

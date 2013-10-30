@@ -1,0 +1,147 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:11/19/98   BY:rob nicholls
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBmx0303basepatrol : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+    static integer                     Order6Status;
+    static integer                     Order7Status;
+    static integer                     Order8Status;
+
+    // PATHS
+    static path                        BasePath;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+         Order6Status = INCOMPLETE;
+         Order7Status = INCOMPLETE;
+         Order8Status = INCOMPLETE;
+
+         // Paths
+
+         BasePath[0,0] = -179; // X
+         BasePath[0,1] = 7603; // Y
+
+         BasePath[1,0] = -179; // X
+         BasePath[1,1] = 6338; // Y
+
+         BasePath[2,0] = 1278; // X
+         BasePath[2,1] = 6338; // Y
+
+         BasePath[3,0] = 1085; // X
+         BasePath[3,1] = 7603; // Y
+
+         SetMinimumDistance(50);
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (GeneralAlarm) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              SetEngageRadius(550);
+              Order3Status = SUCCESS;
+         endif;
+    endif;
+    if (GeneralAlarm) then
+         // Order  4 
+         if (Order4Status == INCOMPLETE) then
+              SetDisengageRadius(550);
+              Order4Status = SUCCESS;
+         endif;
+    endif;
+    if (GeneralAlarm) then
+         // Order  5 
+         if (Order5Status == INCOMPLETE) then
+              SetSpeed(RUN);
+              Order5Status = SUCCESS;
+         endif;
+    endif;
+    if (beenHit) then
+         // Order  6 
+         if (Order6Status == INCOMPLETE) then
+              GeneralAlarm = TRUE;
+              Order6Status = SUCCESS;
+         endif;
+    endif;
+    if (inHotSpot(PLAYER_FORCE,636,7940,150)) then
+         // Order  7 
+         if (Order7Status == INCOMPLETE) then
+              GeneralAlarm = TRUE;
+              Order7Status = SUCCESS;
+         endif;
+    endif;
+    if (numDead(ClanStar(5)) >= 1) then
+         // Order  8 
+         if (Order8Status == INCOMPLETE) then
+              GeneralAlarm = TRUE;
+              Order8Status = SUCCESS;
+         endif;
+    endif;
+    if (numDead(ClanStar(5)) >= 2) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              Order2Status = Guard(Windmill);
+              if (Order2Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = Sentry(myX,myY);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

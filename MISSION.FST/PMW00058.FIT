@@ -1,0 +1,48 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      MechWarrior:  58   Name: Skater  Callsign: SKATER
+//
+//      Creation Date: 12/15/98   By: jon marcus
+//
+// -------------------------------------------------------------------------
+
+
+
+[General]
+st Brain = "pbrain"
+st Name =                                                  "Skater"
+l Rank =                                                    0 
+st Callsign =                                              "SKATER"
+ul ID =                                                     58 
+l NameIndex =                                               7 
+l DescIndex =                                               308 
+ul HeadIcon =                                               0 
+l paintScheme =                                             68 
+st pilotAudio =                                            "piloth"
+st pilotVideo =                                            "PILOT07"
+st Picture =                                               "Pilot07.TGA"
+
+[PersonalityTraits]
+c Professionalism =                                         50 
+c Decorum =                                                 50 
+c Aggressiveness =                                          50 
+c Courage =                                                 50 
+
+[Skills]
+c Piloting =                                                40 
+c Jumping =                                                 50 
+c Sensors =                                                 35 
+c Gunnery =                                                 35 
+
+[Affinities]
+c MechClass =                                               0 
+c MechType =                                                0 
+c WeaponClass =                                             0 
+uc[2] WeaponTypes =                                        0,0
+
+[Status]
+c Wounds =                                                  0 
+
+FITEnd

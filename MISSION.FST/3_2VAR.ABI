@@ -1,0 +1,10 @@
+//*********************************************************************************
+// Variable Include file for mission 3_2
+
+     eternal integer                   RWHouse;
+     static integer                    RWHouseAlignment;
+     eternal integer                   ClanStack;
+     static integer                    ClanStackAlignment;
+     eternal integer                   Tcontrol;
+     static integer                    TcontrolAlignment;
+     static boolean                    LOP0;

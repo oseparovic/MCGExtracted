@@ -1,0 +1,100 @@
+FITini
+
+[Header]
+
+l NumCampaignMissions = 13
+st MultiplayerFile = ""
+
+[PurchaseCosts]
+l Armor = 40
+l Internal = 50
+l Engine = 750
+f clan = 4.0
+
+[PilotCosts]
+
+l Green = 3200
+l Regular = 5000
+l Veteran = 7200
+l Elite = 9800
+
+[Mission0] //X0101
+
+st PurchaseFile = "xpurchase00"
+st OperationCinema = "mcxvid1"
+l Operation = 1
+l AutoPlay = 1
+
+[Mission1] //X0102
+
+st PurchaseFile = "xpurchase01"
+st OperationCinema = "mcxvid1"
+l Operation = 1
+
+[Mission2] //X0103
+
+st PurchaseFile = "xpurchase02"
+st OperationCinema = "mcxvid1"
+l Operation = 1
+
+[Mission3] //X0104
+
+st PurchaseFile = "xpurchase03"
+st OperationCinema = "mcxvid1"
+l Operation = 1
+
+[Mission4] //X0201
+
+st PurchaseFile = "xpurchase04"
+st OperationCinema = "mcxvid2"
+l Operation = 2
+l AutoPlay = 1
+
+[Mission5] //X0202
+						   
+st PurchaseFile = "xpurchase05"
+st OperationCinema = "mcxvid2"
+l Operation = 2
+
+[Mission6] //X0203
+
+st PurchaseFile = "xpurchase06"
+st OperationCinema = "mcxvid2"
+//l AutoPlay = 1
+l Operation = 2
+
+[Mission7] //X0204
+
+st PurchaseFile = "xpurchase07"
+st OperationCinema = "mcxvid2"
+l Operation = 2
+
+[Mission8] //X0301
+
+st PurchaseFile = "xpurchase08"
+st OperationCinema = "mcxvid3"
+l Operation = 3
+l AutoPlay = 1
+
+[Mission9] //x0302
+
+st PurchaseFile = "xpurchase09"
+st OperationCinema = "mcxvid3"
+l Operation = 3
+
+[Mission10]	//0303
+
+st PurchaseFile = "xpurchase10"
+st OperationCinema = "mcxvid3"
+l Operation = 3
+
+[Mission11]	//0304
+
+st PurchaseFile = "xpurchase11"
+st OperationCinema = "mcxvid3"
+l Operation = 3
+
+[Mission12]
+st PurchaseFile = "NetPur"
+
+[FITend]

@@ -1,0 +1,25 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:<placeholder>/03PRDN04%n
+%fc5%c----------%n
+%fc6%c***DESTROY ENGINE DRILLS***%n
+%fc21-Destroy the Engine Drills%n
+%fc22-Destroy the Research Facilities%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 3 Small%n
+%t12SENSOR PROBE: 2%n%n
+%fs%fc5%c----------%n
+%fc4Here we go, team. This is the big strike. We've found the location 
+of the dig for the Starleague weapons vault. The Clan forces have been 
+excavating weapons of mass destruction using converted Dropship engines 
+as drills. We need you to go in and take out the drills, as well as any 
+facilities that are processing the weapons.%n%n
+%fc4Be careful, this area is defended with everything they've got. Walking 
+up the front path may not be the best idea, even if we are using all of 
+our weapons. Look around for any way possible to gain recon about the 
+area.%n
+%fc5%c----------%n
+%fc1%fm%c**TACTICAL WARNING**%n
+%fc2%fs*ENEMY ACES%n
+%t9Two enemy aces are known to be defending the area in customized Turkinas. As if the 
+Turkinas aren't bad enough, they've been refitted to be meaner than ever. Stay sharp.%n
+%fc6<<<<END DISPATCH%n

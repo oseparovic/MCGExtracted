@@ -1,0 +1,33 @@
+//*********************************************************************************
+// Init Include file for mission 4_5
+
+     tctnorth = getTerrainObjectPartId(24,22);
+     objectChangeSides(tctnorth,CLAN);
+     setPotentialContact(tctnorth,0);
+     setCaptureable(tctnorth, TRUE);
+     tctnorthAlignment = CLAN;
+     objectChangeSides(getterrainobjectpartid(23,58),CLAN);
+     objectChangeSides(getterrainobjectpartid(24,0),CLAN);
+     objectChangeSides(getterrainobjectpartid(24,2),CLAN);
+     objectChangeSides(getterrainobjectpartid(24,5),CLAN);
+     objectChangeSides(getterrainobjectpartid(24,8),CLAN);
+     tctsouth = getTerrainObjectPartId(25,260);
+     objectChangeSides(tctsouth,CLAN);
+     setPotentialContact(tctsouth,0);
+     setCaptureable(tctsouth, TRUE);
+     tctsouthAlignment = CLAN;
+     objectChangeSides(getterrainobjectpartid(24,319),CLAN);
+     objectChangeSides(getterrainobjectpartid(25,301),CLAN);
+     objectChangeSides(getterrainobjectpartid(25,303),CLAN);
+     wh1 = getTerrainObjectPartId(24,250);
+     objectChangeSides(wh1,CLAN);
+     setPotentialContact(wh1,0);
+     setSalvage(wh1,14,3);
+     setCaptureable(wh1, TRUE);
+     wh1Alignment = CLAN;
+     wh2 = getTerrainObjectPartId(24,190);
+     objectChangeSides(wh2,CLAN);
+     setPotentialContact(wh2,0);
+     setSalvage(wh2,125,3);
+     setCaptureable(wh2, TRUE);
+     wh2Alignment = CLAN;

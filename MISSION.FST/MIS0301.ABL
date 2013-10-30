@@ -1,0 +1,824 @@
+//*********************************************************************************
+
+module MissionBrain_3_1 : integer;
+
+     //--------------------------------------------------------
+     // Operation:  3                  Mission:  1 
+     // MissionID:  173                Name: Runnin' Down A Dream
+     // Designer: david abzug
+     // Created: 5/1/98                By: david abzug
+     //--------------------------------------------------------
+
+//------------------------------------------------------------------
+//
+//     Constant Definitions
+//
+//------------------------------------------------------------------
+     const
+
+          #include_ "misconst.abi"
+
+          //------------------
+          // Objective IDs
+          //------------------
+           OBJ0_Destroy_the_2_Industria  = 0;
+           OBJ1_Destroy_Galaxy_Commande  = 1;
+           OBJ2_Destroy_Primary_Turret_  = 2;
+
+//------------------------------------------------------------------
+//
+//     Type Definitions
+//
+//------------------------------------------------------------------
+     type
+
+
+//------------------------------------------------------------------
+//
+//     Variable Declarations
+//
+//------------------------------------------------------------------
+      var
+
+            #include_ "3_1VAR.ABI"
+
+            static integer      ScenarioResult;
+            eternal boolean     ExitTimerSet;
+            static integer      VictoryLevel;
+            char[40]            dstring;
+            eternal real        gametime;
+            static real         nextsecond;
+            integer             x;
+            integer             y;
+            Position            aPoint;
+            eternal boolean     PlayerForceDead;
+            eternal boolean     ClanForceDead;
+            eternal boolean     AlliedForceDead;
+            eternal boolean     GeneralAlarm;
+            eternal boolean     Flag1;
+            eternal boolean     Flag2;
+            eternal boolean     Flag3;
+            eternal boolean     Flag4;
+            eternal boolean     Flag5;
+            eternal boolean     Flag6;
+            eternal boolean     Flag7;
+            eternal boolean     Flag8;
+            eternal boolean     Flag9;
+            eternal boolean     Flag10;
+            static boolean      PlayPASound;
+            static boolean      PlayGASound;
+            eternal integer     GeneralAlarmCounter;
+            boolean             PerimeterBreach;
+            static boolean      Objective_0_Decided;
+            static boolean      Obj_0_Action_1_Success;
+            static boolean      Obj_0_Action_2_Success;
+            static boolean      Objective_1_Decided;
+            static boolean      Objective_2_Decided;
+            static boolean      Obj_2_Action_1_Success;
+            static boolean      Obj_2_Action_2_Success;
+
+//------------------------------------------------------------------
+//
+//     Init Function    (automatically run first time through)
+//
+//------------------------------------------------------------------
+function init;
+
+       code
+
+            ScenarioResult = PLAYING;
+            PlayerForceDead = FALSE;
+            ClanForceDead = FALSE;
+            AlliedForceDead = FALSE;
+            ExitTimerSet = FALSE;
+            VictoryLevel = 0; // New Scheme
+            NextSecond = 1.0;
+            GeneralAlarmCounter = -1;
+            GeneralAlarm = FALSE;
+            Flag1 = FALSE;
+            Flag2 = FALSE;
+            Flag3 = FALSE;
+            Flag4 = FALSE;
+            Flag5 = FALSE;
+            Flag6 = FALSE;
+            Flag7 = FALSE;
+            Flag8 = FALSE;
+            Flag9 = FALSE;
+            Flag10 = FALSE;
+            PlayPASound = FALSE;
+            PlayGASound = FALSE;
+            Objective_0_Decided = FALSE;
+            Obj_0_Action_1_Success = FALSE;
+            Obj_0_Action_2_Success = FALSE;
+            Objective_1_Decided = FALSE;
+            Objective_2_Decided = FALSE;
+            Obj_2_Action_1_Success = FALSE;
+            Obj_2_Action_2_Success = FALSE;
+
+            #include_ "3_1INIT.ABI"
+
+            //---------------------------------------
+            // Custom ABL INIT Code
+            //---------------------------------------
+
+            SetAnimation(primary3,0,1);
+            SetAnimation(secondary,0,2);
+
+endfunction;
+
+//------------------------------------------------------------------
+//
+//     Main Code
+//
+//------------------------------------------------------------------
+      code
+
+            //------------------------------------------------
+            // Debug Window Game Clock Second Counter
+            // Note:  This is used by some included functions.
+            //------------------------------------------------
+            gametime = gettime;
+            If (gametime >= nextsecond) Then
+                  nextsecond = gametime + 1;
+                  If (GeneralAlarm) then
+                       GeneralAlarmCounter = GeneralAlarmCounter + 1;
+                  endif;
+                  // dstring = "Gametime: ";
+                  // concat(dstring,gametime);
+                  // Print (dstring);
+            endif;
+            if ((PlayGASound) and (NextSecond == gametime + 1)) then
+                  playSoundEffect(GENERAL_ALARM_SOUND);
+            endif;
+            if (PlayPASound) then
+                  playSoundEffect(PERIMETER_ALARM_SOUND);
+            endif;
+            PerimeterBreach = FALSE;
+
+            //---------------------------------------
+            // Create Non-Existing Vehicles
+            //---------------------------------------
+            #include_ "3_1CRE.ABI"
+
+            //---------------------------------------
+            // Activate inactive vehicles
+            //---------------------------------------
+            #include_ "3_1ACT.ABI"
+
+            //---------------------------------------
+            // Structure
+            //---------------------------------------
+            #include_ "3_1STR.ABI"
+
+            //---------------------------------------
+            // Lookout Points
+            //---------------------------------------
+            #include_ "3_1LOP.ABI"
+
+            //---------------------------------------
+            // Force Dead Checks
+            //---------------------------------------
+            if (isDeadorFled(PLAYER_FORCE)) then
+                  PlayerForceDead = TRUE;
+            endif;
+            if (isDeadorFled(CLAN_FORCE)) then
+                  ClanForceDead = TRUE;
+            endif;
+            if (isDeadorFled(ALLIED_FORCE)) then
+                  AlliedForceDead = TRUE;
+            endif;
+
+            //---------------------------------------
+            // SET EXIT TIMER IF PLAYER DEAD/DISABLED
+            //---------------------------------------
+
+            if ((NOT ExitTimerSet) AND (PlayerForceDead)) then
+                  // Fail any Undecided Player Objectives
+                  if (checkObjectiveStatus(0) == INCOMPLETE) then
+                        setObjectiveStatus(0, FAILED);
+                  endif;
+                  if (checkObjectiveStatus(1) == INCOMPLETE) then
+                        setObjectiveStatus(1, FAILED);
+                  endif;
+                  if (checkObjectiveStatus(2) == INCOMPLETE) then
+                        setObjectiveStatus(2, FAILED);
+                  endif;
+            endif;
+
+            //---------------------------------------
+            // Custom ABL Code
+            //---------------------------------------
+
+            if (TRUE) then
+                 		//-----------------------
+                 		//Turn off all turrets when objective is accomplished
+                 		//-----------------------
+                 
+                             if (checkObjectiveStatus(2) == success) then
+                 			if (not turretdown) then
+                 				turretdown = true;
+                 				settimer(scenario_timer_1,70.0);
+                 			    setObjectActive(getterrainobjectpartid(49,325),FALSE);
+                      			setObjectActive(getterrainobjectpartid(49,334),FALSE);
+                      			setObjectActive(getterrainobjectpartid(49,347),FALSE);
+                      			setObjectActive(getterrainobjectpartid(49,352),FALSE);
+                      			setObjectActive(getterrainobjectpartid(58,31),FALSE);
+                 			    setObjectActive(getterrainobjectpartid(49,336),FALSE);
+                      			setObjectActive(getterrainobjectpartid(49,358),FALSE);
+                      			setObjectActive(getterrainobjectpartid(50,325),FALSE);
+                      			setObjectActive(getterrainobjectpartid(50,343),FALSE);
+                      			setObjectActive(getterrainobjectpartid(58,39),FALSE);
+                 				setObjectActive(getterrainobjectpartid(49,172),FALSE);
+                      			setObjectActive(getterrainobjectpartid(49,178),FALSE);
+                      			setObjectActive(getterrainobjectpartid(49,194),FALSE);
+                      			setObjectActive(getterrainobjectpartid(49,196),FALSE);
+                 			    setObjectActive(getterrainobjectpartid(50,160),FALSE);
+                      			setObjectActive(getterrainobjectpartid(50,161),FALSE);
+                      			setObjectActive(getterrainobjectpartid(50,163),FALSE);
+                      			setObjectActive(getterrainobjectpartid(50,185),FALSE);
+                      			setObjectActive(getterrainobjectpartid(50,246),FALSE);
+                      			setObjectActive(getterrainobjectpartid(50,266),FALSE);
+                 			    setObjectActive(getterrainobjectpartid(49,167),FALSE);
+                      			setObjectActive(getterrainobjectpartid(49,169),FALSE);
+                      			setObjectActive(getterrainobjectpartid(49,170),FALSE);
+                      			setObjectActive(getterrainobjectpartid(49,185),FALSE);
+                      			setObjectActive(getterrainobjectpartid(49,244),FALSE);
+                      			setObjectActive(getterrainobjectpartid(49,264),FALSE);
+                 				//Turrets around the perimeter alarm
+                      			setObjectActive(getterrainobjectpartid(41,31),FALSE);
+                      			setObjectActive(getterrainobjectpartid(41,11),FALSE);
+                      			setObjectActive(getterrainobjectpartid(32,371),FALSE);
+                 			    setObjectActive(getterrainobjectpartid(32,374),FALSE);
+                      			setObjectActive(getterrainobjectpartid(32,395),FALSE);
+                 				//Turrets around the old primary power generators
+                      			setObjectActive(getterrainobjectpartid(57,156),FALSE);
+                      			setObjectActive(getterrainobjectpartid(57,154),FALSE);
+                      			setObjectActive(getterrainobjectpartid(57,152),FALSE);
+                      			setObjectActive(getterrainobjectpartid(57,149),FALSE);
+                 			    setObjectActive(getterrainobjectpartid(57,209),FALSE);
+                      			setObjectActive(getterrainobjectpartid(57,269),FALSE);
+                      			setObjectActive(getterrainobjectpartid(57,272),FALSE);
+                      			setObjectActive(getterrainobjectpartid(57,274),FALSE);
+                      			setObjectActive(getterrainobjectpartid(57,276),FALSE);
+                      			setObjectActive(getterrainobjectpartid(57,258),FALSE);
+                 				//turrets around the new primary power generators
+                 				setObjectActive(getterrainobjectpartid(42,291),FALSE);
+                 				setObjectActive(getterrainobjectpartid(42,293),FALSE);
+                 				setObjectActive(getterrainobjectpartid(42,295),FALSE);
+                 				setObjectActive(getterrainobjectpartid(42,250),FALSE);
+                 				setObjectActive(getterrainobjectpartid(42,190),FALSE);
+                 				setObjectActive(getterrainobjectpartid(42,150),FALSE);
+                 				setObjectActive(getterrainobjectpartid(42,112),FALSE);
+                 				setObjectActive(getterrainobjectpartid(42,114),FALSE);
+                 				setObjectActive(getterrainobjectpartid(42,116),FALSE);
+                 			endif;
+                 			endif;
+                 
+                 			//------------------------------------
+                 			//Turn the turrets in the base back on after time runs out
+                 			//------------------------------------
+                 
+                 
+                             if (checkObjectiveStatus(2) == success) and (CheckTimer(scenario_timer_1) == 0.0) then
+                             	if (not isdead(secondary)) then
+                 				if (not turretbackup) then
+                 					turretbackup = true;
+                 SetAnimation(secondary,0,1);
+                             	if (not isdead(tcWF)) then
+                      				setObjectActive(getterrainobjectpartid(49,325),true);
+                      				setObjectActive(getterrainobjectpartid(49,334),true);
+                      				setObjectActive(getterrainobjectpartid(49,347),true);
+                      				setObjectActive(getterrainobjectpartid(49,352),true);
+                      				setObjectActive(getterrainobjectpartid(58,31),true);
+                 				endif;
+                 				if (not isdead(tcEF)) then
+                      				setObjectActive(getterrainobjectpartid(49,336),TRUE);
+                      				setObjectActive(getterrainobjectpartid(49,358),TRUE);
+                      				setObjectActive(getterrainobjectpartid(50,325),TRUE);
+                      				setObjectActive(getterrainobjectpartid(50,343),TRUE);
+                      				setObjectActive(getterrainobjectpartid(58,39),TRUE);
+                 				endif;
+                 				if (not isdead(tcCR)) then
+                      				setObjectActive(getterrainobjectpartid(49,172),TRUE);
+                      				setObjectActive(getterrainobjectpartid(49,178),TRUE);
+                      				setObjectActive(getterrainobjectpartid(49,194),TRUE);
+                      				setObjectActive(getterrainobjectpartid(49,196),TRUE);
+                 				endif;
+                 				if (not isdead(tcER)) then
+                      				setObjectActive(getterrainobjectpartid(50,160),TRUE);
+                      				setObjectActive(getterrainobjectpartid(50,161),TRUE);
+                      				setObjectActive(getterrainobjectpartid(50,163),TRUE);
+                      				setObjectActive(getterrainobjectpartid(50,185),TRUE);
+                      				setObjectActive(getterrainobjectpartid(50,246),TRUE);
+                      				setObjectActive(getterrainobjectpartid(50,266),TRUE);
+                 				endif;
+                 				if (not isdead(tcWR)) then
+                      				setObjectActive(getterrainobjectpartid(49,167),TRUE);
+                      				setObjectActive(getterrainobjectpartid(49,169),TRUE);
+                      				setObjectActive(getterrainobjectpartid(49,170),TRUE);
+                      				setObjectActive(getterrainobjectpartid(49,185),TRUE);
+                      				setObjectActive(getterrainobjectpartid(49,244),TRUE);
+                      				setObjectActive(getterrainobjectpartid(49,264),TRUE);
+                 				endif;
+                 				endif;
+                 				endif;
+                 			endif;
+                 
+                 			//-------------------
+                 			//turn turrets in base off when secondary power blown only if primary has been blown			
+                 			//--------------------
+                 
+                 			if (checkObjectiveStatus(2) == success) and (CheckTimer(scenario_timer_1) == 0.0) then
+                             	if (isdead(secondary)) then
+                 				if (not secondarydead) then
+                 					secondarydead = true;
+                      				setObjectActive(getterrainobjectpartid(49,325),false);
+                      				setObjectActive(getterrainobjectpartid(49,334),false);
+                      				setObjectActive(getterrainobjectpartid(49,347),false);
+                      				setObjectActive(getterrainobjectpartid(49,352),false);
+                      				setObjectActive(getterrainobjectpartid(58,31),false);
+                      				setObjectActive(getterrainobjectpartid(49,336),false);
+                      				setObjectActive(getterrainobjectpartid(49,358),false);
+                      				setObjectActive(getterrainobjectpartid(50,325),false);
+                      				setObjectActive(getterrainobjectpartid(50,343),false);
+                      				setObjectActive(getterrainobjectpartid(58,39),false);
+                      				setObjectActive(getterrainobjectpartid(49,172),false);
+                      				setObjectActive(getterrainobjectpartid(49,178),false);
+                      				setObjectActive(getterrainobjectpartid(49,194),false);
+                      				setObjectActive(getterrainobjectpartid(49,196),false);
+                      				setObjectActive(getterrainobjectpartid(50,160),false);
+                      				setObjectActive(getterrainobjectpartid(50,161),false);
+                      				setObjectActive(getterrainobjectpartid(50,163),false);
+                      				setObjectActive(getterrainobjectpartid(50,185),false);
+                      				setObjectActive(getterrainobjectpartid(50,246),false);
+                      				setObjectActive(getterrainobjectpartid(50,266),false);
+                      				setObjectActive(getterrainobjectpartid(49,167),false);
+                      				setObjectActive(getterrainobjectpartid(49,169),false);
+                      				setObjectActive(getterrainobjectpartid(49,170),false);
+                      				setObjectActive(getterrainobjectpartid(49,185),false);
+                      				setObjectActive(getterrainobjectpartid(49,244),false);
+                      				setObjectActive(getterrainobjectpartid(49,264),false);
+                 				endif;
+                 				endif;
+                 			endif;
+            endif;
+
+            if (true) then
+                 		
+                 
+                 		//------------------------
+                 		//Show the base when HQ captured
+                 		//------------------------
+                 
+                 			if (IsCaptured(clan_vehicle2_star1) == 1) then
+                 				if (not hqcaptured) then
+                 					hqcaptured = true;
+                 					aPoint[0] = 0;
+                       				aPoint[1] = -2963;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,250.0,aPoint);
+                 					aPoint[0] = 1300;
+                       				aPoint[1] = -2963;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,250.0,aPoint);
+                 		//And reveal the path the heavies will be taking(currently commented out)
+                 /*				    aPoint[0] = 1854;
+                       				aPoint[1] = -9373;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 1754;
+                       				aPoint[1] = -9373;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 1654;
+                       				aPoint[1] = -9373;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 1554;
+                       				aPoint[1] = -9373;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 1454;
+                       				aPoint[1] = -9373;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 1354;
+                       				aPoint[1] = -9373;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 1321;
+                       				aPoint[1] = -9373;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);	
+                 				    aPoint[0] = 1321;
+                       				aPoint[1] = -9273;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 1321;
+                       				aPoint[1] = -9173;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 1321;
+                       				aPoint[1] = -9073;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 1321;
+                       				aPoint[1] = -8973;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 1321;
+                       				aPoint[1] = -8873;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 1321;
+                       				aPoint[1] = -8773;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 1321;
+                       				aPoint[1] = -8773;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 1321;
+                       				aPoint[1] = -8673;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 1321;
+                       				aPoint[1] = -8573;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 1321;
+                       				aPoint[1] = -8473;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 1321;
+                       				aPoint[1] = -8373;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 1321;
+                       				aPoint[1] = -8273;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 1321;
+                       				aPoint[1] = -8173;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 1300;
+                       				aPoint[1] = -8000;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 1250;
+                       				aPoint[1] = -7900;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 1200;
+                       				aPoint[1] = -7800;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 1150;
+                       				aPoint[1] = -7700;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 1100;
+                       				aPoint[1] = -7600;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 1050;
+                       				aPoint[1] = -7500;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 1000;
+                       				aPoint[1] = -7400;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 975;
+                       				aPoint[1] = -7300;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 950;
+                       				aPoint[1] = -7200;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 946;
+                       				aPoint[1] = -7094;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 846;
+                       				aPoint[1] = -7094;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 800;
+                       				aPoint[1] = -7062;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 800;
+                       				aPoint[1] = -7000;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 800;
+                       				aPoint[1] = -6900;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 800;
+                       				aPoint[1] = -6800;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 800;
+                       				aPoint[1] = -6700;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 800;
+                       				aPoint[1] = -6600;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 800;
+                       				aPoint[1] = -6500;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 800;
+                       				aPoint[1] = -6400;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 800;
+                       				aPoint[1] = -6300;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 800;
+                       				aPoint[1] = -6200;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 800;
+                       				aPoint[1] = -6100;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 800;
+                       				aPoint[1] = -6000;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 800;
+                       				aPoint[1] = -5926;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 700;
+                       				aPoint[1] = -5880;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 676;
+                       				aPoint[1] = -5859;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 676;
+                       				aPoint[1] = -5800;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 676;
+                       				aPoint[1] = -5700;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 676;
+                       				aPoint[1] = -5600;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 676;
+                       				aPoint[1] = -5500;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 676;
+                       				aPoint[1] = -5400;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 676;
+                       				aPoint[1] = -5300;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 676;
+                       				aPoint[1] = -5200;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 676;
+                       				aPoint[1] = -5100;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 676;
+                       				aPoint[1] = -5000;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 676;
+                       				aPoint[1] = -4900;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 676;
+                       				aPoint[1] = -4800;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 676;
+                       				aPoint[1] = -4700;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 676;
+                       				aPoint[1] = -4600;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 676;
+                       				aPoint[1] = -4500;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 676;
+                       				aPoint[1] = -4400;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 676;
+                       				aPoint[1] = -4300;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 956;
+                       				aPoint[1] = -8080;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 				    aPoint[0] = 906;
+                       				aPoint[1] = -8080;
+                       				aPoint[2] = 0.0;
+                             		setRevealed(1,50.0,aPoint);
+                 */
+                 				endif;
+                 			endif;
+            endif;
+
+            if (true) then
+                                  if (isDead(CLAN_vehicle0_STAR0)) then
+                                  if (isDead(CLAN_vehicle1_STAR0)) then
+                                  if (isDead(CLAN_vehicle2_STAR0)) then
+                                  if (isDead(CLAN_vehicle3_STAR0)) then
+                                  if (isDead(CLAN_vehicle4_STAR0)) then
+                                               flag9 = true;
+                                  endif;
+                 				 endif;
+                 				 endif;
+                 				 endif;
+                 				 endif;
+            endif;
+
+            if (true) then
+                  if ((getObjectDamage(objectlist[0]) > 0)
+                 or (getObjectDamage(objectlist[1]) > 0)
+                 or (isCaptured(Bay2) == 1)
+                 or (isCaptured(Bay1) == 1)
+                 or (gametime > 580)) then
+                 Flag4 = TRUE;
+                 endif;
+            endif;
+
+            if (flag4) then
+                 if (not timerset) then
+                       SetTimer(TIMER1,135.0);
+                       timerset = true;
+                 endif;
+                 
+                 if (timerset) then
+                 if (checktimer(timer1) < 20.0) then
+                 
+                       if (checktimer(timer1) < 16.0) then
+                             objectCreate(VehicleID(CLAN_STAR0,0,0));
+                       endif;
+                 
+                       if (checktimer(timer1) < 13.0) then
+                              objectCreate(VehicleID(CLAN_STAR0,1,0));
+                       endif;
+                 
+                       if (checktimer(timer1) < 10.0) then
+                              objectCreate(VehicleID(CLAN_STAR0,2,0));
+                       endif;
+                 
+                       if (checktimer(timer1) < 7.0) then
+                              objectCreate(VehicleID(CLAN_STAR0,3,0));
+                       endif;
+                 
+                       if (checktimer(timer1) < 4.0) then
+                             objectCreate(VehicleID(CLAN_STAR0,4,0));
+                       endif;
+                 
+                 endif;
+                 endif;
+            endif;
+
+            //---------------------------------------
+            // Objective Resolution
+            //---------------------------------------
+
+            if (checkObjectiveStatus(0) == INCOMPLETE) then
+
+                 if (NumObjectListDead >= ObjectListSize) then
+                       Obj_0_Action_1_Success = TRUE;
+                 else
+                       if (gettimeleft == 0.0) then
+                             SetObjectiveStatus(0,FAILED);
+                             playBetty(BETTY_CANNOT_COMP_OBJ);
+                             Objective_0_Decided = TRUE;
+                       endif;
+                 endif;
+
+
+                 if ((Obj_0_Action_1_Success) AND (Obj_0_Action_2_Success)) then
+                       SetObjectiveStatus(0,SUCCESS);
+                       playBetty(BETTY_OBJECTIVE_COMPLETE);
+                       VictoryLevel = VictoryLevel + 1;
+                       Objective_0_Decided = TRUE;
+                       if (VictoryLevel < 2) then
+                             PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                       endif;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(0) == FAILED) then
+                              setTimer(EXIT_TIMER,2.0);
+                              ExitTimerSet = TRUE;
+                        endif;
+                  endif;
+            endif;
+
+            if (checkObjectiveStatus(1) == INCOMPLETE) then
+
+                 if (isDead(ClanStar(0))) then
+                       SetObjectiveStatus(1,SUCCESS);
+                       playBetty(BETTY_OBJECTIVE_COMPLETE);
+                       VictoryLevel = VictoryLevel + 1;
+                       Objective_1_Decided = TRUE;
+                       if (VictoryLevel < 2) then
+                             PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                       endif;
+                 else
+                       if (gettimeleft == 0.0) then
+                             SetObjectiveStatus(1,FAILED);
+                             playBetty(BETTY_CANNOT_COMP_OBJ);
+                             Objective_1_Decided = TRUE;
+                       endif;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(1) == FAILED) then
+                              setTimer(EXIT_TIMER,2.0);
+                              ExitTimerSet = TRUE;
+                        endif;
+                  endif;
+            endif;
+
+            if (checkObjectiveStatus(2) == INCOMPLETE) then
+
+                 x = getterrainobjectpartid(42,215);
+                 if (isDead(x)) then
+                       Obj_2_Action_1_Success = TRUE;
+                 else
+                       if (gettimeleft == 0.0) then
+                             SetObjectiveStatus(2,FAILED);
+                             playBetty(BETTY_SECONDARY_FAILED);
+                             Objective_2_Decided = TRUE;
+                             PlayDigitalMusic(OBJECTIVE_FAIL_MUSIC);
+                       endif;
+                 endif;
+
+                 if (VictoryLevel >= 2) then
+                       SetObjectiveStatus(2,FAILED);
+                       Objective_2_Decided = TRUE;
+                 endif;
+
+                 if ((Obj_2_Action_1_Success) AND (Obj_2_Action_2_Success)) then
+                       SetObjectiveStatus(2,SUCCESS);
+                       playBetty(BETTY_OBJECTIVE_COMPLETE);
+                       SetObjectiveStatus(2,SUCCESS);
+                       Objective_2_Decided = TRUE;
+                       if (VictoryLevel < 2) then
+                             PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                       endif;
+                 endif;
+
+            endif;
+
+            if ((NOT ExitTimerSet) AND (Objective_0_Decided) AND (Objective_1_Decided) AND (Objective_2_Decided)) then
+                  setTimer(EXIT_TIMER,2.0);
+                  ExitTimerSet = TRUE;
+            endif;
+
+            //---------------------------------------
+            // END SCENARIO
+            //---------------------------------------
+
+            if ((ExitTimerSet) AND (CheckTimer(EXIT_TIMER) == 0.0)) then
+                  if (VictoryLevel >= 2) then
+                        ScenarioResult = PLAYER_WIN_BIG;
+                        PlayDigitalMusic(VICTORY_MUSIC);
+                  else
+                        ScenarioResult = PLAYER_LOST_BIG;
+                        PlayDigitalMusic(DEFEAT_MUSIC);
+                  endif;
+            endif;
+
+            //---------------------------------------
+            // RETURN RESULT
+            //---------------------------------------
+
+            return (ScenarioResult);
+endmodule.
+//******************************************************************

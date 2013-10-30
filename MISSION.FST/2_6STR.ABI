@@ -1,0 +1,71 @@
+//*********************************************************************************
+// Structure Include file for mission 2_6
+
+
+if ((isdead(turcon1)) AND (turcon1Alignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(58,158),FALSE);
+     setObjectActive(getterrainobjectpartid(58,238),FALSE);
+     setObjectActive(getterrainobjectpartid(59,223),FALSE);
+     setObjectActive(getterrainobjectpartid(59,225),FALSE);
+     setObjectActive(getterrainobjectpartid(59,230),FALSE);
+     turcon1Alignment = -2;
+else
+     if ((IsCaptured(turcon1) == 1) AND (objectSide(turcon1) <> turcon1Alignment) AND (turcon1Alignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(58,158),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(58,158),2);
+           objectChangeSides(getterrainobjectpartid(58,238),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(58,238),2);
+           objectChangeSides(getterrainobjectpartid(59,223),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(59,223),2);
+           objectChangeSides(getterrainobjectpartid(59,225),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(59,225),2);
+           objectChangeSides(getterrainobjectpartid(59,230),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(59,230),2);
+           objectChangeSides(turcon1,INNER_SPHERE);
+           turcon1Alignment = INNER_SPHERE;
+           setPotentialContact(turcon1,2);
+     endif;
+endif;
+
+if ((isdead(turcon2)) AND (turcon2Alignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(58,38),FALSE);
+     setObjectActive(getterrainobjectpartid(58,118),FALSE);
+     setObjectActive(getterrainobjectpartid(59,23),FALSE);
+     setObjectActive(getterrainobjectpartid(59,25),FALSE);
+     setObjectActive(getterrainobjectpartid(59,30),FALSE);
+     turcon2Alignment = -2;
+else
+     if ((IsCaptured(turcon2) == 1) AND (objectSide(turcon2) <> turcon2Alignment) AND (turcon2Alignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(58,38),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(58,38),2);
+           objectChangeSides(getterrainobjectpartid(58,118),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(58,118),2);
+           objectChangeSides(getterrainobjectpartid(59,23),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(59,23),2);
+           objectChangeSides(getterrainobjectpartid(59,25),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(59,25),2);
+           objectChangeSides(getterrainobjectpartid(59,30),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(59,30),2);
+           objectChangeSides(turcon2,INNER_SPHERE);
+           turcon2Alignment = INNER_SPHERE;
+           setPotentialContact(turcon2,2);
+     endif;
+endif;
+
+if ((isdead(senscontrol)) AND (senscontrolAlignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(22,96),FALSE);
+     setObjectActive(getterrainobjectpartid(38,116),FALSE);
+     setObjectActive(getterrainobjectpartid(59,102),FALSE);
+     senscontrolAlignment = -2;
+else
+     if ((IsCaptured(senscontrol) == 1) AND (objectSide(senscontrol) <> senscontrolAlignment)) then
+           objectChangeSides(getterrainobjectpartid(22,96),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(22,96),2);
+           objectChangeSides(getterrainobjectpartid(38,116),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(38,116),2);
+           objectChangeSides(getterrainobjectpartid(59,102),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(59,102),2);
+           objectChangeSides(senscontrol,INNER_SPHERE);
+           senscontrolAlignment = INNER_SPHERE;
+     endif;
+endif;

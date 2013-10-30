@@ -1,0 +1,8 @@
+//*********************************************************************************
+// Creation Include file for mission 5_4
+
+if ((gametime > 39) AND (gametime < 41)) then
+     if (gametime > 40) then
+           objectCreate(VehicleID(CLAN_STAR5,1,0));
+     endif;
+endif;

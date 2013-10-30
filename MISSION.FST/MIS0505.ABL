@@ -1,0 +1,814 @@
+//*********************************************************************************
+
+module MissionBrain_5_5 : integer;
+
+     //--------------------------------------------------------
+     // Operation:  5                  Mission:  5 
+     // MissionID:  197                Name: 0505
+     // Designer: tom dowd
+     // Created: 4/16/98               By: tom dowd
+     //--------------------------------------------------------
+
+//------------------------------------------------------------------
+//
+//     Constant Definitions
+//
+//------------------------------------------------------------------
+     const
+
+          #include_ "misconst.abi"
+
+          //------------------
+          // Objective IDs
+          //------------------
+           OBJ0_Destroy_Observation_Pos  = 0;
+           OBJ1_Move_Artillery_and_all_  = 1;
+
+//------------------------------------------------------------------
+//
+//     Type Definitions
+//
+//------------------------------------------------------------------
+     type
+
+
+//------------------------------------------------------------------
+//
+//     Variable Declarations
+//
+//------------------------------------------------------------------
+      var
+
+            #include_ "5_5VAR.ABI"
+
+            static integer      ScenarioResult;
+            eternal boolean     ExitTimerSet;
+            static integer      VictoryLevel;
+            char[40]            dstring;
+            eternal real        gametime;
+            static real         nextsecond;
+            integer             x;
+            integer             y;
+            Position            aPoint;
+	
+//		Static integer		StrikeZoneACount;
+//		Static integer		StrikeZoneBCount;
+//		Static integer		StrikeZoneCCount;
+//		Static integer		StrikeZoneDCount;
+//		Static integer		StrikeZoneECount;
+//		Static integer		StrikeZoneFCount;
+//		Static integer		StrikeZoneGCount;
+//		Static integer		StrikeZoneHCount;
+//		Static integer		StrikeZoneICount;
+//		Static integer		StrikeZoneJCount;
+//		Static integer		StrikeZoneKCount;
+//		Static integer		StrikeZoneLCount;
+//		Static integer		StrikeZoneMCount;
+		Static integer		StrikeZoneCount;
+		Static integer		TowerCount;
+		Static integer		ArtyTestCount;
+           	
+		Static Position		aaPoint;
+		Static Position		bPoint;
+		Static Position		cPoint;
+		Static Position		dPoint;
+		Static Position		ePoint;
+		Static Position		fPoint;
+		Static Position		gPoint;
+		Static Position		hPoint;
+		Static Position		iPoint;
+		Static Position		jPoint;
+		Static Position		kPoint;
+		Static Position		lPoint;
+		Static Position		mPoint;
+		Static Position		xPoint;
+		Static Position		t1Point;
+		Static Position		t2Point;
+		Static Position		t3Point;
+	
+       		Position     		StrikePoint;
+
+
+            eternal boolean     PlayerForceDead;
+            eternal boolean     ClanForceDead;
+            eternal boolean     AlliedForceDead;
+            eternal boolean     GeneralAlarm;
+            eternal boolean     Flag1;
+            eternal boolean     Flag2;
+            eternal boolean     Flag3;
+            eternal boolean     Flag4;
+            eternal boolean     Flag5;
+            eternal boolean     Flag6;
+            eternal boolean     Flag7;
+            eternal boolean     Flag8;
+            eternal boolean     Flag9;
+            eternal boolean     Flag10;
+            static boolean      PlayPASound;
+            static boolean      PlayGASound;
+            eternal integer     GeneralAlarmCounter;
+            boolean             PerimeterBreach;
+		 static boolean      Objective_0_Decided;
+            static boolean      Obj_0_Action_1_Success;
+            static boolean      Obj_0_Action_2_Success;
+            static boolean      Obj_0_Action_3_Success;
+            static boolean      Objective_1_Decided;
+            static boolean      Obj_1_Action_1_Success;
+            static boolean      Obj_1_Action_2_Success;
+            static boolean      Obj_1_Action_3_Success;
+            static boolean[4]   VehicleActivated;
+		static boolean		TriggerStrike;
+		static boolean		InitialReveal;
+		static boolean		Tower1Dead;
+		static boolean		Tower2Dead;
+		static boolean		Tower3Dead;
+
+		static boolean		BigSweepActive;
+
+//------------------------------------------------------------------
+//
+//     Init Function    (automatically run first time through)
+//
+//------------------------------------------------------------------
+function init;
+
+       code
+
+            ScenarioResult = PLAYING;
+            PlayerForceDead = FALSE;
+            ClanForceDead = FALSE;
+            AlliedForceDead = FALSE;
+            ExitTimerSet = FALSE;
+            VictoryLevel = 0; // New Scheme
+            NextSecond = 1.0;
+            GeneralAlarmCounter = -1;
+            GeneralAlarm = FALSE;
+            Flag1 = FALSE;
+            Flag2 = FALSE;
+            Flag3 = FALSE;
+            Flag4 = FALSE;
+            Flag5 = FALSE;
+            Flag6 = FALSE;
+            Flag7 = FALSE;
+            Flag8 = FALSE;
+            Flag9 = FALSE;
+            Flag10 = FALSE;
+            PlayPASound = FALSE;
+            PlayGASound = FALSE;
+            Objective_0_Decided = FALSE;
+            Obj_0_Action_1_Success = FALSE;
+            Obj_0_Action_2_Success = FALSE;
+            Obj_0_Action_3_Success = FALSE;
+            Objective_1_Decided = FALSE;
+            Obj_1_Action_1_Success = FALSE;
+            Obj_1_Action_2_Success = FALSE;
+            Obj_1_Action_3_Success = FALSE;
+            for x = 0 to 3 do
+                  VehicleActivated[x] = FALSE;
+            endfor;
+
+		TowerCount = 3;
+		Tower1Dead = FALSE;
+		Tower2Dead = FALSE;
+		Tower3Dead = FALSE;
+
+		BigSweepActive = FALSE;
+		ArtyTestCount = 0;
+		StrikeZoneCount = 0;
+
+            #include_ "5_5INIT.ABI"
+
+            //---------------------------------------
+            // Custom ABL INIT Code
+            //---------------------------------------
+
+		InitialReveal = FALSE;
+		TriggerStrike = FALSE;
+		aaPoint[0] = -4934.0;
+		aaPoint[1] = 4930.0;
+		aaPoint[2] = 0.0;
+
+		bPoint[0] = -6072.0;
+		bPoint[1] = 3772.0;
+		bPoint[2] = 0.0;
+
+		cPoint[0] = -4288.0;
+		cPoint[1] = 4031.0;
+		cPoint[2] = 0.0;
+
+		dPoint[0] = -4808.0;
+		dPoint[1] = 2377.0;
+		dPoint[2] = 0.0;
+
+		ePoint[0] = -2872.0;
+		ePoint[1] = 4789.0;
+		ePoint[2] = 0.0;
+
+		fPoint[0] = -3393.0;
+		fPoint[1] = 2359.0;
+		fPoint[2] = 0.0;
+
+		gPoint[0] = -1221.0;
+		gPoint[1] = 4681.0;
+		gPoint[2] = 0.0;
+
+		hPoint[0] = -420.0;
+		hPoint[1] = 3417.0;
+		hPoint[2] = 0.0;
+
+		iPoint[0] = 2105.0;
+		iPoint[1] = 3786.0;
+		iPoint[2] = 0.0;
+
+		jPoint[0] = 1613.0;
+		jPoint[1] = 5807.0;
+		jPoint[2] = 0.0;
+
+		kPoint[0] = 3393.0;
+		kPoint[1] = 5047.0;
+		kPoint[2] = 0.0;
+
+		lPoint[0] = 3899.0;
+		lPoint[1] = 6451.0;
+		lPoint[2] = 0.0;
+
+		mPoint[0] = 4162.0;
+		mPoint[1] = 5440.0;
+		mPoint[2] = 0.0;
+
+		t1Point[0] = -2696.0;
+		t1Point[1] = 6869.0;
+		t1Point[2] = 0.0;
+
+		t2Point[0] = 322.0;
+		t2Point[1] = 7156.0;
+		t2Point[2] = 0.0;
+
+		t3Point[0] = 1662.0;
+		t3Point[1] = 7205.0;
+		t3Point[2] = 0.0;
+
+		xPoint[0] = 0.0;
+		xPoint[1] = 0.0;
+		xPoint[2] = 0.0;
+
+		StrikePoint[0] = 0.0;
+		StrikePoint[1] = 0.0;
+		StrikePoint[2] = 0.0;
+
+//		StrikeZoneACount = 0;
+//		StrikeZoneBCount = 0;
+//		StrikeZoneCCount = 0;
+//		StrikeZoneDCount = 0;
+//		StrikeZoneECount = 0;
+//		StrikeZoneFCount = 0;
+//		StrikeZoneGCount = 0;
+//		StrikeZoneHCount = 0;
+//		StrikeZoneICount = 0;
+//		StrikeZoneJCount = 0;
+//		StrikeZoneKCount = 0;
+//		StrikeZoneLCount = 0;
+//		StrikeZoneMCount = 0;
+
+		setTimer(Scenario_Timer_1,60.0);
+          
+//  print("New Action");
+
+endfunction;
+
+//------------------------------------------------------------------
+//
+//     Main Code
+//
+//------------------------------------------------------------------
+      code
+
+            //------------------------------------------------
+            // Debug Window Game Clock Second Counter
+            // Note:  This is used by some included functions.
+            //------------------------------------------------
+            gametime = gettime;
+            If (gametime >= nextsecond) Then
+                  nextsecond = gametime + 1;
+                  If (GeneralAlarm) then
+                       GeneralAlarmCounter = GeneralAlarmCounter + 1;
+                  endif;
+                  // dstring = "Gametime: ";
+                  // concat(dstring,gametime);
+                  // Print (dstring);
+            endif;
+            if ((PlayGASound) and (NextSecond == gametime + 1)) then
+                  playSoundEffect(GENERAL_ALARM_SOUND);
+            endif;
+            if (PlayPASound) then
+                  playSoundEffect(PERIMETER_ALARM_SOUND);
+            endif;
+            PerimeterBreach = FALSE;
+
+            //---------------------------------------
+            // Create Non-Existing Vehicles
+            //---------------------------------------
+            #include_ "5_5CRE.ABI"
+
+            //---------------------------------------
+            // Activate inactive vehicles
+            //---------------------------------------
+//            #include_ "5_5ACT.ABI"
+
+            //---------------------------------------
+            // Structure
+            //---------------------------------------
+            #include_ "5_5STR.ABI"
+
+            //---------------------------------------
+            // Lookout Points
+            //---------------------------------------
+            #include_ "5_5LOP.ABI"
+
+		if (NOT InitialReveal) then
+			//AREA A	
+			xPoint[0] = -4934.0;
+		   	xPoint[1] = 4930.0;
+		   	xPoint[2] = 0.0;
+		   	setRevealed(-1,275.0,xPoint);
+			//AREA B
+			xPoint[0] = -6072.0;
+		   	xPoint[1] = 3772.0;
+		   	xPoint[2] = 0.0;
+		   	setRevealed(-1,250.0,xPoint);
+			//AREA C
+			xPoint[0] = -4288.0;
+		   	xPoint[1] = 4031.0;
+		   	xPoint[2] = 0.0;
+		   	setRevealed(-1,300.0,xPoint);
+			//AREA D			
+			xPoint[0] = -4808.0;
+		   	xPoint[1] = 2377.0;
+		   	xPoint[2] = 0.0;
+		   	setRevealed(-1,300.0,xPoint);
+			//AREA E
+			xPoint[0] = -2872.0;
+		   	xPoint[1] = 4789.0;
+		   	xPoint[2] = 0.0;
+		   	setRevealed(-1,300.0,xPoint);
+			//AREA F
+			xPoint[0] = -3393.0;
+		   	xPoint[1] = 2359.0;
+		   	xPoint[2] = 0.0;
+		   	setRevealed(-1,300.0,xPoint);
+			//AREA G
+			xPoint[0] = -1221.0;
+		   	xPoint[1] = 4681.0;
+		   	xPoint[2] = 0.0;
+		   	setRevealed(-1,300.0,xPoint);
+			//AREA H
+			xPoint[0] = -420.0;
+		   	xPoint[1] = 3417.0;
+		   	xPoint[2] = 0.0;
+		   	setRevealed(-1,300.0,xPoint);
+			//AREA I
+			xPoint[0] = 2105.0;
+		   	xPoint[1] = 3786.0;
+		   	xPoint[2] = 0.0;
+		   	setRevealed(-1,300.0,xPoint);
+			//AREA J
+			xPoint[0] = 1613.0;
+		   	xPoint[1] = 5807.0;
+		   	xPoint[2] = 0.0;
+		   	setRevealed(-1,300.0,xPoint);
+			//AREA K
+			xPoint[0] = 3393.0;
+		   	xPoint[1] = 5047.0;
+		   	xPoint[2] = 0.0;
+		   	setRevealed(-1,300.0,xPoint);
+			//AREA L
+			xPoint[0] = 3899.0;
+		   	xPoint[1] = 6451.0;
+		   	xPoint[2] = 0.0;
+		   	setRevealed(-1,180.0,xPoint);
+			//AREA M
+			xPoint[0] = 4162.0;
+		   	xPoint[1] = 5440.0;
+		   	xPoint[2] = 0.0;
+		   	setRevealed(-1,275.0,xPoint);
+	
+			InitialReveal = true;
+
+			setobjectActive(VehicleID(PLAYER_LANCE0,0,0),TRUE);
+      	    		setobjectActive(VehicleID(PLAYER_LANCE1,0,0),TRUE);
+      	      		setobjectActive(VehicleID(PLAYER_LANCE2,0,0),TRUE);
+
+			setobjectActive(VehicleID(PLAYER_LANCE0,1,0),TRUE);
+        	      	setobjectActive(VehicleID(PLAYER_LANCE1,1,0),TRUE);
+         		setobjectActive(VehicleID(PLAYER_LANCE2,1,0),TRUE);
+
+			setobjectActive(VehicleID(PLAYER_LANCE0,2,0),TRUE);
+	            	setobjectActive(VehicleID(PLAYER_LANCE1,2,0),TRUE);
+	            	setobjectActive(VehicleID(PLAYER_LANCE2,2,0),TRUE);
+
+			setobjectActive(VehicleID(PLAYER_LANCE0,3,0),TRUE);
+	            	setobjectActive(VehicleID(PLAYER_LANCE1,3,0),TRUE);
+	            	setobjectActive(VehicleID(PLAYER_LANCE2,3,0),TRUE);
+
+		endif;
+
+	//---------------------------------------
+	//CALL AIRSTRIKES
+	//---------------------------------------
+
+	//let's see if the player is within the killzones...
+
+	StrikePoint[2] = 0.0;
+
+	if (NOT Tower1Dead) then
+		if (getObjectDamage(getTerrainObjectPartID(12,328)) > 99) then
+			TowerCount = TowerCount -1;
+			Tower1Dead = TRUE;
+		endif;
+	endif;
+
+	if (NOT Tower2Dead) then
+		if (getObjectDamage(getTerrainObjectPartID(13,312)) > 99) then
+			TowerCount = TowerCount -1;
+			Tower2Dead = TRUE;
+		endif;
+	endif;
+
+	if (NOT Tower3Dead) then
+		if (getObjectDamage(getTerrainObjectPartID(14,264)) > 99) then
+			TowerCount = TowerCount -1;
+			Tower3Dead = TRUE;
+		endif;
+	endif;
+
+
+	//AREA A
+	if (checktimer(Scenario_Timer_1) == 0.0) AND (TowerCount > 0) then
+
+		SWITCH (ArtyTestCount)
+
+		CASE 0:
+			if (inHotSpot(PLAYER_FORCE,aaPoint[0],aaPoint[1],325)) then  
+	   			StrikePoint[0] = aaPoint[0] + (RANDOM(1800) - 900);
+	   			StrikePoint[1] = aaPoint[1] + (RANDOM(1800) - 900);
+	   			CallStrikeEx (507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+				StrikeZoneCount = StrikeZoneCount + 1;
+			endif;
+			endcase;	
+	//AREA B
+		CASE 1:
+			if (inHotSpot(PLAYER_FORCE,bPoint[0],bPoint[1],300)) then
+	   			StrikePoint[0] = bPoint[0] + (RANDOM(1600) - 800);
+	   			StrikePoint[1] = bPoint[1] + (RANDOM(1600) - 800);
+	   			CallStrikeEx (507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+				StrikeZoneCount = StrikeZoneCount + 1;
+			endif;
+			endcase;
+
+	//AREA C
+		CASE 2:
+			if (inHotSpot(PLAYER_FORCE,cPoint[0],cPoint[1],350)) then
+	   			StrikePoint[0] = cPoint[0] + (RANDOM(1800) - 900);
+	   			StrikePoint[1] = cPoint[1] + (RANDOM(1800) - 900);
+	   			CallStrikeEx (507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+				StrikeZoneCount = StrikeZoneCount + 1;
+			endif;
+			endcase;
+
+	//AREA D
+		CASE 3:
+			if (inHotSpot(PLAYER_FORCE,dPoint[0],dPoint[1],350)) then
+	   			StrikePoint[0] = dPoint[0] + (RANDOM(1800) - 900);
+	   			StrikePoint[1] = dPoint[1] + (RANDOM(1800) - 900);
+	   			CallStrikeEx (507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+ 				StrikeZoneCount = StrikeZoneCount + 1;
+			endif;
+			endcase;
+
+	//AREA E
+		CASE 4:
+			if (inHotSpot(PLAYER_FORCE,ePoint[0],ePoint[1],350)) then
+	   			StrikePoint[0] = ePoint[0] + (RANDOM(1800) - 900);
+	   			StrikePoint[1] = ePoint[1] + (RANDOM(1800) - 900);
+	   			CallStrikeEx (507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+ 				StrikeZoneCount = StrikeZoneCount + 1;
+			endif;
+			endcase;
+		
+	//AREA F 
+		CASE 5:
+			if (inHotSpot(PLAYER_FORCE,fPoint[0],fPoint[1],350)) then
+	   			StrikePoint[0] = fPoint[0] + (RANDOM(1800) - 900);
+	   			StrikePoint[1] = fPoint[1] + (RANDOM(1800) - 900);
+	   			CallStrikeEx (507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+ 				StrikeZoneCount = StrikeZoneCount + 1;
+			endif;
+			endcase;
+
+
+	//AREA G  
+		CASE 6:
+			if (inHotSpot(PLAYER_FORCE,gPoint[0],gPoint[1],350)) then
+	   			StrikePoint[0] = gPoint[0] + (RANDOM(1800) - 900);
+	   			StrikePoint[1] = gPoint[1] + (RANDOM(1800) - 900);
+	   			CallStrikeEx (507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+				StrikeZoneCount = StrikeZoneCount + 1;
+			endif;
+			endcase;
+
+	//AREA H 
+		CASE 7: 
+			if (inHotSpot(PLAYER_FORCE,hPoint[0],hPoint[1],350)) then
+	   			StrikePoint[0] = hPoint[0] + (RANDOM(1800) - 900);
+	   			StrikePoint[1] = hPoint[1] + (RANDOM(1800) - 900);
+	   			CallStrikeEx (507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+ 				StrikeZoneCount = StrikeZoneCount + 1;
+			endif;
+			endcase;
+
+
+	//AREA I  
+		CASE 8:
+			if (inHotSpot(PLAYER_FORCE,iPoint[0],iPoint[1],350)) then
+	   			StrikePoint[0] = iPoint[0] + (RANDOM(1800) - 900);
+	   			StrikePoint[1] = iPoint[1] + (RANDOM(1800) - 900);
+	   			CallStrikeEx (507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+ 				StrikeZoneCount = StrikeZoneCount + 1;
+			endif;
+			endcase;
+
+
+	//AREA J  
+		CASE 9:
+			if (inHotSpot(PLAYER_FORCE,jPoint[0],jPoint[1],350)) then
+	   			StrikePoint[0] = jPoint[0] + (RANDOM(1800) - 900);
+	   			StrikePoint[1] = jPoint[1] + (RANDOM(1800) - 900);
+	   			CallStrikeEx (507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+ 				StrikeZoneCount = StrikeZoneCount + 1;
+			endif;
+			endcase;
+
+
+	//AREA K
+  		CASE 10:
+			if (inHotSpot(PLAYER_FORCE,kPoint[0],kPoint[1],350)) then
+	   			StrikePoint[0] = kPoint[0] + (RANDOM(1800) - 900);
+	   			StrikePoint[1] = kPoint[1] + (RANDOM(1800) - 900);
+	   			CallStrikeEx (507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+ 				StrikeZoneCount = StrikeZoneCount + 1;
+			endif;
+			endcase;
+
+	//AREA L  
+		CASE 11:
+			if (inHotSpot(PLAYER_FORCE,lPoint[0],lPoint[1],350)) then
+	   			StrikePoint[0] = lPoint[0] + (RANDOM(1800) - 900);
+	   			StrikePoint[1] = lPoint[1] + (RANDOM(1800) - 900);
+	   			CallStrikeEx (507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+ 				StrikeZoneCount = StrikeZoneCount + 1;
+			endif;
+			endcase;
+
+
+	//AREA M  
+		CASE 12:
+			if (inHotSpot(PLAYER_FORCE,mPoint[0],mPoint[1],300)) then
+	   			StrikePoint[0] = mPoint[0] + (RANDOM(1800) - 900);
+	   			StrikePoint[1] = mPoint[1] + (RANDOM(1800) - 900);
+	   			CallStrikeEx (507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+ 				StrikeZoneCount = StrikeZoneCount + 1;
+			endif;
+			endcase;
+
+	//TOWER 1 
+		CASE 13: 
+			if (Tower1Dead) AND (inHotSpot(PLAYER_FORCE,t1Point[0],t1Point[1],100)) then
+	   			StrikePoint[0] = t1Point[0] + (RANDOM(200) - 100);
+	   			StrikePoint[1] = t1Point[1] + (RANDOM(200) - 100);
+	   			CallStrikeEx (507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+ 				StrikeZoneCount = StrikeZoneCount + 1;
+			endif;
+			endcase;
+
+	//TOWER 2 
+		CASE 14: 
+			if (Tower2Dead) AND (inHotSpot(PLAYER_FORCE,t2Point[0],t2Point[1],100)) then
+	   			StrikePoint[0] = t2Point[0] + (RANDOM(200) - 100);
+	   			StrikePoint[1] = t2Point[1] + (RANDOM(200) - 100);
+	   			CallStrikeEx (507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+ 				StrikeZoneCount = StrikeZoneCount + 1;
+			endif;
+			endcase;
+
+	//TOWER 3
+		CASE 15:  
+			if (Tower3Dead) AND (inHotSpot(PLAYER_FORCE,t3Point[0],t2Point[1],100)) then
+	   			StrikePoint[0] = t3Point[0] + (RANDOM(200) - 100);
+	   			StrikePoint[1] = t3Point[1] + (RANDOM(200) - 100);
+	   			CallStrikeEx (507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+ 				StrikeZoneCount = StrikeZoneCount + 1;
+			endif;
+			endcase;
+		endswitch;
+
+		if ((StrikeZoneCount) > (TowerCount + 2)) then
+				setTimer (Scenario_Timer_1,6.0);
+				StrikeZoneCount = 0;
+		endif;
+		
+		ArtyTestCount = ArtyTestCount + 1;
+	 
+		if (ArtyTestCount == 16) then
+			ArtyTestCount = 0;
+		endif;
+	endif;
+
+	//--------------------------
+	//BigSweepActivationChecks
+	//--------------------------
+	if (NOT (BigSweepActive)) then
+	   	 if (gametime > 480) then
+	              Flag6 = TRUE;
+            	      BigSweepActive = TRUE;
+        	endif;
+
+   		 if (inHotSpot(PLAYER_FORCE,-10690,322,150)) then
+	              Flag6 = TRUE;
+              	      BigSweepActive = TRUE;
+         	endif;
+
+    		if (getObjectDamage(ObTower1) > 0) then
+	              Flag6 = TRUE;
+              	      BigSweepActive = TRUE;
+         	endif;
+
+    		if (getObjectDamage(ObTower2) > 0) then
+	              Flag6 = TRUE;
+              	      BigSweepActive = TRUE;
+         	endif;
+
+    		if (getObjectDamage(ObTower1) > 0) then
+	              Flag6 = TRUE;
+              	      BigSweepActive = TRUE;
+         	endif;
+    	endif;
+
+
+            //---------------------------------------
+            // Force Dead Checks
+            //---------------------------------------
+            if (isDeadorFled(PLAYER_FORCE)) then
+                  PlayerForceDead = TRUE;
+            endif;
+            if (isDeadorFled(CLAN_FORCE)) then
+                  ClanForceDead = TRUE;
+            endif;
+            if (isDeadorFled(ALLIED_FORCE)) then
+                  AlliedForceDead = TRUE;
+            endif;
+
+            //---------------------------------------
+            // SET EXIT TIMER IF PLAYER DEAD/DISABLED
+            //---------------------------------------
+
+            if ((NOT ExitTimerSet) AND (PlayerForceDead)) then
+                  // Fail any Undecided Player Objectives
+                  if (checkObjectiveStatus(0) == INCOMPLETE) then
+                        setObjectiveStatus(0, FAILED);
+                  endif;
+                  if (checkObjectiveStatus(1) == INCOMPLETE) then
+                        setObjectiveStatus(1, FAILED);
+                  endif;
+            endif;
+
+            //---------------------------------------
+            // Objective Resolution
+            //---------------------------------------
+            if (checkObjectiveStatus(0) == INCOMPLETE) then
+
+                 x = getTerrainObjectPartID(12,328);
+                 if (isDead(x)) then
+                       Obj_0_Action_1_Success = TRUE;
+                 else
+                       if (gettimeleft == 0.0) then
+                             SetObjectiveStatus(0,FAILED);
+                             playBetty(BETTY_CANNOT_COMP_OBJ);
+                             Objective_0_Decided = TRUE;
+                       endif;
+                 endif;
+
+                 x = getTerrainObjectPartID(13,312);
+                 if (isDead(x)) then
+                       Obj_0_Action_2_Success = TRUE;
+                 else
+                       if (gettimeleft == 0.0) then
+                             SetObjectiveStatus(0,FAILED);
+                             playBetty(BETTY_CANNOT_COMP_OBJ);
+                             Objective_0_Decided = TRUE;
+                       endif;
+                 endif;
+
+                 x = getTerrainObjectPartID(14,264);
+                 if (isDead(x)) then
+                       Obj_0_Action_3_Success = TRUE;
+                 else
+                       if (gettimeleft == 0.0) then
+                             SetObjectiveStatus(0,FAILED);
+                             playBetty(BETTY_CANNOT_COMP_OBJ);
+                             Objective_0_Decided = TRUE;
+                       endif;
+                 endif;
+
+                 if ((Obj_0_Action_1_Success) AND (Obj_0_Action_2_Success) AND (Obj_0_Action_3_Success)) then
+                       SetObjectiveStatus(0,SUCCESS);
+                       playBetty(BETTY_OBJECTIVE_COMPLETE);
+                       VictoryLevel = VictoryLevel + 1;
+                       Objective_0_Decided = TRUE;
+                       if (VictoryLevel < 2) then
+                             PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                       endif;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(0) == FAILED) then
+                              setTimer(EXIT_TIMER,2.0);
+                              ExitTimerSet = TRUE;
+                        endif;
+                  endif;
+            endif;
+
+            if (checkObjectiveStatus(1) == INCOMPLETE) then
+
+                 aPoint[0] = 322.0;
+                 aPoint[1] = 7156.0;
+                 aPoint[2] = 0.0;
+                 if ((Objective_0_Decided) AND (isWithinArea(PLAYER_FORCE,aPoint,75))) then
+                       Obj_1_Action_1_Success = TRUE;
+                 else
+                       if (gettimeleft == 0.0) then
+                             SetObjectiveStatus(1,FAILED);
+                             playBetty(BETTY_CANNOT_COMP_OBJ);
+                             Objective_1_Decided = TRUE;
+                       endif;
+                 endif;
+
+                 x = NumVehicleType(MOBILE_ARTILLERY_TYPE,PLAYER_FORCE,y);
+                 if (x - y < 4) then
+                       SetObjectiveStatus(1,FAILED);
+                       playBetty(BETTY_CANNOT_COMP_OBJ);
+                       Objective_1_Decided = TRUE;
+                 else
+                       if ((gettimeleft == 0.0) OR (Obj_1_Action_1_Success)) then
+                             Obj_1_Action_2_Success = TRUE;
+                       endif;
+                 endif;
+
+
+                 if ((Obj_1_Action_1_Success) AND (Obj_1_Action_2_Success) AND (Obj_1_Action_3_Success)) then
+                       SetObjectiveStatus(1,SUCCESS);
+                       playBetty(BETTY_OBJECTIVE_COMPLETE);
+                       VictoryLevel = VictoryLevel + 1;
+                       Objective_1_Decided = TRUE;
+                       if (VictoryLevel < 2) then
+                             PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                       endif;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(1) == FAILED) then
+                              setTimer(EXIT_TIMER,2.0);
+                              ExitTimerSet = TRUE;
+                        endif;
+                  endif;
+            endif;
+
+            if ((NOT ExitTimerSet) AND (Objective_0_Decided) AND (Objective_1_Decided)) then
+                  setTimer(EXIT_TIMER,2.0);
+                  ExitTimerSet = TRUE;
+            endif;
+
+
+            //---------------------------------------
+            // END SCENARIO
+            //---------------------------------------
+
+            if ((ExitTimerSet) AND (CheckTimer(EXIT_TIMER) == 0.0)) then
+                  if (VictoryLevel >= 2) then
+                        ScenarioResult = PLAYER_WIN_BIG;
+                        PlayDigitalMusic(VICTORY_MUSIC);
+                  else
+                        ScenarioResult = PLAYER_LOST_BIG;
+                        PlayDigitalMusic(DEFEAT_MUSIC);
+                  endif;
+            endif;
+
+            //---------------------------------------
+            // RETURN RESULT
+            //---------------------------------------
+
+            return (ScenarioResult);
+endmodule.
+//******************************************************************

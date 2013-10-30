@@ -1,0 +1,26 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:BEACHHEAD/01PRDN01%n
+%fc5%c----------%n
+%fc6%c***LIBERATE WORK CAMPS***%n
+%fc21-Destroy Camp "Alpha" HQ and%n
+%t9Natural Gas Tower%n
+2-Destroy all three Garrison Buildings at%n
+%t9the Garrison Base%n
+3-Destroy Camp "Beta" HQ and%n
+%t9Guard%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 0 Small  0 Large%n
+%t12SENSOR PROBE: 0%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4The Smoke Jaguars have been putting dissident members of the population into work and re-education camps. Zulu Company has been tasked with the liberation of two such camps, designated "Alpha" and "Beta".%n%n
+At "Alpha", destroy the Camp HQ building and the Natural Gas Tower, but do so carefully as the gas tower is highly volatile and will explode.%n%n
+At "Beta", eliminate any guarding combat units and destroy the Camp HQ building.%n%n
+Additionally, the local bondsman forces must be dealt with. Destroying the three Garrison Buildings of their base camp will help to insure our control of the area.%n%n
+Battalion Transport is only able to carry three `Mechs to the engagement area, so analyze the tactical map and plan accordingly. Use the terrain available to get a better view of the enemy and potential targets.%n%n
+%fc1%fm%c**TACTICAL WARNING**%n
+%fc2%fs*Automated turret defenses reported in%n
+%t9area.%n
+%fc2*Clan ULLER OmniMech reported in area.%n%n
+%fc6<<<<END DISPATCH
+

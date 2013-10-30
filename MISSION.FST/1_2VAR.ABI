@@ -1,0 +1,12 @@
+//*********************************************************************************
+// Variable Include file for mission 1_2
+
+     boolean                           APCNearBarn;
+     eternal integer                   Prison_1;
+     static integer                    Prison_1Alignment;
+     eternal integer                   BaseContainer;
+     static integer                    BaseContainerAlignment;
+     eternal integer                   PrisonContainer;
+     static integer                    PrisonContainerAlignment;
+     static boolean                    LOP0;
+     static boolean                    LOP1;

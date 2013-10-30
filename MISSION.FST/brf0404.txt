@@ -1,0 +1,25 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:LINCHPIN/04PRDN04%n
+%fc5%c----------%n
+%fc6%c***CAPTURE INDUSTRIAL FACILITY***%n
+%fc21-Capture Industrial Complexes%n
+2-Defend Industrial Complexes%n
+3-Destroy All Enemy Forces%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 0 Small  1 Large%n
+%t12SENSOR PROBE: 6%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4Intelligence has located a facility the enemy is using to locally produce replacement 'Mech parts. Your objective is to capture the two industrial complexes that will give us access to this facility.%n%n
+However, intelligence reports that it has decoded new Clan transmissions ordering units to reinforce the area immediately. If the enemy is given time to concentrate at the manufacturing site your forces will be greatly outgunned.%n%n
+Keep the enemy divided and intercept as many of them as possible before they can all mass at the manufacturing facility. You have been supplied with an ample number of sensor probes to provide continuous sensor coverage of the battlefield. Use them wisely.%n%n
+%fc5%c----------%n
+%fm%fc6%c**TACTICAL NOTICE**%n
+%fs%fc2*Be advised that the decoded Clan%n
+%t9transmissions also reveal that it%n
+%t9is their intention to keep the%n
+%t9manufacturing facility from Inner%n
+%t9Sphere hands at all costs, even if%n
+%t9it requires the destruction of the%n
+%t9facility.%n%n
+%fc6<<<<END DISPATCH

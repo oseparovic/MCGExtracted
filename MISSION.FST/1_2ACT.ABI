@@ -1,0 +1,10 @@
+//*********************************************************************************
+// Activation Include file for mission 1_2
+
+
+if (NOT VehicleActivated[0]) then
+     if (distancetoobject(PLAYER_FORCE,VehicleID(PLAYER_LANCE1,0,0)) < 10000) then
+           VehicleActivated[0] = TRUE;
+           setobjectActive(VehicleID(PLAYER_LANCE1,0,0),TRUE);
+     endif;
+endif;

@@ -1,0 +1,37 @@
+//*********************************************************************************
+// Variable Include file for mission 7_5
+
+     eternal integer                   tc1;
+     static integer                    tc1Alignment;
+     eternal integer                   tc2;
+     static integer                    tc2Alignment;
+     eternal integer                   tc3;
+     static integer                    tc3Alignment;
+     eternal integer                   tc4;
+     static integer                    tc4Alignment;
+     eternal integer                   tc5;
+     static integer                    tc5Alignment;
+     eternal integer                   st1;
+     eternal integer                   st2;
+     eternal integer                   st3;
+     eternal integer                   st4;
+     eternal integer                   st5;
+     eternal integer                   GateSW;
+     eternal integer                   GateNW;
+     eternal integer                   SouthPower;
+     eternal integer                   SenCntrl;
+     static integer                    SenCntrlAlignment;
+     eternal integer                   Npower;
+     eternal integer                   HQbldg;
+     eternal integer                   GateControlNW;
+     static integer                    GateControlNWAlignment;
+     eternal integer                   GateControlSW;
+     static integer                    GateControlSWAlignment;
+     eternal integer                   st7;
+     eternal integer                   Repair1;
+     static integer                    Repair1Alignment;
+     eternal integer                   Repair2;
+     static integer                    Repair2Alignment;
+     eternal integer                   GateCntrlIN;
+     static integer                    GateCntrlINAlignment;
+     eternal integer                   GateInner;

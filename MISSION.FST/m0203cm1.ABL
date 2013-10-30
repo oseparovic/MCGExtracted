@@ -1,0 +1,95 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:1/15/98   BY:Tim Ryan
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0203cm1 : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+
+    // PATHS
+    static path                        Path1;
+    static path                        Path2;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+
+         // Paths
+
+         Path1[0,0] = 663; // X
+         Path1[0,1] = -2210; // Y
+
+         Path1[1,0] = 671; // X
+         Path1[1,1] = -3354; // Y
+
+         Path1[2,0] = 167; // X
+         Path1[2,1] = -3320; // Y
+
+         Path1[3,0] = 161; // X
+         Path1[3,1] = -2252; // Y
+
+         Path2[0,0] = 800; // X
+         Path2[0,1] = -414; // Y
+
+         Path2[1,0] = 4380; // X
+         Path2[1,1] = -1704; // Y
+
+         Path2[2,0] = 3887; // X
+         Path2[2,1] = -2314; // Y
+
+         SetEngageRadius(50);
+         IdentifySensorContactsOFF;
+         MoveToEngageOFF;
+         SetMinimumDistance(20);
+         SetTactic(TACTIC_RUN_AWAY);
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = Patrol(Path1,4,PATROL_CIRCLE, 5656);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

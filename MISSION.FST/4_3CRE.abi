@@ -1,0 +1,48 @@
+//*********************************************************************************
+// Creation Include file for mission 4_3
+
+if ((gametime > 299) AND (gametime < 311)) then
+     if (gametime > 300) then
+           objectCreate(VehicleID(CLAN_STAR6,0,0));
+     endif;
+     if (gametime > 302) then
+           objectCreate(VehicleID(CLAN_STAR6,1,0));
+     endif;
+     if (gametime > 304) then
+           objectCreate(VehicleID(CLAN_STAR6,2,0));
+     endif;
+     if (gametime > 306) then
+           objectCreate(VehicleID(CLAN_STAR6,3,0));
+     endif;
+     if (gametime > 308) then
+           objectCreate(VehicleID(CLAN_STAR6,4,0));
+     endif;
+     if (gametime > 310) then
+           objectCreate(VehicleID(CLAN_STAR7,0,0));
+     endif;
+endif;
+if ((gametime > 311) AND (gametime < 319)) then
+     if (gametime > 312) then
+           objectCreate(VehicleID(CLAN_STAR7,1,0));
+     endif;
+     if (gametime > 314) then
+           objectCreate(VehicleID(CLAN_STAR7,2,0));
+     endif;
+     if (gametime > 316) then
+           objectCreate(VehicleID(CLAN_STAR7,3,0));
+     endif;
+     if (gametime > 318) then
+           objectCreate(VehicleID(CLAN_STAR7,4,0));
+     endif;
+endif;
+if ((gametime > 327) AND (gametime < 329)) then
+     if (gametime > 328) then
+           objectCreate(VehicleID(CLAN_STAR7 + 1,0,0));
+     endif;
+     if (gametime > 328) then
+           objectCreate(VehicleID(CLAN_STAR7 + 1,1,0));
+     endif;
+     if (gametime > 328) then
+           objectCreate(VehicleID(CLAN_STAR7 + 1,2,0));
+     endif;
+endif;

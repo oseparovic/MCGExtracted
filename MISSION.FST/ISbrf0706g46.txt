@@ -1,0 +1,9 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cDESIGNATION:GAMBIT/07PRDN06%n
+%fc5%c----------%n
+%fc6%c*** POWER SURGE ***%n
+%fc21-Protect 4 Generators%n%n
+%fc5%c----------%n
+%fc4In order for our production facilities to remain running a minimum of 4 generators must survive before time expires.%n%n
+%fc6<<<<END DISPATCH
+

@@ -1,0 +1,13 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:SKYHOOK/02PRDN05%n
+%fc5%c----------%n
+%fc6%c***DESTROY ENEMY TRAIN***%n
+%fc21-Destroy Enemy Supply Train%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 0 Small  0 Large%n
+%t12SENSOR PROBE: 0%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4Intelligence reports that the Smoke Jaguars consider the safe passage of this supply train vital to their defense of the region. Destruction of all the cars in this train is therefore a high priority.%n%n
+Reports indicate that the train itself is being escorted by a unit of fast `Mechs and that other forces have been stationed throughout the transit area to provide additional protection. Battalion tactical analysis recommends that you focus your force on a section of track that allows you to take on the enemy in a limited, controlled fashion. It may also be possible to stage a diversionary action and draw some of the enemy away from the track area.%n%n
+%fc6<<<<END DISPATCH

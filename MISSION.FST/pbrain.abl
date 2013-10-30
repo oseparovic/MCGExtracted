@@ -1,0 +1,503 @@
+//****************************************************************************************//
+//
+//    PLAYER WARRIOR BRAIN     CREATED:11/17/97   BY:Tim Ryan
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBPlayerBrain : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+	NORMAL = 0;
+	GUARD_POINT = 1;
+	GUARD_OBJECT = 2;
+	GUARD_MOVER = 3;
+	STOPPED = 4;
+
+	TACTICAL_ORDER_NONE = 0;
+	TACTICAL_ORDER_WAIT = 1;
+	TACTICAL_ORDER_MOVETO_POINT = 2;
+	TACTICAL_ORDER_MOVETO_OBJECT = 3;
+	TACTICAL_ORDER_JUMPTO_POINT = 4;
+	TACTICAL_ORDER_JUMPTO_OBJECT = 5;
+	TACTICAL_ORDER_TRAVERSE_PATH = 6;
+	TACTICAL_ORDER_PATROL_PATH = 7;
+	TACTICAL_ORDER_ESCORT = 8;
+	TACTICAL_ORDER_FOLLOW = 9;
+	TACTICAL_ORDER_GUARD = 10;
+	TACTICAL_ORDER_STOP = 11;
+	TACTICAL_ORDER_POWERUP = 12;
+	TACTICAL_ORDER_POWERDOWN = 13;
+	TACTICAL_ORDER_FORMATION = 14;
+	TACTICAL_ORDER_EJECT = 15;
+	TACTICAL_ORDER_ATTACK_OBJECT = 16;
+	TACTICAL_ORDER_ATTACK_POINT = 17;
+	TACTICAL_ORDER_HOLD_FIRE = 18;
+	TACTICAL_ORDER_WITHDRAW = 19;
+
+	RADIO_HITTING_MINES = 22;
+	RADIO_UNDER_AIRSTRIKE = 25;
+	RADIO_MOVE_BLOCKED = 26;
+
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer	FreeWillMode;
+	static integer	MyObject;
+	static real		MyRange;
+	static real		MyAngle;
+	static integer	PlayerTarget;
+	integer			GuardStatus;
+
+	static boolean	KludgeHandleGuard;
+	static boolean	KludgePlayerTarget;
+	integer			ObjClass;
+
+	integer				curTacCode;
+	integer				lastTacCode;
+	static integer[15]	tacOrderParams;
+	real				time;
+	static integer	StopCounter;
+	static real		StopTime;
+
+
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+		 FreeWillMode = NORMAL;
+		 PlayerTarget = 0;
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+		 IdentifySensorContactsOFF;
+		 MoveToEngageOFF;
+		 SetCurrentTargetMod(3.0);
+		 SetConcentrateFireMod(1.5);
+		 SetEngageRadius(100.0);
+		 SetDisengageRadius(275.0);
+		 SetGuardMod(50.0);	// 10
+		 SetSpeed(RUN);
+		 SetNotTargetingMod(0.0);
+
+		KludgeHandleGuard = FALSE;
+		KludgePlayerTarget = FALSE;
+		StopCounter = 0;
+		StopTime = 0.0;
+
+endfunction;
+
+//----------------------------------------------------------------------------------------
+
+function handleTargetOfWeaponFire;
+
+	var
+		IntList		triggers;
+		integer		numAttacks;
+		integer		AttClass;
+
+	code
+
+//		numAttacks = getAlarmTriggers(triggers);
+//		setIntegerMemory(I_HITS,getIntegerMemory(I_HITS) + numAttacks);
+
+//		if (FreeWillMode == STOPPED) then
+//			FreeWillMode = NORMAL;
+//		endif;
+
+//		if (FreeWillMode <> STOPPED) then
+//			assert(false,86,"returning fire");
+//			if (getTarget(CUR_OBJECT_ID) == 0) then
+//				AttClass = ObjectClass(triggers[0]);
+//				if ((AttClass == MECH_CLASS) OR (AttClass == VEHICLE_CLASS) OR (AttClass == ELEMENTAL_CLASS) OR (AttClass == TURRET_CLASS)) then
+//					setTarget(CUR_OBJECT_ID,triggers[0]);
+//				endif;
+//			endif;
+
+//		endif;
+
+endfunction;
+
+//----------------------------------------------------------------------------------------
+
+function handleHitByWeaponFire;
+
+	var
+		IntList		triggers;
+		integer		numAttacks;
+		integer		AttClass;
+
+	code
+
+		numAttacks = getAlarmTriggers(triggers);
+		setIntegerMemory(I_HITS,getIntegerMemory(I_HITS) + numAttacks);
+
+		if (triggers[0] == -2) then // Mine
+			CurTacCode = getTacORder(-1, time, tacOrderParams);
+			if ((CurTacCode == TACTICAL_ORDER_MOVETO_POINT) OR (CurTacCode == TACTICAL_ORDER_ATTACK_OBJECT)) then
+				if (tacOrderParams[7] <> 1) then
+					orderWait(0.0,FALSE);
+				endif;
+			else
+				orderWait(0.0,FALSE); // Stop moving, don't clear target
+			endif;
+			return;
+		else
+			if (triggers[0] == -3) then // Artillery or Airstrike
+				playSpeech(CUR_OBJECT_ID,RADIO_UNDER_AIRSTRIKE);
+				return;
+			endif;
+		endif;
+
+		if (getTarget(CUR_OBJECT_ID) == 0) then
+			AttClass = ObjectClass(triggers[0]);
+			if ((AttClass == MECH_CLASS) OR (AttClass == VEHICLE_CLASS) OR (AttClass == ELEMENTAL_CLASS) OR (AttClass == TURRET_CLASS)) then
+				if (objectSide(triggers[0]) <> objectSide(Me)) then
+					setTarget(CUR_OBJECT_ID,triggers[0]);
+				endif;
+			endif;
+		endif;
+
+
+endfunction;
+
+//----------------------------------------------------------------------------------
+// HANDLE NO MOVE PATH
+//----------------------------------------------------------------------------------
+function handleNoMovePath;
+
+	var
+		IntList		triggers;
+
+	code
+
+		getAlarmTriggers(triggers);
+/*
+		if (triggers[0] == Rtn_NO_SR_PATH) then // SHORT_RANGE_PATH_BLOCKED
+			setIntegerMemory(I_MOVE_STATUS,NOT_MOVING);
+			playSpeech(CUR_OBJECT_ID,RADIO_MOVE_BLOCKED);
+		else
+			if (triggers[0] == Rtn_LR_FROM_BLOCKED) then
+				print("Long Range Path from Blocked Tile");
+				setIntegerMemory(I_MOVE_STATUS,MOVE_IMPOSSIBLE);
+				playSpeech(CUR_OBJECT_ID,RADIO_MOVE_BLOCKED);
+			else
+				if (triggers[0] == Rtn_CLOSE_ENOUGH) then
+					print("Close Enough");
+					setIntegerMemory(I_MOVE_STATUS,NOT_MOVING);
+				else
+					if (triggers[0] == Rtn_INVALID_GOAL) then
+						print("Invalid Goal");
+						setIntegerMemory(I_MOVE_STATUS,MOVE_IMPOSSIBLE);
+						playSpeech(CUR_OBJECT_ID,RADIO_MOVE_BLOCKED);
+					else
+						if (triggers[0] == Rtn_TIME_OUT) then
+							print("Time Out");
+							setIntegerMemory(I_MOVE_STATUS,NOT_MOVING);
+							//playSpeech(CUR_OBJECT_ID,RADIO_MOVE_BLOCKED);
+						else
+							setIntegerMemory(I_MOVE_STATUS,MOVE_IMPOSSIBLE);
+							//playSpeech(CUR_OBJECT_ID,RADIO_MOVE_BLOCKED);
+						endif;
+					endif;
+				endif;
+			endif;
+		endif;
+*/
+endfunction;
+
+
+//---------------------------------------------------------------------------
+
+function handlePlayerOrder;
+
+	var
+
+		integer			numTriggers;
+		IntList			triggers;
+		integer			ObjClass;
+		position		dapoint;
+
+	code
+
+		//assert(false,86,"HandlePlayerOrder");
+		numTriggers = getAlarmTriggers(triggers);
+		CurTacCode = triggers[0];
+		print("Got Order");
+		Print(CurTacCode);
+		Me = GetId;
+
+		setIntegerMemory(I_MOVE_STATUS,NOT_MOVING);
+
+		FreeWillMode = NORMAL;
+//		KludgePlayerTarget = FALSE;
+		KludgeHandleGuard = FALSE;
+
+		switch (CurTacCode)
+
+			case TACTICAL_ORDER_ATTACK_OBJECT :
+
+				KludgePlayerTarget = TRUE;
+				/*CurTacCode = getTacORder(-1, time, tacOrderParams);
+
+				if (tacOrderParams[3] > 0) then
+					PlayerTarget = tacOrderParams[3];
+				endif;
+				*/
+
+				endcase;
+				
+
+			case TACTICAL_ORDER_GUARD :
+
+				KludgeHandleGuard = TRUE;
+				PlayerTarget = 0;
+
+				if (StopCounter > 5) then
+					dapoint[0] = 0.0;
+					dapoint[1] = 0.0;
+					dapoint[2] = 0.0;
+					setRevealed(objectside(Me),10000.0,dapoint);
+					StopCounter = 0;
+				endif;
+
+				/*CurTacCode = getTacORder(-1, time, tacOrderParams);
+
+  				if (tacOrderParams[3] == 0) then								
+					FreeWillMode = GUARD_POINT;
+					Sentry(tacOrderParams[9],tacOrderParams[10]);
+				else
+					ObjClass = ObjectClass(tacOrderParams[3]);
+					if ((ObjClass == MECH_CLASS) OR (ObjClass == VEHICLE_CLASS) OR (ObjClass == ELEMENTAL_CLASS)) then
+						FreeWillMode = GUARD_MOVER;
+						initOrders;
+						MyObject = tacOrderParams[3];
+						Escort(MyObject);
+					else
+						FreeWillMode = GUARD_OBJECT;
+						initOrders;
+						MyObject = tacOrderParams[3];
+						Guard(MyObject);
+					endif;
+				endif;
+				*/
+
+				endcase;
+
+			case TACTICAL_ORDER_STOP :
+
+				// **** TIM: The following should be changed for HOLD_FIRE too ***
+				// However, holdfire is no longer used in the iface, so doesn't really
+				// matter...
+				FreeWillMode = NORMAL;//STOPPED;
+				SetTarget(Me,0);
+				PlayerTarget = 0;
+				if (gettime - 1.0 < StopTime) then
+					print("Got it.");
+					print(StopCounter);
+					StopCounter = StopCounter + 1;
+				else
+					StopCounter = 1;
+					StopTime = gettime;
+				endif;
+
+
+				endcase;
+
+			case TACTICAL_ORDER_HOLD_FIRE :
+
+				FreeWillMode = NORMAL; //STOPPED;
+				SetTarget(Me,0);
+				PlayerTarget = 0;
+				print("HoldFire");
+				if (gettime - 1.0 < StopTime) then
+					print("Got it.");
+					print(StopCounter);
+					StopCounter = StopCounter + 1;
+				else
+					StopCounter = 1;
+					StopTime = gettime;
+				endif;
+
+
+				endcase;
+
+		endswitch;
+
+		if (CurTacCode <> TACTICAL_ORDER_GUARD) then
+			SetEngageRadius(100.0);
+			SetDisengageRadius(275.0);
+			SetNotTargetingMod(0.0);
+			SetSpeed(WALK);
+		endif;
+
+		// if I get an order from the player, assume the player is happy with my target selection
+		if ((CurTacCode <> TACTICAL_ORDER_ATTACK_OBJECT) AND (getTarget(CUR_OBJECT_ID) > 0)) then
+			PlayerTarget = getTarget(Me);
+		endif;
+
+endfunction;
+
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+	//assert(false,86,"below initOrders");	
+	if (KludgePlayerTarget) then
+		PlayerTarget = getTarget(CUR_OBJECT_ID);
+		KludgePlayerTarget = FALSE;
+	endif;
+
+	if (KludgeHandleGuard) then
+
+		SetEngageRadius(250.0);
+		SetDisengageRadius(275.0);
+    	SetNotTargetingMod(0.5);
+		//--------------
+		// until Run can issued with gaurd order
+		SetSpeed(RUN);
+
+		CurTacCode = getTacORder(-1, time, tacOrderParams);
+
+		//-----------------
+		// if run can ever be issued with guard order
+		//if (tacOrderParams[7] == 1) then
+		//	SetSpeed(RUN);
+		//else
+		//	SetSpeed(WALK);
+		//endif;
+
+		if (tacOrderParams[3] == 0) then								
+			FreeWillMode = GUARD_POINT;
+			Sentry(tacOrderParams[9],tacOrderParams[10]);
+			KludgeHandleGuard = FALSE;
+			return(1);
+		else
+			ObjClass = ObjectClass(tacOrderParams[3]);
+			if ((ObjClass == MECH_CLASS) OR (ObjClass == VEHICLE_CLASS) OR (ObjClass == ELEMENTAL_CLASS)) then
+				FreeWillMode = GUARD_MOVER;
+				initOrders;
+				MyObject = tacOrderParams[3];
+
+				SelectContact(1,MyObject);
+				getContactRelativePosition(MyRange, MyAngle);
+				print("MyAngle");
+				print(MyAngle);
+
+				Guard(MyObject);
+				//Escort(MyObject,MyAngle);
+
+				KludgeHandleGuard = FALSE;
+				return(1);
+			else
+				FreeWillMode = GUARD_OBJECT;
+				initOrders;
+				MyObject = tacOrderParams[3];
+				Guard(MyObject);
+				KludgeHandleGuard = FALSE;
+				return(1);
+			endif;
+		endif;
+				
+		KludgeHandleGuard = FALSE;
+	endif;
+
+//	if (objectSide(getTarget(CUR_OBJECT_ID)) == objectSide(Me)) then
+//		setTarget(Me,0);
+//		PlayerTarget = 0;
+//	endif;
+
+	switch (FreeWillMode)
+
+		case NORMAL :
+			
+			// curTacCode = getTacOrder(-1, time, tacOrderParams);
+
+			if (getTarget(CUR_OBJECT_ID) == 0) then
+				PlayerTarget = 0;
+			endif;
+
+			if (PlayerTarget > 0) then
+				if (isDead(PlayerTarget)) then
+					PlayerTarget = 0;
+				endif;
+			endif;
+
+			if (PlayerTarget == 0) then
+				FireAtWill; // FireAtWill;
+			endif;
+
+			endcase;
+
+		case GUARD_POINT :
+
+			GuardStatus = Sentry(MyX,MyY);
+			if (GuardStatus <> INCOMPLETE) then
+				FreeWillMode = NORMAL;
+				if (PlayerTarget == 0) then
+					FireAtWill; // FireAtWill;
+				endif;
+			endif;
+
+
+			endcase;
+
+		case GUARD_OBJECT :
+
+			GuardStatus = Guard(MyObject);
+			if (GuardStatus <> INCOMPLETE) then
+				FreeWillMode = NORMAL;
+				if (PlayerTarget == 0) then
+					FireAtWill; // FireAtWill;
+				endif;
+			endif;
+
+
+			endcase;
+
+		case GUARD_MOVER :
+
+			// GuardStatus = Escort(MyObject,MyAngle);
+			GuardStatus = Guard(MyObject);
+			if (GuardStatus <> INCOMPLETE) then
+				FreeWillMode = NORMAL;
+				if (PlayerTarget == 0) then
+					FireAtWill; // FireAtWill;
+				endif;
+			endif;
+			print("MyAngle");
+			print(MyAngle);
+
+			endcase;
+
+		case STOPPED :
+
+			Print("Stopped.");
+			SetTarget(CUR_OBJECT_ID,0);
+
+			endcase;
+
+	endswitch;
+		
+    return(1);
+
+endmodule.

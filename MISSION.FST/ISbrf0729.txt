@@ -1,0 +1,11 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cCOMMAND DESIGNATION:GAMBIT/7PRDN29%n
+%fc5%c----------%n
+%fc6%c*** SWAMP RAT ***%n
+%fc21-Destroy All Enemy Forces%n%n
+%fc5%c----------%n
+%fc4the rules are simple here.  Kill them all.%n%n
+%fc4Don't get your feet wet, commander.%n%n
+%fc6<<<<END DISPATCH
+
+

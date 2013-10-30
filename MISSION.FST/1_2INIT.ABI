@@ -1,0 +1,32 @@
+//*********************************************************************************
+// Init Include file for mission 1_2
+
+     APCNearBarn = false;
+     x = getterrainobjectpartid(26,29);
+     getobjectposition(x,aPoint);
+     setObjectivePos(0,aPoint[0],aPoint[1],aPoint[2]);
+     Obj_0_Action_2_Success = TRUE;
+     x = getterrainobjectpartid(15,322);
+     getobjectposition(x,aPoint);
+     setObjectivePos(1,aPoint[0],aPoint[1],aPoint[2]);
+     Prison_1 = getTerrainObjectPartId(15,322);
+     objectChangeSides(Prison_1,CLAN);
+     setPotentialContact(Prison_1,0);
+     setCaptureable(Prison_1, TRUE);
+     Prison_1Alignment = CLAN;
+     setBuildingName(Prison_1,PRISON_BARN);
+     BaseContainer = getTerrainObjectPartId(8,66);
+     objectChangeSides(BaseContainer,CLAN);
+     setPotentialContact(BaseContainer,0);
+     setSalvage(BaseContainer,135,2);
+     setCaptureable(BaseContainer, TRUE);
+     BaseContainerAlignment = CLAN;
+     PrisonContainer = getTerrainObjectPartId(26,29);
+     objectChangeSides(PrisonContainer,CLAN);
+     setPotentialContact(PrisonContainer,0);
+     setSalvage(PrisonContainer,101,4);
+     setCaptureable(PrisonContainer, TRUE);
+     PrisonContainerAlignment = CLAN;
+     setCaptureable(getVehicleID(CLAN_FORCE,5,0),TRUE);
+     LOP0 = TRUE;
+     LOP1 = TRUE;

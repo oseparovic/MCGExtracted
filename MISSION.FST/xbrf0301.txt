@@ -1,0 +1,18 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:MINOTAUR/03PRDN01%n
+%fc5%c----------%n
+%fc6%c***CAPTURE BASE KRAKEN***%n
+%fc21-Capture Sensor Control%n
+%fc22-Capture HPG Stations (3)%n
+%fc23-Defend HPG Base%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 2 Small  0 Large%n
+%t12SENSOR PROBE: 0%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4The capture of the Clan Commanders has unearthed disturbing information.  The Clan forces here on Cermak have located ancient Star League nuclear weapon facilities.  They are determined to unleash these weapons of mass destruction upon the Inner Sphere.%n%n
+Word of this threat must immediately be transmitted to the Command Center on Kathil.  Intelligence has informed us that the Clan base Kraken has %fc2HPG Stations%fc4%nwhich are still operational.  Capture the %fc2HPG Stations%fc4 and defend them from enemy counterattack.%n%n
+%fc5%c----------%n
+%fc6%c**TACTICAL NOTICE**%n%n
+%fc6*%fc2 Recon reports %fc6Turkina%fc2 class Assault Omnimech stationed nearby base Kraken.  This class of Omnimech bears an impressive array of weapons but is extremely slow for a Clan design.%n%n
+%fc6<<<<END DISPATCH

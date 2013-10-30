@@ -1,0 +1,20 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:MINOTAUR/03PRDN03%n
+%fc5%c----------%n
+%fc6%c***OBLITERATE COMPLEX***%n
+%fc21-Destroy All Buildings in Complex%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 3 Small  2 Large%n
+%t12SENSOR PROBE: 3%n
+%t12CAMERA DRONE: 2%n
+%fc5%c----------%n
+%fm%fc1%c***25 MINUTE TIME LIMIT***%n
+%fs%fc5%c----------%n
+%fc4The successful termination of the Jaguar reserves allows us to proceed to stage 2 of our assault.  Recon has determined that the Jaguars have been forced to dismantle their dropship engines in order to use them to drill into the Star League weapon vaults.  Destruction of this engine drill complex will be our next focus.%n%n
+The engine drill production complex has been established within the northeastern ruins of a valley. This complex is surrounded by a medium walls and is composed of several buildings, including the target %fc2Engine Drills%fc4 and the huge Gantries used to move them.%n%n
+Take your strikeforce into the valley and completely destroy that complex. This should slow the Jaguars' progress into the Star League vaults enough to allow us to regroup for the assault on the Smoke Jaguar Command Force itself.%n%n
+%fc5%c----------%n
+%fc6%c**TACTICAL NOTICE**%n%n
+%fc6*%fc2 There is a sensor control building in the southern portion of the valley. Its capture could be useful in completing your mission.%n%n
+%fc6*%fc2 Recon surmises that most of the turrets in the valley are powered by generators in the northwest.%n%n
+%fc6<<<<END DISPATCH

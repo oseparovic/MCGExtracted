@@ -1,0 +1,159 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:4/27/98   BY:Mike Lee
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0502_Ambush1.1 : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+    static integer                     Order6Status;
+    static integer                     Order7Status;
+    static integer                     Order8Status;
+    static integer                     Order9Status;
+    static integer                     Order10Status;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+         Order6Status = INCOMPLETE;
+         Order7Status = INCOMPLETE;
+         Order8Status = INCOMPLETE;
+         Order9Status = INCOMPLETE;
+         Order10Status = INCOMPLETE;
+
+         SetSpeed(RUN);
+         StickToTargetON;
+         SetConcentrateFireMod(10);
+         SetTactic(TACTIC_RIGHT_FLANK);
+         MoveAndFireON;
+         ReturnFireOFF;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (inHotSpot(PLAYER_FORCE,-2300,-1230,125)) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              Flag3 = TRUE;
+              Order2Status = SUCCESS;
+         endif;
+    endif;
+    if (flag3) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              orderPowerUp;
+              Order3Status = SUCCESS;
+         else
+              if (Order3Status <> INCOMPLETE) then
+                   // Order  4 
+                   if (Order4Status == INCOMPLETE) then
+                        Order4Status = MoveTo(-3110,-285);
+                        if (Order4Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+              if (Order3Status <> INCOMPLETE) then
+                   // Order  5 
+                   if (Order5Status == INCOMPLETE) then
+                        Order5Status = AttackObject(getTerrainObjectPartID(39,308),FALSE,TRUE);
+                        if (Order5Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   else
+                        if (Order5Status <> INCOMPLETE) then
+                             // Order  6 
+                             if (Order6Status == INCOMPLETE) then
+                                  Order6Status = Attack;
+                                  if (Order6Status == INCOMPLETE) then
+                                       return(1);
+                                  endif;
+                             endif;
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+    if (beenHit) then
+         // Order  7 
+         if (Order7Status == INCOMPLETE) then
+              Flag2 = TRUE;
+              Order7Status = SUCCESS;
+         endif;
+    endif;
+    if (inHotSpot(PLAYER_FORCE,-3665,100,100)) then
+         // Order  8 
+         if (Order8Status == INCOMPLETE) then
+              Flag2 = TRUE;
+              Order8Status = SUCCESS;
+         endif;
+    endif;
+    if (flag2) then
+         // Order  9 
+         if (Order9Status == INCOMPLETE) then
+              orderPowerUp;
+              Order9Status = SUCCESS;
+         endif;
+    endif;
+    if (flag2) then
+         // Order  10 
+         if (Order10Status == INCOMPLETE) then
+              Order10Status = Attack;
+              if (Order10Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              orderPowerDown;
+              Order1Status = SUCCESS;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

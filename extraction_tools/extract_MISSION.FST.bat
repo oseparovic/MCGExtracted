@@ -1,5 +1,16 @@
 ECHO ..Extracting MISSION.FST
-ECHO Be sure to additional folders exist or they will be ignored!
+mkdir data\missions\warriors
+mkdir data\missions\profiles
+If Not Exist MISSION.FST (
+	ECHO Could not find MISSION.FST in current directory. Make sure you place it in the same directory as this extraction script.
+	PAUSE
+	EXIT
+)
+If Not Exist fstextract.exe (
+	ECHO Could not find fstextract.exe in current directory. Make sure you place it in the same directory as this extraction script.
+	PAUSE
+	EXIT
+)
 
 fstextract.exe MISSION.FST 123_2ACT.ABI	data\missions\123_2ACT.ABI
 fstextract.exe MISSION.FST 123_2CRE.ABI	data\missions\123_2CRE.ABI

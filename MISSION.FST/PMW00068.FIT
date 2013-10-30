@@ -1,0 +1,48 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      MechWarrior:  68   Name: Countess  Callsign: COUNTESS
+//
+//      Creation Date: 12/15/98   By: jon marcus
+//
+// -------------------------------------------------------------------------
+
+
+
+[General]
+st Brain = "pbrain"
+st Name =                                                  "Countess"
+l Rank =                                                    1 
+st Callsign =                                              "COUNTESS"
+ul ID =                                                     68 
+l NameIndex =                                               17 
+l DescIndex =                                               318 
+ul HeadIcon =                                               0 
+l paintScheme =                                             68 
+st pilotAudio =                                            "pilotR"
+st pilotVideo =                                            "PILOT17"
+st Picture =                                               "pilot17.TGA"
+
+[PersonalityTraits]
+c Professionalism =                                         50 
+c Decorum =                                                 50 
+c Aggressiveness =                                          50 
+c Courage =                                                 50 
+
+[Skills]
+c Piloting =                                                60 
+c Jumping =                                                 45 
+c Sensors =                                                 45 
+c Gunnery =                                                 50 
+
+[Affinities]
+c MechClass =                                               0 
+c MechType =                                                0 
+c WeaponClass =                                             0 
+uc[2] WeaponTypes =                                        0,0
+
+[Status]
+c Wounds =                                                  0 
+
+FITEnd

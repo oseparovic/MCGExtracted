@@ -1,0 +1,21 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:SKYHOOK/02PRDN03%n
+%fc5%c----------%n
+%fc6%c***DESTROY ENEMY CONVOY***%n
+%fc21-Destroy the convoy%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 2 Small  0 Large%n
+%t12SENSOR PROBE: 1%n
+%t12CAMERA DRONE: 1%n
+%fc5%c----------%n
+%fc4Intelligence reports that a lightly defended Jaguar convoy will be passing near to the suburb of Bakerville. Battalion command needs all the trucks in that convoy destroyed as efficiently as possible.%n%n
+Battalion Transport reports that it can only place your drop force on the near side of the river, opposite to the side the convoy is travelling on. It is recommended that you take what jump-capable `Mechs you have to facilitate crossing the river as quickly as possible.%n%n
+Intelligence also reports that Bakerville is a nest of pro-Clan activity. Be wary of the locals as not all of them may be eager for liberation.%n%n
+%fm%fc6%c**TACTICAL NOTICE**%n
+%fs%fc2*Jump-capable `Mechs can jump over or%n
+%t9across terrain obstacles that block%n
+%t9normal `Mechs and vehicles.%n
+*Camera Drones reveal terrain in ever-%n
+%t9widening circles, but will be destroyed%n
+%t9by the enemy if sighted.%n%n
+%fc6<<<<END DISPATCH

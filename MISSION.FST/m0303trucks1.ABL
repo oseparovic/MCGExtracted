@@ -1,0 +1,134 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:5/14/98   BY:david abzug
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0303trucks1 : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+
+    // PATHS
+    static path                        Path1FromBridge;
+    static path                        Path1OverBridge;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+
+         // Paths
+
+         Path1FromBridge[0,0] = -2081; // X
+         Path1FromBridge[0,1] = 4201; // Y
+
+         Path1FromBridge[1,0] = -3745; // X
+         Path1FromBridge[1,1] = 3513; // Y
+
+         Path1FromBridge[2,0] = -3647; // X
+         Path1FromBridge[2,1] = 2084; // Y
+
+         Path1FromBridge[3,0] = -4564; // X
+         Path1FromBridge[3,1] = 1490; // Y
+
+         Path1FromBridge[4,0] = -4948; // X
+         Path1FromBridge[4,1] = -160; // Y
+
+         Path1FromBridge[5,0] = -6264; // X
+         Path1FromBridge[5,1] = -589; // Y
+
+         Path1OverBridge[0,0] = 1324; // X
+         Path1OverBridge[0,1] = 2667; // Y
+
+         Path1OverBridge[1,0] = -867; // X
+         Path1OverBridge[1,1] = 4185; // Y
+
+         Path1OverBridge[2,0] = -6600; // X
+         Path1OverBridge[2,1] = -965; // Y
+
+         IdentifySensorContactsOFF;
+         MoveToEngageOFF;
+         StopFighting;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = MovePath(Path1OverBridge,3);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order1Status == SUCCESS) then
+                   // Order  3 
+                   if (Order3Status == INCOMPLETE) then
+                        Order3Status = Withdraw;
+                        if (Order3Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+              if (Order1Status == FAILED) then
+                   // Order  2 
+                   if (Order2Status == INCOMPLETE) then
+                        Order2Status = MoveTo(-691,-6636);
+                        if (Order2Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   else
+                        if (Order2Status == SUCCESS) then
+                             // Order  4 
+                             if (Order4Status == INCOMPLETE) then
+                                  Order4Status = Withdraw;
+                                  if (Order4Status == INCOMPLETE) then
+                                       return(1);
+                                  endif;
+                             endif;
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

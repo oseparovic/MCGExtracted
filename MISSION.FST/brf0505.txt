@@ -1,0 +1,19 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:CUTTHROAT/05PRDN04%n
+%fc5%c----------%n
+%fc6%c***POSITION ALLIED ARTILLERY***%n
+%fc21-Destroy enemy Air Control Towers%n
+2-Move all forces including%n
+%t9artillery pieces to the %n
+%t9top of the ridge.%n
+MISSION TIME LIMIT- 20:00%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 0 Small  0 Large%n
+%t12SENSOR PROBE: 0%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4The attack on the Starbase has entered its initial stages and we are in immediate need of local artillery fire support. Your mission is to escort a lance of mobile artillery pieces into the mountainous Lambert Valley region and position them on the ridge there. This ridge looks over the Miasota Basin region that contains the Starbase and related sites.%n%n
+The Jaguars have positioned three Air Control Towers on that ridgeline and can use them to direct devastating airstrikes into not only the Miasota Basin, but into the approaches in the Lambert Valley. You must destroy the three Air Control Towers prior to advancing the artillery into position or Jaguar airstrikes will pound you into dust.%n%n
+We will need those artillery pieces in place and active twenty minutes after your arrival, so move fast. Resistance may be fierce, so keep the artillery pieces guarded at all times. To complete the mission, move all of your forces, including all the artillery pieces, to the paved field base atop the ridge.%n%n
+Note that while rigged for transit the artillery pieces cannot be fired. You will be operating without fire support on this mission.%n%n
+%fc6<<<<END DISPATCH

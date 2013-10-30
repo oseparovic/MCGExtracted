@@ -1,0 +1,16 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:CUTTHROAT/05PRDN05%n
+%fc5%c----------%n
+%fc6%c***DESTROY SECONDARY POWER***%n
+%fc21-Destroy Power Complex Alpha%n
+2-Destroy Power Complex Beta%n
+3-Destroy Power Complex Gamma%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 6 Small  4 Large%n
+%t12SENSOR PROBE: 0%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4Three geothermal power stations in the Bellum area supply secondary power to the Starbase. Destroying the generators at each of those three stations will force the Starbase to run on local, limited power, thereby reducing the efficiency of its sensor grid and automated defenses.%n%n
+The area is very heavily defended, primarily by garrison Bondsman armor. There are, however, a few Bondsman and Clan `Mechs near some of the power stations for additional defense. Of principle concern is the Elite Heavy OmniMech Star that guards the area. Be careful, intelligence reports multiple Masakari Assault OmniMechs in that Star.%n%n
+%fc6<<<< END DISPATCH
+

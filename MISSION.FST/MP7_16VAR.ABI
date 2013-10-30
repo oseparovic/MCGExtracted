@@ -1,0 +1,29 @@
+//*********************************************************************************
+// Variable Include file for mission 7_16
+
+     eternal integer                   TurCtrlWest;
+     static integer                    TurCtrlWestAlignment;
+     eternal integer                   GateCtrlWest;
+     static integer                    GateCtrlWestAlignment;
+     eternal integer                   TurCtrlEastA;
+     static integer                    TurCtrlEastAAlignment;
+     eternal integer                   TurCtrlEastB;
+     static integer                    TurCtrlEastBAlignment;
+     eternal integer                   TurCtrlEastC;
+     static integer                    TurCtrlEastCAlignment;
+     eternal integer                   Mechbay2;
+     static integer                    Mechbay2Alignment;
+     eternal integer                   CenterTCT;
+     static integer                    CenterTCTAlignment;
+     eternal integer                   CenterGC;
+     static integer                    CenterGCAlignment;
+     eternal integer                   Mechbay3;
+     static integer                    Mechbay3Alignment;
+     eternal integer                   Mechbay5;
+     static integer                    Mechbay5Alignment;
+     eternal integer                   Mechbay7;
+     static integer                    Mechbay7Alignment;
+     eternal integer                   TurCtrlWestB;
+     static integer                    TurCtrlWestBAlignment;
+     eternal integer                   TCTEastGen;
+     static integer                    TCTEastGenAlignment;

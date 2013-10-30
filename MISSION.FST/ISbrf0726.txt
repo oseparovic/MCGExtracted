@@ -1,0 +1,10 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cBATTALION COMMAND:GAMBIT/7PRDN9%n
+%fc5%c----------%n
+%fc6%c*** FORTRESS ASSAULT ***%n
+%fc21-Capture and Hold Command Building%n%n
+%fc5%c----------%n
+%fc4This ancient Star League base must not become property of the Clanners. Capture and hold the Command Building until the timer expires.%n%n
+%fc4There are no functioning artillery crates in this mission.%n%n
+%fc6<<<<END DISPATCH
+

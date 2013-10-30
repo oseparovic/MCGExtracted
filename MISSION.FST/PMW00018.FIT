@@ -1,0 +1,47 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      MechWarrior:  18   Name: Green 2  Callsign: Green 2
+//
+//      Creation Date: 12/15/98   By: jon marcus
+//
+// -------------------------------------------------------------------------
+
+
+
+[General]
+st Name =                                                  "Green 2"
+l Rank =                                                    0 
+st Callsign =                                              "Green 2"
+ul ID =                                                     18 
+l NameIndex =                                               1000 
+l DescIndex =                                              
+ul HeadIcon =                                               1050 
+l paintScheme =                                             18 
+st pilotAudio =                                            "pilote"
+st pilotVideo =                                            "plt1g001"
+st Picture =                                               "pilot00.TGA"
+
+[PersonalityTraits]
+c Professionalism =                                         50 
+c Decorum =                                                 50 
+c Aggressiveness =                                          50 
+c Courage =                                                 50 
+
+[Skills]
+c Piloting =                                                35 
+c Jumping =                                                 35 
+c Sensors =                                                 40 
+c Gunnery =                                                 50 
+
+[Affinities]
+c MechClass =                                               0 
+c MechType =                                                0 
+c WeaponClass =                                             0 
+uc[2] WeaponTypes =                                        0,0
+
+[Status]
+c Wounds =                                                  0 
+
+FITEnd

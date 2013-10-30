@@ -1,0 +1,16 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc5%c----------%n
+%fc6%c***Wet And Wild***%n
+%fc2(1) Destroy All Enemy Forces%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY:    0 Small    0 Large%n
+%t12SENSOR PROBE:   0%n
+%t12CAMERA DRONE:    0%n%n
+%fc5%c----------%n
+%fc4     Built by a deranged warlord, this island is unfortunately in a tactically important position.  %n%n     Our intelligence network informs us that enemy forces are about to land in order to claim the island.  Take them out.%n%n
+%fc5%c----------%n
+%fc1%fm%c**TACTICAL WARNING**%n
+%fc2%fs*None%n%n
+%fm%fc6%c**TACTICAL NOTICE**%n
+%fs%fc2*None%n%n
+%fc6<<<<END DISPATCH

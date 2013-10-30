@@ -1,0 +1,302 @@
+FITini
+
+[Header]
+
+l NumMechs = 18
+l NumVehicles = 0
+l NumGifts = 0
+l NumComponants = 0
+l NumWarriors = 0
+
+[Mech0]
+//Commando-A (IS)
+l TypeAAvailable = 1
+l TypeWAvailable = 1
+l TypeJAvailable = 1
+st TypeAFile = "PM100100"
+st TypeWFile = "PM100400"
+st TypeJFile = "PM100300"
+
+[Mech1]
+// Uller-A (Clan)
+l TypeAAvailable = 1
+l TypeWAvailable = 1
+l TypeJAvailable = 1
+st TypeAFile = "PM200100"
+st TypeWFile = "PM200400"
+st TypeJFile = "PM200300"
+
+[Mech2]
+// Firestarter -A (IS)
+l TypeAAvailable = 1
+l TypeWAvailable = 1
+l TypeJAvailable = 1
+st TypeAFile = "PM101100"
+st TypeWFile = "PM101400"
+st TypeJFile = "PM101300"
+
+[Mech3]
+// Cougar-A (Clan)
+l TypeAAvailable = 1
+l TypeWAvailable = 1
+l TypeJAvailable = 1
+st TypeAFile = "PM201100"
+st TypeWFile = "PM201400"
+st TypeJFile = "PM201300"
+
+[Mech4]
+// Raven-A (IS)
+l TypeAAvailable = 1
+l TypeWAvailable = 1
+l TypeJAvailable = 1
+st TypeAFile = "PM102100"
+st TypeWFile = "PM102400"
+st TypeJFile = "PM102300"
+
+[Mech5]
+// Hollander-A (IS)
+l TypeAAvailable = 1
+l TypeWAvailable = 1
+l TypeJAvailable = 1
+st TypeAFile = "PM103100"
+st TypeWFile = "PM103400"
+st TypeJFile = "PM103300"
+
+[Mech6]
+// Hunchback IIC-A (Clan)
+l TypeAAvailable = 1
+l TypeWAvailable = 1
+l TypeJAvailable = 1
+st TypeAFile = "PM203100"
+st TypeWFile = "PM203400"
+st TypeJFile = "PM203300"
+
+[Mech7]
+// Hunchback-A (IS)
+l TypeAAvailable = 1
+l TypeWAvailable = 1
+l TypeJAvailable = 1
+st TypeAFile = "PM104100"
+st TypeWFile = "PM104400"
+st TypeJFile = "PM104300"
+
+[Mech8]
+// Centurion-A (IS)
+l TypeAAvailable = 1
+l TypeWAvailable = 1
+l TypeJAvailable = 1
+st TypeAFile = "PM105100"
+st TypeWFile = "PM105400"
+st TypeJFile = "PM105300"
+
+[Mech9]
+// Vulture-A (Clan)
+l TypeAAvailable = 1
+l TypeWAvailable = 1
+l TypeJAvailable = 1
+st TypeAFile = "PM204100"
+st TypeWFile = "PM204400"
+st TypeJFile = "PM204300"
+
+[Mech10]
+// Loki-A (Clan)
+l TypeAAvailable = 1
+l TypeWAvailable = 1
+l TypeJAvailable = 1
+st TypeAFile = "PM205100"
+st TypeWFile = "PM205400"
+st TypeJFile = "PM205300"
+
+[Mech11]
+// Catapult-A (IS)
+l TypeAAvailable = 1
+l TypeWAvailable = 1
+l TypeJAvailable = 1
+st TypeAFile = "PM106100"
+st TypeWFile = "PM106400"
+st TypeJFile = "PM106300"
+
+[Mech12]
+// Thor-A (Clan)
+l TypeAAvailable = 1
+l TypeWAvailable = 1
+l TypeJAvailable = 1
+st TypeAFile = "PM206100"
+st TypeWFile = "PM206400"
+st TypeJFile = "PM206300"
+
+[Mech13]
+// Jagermech-A (IS)
+l TypeAAvailable = 1
+l TypeWAvailable = 1
+l TypeJAvailable = 1
+st TypeAFile = "PM107100"
+st TypeWFile = "PM107400"
+st TypeJFile = "PM107300"
+
+[Mech14]
+// Mad Cat-A (Clan)
+l TypeAAvailable = 1
+l TypeWAvailable = 1
+l TypeJAvailable = 1
+st TypeAFile = "PM207100"
+st TypeWFile = "PM207400"
+st TypeJFile = "PM207300"
+
+[Mech15]
+// Awesome-A (IS)
+l TypeAAvailable = 1
+l TypeWAvailable = 1
+l TypeJAvailable = 1
+st TypeAFile = "PM108100"
+st TypeWFile = "PM108400"
+st TypeJFile = "PM108300"
+
+[Mech16]
+// Masakari-A (Clan)
+l TypeAAvailable = 1
+l TypeWAvailable = 1
+l TypeJAvailable = 1
+st TypeAFile = "PM208100"
+st TypeWFile = "PM208400"
+st TypeJFile = "PM208300"
+
+[Mech17]
+// Atlas-A (IS)
+l TypeAAvailable = 1
+l TypeWAvailable = 1
+l TypeJAvailable = 1
+st TypeAFile = "PM109100"
+st TypeWFile = "PM109400"
+st TypeJFile = "PM109300"
+
+[Vehicle 0]
+// Elemental (Type I)
+l NumAvailable = 0
+st Filename = "215103"
+
+[Vehicle 1]
+// Elemental (Type II)
+l NumAvailable = 0
+st Filename = "215105"
+
+[Vehicle 2]
+// Elemental (Type III)
+l NumAvailable = 0
+st Filename = "215102"
+
+[Vehicle 3]
+// Savannah Master
+l NumAvailable = 0
+st Filename = "31900"
+
+[Vehicle 4]
+// APC*
+l NumAvailable = 0
+st Filename = "20600"
+
+[Vehicle 5]
+// J. Edgar Light Hover Tank
+l NumAvailable = 0
+st Filename = "21900"
+
+[Vehicle 6]
+// Pegasus Light Scout Tank*
+l NumAvailable = 0
+st Filename = "21800"
+
+[Vehicle 7]
+// Saracen Hover Tank
+l NumAvailable = 0
+st Filename = "21400"
+
+[Vehicle 8]
+// Striker Light Tank
+l NumAvailable = 0
+st Filename = "21700"
+
+[Vehicle 9]
+// Harasser Light Missile Tank
+l NumAvailable = 0
+st Filename = "20500"
+
+[Vehicle 10]
+// Condor Heavy Hover Tank
+l NumAvailable = 0
+st Filename = "22100"
+
+[Vehicle 11]
+// SRM Carrier
+l NumAvailable = 0
+st Filename = "20900"
+
+[Vehicle 12]
+// Minelayer*
+l NumAvailable = 0
+st Filename = "22900"
+
+[Vehicle 13]
+// Minesweeper*
+l NumAvailable = 0
+st Filename = "22800"
+
+[Vehicle 14]
+// Bulldog Medium Tank
+l NumAvailable = 0
+st Filename = "20800"
+
+[Vehicle 15]
+// Rommel Medium Tank
+l NumAvailable = 0
+st Filename = "20100"
+
+[Vehicle 16]
+// Von Luckner Heavy Tank
+l NumAvailable = 0
+st Filename = "22000"
+
+[Vehicle 17]
+// LRM Carrier
+l NumAvailable = 0
+st Filename = "21000"
+
+[Vehicle 18]
+// Schrek PPC Carrier
+l NumAvailable = 0
+st Filename = "21300"
+
+[Vehicle 19]
+// Light Transport (Hummer)*
+l NumAvailable = 0
+st Filename = "22700"
+
+[Vehicle 20]
+// Swiftwind Scout Car*
+l NumAvailable = 0
+st Filename = "20000"
+
+[Vehicle 21]
+// Refit Truck*
+l NumAvailable = 0
+st Filename = "32200"
+
+[Vehicle 22]
+// Refit Rig*
+l NumAvailable = 0
+st Filename = "32300"
+
+[Vehicle 23]
+// Radar Truck*
+l NumAvailable = 0
+st Filename = "21600"
+
+[Vehicle 24]
+// Mobile HQ
+l NumAvailable = 0
+st Filename = "20200"
+
+[Vehicle 25]
+// Elemental Carrier
+l NumAvailable = 0
+st Filename = "20400"
+

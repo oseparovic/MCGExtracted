@@ -1,0 +1,477 @@
+//*********************************************************************************
+
+module MPMissionBrain_7_8 : integer;
+
+     //--------------------------------------------------------
+     // Operation:  7                  Mission:  8 
+     // MissionID:  243                Name: GunBunk
+     // Designer: david abzug
+     // Created: 6/18/98               By: david abzug
+     //--------------------------------------------------------
+
+//------------------------------------------------------------------
+//
+//     Constant Definitions
+//
+//------------------------------------------------------------------
+     const
+
+          #include_ "misconst.abi"
+
+          // Message Codes
+          MSG_GENERAL_ALARM_ON = 255;
+          MSG_GENERAL_ALARM_OFF = 254;
+          MSG_PERIMETER_ALARM_ON = 253;
+          MSG_PERIMETER_ALARM_OFF = 252;
+          MSG_SET_EXIT_TIMER = 251;
+          MSG_PLAY_END_MUSIC = 250;
+
+          // Multiplayer Victory Codes
+          INNER_SPHERE_VICTORY = 1;
+          CLAN_VICTORY = 2;
+          JOINT_LOSS = 3;
+          JOINT_VICTORY = 4;
+          //------------------
+          // Objective IDs
+          //------------------
+           OBJ0_Destroy_4_Orbital_Guns_  = 0;
+           OBJ1_Protect_at_least_2_Unde  = 1;
+           OBJ2_Destroy_4_Undrgrnd_Bunk  = 2;
+           OBJ3_Protect_at_least_2_Orbi  = 3;
+
+//------------------------------------------------------------------
+//
+//     Type Definitions
+//
+//------------------------------------------------------------------
+     type
+
+
+//------------------------------------------------------------------
+//
+//     Variable Declarations
+//
+//------------------------------------------------------------------
+      var
+
+            #include_ "MP7_8VAR.ABI"
+
+            static integer      ScenarioResult;
+            eternal boolean     ExitTimerSet;
+            static integer      VictoryLevel;
+            static integer      ClanVictoryLevel;
+            char[40]            dstring;
+            eternal real        gametime;
+            static real         nextsecond;
+            integer             x;
+            integer             y;
+            Position            aPoint;
+            eternal boolean     PlayerForceDead;
+            eternal boolean     ClanForceDead;
+            eternal boolean     AlliedForceDead;
+            eternal boolean     GeneralAlarm;
+            eternal boolean     Flag1;
+            eternal boolean     Flag2;
+            eternal boolean     Flag3;
+            eternal boolean     Flag4;
+            eternal boolean     Flag5;
+            eternal boolean     Flag6;
+            eternal boolean     Flag7;
+            eternal boolean     Flag8;
+            eternal boolean     Flag9;
+            eternal boolean     Flag10;
+            static boolean      PlayPASound;
+            static boolean      PlayGASound;
+            eternal integer     GeneralAlarmCounter;
+            boolean             PerimeterBreach;
+            static boolean      Objective_0_Decided;
+            static boolean      Objective_1_Decided;
+            static boolean      Objective_2_Decided;
+            static boolean      Objective_3_Decided;
+
+//------------------------------------------------------------------
+//
+//     Init Function    (automatically run first time through)
+//
+//------------------------------------------------------------------
+function init;
+
+       code
+
+            ScenarioResult = PLAYING;
+            PlayerForceDead = FALSE;
+            ClanForceDead = FALSE;
+            AlliedForceDead = FALSE;
+            ExitTimerSet = FALSE;
+            VictoryLevel = 0; // New Scheme
+            ClanVictoryLevel = 0; // New Scheme
+            NextSecond = 1.0;
+            GeneralAlarmCounter = -1;
+            GeneralAlarm = FALSE;
+            Flag1 = FALSE;
+            Flag2 = FALSE;
+            Flag3 = FALSE;
+            Flag4 = FALSE;
+            Flag5 = FALSE;
+            Flag6 = FALSE;
+            Flag7 = FALSE;
+            Flag8 = FALSE;
+            Flag9 = FALSE;
+            Flag10 = FALSE;
+            PlayPASound = FALSE;
+            PlayGASound = FALSE;
+            Objective_0_Decided = FALSE;
+            Objective_1_Decided = FALSE;
+            Objective_2_Decided = FALSE;
+            Objective_3_Decided = FALSE;
+
+            #include_ "MP7_8INIT.ABI"
+
+            //---------------------------------------
+            // Custom ABL INIT Code
+            //---------------------------------------
+
+            //Initial Reveal for inner sphere
+            
+            aPoint[0] = 6334;
+            aPoint[1] = -1728;
+            aPoint[2] = 0.0;
+            setRevealed(1,100.0,aPoint);
+            
+            aPoint[0] = 8254;
+            aPoint[1] = 966;
+            setRevealed(1,100.0,aPoint);
+            
+            aPoint[0] = 4402;
+            aPoint[1] = 4047;
+            setRevealed(1,100.0,aPoint);
+            
+            aPoint[0] = 1463;
+            aPoint[1] = 7880;
+            setRevealed(1,100.0,aPoint);
+            
+            aPoint[0] = 574;
+            aPoint[1] = 9536;
+            setRevealed(1,100.0,aPoint);
+            
+            
+            //initial reveal for clan
+            
+            aPoint[0] = -1097;
+            aPoint[1] = -8249;
+            aPoint[2] = 0.0;
+            setRevealed(-1,100.0,aPoint);
+            
+            aPoint[0] = -2508;
+            aPoint[1] = -1847;
+            setRevealed(-1,100.0,aPoint);
+            
+            aPoint[0] = -4424;
+            aPoint[1] = -5309;
+            setRevealed(-1,100.0,aPoint);
+            
+            aPoint[0] = -5818;
+            aPoint[1] = -2748;
+            setRevealed(-1,100.0,aPoint);
+            
+            aPoint[0] = -6602;
+            aPoint[1] = 72;
+            setRevealed(-1,100.0,aPoint);
+
+endfunction;
+
+//****************************
+// Multiplayer Event Handling
+//****************************
+#include_ "MP7_8MP.ABI"
+
+//------------------------------------------------------------------
+//
+//     Main Code
+//
+//------------------------------------------------------------------
+      code
+
+            //------------------------------------------------
+            // Debug Window Game Clock Second Counter
+            // Note:  This is used by some included functions.
+            //------------------------------------------------
+            gametime = gettime;
+            If (gametime >= nextsecond) Then
+                  nextsecond = gametime + 1;
+                  If (GeneralAlarm) then
+                       GeneralAlarmCounter = GeneralAlarmCounter + 1;
+                  endif;
+                  // dstring = "Gametime: ";
+                  // concat(dstring,gametime);
+                  // Print (dstring);
+            endif;
+            if ((PlayGASound) and (NextSecond == gametime + 1)) then
+                  playSoundEffect(GENERAL_ALARM_SOUND);
+            endif;
+            if (PlayPASound) then
+                  playSoundEffect(PERIMETER_ALARM_SOUND);
+            endif;
+            PerimeterBreach = FALSE;
+
+         //*********************
+         // SERVER CODE
+         //*********************
+         if (isServer) then
+
+            //---------------------------------------
+            // Create Non-Existing Vehicles
+            //---------------------------------------
+            #include_ "MP7_8CRE.ABI"
+
+            //---------------------------------------
+            // Activate inactive vehicles
+            //---------------------------------------
+            #include_ "MP7_8ACT.ABI"
+
+            //---------------------------------------
+            // Structure
+            //---------------------------------------
+            #include_ "MP7_8STR.ABI"
+
+            //---------------------------------------
+            // Lookout Points
+            //---------------------------------------
+            #include_ "MP7_8LOP.ABI"
+
+            //---------------------------------------
+            // Force Dead Checks
+            //---------------------------------------
+            if (isDeadorFled(PLAYER_FORCE)) then
+                  PlayerForceDead = TRUE;
+            endif;
+            if (isDeadorFled(CLAN_FORCE)) then
+                  ClanForceDead = TRUE;
+            endif;
+            if (isDeadorFled(ALLIED_FORCE)) then
+                  AlliedForceDead = TRUE;
+            endif;
+
+            //---------------------------------------
+            // FAIL OBJECTIVES IF TEAM DIES
+            //---------------------------------------
+
+            if (PlayerForceDead) then
+                  if (checkObjectiveStatus(0) == INCOMPLETE) then
+                        sendMessage(1,0);
+                        handleMessage;
+                  endif;
+                  if (checkObjectiveStatus(1) == INCOMPLETE) then
+                        sendMessage(2,0);
+                        handleMessage;
+                  endif;
+            endif;
+
+            if (ClanForceDead) then
+                  if (checkObjectiveStatus(2) == INCOMPLETE) then
+                        sendMessage(3,0);
+                        handleMessage;
+                  endif;
+                  if (checkObjectiveStatus(3) == INCOMPLETE) then
+                        sendMessage(4,0);
+                        handleMessage;
+                  endif;
+            endif;
+
+            //---------------------------------------
+            // Custom ABL Code
+            //---------------------------------------
+
+            if (true) then
+                 //Check to see how many Bunkers or Guns have been destroyed
+                 
+                 for x = 0 to 4 do
+                 if (isdead(objectlist[x])) then
+                      numbunkersgone = numbunkersgone + 1;
+                 endif;
+                 if (isdead(objectlist[x+5])) then
+                      numgunsgone = numgunsgone + 1;
+                 endif;
+                 endfor;
+                 
+                 if (numbunkersgone == 4) then
+                       flag1 = true;
+                       flag3 = true;
+                 endif;
+                 
+                 if (playerforcedead) then
+                       flag1 = true;
+                       flag3 = true;
+                 endif;
+                 
+                 if (numgunsgone == 4) then
+                       flag2 = true;
+                       flag4 = true;
+                 endif;
+                 
+                 if (clanforcedead) then
+                       flag2 = true;
+                       flag4 = true;
+                 endif;
+            endif;
+
+            //---------------------------------------
+            // Objective Resolution
+            //---------------------------------------
+
+            if (checkObjectiveStatus(0) == INCOMPLETE) then
+
+                 if (flag2) then
+                       sendMessage(5,0);
+                       handleMessage;
+                 else
+                       if (gettimeleft == 0.0) then
+                             sendMessage(6,0);
+                             handleMessage;
+                       endif;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(0) == FAILED) then
+                              if ((ClanVictoryLevel >= 2) OR (ClanForceDead)) then
+                                    sendMessage(MSG_SET_EXIT_TIMER,0);
+                                    handleMessage;
+                              endif;
+                        endif;
+                  endif;
+            endif;
+
+            if (checkObjectiveStatus(1) == INCOMPLETE) then
+
+                 if (flag3) then
+                       sendMessage(7,0);
+                       handleMessage;
+                 else
+                       if (Objective_0_Decided) then
+                             sendMessage(8,0);
+                             handleMessage;
+                       endif;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(1) == FAILED) then
+                              if ((ClanVictoryLevel >= 2) OR (ClanForceDead)) then
+                                    sendMessage(MSG_SET_EXIT_TIMER,0);
+                                    handleMessage;
+                              endif;
+                        endif;
+                  endif;
+            endif;
+
+            if (checkObjectiveStatus(2) == INCOMPLETE) then
+
+                 if (flag1) then
+                       sendMessage(9,0);
+                       handleMessage;
+                 else
+                       if (gettimeleft == 0.0) then
+                             sendMessage(10,0);
+                             handleMessage;
+                       endif;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(2) == FAILED) then
+                              if ((VictoryLevel >= 2) OR (PlayerForceDead)) then
+                                    sendMessage(MSG_SET_EXIT_TIMER,0);
+                                    handleMessage;
+                              endif;
+                        endif;
+                  endif;
+            endif;
+
+            if (checkObjectiveStatus(3) == INCOMPLETE) then
+
+                 if (flag4) then
+                       sendMessage(11,0);
+                       handleMessage;
+                 else
+                       if (Objective_2_Decided) then
+                             sendMessage(12,0);
+                             handleMessage;
+                       endif;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(3) == FAILED) then
+                              if ((VictoryLevel >= 2) OR (PlayerForceDead)) then
+                                    sendMessage(MSG_SET_EXIT_TIMER,0);
+                                    handleMessage;
+                              endif;
+                        endif;
+                  endif;
+            endif;
+
+            if ((NOT ExitTimerSet) AND (Objective_0_Decided) AND (Objective_1_Decided)) then
+                  if (checkObjectiveStatus(2) == INCOMPLETE) then
+                        sendMessage(13,0);
+                        handleMessage;
+                  endif;
+                  if (checkObjectiveStatus(3) == INCOMPLETE) then
+                        sendMessage(14,0);
+                        handleMessage;
+                  endif;
+                  sendMessage(MSG_SET_EXIT_TIMER,0);
+                  handleMessage;
+            endif;
+
+            if ((NOT ExitTimerSet) AND (Objective_2_Decided) AND (Objective_3_Decided)) then
+                  if (checkObjectiveStatus(0) == INCOMPLETE) then
+                        sendMessage(15,0);
+                        handleMessage;
+                  endif;
+                  if (checkObjectiveStatus(1) == INCOMPLETE) then
+                        sendMessage(16,0);
+                        handleMessage;
+                  endif;
+                  sendMessage(MSG_SET_EXIT_TIMER,0);
+                  handleMessage;
+            endif;
+
+            //---------------------------------------
+            // END SCENARIO
+            //---------------------------------------
+
+            if ((ExitTimerSet) AND (CheckTimer(EXIT_TIMER) == 0.0)) then
+                  if ((VictoryLevel >= 2) AND (ClanVictoryLevel < 2)) then
+                       ScenarioResult = INNER_SPHERE_VICTORY;
+                  else
+                       if ((ClanVictoryLevel >= 2) AND (VictoryLevel < 2)) then
+                            ScenarioResult = CLAN_VICTORY;
+                       else
+                            if ((ClanVictoryLevel >= 2) AND (VictoryLevel >= 2)) then
+                                 ScenarioResult = JOINT_VICTORY;
+                            else
+                                 ScenarioResult = JOINT_LOSS;
+                            endif;
+                       endif;
+                  endif;
+
+                  sendMessage(MSG_PLAY_END_MUSIC,ScenarioResult);
+                  handleMessage;
+            endif;
+
+         endif;
+         //*********************
+         //  End of Server Code
+         //*********************
+            //---------------------------------------
+            // RETURN RESULT
+            //---------------------------------------
+
+            return (ScenarioResult);
+endmodule.
+//******************************************************************

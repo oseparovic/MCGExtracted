@@ -1,0 +1,557 @@
+//*********************************************************************************
+
+module MissionBrain_5_6 : integer;
+
+     //--------------------------------------------------------
+     // Operation:  5                  Mission:  6 
+     // MissionID:  206                Name: Blood Makes the Grass Grow
+     // Designer: david abzug
+     // Created: 4/8/98                By: david abzug
+     //--------------------------------------------------------
+
+//------------------------------------------------------------------
+//
+//     Constant Definitions
+//
+//------------------------------------------------------------------
+     const
+
+          #include_ "misconst.abi"
+
+          //------------------
+          // Objective IDs
+          //------------------
+           OBJ0_Placeholder              = 0;
+
+//------------------------------------------------------------------
+//
+//     Type Definitions
+//
+//------------------------------------------------------------------
+     type
+
+
+//------------------------------------------------------------------
+//
+//     Variable Declarations
+//
+//------------------------------------------------------------------
+      var
+
+            #include_ "5_6VAR.ABI"
+
+            static integer      ScenarioResult;
+            eternal boolean     ExitTimerSet;
+            static integer      VictoryLevel;
+            char[40]            dstring;
+            eternal real        gametime;
+            static real         nextsecond;
+            integer             x;
+            integer             y;
+            Position            aPoint;
+            eternal boolean     PlayerForceDead;
+            eternal boolean     ClanForceDead;
+            eternal boolean     AlliedForceDead;
+            eternal boolean     GeneralAlarm;
+            eternal boolean     Flag1;
+            eternal boolean     Flag2;
+            eternal boolean     Flag3;
+            eternal boolean     Flag4;
+            eternal boolean     Flag5;
+            eternal boolean     Flag6;
+            eternal boolean     Flag7;
+            eternal boolean     Flag8;
+            eternal boolean     Flag9;
+            eternal boolean     Flag10;
+            static boolean      PlayPASound;
+            static boolean      PlayGASound;
+            eternal integer     GeneralAlarmCounter;
+            boolean             PerimeterBreach;
+            static boolean      Objective_0_Decided;
+            static boolean[6]   VehicleActivated;
+
+//------------------------------------------------------------------
+//
+//     Init Function    (automatically run first time through)
+//
+//------------------------------------------------------------------
+function init;
+
+       code
+
+            ScenarioResult = PLAYING;
+            PlayerForceDead = FALSE;
+            ClanForceDead = FALSE;
+            AlliedForceDead = FALSE;
+            ExitTimerSet = FALSE;
+            VictoryLevel = 0; // New Scheme
+            NextSecond = 1.0;
+            GeneralAlarmCounter = -1;
+            GeneralAlarm = FALSE;
+            Flag1 = FALSE;
+            Flag2 = FALSE;
+            Flag3 = FALSE;
+            Flag4 = FALSE;
+            Flag5 = FALSE;
+            Flag6 = FALSE;
+            Flag7 = FALSE;
+            Flag8 = FALSE;
+            Flag9 = FALSE;
+            Flag10 = FALSE;
+            PlayPASound = FALSE;
+            PlayGASound = FALSE;
+            Objective_0_Decided = FALSE;
+            for x = 0 to 5 do
+                  VehicleActivated[x] = FALSE;
+            endfor;
+
+            #include_ "5_6INIT.ABI"
+
+            //---------------------------------------
+            // Custom ABL INIT Code
+            //---------------------------------------
+
+            SetAnimation(auxpower2,0,1);
+            SetAnimation(auxpower4,0,1);
+            SetAnimation(nwturretpower,0,1);
+
+            //INITIAL REVEAL
+            	//NW Landing Pad
+            		aPoint[0] = -6365;
+                		aPoint[1] = -1052;
+               		aPoint[2] = 0.0;
+            		setRevealed(-1,360.0,aPoint);
+            	//NE Landing Pad
+            		aPoint[0] = -1115;
+                		aPoint[1] = 5601;
+               		aPoint[2] = 0.0;
+            		setRevealed(-1,360.0,aPoint);
+            	//SSE Landing Pad		
+            		aPoint[0] = 4517;
+                		aPoint[1] = -2077;
+               		aPoint[2] = 0.0;
+            		setRevealed(-1,360.0,aPoint);
+            	//Main Gate
+            		aPoint[0] = -236;
+                		aPoint[1] = -3227;
+               		aPoint[2] = 0.0;
+            		setRevealed(-1,150.0,aPoint);
+            	//SE Gate
+            		aPoint[0] = 8195;
+                		aPoint[1] = 991;
+               		aPoint[2] = 0.0;
+            		setRevealed(-1,150.0,aPoint);
+            	//NE Gate
+            		aPoint[0] = 4499;
+                		aPoint[1] = 6643;
+               		aPoint[2] = 0.0;
+            		setRevealed(-1,150.0,aPoint);
+            	//Bondsman Base
+            		aPoint[0] = -6365;
+                		aPoint[1] = -1052;
+               		aPoint[2] = 0.0;
+            		setRevealed(-1,250.0,aPoint);
+            	//Center Base
+            		aPoint[0] = -350;
+                		aPoint[1] = 733;
+               		aPoint[2] = 0.0;
+            		setRevealed(-1,250.0,aPoint);
+
+endfunction;
+
+//------------------------------------------------------------------
+//
+//     Main Code
+//
+//------------------------------------------------------------------
+      code
+
+            //------------------------------------------------
+            // Debug Window Game Clock Second Counter
+            // Note:  This is used by some included functions.
+            //------------------------------------------------
+            gametime = gettime;
+            If (gametime >= nextsecond) Then
+                  nextsecond = gametime + 1;
+                  If (GeneralAlarm) then
+                       GeneralAlarmCounter = GeneralAlarmCounter + 1;
+                  endif;
+                  // dstring = "Gametime: ";
+                  // concat(dstring,gametime);
+                  // Print (dstring);
+            endif;
+            if ((PlayGASound) and (NextSecond == gametime + 1)) then
+                  playSoundEffect(GENERAL_ALARM_SOUND);
+            endif;
+            if (PlayPASound) then
+                  playSoundEffect(PERIMETER_ALARM_SOUND);
+            endif;
+            PerimeterBreach = FALSE;
+
+            //---------------------------------------
+            // Create Non-Existing Vehicles
+            //---------------------------------------
+            #include_ "5_6CRE.ABI"
+
+            //---------------------------------------
+            // Activate inactive vehicles
+            //---------------------------------------
+            #include_ "5_6ACT.ABI"
+
+            //---------------------------------------
+            // Structure
+            //---------------------------------------
+            #include_ "5_6STR.ABI"
+
+            //---------------------------------------
+            // Lookout Points
+            //---------------------------------------
+            #include_ "5_6LOP.ABI"
+
+            //---------------------------------------
+            // Force Dead Checks
+            //---------------------------------------
+            if (isDeadorFled(PLAYER_FORCE)) then
+                  PlayerForceDead = TRUE;
+            endif;
+            if (isDeadorFled(CLAN_FORCE)) then
+                  ClanForceDead = TRUE;
+            endif;
+            if (isDeadorFled(ALLIED_FORCE)) then
+                  AlliedForceDead = TRUE;
+            endif;
+
+            //---------------------------------------
+            // SET EXIT TIMER IF PLAYER DEAD/DISABLED
+            //---------------------------------------
+
+            if ((NOT ExitTimerSet) AND (PlayerForceDead)) then
+                  // Fail any Undecided Player Objectives
+                  if (checkObjectiveStatus(0) == INCOMPLETE) then
+                        setObjectiveStatus(0, FAILED);
+                  endif;
+            endif;
+
+            //---------------------------------------
+            // Custom ABL Code
+            //---------------------------------------
+
+            if (true) then
+                 //ARTILLERY ZONE COVERAGE
+                 	    //MAIN GATE ARTILLERY ZONE
+                             if ((checktimer(Scenario_Timer_1) == 0.0) AND
+                 		(inHotSpot(PLAYER_FORCE,-236,-3227,100)) AND 
+                 		(getObjectDamage(getTerrainObjectPartID(89,36)) < 99)) then
+                 		StrikePoint[0] = -240.0;
+                 		StrikePoint[1] = -3552.0;
+                 		StrikePoint[0] = StrikePoint[0] + (RANDOM(275) - 125);
+                 	   	StrikePoint[1] = StrikePoint[1] + (RANDOM(275) - 125);                 
+                 		 CallStrikeEx(507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+                                  MainGateStrikeCount = MainGateStrikeCount + 1;
+                 		 GeneralAlarm = TRUE;
+                                  if (MainGateStrikeCount == 3) then
+                                       setTimer (Scenario_Timer_1,3.0);
+                                       MainGateStrikeCount = 0;
+                                  endif;
+                             endif;
+                 
+                            if ((checktimer(Scenario_Timer_1) == 0.0) AND
+                 		(inHotSpot(PLAYER_FORCE,-705,-3769,100)) AND 
+                 		(getObjectDamage(getTerrainObjectPartID(89,36)) < 99)) then
+                 		StrikePoint[0] = -705.0;
+                 		StrikePoint[1] = -3769.0;
+                 		StrikePoint[0] = StrikePoint[0] + (RANDOM(275) - 125);
+                 	   	StrikePoint[1] = StrikePoint[1] + (RANDOM(275) - 125);                 
+                 		 CallStrikeEx(507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+                                  MainGateStrikeCount = MainGateStrikeCount + 1;
+                 		 GeneralAlarm = TRUE;
+                                  if (MainGateStrikeCount == 3) then
+                                       setTimer (Scenario_Timer_1,3.0);
+                                       MainGateStrikeCount = 0;
+                                  endif;
+                             endif;
+                 
+                            if ((checktimer(Scenario_Timer_1) == 0.0) AND
+                 		(inHotSpot(PLAYER_FORCE,125,-3771,100)) AND 
+                 		(getObjectDamage(getTerrainObjectPartID(89,36)) < 99)) then
+                 		StrikePoint[0] = 125.0;
+                 		StrikePoint[1] = -3771.0;
+                 		StrikePoint[0] = StrikePoint[0] + (RANDOM(275) - 125);
+                 	   	StrikePoint[1] = StrikePoint[1] + (RANDOM(275) - 125);                 
+                 		 CallStrikeEx(507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+                                  MainGateStrikeCount = MainGateStrikeCount + 1;
+                 		 GeneralAlarm = TRUE;
+                                  if (MainGateStrikeCount == 3) then
+                                       setTimer (Scenario_Timer_1,3.0);
+                                       MainGateStrikeCount = 0;
+                                  endif;
+                             endif;
+                 
+                 	//SE GATE ROAD
+                 	    if ((checktimer(Scenario_Timer_1) == 0.0) AND
+                 		(inHotSpot(PLAYER_FORCE,7836,999,100)) AND 
+                 		(getObjectDamage(getTerrainObjectPartID(68,199)) < 99)) then
+                 		StrikePoint[0] = 8195.0;
+                 		StrikePoint[1] = 991.0;
+                 		StrikePoint[0] = StrikePoint[0] + (RANDOM(275) - 125);
+                 	   	StrikePoint[1] = StrikePoint[1] + (RANDOM(275) - 125);                 
+                 		 CallStrikeEx(507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+                                  SEGateStrikeCount = SEGateStrikeCount + 1;
+                 		 GeneralAlarm = TRUE;
+                                  if (SEGateStrikeCount == 5) then
+                                       setTimer (Scenario_Timer_1,3.0);
+                                       SEGateStrikeCount = 0;
+                                  endif;
+                             endif;
+                 
+                 	//SE GATE RAIL
+                 	    if ((checktimer(Scenario_Timer_1) == 0.0) AND
+                 		(inHotSpot(PLAYER_FORCE,7871,1864,100)) AND 
+                 		(getObjectDamage(getTerrainObjectPartID(68,199)) < 99)) then
+                 		StrikePoint[0] = 8255.0;
+                 		StrikePoint[1] = 1863.0;
+                 		StrikePoint[0] = StrikePoint[0] + (RANDOM(275) - 125);
+                 	   	StrikePoint[1] = StrikePoint[1] + (RANDOM(275) - 125);                 
+                 		 CallStrikeEx(507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+                                  SEGateStrikeCount = SEGateStrikeCount + 1;
+                 		 GeneralAlarm = TRUE;
+                                  if (SEGateStrikeCount == 5) then
+                                       setTimer (Scenario_Timer_1,3.0);
+                                       SEGateStrikeCount = 0;
+                                  endif;
+                             endif;
+                 
+                 	//NE GATE
+                 	    if ((checktimer(Scenario_Timer_1) == 0.0) AND
+                 		(inHotSpot(PLAYER_FORCE,4499,6643,100)) AND 
+                 		(getObjectDamage(getTerrainObjectPartID(43,234)) < 99)) then
+                 		StrikePoint[0] = 4509.0;
+                 		StrikePoint[1] = 7130.0;
+                 		StrikePoint[0] = StrikePoint[0] + (RANDOM(275) - 125);
+                 	   	StrikePoint[1] = StrikePoint[1] + (RANDOM(275) - 125);                 
+                 		 CallStrikeEx(507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+                                  NEGateStrikeCount = NEGateStrikeCount + 1;
+                 		 GeneralAlarm = TRUE;
+                                  if (NEGateStrikeCount == 3) then
+                                       setTimer (Scenario_Timer_1,3.0);
+                                       NEGateStrikeCount = 0;
+                                  endif;
+                             endif;
+                 
+                 
+                 	//BONDSMAN BASE ROAD GATE
+                 	    if ((checktimer(Scenario_Timer_1) == 0.0) AND
+                 		(inHotSpot(PLAYER_FORCE,-9499,1625,100)) AND 
+                 		(getObjectDamage(getTerrainObjectPartID(62,130)) < 99)) then
+                 		StrikePoint[0] = -9854.0;
+                 		StrikePoint[1] = 1632.0;
+                 		StrikePoint[0] = StrikePoint[0] + (RANDOM(275) - 125);
+                 	   	StrikePoint[1] = StrikePoint[1] + (RANDOM(275) - 125);                 
+                 		 CallStrikeEx(507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+                                  BondRoadGateStrikeCount = BondRoadGateStrikeCount + 1;
+                 		 GeneralAlarm = TRUE;
+                                  if (BondRoadGateStrikeCount == 3) then
+                                       setTimer (Scenario_Timer_1,3.0);
+                                       BondRoadGateStrikeCount = 0;
+                                  endif;
+                             endif;
+                 
+                 	//BONDSMAN BASE RAIL GATE
+                 	    if ((checktimer(Scenario_Timer_1) == 0.0) AND
+                 		(inHotSpot(PLAYER_FORCE,-9446,1896,100)) AND 
+                 		(getObjectDamage(getTerrainObjectPartID(62,130)) < 99)) then
+                 		StrikePoint[0] = -9911.0;
+                 		StrikePoint[1] = 1889.0;
+                 		StrikePoint[0] = StrikePoint[0] + (RANDOM(275) - 125);
+                 	   	StrikePoint[1] = StrikePoint[1] + (RANDOM(275) - 125);                 
+                 		 CallStrikeEx(507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+                                  BondRailGateStrikeCount = BondRailGateStrikeCount + 1;
+                 		 GeneralAlarm = TRUE;
+                                  if (BondRailGateStrikeCount == 3) then
+                                       setTimer (Scenario_Timer_1,3.0);
+                                       BondRailGateStrikeCount = 0;
+                                  endif;
+                             endif;
+                 
+                     //LANDING PAD NE
+                     if ((checktimer(Scenario_Timer_1) == 0.0) AND
+                 	(inHotSpot(PLAYER_FORCE,-1115,5601,400)) AND 
+                 	(getObjectDamage(getTerrainObjectPartID(41,141)) < 99) AND
+                 	(NOT inHotSpot(CLAN_FORCE,-1115,5601,550))) then
+                 	StrikePoint[0] = -1115.0;
+                 	StrikePoint[1] = 5601.0;
+                 	StrikePoint[0] = StrikePoint[0] + (RANDOM(2000) - 1000);
+                    	StrikePoint[1] = StrikePoint[1] + (RANDOM(2000) - 1000);                 
+                 	 CallStrikeEx(507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+                          LandingPadNECount = LandingPadNECount + 1;
+                 	 GeneralAlarm = TRUE;
+                          if (LandingPadNECount == 10) then
+                               setTimer (Scenario_Timer_1,3.0);
+                               LandingPadNECount = 0;
+                          endif;
+                     endif;
+                 
+                 	    //LANDING PAD NW
+                             if ((checktimer(Scenario_Timer_2) == 0.0) AND
+                 		(inHotSpot(PLAYER_FORCE,-6365,-1052,400)) AND 
+                 		(getObjectDamage(getTerrainObjectPartID(74,339)) < 99) AND
+                 		(NOT inHotSpot(CLAN_FORCE,-6365,-1052,300))) then
+                 		StrikePoint[0] = -6365.0;
+                 		StrikePoint[1] = -1052.0;
+                 		StrikePoint[0] = StrikePoint[0] + (RANDOM(2000) - 1000);
+                 	   	StrikePoint[1] = StrikePoint[1] + (RANDOM(2000) - 1000);                 
+                 		 CallStrikeEx(507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+                                  LandingPadNWCount = LandingPadNWCount + 1;
+                 		 GeneralAlarm = TRUE;
+                                  if (LandingPadNWCount == 10) then
+                                       setTimer (Scenario_Timer_2,3.0);
+                                       LandingPadNWCount = 0;
+                                  endif;
+                             endif;
+                 
+                 	    //LANDING PAD SSE
+                             if ((checktimer(Scenario_Timer_2) == 0.0) AND
+                 		(inHotSpot(PLAYER_FORCE,4517,-2077,400)) AND 
+                 		(getObjectDamage(getTerrainObjectPartID(92,105)) < 99) AND
+                 		(NOT inHotSpot(CLAN_FORCE,4517,-2077,550))) then
+                 		StrikePoint[0] = 4517.0;
+                 		StrikePoint[1] = -2077.0;
+                 		StrikePoint[0] = StrikePoint[0] + (RANDOM(2000) - 1000);
+                 	   	StrikePoint[1] = StrikePoint[1] + (RANDOM(2000) - 1000);                 
+                 		 CallStrikeEx(507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+                                  LandingPadSSECount = LandingPadSSECount + 1;
+                 		 GeneralAlarm = TRUE;
+                                  if (LandingPadSSECount == 8) then
+                                       setTimer (Scenario_Timer_2,3.0);
+                                       LandingPadSSECount = 0;
+                                  endif;
+                             endif;
+                 
+                 //MIDDLE TOWER COVERAGE
+                             if ((checktimer(Scenario_Timer_2) == 0.0) AND
+                 		(inHotSpot(PLAYER_FORCE,-752,2399,50)) AND 
+                 		(getObjectDamage(getTerrainObjectPartID(53,378)) < 99) AND
+                 		(NOT inHotSpot(CLAN_FORCE,-752,2399,50))) then
+                 		StrikePoint[0] = -752.0;
+                 		StrikePoint[1] = 2399.0;
+                 		StrikePoint[0] = StrikePoint[0] + (RANDOM(500) - 250);
+                 	   	StrikePoint[1] = StrikePoint[1] + (RANDOM(500) - 250);                 
+                 		 CallStrikeEx(507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+                                  MiddleTowerCount = MiddleTowerCount + 1;
+                 		 GeneralAlarm = TRUE;
+                                  if (MiddleTowerCount == 8) then
+                                       setTimer (Scenario_Timer_2,3.0);
+                                       MiddleTowerCount = 0;
+                                  endif;
+                             endif;
+                 
+                             if ((checktimer(Scenario_Timer_2) == 0.0) AND
+                 		(inHotSpot(PLAYER_FORCE,-701,2876,50)) AND 
+                 		(getObjectDamage(getTerrainObjectPartID(53,378)) < 99) AND
+                 		(NOT inHotSpot(CLAN_FORCE,-701,2876,50))) then
+                 		StrikePoint[0] = -701.0;
+                 		StrikePoint[1] = 2876.0;
+                 		StrikePoint[0] = StrikePoint[0] + (RANDOM(500) - 250);
+                 	   	StrikePoint[1] = StrikePoint[1] + (RANDOM(500) - 250);                 
+                 		 CallStrikeEx(507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+                                  MiddleTowerCount = MiddleTowerCount + 1;
+                 		 GeneralAlarm = TRUE;
+                                  if (MiddleTowerCount == 8) then
+                                       setTimer (Scenario_Timer_2,3.0);
+                                       MiddleTowerCount = 0;
+                                  endif;
+                             endif;
+                 
+                             if ((checktimer(Scenario_Timer_2) == 0.0) AND
+                 		(inHotSpot(PLAYER_FORCE,-703,3264,50)) AND 
+                 		(getObjectDamage(getTerrainObjectPartID(53,378)) < 99) AND
+                 		(NOT inHotSpot(CLAN_FORCE,-703,3264,50))) then
+                 		StrikePoint[0] = -703.0;
+                 		StrikePoint[1] = 3264.0;
+                 		StrikePoint[0] = StrikePoint[0] + (RANDOM(500) - 250);
+                 	   	StrikePoint[1] = StrikePoint[1] + (RANDOM(500) - 250);                 
+                 		 CallStrikeEx(507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+                                  MiddleTowerCount = MiddleTowerCount + 1;
+                 		 GeneralAlarm = TRUE;
+                                  if (MiddleTowerCount == 8) then
+                                       setTimer (Scenario_Timer_2,3.0);
+                                       MiddleTowerCount = 0;
+                                  endif;
+                             endif;
+                 
+                             if ((checktimer(Scenario_Timer_2) == 0.0) AND
+                 		(inHotSpot(PLAYER_FORCE,192,3518,75)) AND 
+                 		(getObjectDamage(getTerrainObjectPartID(53,378)) < 99) AND
+                 		(NOT inHotSpot(CLAN_FORCE,192,3518,75))) then
+                 		StrikePoint[0] = -752.0;
+                 		StrikePoint[1] = 2399.0;
+                 		StrikePoint[0] = StrikePoint[0] + (RANDOM(650) - 325);
+                 	   	StrikePoint[1] = StrikePoint[1] + (RANDOM(650) - 325);                 
+                 		 CallStrikeEx(507,-1,StrikePoint[0],StrikePoint[1],0.0,TRUE,3.0);
+                                  MiddleTowerCount = MiddleTowerCount + 1;
+                 		 GeneralAlarm = TRUE;
+                                  if (MiddleTowerCount == 8) then
+                                       setTimer (Scenario_Timer_1,3.0);
+                                       MiddleTowerCount = 0;
+                                  endif;
+                             endif;
+            endif;
+
+            //---------------------------------------
+            // Objective Resolution
+            //---------------------------------------
+
+            if (checkObjectiveStatus(0) == INCOMPLETE) then
+
+                 if (isDead(CLAN_FORCE)) then
+                       SetObjectiveStatus(0,SUCCESS);
+                       playBetty(BETTY_OBJECTIVE_COMPLETE);
+                       VictoryLevel = VictoryLevel + 1;
+                       Objective_0_Decided = TRUE;
+                       if (VictoryLevel < 1) then
+                             PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                       endif;
+                 else
+                       if (gettimeleft == 0.0) then  // supposedly will not happen unless time limit is set
+                             SetObjectiveStatus(0,FAILED);
+                             playBetty(BETTY_CANNOT_COMP_OBJ);
+                             Objective_0_Decided = TRUE;
+                       endif;
+                 endif;
+
+            else
+                  if (NOT ExitTimerSet) then        
+                        //if Failed primary Objective, fail mission
+                        if (checkObjectiveStatus(0) == FAILED) then
+                              setTimer(EXIT_TIMER,2.0);
+                              ExitTimerSet = TRUE;
+                        endif;
+                  endif;
+            endif;
+
+            if ((NOT ExitTimerSet) AND (Objective_0_Decided)) then
+                  setTimer(EXIT_TIMER,2.0);
+                  ExitTimerSet = TRUE;
+            endif;
+
+            //---------------------------------------
+            // END SCENARIO
+            //---------------------------------------
+
+            if ((ExitTimerSet) AND (CheckTimer(EXIT_TIMER) == 0.0)) then
+                  if (VictoryLevel >= 1) then
+                        ScenarioResult = PLAYER_WIN_BIG;
+                        PlayDigitalMusic(VICTORY_MUSIC);
+                  else
+                        ScenarioResult = PLAYER_LOST_BIG;
+                        PlayDigitalMusic(DEFEAT_MUSIC);
+                  endif;
+            endif;
+
+            //---------------------------------------
+            // RETURN RESULT
+            //---------------------------------------
+
+            return (ScenarioResult);
+endmodule.
+//******************************************************************

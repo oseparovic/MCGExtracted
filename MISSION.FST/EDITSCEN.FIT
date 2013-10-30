@@ -1,0 +1,67 @@
+FITini
+
+[GameScale]			//For 90 Pixel mechs
+f WorldUnitsPerMeter = 5.00
+f MetersPerWorldUnit = .20
+ul duration = 0
+
+[ElementSystem]
+ul ElementHeapSize = 2048000
+ul MaxElements = 10000
+ul MaxGroups = 10000
+
+[CraterSystem]
+l NumCraters = 10
+ul CraterShapeSize = 65536
+st CraterFile = "crater"
+
+[CameraSystem]
+ul CameraHeapSize = 16384
+st CameraFileName = "editcam"
+
+[ObjectSystem]
+ul ObjectHeapSize = 1048576    //524288
+ul ObjectTypeHeapSize = 524288
+ul NumObjects = 200
+st ObjectFileName = "object2"
+
+[SpriteSystem]
+ul SpriteHeapSize = 1048576
+st SpriteFileName = "sprites"
+
+ul SpriteManagerHeapSize = 2000000
+ul SpriteDataHeapSize = 1280000
+st ShapeFileName = "shapes"
+
+[TerrainSystem]
+st TerrainFileName = "default"
+l SimpleMovePathRange = 7
+
+[PaletteSystem]
+st PaletteSystem = "palette"
+
+[CollisionSystem]
+ul XGridSize = 200
+ul YGridSize = 200
+ul GridRadius = 200
+ul MaxObjects = 300
+ul MaxCollisions = 15
+ul MaxPending = 40
+ul CollisionHeapSize = 204800
+
+[Objectives]
+ul NumObjectives = 0
+
+[StatusWindow]
+ul PosX = 100
+ul PosY = 100
+ul Width = 250
+ul Height = 50
+
+[Parts]
+ul NumParts = 0
+
+[Script]
+st ScenarioScript = "editscen"
+
+FITend

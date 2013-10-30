@@ -1,0 +1,47 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      MechWarrior:  378   Name: Clan Elite (A/R)  Callsign: Clan
+//
+//      Creation Date: 1/28/99   By: Mike Lee
+//
+// -------------------------------------------------------------------------
+
+
+
+[General]
+st Name =                                                  "Clan Elite (A/R)"
+l Rank =                                                    4 
+st Callsign =                                              "Clan"
+ul ID =                                                     378 
+l NameIndex =                                               0 
+l DescIndex =                                               0 
+ul HeadIcon =                                               0 
+l paintScheme =                                             99 
+st pilotAudio =                                            "PILOTA"
+st pilotVideo =                                            "PILOT00"
+st Picture =                                               "pilot00.tga"
+
+[PersonalityTraits]
+c Professionalism =                                         50 
+c Decorum =                                                 50 
+c Aggressiveness =                                          50 
+c Courage =                                                 50 
+
+[Skills]
+c Piloting =                                                50 
+c Jumping =                                                 50 
+c Sensors =                                                 50 
+c Gunnery =                                                 75 
+
+[Affinities]
+c MechClass =                                               0 
+c MechType =                                                0 
+c WeaponClass =                                             0 
+uc[2] WeaponTypes =                                        0,0
+
+[Status]
+c Wounds =                                                  0 
+
+FITEnd

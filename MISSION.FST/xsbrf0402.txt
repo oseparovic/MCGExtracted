@@ -1,0 +1,23 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:SOLO/04PRDN02%n
+%fc5%c----------%n
+%fc6%c***DESTROY GARRISON***%n
+%fc21-Destroy Vehicles at Base%n
+%fc22-One Mobile Artillery Must Survive%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 2 Small  0 Large%n
+%t12SENSOR PROBE: 2%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4The Clanners have assembled a reinforced tank company at their base in the Rehold Mountains. They intend to spread these vehicles throughout the countryside to 'convince' the local population not to assist us.%n%n
+Command wants this vehicle garrison eliminated as soon as possible, but transport is extremely limited. However, Command has come up with a cunning plan....%n%n
+%fc1There is a lance of Mobile Artillery already in the area,%fc4 so we will drop in a lance of your units to support and lead those guns. Combined with limited support from our fixed artillery emplacements, this should give you enough firepower to accomplish your mission.%n%n
+And as if you didn't have enough to worry about, Command believes those Mobile Artillery will be valuable for future operations, so they want at least one of them to make it back from this mission.%n%n
+Good Luck, Commander.%n%n
+%fc5%c----------%n
+%fc1%fm%c**TACTICAL WARNING**%n
+%fc2%fs*Scouts have confirmed that at least two Heavy Clan OmniMechs are in the area of the Rehold Mountains. Command suggests you avoid contact with these 'Mechs if possible.%n%n
+%fc1%fm%c**TACTICAL NOTICE**%n
+%fc2%fs*Mobile Artillery are reasonably fast, heavily armored vehicles sporting a single 'Mech-type Long Tom cannon. However, this weapon is not mounted in a turret, which means a Mobile Artillery unit is very poor at hitting targets while moving. Firing from their %fc6current position%fc2%n
+is required to get the most effect from Mobile Artillery.%n%n
+%fc6<<<<END DISPATCH

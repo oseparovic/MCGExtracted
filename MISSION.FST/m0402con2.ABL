@@ -1,0 +1,131 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:5/14/98   BY:Rob Nicholls
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0402con2 : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+    static integer                     Order6Status;
+    static integer                     Order7Status;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+         Order6Status = INCOMPLETE;
+         Order7Status = INCOMPLETE;
+
+         IdentifySensorContactsOFF;
+         MoveToEngageOFF;
+         SetSpeed(RUN);
+         SetTactic(TACTIC_RUN_AWAY);
+         ReturnFireOFF;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (beenHit) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              GeneralAlarm = TRUE;
+              Order1Status = SUCCESS;
+         endif;
+    endif;
+    if (numDead(Clan_Star5) > 0) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              GeneralAlarm = TRUE;
+              Order2Status = SUCCESS;
+         endif;
+    endif;
+    if (isCaptured(BaseHQ) == 1) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              SetRevealed(1,75.0,CurrentPosition);
+              Order3Status = SUCCESS;
+         endif;
+    endif;
+    if (GeneralAlarm) then
+         // Order  4 
+         if (Order4Status == INCOMPLETE) then
+              Order4Status = MoveTo(-650,-6511);
+              if (Order4Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order4Status == SUCCESS) then
+                   // Order  5 
+                   if (Order5Status == INCOMPLETE) then
+                        Order5Status = Withdraw;
+                        if (Order5Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+              if (Order4Status == FAILED) then
+                   // Order  6 
+                   if (Order6Status == INCOMPLETE) then
+                        Order6Status = MoveTo(4127,-3119);
+                        if (Order6Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   else
+                        if (Order6Status == SUCCESS) then
+                             // Order  7 
+                             if (Order7Status == INCOMPLETE) then
+                                  Order7Status = Withdraw;
+                                  if (Order7Status == INCOMPLETE) then
+                                       return(1);
+                                  endif;
+                             endif;
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+
+         return(1);
+endmodule.

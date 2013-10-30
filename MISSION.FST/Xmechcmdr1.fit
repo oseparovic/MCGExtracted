@@ -1,0 +1,162 @@
+FITini
+
+[HeapInfo]
+ul heapSize = 8192
+
+[Movies]
+ul numMovies = 5
+
+st movie0 = "logos1"
+st movie1 = "opening"
+st movie2 = "credits"
+st movie3 = "mcxvid4"
+st movie4 = "credits"
+
+f WaitTime = 95.0
+
+[Scenarios]
+ul numScenarios = 12
+ul LastScenario = 11
+
+st Scenario0 = "MCX0101"
+st Scenario1 = "MCX0102"
+st Scenario2 = "MCX0103"
+st Scenario3 = "MCX0104"
+st Scenario4 = "MCX0201"
+st Scenario5 = "MCX0202"
+st Scenario6 = "MCX0203"
+st Scenario7 = "MCX0204"
+st Scenario8 = "MCX0301"
+st Scenario9 = "MCX0302"
+st Scenario10 = "MCX0303"
+st Scenario11 = "MCX0304"
+
+
+[OpInfo]
+l Scenario0Operation = 1
+l Scenario0Mission = 1
+l Scenario1Operation = 1
+l Scenario1Mission = 2
+l Scenario2Operation = 1
+l Scenario2Mission = 3
+l Scenario3Operation = 1
+l Scenario3Mission = 4
+l Scenario4Operation = 2
+l Scenario4Mission = 1
+l Scenario5Operation = 2
+l Scenario5Mission = 2
+l Scenario6Operation = 2
+l Scenario6Mission = 3
+l Scenario7Operation = 2
+l Scenario7Mission = 4
+l Scenario8Operation = 3
+l Scenario8Mission = 1
+l Scenario9Operation = 3
+l Scenario9Mission = 2
+l Scenario10Operation = 3
+l Scenario10Mission = 3
+l Scenario11Operation = 3
+l Scenario11Mission = 4
+
+//#define START_GAME			 	0
+//#define MAIN_SCREEN			 	1
+//#define START_CAMPAIGN		 	2
+//#define LOGISTICS_SCREEN			3
+//#define BRIEFING_SCREEN		 	4
+//#define GENERAL_ORDERS_SCREEN		5
+//#define SCENARIO_RESULTS_SCREEN	6
+//#define IN_SCENARIO			 	7
+//#define IN_SMACKER_MOVIE			8
+//#define NEXT_SEGMENT				9
+//#define START_SMACKER_MOVIE	 	10
+//#define START_SCENARIO			11
+//#define EXIT_GAME					16
+
+[GameSegment0]
+ul GameState = 0				// Game Starts.  Plays opening movie.  Goes to main startup screen.
+ul NextGameState = 10			// For now, no main screen, goto next segment
+ul NextGameSegment = 1			// Where do we go from here.
+ul SmackerMovieId = 0			// Opening movie for game.
+ul ScenarioId = 0				// Opening scenario for game.
+
+[GameSegment1]
+ul GameState = 3				// Play scenario 0
+ul NextGameState = 16			// Always move to next segment now.
+ul NextGameSegment = 2			// Where do we go from here.
+ul SmackerMovieId = -1			// Opening movie for game.
+ul ScenarioId = 0				// Opening scenario for game.
+
+[GameSegment2]
+ul GameState = 11				// Play Scenario 1
+ul NextGameState = 16			// Always move to next segment now.
+ul NextGameSegment = 3			// Where do we go from here.
+ul SmackerMovieId = -1			// What Smacker movie do we play.
+ul ScenarioId = 1				// What Scenario do we play.
+
+[GameSegment3]
+ul GameState = 11				// Play Scenario 2
+ul NextGameState = 16			// Always move to next segment now.
+ul NextGameSegment = 4			// Where do we go from here.
+ul SmackerMovieId = -1			// What Smacker movie do we play.
+ul ScenarioId = 2				// What Scenario do we play.
+
+[GameSegment4]
+ul GameState = 11				// Play Scenario 3
+ul NextGameState = 16			// Always move to next segment now.
+ul NextGameSegment = 5			// Where do we go from here.
+ul SmackerMovieId = -1			// What Smacker movie do we play.
+ul ScenarioId = 3				// What Scenario do we play.
+
+[GameSegment5]
+ul GameState = 11				// Play Scenario 4
+ul NextGameState = 16			// Always move to next segment now.
+ul NextGameSegment = 6			// Where do we go from here.
+ul SmackerMovieId = -1			// What Smacker movie do we play.
+ul ScenarioId = 4				// What Scenario do we play.
+
+[GameSegment6]
+ul GameState = 11				// Play Scenario 5
+ul NextGameState = 16			// Always move to next segment now.
+ul NextGameSegment = 7			// Where do we go from here.
+ul SmackerMovieId = -1			// What Smacker movie do we play.
+ul ScenarioId = 5				// What Scenario do we play.
+
+[GameSegment7]
+ul GameState = 11				// Play Scenario 6
+ul NextGameState = 16			// Always move to next segment now.
+ul NextGameSegment = 8			// Where do we go from here.
+ul SmackerMovieId = -1			// What Smacker movie do we play.
+ul ScenarioId = 6				// What Scenario do we play.
+
+[GameSegment8]
+ul GameState = 11				// Play Scenario 7
+ul NextGameState = 16			// Always move to next segment now.
+ul NextGameSegment = 9			// Where do we go from here.
+ul SmackerMovieId = -1			// What Smacker movie do we play.
+ul ScenarioId = 7				// What Scenario do we play.
+
+[GameSegment9]
+ul GameState = 11				// Play Scenario 8
+ul NextGameState = 16			// Always move to next segment now.
+ul NextGameSegment = 10			// Where do we go from here.
+ul SmackerMovieId = -1			// What Smacker movie do we play.
+ul ScenarioId = 8				// What Scenario do we play.
+
+[GameSegment10]
+ul GameState = 11				// Play Scenario 9
+ul NextGameState = 16			// Always move to next segment now.
+ul NextGameSegment = 11			// Where do we go from here.
+ul SmackerMovieId = -1			// What Smacker movie do we play.
+ul ScenarioId = 9				// What Scenario do we play.
+
+[GameSegment11]
+ul GameState = 11				// Play Scenario 10
+ul NextGameState = 16			// Always move to next segment now.
+ul NextGameSegment = 12			// Where do we go from here.
+ul SmackerMovieId = -1			// What Smacker movie do we play.
+ul ScenarioId = 10				// What Scenario do we play.
+
+FITend
+
+
+

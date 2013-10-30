@@ -1,0 +1,9 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cDESIGNATION:GAMBIT/07PRDN06%n
+%fc5%c----------%n
+%fc6%c*** POWER SURGE ***%n
+%fc21-Destroy the Enemy%n%n
+%fc5%c----------%n
+%fc4Forget the generators.  Destroy the Enemy.%n%n
+%fc6<<<<END DISPATCH
+

@@ -1,0 +1,257 @@
+//*********************************************************************************
+// Structure Include file for mission 7_23
+
+
+if (isdead(ClanHQ)) then
+
+endif;
+
+if ((isdead(ClanInnerTC)) AND (ClanInnerTCAlignment <> -2)) then
+     SendMessage(9,0);
+     HandleMessage;
+else
+     if ((IsCaptured(ClanInnerTC) == 1) AND (objectSide(ClanInnerTC) <> ClanInnerTCAlignment) AND (ClanInnerTCAlignment <> -2)) then
+           SendMessage(10,ObjectSide(ClanInnerTC));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(ClanInnerGC)) AND (ClanInnerGCAlignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(26,329))) then
+           sendMessage(11,0);
+           handleMessage;
+     else
+           sendMessage(12,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(ClanInnerGC) == 1) AND (objectSide(ClanInnerGC) <> ClanInnerGCAlignment) AND (ClanInnerGCAlignment <> -2)) then
+           sendMessage(13,ObjectSide(ClanInnerGC));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(ClanOuterTC)) AND (ClanOuterTCAlignment <> -2)) then
+     SendMessage(14,0);
+     HandleMessage;
+else
+     if ((IsCaptured(ClanOuterTC) == 1) AND (objectSide(ClanOuterTC) <> ClanOuterTCAlignment) AND (ClanOuterTCAlignment <> -2)) then
+           SendMessage(15,ObjectSide(ClanOuterTC));
+           HandleMessage;
+     endif;
+endif;
+
+if (isdead(ISHQ)) then
+
+endif;
+
+if ((isdead(ISleftTC)) AND (ISleftTCAlignment <> -2)) then
+     SendMessage(16,0);
+     HandleMessage;
+else
+     if ((IsCaptured(ISleftTC) == 1) AND (objectSide(ISleftTC) <> ISleftTCAlignment) AND (ISleftTCAlignment <> -2)) then
+           SendMessage(17,ObjectSide(ISleftTC));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(ISrightTC)) AND (ISrightTCAlignment <> -2)) then
+     SendMessage(18,0);
+     HandleMessage;
+else
+     if ((IsCaptured(ISrightTC) == 1) AND (objectSide(ISrightTC) <> ISrightTCAlignment) AND (ISrightTCAlignment <> -2)) then
+           SendMessage(19,ObjectSide(ISrightTC));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(ISGC)) AND (ISGCAlignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(8,15))) then
+           sendMessage(20,0);
+           handleMessage;
+     else
+           sendMessage(21,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(ISGC) == 1) AND (objectSide(ISGC) <> ISGCAlignment) AND (ISGCAlignment <> -2)) then
+           sendMessage(22,ObjectSide(ISGC));
+           handleMessage;
+     endif;
+endif;
+
+if (isAlive(Stack1)) then
+     if ((IsCaptured(Stack1) == 1) AND (Stack1Alignment > -2)) then
+           X = Random(STRIKE_TYPE_LIMIT);
+           sendMessage(23,(((objectCommander(Stack1)+1)*10)+X));
+           handleMessage;
+     else
+           if (Stack1Alignment < -1) then
+                 if (Stack1Alignment > -59) then
+                       if (gametime == nextsecond - 1.0) then
+                             sendMessage(24,0);
+                             handleMessage;
+                       endif;
+                 else
+                       sendMessage(25,0);
+                       handleMessage;
+                 endif;
+           endif;
+     endif;
+endif;
+
+if ((isdead(SenCon1)) AND (SenCon1Alignment <> -2)) then
+     sendMessage(26,0);
+     handleMessage;
+else
+     if ((IsCaptured(SenCon1) == 1) AND (objectSide(SenCon1) <> SenCon1Alignment) AND (SenCon1Alignment <> -2)) then
+           sendMessage(27,ObjectSide(SenCon1));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(SenCon2)) AND (SenCon2Alignment <> -2)) then
+     sendMessage(28,0);
+     handleMessage;
+else
+     if ((IsCaptured(SenCon2) == 1) AND (objectSide(SenCon2) <> SenCon2Alignment) AND (SenCon2Alignment <> -2)) then
+           sendMessage(29,ObjectSide(SenCon2));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(TurretHillTC)) AND (TurretHillTCAlignment <> -2)) then
+     SendMessage(30,0);
+     HandleMessage;
+else
+     if ((IsCaptured(TurretHillTC) == 1) AND (objectSide(TurretHillTC) <> TurretHillTCAlignment) AND (TurretHillTCAlignment <> -2)) then
+           SendMessage(31,ObjectSide(TurretHillTC));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(TCTN1)) AND (TCTN1Alignment <> -2)) then
+     SendMessage(32,0);
+     HandleMessage;
+else
+     if ((IsCaptured(TCTN1) == 1) AND (objectSide(TCTN1) <> TCTN1Alignment) AND (TCTN1Alignment <> -2)) then
+           SendMessage(33,ObjectSide(TCTN1));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(TCTN2)) AND (TCTN2Alignment <> -2)) then
+     SendMessage(34,0);
+     HandleMessage;
+else
+     if ((IsCaptured(TCTN2) == 1) AND (objectSide(TCTN2) <> TCTN2Alignment) AND (TCTN2Alignment <> -2)) then
+           SendMessage(35,ObjectSide(TCTN2));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(TCTN3)) AND (TCTN3Alignment <> -2)) then
+     SendMessage(36,0);
+     HandleMessage;
+else
+     if ((IsCaptured(TCTN3) == 1) AND (objectSide(TCTN3) <> TCTN3Alignment) AND (TCTN3Alignment <> -2)) then
+           SendMessage(37,ObjectSide(TCTN3));
+           HandleMessage;
+     endif;
+endif;
+
+if (isAlive(Stack2)) then
+     if ((IsCaptured(Stack2) == 1) AND (Stack2Alignment > -2)) then
+           X = Random(STRIKE_TYPE_LIMIT);
+           sendMessage(38,(((objectCommander(Stack2)+1)*10)+X));
+           handleMessage;
+     else
+           if (Stack2Alignment < -1) then
+                 if (Stack2Alignment > -59) then
+                       if (gametime == nextsecond - 1.0) then
+                             sendMessage(39,0);
+                             handleMessage;
+                       endif;
+                 else
+                       sendMessage(40,0);
+                       handleMessage;
+                 endif;
+           endif;
+     endif;
+endif;
+
+if (isAlive(Stack3)) then
+     if ((IsCaptured(Stack3) == 1) AND (Stack3Alignment > -2)) then
+           X = Random(STRIKE_TYPE_LIMIT);
+           sendMessage(41,(((objectCommander(Stack3)+1)*10)+X));
+           handleMessage;
+     else
+           if (Stack3Alignment < -1) then
+                 if (Stack3Alignment > -59) then
+                       if (gametime == nextsecond - 1.0) then
+                             sendMessage(42,0);
+                             handleMessage;
+                       endif;
+                 else
+                       sendMessage(43,0);
+                       handleMessage;
+                 endif;
+           endif;
+     endif;
+endif;
+
+if (isdead(MB1)) then
+
+else
+     if ((IsCaptured(MB1) == 1) AND (objectSide(MB1) <> MB1Alignment) AND (MB1Alignment <> -2)) then
+           sendMessage(44,ObjectSide(MB1));
+           handleMessage;
+     endif;
+endif;
+
+if (isdead(MB2)) then
+
+else
+     if ((IsCaptured(MB2) == 1) AND (objectSide(MB2) <> MB2Alignment) AND (MB2Alignment <> -2)) then
+           sendMessage(45,ObjectSide(MB2));
+           handleMessage;
+     endif;
+endif;
+
+if (isdead(NorthMB)) then
+
+else
+     if ((IsCaptured(NorthMB) == 1) AND (objectSide(NorthMB) <> NorthMBAlignment) AND (NorthMBAlignment <> -2)) then
+           sendMessage(46,ObjectSide(NorthMB));
+           handleMessage;
+     endif;
+endif;
+
+if (isdead(SouthMB)) then
+
+else
+     if ((IsCaptured(SouthMB) == 1) AND (objectSide(SouthMB) <> SouthMBAlignment) AND (SouthMBAlignment <> -2)) then
+           sendMessage(47,ObjectSide(SouthMB));
+           handleMessage;
+     endif;
+endif;
+
+if (isAlive(Stack4)) then
+     if ((IsCaptured(Stack4) == 1) AND (Stack4Alignment > -2)) then
+           X = Random(STRIKE_TYPE_LIMIT);
+           sendMessage(48,(((objectCommander(Stack4)+1)*10)+X));
+           handleMessage;
+     else
+           if (Stack4Alignment < -1) then
+                 if (Stack4Alignment > -59) then
+                       if (gametime == nextsecond - 1.0) then
+                             sendMessage(49,0);
+                             handleMessage;
+                       endif;
+                 else
+                       sendMessage(50,0);
+                       handleMessage;
+                 endif;
+           endif;
+     endif;
+endif;

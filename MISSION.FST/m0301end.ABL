@@ -1,0 +1,155 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:5/14/98   BY:david abzug
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0301end : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+    static integer                     Order6Status;
+    static integer                     Order7Status;
+
+    // PATHS
+    static path                        Path1;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+         Order6Status = INCOMPLETE;
+         Order7Status = INCOMPLETE;
+
+         // Paths
+
+         Path1[0,0] = 1317; // X
+         Path1[0,1] = -9384; // Y
+
+         Path1[1,0] = 1302; // X
+         Path1[1,1] = -8109; // Y
+
+         Path1[2,0] = 927; // X
+         Path1[2,1] = -8093; // Y
+
+         Path1[3,0] = 863; // X
+         Path1[3,1] = -7080; // Y
+
+         Path1[4,0] = 685; // X
+         Path1[4,1] = -5886; // Y
+
+         Path1[5,0] = 696; // X
+         Path1[5,1] = -4895; // Y
+
+         Path1[6,0] = 725; // X
+         Path1[6,1] = -4246; // Y
+
+         Path1[7,0] = 665; // X
+         Path1[7,1] = -3232; // Y
+
+         SetEngageRadius(50);
+         SetDisEngageRadius(200);
+         IdentifySensorContactsOFF;
+         SetTactic(TACTIC_RIGHT_FLANK);
+         MoveAndFireON;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (beenHit) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              Flag2 = TRUE;
+              Order3Status = SUCCESS;
+         endif;
+    endif;
+    if (flag2) then
+         // Order  5 
+         if (Order5Status == INCOMPLETE) then
+              SetEngageRadius(600);
+              Order5Status = SUCCESS;
+         endif;
+    endif;
+    if (flag2) then
+         // Order  6 
+         if (Order6Status == INCOMPLETE) then
+              SetDisengageRadius(900);
+              Order6Status = SUCCESS;
+         endif;
+    endif;
+    if (flag2) then
+         // Order  7 
+         if (Order7Status == INCOMPLETE) then
+              SetSpeed(RUN);
+              Order7Status = SUCCESS;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = MovePath(Path1,8);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order1Status <> INCOMPLETE) then
+                   // Order  4 
+                   if (Order4Status == INCOMPLETE) then
+                        Flag2 = TRUE;
+                        Order4Status = SUCCESS;
+                   endif;
+              endif;
+              if (Order1Status <> INCOMPLETE) then
+                   // Order  2 
+                   if (Order2Status == INCOMPLETE) then
+                        Order2Status = Attack;
+                        if (Order2Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

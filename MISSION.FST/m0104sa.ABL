@@ -1,0 +1,126 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:3/14/98   BY:Mike Lee
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0104sa : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+
+    // PATHS
+    static path                        path1;
+    static path                        path2;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+
+         // Paths
+
+         path1[0,0] = -150; // X
+         path1[0,1] = 1000; // Y
+
+         path1[1,0] = -150; // X
+         path1[1,1] = 1500; // Y
+
+         path2[0,0] = -235; // X
+         path2[0,1] = 352; // Y
+
+         path2[1,0] = -503; // X
+         path2[1,1] = -527; // Y
+
+         path2[2,0] = -1619; // X
+         path2[2,1] = -542; // Y
+
+         path2[3,0] = -2826; // X
+         path2[3,1] = -2593; // Y
+
+         path2[4,0] = -4170; // X
+         path2[4,1] = -2600; // Y
+
+         SetSpeed(RUN);
+         SetTactic(TACTIC_MEDIUM);
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (GeneralAlarm) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              SetEngageRadius(225);
+              Order2Status = SUCCESS;
+         else
+              if (Order2Status <> INCOMPLETE) then
+                   // Order  3 
+                   if (Order3Status == INCOMPLETE) then
+                        Order3Status = MovePath(path2,5);
+                        if (Order3Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   else
+                        if (Order3Status <> INCOMPLETE) then
+                             // Order  4 
+                             if (Order4Status == INCOMPLETE) then
+                                  Order4Status = AttackObject(getTerrainObjectPartID(25,5),FALSE,TRUE);
+                                  if (Order4Status == INCOMPLETE) then
+                                       return(1);
+                                  endif;
+                             endif;
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = Attack;
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

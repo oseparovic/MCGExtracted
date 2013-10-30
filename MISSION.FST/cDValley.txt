@@ -1,0 +1,16 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc5%c----------%n
+%fc6%c***Death Valley***%n
+%fc2(1) Capture Enemy Headquarters%n(2) Destroy all Enemy Forces%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY:    0 Small    0 Large%n
+%t12SENSOR PROBE:   0%n
+%t12CAMERA DRONE:    0%n%n
+%fc5%c----------%n
+%fc4Formerly a training ground for Davion forces, this mostly symmetrical bowl is now being fought over for real.%n%n
+%fc5%c----------%n
+%fc1%fm%c**TACTICAL WARNING**%n
+%fc2%fs*Be sure to defend your powerplant to the south as it controls the turrets around your base.%n%n
+%fm%fc6%c**TACTICAL NOTICE**%n
+%fs%fc2*None%n%n
+%fc6<<<<END DISPATCH

@@ -1,0 +1,19 @@
+//*********************************************************************************
+// Variable Include file for mission 2_3
+
+     eternal integer                   GH;
+     static integer                    GHAlignment;
+     eternal integer                   ST;
+     eternal integer                   RWH1;
+     static integer                    RWH1Alignment;
+     eternal integer                   RWH2;
+     static integer                    RWH2Alignment;
+     eternal integer                   RWH3;
+     static integer                    RWH3Alignment;
+     eternal integer                   RWH4;
+     static integer                    RWH4Alignment;
+     eternal integer                   Cstack;
+     static integer                    CstackAlignment;
+     static boolean                    LOP0;
+     static boolean                    LOP1;
+     static boolean                    LOP2;

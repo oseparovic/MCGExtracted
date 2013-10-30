@@ -1,0 +1,102 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:8/21/98   BY:david abzug
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBmx0104HQ : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+
+    // PATHS
+    static path                        Path1;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+
+         // Paths
+
+         Path1[0,0] = 193; // X
+         Path1[0,1] = -2104; // Y
+
+         Path1[1,0] = -79; // X
+         Path1[1,1] = 2361; // Y
+
+         Path1[2,0] = -1903; // X
+         Path1[2,1] = 2288; // Y
+
+         SetEngageRadius(125);
+         SetDisEngageRadius(500);
+         StopFighting;
+         SetSpeed(RUN);
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if ((numDead(clan_star4) > 0) or (beenhit)) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Flag4 = TRUE;
+              Order1Status = SUCCESS;
+         endif;
+    endif;
+    if (flag4) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              Order2Status = MovePath(Path1,3);
+              if (Order2Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              Order3Status = Attack;
+              if (Order3Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

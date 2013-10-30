@@ -1,0 +1,120 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:3/19/98   BY:Mike Lee
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0503_Lure1.1 : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+    static integer                     Order6Status;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+         Order6Status = INCOMPLETE;
+
+         SetEngageRadius(275);
+         SetSpeed(RUN);
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (numDead(CLAN_STAR6) >= 3) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              StopFighting;
+              Order3Status = SUCCESS;
+         else
+              if (Order3Status <> INCOMPLETE) then
+                   // Order  4 
+                   if (Order4Status == INCOMPLETE) then
+                        Order4Status = MoveTo(-3400,4300);
+                        if (Order4Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   else
+                        if (Order4Status <> INCOMPLETE) then
+                             // Order  5 
+                             if (Order5Status == INCOMPLETE) then
+                                  StartFighting;
+                                  Order5Status = SUCCESS;
+                             else
+                                  if (Order5Status <> INCOMPLETE) then
+                                       // Order  6 
+                                       if (Order6Status == INCOMPLETE) then
+                                            Order6Status = Attack;
+                                            if (Order6Status == INCOMPLETE) then
+                                                 return(1);
+                                            endif;
+                                       endif;
+                                  endif;
+                             endif;
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+    if (flag6) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = Attack;
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              Order2Status = Attack;
+              if (Order2Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

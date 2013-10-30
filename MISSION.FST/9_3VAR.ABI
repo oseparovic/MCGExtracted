@@ -1,0 +1,6 @@
+//*********************************************************************************
+// Variable Include file for mission 9_3
+
+     eternal integer                   Mbay;
+     eternal integer                   Vbay;
+     static boolean                    LOP0;

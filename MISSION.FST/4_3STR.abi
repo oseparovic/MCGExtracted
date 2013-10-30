@@ -1,0 +1,263 @@
+//*********************************************************************************
+// Structure Include file for mission 4_3
+
+
+if ((isdead(turcon1)) AND (turcon1Alignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(59,4),FALSE);
+     setObjectActive(getterrainobjectpartid(59,6),FALSE);
+     setObjectActive(getterrainobjectpartid(59,8),FALSE);
+     setObjectActive(getterrainobjectpartid(59,44),FALSE);
+     setObjectActive(getterrainobjectpartid(59,45),FALSE);
+     setObjectActive(getterrainobjectpartid(59,46),FALSE);
+     setObjectActive(getterrainobjectpartid(59,47),FALSE);
+     turcon1Alignment = -2;
+else
+     if ((IsCaptured(turcon1) == 1) AND (objectSide(turcon1) <> turcon1Alignment) AND (turcon1Alignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(59,4),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(59,4),2);
+           objectChangeSides(getterrainobjectpartid(59,6),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(59,6),2);
+           objectChangeSides(getterrainobjectpartid(59,8),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(59,8),2);
+           objectChangeSides(getterrainobjectpartid(59,44),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(59,44),2);
+           objectChangeSides(getterrainobjectpartid(59,45),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(59,45),2);
+           objectChangeSides(getterrainobjectpartid(59,46),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(59,46),2);
+           objectChangeSides(getterrainobjectpartid(59,47),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(59,47),2);
+           objectChangeSides(turcon1,INNER_SPHERE);
+           turcon1Alignment = INNER_SPHERE;
+           setPotentialContact(turcon1,2);
+     endif;
+endif;
+
+if ((isdead(turcon2)) AND (turcon2Alignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(50,285),FALSE);
+     setObjectActive(getterrainobjectpartid(50,286),FALSE);
+     setObjectActive(getterrainobjectpartid(50,287),FALSE);
+     setObjectActive(getterrainobjectpartid(50,288),FALSE);
+     setObjectActive(getterrainobjectpartid(50,325),FALSE);
+     setObjectActive(getterrainobjectpartid(50,327),FALSE);
+     setObjectActive(getterrainobjectpartid(50,329),FALSE);
+     turcon2Alignment = -2;
+else
+     if ((IsCaptured(turcon2) == 1) AND (objectSide(turcon2) <> turcon2Alignment) AND (turcon2Alignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(50,285),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(50,285),2);
+           objectChangeSides(getterrainobjectpartid(50,286),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(50,286),2);
+           objectChangeSides(getterrainobjectpartid(50,287),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(50,287),2);
+           objectChangeSides(getterrainobjectpartid(50,288),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(50,288),2);
+           objectChangeSides(getterrainobjectpartid(50,325),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(50,325),2);
+           objectChangeSides(getterrainobjectpartid(50,327),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(50,327),2);
+           objectChangeSides(getterrainobjectpartid(50,329),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(50,329),2);
+           objectChangeSides(turcon2,INNER_SPHERE);
+           turcon2Alignment = INNER_SPHERE;
+           setPotentialContact(turcon2,2);
+     endif;
+endif;
+
+if ((isdead(gatecon1)) AND (gatecon1Alignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(29,188))) then
+           LockGateOpen(getterrainobjectpartid(29,188));
+           gatecon1Alignment = -2;
+     else
+           LockGateClosed(getterrainobjectpartid(29,188));
+           objectChangeSides(getterrainobjectpartid(29,188),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,188),2);
+           gatecon1Alignment = -2;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(29,189))) then
+           LockGateOpen(getterrainobjectpartid(29,189));
+           gatecon1Alignment = -2;
+     else
+           LockGateClosed(getterrainobjectpartid(29,189));
+           objectChangeSides(getterrainobjectpartid(29,189),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,189),2);
+           gatecon1Alignment = -2;
+     endif;
+else
+     if ((IsCaptured(gatecon1) == 1) AND (objectSide(gatecon1) <> gatecon1Alignment) AND (gatecon1Alignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(29,188),INNER_SPHERE);
+           ReleaseGateLock(getterrainobjectpartid(29,188));
+           setPotentialContact(getterrainobjectpartid(29,188),2);
+           objectChangeSides(getterrainobjectpartid(29,189),INNER_SPHERE);
+           ReleaseGateLock(getterrainobjectpartid(29,189));
+           setPotentialContact(getterrainobjectpartid(29,189),2);
+           gatecon1Alignment = INNER_SPHERE;
+     endif;
+endif;
+
+if ((isdead(basetur1)) AND (basetur1Alignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(29,230),FALSE);
+     setObjectActive(getterrainobjectpartid(29,249),FALSE);
+     setObjectActive(getterrainobjectpartid(29,250),FALSE);
+     setObjectActive(getterrainobjectpartid(29,253),FALSE);
+     setObjectActive(getterrainobjectpartid(29,269),FALSE);
+     setObjectActive(getterrainobjectpartid(29,270),FALSE);
+     setObjectActive(getterrainobjectpartid(29,273),FALSE);
+     setObjectActive(getterrainobjectpartid(29,293),FALSE);
+     basetur1Alignment = -2;
+else
+     if ((IsCaptured(basetur1) == 1) AND (objectSide(basetur1) <> basetur1Alignment) AND (basetur1Alignment <> -2)) then
+           setObjectActive(getterrainobjectpartid(29,230),TRUE);
+           objectChangeSides(getterrainobjectpartid(29,230),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,230),2);
+           setObjectActive(getterrainobjectpartid(29,249),TRUE);
+           objectChangeSides(getterrainobjectpartid(29,249),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,249),2);
+           setObjectActive(getterrainobjectpartid(29,250),TRUE);
+           objectChangeSides(getterrainobjectpartid(29,250),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,250),2);
+           setObjectActive(getterrainobjectpartid(29,253),TRUE);
+           objectChangeSides(getterrainobjectpartid(29,253),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,253),2);
+           setObjectActive(getterrainobjectpartid(29,269),TRUE);
+           objectChangeSides(getterrainobjectpartid(29,269),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,269),2);
+           setObjectActive(getterrainobjectpartid(29,270),TRUE);
+           objectChangeSides(getterrainobjectpartid(29,270),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,270),2);
+           setObjectActive(getterrainobjectpartid(29,273),TRUE);
+           objectChangeSides(getterrainobjectpartid(29,273),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,273),2);
+           setObjectActive(getterrainobjectpartid(29,293),TRUE);
+           objectChangeSides(getterrainobjectpartid(29,293),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,293),2);
+           objectChangeSides(basetur1,INNER_SPHERE);
+           basetur1Alignment = INNER_SPHERE;
+           setPotentialContact(basetur1,2);
+     endif;
+endif;
+
+if ((isdead(basetur2)) AND (basetur2Alignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(29,93),FALSE);
+     setObjectActive(getterrainobjectpartid(29,109),FALSE);
+     setObjectActive(getterrainobjectpartid(29,110),FALSE);
+     setObjectActive(getterrainobjectpartid(29,113),FALSE);
+     setObjectActive(getterrainobjectpartid(29,129),FALSE);
+     setObjectActive(getterrainobjectpartid(29,130),FALSE);
+     setObjectActive(getterrainobjectpartid(29,133),FALSE);
+     setObjectActive(getterrainobjectpartid(29,150),FALSE);
+     basetur2Alignment = -2;
+else
+     if ((IsCaptured(basetur2) == 1) AND (objectSide(basetur2) <> basetur2Alignment) AND (basetur2Alignment <> -2)) then
+           setObjectActive(getterrainobjectpartid(29,93),TRUE);
+           objectChangeSides(getterrainobjectpartid(29,93),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,93),2);
+           setObjectActive(getterrainobjectpartid(29,109),TRUE);
+           objectChangeSides(getterrainobjectpartid(29,109),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,109),2);
+           setObjectActive(getterrainobjectpartid(29,110),TRUE);
+           objectChangeSides(getterrainobjectpartid(29,110),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,110),2);
+           setObjectActive(getterrainobjectpartid(29,113),TRUE);
+           objectChangeSides(getterrainobjectpartid(29,113),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,113),2);
+           setObjectActive(getterrainobjectpartid(29,129),TRUE);
+           objectChangeSides(getterrainobjectpartid(29,129),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,129),2);
+           setObjectActive(getterrainobjectpartid(29,130),TRUE);
+           objectChangeSides(getterrainobjectpartid(29,130),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,130),2);
+           setObjectActive(getterrainobjectpartid(29,133),TRUE);
+           objectChangeSides(getterrainobjectpartid(29,133),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,133),2);
+           setObjectActive(getterrainobjectpartid(29,150),TRUE);
+           objectChangeSides(getterrainobjectpartid(29,150),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,150),2);
+           objectChangeSides(basetur2,INNER_SPHERE);
+           basetur2Alignment = INNER_SPHERE;
+           setPotentialContact(basetur2,2);
+     endif;
+endif;
+
+if ((isdead(basetur3)) AND (basetur3Alignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(29,121),FALSE);
+     setObjectActive(getterrainobjectpartid(29,122),FALSE);
+     setObjectActive(getterrainobjectpartid(29,141),FALSE);
+     setObjectActive(getterrainobjectpartid(29,142),FALSE);
+     setObjectActive(getterrainobjectpartid(29,221),FALSE);
+     setObjectActive(getterrainobjectpartid(29,222),FALSE);
+     setObjectActive(getterrainobjectpartid(29,241),FALSE);
+     setObjectActive(getterrainobjectpartid(29,242),FALSE);
+     basetur3Alignment = -2;
+else
+     if ((IsCaptured(basetur3) == 1) AND (objectSide(basetur3) <> basetur3Alignment) AND (basetur3Alignment <> -2)) then
+           setObjectActive(getterrainobjectpartid(29,121),TRUE);
+           objectChangeSides(getterrainobjectpartid(29,121),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,121),2);
+           setObjectActive(getterrainobjectpartid(29,122),TRUE);
+           objectChangeSides(getterrainobjectpartid(29,122),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,122),2);
+           setObjectActive(getterrainobjectpartid(29,141),TRUE);
+           objectChangeSides(getterrainobjectpartid(29,141),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,141),2);
+           setObjectActive(getterrainobjectpartid(29,142),TRUE);
+           objectChangeSides(getterrainobjectpartid(29,142),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,142),2);
+           setObjectActive(getterrainobjectpartid(29,221),TRUE);
+           objectChangeSides(getterrainobjectpartid(29,221),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,221),2);
+           setObjectActive(getterrainobjectpartid(29,222),TRUE);
+           objectChangeSides(getterrainobjectpartid(29,222),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,222),2);
+           setObjectActive(getterrainobjectpartid(29,241),TRUE);
+           objectChangeSides(getterrainobjectpartid(29,241),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,241),2);
+           setObjectActive(getterrainobjectpartid(29,242),TRUE);
+           objectChangeSides(getterrainobjectpartid(29,242),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,242),2);
+           objectChangeSides(basetur3,INNER_SPHERE);
+           basetur3Alignment = INNER_SPHERE;
+           setPotentialContact(basetur3,2);
+     endif;
+endif;
+
+if (isdead(repair1)) then
+     removeMechBay(repair1);
+     repair1Alignment = -2;
+else
+     if ((IsCaptured(repair1) == 1) AND (objectSide(repair1) <> repair1Alignment) AND (repair1Alignment <> -2)) then
+           repair1Alignment = INNER_SPHERE;
+           setPotentialContact(repair1,2);
+     endif;
+endif;
+
+if (isdead(repair2)) then
+     removeMechBay(repair2);
+     repair2Alignment = -2;
+else
+     if ((IsCaptured(repair2) == 1) AND (objectSide(repair2) <> repair2Alignment) AND (repair2Alignment <> -2)) then
+           repair2Alignment = INNER_SPHERE;
+           setPotentialContact(repair2,2);
+     endif;
+endif;
+
+if ((isdead(sensor)) AND (sensorAlignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(4,356),FALSE);
+     setObjectActive(getterrainobjectpartid(21,13),FALSE);
+     setObjectActive(getterrainobjectpartid(29,181),FALSE);
+     setObjectActive(getterrainobjectpartid(37,242),FALSE);
+     sensorAlignment = -2;
+else
+     if ((IsCaptured(sensor) == 1) AND (objectSide(sensor) <> sensorAlignment)) then
+           objectChangeSides(getterrainobjectpartid(4,356),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(4,356),2);
+           objectChangeSides(getterrainobjectpartid(21,13),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(21,13),2);
+           objectChangeSides(getterrainobjectpartid(29,181),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(29,181),2);
+           objectChangeSides(getterrainobjectpartid(37,242),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(37,242),2);
+           objectChangeSides(sensor,INNER_SPHERE);
+           sensorAlignment = INNER_SPHERE;
+     endif;
+endif;

@@ -1,0 +1,98 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      Ground Vehicle Profile:  33300   'Centipede'  Type:  904 
+//
+//      Creation Date: 10/5/98      Creator: david abzug
+//
+//
+// -------------------------------------------------------------------------
+
+[Header]
+st FileType = "GroundVehicleProfile"
+
+
+[General]
+ul ID =                                                     33300 
+st Crew =                                                  "PCREWA"
+ul Chassis =                                                904 
+st Name =                                                  "Centipede"
+ul VehicleTypeID =                                          904 
+l NameIndex =                                               29 
+l DescIndex =                                               550 
+f CurTonnage =                                              15 
+st icon =                                                  "na.gif"
+c Status =                                                  0 
+l ResourcePoints =                                          100 
+l BattleRating =                                            50 
+l Morale =                                                  0 
+l MoraleModifier =                                          0 
+
+[Engine]
+f Tonnage =                                                 2 
+ul Rating =                                                 75 
+uc MaxMoveSpeed =                                           21 
+
+[Armor]
+uc Type =                                                   0 
+f Tonnage =                                                 4 
+
+[Front]
+uc CurInternalStructure =                                   1 
+uc MaxArmorPoints =                                         15 
+uc CurArmorPoints =                                         15 
+
+[Left]
+uc CurInternalStructure =                                   1 
+uc MaxArmorPoints =                                         12 
+uc CurArmorPoints =                                         12 
+
+[Right]
+uc CurInternalStructure =                                   1 
+uc MaxArmorPoints =                                         12 
+uc CurArmorPoints =                                         12 
+
+[Rear]
+uc CurInternalStructure =                                   1 
+uc MaxArmorPoints =                                         10 
+uc CurArmorPoints =                                         10 
+
+[Turret]
+uc CurInternalStructure =                                   1 
+uc MaxArmorPoints =                                         12 
+uc CurArmorPoints =                                         12 
+
+[InventoryInfo]
+uc NumOther =                                               5 
+uc NumWeapons =                                             1 
+uc NumAmmo =                                                0 
+
+// Inventory
+
+// Other
+
+
+[Item:0]
+uc MasterID =                                               19 
+
+[Item:1]
+uc MasterID =                                               1 
+
+[Item:2]
+uc MasterID =                                               6 
+
+[Item:3]
+uc MasterID =                                               35 
+
+[Item:4]
+uc MasterID =                                               38 
+
+// Weapons
+
+
+[Item:5]
+uc MasterID =                                               140 
+uc FacesForward =                                           1 
+
+FITEnd

@@ -1,0 +1,121 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:1/8/98   BY:Duri Price
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBM0502E1sptr : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+    static integer                     Order6Status;
+    static integer                     Order7Status;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+         Order6Status = INCOMPLETE;
+         Order7Status = INCOMPLETE;
+
+         SetEngageRadius(200);
+         MoveToEngageOFF;
+         FixEngagePoint(-1050,-6790);
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (inHotSpot(PLAYER_FORCE,1200,7212,100)) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              CallStrikeEx(507,-1,1180.0,-7900.0,-1.0,TRUE,8.0);
+              Order2Status = SUCCESS;
+         endif;
+    endif;
+    if (inHotSpot(PLAYER_FORCE,-185,-6100,75)) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              CallStrikeEx(507,-1,-185.0,-6180.0,-1.0,TRUE,4.0);
+              Order3Status = SUCCESS;
+         endif;
+    endif;
+    if (inHotSpot(PLAYER_FORCE,-1180,-6060,100)) then
+         // Order  4 
+         if (Order4Status == INCOMPLETE) then
+              Flag4 = TRUE;
+              Order4Status = SUCCESS;
+         endif;
+    endif;
+    if (flag4) then
+         // Order  5 
+         if (Order5Status == INCOMPLETE) then
+              CallStrikeEx(507,-1,-1290.0,-6050.0,-1.0,TRUE,3.0);
+              Order5Status = SUCCESS;
+         endif;
+    endif;
+    if (flag4) then
+         // Order  6 
+         if (Order6Status == INCOMPLETE) then
+              CallStrikeEx(507,-1,-1180.0,-6070.0,-1.0,TRUE,3.5);
+              Order6Status = SUCCESS;
+         endif;
+    endif;
+    if (flag4) then
+         // Order  7 
+         if (Order7Status == INCOMPLETE) then
+              CallStrikeEx(507,-1,-1030.0,-6090.0,-1.0,TRUE,4.0);
+              Order7Status = SUCCESS;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = Attack;
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

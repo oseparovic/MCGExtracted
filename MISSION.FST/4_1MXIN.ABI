@@ -1,0 +1,29 @@
+//*********************************************************************************
+// Init Include file for mission 4_1
+
+     Bombsdropped = False;
+     Tower = getTerrainObjectPartId(20,124);
+     objectChangeSides(Tower,CLAN);
+     setPotentialContact(Tower,0);
+     RBBoomBoom = getTerrainObjectPartId(26,40);
+     setObjectDamage(RBBoomBoom,45);
+     objectChangeSides(RBBoomBoom,CLAN);
+     setPotentialContact(RBBoomBoom,0);
+     setCaptureable(RBBoomBoom, TRUE);
+     RBBoomBoomAlignment = CLAN;
+     MechBays[0] = RBBoomBoom;
+     TCBoomBoom = getTerrainObjectPartId(26,100);
+     objectChangeSides(TCBoomBoom,CLAN);
+     setPotentialContact(TCBoomBoom,0);
+     setCaptureable(TCBoomBoom, TRUE);
+     TCBoomBoomAlignment = CLAN;
+     objectChangeSides(getterrainobjectpartid(25,57),CLAN);
+     objectChangeSides(getterrainobjectpartid(25,59),CLAN);
+     objectChangeSides(getterrainobjectpartid(25,139),CLAN);
+     objectChangeSides(getterrainobjectpartid(25,157),CLAN);
+     objectChangeSides(getterrainobjectpartid(26,42),CLAN);
+     objectChangeSides(getterrainobjectpartid(26,81),CLAN);
+     TotalMechBays =  1;
+     LOP0 = TRUE;
+     LOP1 = TRUE;
+     LOP2 = TRUE;

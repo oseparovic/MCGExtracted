@@ -1,0 +1,47 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      MechWarrior:  20   Name: Veteran1  Callsign: Veteran1
+//
+//      Creation Date: 12/15/98   By: jon marcus
+//
+// -------------------------------------------------------------------------
+
+
+
+[General]
+st Name =                                                  "Veteran1"
+l Rank =                                                    2 
+st Callsign =                                              "Veteran1"
+ul ID =                                                     20 
+l NameIndex =                                               1000 
+l DescIndex =                                              
+ul HeadIcon =                                               1000 
+l paintScheme =                                             68 
+st pilotAudio =                                            "pilotd"
+st pilotVideo =                                            "plt1g001"
+st Picture =                                               "pilot00.TGA"
+
+[PersonalityTraits]
+c Professionalism =                                         50 
+c Decorum =                                                 50 
+c Aggressiveness =                                          50 
+c Courage =                                                 50 
+
+[Skills]
+c Piloting =                                                75 
+c Jumping =                                                 75 
+c Sensors =                                                 75 
+c Gunnery =                                                 75 
+
+[Affinities]
+c MechClass =                                               0 
+c MechType =                                                0 
+c WeaponClass =                                             0 
+uc[2] WeaponTypes =                                        0,0
+
+[Status]
+c Wounds =                                                  0 
+
+FITEnd

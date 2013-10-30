@@ -1,0 +1,155 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:10/23/98   BY:rob nicholls
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBMX0202convoy : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+
+    // PATHS
+    static path                        Convoy;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+
+         // Paths
+
+         Convoy[0,0] = 717; // X
+         Convoy[0,1] = -4151; // Y
+
+         Convoy[1,0] = -187; // X
+         Convoy[1,1] = -1472; // Y
+
+         Convoy[2,0] = 2874; // X
+         Convoy[2,1] = -1472; // Y
+
+         Convoy[3,0] = 2884; // X
+         Convoy[3,1] = -685; // Y
+
+         Convoy[4,0] = 2884; // X
+         Convoy[4,1] = 1996; // Y
+
+         Convoy[5,0] = 2884; // X
+         Convoy[5,1] = 4034; // Y
+
+         Convoy[6,0] = 732; // X
+         Convoy[6,1] = 4034; // Y
+
+         Convoy[7,0] = -1604; // X
+         Convoy[7,1] = 4034; // Y
+
+         Convoy[8,0] = -1604; // X
+         Convoy[8,1] = 1957; // Y
+
+         Convoy[9,0] = -3357; // X
+         Convoy[9,1] = 1957; // Y
+
+         Convoy[10,0] = -5432; // X
+         Convoy[10,1] = -964; // Y
+
+         Convoy[11,0] = -6594; // X
+         Convoy[11,1] = -941; // Y
+
+         SetEngageRadius(50);
+         SetDisEngageRadius(50);
+         IdentifySensorContactsOFF;
+         MoveToEngageOFF;
+         StopFighting;
+         ReturnFireOFF;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (numDead(CLAN_FORCE) >= 6) then
+         // Order  5 
+         if (Order5Status == INCOMPLETE) then
+              SetSpeed(RUN);
+              Order5Status = SUCCESS;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = MovePath(Convoy,12);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order1Status == SUCCESS) then
+                   // Order  3 
+                   if (Order3Status == INCOMPLETE) then
+                        Order3Status = Withdraw;
+                        if (Order3Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+              if (Order1Status == FAILED) then
+                   // Order  2 
+                   if (Order2Status == INCOMPLETE) then
+                        Order2Status = MoveTo(-6594,-941);
+                        if (Order2Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   else
+                        if (Order2Status == SUCCESS) then
+                             // Order  4 
+                             if (Order4Status == INCOMPLETE) then
+                                  Order4Status = Withdraw;
+                                  if (Order4Status == INCOMPLETE) then
+                                       return(1);
+                                  endif;
+                             endif;
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

@@ -1,0 +1,8 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc5%c----------%n
+%fc6%c***Hoover Dammit***%n
+%fc2Capture and hold the HQ building at the top of the hill.%n%n
+%fc5%c----------%n
+%fc4There are two ways to win this mission.  You can have control of the HQ at the top of the hill when the mission timer expires or you can have control of the HQ at the top of the hill any time after you have destroyed ALL enemy forces.  Your choice, Commander.%n%n
+%fc5%c----------%n
+%fc6<<<<END DISPATCH

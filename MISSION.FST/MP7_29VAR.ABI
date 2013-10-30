@@ -1,0 +1,13 @@
+//*********************************************************************************
+// Variable Include file for mission 7_29
+
+     eternal integer                   salvage1;
+     static integer                    salvage1Alignment;
+     eternal integer                   salvage2;
+     static integer                    salvage2Alignment;
+     eternal integer                   salvage3;
+     static integer                    salvage3Alignment;
+     eternal integer                   RBIS;
+     static integer                    RBISAlignment;
+     eternal integer                   RBClan;
+     static integer                    RBClanAlignment;

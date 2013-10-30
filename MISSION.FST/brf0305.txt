@@ -1,0 +1,28 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:VANGUARD/03PRDN05%n
+%fc5%c----------%n
+%fc6%c***DEFEND ALLIED BASE***%n
+%fc21-Protect Base HQ Building%n
+2-Protect Sensor Control%n
+3-Protect Northern Turret Power%n
+4-Protect Southern Turret Power%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 4 Small  0 Large%n
+%t12SENSOR PROBE: 1%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4A recon unit has spotted a Clan force approaching a Bondsman base we recently captured near Affendale. This base has quickly become a key staging center for our liberation of that important city.%n%n
+The officer in charge of the base has been notified, but there is currently only a token force present and yours is the only unit close enough to provide adequate support.%n%n
+Protect the Base HQ building and the secondary structures, such as the sensor control and power generators, as these will assist in your defense of the base.%n%n
+%fm%fc6%c**TACTICAL NOTICE**%n
+%fs%fc2*Upon arrival you will be placed%n
+%t9in command of the allied force at the%n
+%t9base, which includes at least 1%n
+%t9minelayer.%n
+*Satellite observations show that the%n
+%t9enemy will arrive in waves. Plan%n
+%t9accordingly%n
+*There are 2 Repair Bays located in the%n
+%t9base. You may be able to make use of%n
+%t9them between attacking enemy waves.%n%n
+%fc6<<<<END DISPATCH

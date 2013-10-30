@@ -1,0 +1,55 @@
+//*********************************************************************************
+// Activation Include file for mission 3_2
+
+if ((gametime > 5) AND (gametime < 15)) then
+     if (gametime > 6) then
+           setobjectActive(VehicleID(CLAN_STAR2,3,0),TRUE);
+     endif;
+     if (gametime > 10) then
+           setobjectActive(VehicleID(CLAN_STAR2,2,0),TRUE);
+     endif;
+     if (gametime > 14) then
+           setobjectActive(VehicleID(CLAN_STAR2,1,0),TRUE);
+     endif;
+endif;
+if ((gametime > 17) AND (gametime < 27)) then
+     if (gametime > 18) then
+           setobjectActive(VehicleID(CLAN_STAR2,0,0),TRUE);
+     endif;
+     if (gametime > 22) then
+           setobjectActive(VehicleID(CLAN_STAR1,8,0),TRUE);
+     endif;
+     if (gametime > 26) then
+           setobjectActive(VehicleID(CLAN_STAR1,7,0),TRUE);
+     endif;
+endif;
+if ((gametime > 29) AND (gametime < 39)) then
+     if (gametime > 30) then
+           setobjectActive(VehicleID(CLAN_STAR1,6,0),TRUE);
+     endif;
+     if (gametime > 34) then
+           setobjectActive(VehicleID(CLAN_STAR1,5,0),TRUE);
+     endif;
+     if (gametime > 38) then
+           setobjectActive(VehicleID(CLAN_STAR1,4,0),TRUE);
+     endif;
+endif;
+if ((gametime > 41) AND (gametime < 51)) then
+     if (gametime > 42) then
+           setobjectActive(VehicleID(CLAN_STAR1,3,0),TRUE);
+     endif;
+     if (gametime > 46) then
+           setobjectActive(VehicleID(CLAN_STAR1,2,0),TRUE);
+     endif;
+     if (gametime > 50) then
+           setobjectActive(VehicleID(CLAN_STAR1,9,0),TRUE);
+     endif;
+endif;
+if ((gametime > 53) AND (gametime < 59)) then
+     if (gametime > 54) then
+           setobjectActive(VehicleID(CLAN_STAR1,1,0),TRUE);
+     endif;
+     if (gametime > 58) then
+           setobjectActive(VehicleID(CLAN_STAR1,0,0),TRUE);
+     endif;
+endif;

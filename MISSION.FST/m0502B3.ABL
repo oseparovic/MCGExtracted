@@ -1,0 +1,111 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:1/8/98   BY:Duri Price
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0502B3 : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+
+    // PATHS
+    static path                        Path1;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+
+         // Paths
+
+         Path1[0,0] = 3373; // X
+         Path1[0,1] = 2855; // Y
+
+         Path1[1,0] = 1826; // X
+         Path1[1,1] = -2500; // Y
+
+         Path1[2,0] = 1410; // X
+         Path1[2,1] = -4200; // Y
+
+         SetDisEngageRadius(450);
+         SetSpeed(RUN);
+         SetTactic(TACTIC_OPTIMAL);
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (flag6) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              orderPowerUp;
+              Order2Status = SUCCESS;
+         endif;
+    endif;
+    if (flag6) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              Order3Status = MovePath(Path1,3);
+              if (Order3Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order3Status <> INCOMPLETE) then
+                   // Order  4 
+                   if (Order4Status == INCOMPLETE) then
+                        Order4Status = Attack;
+                        if (Order4Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              orderPowerDown;
+              Order1Status = SUCCESS;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

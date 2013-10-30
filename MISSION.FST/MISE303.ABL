@@ -1,0 +1,691 @@
+//*********************************************************************************
+
+module MissionBrain_123_3 : integer;
+
+     //--------------------------------------------------------
+     // Operation:  123                Mission:  3 
+     // MissionID:  110                Name: HPG Attack
+     // Designer: Tom Dowd
+     // Created: 6/17/97               By: Tom Dowd
+     //--------------------------------------------------------
+
+//------------------------------------------------------------------
+//
+//     Constant Definitions
+//
+//------------------------------------------------------------------
+     const
+
+          #include_ "misconst.abi"
+
+          //------------------
+          // Objective IDs
+          //------------------
+           OBJ0_Prevent_XMit_Destroy_    = 0;
+           OBJ1_Prevent_XMitt_Destroy    = 1;
+           OBJ2_Keep_Secondary_Power_In  = 2;
+
+			clan_star8 = 337;
+
+//------------------------------------------------------------------
+//
+//     Type Definitions
+//
+//------------------------------------------------------------------
+     type
+
+            Position = real[3];
+
+//------------------------------------------------------------------
+//
+//     Variable Declarations
+//
+//------------------------------------------------------------------
+      var
+
+            static integer      ScenarioResult;
+            static boolean      ExitTimerSet;
+            static integer      VictoryLevel;
+            char[40]            dstring;
+            real                gametime;
+            static real         nextsecond;
+            integer             x;
+            integer             y;
+            Position            aPoint;
+            static boolean      Objective_0_Decided;
+            static boolean      Obj_0_Action_1_Success;
+            static boolean      Obj_0_Action_2_Success;
+            static boolean      Objective_1_Decided;
+            static boolean      Obj_1_Action_1_Success;
+            static boolean      Obj_1_Action_2_Success;
+            static boolean      Obj_1_Action_3_Success;
+            static boolean      Objective_2_Decided;
+            static boolean      Obj_2_Action_1_Success;
+            static boolean      Obj_2_Action_2_Success;
+	   
+//		Mission Specific Variables
+
+			static real[3]		lookoutpoint1;
+			static real[3]		lookoutpoint2;
+			static real[3]		lookoutpoint3;
+			static real[3]		lookoutpoint4;
+			static real[3]		lookoutpoint5;
+			static real[3]		lookoutpoint6;
+			static real[3]		lookoutpoint7;
+ 			static boolean		revealed1;
+			static boolean		revealed4;
+			static boolean		revealed5;
+			static boolean		revealed6;
+			static boolean		revealed7;
+
+			static boolean		tower0dead;
+			static integer		guardtower0;
+ 			static boolean		tower1dead;
+			static integer		guardtower1;
+ 			static boolean		tower2dead;
+			static integer		guardtower2;
+ 			static boolean		tower3dead;
+			static integer		guardtower3;
+ 			static boolean		tower4dead;
+			static integer		guardtower4;
+ 			static boolean		tower5dead;
+			static integer		guardtower5;
+ 			static boolean		tower6dead;
+			static integer		guardtower6;
+ 			static boolean		tower7dead;
+			static integer		guardtower7;
+ 			static boolean		tower8dead;
+			static integer		guardtower8;
+
+			static integer		ambushstar;
+
+			static integer		plantone;
+			static integer		planttwo;
+			static boolean		plantsdead;
+
+			real				testone;
+
+			static integer		HPG1;
+			static integer		HPG2;
+			static integer		HPG3;
+			static boolean		HPG1state0On;
+			static boolean		HPG1state1On;
+			static boolean		HPG1state2On;
+			static boolean		HPG1state3On;
+			static boolean		HPG1state4On;
+			static boolean		HPG1state5On;
+			static boolean		HPG1state6On;
+			static boolean		HPG2state0On;
+			static boolean		HPG2state1On;
+			static boolean		HPG2state2On;
+			static boolean		HPG2state3On;
+			static boolean		HPG2state4On;
+			static boolean		HPG2state5On;
+			static boolean		HPG2state6On;
+			static boolean		HPG3state0On;
+			static boolean		HPG3state1On;
+			static boolean		HPG3state2On;
+			static boolean		HPG3state3On;
+			static boolean		HPG3state4On;
+			static boolean		HPG3state5On;
+			static boolean		HPG3state6On;
+			static boolean		TimerSet;
+			real				Showtime;
+
+#include_ "MiscFunc.ABI"
+
+//------------------------------------------------------------------
+//
+//     Init Function    (automatically run first time through)
+//
+//------------------------------------------------------------------
+function init;
+
+       code
+            ScenarioResult = PLAYING;
+            ExitTimerSet = FALSE;
+            VictoryLevel = 1;
+            NextSecond = 1.0;
+            Objective_0_Decided = FALSE;
+            Obj_0_Action_1_Success = FALSE;
+            Obj_0_Action_2_Success = FALSE;
+            Objective_1_Decided = FALSE;
+            Obj_1_Action_1_Success = FALSE;
+            Obj_1_Action_2_Success = FALSE;
+            Obj_1_Action_3_Success = FALSE;
+            Objective_2_Decided = FALSE;
+            Obj_2_Action_1_Success = FALSE;
+            Obj_2_Action_2_Success = FALSE;
+
+//		Mission specific initializations
+
+		lookoutpoint1[0] = 2948.0;	  //main hill lookout point
+		lookoutpoint1[1] = 898.0;
+		lookoutpoint1[2] = 0.0;
+
+		lookoutpoint2[0] = 1597.0;	 //closer to base to be revealed
+		lookoutpoint2[1] = 1240.0;
+		lookoutpoint2[2] = 0.0;
+
+		lookoutpoint3[0] = -22.0;	 //closest to base to be revealed
+		lookoutpoint3[1] = 1949.0;
+		lookoutpoint3[2] = 0.0;
+
+		lookoutpoint4[0] = 3672.0;	 //small hill
+		lookoutpoint4[1] = -472.0;
+		lookoutpoint4[2] = 0.0;
+
+		lookoutpoint5[0] = -4824.0;	 //powerpoint look out
+		lookoutpoint5[1] = 2062.0;
+		lookoutpoint5[2] = 0.0;
+
+		lookoutpoint6[0] = 612.0;	 //closest to base to be revealed
+		lookoutpoint6[1] = -1812.0;
+		lookoutpoint6[2] = 0.0;
+
+		lookoutpoint7[0] = -2658.0;	 //closest to base to be revealed
+		lookoutpoint7[1] = 2771.0;
+		lookoutpoint7[2] = 0.0;
+
+		Revealed1 = false;
+		Revealed4 = false;
+		Revealed5 = false;
+		Revealed6 = false;
+		Revealed7 = false;
+		ambushstar = 341;
+
+		tower0dead = false;
+		tower1dead = false;
+		tower2dead = false;
+		tower3dead = false;
+		tower4dead = false;
+		tower5dead = false;
+		tower6dead = false;
+		tower7dead = false;
+		tower8dead = false;
+
+		guardtower0 = getterrainobjectpartid(14,154);
+		guardtower1 = getterrainobjectpartid(15,163);
+		guardtower2 = getterrainobjectpartid(15,23);
+		guardtower3 = getterrainobjectpartid(9,123);
+		guardtower4 = getterrainobjectpartid(8,135);
+		guardtower5 = getterrainobjectpartid(8,126);
+		guardtower6 = getterrainobjectpartid(8,287);
+		guardtower7 = getterrainobjectpartid(14,7);
+		guardtower8 = getterrainobjectpartid(14,167);
+
+		objectchangesides(guardtower0,clan);
+		objectchangesides(guardtower1,clan);
+		objectchangesides(guardtower2,clan);
+		objectchangesides(guardtower3,clan);
+		objectchangesides(guardtower4,clan);
+		objectchangesides(guardtower5,clan);
+		objectchangesides(guardtower6,clan);
+		objectchangesides(guardtower7,clan);
+		objectchangesides(guardtower8,clan);
+
+		plantone = getterrainobjectpartid(12,312);
+		planttwo = getterrainobjectpartid(12,292);
+		plantsdead = false;
+		objectchangesides(plantone,clan);
+		objectchangesides(planttwo,clan);
+
+           	HPG1=getTerrainObjectPartId(14,32);
+			HPG2=getTerrainObjectPartId(8,392);
+			HPG3=getTerrainObjectPartId(14,14);
+			HPG1state0On = FALSE;
+			HPG1state1On = FALSE;
+			HPG1state2On = FALSE;
+			HPG1state3On = FALSE;
+			HPG1state4On = FALSE;
+			HPG1state5On = FALSE;
+			HPG1state6On = FALSE;
+			HPG2state0On = FALSE;
+			HPG2state1On = FALSE;
+			HPG2state2On = FALSE;
+			HPG2state3On = FALSE;
+			HPG2state4On = FALSE;
+			HPG2state5On = FALSE;
+			HPG2state6On = FALSE;
+			HPG3state1On = FALSE;
+			HPG3state2On = FALSE;
+			HPG3state3On = FALSE;
+			HPG3state4On = FALSE;
+			HPG3state5On = FALSE;
+			HPG3state6On = FALSE;
+		   	TimerSet = FALSE;
+			objectChangeSides(HPG1,-1);
+			objectChangeSides(HPG2,-1);
+			objectChangeSides(HPG3,-1);
+
+endfunction;
+
+//------------------------------------------------------------------
+//
+//     Main Code
+//
+//------------------------------------------------------------------
+       code
+
+            //------------------------------------------------
+            // Debug Window Game Clock Second Counter
+            // Note:  This is used by some included functions.
+            //------------------------------------------------
+            gametime = gettime;
+            If (gametime >= nextsecond) Then
+                  nextsecond = gametime + 1;
+                  dstring = "Gametime: ";
+                  concat(dstring,gametime);
+                  Print (dstring);
+            endif;
+
+			//-----------------------------
+			//Lookoutpoint code including waking up the badboys
+			//----------------------------
+
+			if (NOT Revealed1) then
+				if (distanceToPosition(PLAYER_FORCE,LookOutPoint1) < 40) then
+					Revealed1 = TRUE;
+					setRevealed(1,300.0,LookOutPoint1);
+					setRevealed(1,250.0,LookOutPoint2);
+					setRevealed(1,200.0,LookOutPoint3);
+					setobjectactive(ambushstar,TRUE);
+				endif;
+			endif;
+   
+			//-----------------------------
+			//More lookout point code
+			//----------------------------
+   			if (NOT Revealed4) then
+   				if (distanceToPosition(PLAYER_FORCE,LookOutPoint4) < 40) then
+					Revealed4 = TRUE;
+					setRevealed(1,175.0,LookOutPoint4);
+				endif;
+			endif;
+
+   			if (NOT Revealed5) then
+   				if (distanceToPosition(PLAYER_FORCE,LookOutPoint5) < 40) then
+					Revealed5 = TRUE;
+					setRevealed(1,500.0,LookOutPoint5);
+				endif;
+			endif;
+
+   			if (NOT Revealed6) then
+   				if (distanceToPosition(PLAYER_FORCE,LookOutPoint6) < 40) then
+					Revealed6 = TRUE;
+					setRevealed(1,400.0,LookOutPoint6);
+				endif;
+			endif;
+
+   			if (NOT Revealed7) then
+   				if (distanceToPosition(PLAYER_FORCE,LookOutPoint7) < 40) then
+					Revealed7 = TRUE;
+					setRevealed(1,250.0,LookOutPoint7);
+				endif;
+			endif;
+
+
+			//-------------------------
+			//shutting down the turrets when the radiotowers are blown
+			//-------------------------
+
+ 			if (not tower0dead) then
+ 				if (getobjectdamage(guardtower0) >99) then
+ 					tower0dead = true;
+ 					setobjectactive(clan_star0,false);
+  				endif;
+ 			endif;
+
+ 			if (not tower1dead) then
+ 				if (getobjectdamage(guardtower1) >99) then
+ 					tower1dead = true;
+ 					setobjectactive(clan_star1,false);
+  				endif;
+ 			endif;
+
+ 			if (not tower2dead) then
+ 				if (getobjectdamage(guardtower2) >99) then
+ 					tower2dead = true;
+ 					setobjectactive(clan_star2,false);
+  				endif;
+ 			endif;
+
+ 			if (not tower3dead) then
+ 				if (getobjectdamage(guardtower3) >99) then
+ 					tower3dead = true;
+ 					setobjectactive(clan_star3,false);
+  				endif;
+ 			endif;
+
+ 			if (not tower4dead) then
+ 				if (getobjectdamage(guardtower4) >99) then
+ 					tower4dead = true;
+ 					setobjectactive(clan_star4,false);
+  				endif;
+ 			endif;
+
+ 			if (not tower5dead) then
+ 				if (getobjectdamage(guardtower5) >99) then
+ 					tower5dead = true;
+ 					setobjectactive(clan_star5,false);
+  				endif;
+ 			endif;
+
+ 			if (not tower6dead) then
+ 				if (getobjectdamage(guardtower6) >99) then
+ 					tower6dead = true;
+ 					setobjectactive(clan_star6,false);
+  				endif;
+ 			endif;
+
+ 			if (not tower7dead) then
+ 				if (getobjectdamage(guardtower7) >99) then
+ 					tower7dead = true;
+ 					setobjectactive(clan_star7,false);
+  				endif;
+ 			endif;
+
+ 			if (not tower8dead) then
+ 				if (getobjectdamage(guardtower8) >99) then
+ 					tower8dead = true;
+ 					setobjectactive(clan_star8,false);
+  				endif;
+ 			endif;
+
+			//------------------------
+			//blowing up four of the radiotowers if the auxiliary plants are blown
+			//------------------------
+
+			if (not plantsdead) then
+				if (getobjectdamage(plantone) > 99) then
+					if (getobjectdamage(planttwo) > 99) then
+						plantsdead = true;
+						setobjectdamage(guardtower1,7000);
+						setobjectdamage(guardtower3,7000);
+						setobjectdamage(guardtower5,7000);
+						setobjectdamage(guardtower7,7000);
+					endif;
+				endif;
+			endif;
+
+			//------------------------
+			//HPG Control code
+			//------------------------
+
+         	if (NOT TimerSet) then
+				setTimer (Scenario_Timer_2, 1095.0);
+				TimerSet = TRUE;
+   //					print("Time Is Set!!");
+   //					Showtime = checkTimer (Scenario_Timer_2);
+   //			endif;
+			endif;
+
+  //			Showtime = checkTimer (Scenario_Timer_2);
+  //			dstring = "Showtime: ";
+  //          concat(dstring,Showtime);
+  //          Print (dstring);
+
+			if (objectStatus(HPG1) <> OBJECT_STATUS_DESTROYED) then
+		   		if ((checkTimer (Scenario_Timer_2) < 180.0) AND (NOT HPG1state0On)) then
+		    		setAnimation(HPG1,0,0);
+					HPG1state0On = TRUE;	//Rotate into position
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 170.0) AND (NOT HPG1state1On)) then
+					setAnimation(HPG1,0,1);
+					HPG1state1On = TRUE;	//White Lights
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 90.0) AND (NOT HPG1state2On)) then
+					setAnimation(HPG1,0,2);
+					HPG1state2On = TRUE;	//Blue Lights
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 30.0) AND (NOT HPG1state3On)) then
+					setAnimation(HPG1,0,3);
+					HPG1state3On = TRUE;	//Blue light Ring
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 15.0) AND (NOT HPG1state4On)) then
+					setAnimation(HPG1,0,4);
+					HPG1state4On = TRUE;	//Pulse
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 13.0) AND (NOT HPG1state5On)) then
+					setAnimation(HPG1,0,5);
+					HPG1state5On = TRUE;	//Cool Down
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 11.0) AND (NOT HPG1state6On)) then
+					setAnimation(HPG1,0,6);
+					HPG1state6On = TRUE;	//Return to Start
+				endif;
+			endif;
+
+			if (objectStatus(HPG2) <> OBJECT_STATUS_DESTROYED) then
+				if ((checkTimer (Scenario_Timer_2) < 180.0) AND (NOT HPG2state0On)) then
+		    		setAnimation(HPG2,0,0);
+					HPG2state0On = TRUE;
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 170.0) AND (NOT HPG2state1On)) then
+					setAnimation(HPG2,0,1);
+					HPG2state1On = TRUE;
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 90.0) AND (NOT HPG2state2On)) then
+					setAnimation(HPG2,0,2);
+					HPG2state2On = TRUE;
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 30.0) AND (NOT HPG2state3On)) then
+					setAnimation(HPG2,0,3);
+					HPG2state3On = TRUE;
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 15.0) AND (NOT HPG2state4On)) then
+					setAnimation(HPG2,0,4);
+					HPG2state4On = TRUE;
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 13.0) AND (NOT HPG2state5On)) then
+					setAnimation(HPG2,0,5);
+					HPG2state5On = TRUE;
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 11.0) AND (NOT HPG2state6On)) then
+					setAnimation(HPG2,0,6);
+					HPG2state6On = TRUE;
+				endif;
+			endif;
+
+			if (objectStatus(HPG3) <> OBJECT_STATUS_DESTROYED) then
+ 				if ((checkTimer (Scenario_Timer_2) < 180.0) AND (NOT HPG3state0On)) then
+		    		setAnimation(HPG3,0,0);
+					HPG3state0On = TRUE;
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 170.0) AND (NOT HPG3state1On)) then
+					setAnimation(HPG3,0,1);
+					HPG3state1On = TRUE;
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 90.0) AND (NOT HPG3state2On)) then
+					setAnimation(HPG3,0,2);
+					HPG3state2On = TRUE;
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 30.0) AND (NOT HPG3state3On)) then
+					setAnimation(HPG3,0,3);
+					HPG3state3On = TRUE;
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 15.0) AND (NOT HPG3state4On)) then
+					setAnimation(HPG3,0,4);							
+					HPG3state4On = TRUE;
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 13.0) AND (NOT HPG3state5On)) then
+					setAnimation(HPG3,0,5);
+					HPG3state5On = TRUE;
+				endif;
+				if ((checkTimer (Scenario_Timer_2) < 11.0) AND (NOT HPG3state6On)) then
+					setAnimation(HPG3,0,6);
+					HPG3state6On = TRUE;
+				endif;
+			endif;
+
+
+            //---------------------------------------
+            // Create Non-Existing Vehicles
+            //---------------------------------------
+            #include_ "123_3CRE.ABI"
+
+            //---------------------------------------
+            // Activate inactive vehicles
+            //---------------------------------------
+            #include_ "123_3ACT.ABI"
+
+            //---------------------------------------
+            // SET EXIT TIMER IF PLAYER DEAD/DISABLED
+            //---------------------------------------
+
+            if ((NOT ExitTimerSet) AND (NOT isalive(PLAYER_FORCE))) then
+                  setTimer(EXIT_TIMER,15.0);
+                  ExitTimerSet = TRUE;
+                  PlayDigitalMusic(DEFEAT_MUSIC);
+                  // Fail any Undecided Objectives
+                  if (checkObjectiveStatus(0) == INCOMPLETE) then
+                        setObjectiveStatus(0, FAILED);
+                  endif;
+                  if (checkObjectiveStatus(1) == INCOMPLETE) then
+                        setObjectiveStatus(1, FAILED);
+                  endif;
+                  if (checkObjectiveStatus(2) == INCOMPLETE) then
+                        setObjectiveStatus(2, FAILED);
+                  endif;
+            endif;
+
+            //---------------------------------------
+            // Objective Resolution
+            //---------------------------------------
+            if (checkObjectiveStatus(0) == INCOMPLETE) then		  //SECONDARY POWER RESULTS
+
+                 x = getTerrainObjectPartID(8,189);
+                 if (getObjectDamage(x) > 99) then
+                       Obj_0_Action_1_Success = TRUE;
+                 else
+                       if (gametime > 900) then
+                             SetObjectiveStatus(0,FAILED);
+                             Objective_0_Decided = TRUE;
+                             PlayDigitalMusic(OBJECTIVE_FAIL_MUSIC);
+                       endif;
+                 endif;
+
+                 x = getTerrainObjectPartID(8,209);
+                 if (getObjectDamage(x) > 99) then
+                       Obj_0_Action_2_Success = TRUE;
+                 else
+                       if (gametime > 900) then
+                             SetObjectiveStatus(0,FAILED);
+                             Objective_0_Decided = TRUE;
+                             PlayDigitalMusic(OBJECTIVE_FAIL_MUSIC);
+                       endif;
+                 endif;
+
+                 if ((Obj_0_Action_1_Success) AND (Obj_0_Action_2_Success)) then
+                       SetObjectiveStatus(0,SUCCESS);
+					   SetObjectiveStatus(1,SUCCESS);
+                       VictoryLevel = VictoryLevel + 6;
+                       Objective_0_Decided = TRUE;
+					   Objective_1_Decided = TRUE;
+                       PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                 endif;
+
+            endif;
+
+            if (checkObjectiveStatus(1) == INCOMPLETE) then		 //HPG DISH RESULTS
+
+                 x = getTerrainObjectPartID(14,32);
+                 if (getObjectDamage(x) > 99) then
+                       Obj_1_Action_1_Success = TRUE;
+                 else
+                       if (gametime > 1080) then
+                             SetObjectiveStatus(1,FAILED);
+                             Objective_1_Decided = TRUE;
+                             PlayDigitalMusic(OBJECTIVE_FAIL_MUSIC);
+                       endif;
+                 endif;
+
+                 x = getTerrainObjectPartID(8,392);
+                 if (getObjectDamage(x) > 99) then
+                       Obj_1_Action_2_Success = TRUE;
+                 else
+                       if (gametime > 1080) then
+                             SetObjectiveStatus(1,FAILED);
+                             Objective_1_Decided = TRUE;
+                             PlayDigitalMusic(OBJECTIVE_FAIL_MUSIC);
+                       endif;
+                 endif;
+
+                 x = getTerrainObjectPartID(14,14);
+                 if (getObjectDamage(x) > 99) then
+                       Obj_1_Action_3_Success = TRUE;
+                 else
+                       if (gametime > 1080) then
+                             SetObjectiveStatus(1,FAILED);
+                             Objective_1_Decided = TRUE;
+                             PlayDigitalMusic(OBJECTIVE_FAIL_MUSIC);
+                       endif;
+                 endif;
+
+                 if ((Obj_1_Action_1_Success) AND (Obj_1_Action_2_Success) AND (Obj_1_Action_3_Success)) then
+                       SetObjectiveStatus(1,SUCCESS);
+                       VictoryLevel = VictoryLevel + 4;
+                       Objective_1_Decided = TRUE;
+                       PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                 endif;
+
+            endif;
+
+            if (checkObjectiveStatus(2) == SUCCESS) then			 //SECONDARY POWER STATION
+
+                 x = getTerrainObjectPartID(12,312);
+                 if (getObjectDamage(x) > 99) then
+                       SetObjectiveStatus(2,FAILED);
+                       Objective_2_Decided = TRUE;
+                       PlayDigitalMusic(OBJECTIVE_FAIL_MUSIC);
+                 else
+                       if (gametime > 1080) then
+                       Obj_2_Action_1_Success = TRUE;
+                       endif;
+                 endif;
+
+                 x = getTerrainObjectPartID(12,292);
+                 if (getObjectDamage(x) > 99) then
+                       SetObjectiveStatus(2,FAILED);
+                       Objective_2_Decided = TRUE;
+                       PlayDigitalMusic(OBJECTIVE_FAIL_MUSIC);
+                 else
+                       if (gametime > 1080) then
+                       Obj_2_Action_2_Success = TRUE;
+                       endif;
+                 endif;
+
+                 if ((Obj_2_Action_1_Success) AND (Obj_2_Action_2_Success)) then
+                       SetObjectiveStatus(2,SUCCESS);
+                       VictoryLevel = VictoryLevel - 2;
+                       Objective_2_Decided = TRUE;
+                       PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                 endif;
+
+            endif;
+
+            if ((NOT ExitTimerSet) AND (Objective_1_Decided)) then
+                  setTimer(EXIT_TIMER,10.0);
+                  ExitTimerSet = TRUE;
+				  if (CheckObjectiveStatus(1) == SUCCESS) then
+                  	PlayDigitalMusic(VICTORY_MUSIC); // Need to make this conditional based on success
+				  else
+					PlayDigitalMusic(DEFEAT_MUSIC);
+				  endif;
+            endif;
+
+            //---------------------------------------
+            // END SCENARIO
+            //---------------------------------------
+
+            if ((ExitTimerSet) AND (CheckTimer(EXIT_TIMER) == 0.0)) then
+                  ScenarioResult = VictoryLevel;
+            endif;
+
+            //---------------------------------------
+            // RETURN RESULT
+            //---------------------------------------
+
+            return (ScenarioResult);
+endmodule.
+//******************************************************************

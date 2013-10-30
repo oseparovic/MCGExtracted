@@ -1,0 +1,42 @@
+//*********************************************************************************
+// Variable Include file for mission 1_3
+
+     static boolean                    bridgedead;
+     integer                           curobj;
+     static boolean                    dropone;
+     static integer                    numforce;
+     static integer                    raven;
+     static boolean                    ravendead;
+     static integer[12]                teamlist;
+     integer                           z;
+     eternal integer                   stack1;
+     static integer                    stack1Alignment;
+     eternal integer                   stack2;
+     static integer                    stack2Alignment;
+     eternal integer                   stack3;
+     static integer                    stack3Alignment;
+     eternal integer                   stack4;
+     static integer                    stack4Alignment;
+     eternal integer                   stack5;
+     static integer                    stack5Alignment;
+     eternal integer                   stack6;
+     static integer                    stack6Alignment;
+     eternal integer                   stack7;
+     static integer                    stack7Alignment;
+     eternal integer                   mil1;
+     static integer                    mil1Alignment;
+     eternal integer                   mil2;
+     static integer                    mil2Alignment;
+     eternal integer                   mil3;
+     static integer                    mil3Alignment;
+     eternal integer                   stack9;
+     static integer                    stack9Alignment;
+     eternal integer                   bunker1;
+     static integer                    bunker1Alignment;
+     eternal integer                   TCTmissile;
+     static integer                    TCTmissileAlignment;
+     eternal integer                   TCTcannon;
+     static integer                    TCTcannonAlignment;
+     static boolean                    LOP0;
+     static boolean                    LOP1;
+     static boolean                    LOP2;

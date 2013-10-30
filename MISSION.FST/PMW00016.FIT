@@ -1,0 +1,47 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      MechWarrior:  16   Name: Regular 3  Callsign: Regular 3
+//
+//      Creation Date: 12/15/98   By: jon marcus
+//
+// -------------------------------------------------------------------------
+
+
+
+[General]
+st Name =                                                  "Regular 3"
+l Rank =                                                    0 
+st Callsign =                                              "Regular 3"
+ul ID =                                                     16 
+l NameIndex =                                               1000 
+l DescIndex =                                              
+ul HeadIcon =                                               1050 
+l paintScheme =                                             17 
+st pilotAudio =                                            "pilota"
+st pilotVideo =                                            "plt1g001"
+st Picture =                                               "pilot00.TGA"
+
+[PersonalityTraits]
+c Professionalism =                                         50 
+c Decorum =                                                 50 
+c Aggressiveness =                                          50 
+c Courage =                                                 50 
+
+[Skills]
+c Piloting =                                                55 
+c Jumping =                                                 55 
+c Sensors =                                                 60 
+c Gunnery =                                                 70 
+
+[Affinities]
+c MechClass =                                               0 
+c MechType =                                                0 
+c WeaponClass =                                             0 
+uc[2] WeaponTypes =                                        0,0
+
+[Status]
+c Wounds =                                                  0 
+
+FITEnd

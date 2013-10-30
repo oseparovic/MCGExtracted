@@ -1,0 +1,581 @@
+//*********************************************************************************
+// Structure Include file for mission 4_6
+
+
+if ((isdead(Sensor)) AND (SensorAlignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(20,336),FALSE);
+     setObjectActive(getterrainobjectpartid(24,325),FALSE);
+     setObjectActive(getterrainobjectpartid(47,116),FALSE);
+     setObjectActive(getterrainobjectpartid(51,160),FALSE);
+     SensorAlignment = -2;
+else
+     if ((IsCaptured(Sensor) == 1) AND (objectSide(Sensor) <> SensorAlignment)) then
+           objectChangeSides(getterrainobjectpartid(20,336),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(20,336),2);
+           objectChangeSides(getterrainobjectpartid(24,325),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(24,325),2);
+           objectChangeSides(getterrainobjectpartid(47,116),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(47,116),2);
+           objectChangeSides(getterrainobjectpartid(51,160),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(51,160),2);
+           objectChangeSides(Sensor,INNER_SPHERE);
+           SensorAlignment = INNER_SPHERE;
+     endif;
+endif;
+
+if (isAlive(alarm01)) then
+     getObjectPosition(alarm01,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (alarm01TripTime == -1.0) then
+               alarm01TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - alarm01TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((alarm01TripTime <> -1.0) AND (gametime - alarm01TripTime < 12.0)) then
+               alarm01TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(alarm02)) then
+     getObjectPosition(alarm02,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (alarm02TripTime == -1.0) then
+               alarm02TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - alarm02TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((alarm02TripTime <> -1.0) AND (gametime - alarm02TripTime < 12.0)) then
+               alarm02TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(alarm03)) then
+     getObjectPosition(alarm03,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (alarm03TripTime == -1.0) then
+               alarm03TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - alarm03TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((alarm03TripTime <> -1.0) AND (gametime - alarm03TripTime < 12.0)) then
+               alarm03TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(alarm04)) then
+     getObjectPosition(alarm04,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (alarm04TripTime == -1.0) then
+               alarm04TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - alarm04TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((alarm04TripTime <> -1.0) AND (gametime - alarm04TripTime < 12.0)) then
+               alarm04TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(alarm05)) then
+     getObjectPosition(alarm05,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (alarm05TripTime == -1.0) then
+               alarm05TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - alarm05TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((alarm05TripTime <> -1.0) AND (gametime - alarm05TripTime < 12.0)) then
+               alarm05TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(alarm06)) then
+     getObjectPosition(alarm06,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (alarm06TripTime == -1.0) then
+               alarm06TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - alarm06TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((alarm06TripTime <> -1.0) AND (gametime - alarm06TripTime < 12.0)) then
+               alarm06TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(alarm07)) then
+     getObjectPosition(alarm07,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (alarm07TripTime == -1.0) then
+               alarm07TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - alarm07TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((alarm07TripTime <> -1.0) AND (gametime - alarm07TripTime < 12.0)) then
+               alarm07TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(alarm08)) then
+     getObjectPosition(alarm08,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (alarm08TripTime == -1.0) then
+               alarm08TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - alarm08TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((alarm08TripTime <> -1.0) AND (gametime - alarm08TripTime < 12.0)) then
+               alarm08TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(alarm09)) then
+     getObjectPosition(alarm09,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (alarm09TripTime == -1.0) then
+               alarm09TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - alarm09TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((alarm09TripTime <> -1.0) AND (gametime - alarm09TripTime < 12.0)) then
+               alarm09TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(alarm10)) then
+     getObjectPosition(alarm10,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (alarm10TripTime == -1.0) then
+               alarm10TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - alarm10TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((alarm10TripTime <> -1.0) AND (gametime - alarm10TripTime < 12.0)) then
+               alarm10TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(alarm11)) then
+     getObjectPosition(alarm11,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (alarm11TripTime == -1.0) then
+               alarm11TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - alarm11TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((alarm11TripTime <> -1.0) AND (gametime - alarm11TripTime < 12.0)) then
+               alarm11TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(alarm12)) then
+     getObjectPosition(alarm12,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (alarm12TripTime == -1.0) then
+               alarm12TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - alarm12TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((alarm12TripTime <> -1.0) AND (gametime - alarm12TripTime < 12.0)) then
+               alarm12TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(alarm13)) then
+     getObjectPosition(alarm13,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (alarm13TripTime == -1.0) then
+               alarm13TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - alarm13TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((alarm13TripTime <> -1.0) AND (gametime - alarm13TripTime < 12.0)) then
+               alarm13TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(alarm14)) then
+     getObjectPosition(alarm14,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (alarm14TripTime == -1.0) then
+               alarm14TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - alarm14TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((alarm14TripTime <> -1.0) AND (gametime - alarm14TripTime < 12.0)) then
+               alarm14TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(alarm15)) then
+     getObjectPosition(alarm15,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (alarm15TripTime == -1.0) then
+               alarm15TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - alarm15TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((alarm15TripTime <> -1.0) AND (gametime - alarm15TripTime < 12.0)) then
+               alarm15TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isAlive(alarm16)) then
+     getObjectPosition(alarm16,aPoint);
+     if (inHotSpot(PLAYER_FORCE,aPoint[0],aPoint[1],100)) then
+          PerimeterBreach = TRUE;
+          SetRevealed(1,10.0,aPoint);
+          if (alarm16TripTime == -1.0) then
+               alarm16TripTime = gametime;
+               if (NOT PlayPASound) then
+                     PlayPASound = TRUE;
+               endif;
+          else
+               if (gametime - alarm16TripTime >= 12.0) then
+                    SetRevealed(2,100.0,aPoint);
+                    if (NOT GeneralAlarm) then
+                          GeneralAlarm = TRUE;
+                    endif;
+                    if (NOT PlayGASound) then
+                          PlayGASound = TRUE;
+                          PlayPASound = FALSE;
+                    endif;
+               else
+                    if (NOT PlayPASound) then
+                          PlayPASound = TRUE;
+                    endif;
+               endif;
+          endif;
+     else
+          if ((alarm16TripTime <> -1.0) AND (gametime - alarm16TripTime < 12.0)) then
+               alarm16TripTime = -1.0;
+          endif;
+     endif;
+endif;
+
+if (isdead(Repair1)) then
+     removeMechBay(Repair1);
+     Repair1Alignment = -2;
+else
+     if ((IsCaptured(Repair1) == 1) AND (objectSide(Repair1) <> Repair1Alignment) AND (Repair1Alignment <> -2)) then
+           Repair1Alignment = INNER_SPHERE;
+           setPotentialContact(Repair1,2);
+     endif;
+endif;
+
+if (isdead(Repair2)) then
+     removeMechBay(Repair2);
+     Repair2Alignment = -2;
+else
+     if ((IsCaptured(Repair2) == 1) AND (objectSide(Repair2) <> Repair2Alignment) AND (Repair2Alignment <> -2)) then
+           Repair2Alignment = INNER_SPHERE;
+           setPotentialContact(Repair2,2);
+     endif;
+endif;
+
+if (NOT PerimeterBreach) then
+      if (PlayGASound) then
+            PlayGASound = FALSE;
+      endif;
+      if (PlayPASound) then
+            PlayPASound = FALSE;
+      endif;
+endif;

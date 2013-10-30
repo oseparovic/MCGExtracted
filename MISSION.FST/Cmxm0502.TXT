@@ -1,0 +1,11 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cMISSION COMMAND:GAMBIT/Cermak02%n
+%fc5%c----------%n
+%fc6%c*** random ***%n
+%fc21-Capture and Hold at least two HQs%n%n
+%fc5%c----------%n
+%fc4There are five HQs on this map.  In order to win you must capture and hold a SPECIFIC two of the five HQs.  Which two will be revealed to you by the objective markers once the missions has begun.  WARNING: the other three HQs mean nothing, only the two that are marked by the objective markers.  Is that clear, Commander?%n%n
+%fc4There are two ways to win this mission.  If you are holding the proper two HQs when the timer expires you win.  If you destroy the entire enemy force and then capture the proper two HQs you will win early.%n%n
+%fc6<<<<END DISPATCH
+
+

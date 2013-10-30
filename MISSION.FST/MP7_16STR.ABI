@@ -1,0 +1,160 @@
+//*********************************************************************************
+// Structure Include file for mission 7_16
+
+
+if ((isdead(TurCtrlWest)) AND (TurCtrlWestAlignment <> -2)) then
+     SendMessage(8,0);
+     HandleMessage;
+else
+     if ((IsCaptured(TurCtrlWest) == 1) AND (objectSide(TurCtrlWest) <> TurCtrlWestAlignment) AND (TurCtrlWestAlignment <> -2)) then
+           SendMessage(9,ObjectSide(TurCtrlWest));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(GateCtrlWest)) AND (GateCtrlWestAlignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(49,390))) then
+           sendMessage(10,0);
+           handleMessage;
+     else
+           sendMessage(11,0);
+           handleMessage;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(49,392))) then
+           sendMessage(12,0);
+           handleMessage;
+     else
+           sendMessage(13,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(GateCtrlWest) == 1) AND (objectSide(GateCtrlWest) <> GateCtrlWestAlignment) AND (GateCtrlWestAlignment <> -2)) then
+           sendMessage(14,ObjectSide(GateCtrlWest));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(TurCtrlEastA)) AND (TurCtrlEastAAlignment <> -2)) then
+     SendMessage(15,0);
+     HandleMessage;
+else
+     if ((IsCaptured(TurCtrlEastA) == 1) AND (objectSide(TurCtrlEastA) <> TurCtrlEastAAlignment) AND (TurCtrlEastAAlignment <> -2)) then
+           SendMessage(16,ObjectSide(TurCtrlEastA));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(TurCtrlEastB)) AND (TurCtrlEastBAlignment <> -2)) then
+     SendMessage(17,0);
+     HandleMessage;
+else
+     if ((IsCaptured(TurCtrlEastB) == 1) AND (objectSide(TurCtrlEastB) <> TurCtrlEastBAlignment) AND (TurCtrlEastBAlignment <> -2)) then
+           SendMessage(18,ObjectSide(TurCtrlEastB));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(TurCtrlEastC)) AND (TurCtrlEastCAlignment <> -2)) then
+     SendMessage(19,0);
+     HandleMessage;
+else
+     if ((IsCaptured(TurCtrlEastC) == 1) AND (objectSide(TurCtrlEastC) <> TurCtrlEastCAlignment) AND (TurCtrlEastCAlignment <> -2)) then
+           SendMessage(20,ObjectSide(TurCtrlEastC));
+           HandleMessage;
+     endif;
+endif;
+
+if (isdead(Mechbay2)) then
+
+else
+     if ((IsCaptured(Mechbay2) == 1) AND (objectSide(Mechbay2) <> Mechbay2Alignment) AND (Mechbay2Alignment <> -2)) then
+           sendMessage(21,ObjectSide(Mechbay2));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(CenterTCT)) AND (CenterTCTAlignment <> -2)) then
+     SendMessage(22,0);
+     HandleMessage;
+else
+     if ((IsCaptured(CenterTCT) == 1) AND (objectSide(CenterTCT) <> CenterTCTAlignment) AND (CenterTCTAlignment <> -2)) then
+           SendMessage(23,ObjectSide(CenterTCT));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(CenterGC)) AND (CenterGCAlignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(31,387))) then
+           sendMessage(24,0);
+           handleMessage;
+     else
+           sendMessage(25,0);
+           handleMessage;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(31,397))) then
+           sendMessage(26,0);
+           handleMessage;
+     else
+           sendMessage(27,0);
+           handleMessage;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(40,111))) then
+           sendMessage(28,0);
+           handleMessage;
+     else
+           sendMessage(29,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(CenterGC) == 1) AND (objectSide(CenterGC) <> CenterGCAlignment) AND (CenterGCAlignment <> -2)) then
+           sendMessage(30,ObjectSide(CenterGC));
+           handleMessage;
+     endif;
+endif;
+
+if (isdead(Mechbay3)) then
+
+else
+     if ((IsCaptured(Mechbay3) == 1) AND (objectSide(Mechbay3) <> Mechbay3Alignment) AND (Mechbay3Alignment <> -2)) then
+           sendMessage(31,ObjectSide(Mechbay3));
+           handleMessage;
+     endif;
+endif;
+
+if (isdead(Mechbay5)) then
+
+else
+     if ((IsCaptured(Mechbay5) == 1) AND (objectSide(Mechbay5) <> Mechbay5Alignment) AND (Mechbay5Alignment <> -2)) then
+           sendMessage(32,ObjectSide(Mechbay5));
+           handleMessage;
+     endif;
+endif;
+
+if (isdead(Mechbay7)) then
+
+else
+     if ((IsCaptured(Mechbay7) == 1) AND (objectSide(Mechbay7) <> Mechbay7Alignment) AND (Mechbay7Alignment <> -2)) then
+           sendMessage(33,ObjectSide(Mechbay7));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(TurCtrlWestB)) AND (TurCtrlWestBAlignment <> -2)) then
+     SendMessage(34,0);
+     HandleMessage;
+else
+     if ((IsCaptured(TurCtrlWestB) == 1) AND (objectSide(TurCtrlWestB) <> TurCtrlWestBAlignment) AND (TurCtrlWestBAlignment <> -2)) then
+           SendMessage(35,ObjectSide(TurCtrlWestB));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(TCTEastGen)) AND (TCTEastGenAlignment <> -2)) then
+     SendMessage(36,0);
+     HandleMessage;
+else
+     if ((IsCaptured(TCTEastGen) == 1) AND (objectSide(TCTEastGen) <> TCTEastGenAlignment) AND (TCTEastGenAlignment <> -2)) then
+           SendMessage(37,ObjectSide(TCTEastGen));
+           HandleMessage;
+     endif;
+endif;

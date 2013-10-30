@@ -1,0 +1,205 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:2/12/98   BY:david abzug
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0105n1a : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+    static integer                     Order6Status;
+    static integer                     Order7Status;
+    static integer                     Order8Status;
+    static integer                     Order9Status;
+    static integer                     Order10Status;
+    static integer                     Order11Status;
+
+    // PATHS
+    static path                        Path1;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+         Order6Status = INCOMPLETE;
+         Order7Status = INCOMPLETE;
+         Order8Status = INCOMPLETE;
+         Order9Status = INCOMPLETE;
+         Order10Status = INCOMPLETE;
+         Order11Status = INCOMPLETE;
+
+         // Paths
+
+         Path1[0,0] = -1127; // X
+         Path1[0,1] = -2094; // Y
+
+         Path1[1,0] = -1384; // X
+         Path1[1,1] = -1835; // Y
+
+         Path1[2,0] = -2631; // X
+         Path1[2,1] = -1526; // Y
+
+         Path1[3,0] = -2960; // X
+         Path1[3,1] = -220; // Y
+
+         Path1[4,0] = -2100; // X
+         Path1[4,1] = -220; // Y
+
+         Path1[5,0] = -1350; // X
+         Path1[5,1] = 11; // Y
+
+         Path1[6,0] = -512; // X
+         Path1[6,1] = 656; // Y
+
+         Path1[7,0] = -59; // X
+         Path1[7,1] = 1034; // Y
+
+         Path1[8,0] = 945; // X
+         Path1[8,1] = 1282; // Y
+
+         Path1[9,0] = 1301; // X
+         Path1[9,1] = 1997; // Y
+
+         SetEngageRadius(200);
+         StopFighting;
+         SetTactic(TACTIC_REAR);
+         MoveAndFireON;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (beenHit) then
+         // Order  6 
+         if (Order6Status == INCOMPLETE) then
+              Flag3 = TRUE;
+              Order6Status = SUCCESS;
+         endif;
+    endif;
+    if (flag3) then
+         // Order  7 
+         if (Order7Status == INCOMPLETE) then
+              SetEngageRadius(400);
+              Order7Status = SUCCESS;
+         endif;
+    endif;
+    if (flag3) then
+         // Order  8 
+         if (Order8Status == INCOMPLETE) then
+              SetDisengageRadius(600);
+              Order8Status = SUCCESS;
+         endif;
+    endif;
+    if (flag3) then
+         // Order  9 
+         if (Order9Status == INCOMPLETE) then
+              SetSpeed(RUN);
+              Order9Status = SUCCESS;
+         endif;
+    endif;
+    if (flag3) then
+         // Order  10 
+         if (Order10Status == INCOMPLETE) then
+              StartFighting;
+              Order10Status = SUCCESS;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = MovePath(Path1,10);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order1Status <> INCOMPLETE) then
+                   // Order  2 
+                   if (Order2Status == INCOMPLETE) then
+                        StartFighting;
+                        Order2Status = SUCCESS;
+                   else
+                        if (Order2Status <> INCOMPLETE) then
+                             // Order  3 
+                             if (Order3Status == INCOMPLETE) then
+                                  Order3Status = AttackObject(getTerrainObjectPartID(15,109),FALSE,TRUE);
+                                  if (Order3Status == INCOMPLETE) then
+                                       return(1);
+                                  endif;
+                             else
+                                  if (Order3Status <> INCOMPLETE) then
+                                       // Order  4 
+                                       if (Order4Status == INCOMPLETE) then
+                                            Order4Status = AttackObject(getTerrainObjectPartID(15,69),FALSE,TRUE);
+                                            if (Order4Status == INCOMPLETE) then
+                                                 return(1);
+                                            endif;
+                                       else
+                                            if (Order4Status <> INCOMPLETE) then
+                                                 // Order  5 
+                                                 if (Order5Status == INCOMPLETE) then
+                                                      Order5Status = AttackObject(getTerrainObjectPartID(15,50),FALSE,TRUE);
+                                                      if (Order5Status == INCOMPLETE) then
+                                                           return(1);
+                                                      endif;
+                                                 endif;
+                                            endif;
+                                       endif;
+                                  endif;
+                             endif;
+                        endif;
+                   endif;
+              endif;
+              if (Order1Status <> INCOMPLETE) then
+                   // Order  11 
+                   if (Order11Status == INCOMPLETE) then
+                        Order11Status = AttackObject(getTerrainObjectPartID(15,91),FALSE,TRUE);
+                        if (Order11Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

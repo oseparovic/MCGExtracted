@@ -1,0 +1,48 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      MechWarrior:  74   Name: Mantis  Callsign: MANTIS
+//
+//      Creation Date: 12/15/98   By: jon marcus
+//
+// -------------------------------------------------------------------------
+
+
+
+[General]
+st Brain = "pbrain"
+st Name =                                                  "Mantis"
+l Rank =                                                    2 
+st Callsign =                                              "MANTIS"
+ul ID =                                                     74 
+l NameIndex =                                               23 
+l DescIndex =                                               324 
+ul HeadIcon =                                               0 
+l paintScheme =                                             68 
+st pilotAudio =                                            "pilotX"
+st pilotVideo =                                            "PILOT23"
+st Picture =                                               "pilot23.TGA"
+
+[PersonalityTraits]
+c Professionalism =                                         50 
+c Decorum =                                                 50 
+c Aggressiveness =                                          50 
+c Courage =                                                 50 
+
+[Skills]
+c Piloting =                                                65 
+c Jumping =                                                 55 
+c Sensors =                                                 50 
+c Gunnery =                                                 65 
+
+[Affinities]
+c MechClass =                                               0 
+c MechType =                                                0 
+c WeaponClass =                                             0 
+uc[2] WeaponTypes =                                        0,0
+
+[Status]
+c Wounds =                                                  0 
+
+FITEnd

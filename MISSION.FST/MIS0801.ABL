@@ -1,0 +1,158 @@
+//*********************************************************************************
+
+module MissionBrain_8_1 : integer;
+
+     //--------------------------------------------------------
+     // Operation:  8                  Mission:  1 
+     // MissionID:  85                 Name: Power Plant Attack
+     // Designer: Tom Dowd
+     // Created: 5/27/97               By: Tom Dowd
+     //--------------------------------------------------------
+
+//------------------------------------------------------------------
+//
+//     Constant Definitions
+//
+//------------------------------------------------------------------
+     const
+
+          #include_ "misconst.abi"
+
+          //------------------
+          // Objective IDs
+          //------------------
+           OBJ0_Give_Tim_Ryan_a_pay_rai  = 0;
+
+//------------------------------------------------------------------
+//
+//     Variable Declarations
+//
+//------------------------------------------------------------------
+      var
+
+            static integer      ScenarioResult;
+            static boolean      ExitTimerSet;
+            static integer      VictoryLevel;
+            char[40]            dstring;
+            real                gametime;
+            static real         nextsecond;
+            integer             x;
+            integer             y;
+            static boolean      Objective_0_Decided;
+
+#include_ "MiscFunc.ABI"
+
+//------------------------------------------------------------------
+//
+//     Init Function    (automatically run first time through)
+//
+//------------------------------------------------------------------
+function init;
+
+       code
+            ScenarioResult = PLAYING;
+            ExitTimerSet = FALSE;
+            VictoryLevel = 1;
+            NextSecond = 1.0;
+            Objective_0_Decided = FALSE;
+
+endfunction;
+
+//------------------------------------------------------------------
+//
+//     Main Code
+//
+//------------------------------------------------------------------
+       code
+
+            //------------------------------------------------
+            // Debug Window Game Clock Second Counter
+            // Note:  This is used by some included functions.
+            //------------------------------------------------
+            gametime = gettime;
+            If (gametime >= nextsecond) Then
+                  nextsecond = gametime + 1;
+                  dstring = "Gametime: ";
+                  concat(dstring,gametime);
+                  Print (dstring);
+            endif;
+
+            //---------------------------------------
+            // Create Non-Existing Vehicles
+            //---------------------------------------
+            #include_ "8_1CRE.ABI"
+
+            //---------------------------------------
+            // Activate inactive vehicles
+            //---------------------------------------
+            #include_ "8_1ACT.ABI"
+
+            //---------------------------------------
+            // SET EXIT TIMER IF PLAYER DEAD/DISABLED
+            //---------------------------------------
+
+            if ((NOT ExitTimerSet) AND (NOT isalive(PLAYER_FORCE))) then
+                  setTimer(EXIT_TIMER,15.0);
+                  ExitTimerSet = TRUE;
+                  PlayDigitalMusic(DEFEAT_MUSIC);
+                  // Fail any Undecided Objectives
+                  if (checkObjectiveStatus(0) == INCOMPLETE) then
+                        setObjectiveStatus(0, FAILED);
+                  endif;
+            endif;
+
+            //-----------------------------------------
+            // SET EXIT TIMER IF MISSION CLOCK EXPIRES
+            //-----------------------------------------
+/*
+            if ((NOT ExitTimerSet) AND (getTimeLeft == 0)) then
+                  setTimer(EXIT_TIMER,5.0);
+                  ExitTimerSet = TRUE;
+                  PlayDigitalMusic(DEFEAT_MUSIC); // or VICTORY_MUSIC (set what you want here)
+                  // Fail any Undecided Objectives
+                  if (checkObjectiveStatus(0) == INCOMPLETE) then
+                        setObjectiveStatus(0, FAILED);
+                        PlayDigitalMusic(OBJECTIVE_FAIL_MUSIC);
+                  endif;
+            endif;
+*/
+            //---------------------------------------
+            // Objective Resolution
+            //---------------------------------------
+            if (checkObjectiveStatus(0) == INCOMPLETE) then
+
+                   // Enter Objective 0 Success/Fail Checks Here
+
+                   // Uncomment these lines and place them where Objective is set Failed
+//                        SetObjectiveStatus(0,FAILED);
+//                        Objective_0_Decided = TRUE;
+//                        PlayDigitalMusic(OBJECTIVE_FAIL_MUSIC);
+
+                   // Uncomment these lines and place them where Objective is set Success
+//                        SetObjectiveStatus(0,SUCCESS);
+//                        VictoryLevel = VictoryLevel + 2;
+//                        Objective_0_Decided = TRUE;
+//                        PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+            endif;
+
+            if ((NOT ExitTimerSet) AND (Objective_0_Decided)) then
+                  setTimer(EXIT_TIMER,15.0);
+                  ExitTimerSet = TRUE;
+                  PlayDigitalMusic(VICTORY_MUSIC); // Need to make this conditional based on success
+            endif;
+
+            //---------------------------------------
+            // END SCENARIO
+            //---------------------------------------
+
+            if ((ExitTimerSet) AND (CheckTimer(EXIT_TIMER) == 0.0)) then
+                  ScenarioResult = VictoryLevel;
+            endif;
+
+            //---------------------------------------
+            // RETURN RESULT
+            //---------------------------------------
+
+            return (ScenarioResult);
+endmodule.
+//******************************************************************

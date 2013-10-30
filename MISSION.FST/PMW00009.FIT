@@ -1,0 +1,47 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      MechWarrior:  9   Name: Tonya Labonte  Callsign: BLACKJACK
+//
+//      Creation Date: 12/15/98   By: jon marcus
+//
+// -------------------------------------------------------------------------
+
+
+
+[General]
+st Name =                                                  "Tonya Labonte"
+l Rank =                                                    0 
+st Callsign =                                              "BLACKJACK"
+ul ID =                                                     9 
+l NameIndex =                                               1000 
+l DescIndex =                                              
+ul HeadIcon =                                               1050 
+l paintScheme =                                             17 
+st pilotAudio =                                            "pilotc"
+st pilotVideo =                                            "plt1g001"
+st Picture =                                               "pilot00.TGA"
+
+[PersonalityTraits]
+c Professionalism =                                         50 
+c Decorum =                                                 50 
+c Aggressiveness =                                          50 
+c Courage =                                                 50 
+
+[Skills]
+c Piloting =                                                50 
+c Jumping =                                                 50 
+c Sensors =                                                 50 
+c Gunnery =                                                 50 
+
+[Affinities]
+c MechClass =                                               0 
+c MechType =                                                0 
+c WeaponClass =                                             0 
+uc[2] WeaponTypes =                                        0,0
+
+[Status]
+c Wounds =                                                  0 
+
+FITEnd

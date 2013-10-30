@@ -1,0 +1,38 @@
+//*********************************************************************************
+// Variable Include file for mission 7_22
+
+     static boolean                    AllLose;
+     static boolean                    ClanWin;
+     static boolean                    ISWin;
+     integer                           numClan;
+     integer                           numIS;
+     eternal integer                   TCT1;
+     static integer                    TCT1Alignment;
+     eternal integer                   TCT2;
+     static integer                    TCT2Alignment;
+     eternal integer                   TCT3;
+     static integer                    TCT3Alignment;
+     eternal integer                   TCT4;
+     static integer                    TCT4Alignment;
+     eternal integer                   TCT5;
+     static integer                    TCT5Alignment;
+     eternal integer                   TCT6;
+     static integer                    TCT6Alignment;
+     eternal integer                   ARTY1;
+     static integer                    ARTY1Alignment;
+     eternal integer                   ARTY3;
+     static integer                    ARTY3Alignment;
+     eternal integer                   ARTY5;
+     static integer                    ARTY5Alignment;
+     eternal integer                   RB1;
+     static integer                    RB1Alignment;
+     eternal integer                   RB2;
+     static integer                    RB2Alignment;
+     eternal integer                   GC1;
+     static integer                    GC1Alignment;
+     eternal integer                   HQ1;
+     static integer                    HQ1Alignment;
+     eternal integer                   HQ2;
+     static integer                    HQ2Alignment;
+     eternal integer                   HQ3;
+     static integer                    HQ3Alignment;

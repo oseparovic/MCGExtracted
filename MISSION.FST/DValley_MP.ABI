@@ -1,0 +1,703 @@
+//*********************************************************************************
+// MultiPlayer Include file for mission DValley
+
+function handleMessage;
+
+     Var
+
+           integer MsgParams;
+           integer MsgCode;
+
+     Code
+
+           MsgCode = getMessage(MsgParams);
+
+           Switch (MsgCode)
+
+                 case MSG_GENERAL_ALARM_ON:
+
+                       GeneralAlarm = TRUE;
+                       PlayGASound = TRUE;
+                       PlayPASound = FALSE;
+                       endcase;
+
+                 case MSG_GENERAL_ALARM_OFF:
+
+                       PlayGASound = FALSE;
+                       endcase;
+
+                 case MSG_PERIMETER_ALARM_ON:
+
+                       PlayPASound = TRUE;
+                       endcase;
+
+                 case MSG_PERIMETER_ALARM_OFF:
+
+                       PlayPASound = FALSE;
+                       endcase;
+
+                 case MSG_SET_EXIT_TIMER:
+
+                       setTimer(EXIT_TIMER,2.0);
+                       ExitTimerSet = TRUE;
+                       endcase;
+
+                 case MSG_PLAY_END_MUSIC:
+
+                       switch (MsgParams)
+                             case INNER_SPHERE_VICTORY:
+                                   if (getHomeTeam == PLAYER_FORCE) then
+                                       PlayDigitalMusic(VICTORY_MUSIC);
+                                   else
+                                       PlayDigitalMusic(DEFEAT_MUSIC);
+                                   endif;
+                                   endcase;
+                             case CLAN_VICTORY:
+                                   if (getHomeTeam == CLAN_FORCE) then
+                                       PlayDigitalMusic(VICTORY_MUSIC);
+                                   else
+                                       PlayDigitalMusic(DEFEAT_MUSIC);
+                                   endif;
+                                   endcase;
+                             case JOINT_LOSS:
+                                   PlayDigitalMusic(DEFEAT_MUSIC);
+                                   endcase;
+                             case JOINT_VICTORY:
+                                   PlayDigitalMusic(VICTORY_MUSIC);
+                                   endcase;
+                       endswitch;
+                       endcase;
+
+                 Case 1:
+
+                       setObjectiveStatus(0, FAILED);
+                       endcase;
+
+                 Case 2:
+
+                       setObjectiveStatus(1, FAILED);
+                       endcase;
+
+                 Case 3:
+
+                       setObjectiveStatus(2, FAILED);
+                       endcase;
+
+                 Case 4:
+
+                       setObjectiveStatus(3, FAILED);
+                       endcase;
+
+                 Case 5:
+
+                       Obj_0_Action_1_Success = TRUE;
+                       endcase;
+
+                 Case 6:
+
+                       SetObjectiveStatus(0,FAILED);
+                       if (getHomeTeam == PLAYER_FORCE) then
+                            playBetty(BETTY_CANNOT_COMP_OBJ);
+                       endif;
+                       Objective_0_Decided = TRUE;
+                       endcase;
+
+                 Case 7:
+
+                       SetObjectiveStatus(0,SUCCESS);
+                       VictoryLevel = VictoryLevel + 1;
+                       if (getHomeTeam == PLAYER_FORCE) then
+                            playBetty(BETTY_OBJECTIVE_COMPLETE);
+                            if ((VictoryLevel < 2) AND (ClanVictoryLevel < 2)) then
+                                 PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                            endif;
+                       endif;
+                       Objective_0_Decided = TRUE;
+                       endcase;
+
+                 Case 8:
+
+                       SetObjectiveStatus(1,SUCCESS);
+                       VictoryLevel = VictoryLevel + 1;
+                       if (getHomeTeam == PLAYER_FORCE) then
+                            playBetty(BETTY_OBJECTIVE_COMPLETE);
+                            if ((VictoryLevel < 2) AND (ClanVictoryLevel < 2)) then
+                                 PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                            endif;
+                       endif;
+                       Objective_1_Decided = TRUE;
+                       endcase;
+
+                 Case 9:
+
+                       SetObjectiveStatus(1,FAILED);
+                       if (getHomeTeam == PLAYER_FORCE) then
+                            playBetty(BETTY_CANNOT_COMP_OBJ);
+                       endif;
+                       Objective_1_Decided = TRUE;
+                       endcase;
+
+                 Case 10:
+
+                       Obj_2_Action_2_Success = TRUE;
+                       endcase;
+
+                 Case 11:
+
+                       SetObjectiveStatus(2,FAILED);
+                       if (getHomeTeam == CLAN_FORCE) then
+                            playBetty(BETTY_CANNOT_COMP_OBJ);
+                       endif;
+                       Objective_2_Decided = TRUE;
+                       endcase;
+
+                 Case 12:
+
+                       SetObjectiveStatus(2,SUCCESS);
+                       ClanVictoryLevel = ClanVictoryLevel + 1;
+                       if (getHomeTeam == CLAN_FORCE) then
+                            playBetty(BETTY_OBJECTIVE_COMPLETE);
+                            if ((VictoryLevel < 2) AND (ClanVictoryLevel < 2)) then
+                                 PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                            endif;
+                       endif;
+                       Objective_2_Decided = TRUE;
+                       endcase;
+
+                 Case 13:
+
+                       SetObjectiveStatus(3,SUCCESS);
+                       ClanVictoryLevel = ClanVictoryLevel + 1;
+                       if (getHomeTeam == CLAN_FORCE) then
+                            playBetty(BETTY_OBJECTIVE_COMPLETE);
+                            if ((VictoryLevel < 2) AND (ClanVictoryLevel < 2)) then
+                                 PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                            endif;
+                       endif;
+                       Objective_3_Decided = TRUE;
+                       endcase;
+
+                 Case 14:
+
+                       SetObjectiveStatus(3,FAILED);
+                       if (getHomeTeam == CLAN_FORCE) then
+                            playBetty(BETTY_CANNOT_COMP_OBJ);
+                       endif;
+                       Objective_3_Decided = TRUE;
+                       endcase;
+
+                 Case 15:
+
+                       setObjectiveStatus(2, FAILED);
+                       endcase;
+
+                 Case 16:
+
+                       setObjectiveStatus(3, FAILED);
+                       endcase;
+
+                 Case 17:
+
+                       setObjectiveStatus(0, FAILED);
+                       endcase;
+
+                 Case 18:
+
+                       setObjectiveStatus(1, FAILED);
+                       endcase;
+
+                 Case 19:
+
+                       objectChangeSides(Mech_Bay_009355000,MsgParams);
+                       Mech_Bay_009355000Alignment = MsgParams;
+                       endcase;
+
+                 Case 20:
+
+                       objectChangeSides(Mech_Bay_019314000,MsgParams);
+                       Mech_Bay_019314000Alignment = MsgParams;
+                       endcase;
+
+                 Case 21:
+
+                       setObjectActive(68968,FALSE);
+                       setObjectActive(69000,FALSE);
+                       setObjectActive(69032,FALSE);
+                       Turret_Control_020016000Alignment = -2;
+                       endcase;
+
+                 Case 22:
+
+                       objectChangeSides(68968,MsgParams);
+                       setPotentialContact(68968,2);
+                       objectChangeSides(69000,MsgParams);
+                       setPotentialContact(69000,2);
+                       objectChangeSides(69032,MsgParams);
+                       setPotentialContact(69032,2);
+                       Turret_Control_020016000Alignment = MsgParams;
+                       objectChangeSides(Turret_Control_020016000,MsgParams);
+                       endcase;
+
+                 Case 23:
+
+                       LockGateOpen(51576);
+                       Gate_Control_020298000Alignment = -2;
+                       endcase;
+
+                 Case 24:
+
+                       LockGateClosed(51576);
+                       Gate_Control_020298000Alignment = -2;
+                       endcase;
+
+                 Case 25:
+
+                       LockGateOpen(68376);
+                       Gate_Control_020298000Alignment = -2;
+                       endcase;
+
+                 Case 26:
+
+                       LockGateClosed(68376);
+                       Gate_Control_020298000Alignment = -2;
+                       endcase;
+
+                 Case 27:
+
+                       objectChangeSides(51576,MsgParams);
+                       ReleaseGateLock(51576);
+                       objectChangeSides(68376,MsgParams);
+                       ReleaseGateLock(68376);
+                       Gate_Control_020298000Alignment = MsgParams;
+                       objectChangeSides(Gate_Control_020298000,MsgParams);
+                       endcase;
+
+                 Case 28:
+
+                       setObjectActive(50888,FALSE);
+                       setObjectActive(50920,FALSE);
+                       setObjectActive(50952,FALSE);
+                       Turret_Control_014350000Alignment = -2;
+                       endcase;
+
+                 Case 29:
+
+                       objectChangeSides(50888,MsgParams);
+                       setPotentialContact(50888,2);
+                       objectChangeSides(50920,MsgParams);
+                       setPotentialContact(50920,2);
+                       objectChangeSides(50952,MsgParams);
+                       setPotentialContact(50952,2);
+                       Turret_Control_014350000Alignment = MsgParams;
+                       objectChangeSides(Turret_Control_014350000,MsgParams);
+                       endcase;
+
+                 Case 30:
+
+                       LockGateOpen(51544);
+                       Gate_Control_014113000Alignment = -2;
+                       endcase;
+
+                 Case 31:
+
+                       LockGateClosed(51544);
+                       Gate_Control_014113000Alignment = -2;
+                       endcase;
+
+                 Case 32:
+
+                       LockGateOpen(68344);
+                       Gate_Control_014113000Alignment = -2;
+                       endcase;
+
+                 Case 33:
+
+                       LockGateClosed(68344);
+                       Gate_Control_014113000Alignment = -2;
+                       endcase;
+
+                 Case 34:
+
+                       objectChangeSides(51544,MsgParams);
+                       ReleaseGateLock(51544);
+                       objectChangeSides(68344,MsgParams);
+                       ReleaseGateLock(68344);
+                       Gate_Control_014113000Alignment = MsgParams;
+                       objectChangeSides(Gate_Control_014113000,MsgParams);
+                       endcase;
+
+                 Case 35:
+
+                       setObjectActive(67448,FALSE);
+                       setObjectActive(67560,FALSE);
+                       setObjectActive(67592,FALSE);
+                       setObjectActive(67600,FALSE);
+                       setObjectActive(67608,FALSE);
+                       setObjectActive(67720,FALSE);
+                       setObjectActive(84216,FALSE);
+                       setObjectActive(84536,FALSE);
+                       setObjectActive(84552,FALSE);
+                       setObjectActive(84560,FALSE);
+                       setObjectActive(84720,FALSE);
+                       setObjectActive(67593,FALSE);
+                       setObjectActive(84217,FALSE);
+                       setObjectActive(84561,FALSE);
+                       Turret_Control_019316000Alignment = -2;
+                       endcase;
+
+                 Case 36:
+
+                       objectChangeSides(67448,MsgParams);
+                       setPotentialContact(67448,2);
+                       objectChangeSides(67560,MsgParams);
+                       setPotentialContact(67560,2);
+                       objectChangeSides(67592,MsgParams);
+                       setPotentialContact(67592,2);
+                       objectChangeSides(67600,MsgParams);
+                       setPotentialContact(67600,2);
+                       objectChangeSides(67608,MsgParams);
+                       setPotentialContact(67608,2);
+                       objectChangeSides(67720,MsgParams);
+                       setPotentialContact(67720,2);
+                       objectChangeSides(84216,MsgParams);
+                       setPotentialContact(84216,2);
+                       objectChangeSides(84536,MsgParams);
+                       setPotentialContact(84536,2);
+                       objectChangeSides(84552,MsgParams);
+                       setPotentialContact(84552,2);
+                       objectChangeSides(84560,MsgParams);
+                       setPotentialContact(84560,2);
+                       objectChangeSides(84720,MsgParams);
+                       setPotentialContact(84720,2);
+                       objectChangeSides(67593,MsgParams);
+                       setPotentialContact(67593,2);
+                       objectChangeSides(84217,MsgParams);
+                       setPotentialContact(84217,2);
+                       objectChangeSides(84561,MsgParams);
+                       setPotentialContact(84561,2);
+                       Turret_Control_019316000Alignment = MsgParams;
+                       objectChangeSides(Turret_Control_019316000,MsgParams);
+                       endcase;
+
+                 Case 37:
+
+                       LockGateOpen(67888);
+                       Gate_Control_025014000Alignment = -2;
+                       endcase;
+
+                 Case 38:
+
+                       LockGateClosed(67888);
+                       Gate_Control_025014000Alignment = -2;
+                       endcase;
+
+                 Case 39:
+
+                       LockGateOpen(68064);
+                       Gate_Control_025014000Alignment = -2;
+                       endcase;
+
+                 Case 40:
+
+                       LockGateClosed(68064);
+                       Gate_Control_025014000Alignment = -2;
+                       endcase;
+
+                 Case 41:
+
+                       objectChangeSides(67888,MsgParams);
+                       ReleaseGateLock(67888);
+                       objectChangeSides(68064,MsgParams);
+                       ReleaseGateLock(68064);
+                       Gate_Control_025014000Alignment = MsgParams;
+                       objectChangeSides(Gate_Control_025014000,MsgParams);
+                       endcase;
+
+                 Case 42:
+
+                       setObjectActive(68928,FALSE);
+                       setObjectActive(69728,FALSE);
+                       setObjectActive(88344,FALSE);
+                       Turret_Control_020328000Alignment = -2;
+                       endcase;
+
+                 Case 43:
+
+                       objectChangeSides(68928,MsgParams);
+                       setPotentialContact(68928,2);
+                       objectChangeSides(69728,MsgParams);
+                       setPotentialContact(69728,2);
+                       objectChangeSides(88344,MsgParams);
+                       setPotentialContact(88344,2);
+                       Turret_Control_020328000Alignment = MsgParams;
+                       objectChangeSides(Turret_Control_020328000,MsgParams);
+                       endcase;
+
+                 Case 44:
+
+                       setObjectActive(106600,FALSE);
+                       setObjectActive(106904,FALSE);
+                       setObjectActive(107048,FALSE);
+                       setObjectActive(107080,FALSE);
+                       Turret_Control_032071000Alignment = -2;
+                       endcase;
+
+                 Case 45:
+
+                       objectChangeSides(106600,MsgParams);
+                       setPotentialContact(106600,2);
+                       objectChangeSides(106904,MsgParams);
+                       setPotentialContact(106904,2);
+                       objectChangeSides(107048,MsgParams);
+                       setPotentialContact(107048,2);
+                       objectChangeSides(107080,MsgParams);
+                       setPotentialContact(107080,2);
+                       Turret_Control_032071000Alignment = MsgParams;
+                       objectChangeSides(Turret_Control_032071000,MsgParams);
+                       endcase;
+
+                 Case 46:
+
+                       LockGateOpen(107232);
+                       Gate_Control_032095000Alignment = -2;
+                       endcase;
+
+                 Case 47:
+
+                       LockGateClosed(107232);
+                       Gate_Control_032095000Alignment = -2;
+                       endcase;
+
+                 Case 48:
+
+                       objectChangeSides(107232,MsgParams);
+                       ReleaseGateLock(107232);
+                       Gate_Control_032095000Alignment = MsgParams;
+                       objectChangeSides(Gate_Control_032095000,MsgParams);
+                       endcase;
+
+                 Case 49:
+
+                       setObjectActive(30968,FALSE);
+                       setObjectActive(53096,FALSE);
+                       setObjectActive(53552,FALSE);
+                       Turret_Control_009382000Alignment = -2;
+                       endcase;
+
+                 Case 50:
+
+                       objectChangeSides(30968,MsgParams);
+                       setPotentialContact(30968,2);
+                       objectChangeSides(53096,MsgParams);
+                       setPotentialContact(53096,2);
+                       objectChangeSides(53552,MsgParams);
+                       setPotentialContact(53552,2);
+                       Turret_Control_009382000Alignment = MsgParams;
+                       objectChangeSides(Turret_Control_009382000,MsgParams);
+                       endcase;
+
+                 Case 51:
+
+                       LockGateOpen(34752);
+                       Gate_Control_009293000Alignment = -2;
+                       endcase;
+
+                 Case 52:
+
+                       LockGateClosed(34752);
+                       Gate_Control_009293000Alignment = -2;
+                       endcase;
+
+                 Case 53:
+
+                       LockGateOpen(35064);
+                       Gate_Control_009293000Alignment = -2;
+                       endcase;
+
+                 Case 54:
+
+                       LockGateClosed(35064);
+                       Gate_Control_009293000Alignment = -2;
+                       endcase;
+
+                 Case 55:
+
+                       LockGateOpen(35392);
+                       Gate_Control_009293000Alignment = -2;
+                       endcase;
+
+                 Case 56:
+
+                       LockGateClosed(35392);
+                       Gate_Control_009293000Alignment = -2;
+                       endcase;
+
+                 Case 57:
+
+                       objectChangeSides(34752,MsgParams);
+                       ReleaseGateLock(34752);
+                       objectChangeSides(35064,MsgParams);
+                       ReleaseGateLock(35064);
+                       objectChangeSides(35392,MsgParams);
+                       ReleaseGateLock(35392);
+                       Gate_Control_009293000Alignment = MsgParams;
+                       objectChangeSides(Gate_Control_009293000,MsgParams);
+                       endcase;
+
+                 Case 58:
+
+                       setObjectActive(34248,FALSE);
+                       setObjectActive(34408,FALSE);
+                       setObjectActive(34568,FALSE);
+                       setObjectActive(34576,FALSE);
+                       setObjectActive(34584,FALSE);
+                       setObjectActive(35688,FALSE);
+                       setObjectActive(35848,FALSE);
+                       setObjectActive(35880,FALSE);
+                       setObjectActive(35888,FALSE);
+                       setObjectActive(35896,FALSE);
+                       setObjectActive(34249,FALSE);
+                       setObjectActive(34577,FALSE);
+                       setObjectActive(35897,FALSE);
+                       Turret_Control_009171000Alignment = -2;
+                       endcase;
+
+                 Case 59:
+
+                       objectChangeSides(34248,MsgParams);
+                       setPotentialContact(34248,2);
+                       objectChangeSides(34408,MsgParams);
+                       setPotentialContact(34408,2);
+                       objectChangeSides(34568,MsgParams);
+                       setPotentialContact(34568,2);
+                       objectChangeSides(34576,MsgParams);
+                       setPotentialContact(34576,2);
+                       objectChangeSides(34584,MsgParams);
+                       setPotentialContact(34584,2);
+                       objectChangeSides(35688,MsgParams);
+                       setPotentialContact(35688,2);
+                       objectChangeSides(35848,MsgParams);
+                       setPotentialContact(35848,2);
+                       objectChangeSides(35880,MsgParams);
+                       setPotentialContact(35880,2);
+                       objectChangeSides(35888,MsgParams);
+                       setPotentialContact(35888,2);
+                       objectChangeSides(35896,MsgParams);
+                       setPotentialContact(35896,2);
+                       objectChangeSides(34249,MsgParams);
+                       setPotentialContact(34249,2);
+                       objectChangeSides(34577,MsgParams);
+                       setPotentialContact(34577,2);
+                       objectChangeSides(35897,MsgParams);
+                       setPotentialContact(35897,2);
+                       Turret_Control_009171000Alignment = MsgParams;
+                       objectChangeSides(Turret_Control_009171000,MsgParams);
+                       endcase;
+
+                 Case 60:
+
+                       setObjectActive(12728,FALSE);
+                       setObjectActive(12856,FALSE);
+                       setObjectActive(12880,FALSE);
+                       setObjectActive(15944,FALSE);
+                       Turret_Control_002275000Alignment = -2;
+                       endcase;
+
+                 Case 61:
+
+                       objectChangeSides(12728,MsgParams);
+                       setPotentialContact(12728,2);
+                       objectChangeSides(12856,MsgParams);
+                       setPotentialContact(12856,2);
+                       objectChangeSides(12880,MsgParams);
+                       setPotentialContact(12880,2);
+                       objectChangeSides(15944,MsgParams);
+                       setPotentialContact(15944,2);
+                       Turret_Control_002275000Alignment = MsgParams;
+                       objectChangeSides(Turret_Control_002275000,MsgParams);
+                       endcase;
+
+                 Case 62:
+
+                       LockGateOpen(13024);
+                       Gate_Control_002339000Alignment = -2;
+                       endcase;
+
+                 Case 63:
+
+                       LockGateClosed(13024);
+                       Gate_Control_002339000Alignment = -2;
+                       endcase;
+
+                 Case 64:
+
+                       objectChangeSides(13024,MsgParams);
+                       ReleaseGateLock(13024);
+                       Gate_Control_002339000Alignment = MsgParams;
+                       objectChangeSides(Gate_Control_002339000,MsgParams);
+                       endcase;
+
+                 Case 65:
+
+                       objectChangeSides(Mech_Bay_002235000,MsgParams);
+                       Mech_Bay_002235000Alignment = MsgParams;
+                       endcase;
+
+                 Case 66:
+
+                       objectChangeSides(UnlinkedTurret_009334000,MsgParams);
+                       UnlinkedTurret_009334000Alignment = MsgParams;
+                       endcase;
+
+                 Case 67:
+
+                       objectChangeSides(Artillery_Crate_008344000, NEUTRAL);
+                       if (getStrikes(((MsgParams/10)-1),(MsgParams MOD 10)) < MAX_STRIKES) then
+                             addStrikes(((MsgParams/10)-1),(MsgParams MOD 10),1);
+                       endif;
+                       setCaptureable(Artillery_Crate_008344000, FALSE);
+                       Artillery_Crate_008344000Alignment = -2;
+                       endcase;
+
+                 Case 68:
+
+                       Artillery_Crate_008344000Alignment = Artillery_Crate_008344000Alignment - 1;
+                       endcase;
+
+                 Case 69:
+
+                       setCaptureable(Artillery_Crate_008344000, TRUE);
+                       Artillery_Crate_008344000Alignment = NEUTRAL;
+                       endcase;
+
+                 Case 70:
+
+                       objectChangeSides(Artillery_Crate_027050000, NEUTRAL);
+                       if (getStrikes(((MsgParams/10)-1),(MsgParams MOD 10)) < MAX_STRIKES) then
+                             addStrikes(((MsgParams/10)-1),(MsgParams MOD 10),1);
+                       endif;
+                       setCaptureable(Artillery_Crate_027050000, FALSE);
+                       Artillery_Crate_027050000Alignment = -2;
+                       endcase;
+
+                 Case 71:
+
+                       Artillery_Crate_027050000Alignment = Artillery_Crate_027050000Alignment - 1;
+                       endcase;
+
+                 Case 72:
+
+                       setCaptureable(Artillery_Crate_027050000, TRUE);
+                       Artillery_Crate_027050000Alignment = NEUTRAL;
+                       endcase;
+
+                 Case 73:
+
+                       objectChangeSides(Mech_Bay_032011000,MsgParams);
+                       Mech_Bay_032011000Alignment = MsgParams;
+                       endcase;
+
+           endswitch;
+
+endfunction;
+

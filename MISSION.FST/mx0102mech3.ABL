@@ -1,0 +1,187 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:10/30/98   BY:rob nicholls
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBmx0102mech3 : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+    static integer                     Order6Status;
+
+    // PATHS
+    static path                        Jumppath;
+    static path                        Leftpath;
+    static path                        MadPath;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+         Order6Status = INCOMPLETE;
+
+         // Paths
+
+         Jumppath[0,0] = -3141; // X
+         Jumppath[0,1] = 2871; // Y
+
+         Jumppath[1,0] = 1011; // X
+         Jumppath[1,1] = 4721; // Y
+
+         Jumppath[2,0] = 1464; // X
+         Jumppath[2,1] = 4680; // Y
+
+         Jumppath[3,0] = 2457; // X
+         Jumppath[3,1] = 4813; // Y
+
+         Jumppath[4,0] = 3090; // X
+         Jumppath[4,1] = 4081; // Y
+
+         Jumppath[5,0] = 4030; // X
+         Jumppath[5,1] = 1858; // Y
+
+         Jumppath[6,0] = 4296; // X
+         Jumppath[6,1] = 1467; // Y
+
+         Jumppath[7,0] = 4406; // X
+         Jumppath[7,1] = 334; // Y
+
+         Leftpath[0,0] = -3144; // X
+         Leftpath[0,1] = -826; // Y
+
+         Leftpath[1,0] = -2997; // X
+         Leftpath[1,1] = -1627; // Y
+
+         Leftpath[2,0] = -1843; // X
+         Leftpath[2,1] = -1981; // Y
+
+         Leftpath[3,0] = -734; // X
+         Leftpath[3,1] = -3626; // Y
+
+         Leftpath[4,0] = 3307; // X
+         Leftpath[4,1] = -2881; // Y
+
+         Leftpath[5,0] = 3644; // X
+         Leftpath[5,1] = -1075; // Y
+
+         MadPath[0,0] = -407; // X
+         MadPath[0,1] = -830; // Y
+
+         MadPath[1,0] = 12; // X
+         MadPath[1,1] = -814; // Y
+
+         MadPath[2,0] = 1472; // X
+         MadPath[2,1] = -435; // Y
+
+         MadPath[3,0] = 3545; // X
+         MadPath[3,1] = -452; // Y
+
+         SetEngageRadius(250);
+         SetSpeed(RUN);
+         SetTactic(TACTIC_MEDIUM);
+         MoveAndFireON;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (flag2) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = Patrol(Jumppath,8,PATROL_AND_STOP,1);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order1Status <> INCOMPLETE) then
+                   // Order  4 
+                   if (Order4Status == INCOMPLETE) then
+                        Order4Status = Guard(HQ);
+                        if (Order4Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+    if (flag3) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              Order2Status = Patrol(MadPath,4,PATROL_AND_STOP, 1);
+              if (Order2Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order2Status <> INCOMPLETE) then
+                   // Order  5 
+                   if (Order5Status == INCOMPLETE) then
+                        Order5Status = Guard(HQ);
+                        if (Order5Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+    if (flag4) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              Order3Status = Patrol(Leftpath,6,PATROL_AND_STOP,1);
+              if (Order3Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order3Status <> INCOMPLETE) then
+                   // Order  6 
+                   if (Order6Status == INCOMPLETE) then
+                        Order6Status = Guard(HQ);
+                        if (Order6Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+
+         return(1);
+endmodule.

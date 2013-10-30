@@ -1,0 +1,15 @@
+//*********************************************************************************
+// Init Include file for mission 7_30
+
+     RBIS = getTerrainObjectPartId(26,161);
+     objectChangeSides(RBIS,INNER_SPHERE);
+     setPotentialContact(RBIS,0);
+     setCaptureable(RBIS, TRUE);
+     RBISAlignment = INNER_SPHERE;
+     RBClan = getTerrainObjectPartId(10,268);
+     objectChangeSides(RBClan,CLAN);
+     setPotentialContact(RBClan,0);
+     setCaptureable(RBClan, TRUE);
+     RBClanAlignment = CLAN;
+     MechBays[0] = RBClan;
+     TotalMechBays =  1;

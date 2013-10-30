@@ -1,0 +1,25 @@
+//*********************************************************************************
+// Variable Include file for mission 7_3
+
+     eternal integer                   NorthSC;
+     static integer                    NorthSCAlignment;
+     eternal integer                   SouthSC;
+     static integer                    SouthSCAlignment;
+     eternal integer                   WestTC;
+     static integer                    WestTCAlignment;
+     eternal integer                   EastTC;
+     static integer                    EastTCAlignment;
+     eternal integer                   MB1;
+     static integer                    MB1Alignment;
+     eternal integer                   MB2;
+     static integer                    MB2Alignment;
+     eternal integer                   Stack1;
+     static integer                    Stack1Alignment;
+     eternal integer                   Stack2;
+     static integer                    Stack2Alignment;
+     eternal integer                   Stack3;
+     static integer                    Stack3Alignment;
+     eternal integer                   Stack4;
+     static integer                    Stack4Alignment;
+     eternal integer                   GC1;
+     static integer                    GC1Alignment;

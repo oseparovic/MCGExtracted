@@ -1,0 +1,436 @@
+FITini
+
+[Header]
+
+l NumMechs = 11
+l NumVehicles = 23
+l NumComponants = 21
+l NumWarriors = 30
+
+[Mech0]
+// Uller-A (Clan)
+l TypeAAvailable = -1
+l TypeWAvailable = -1
+l TypeJAvailable = -1
+st TypeAFile = "PM200100"
+st TypeWFile = "PM200400"
+st TypeJFile = "PM200300"
+
+[Mech1]
+// Cougar-A (Clan)
+l TypeAAvailable = -1
+l TypeWAvailable = -1
+l TypeJAvailable = -1
+st TypeAFile = "PM201100"
+st TypeWFile = "PM201400"
+st TypeJFile = "PM201300"
+
+[Mech2]
+// ShadowCat (Clan)
+l TypeAAvailable = -1
+l TypeWAvailable = -1
+l TypeJAvailable = -1
+st TypeAFile = "PM209100"
+st TypeWFile = "PM209400"
+st TypeJFile = "PM209300"
+
+[Mech3]
+// Hunchback IIC-A (Clan)
+l TypeAAvailable = -1
+l TypeWAvailable = -1
+l TypeJAvailable = -1
+st TypeAFile = "PM203100"
+st TypeWFile = "PM203400"
+st TypeJFile = "PM203300"
+
+[Mech4]
+// Vulture-A (Clan)
+l TypeAAvailable = -1
+l TypeWAvailable = -1
+l TypeJAvailable = -1
+st TypeAFile = "PM204100"
+st TypeWFile = "PM204400"
+st TypeJFile = "PM204300"
+
+[Mech5]
+// Loki-A (Clan)
+l TypeAAvailable = -1
+l TypeWAvailable = -1
+l TypeJAvailable = -1
+st TypeAFile = "PM205100"
+st TypeWFile = "PM205400"
+st TypeJFile = "PM205300"
+
+[Mech6]
+// Thor-A (Clan)
+l TypeAAvailable = -1
+l TypeWAvailable = -1
+l TypeJAvailable = -1
+st TypeAFile = "PM206100"
+st TypeWFile = "PM206400"
+st TypeJFile = "PM206300"
+
+[Mech7]
+// NovaCat (Clan)
+l TypeAAvailable = -1
+l TypeWAvailable = -1
+l TypeJAvailable = -1
+st TypeAFile = "PM210100"
+st TypeWFile = "PM210400"
+st TypeJFile = "PM210300"
+
+[Mech8]
+// Mad Cat-A (Clan)
+l TypeAAvailable = -1
+l TypeWAvailable = -1
+l TypeJAvailable = -1
+st TypeAFile = "PM207100"
+st TypeWFile = "PM207400"
+st TypeJFile = "PM207300"
+
+[Mech9]
+// Masakari-A (Clan)
+l TypeAAvailable = -1
+l TypeWAvailable = -1
+l TypeJAvailable = -1
+st TypeAFile = "PM208100"
+st TypeWFile = "PM208400"
+st TypeJFile = "PM208300"
+
+[Mech10]
+// Turkina (Clan)
+l TypeAAvailable = -1
+l TypeWAvailable = -1
+l TypeJAvailable = -1
+st TypeAFile = "PM211100"
+st TypeWFile = "PM211400"
+st TypeJFile = "PM211300"
+
+
+[Vehicle0]
+// Savannah Master
+l NumAvailable = -1
+st Filename = "31900"
+
+[Vehicle1]
+// J. Edgar Light Hover Tank
+l NumAvailable = -1
+st Filename = "21900"
+
+[Vehicle2]
+// Pegasus Light Scout Tank*
+l NumAvailable = -1
+st Filename = "21800"
+
+[Vehicle3]
+// Saracen Hover Tank
+l NumAvailable = -1
+st Filename = "21400"
+
+[Vehicle4]
+// Striker Light Tank
+l NumAvailable = -1
+st Filename = "21700"
+
+[Vehicle5]
+// Harasser Light Missile Tank
+l NumAvailable = -1
+st Filename = "20500"
+
+[Vehicle6]
+// Condor Heavy Hover Tank
+l NumAvailable = -1
+st Filename = "22100"
+
+[Vehicle7]
+// SRM Carrier
+l NumAvailable = -1
+st Filename = "20900"
+
+[Vehicle8]
+// Minelayer*
+l NumAvailable = -1
+st Filename = "22900"
+
+[Vehicle9]
+// Minesweeper*
+l NumAvailable = -1
+st Filename = "22800"
+
+[Vehicle10]
+// Bulldog Medium Tank
+l NumAvailable = -1
+st Filename = "20800"
+
+[Vehicle11]
+// Rommel Medium Tank
+l NumAvailable = -1
+st Filename = "20100"
+
+[Vehicle12]
+// Von Luckner Heavy Tank
+l NumAvailable = -1
+st Filename = "22000"
+
+[Vehicle13]
+// LRM Carrier
+l NumAvailable = -1
+st Filename = "21000"
+
+[Vehicle14]
+// Schrek PPC Carrier
+l NumAvailable = -1
+st Filename = "21300"
+
+[Vehicle15]
+// Swiftwind Scout Car*
+l NumAvailable = -1
+st Filename = "20000"
+
+[Vehicle16]
+// Refit Truck*
+l NumAvailable = -1
+st Filename = "32300"
+
+[Vehicle17]
+// Centipede
+l NumAvailable = -1
+st Filename = "33300"
+
+[Vehicle18]
+// Regulator
+l NumAvailable = -1
+st Filename = "33400"
+
+[Vehicle19]
+// Manticore
+l NumAvailable = -1
+st Filename = "33500"
+
+[Vehicle20]
+// Pilum*
+l NumAvailable = -1
+st Filename = "33600"
+
+[Vehicle21]
+// Alacorn*
+l NumAvailable = -1
+st Filename = "33700"
+
+[Vehicle22]
+// Ammo Truck*
+l NumAvailable = -1
+st Filename = "33800"
+
+
+// Short Range
+
+[Componant0]
+// SRM/2
+uc ComponantID = 133
+l NumAvailable = -1
+
+[Componant1]
+// PS laser
+uc ComponantID = 153
+l NumAvailable = -1
+
+[Componant2]
+// Streak SRM/2
+uc ComponantID = 135
+l NumAvailable = -1
+
+[Componant3]
+// Flamer
+uc ComponantID = 155
+l NumAvailable = -1
+
+[Componant4]
+// Ultra AC/20
+uc ComponantID = 112
+l NumAvailable = -1
+
+//Medium Range
+
+[Componant5]
+// ER laser
+uc ComponantID = 152
+l NumAvailable = -1
+
+[Componant6]
+// Large PS laser
+uc ComponantID = 151
+l NumAvailable = -1
+
+
+// Long Range
+
+[Componant7]
+// Ultra AC/10
+uc ComponantID = 111
+l NumAvailable = -1
+
+[Componant8]
+// LRM/5
+uc ComponantID = 130
+l NumAvailable = -1
+
+[Componant9]
+// Ultra AC/5
+uc ComponantID = 110
+l NumAvailable = -1
+
+[Componant10]
+// Large ER laser
+uc ComponantID = 150
+l NumAvailable = -1
+
+[Componant11]
+// ER PPC
+uc ComponantID = 154
+l NumAvailable = -1
+
+[Componant12]
+// Guass Rifle
+uc ComponantID = 113
+l NumAvailable = -1
+
+// Sensor
+
+[Componant13]
+// Sensor - Basic
+uc ComponantID = 16
+l NumAvailable = -1
+
+[Componant14]
+// Sensor - Advanced
+uc ComponantID = 17
+l NumAvailable = -1
+
+[Componant15]
+// Active Probe
+uc ComponantID = 43
+l NumAvailable = -1
+
+[Componant16]
+// ECM Suite
+uc ComponantID = 42
+l NumAvailable = -1
+
+[Componant17]
+// Clan Lt LBX
+uc ComponantID = 116
+l NumAvailable = -1
+
+[Componant18]
+// Clan LBX
+uc ComponantID = 117
+l NumAvailable = -1
+
+[Componant19]
+// Clan Hvy LBX
+uc ComponantID = 118
+l NumAvailable = -1
+
+[Componant20]
+// Hvy Gauss
+uc ComponantID = 98
+l NumAvailable = -1
+
+
+
+
+// warriors
+
+[Warrior0]
+st Profile = "pmw00051"
+
+[Warrior1]
+st Profile = "pmw00052"
+
+[Warrior2]
+st Profile = "pmw00053"
+
+[Warrior3]
+st Profile = "pmw00054"
+
+[Warrior4]
+st Profile = "pmw00055"
+
+[Warrior5]
+st Profile = "pmw00056"
+
+[Warrior6]
+st Profile = "pmw00057"
+
+[Warrior7]
+st Profile = "pmw00058"
+
+[Warrior8]
+st Profile = "pmw00059"
+
+[Warrior9]
+st Profile = "pmw00060"
+
+[Warrior10]
+st Profile = "pmw00061"
+
+[Warrior11]
+st Profile = "pmw00062"
+
+[Warrior12]
+st Profile = "pmw00063"
+
+[Warrior13]
+st Profile = "pmw00064"
+
+[Warrior14]
+st Profile = "pmw00065"
+
+[Warrior15]
+st Profile = "pmw00066"
+
+[Warrior16]
+st Profile = "pmw00067"
+
+[Warrior17]
+st Profile = "pmw00068"
+
+[Warrior18]
+st Profile = "pmw00069"
+
+[Warrior19]
+st Profile = "pmw00070"
+
+[Warrior20]
+st Profile = "pmw00071"
+
+[Warrior21]
+st Profile = "pmw00072"
+
+[Warrior22]
+st Profile = "pmw00073"
+
+[Warrior23]
+st Profile = "pmw00074"
+
+[Warrior24]
+st Profile = "pmw00075"
+
+[Warrior25]
+st Profile = "pmw00076"
+
+[Warrior26]
+st Profile = "pmw00077"
+
+[Warrior27]
+st Profile = "pmw00078"
+
+[Warrior28]
+st Profile = "pmw00079"
+
+[Warrior29]
+st Profile = "pmw00080"
+
+FITEnd
+

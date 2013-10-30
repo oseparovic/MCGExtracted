@@ -1,0 +1,10 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cCOMMAND DESIGNATION:GAMBIT/7PRDN2%n
+%fc5%c----------%n
+%fc6%c*** MANY BASES ***%n
+%fc21-Destroy All Enemy Units%n%n
+%fc5%c----------%n
+%fc4This strange configuration of bases was once a proving ground in the days of the Star League.%n%n
+%fc4This is our opportunity to show the enemy that we have what it takes. Destroy them all by capturing bases to aid in your defense or offense.%n%n
+%fc6<<<<END DISPATCH
+

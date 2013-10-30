@@ -1,0 +1,41 @@
+//*********************************************************************************
+// Structure Include file for mission 4_1
+
+
+if (isdead(rb)) then
+     removeMechBay(rb);
+     rbAlignment = -2;
+else
+     if ((IsCaptured(rb) == 1) AND (objectSide(rb) <> rbAlignment) AND (rbAlignment <> -2)) then
+           rbAlignment = INNER_SPHERE;
+           setPotentialContact(rb,2);
+     endif;
+endif;
+
+if ((isdead(tct)) AND (tctAlignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(7,249),FALSE);
+     setObjectActive(getterrainobjectpartid(7,291),FALSE);
+     setObjectActive(getterrainobjectpartid(7,311),FALSE);
+     setObjectActive(getterrainobjectpartid(7,329),FALSE);
+     setObjectActive(getterrainobjectpartid(7,346),FALSE);
+     setObjectActive(getterrainobjectpartid(7,386),FALSE);
+     tctAlignment = -2;
+else
+     if ((IsCaptured(tct) == 1) AND (objectSide(tct) <> tctAlignment) AND (tctAlignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(7,249),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(7,249),2);
+           objectChangeSides(getterrainobjectpartid(7,291),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(7,291),2);
+           objectChangeSides(getterrainobjectpartid(7,311),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(7,311),2);
+           objectChangeSides(getterrainobjectpartid(7,329),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(7,329),2);
+           objectChangeSides(getterrainobjectpartid(7,346),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(7,346),2);
+           objectChangeSides(getterrainobjectpartid(7,386),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(7,386),2);
+           objectChangeSides(tct,INNER_SPHERE);
+           tctAlignment = INNER_SPHERE;
+           setPotentialContact(tct,2);
+     endif;
+endif;

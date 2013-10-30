@@ -1,0 +1,34 @@
+//*********************************************************************************
+// Variable Include file for mission 7_21
+
+     static boolean                    RevealToBoth;
+     static integer                    Object0Alignment;
+     static integer                    Object1Alignment;
+     static integer                    Object2Alignment;
+     static integer                    Object3Alignment;
+     static integer                    Object4Alignment;
+     static integer                    Object5Alignment;
+     eternal integer                   MechBay1;
+     static integer                    MechBay1Alignment;
+     eternal integer                   MechBay2;
+     static integer                    MechBay2Alignment;
+     eternal integer                   WayNorthGC;
+     static integer                    WayNorthGCAlignment;
+     eternal integer                   WayNorthTC;
+     static integer                    WayNorthTCAlignment;
+     eternal integer                   ForestCacheTC;
+     static integer                    ForestCacheTCAlignment;
+     eternal integer                   CanyonCacheTC;
+     static integer                    CanyonCacheTCAlignment;
+     eternal integer                   MainHQ;
+     static integer                    MainHQAlignment;
+     eternal integer                   MainGC;
+     static integer                    MainGCAlignment;
+     eternal integer                   MainTC1;
+     static integer                    MainTC1Alignment;
+     eternal integer                   MainTC2;
+     static integer                    MainTC2Alignment;
+     eternal integer                   MainTC3;
+     static integer                    MainTC3Alignment;
+     eternal integer                   MainTC4;
+     static integer                    MainTC4Alignment;

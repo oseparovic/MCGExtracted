@@ -1,0 +1,120 @@
+//*********************************************************************************
+// Lookout Point Include file for mission 3_4
+
+if (LOP0) then
+      aPoint[0] = -2640;
+      aPoint[1] = -2960;
+      aPoint[2] = 0.0;
+      if (isCaptured(getVehicleID(CLAN_FORCE,1,0)) == 1) then
+            setRevealed(1,200.0,aPoint);
+            LOP0 = FALSE;
+      endif;
+endif;
+if (LOP1) then
+      aPoint[0] = 4530;
+      aPoint[1] = -2960;
+      aPoint[2] = 0.0;
+      if (isCaptured(getVehicleID(CLAN_FORCE,1,0)) == 1) then
+            setRevealed(1,200.0,aPoint);
+            LOP1 = FALSE;
+      endif;
+endif;
+if (LOP2) then
+      aPoint[0] = -3180;
+      aPoint[1] = 4570;
+      aPoint[2] = 0.0;
+      if (isCaptured(JabberHQ) == 1) then
+            setRevealed(1,300.0,aPoint);
+            LOP2 = FALSE;
+      endif;
+endif;
+if (LOP3) then
+      aPoint[0] = 3630;
+      aPoint[1] = 5480;
+      aPoint[2] = 0.0;
+      if (isCaptured(JabberHQ) == 1) then
+            setRevealed(1,200.0,aPoint);
+            LOP3 = FALSE;
+      endif;
+endif;
+if (LOP4) then
+      aPoint[0] = 1340;
+      aPoint[1] = 7640;
+      aPoint[2] = 0.0;
+      if (isCaptured(JabberHQ) == 1) then
+            setRevealed(1,200.0,aPoint);
+            LOP4 = FALSE;
+      endif;
+endif;
+if (LOP5) then
+      aPoint[0] = -1420;
+      aPoint[1] = -700;
+      aPoint[2] = 0.0;
+      if (isCaptured(getVehicleID(CLAN_FORCE,1,0)) == 1) then
+            setRevealed(1,200.0,aPoint);
+            LOP5 = FALSE;
+      endif;
+endif;
+if (LOP6) then
+      aPoint[0] = -1440;
+      aPoint[1] = -1640;
+      aPoint[2] = 0.0;
+      if (isCaptured(getVehicleID(CLAN_FORCE,1,0)) == 1) then
+            setRevealed(1,200.0,aPoint);
+            LOP6 = FALSE;
+      endif;
+endif;
+if (LOP7) then
+      aPoint[0] = 110;
+      aPoint[1] = -860;
+      aPoint[2] = 0.0;
+      if (isCaptured(getVehicleID(CLAN_FORCE,1,0)) == 1) then
+            setRevealed(1,200.0,aPoint);
+            LOP7 = FALSE;
+      endif;
+endif;
+if (LOP8) then
+      aPoint[0] = 2025;
+      aPoint[1] = -5780;
+      aPoint[2] = 0.0;
+      if (distanceToPosition(PLAYER_FORCE, aPoint) < 80000) then
+            setRevealed(1,600.0,aPoint);
+            LOP8 = FALSE;
+      endif;
+endif;
+if (LOP9) then
+      aPoint[0] = 250;
+      aPoint[1] = -6650;
+      aPoint[2] = 0.0;
+      if (distanceToPosition(PLAYER_FORCE, aPoint) < 80000) then
+            setRevealed(1,550.0,aPoint);
+            LOP9 = FALSE;
+      endif;
+endif;
+if (LOP10) then
+      aPoint[0] = -635;
+      aPoint[1] = 2015;
+      aPoint[2] = 0.0;
+      if (isCaptured(DodoHQ) == 1) then
+            setRevealed(1,400.0,aPoint);
+            LOP10 = FALSE;
+      endif;
+endif;
+if (LOP11) then
+      aPoint[0] = -5690;
+      aPoint[1] = 5450;
+      aPoint[2] = 0.0;
+      if (isCaptured(DodoHQ) == 1) then
+            setRevealed(1,200.0,aPoint);
+            LOP11 = FALSE;
+      endif;
+endif;
+if (LOP12) then
+      aPoint[0] = 2360;
+      aPoint[1] = 335;
+      aPoint[2] = 0.0;
+      if (isCaptured(DodoHQ) == 1) then
+            setRevealed(1,125.0,aPoint);
+            LOP12 = FALSE;
+      endif;
+endif;

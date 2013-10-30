@@ -1,0 +1,14 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:VANGUARD/03PRDN03%n
+%fc5%c----------%n
+%fc6%c***CAPTURE ENEMY CONVOY***%n
+%fc21-Capture 4 Supply Trucks.%n
+2-Capture all Supply Trucks for%n
+%t9additional Resource Points%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 2 Small  0 Large%n
+%t12SENSOR PROBE: 2%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4Spies tell us that the Jaguars are moving seven trucks loaded with valuable supplies vital to the defense of the city of Affendale through the Kenuk River region. You are to capture as many as you can- they will likely separate to avoid you. Capture as many of the trucks as you can to accomplish your mission, and make our job easier once we begin our liberation of that city.%n%n
+%fc6<<<<END DISPATCH

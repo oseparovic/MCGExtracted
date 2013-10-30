@@ -1,0 +1,47 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      MechWarrior:  81   Name: Player Vehicle Crew A  Callsign: CREW
+//
+//      Creation Date: 10/30/97   By: tom dowd
+//
+// -------------------------------------------------------------------------
+
+
+
+[General]
+st Brain = "pbrain"
+st Name =                                                  "Player Vehicle Crew A"
+l Rank =                                                    1 
+st Callsign =                                              "CREW"
+ul ID =                                                     81 
+ul Profile =                                                0 
+ul HeadIcon =                                               0 
+l paintScheme =                                             26 
+st pilotAudio =                                            "crewA"
+st pilotVideo =                                            "plt1n001"
+st Picture =                                               "pilot01.gif"
+
+[PersonalityTraits]
+c Professionalism =                                         50 
+c Decorum =                                                 50 
+c Aggressiveness =                                          50 
+c Courage =                                                 50 
+
+[Skills]
+c Piloting =                                                45 
+c Jumping =                                                 45 
+c Sensors =                                                 45 
+c Gunnery =                                                 45 
+
+[Affinities]
+c MechClass =                                               0 
+c MechType =                                                0 
+c WeaponClass =                                             0 
+uc[2] WeaponTypes =                                        0,0
+
+[Status]
+c Wounds =                                                  0 
+
+FITEnd

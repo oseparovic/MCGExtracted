@@ -1,0 +1,9 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cCOMMAND DESIGNATION:GAMBIT/07PRDN01%n
+%fc5%c----------%n
+%fc6%c*** HOUNDS AND HARES ***%n
+%fc21-Survive%n%n
+%fc5%c----------%n
+%fc4Your team must try to survive in this canyon environment. Team 1 will be hunting you down with superior firepower, so it's important to stay light and mobile. Jump capability is highly recommended. Some inactive sensor towers and turrets may be captured to aid in your flight or used by the enemy to snare you.%n%n
+%fc6<<<<END DISPATCH
+

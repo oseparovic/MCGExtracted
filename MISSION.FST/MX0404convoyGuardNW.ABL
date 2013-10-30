@@ -1,0 +1,127 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:11/12/98   BY:david abzug
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBMX0404convoyGuardNW : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+    static integer                     Order6Status;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+         Order6Status = INCOMPLETE;
+
+         SetEngageRadius(275);
+         SetDisEngageRadius(400);
+         SetSpeed(RUN);
+         MoveAndFireON;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (gametime > 22) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              Order2Status = Escort(getVehicleID(CLAN_FORCE, 2,0),NORTHWEST);
+              if (Order2Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order2Status <> INCOMPLETE) then
+                   // Order  3 
+                   if (Order3Status == INCOMPLETE) then
+                        Order3Status = Escort(getVehicleID(CLAN_FORCE, 2, 1),NORTHWEST);
+                        if (Order3Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   else
+                        if (Order3Status <> INCOMPLETE) then
+                             // Order  4 
+                             if (Order4Status == INCOMPLETE) then
+                                  Order4Status = Escort(getVehicleID(CLAN_FORCE, 2, 2),NORTHWEST);
+                                  if (Order4Status == INCOMPLETE) then
+                                       return(1);
+                                  endif;
+                             else
+                                  if (Order4Status <> INCOMPLETE) then
+                                       // Order  5 
+                                       if (Order5Status == INCOMPLETE) then
+                                            Order5Status = Escort(getVehicleID(CLAN_FORCE, 2, 3),NORTHWEST);
+                                            if (Order5Status == INCOMPLETE) then
+                                                 return(1);
+                                            endif;
+                                       else
+                                            if (Order5Status <> INCOMPLETE) then
+                                                 // Order  6 
+                                                 if (Order6Status == INCOMPLETE) then
+                                                      Order6Status = Attack;
+                                                      if (Order6Status == INCOMPLETE) then
+                                                           return(1);
+                                                      endif;
+                                                 endif;
+                                            endif;
+                                       endif;
+                                  endif;
+                             endif;
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = Attack;
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

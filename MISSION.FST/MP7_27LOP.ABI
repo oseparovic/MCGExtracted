@@ -1,0 +1,21 @@
+//*********************************************************************************
+// Lookout Point Include file for mission 7_27
+
+if (LOP0) then
+      aPoint[0] = -362;
+      aPoint[1] = -1306;
+      aPoint[2] = 0.0;
+      if (distanceToPosition(CLAN_FORCE, aPoint) < 50) then
+            sendMessage(45,0);
+            handleMessage;
+      endif;
+endif;
+if (LOP1) then
+      aPoint[0] = -362;
+      aPoint[1] = -1306;
+      aPoint[2] = 0.0;
+      if (distanceToPosition(PLAYER_FORCE, aPoint) < 50) then
+            sendMessage(46,0);
+            handleMessage;
+      endif;
+endif;

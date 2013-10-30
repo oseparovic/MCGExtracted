@@ -1,0 +1,132 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:2/3/98   BY:david abzug
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0105mlng2 : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+
+    // PATHS
+    static path                        Path1;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+
+         // Paths
+
+         Path1[0,0] = -2295; // X
+         Path1[0,1] = 3435; // Y
+
+         Path1[1,0] = -871; // X
+         Path1[1,1] = 3435; // Y
+
+         Path1[2,0] = -135; // X
+         Path1[2,1] = 3541; // Y
+
+         Path1[3,0] = 900; // X
+         Path1[3,1] = 2608; // Y
+
+         SetEngageRadius(125);
+         SetSpeed(RUN);
+         SetMinimumDistance(45);
+         MoveAndFireON;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = MovePath(Path1,4);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order1Status <> INCOMPLETE) then
+                   // Order  2 
+                   if (Order2Status == INCOMPLETE) then
+                        Order2Status = AttackObject(getTerrainObjectPartID(15,50),FALSE,TRUE);
+                        if (Order2Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   else
+                        if (Order2Status <> INCOMPLETE) then
+                             // Order  3 
+                             if (Order3Status == INCOMPLETE) then
+                                  Order3Status = AttackObject(getTerrainObjectPartID(15,69),FALSE,TRUE);
+                                  if (Order3Status == INCOMPLETE) then
+                                       return(1);
+                                  endif;
+                             else
+                                  if (Order3Status <> INCOMPLETE) then
+                                       // Order  4 
+                                       if (Order4Status == INCOMPLETE) then
+                                            Order4Status = AttackObject(getTerrainObjectPartID(15,109),FALSE,TRUE);
+                                            if (Order4Status == INCOMPLETE) then
+                                                 return(1);
+                                            endif;
+                                       else
+                                            if (Order4Status <> INCOMPLETE) then
+                                                 // Order  5 
+                                                 if (Order5Status == INCOMPLETE) then
+                                                      Order5Status = AttackObject(getTerrainObjectPartID(15,91),FALSE,TRUE);
+                                                      if (Order5Status == INCOMPLETE) then
+                                                           return(1);
+                                                      endif;
+                                                 endif;
+                                            endif;
+                                       endif;
+                                  endif;
+                             endif;
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

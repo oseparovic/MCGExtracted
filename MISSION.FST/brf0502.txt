@@ -1,0 +1,21 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:CUTTHROAT/05PRDN02%n
+%fc5%c----------%n
+%fc6%c***EXTERMINATE CLAN PRESENCE***%n
+%fc21-Seek And Destroy All Clan%n
+%t9`Mechs (8)%n
+MISSION TIME LIMIT- 15:00%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 0 Small  0 Large%n
+%t12SENSOR PROBE: 0%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4Your primary objective is to search for and eliminate 8 Clan 'Mechs in the area.%n%n
+We've had token forces harassing the Binary of Clan OmniMechs Captain Nairn successfully isolated and have reduced their number by two. Now's the time to finish the job. The destruction of these ClanWarriors will deal a devastating moral blow to the enemy and deny the Clan their best MechWarriors in defense of the Starbase.%n%n
+Be advised that Clan forces are already en route to Chresbute, and will undoubtedly drop rescue forces very soon. We have only a small window of opportunity, quickly search and destroy.%n%n
+Intelligence reports that the ClanWarriors have been ordered to dig in and await extraction and not to take on any approaching Inner Sphere force in a direct confrontation. Apparently, the Smoke Jaguar commanders fear that the Starbase will be under-defended without them. Expect guerilla tactics from the enemy.%n%n
+%fm%fc1%c**TACTICAL WARNING**%n
+%fs%fc2*ALL Clan Pilots are highly%n
+%t9skilled Elite ClanWarriors.%n%n
+%fc6<<<<END DISPATCH
+

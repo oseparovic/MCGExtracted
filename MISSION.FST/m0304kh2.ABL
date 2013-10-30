@@ -1,0 +1,149 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:5/8/98   BY:Tim Ryan
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0304kh2 : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+
+    // PATHS
+    static path                        HillToTrees;
+    static path                        KingHill;
+    static path                        TreesToBase;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+
+         // Paths
+
+         HillToTrees[0,0] = -5054; // X
+         HillToTrees[0,1] = -1065; // Y
+
+         HillToTrees[1,0] = -4889; // X
+         HillToTrees[1,1] = -1504; // Y
+
+         HillToTrees[2,0] = -5486; // X
+         HillToTrees[2,1] = -1684; // Y
+
+         HillToTrees[3,0] = -5030; // X
+         HillToTrees[3,1] = -2510; // Y
+
+         HillToTrees[4,0] = -3969; // X
+         HillToTrees[4,1] = -2865; // Y
+
+         HillToTrees[5,0] = -3962; // X
+         HillToTrees[5,1] = -2875; // Y
+
+         KingHill[0,0] = -2139; // X
+         KingHill[0,1] = 2598; // Y
+
+         KingHill[1,0] = -2992; // X
+         KingHill[1,1] = 2692; // Y
+
+         KingHill[2,0] = -4650; // X
+         KingHill[2,1] = 1713; // Y
+
+         KingHill[3,0] = -5454; // X
+         KingHill[3,1] = -151; // Y
+
+         TreesToBase[0,0] = -4481; // X
+         TreesToBase[0,1] = -2686; // Y
+
+         TreesToBase[1,0] = -3497; // X
+         TreesToBase[1,1] = -3291; // Y
+
+         TreesToBase[2,0] = -1842; // X
+         TreesToBase[2,1] = -4814; // Y
+
+         SetEngageRadius(250);
+         SetDisEngageRadius(10000);
+         SetSpeed(RUN);
+         SetTactic(TACTIC_OPTIMAL);
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (gametime > 80) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              Order3Status = MovePath(TreesToBase,3);
+              if (Order3Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order3Status <> INCOMPLETE) then
+                   // Order  4 
+                   if (Order4Status == INCOMPLETE) then
+                        Order4Status = AttackObject(getTerrainObjectPartID(26,368),TRUE,TRUE);
+                        if (Order4Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = MovePath(KingHill,4);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order1Status <> INCOMPLETE) then
+                   // Order  2 
+                   if (Order2Status == INCOMPLETE) then
+                        Order2Status = Attack;
+                        if (Order2Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

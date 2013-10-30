@@ -1,0 +1,178 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:4/16/98   BY:Mike Lee
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0406_2Jump : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+    static integer                     Order6Status;
+    static integer                     Order7Status;
+    static integer                     Order8Status;
+    static integer                     Order9Status;
+    static integer                     Order10Status;
+    static integer                     Order11Status;
+
+    // PATHS
+    static path                        jump;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+         Order6Status = INCOMPLETE;
+         Order7Status = INCOMPLETE;
+         Order8Status = INCOMPLETE;
+         Order9Status = INCOMPLETE;
+         Order10Status = INCOMPLETE;
+         Order11Status = INCOMPLETE;
+
+         // Paths
+
+         jump[0,0] = -2328; // X
+         jump[0,1] = 981; // Y
+
+         jump[1,0] = -2721; // X
+         jump[1,1] = 1011; // Y
+
+         jump[2,0] = -3340; // X
+         jump[2,1] = 950; // Y
+
+         SetEngageRadius(175);
+         SetSpeed(RUN);
+         MoveAndFireON;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (inHotSpot(me,0,1135,75)) then
+         // Order  4 
+         if (Order4Status == INCOMPLETE) then
+              SetEngageRadius(250);
+              Order4Status = SUCCESS;
+         else
+              if (Order4Status <> INCOMPLETE) then
+                   // Order  5 
+                   if (Order5Status == INCOMPLETE) then
+                        SetDisengageRadius(250);
+                        Order5Status = SUCCESS;
+                   else
+                        if (Order5Status <> INCOMPLETE) then
+                             // Order  6 
+                             if (Order6Status == INCOMPLETE) then
+                                  Order6Status = Sentry(0,1135);
+                                  if (Order6Status == INCOMPLETE) then
+                                       return(1);
+                                  endif;
+                             endif;
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+    if (beenHit) then
+         // Order  7 
+         if (Order7Status == INCOMPLETE) then
+              Flag2 = TRUE;
+              Order7Status = SUCCESS;
+         endif;
+    endif;
+    if (getTarget(CUR_OBJECT_ID) > 0) then
+         // Order  8 
+         if (Order8Status == INCOMPLETE) then
+              Flag2 = TRUE;
+              Order8Status = SUCCESS;
+         endif;
+    endif;
+    if (numDead(CLAN_STAR5) >= 1) then
+         // Order  9 
+         if (Order9Status == INCOMPLETE) then
+              Flag2 = TRUE;
+              Order9Status = SUCCESS;
+         endif;
+    endif;
+    if (numDead(CLAN_STAR4) >= 1) then
+         // Order  10 
+         if (Order10Status == INCOMPLETE) then
+              Flag2 = TRUE;
+              Order10Status = SUCCESS;
+         endif;
+    endif;
+    if (flag2) then
+         // Order  11 
+         if (Order11Status == INCOMPLETE) then
+              SetEngageRadius(350);
+              Order11Status = SUCCESS;
+         endif;
+    endif;
+    if (inHotSpot(PLAYER_FORCE,-2535,485,50)) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              Order2Status = MovePath(jump,3);
+              if (Order2Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order2Status == SUCCESS) then
+                   // Order  3 
+                   if (Order3Status == INCOMPLETE) then
+                        SetTactic(TACTIC_STOP_AND_ATTACK);
+                        Order3Status = SUCCESS;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = Attack;
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

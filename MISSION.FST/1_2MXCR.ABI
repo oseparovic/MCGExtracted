@@ -1,0 +1,73 @@
+//*********************************************************************************
+// Creation Include file for mission 1_2
+
+if ((gametime > 4) AND (gametime < 16)) then
+     if (gametime > 5) then
+           objectCreate(VehicleID(CLAN_STAR0,1,0));
+     endif;
+     if (gametime > 10) then
+           objectCreate(VehicleID(CLAN_STAR0,2,0));
+     endif;
+     if (gametime > 15) then
+           objectCreate(VehicleID(CLAN_STAR0,3,0));
+     endif;
+endif;
+if ((gametime > 19) AND (gametime < 31)) then
+     if (gametime > 20) then
+           objectCreate(VehicleID(CLAN_STAR0,4,0));
+     endif;
+     if (gametime > 25) then
+           objectCreate(VehicleID(CLAN_STAR0,5,0));
+     endif;
+     if (gametime > 30) then
+           objectCreate(VehicleID(CLAN_STAR1,0,0));
+     endif;
+endif;
+if ((gametime > 34) AND (gametime < 46)) then
+     if (gametime > 35) then
+           objectCreate(VehicleID(CLAN_STAR1,1,0));
+     endif;
+     if (gametime > 40) then
+           objectCreate(VehicleID(CLAN_STAR1,2,0));
+     endif;
+     if (gametime > 45) then
+           objectCreate(VehicleID(CLAN_STAR1,3,0));
+     endif;
+endif;
+if ((gametime > 414) AND (gametime < 426)) then
+     if (gametime > 415) then
+           objectCreate(VehicleID(CLAN_STAR2,0,0));
+     endif;
+     if (gametime > 420) then
+           objectCreate(VehicleID(CLAN_STAR2,1,0));
+     endif;
+     if (gametime > 425) then
+           objectCreate(VehicleID(CLAN_STAR2,2,0));
+     endif;
+endif;
+if ((gametime > 429) AND (gametime < 436)) then
+     if (gametime > 430) then
+           objectCreate(VehicleID(CLAN_STAR2,3,0));
+     endif;
+     if (gametime > 435) then
+           objectCreate(VehicleID(CLAN_STAR2,4,0));
+     endif;
+endif;
+if ((gametime > 649) AND (gametime < 651)) then
+     if (gametime > 650) then
+           objectCreate(VehicleID(CLAN_STAR3,0,0));
+     endif;
+endif;
+if ((gametime > 724) AND (gametime < 731)) then
+     if (gametime > 725) then
+           objectCreate(VehicleID(CLAN_STAR3,1,0));
+     endif;
+     if (gametime > 730) then
+           objectCreate(VehicleID(CLAN_STAR3,2,0));
+     endif;
+endif;
+if ((gametime > 744) AND (gametime < 746)) then
+     if (gametime > 745) then
+           objectCreate(VehicleID(CLAN_STAR3,3,0));
+     endif;
+endif;

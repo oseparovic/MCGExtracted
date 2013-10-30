@@ -1,0 +1,110 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:1/9/98   BY:Duri Price
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0101sportcar : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+
+    // PATHS
+    static path                        Path1;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+
+         // Paths
+
+         Path1[0,0] = -1706; // X
+         Path1[0,1] = 2525; // Y
+
+         Path1[1,0] = -890; // X
+         Path1[1,1] = 2520; // Y
+
+         Path1[2,0] = -867; // X
+         Path1[2,1] = 1750; // Y
+
+         Path1[3,0] = -835; // X
+         Path1[3,1] = 625; // Y
+
+         Path1[4,0] = -738; // X
+         Path1[4,1] = -1440; // Y
+
+         Path1[5,0] = -2210; // X
+         Path1[5,1] = -1440; // Y
+
+         IdentifySensorContactsOFF;
+         MoveToEngageOFF;
+         StopFighting;
+         SetSpeed(RUN);
+         SetTactic(TACTIC_OPTIMAL);
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (inHotSpot(PLAYER_FORCE,-1960,2565,90)) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Flag3 = TRUE;
+              Order1Status = SUCCESS;
+         endif;
+    endif;
+    if (flag3) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              StopFighting;
+              Order2Status = SUCCESS;
+         endif;
+    endif;
+    if (flag3) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              Order3Status = MovePath(Path1,6);
+              if (Order3Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+
+         return(1);
+endmodule.

@@ -1,0 +1,10 @@
+//*********************************************************************************
+// Variable Include file for mission 2_2
+
+     eternal integer                   BaseTC;
+     static integer                    BaseTCAlignment;
+     eternal integer                   OtherTC;
+     static integer                    OtherTCAlignment;
+     eternal integer                   GC;
+     static integer                    GCAlignment;
+     static boolean                    LOP0;

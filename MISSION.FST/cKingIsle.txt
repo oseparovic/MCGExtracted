@@ -1,0 +1,16 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc5%c----------%n
+%fc6%c***King of the Isle***%n
+%fc2(1) Capture and Hold HQ On Hill%n(2) Destroy Enemy Command Center%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY:    0 Small    0 Large%n
+%t12SENSOR PROBE:   0%n
+%t12CAMERA DRONE:    0%n%n
+%fc5%c----------%n
+%fc4You have two objectives here.%n%nThe easier one is to destroy the Enemy Command Center inside their base.%n%nThe harder one is to capture and HOLD the HQ on top of the big hill in the NE corner of the map.  If you destroy all enemy forces and hold the HQ then you will succeed in this objective.  If you hold the HQ at the end of the mission you will succeed in this objective.%n%nOf course if you only succeed in one objective before the timer expires and not the other one... well, then you still lose.%n%n
+%fc5%c----------%n
+%fc1%fm%c**TACTICAL WARNING**%n
+%fc2%fs*None%n%n
+%fm%fc6%c**TACTICAL NOTICE**%n
+%fs%fc2*None%n%n
+%fc6<<<<END DISPATCH

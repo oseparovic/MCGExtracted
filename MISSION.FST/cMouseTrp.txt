@@ -1,0 +1,9 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc5%c----------%n
+%fc6%c***Mouse Trap***%n
+%fc5%c----------%n
+%fc4  There are three HQ buildings on the map. There are also three ways to win the mission.  Hold two of the three HQs when the timer expires and you win.  Hold two of the three HQs while all the enemy forces are destroyed and you win.  Hold all three HQs at ANY time and you win.%n%n
+%fc5%c----------%n
+%fc1%fm%c**TACTICAL WARNING**%n
+%fc2%fs* The turret and gate controls for each HQ are outside the base's perimeters, don't let your opponent capture them while you are in the base or it's gonna get real painful for you, real quick.%n%n
+%fc6<<<<END DISPATCH

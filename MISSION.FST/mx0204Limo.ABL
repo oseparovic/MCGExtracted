@@ -1,0 +1,184 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:10/29/98   BY:david abzug
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBmx0204Limo : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+    static integer                     Order6Status;
+
+    // PATHS
+    static path                        GetMeOuttaHere;
+    static path                        GoEast;
+    static path                        Gowest;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+         Order6Status = INCOMPLETE;
+
+         // Paths
+
+         GetMeOuttaHere[0,0] = -1212; // X
+         GetMeOuttaHere[0,1] = 1211; // Y
+
+         GetMeOuttaHere[1,0] = -1212; // X
+         GetMeOuttaHere[1,1] = 1900; // Y
+
+         GoEast[0,0] = -1212; // X
+         GoEast[0,1] = 1211; // Y
+
+         GoEast[1,0] = -1212; // X
+         GoEast[1,1] = 1900; // Y
+
+         GoEast[2,0] = -53; // X
+         GoEast[2,1] = 2239; // Y
+
+         GoEast[3,0] = 140; // X
+         GoEast[3,1] = 2500; // Y
+
+         GoEast[4,0] = 1215; // X
+         GoEast[4,1] = 2640; // Y
+
+         GoEast[5,0] = 1222; // X
+         GoEast[5,1] = 3901; // Y
+
+         GoEast[6,0] = 1604; // X
+         GoEast[6,1] = 3918; // Y
+
+         GoEast[7,0] = 1588; // X
+         GoEast[7,1] = 5960; // Y
+
+         Gowest[0,0] = -1212; // X
+         Gowest[0,1] = 1211; // Y
+
+         Gowest[1,0] = -1212; // X
+         Gowest[1,1] = 1900; // Y
+
+         Gowest[2,0] = -1212; // X
+         Gowest[2,1] = 2244; // Y
+
+         Gowest[3,0] = -1730; // X
+         Gowest[3,1] = 2241; // Y
+
+         Gowest[4,0] = -1738; // X
+         Gowest[4,1] = 2741; // Y
+
+         Gowest[5,0] = -2003; // X
+         Gowest[5,1] = 3377; // Y
+
+         Gowest[6,0] = -2419; // X
+         Gowest[6,1] = 3890; // Y
+
+         Gowest[7,0] = -3684; // X
+         Gowest[7,1] = 3860; // Y
+
+         SetEngageRadius(150);
+         SetDisEngageRadius(151);
+         StopFighting;
+         SetSpeed(RUN);
+         SetTactic(TACTIC_RUN_AWAY);
+         MoveAndFireON;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (GeneralAlarm) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              SetRevealed(1,100.0,CurrentPosition);
+              Order2Status = SUCCESS;
+         endif;
+    endif;
+    if ((GeneralAlarm) and (flag1)) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              Order3Status = MovePath(GoEast,8);
+              if (Order3Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order3Status <> INCOMPLETE) then
+                   // Order  6 
+                   if (Order6Status == INCOMPLETE) then
+                        Order6Status = Withdraw;
+                        if (Order6Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+    if ((GeneralAlarm) and (flag8)) then
+         // Order  4 
+         if (Order4Status == INCOMPLETE) then
+              Order4Status = MovePath(Gowest,8);
+              if (Order4Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order4Status <> INCOMPLETE) then
+                   // Order  5 
+                   if (Order5Status == INCOMPLETE) then
+                        Order5Status = Withdraw;
+                        if (Order5Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              GeneralAlarm = FALSE;
+              Order1Status = SUCCESS;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

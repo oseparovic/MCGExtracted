@@ -1,0 +1,26 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:BEACHHEAD/01PRDN05%n
+%fc5%c----------%n
+%fc6%c**DEFEND FARMS FROM ATTACK**%n
+%fc21-Defend both farms%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 5 Small  1 Large%n
+%t12SENSOR PROBE: 0%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4By assisting us with our landing and reconnaissance, a Port Arthur resistance cell has revealed itself to the Smoke Jaguars.%n%n
+The brave men and women of the cell are currently hiding out on two farms in the Vanderhome region. Unfortunately, the Jaguars have discovered their location and have dispatched a number of small strike forces to that area. Your mission is to stop the Jaguars and protect both farms.%n%n
+Given the thick forest in the area, Tactical believes a minelayer could prove valuable in booby-trapping the limited paths through the trees. Battalion Transport is also able to provide an additional forward drop zone usable as a scouting point. Use it only if you believe necessary.%n%n
+Your 'Mech forces will be extracted upon completion of the mission.%n
+%fc5%c----------%n
+%fm%fc6%c**TACTICAL NOTICE**%n
+%fs%fc2*Mine layers can be used to lay down%n
+%t9fields of mines that prevent or delay%n
+%t9enemy movement through an area%n
+*Be prepared for multiple waves of enemy%n
+%t9forces.%n
+*Remember, vehicles deployed into a%n
+%t9mission are not recovered at the end%n
+%t9of that mission.%n%n
+%fc6<<<<END DISPATCH
+

@@ -1,0 +1,20 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:MINOTAUR/03PRDN04%n
+%fc5%c----------%n
+%fc6%c***DESTROY ENGINE DRILLS***%n
+%fc21-Destroy Hidden Vault Drill Alpha%n
+%fc22-Destroy Vault Drill Group Beta%n
+%fc23-Destroy Vault Drill Group Gamma%n
+%fc24-Destroy Vault Drill Group Delta%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 2 Small%n
+%t12SENSOR PROBE: 2%n
+%t12CAMERA DRONE: 0%n%n
+%fs%fc5%c----------%n
+%fc4Your successful assault upon the Jaguar Complex has us in prime position to strike into the Jaguar Main Command.  Strategic also reports that the Star Colonel%n
+%fc2Marcus Kotare%fc4 himself is overseeing the drilling into the weapon vaults for Star League nuclear weapons.  Take your forces against the Jaguars and destroy all four drill groups.  If you fail, Kotare will have enough nuclear ordnance to turn planets into lifeless husks.%n%n
+%fc4Recon reports that the drills have been set up in four different groups, unfortunately we have been able to pinpoint only three of the groups.  All four groups of drills must be destroyed to ensure that Kotare and his Jaguars have none of these weapons.%n%n
+%fc5%c----------%n
+%fc6%c**TACTICAL NOTICE**%n%n
+%fc6*%fc2 Recon reports that Marcus Kotare and his second in command, Burnell Wirth, are both in the area piloting %fc6Turkina%fc2 class assault OmniMechs.%n%n
+%fc6<<<<END DISPATCH

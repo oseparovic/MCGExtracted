@@ -1,0 +1,47 @@
+//*********************************************************************************
+// Structure Include file for mission 4_5
+
+
+if ((isdead(tctnorth)) AND (tctnorthAlignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(23,58),FALSE);
+     setObjectActive(getterrainobjectpartid(24,0),FALSE);
+     setObjectActive(getterrainobjectpartid(24,2),FALSE);
+     setObjectActive(getterrainobjectpartid(24,5),FALSE);
+     setObjectActive(getterrainobjectpartid(24,8),FALSE);
+     tctnorthAlignment = -2;
+else
+     if ((IsCaptured(tctnorth) == 1) AND (objectSide(tctnorth) <> tctnorthAlignment) AND (tctnorthAlignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(23,58),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(23,58),2);
+           objectChangeSides(getterrainobjectpartid(24,0),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(24,0),2);
+           objectChangeSides(getterrainobjectpartid(24,2),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(24,2),2);
+           objectChangeSides(getterrainobjectpartid(24,5),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(24,5),2);
+           objectChangeSides(getterrainobjectpartid(24,8),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(24,8),2);
+           objectChangeSides(tctnorth,INNER_SPHERE);
+           tctnorthAlignment = INNER_SPHERE;
+           setPotentialContact(tctnorth,2);
+     endif;
+endif;
+
+if ((isdead(tctsouth)) AND (tctsouthAlignment <> -2)) then
+     setObjectActive(getterrainobjectpartid(24,319),FALSE);
+     setObjectActive(getterrainobjectpartid(25,301),FALSE);
+     setObjectActive(getterrainobjectpartid(25,303),FALSE);
+     tctsouthAlignment = -2;
+else
+     if ((IsCaptured(tctsouth) == 1) AND (objectSide(tctsouth) <> tctsouthAlignment) AND (tctsouthAlignment <> -2)) then
+           objectChangeSides(getterrainobjectpartid(24,319),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(24,319),2);
+           objectChangeSides(getterrainobjectpartid(25,301),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(25,301),2);
+           objectChangeSides(getterrainobjectpartid(25,303),INNER_SPHERE);
+           setPotentialContact(getterrainobjectpartid(25,303),2);
+           objectChangeSides(tctsouth,INNER_SPHERE);
+           tctsouthAlignment = INNER_SPHERE;
+           setPotentialContact(tctsouth,2);
+     endif;
+endif;

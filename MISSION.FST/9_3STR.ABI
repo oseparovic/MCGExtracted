@@ -1,0 +1,15 @@
+//*********************************************************************************
+// Structure Include file for mission 9_3
+
+if (isdead(Mbay)) then
+     removeMechBay(Mbay);
+else
+     if ((IsCaptured(Mbay) == 1) AND (objectSide(Mbay) <> INNER_SPHERE)) then
+           objectChangeSides(Mbay,INNER_SPHERE);
+     endif;
+endif;
+
+if (isdead(Vbay)) then
+     removeVehicleBay(Vbay);
+endif;
+

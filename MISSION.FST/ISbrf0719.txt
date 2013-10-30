@@ -1,0 +1,11 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cMISSION COMMAND:GAMBIT/7PRDN19%n
+%fc5%c----------%n
+%fc6%c*** INDUSTRIAL STRIKE ***%n
+%fc21-Defend Industrial Complexes%n%n
+%fc5%c----------%n
+%fc4Your force has been assigned to protect the valuable Gitelman MekWorks in the northwestern industrial district of the city of Leeman. Defend at least 2 of the Industrial Complexes at the MekWorks before the timer expires.%n%n
+%fc4Be advised that the turrets surrounding the Mekworks are powered by the city generators which are located in the southwestern commerical district.%n%n
+%fc6<<<<END DISPATCH
+
+

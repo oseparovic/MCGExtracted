@@ -1,0 +1,388 @@
+//*********************************************************************************
+
+module MissionBrainE3_0101 : integer;
+
+     //--------------------------------------------------------
+     // Operation:  1                  Mission:  1 
+     // MissionID:  61                 Name: Rescue 'Mechs
+     // Designer: Rob Nicholls
+     // Created: 5/7/97                By: ROB NICHOLLS
+     //--------------------------------------------------------
+
+//------------------------------------------------------------------
+//
+//     Constant Definitions
+//
+//------------------------------------------------------------------
+     const
+
+          #include_ "misconst.abi"
+
+//------------------------------------------------------------------
+//
+//     Type Definitions
+//
+//------------------------------------------------------------------
+     type
+
+            Position = real[3];
+
+//------------------------------------------------------------------
+//
+//     Variable Declarations
+//
+//------------------------------------------------------------------
+      var
+
+            static integer      ScenarioResult;
+            static boolean      ExitTimerSet;
+            static integer      VictoryLevel;
+            char[40]            dstring;
+            real                gametime;
+            static real         nextsecond;
+            static boolean      Objective_0_Decided;
+			static boolean      Objective_1_Decided;
+			static boolean		Objective_2_Decided;
+
+//		Mission Specific Variables
+		
+			static real[3]		Guardpoint;
+			static real[3]		Revealpoint;
+			static real[3]		Extractpoint;
+			static real[3]		Supplypoint;
+			static integer		clantower;
+			static integer		fuelstore;
+			static integer		barracks1;
+			static integer		barracks2;
+			static integer		bunker1;
+			static integer		bunker2;
+			static integer		bunker3;
+			static integer		HQbldg;
+			static integer		Awesome;
+			static integer		Hunchback;
+			static integer		Truck;
+			static integer		Commando1;
+			static integer		Commando2;
+
+			static boolean		ScenarioTimerSet;
+			static boolean		Commando1Home;
+			static boolean		Commando2Home;
+			static boolean		TruckHome;
+			eternal boolean		SoundAlarm;
+
+
+#include_ "MiscFunc.ABI"
+
+//------------------------------------------------------------------
+//
+//     Init Function    (automatically run first time through)
+//
+//------------------------------------------------------------------
+function init;
+
+       code
+            ScenarioResult = PLAYING;
+            ExitTimerSet = FALSE;
+			ScenarioTimerSet = FALSE;
+		  	SoundAlarm = FALSE;
+            VictoryLevel = 1;
+            NextSecond = 1.0;
+            Objective_0_Decided = FALSE;
+			Objective_1_Decided = FALSE;
+			Objective_2_Decided = FALSE;
+
+			Revealpoint[0] = -1800.0;
+			Revealpoint[1] = 2650.0;
+			Revealpoint[2] = 0.0;
+			setRevealed(1,100.0,Revealpoint);
+
+			Guardpoint[0] = -158.0;
+			Guardpoint[1] = -671.0;
+			Guardpoint[2] = 0.0;
+
+			Extractpoint[0] = 1890.0;
+			Extractpoint[1] = 4590.0;
+			Extractpoint[2] = 0.0;
+
+			Supplypoint[0] = -1743.0;
+			Supplypoint[1] = 4525.0;
+			Supplypoint[2] = 0.0;
+
+			//setObjectivePos(0,-2285.0,3000.0,0.0);
+			//setObjectivePos(1,1890.0,4590.0,0.0);
+			
+			clantower=getTerrainObjectPartId(20,118);
+			fuelstore=getTerrainObjectPartId(8,396);
+			barracks1=getTerrainObjectPartId(14,47);
+			barracks2=getTerrainObjectPartId(14,49);
+			bunker1=getTerrainObjectPartId(14,27);
+			bunker2=getTerrainObjectPartId(14,7);
+			bunker3=getTerrainObjectPartId(8,387);
+			HQbldg=getTerrainObjectPartId(8,369);
+
+			objectChangeSides(clantower,-1);
+
+			setobjectdamage(fuelstore,60);
+			setobjectdamage(barracks1,30);
+			setobjectdamage(barracks2,75);
+			setobjectdamage(bunker1,55);
+			setobjectdamage(bunker2,35);
+			setobjectdamage(bunker3,85);
+			setobjectdamage(HQbldg,85);
+
+			Awesome = PLAYER_VEHICLE0_LANCE0;
+			Hunchback = PLAYER_VEHICLE1_LANCE0;
+			Truck = PLAYER_VEHICLE2_LANCE0;
+			Commando1 = PLAYER_VEHICLE0_LANCE1;
+			Commando2 = PLAYER_VEHICLE1_LANCE1;
+
+			Commando1Home = FALSE;
+			Commando2Home = FALSE;
+			TruckHome = FALSE;
+
+endfunction;
+
+//------------------------------------------------------------------
+//
+//     Main Code
+//
+//------------------------------------------------------------------
+       code
+
+            //------------------------------------------------
+            // Debug Window Game Clock Second Counter
+            // Note:  This is used by some included functions.
+            //------------------------------------------------
+            gametime = gettime;
+			If (gametime >= nextsecond) Then
+                  nextsecond = gametime + 1;
+                  dstring = "Gametime: ";
+                  concat(dstring,gametime);
+            //      Print (dstring);
+            endif;
+
+            //---------------------------------------
+            // Create Non-Existing Vehicles
+            //---------------------------------------
+            #include_ "1_1CRE.ABI"
+
+            //---------------------------------------
+            // Activate inactive vehicles
+            //---------------------------------------
+            #include_ "1_1ACT.ABI"
+
+            // SET EXIT TIMER IF RECON LANCE DEAD/DISABLED
+            //---------------------------------------
+          	
+			if ((NOT ExitTimerSet) AND ((NOT isalive(Commando1)) OR (NOT isalive(Commando2)))) then
+                  setTimer(EXIT_TIMER,20.0);
+                  ExitTimerSet = TRUE;
+                  PlayDigitalMusic(DEFEAT_MUSIC);
+                  // Fail any Undecided Objectives
+                  if (checkObjectiveStatus(0) == INCOMPLETE) then
+                        setObjectiveStatus(0, FAILED);
+                  endif;
+				  if (checkObjectiveStatus(1) == INCOMPLETE) then
+                        setObjectiveStatus(1, FAILED);
+				  endif;
+				  if (checkObjectiveStatus(2) == INCOMPLETE) then
+                        setObjectiveStatus(2, FAILED);
+				  endif;
+				 
+				  VictoryLevel = 1;
+
+            endif;
+
+			//---------------------------------------
+            // SET EXIT TIMER IF PLAYER FORCE DEAD/DISABLED
+            //---------------------------------------
+
+			if ((NOT ExitTimerSet) AND (NOT isalive(PLAYER_FORCE))) then
+                  setTimer(EXIT_TIMER,20.0);
+                  ExitTimerSet = TRUE;
+                  PlayDigitalMusic(DEFEAT_MUSIC);
+                  // Fail any Undecided Objectives
+                  if (checkObjectiveStatus(0) == INCOMPLETE) then
+                        setObjectiveStatus(0, FAILED);
+                  endif;
+				  if (checkObjectiveStatus(1) == INCOMPLETE) then
+                        setObjectiveStatus(1, FAILED);
+				  endif;
+				  if (checkObjectiveStatus(2) == INCOMPLETE) then
+                        setObjectiveStatus(2, FAILED);
+				  endif;
+				 
+				  VictoryLevel = 0;
+
+            endif;
+
+
+			//---------------------------------------
+            // SET EXIT TIMER IF ALL CLAN FORCES DEAD/DISABLED
+            //---------------------------------------
+
+          	
+			if ((NOT ExitTimerSet) AND (NOT isalive(CLAN_FORCE))) then
+                  setTimer(EXIT_TIMER,20.0);
+                  ExitTimerSet = TRUE;
+                  PlayDigitalMusic(VICTORY_MUSIC);
+                  // Succeed any Undecided Objectives
+                  if (checkObjectiveStatus(0) == INCOMPLETE) then
+                        setObjectiveStatus(0, SUCCESS);
+                  endif;
+				  if (checkObjectiveStatus(1) == INCOMPLETE) then
+                        setObjectiveStatus(1, SUCCESS);
+				  endif;
+				  if (checkObjectiveStatus(2) == INCOMPLETE) then
+                        setObjectiveStatus(2, SUCCESS);
+				  endif;
+
+				  VictoryLevel = 4;
+
+            endif;
+
+			//---------------------------------------
+            // Radio Silence for Recon Lance
+            //---------------------------------------
+            
+			//If Strikers alive - Shut up! If not, you can talk...
+			if ((isalive(CLAN_STAR0)) AND (NOT(Objective_0_Decided))) then
+				setRadio(27,FALSE);
+				setRadio(28,FALSE);
+			else
+				setRadio(27,TRUE);
+				setRadio(28,TRUE);
+			endif;
+
+
+		    //---------------------------------------
+            // Guard Tower Resolution
+            //---------------------------------------
+            
+			//Are any of the player's forces near the guardtower?
+			if ((distancetoPosition(PLAYER_FORCE,Guardpoint) <= 50) AND (NOT ScenarioTimerSet)) then
+			   setTimer(Scenario_Timer_1, 15.0);
+			   ScenarioTimerSet = TRUE;
+			endif;
+
+			//Is the guardtower intact? If not destroyed in time, sound alarm!
+			if (objectStatus(clantower) <> OBJECT_STATUS_DESTROYED) then
+				if ((ScenarioTimerSet) AND (NOT SoundAlarm)) then
+				  if (checkTimer (Scenario_Timer_1) < 6.0) then
+				  	playSoundEffect(18);
+				  else
+					playSoundEffect(20);
+				  endif;
+				  if (checkTimer (Scenario_Timer_1) == 0.0) then
+				     SoundAlarm = TRUE;
+				  endif;
+				endif;
+			endif;
+
+			//---------------------------------------
+            // Objective Resolution
+            //---------------------------------------
+            
+            if (checkObjectiveStatus(0) == INCOMPLETE) then
+
+            	//Is tank force at base destroyed?
+            	if (NOT isalive(CLAN_STAR0)) then
+					SetObjectiveStatus(0,SUCCESS);
+                	Objective_0_Decided = TRUE;
+                	PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);	
+
+					//Reveal extraction point
+					setRevealed(1,50.0,Extractpoint);
+				 
+				 VictoryLevel = VictoryLevel + 1;
+
+				endif;
+			endif;
+
+			
+			if (checkObjectiveStatus(2) == INCOMPLETE) then
+
+				//Is the truck near the supply bunker?
+			    if (distancetoPosition(Truck,Supplypoint) <= 20) then
+						SetObjectiveStatus(2,SUCCESS);
+                		Objective_2_Decided = TRUE;
+                		PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+                		
+                		VictoryLevel = VictoryLevel + 1;	
+
+				endif;
+			endif;
+
+			if ((checkObjectiveStatus(2) == INCOMPLETE) OR (checkObjectiveStatus(2) == SUCCESS)) then
+
+			    //Is the Truck Still Alive?
+            	if (NOT isalive(Truck)) then
+					SetObjectiveStatus(2,FAILED);
+               		Objective_2_Decided = TRUE;
+               		PlayDigitalMusic(OBJECTIVE_FAIL_MUSIC);	
+
+				endif;
+			endif;
+			  
+			if ((Objective_0_Decided) AND (checkObjectiveStatus(1) == INCOMPLETE)) then
+			
+				//Are the Recon Mechs (and truck) to the pier?
+				
+				if ((isalive (Commando1)) AND (NOT Commando1Home)) then
+				  if (distanceToPosition(Commando1,Extractpoint) <= 50) then 
+					Commando1Home = TRUE;
+				  endif;
+				else
+				  Commando1Home = TRUE;				
+				endif;
+
+				if ((isalive (Commando2)) AND (NOT Commando2Home)) then
+				  if (distanceToPosition(Commando2,Extractpoint) <= 50) then 
+					Commando2Home = TRUE;
+				  endif;
+				else
+				  Commando2Home = TRUE;				
+				endif;
+				
+				if ((isalive (Truck)) AND (NOT TruckHome)) then
+				  if (distanceToPosition(Truck,Extractpoint) <= 50) then 
+					TruckHome = TRUE;
+				  endif;
+				else
+				  TruckHome = TRUE;				
+				endif;
+
+				// Is the Rommel Destroyed?
+				if ((NOT isalive(CLAN_VEHICLE0_STAR2)) AND Commando1Home AND Commando2Home AND TruckHome) then
+					SetObjectiveStatus(1,SUCCESS);
+                	Objective_1_Decided = TRUE;
+                	PlayDigitalMusic(OBJECTIVE_SUCCESS_MUSIC);
+
+				   VictoryLevel = VictoryLevel + 1;
+
+				endif;
+			endif;
+
+            if (((NOT ExitTimerSet) AND (Objective_0_Decided) AND (Objective_1_Decided) AND (Objective_2_Decided))) then
+                  setTimer(EXIT_TIMER,20.0);
+                  ExitTimerSet = TRUE;
+                  PlayDigitalMusic(VICTORY_MUSIC); // Need to make this conditional based on success
+            endif;
+
+
+
+            //---------------------------------------
+            // END SCENARIO
+            //---------------------------------------
+
+            if ((ExitTimerSet) AND (CheckTimer(EXIT_TIMER) == 0.0)) then
+                  ScenarioResult = VictoryLevel;
+            endif;
+
+            //---------------------------------------
+            // RETURN RESULT
+            //---------------------------------------
+
+            return (ScenarioResult);
+endmodule.
+//******************************************************************

@@ -1,0 +1,9 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cCOMMAND DESIGNATION:GAMBIT/07PRDN05%n
+%fc5%c----------%n
+%fc6%c*** BIG BASE TANGO ***%n
+%fc21-Protect Base HQ Building%n%n
+%fc5%c----------%n
+%fc4Enemy forces are on the move to destroy our regional command headquarters. Protect it at all costs.%n%n
+There are two lances in position to defend the base, and a third en-route.%n%n
+%fc6<<<<END DISPATCH

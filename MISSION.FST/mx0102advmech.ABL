@@ -1,0 +1,150 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:11/1/98   BY:rob nicholls
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBmx0102advmech : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+    static integer                     Order6Status;
+
+    // PATHS
+    static path                        AttackPath;
+    static path                        Flankpath;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+         Order6Status = INCOMPLETE;
+
+         // Paths
+
+         AttackPath[0,0] = 3090; // X
+         AttackPath[0,1] = 4081; // Y
+
+         AttackPath[1,0] = 4030; // X
+         AttackPath[1,1] = 1858; // Y
+
+         AttackPath[2,0] = 4296; // X
+         AttackPath[2,1] = 1467; // Y
+
+         AttackPath[3,0] = 4406; // X
+         AttackPath[3,1] = 334; // Y
+
+         Flankpath[0,0] = -3141; // X
+         Flankpath[0,1] = 2871; // Y
+
+         Flankpath[1,0] = 1011; // X
+         Flankpath[1,1] = 4721; // Y
+
+         Flankpath[2,0] = 1464; // X
+         Flankpath[2,1] = 4680; // Y
+
+         Flankpath[3,0] = 2457; // X
+         Flankpath[3,1] = 4813; // Y
+
+         SetEngageRadius(200);
+         SetSpeed(RUN);
+         SetTactic(TACTIC_MEDIUM);
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (gametime > 740) then
+         // Order  5 
+         if (Order5Status == INCOMPLETE) then
+              Flag1 = TRUE;
+              Order5Status = SUCCESS;
+         endif;
+    endif;
+    if (beenHit) then
+         // Order  6 
+         if (Order6Status == INCOMPLETE) then
+              Flag1 = TRUE;
+              Order6Status = SUCCESS;
+         endif;
+    endif;
+    if (flag1) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              Order2Status = Patrol(AttackPath,4,PATROL_AND_STOP, 1);
+              if (Order2Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order2Status <> INCOMPLETE) then
+                   // Order  3 
+                   if (Order3Status == INCOMPLETE) then
+                        Order3Status = ClearArea;
+                        if (Order3Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = Patrol(Flankpath,4,PATROL_AND_STOP,1);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order1Status <> INCOMPLETE) then
+                   // Order  4 
+                   if (Order4Status == INCOMPLETE) then
+                        Order4Status = Attack;
+                        if (Order4Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

@@ -1,0 +1,29 @@
+//*********************************************************************************
+// Init Include file for mission 3_2
+
+     setObjectivePos(0,-7655.0,-2070.0,0.0);
+     Obj_0_Action_3_Success = TRUE;
+     RWHouse = getTerrainObjectPartId(39,75);
+     objectChangeSides(RWHouse,CLAN);
+     setPotentialContact(RWHouse,0);
+     setSalvage(RWHouse,142,2);
+     setCaptureable(RWHouse, TRUE);
+     RWHouseAlignment = CLAN;
+     ClanStack = getTerrainObjectPartId(49,336);
+     objectChangeSides(ClanStack,CLAN);
+     setPotentialContact(ClanStack,0);
+     setSalvage(ClanStack,146,1);
+     setCaptureable(ClanStack, TRUE);
+     ClanStackAlignment = CLAN;
+     Tcontrol = getTerrainObjectPartId(46,88);
+     objectChangeSides(Tcontrol,INNER_SPHERE);
+     setPotentialContact(Tcontrol,0);
+     setCaptureable(Tcontrol, TRUE);
+     TcontrolAlignment = INNER_SPHERE;
+     objectChangeSides(getterrainobjectpartid(46,28),INNER_SPHERE);
+     objectChangeSides(getterrainobjectpartid(46,65),INNER_SPHERE);
+     objectChangeSides(getterrainobjectpartid(46,153),INNER_SPHERE);
+     objectChangeSides(getterrainobjectpartid(46,233),INNER_SPHERE);
+     objectChangeSides(getterrainobjectpartid(46,253),INNER_SPHERE);
+     setCaptureable(getVehicleID(CLAN_FORCE,4,0),TRUE);
+     LOP0 = TRUE;

@@ -1,0 +1,47 @@
+//*********************************************************************************
+// Init Include file for mission 2_3
+
+     GH = getTerrainObjectPartId(44,90);
+     objectChangeSides(GH,CLAN);
+     setPotentialContact(GH,0);
+     setCaptureable(GH, TRUE);
+     GHAlignment = CLAN;
+     objectChangeSides(getterrainobjectpartid(44,109),CLAN);
+     LockGateClosed(getterrainobjectpartid(44,109));
+     ST = getTerrainObjectPartId(39,317);
+     objectChangeSides(ST,CLAN);
+     setPotentialContact(ST,0);
+     RWH1 = getTerrainObjectPartId(41,397);
+     objectChangeSides(RWH1,CLAN);
+     setPotentialContact(RWH1,0);
+     setSalvage(RWH1,147,2);
+     setCaptureable(RWH1, TRUE);
+     RWH1Alignment = CLAN;
+     RWH2 = getTerrainObjectPartId(41,359);
+     objectChangeSides(RWH2,CLAN);
+     setPotentialContact(RWH2,0);
+     setSalvage(RWH2,144,3);
+     setCaptureable(RWH2, TRUE);
+     RWH2Alignment = CLAN;
+     RWH3 = getTerrainObjectPartId(41,319);
+     objectChangeSides(RWH3,CLAN);
+     setPotentialContact(RWH3,0);
+     setSalvage(RWH3,140,1);
+     setCaptureable(RWH3, TRUE);
+     RWH3Alignment = CLAN;
+     RWH4 = getTerrainObjectPartId(41,317);
+     objectChangeSides(RWH4,CLAN);
+     setPotentialContact(RWH4,0);
+     setSalvage(RWH4,100,2);
+     setCaptureable(RWH4, TRUE);
+     RWH4Alignment = CLAN;
+     Cstack = getTerrainObjectPartId(40,291);
+     objectChangeSides(Cstack,CLAN);
+     setPotentialContact(Cstack,0);
+     setSalvage(Cstack,102,1);
+     setSalvage(Cstack,104,1);
+     setCaptureable(Cstack, TRUE);
+     CstackAlignment = CLAN;
+     LOP0 = TRUE;
+     LOP1 = TRUE;
+     LOP2 = TRUE;

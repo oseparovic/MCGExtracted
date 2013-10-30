@@ -1,0 +1,12 @@
+//*********************************************************************************
+// Lookout Point Include file for mission 2_1
+
+if (LOP0) then
+      aPoint[0] = -1643;
+      aPoint[1] = 5402;
+      aPoint[2] = 0.0;
+      if (distanceToPosition(PLAYER_FORCE, aPoint) < 5000) then
+            setRevealed(1,60.0,aPoint);
+            LOP0 = FALSE;
+      endif;
+endif;

@@ -1,0 +1,40 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:BEACHHEAD/01PRDN02%n
+%fc5%c----------%n
+%fc6%c***RESCUE CAPTURED PILOTS***%n
+%fc21-Capture supplies from the%n
+%t9Bondsman field camp.%n
+%fc22-Capture Prison Barn and free%n
+%t9its prisoners by using the APC%n
+3-Escort APC to extraction point for%n
+%t9pickup%n
+*Capture enemy HQ vehicle to reveal%n
+%t9location of "prison"%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 0 Small  2 Large%n
+%t12SENSOR PROBE: 0%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4Two of our MechWarrior pilots and their supplies have been captured by Clan Bondsmen. The pilots are being held temporarily in a "prison" barn somewhere in the area. The supplies are at a small field base in the southwest.%n%n
+Your chosen force is to be dropped in a forest in the north. Battalion Transport is also dropping the APC needed to transport the prisoners from the prison as well.%n%n
+Once on the ground, burn through the forest to reach the road. Then, head for the field base. There is an enemy HQ Vehicle reported at the field camp. Capturing the HQ Vehicle will reveal the enemy's position and the farm they are guarding.%n%n
+Once you are detected, the Clan will likely send reinforcements from the north, so move fast. You have been allocated enough artillery to blow a bridge and stop any pursuit. Capture the supplies, then get to the farmstead and get those pilots out. To do that, order the APC to "capture" the barn.%n%n
+Once you have captured the barn and recovered the pilots head to the extraction point, which has been marked on your tactical map%n
+%fc5%c----------%n
+%fc1%fm%c**TACTICAL WARNING**%n
+%fc2%fs*There is a fortified enemy field base%n
+%t9to the north of your dropzone.%n
+%t9Avoidance is recommended.%n%n
+%fm%fc6%c**TACTICAL NOTICE**%n
+%fs%fc2*APC *must* be used to capture the%n
+%t9prison and rescue the pilots. If%n
+%t9the barn is captured by one of the%n
+%t9'Mechs, move the APC over to complete%n
+%t9the capture and enable transport of%n
+%t9the pilots.%n
+*Capture of the HQ Vehicle is not%n
+%t9required to complete mission.%n
+*A single Large Artillery Strike will%n
+%t9destroy a bridge span and block enemy%n
+%t9movement.%n%n
+%fc6<<<<END DISPATCH

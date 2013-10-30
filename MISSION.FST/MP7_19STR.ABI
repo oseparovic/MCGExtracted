@@ -1,0 +1,335 @@
+//*********************************************************************************
+// Structure Include file for mission 7_19
+
+
+if (isdead(MechBay1)) then
+
+else
+     if ((IsCaptured(MechBay1) == 1) AND (objectSide(MechBay1) <> MechBay1Alignment) AND (MechBay1Alignment <> -2)) then
+           sendMessage(8,ObjectSide(MechBay1));
+           handleMessage;
+     endif;
+endif;
+
+if (isdead(MechBay2)) then
+
+else
+     if ((IsCaptured(MechBay2) == 1) AND (objectSide(MechBay2) <> MechBay2Alignment) AND (MechBay2Alignment <> -2)) then
+           sendMessage(9,ObjectSide(MechBay2));
+           handleMessage;
+     endif;
+endif;
+
+if (isAlive(Crate1)) then
+     if ((IsCaptured(Crate1) == 1) AND (Crate1Alignment > -2)) then
+           X = Random(STRIKE_TYPE_LIMIT);
+           sendMessage(10,(((objectCommander(Crate1)+1)*10)+X));
+           handleMessage;
+     else
+           if (Crate1Alignment < -1) then
+                 if (Crate1Alignment > -59) then
+                       if (gametime == nextsecond - 1.0) then
+                             sendMessage(11,0);
+                             handleMessage;
+                       endif;
+                 else
+                       sendMessage(12,0);
+                       handleMessage;
+                 endif;
+           endif;
+     endif;
+endif;
+
+if (isAlive(Crate2)) then
+     if ((IsCaptured(Crate2) == 1) AND (Crate2Alignment > -2)) then
+           X = Random(STRIKE_TYPE_LIMIT);
+           sendMessage(13,(((objectCommander(Crate2)+1)*10)+X));
+           handleMessage;
+     else
+           if (Crate2Alignment < -1) then
+                 if (Crate2Alignment > -59) then
+                       if (gametime == nextsecond - 1.0) then
+                             sendMessage(14,0);
+                             handleMessage;
+                       endif;
+                 else
+                       sendMessage(15,0);
+                       handleMessage;
+                 endif;
+           endif;
+     endif;
+endif;
+
+if ((isdead(BaseGC)) AND (BaseGCAlignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(2,388))) then
+           sendMessage(16,0);
+           handleMessage;
+     else
+           sendMessage(17,0);
+           handleMessage;
+     endif;
+     if (isGateOpen(getterrainobjectpartid(8,188))) then
+           sendMessage(18,0);
+           handleMessage;
+     else
+           sendMessage(19,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(BaseGC) == 1) AND (objectSide(BaseGC) <> BaseGCAlignment) AND (BaseGCAlignment <> -2)) then
+           sendMessage(20,ObjectSide(BaseGC));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(BaseTC)) AND (BaseTCAlignment <> -2)) then
+     SendMessage(21,0);
+     HandleMessage;
+else
+     if ((IsCaptured(BaseTC) == 1) AND (objectSide(BaseTC) <> BaseTCAlignment) AND (BaseTCAlignment <> -2)) then
+           SendMessage(22,ObjectSide(BaseTC));
+           HandleMessage;
+     endif;
+endif;
+
+if (isdead(BaseAuxGen)) then
+     setObjectActive(getterrainobjectpartid(8,6),FALSE);
+     setObjectActive(getterrainobjectpartid(8,7),FALSE);
+     setObjectActive(getterrainobjectpartid(8,26),FALSE);
+     setObjectActive(getterrainobjectpartid(8,27),FALSE);
+     setObjectActive(getterrainobjectpartid(8,43),FALSE);
+     setObjectActive(getterrainobjectpartid(8,44),FALSE);
+     setObjectActive(getterrainobjectpartid(8,63),FALSE);
+     setObjectActive(getterrainobjectpartid(8,64),FALSE);
+     setObjectActive(getterrainobjectpartid(8,90),FALSE);
+     setObjectActive(getterrainobjectpartid(8,91),FALSE);
+     setObjectActive(getterrainobjectpartid(8,110),FALSE);
+     setObjectActive(getterrainobjectpartid(8,111),FALSE);
+endif;
+
+if ((isdead(GenGC1)) AND (GenGC1Alignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(26,396))) then
+           sendMessage(23,0);
+           handleMessage;
+     else
+           sendMessage(24,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(GenGC1) == 1) AND (objectSide(GenGC1) <> GenGC1Alignment) AND (GenGC1Alignment <> -2)) then
+           sendMessage(25,ObjectSide(GenGC1));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(GenGC2)) AND (GenGC2Alignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(33,63))) then
+           sendMessage(26,0);
+           handleMessage;
+     else
+           sendMessage(27,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(GenGC2) == 1) AND (objectSide(GenGC2) <> GenGC2Alignment) AND (GenGC2Alignment <> -2)) then
+           sendMessage(28,ObjectSide(GenGC2));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(GenTC)) AND (GenTCAlignment <> -2)) then
+     SendMessage(29,0);
+     HandleMessage;
+else
+     if ((IsCaptured(GenTC) == 1) AND (objectSide(GenTC) <> GenTCAlignment) AND (GenTCAlignment <> -2)) then
+           SendMessage(30,ObjectSide(GenTC));
+           HandleMessage;
+     endif;
+endif;
+
+if (isdead(Gen1)) then
+     setObjectActive(getterrainobjectpartid(32,15),FALSE);
+     setObjectActive(getterrainobjectpartid(32,17),FALSE);
+     setObjectActive(getterrainobjectpartid(32,18),FALSE);
+     setObjectActive(getterrainobjectpartid(32,19),FALSE);
+     setObjectActive(getterrainobjectpartid(32,95),FALSE);
+     setObjectActive(getterrainobjectpartid(33,0),FALSE);
+     setObjectActive(getterrainobjectpartid(33,1),FALSE);
+     setObjectActive(getterrainobjectpartid(33,2),FALSE);
+     setObjectActive(getterrainobjectpartid(33,3),FALSE);
+     setObjectActive(getterrainobjectpartid(33,4),FALSE);
+     setObjectActive(getterrainobjectpartid(33,84),FALSE);
+endif;
+
+if ((isdead(MekGC1)) AND (MekGC1Alignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(13,170))) then
+           sendMessage(31,0);
+           handleMessage;
+     else
+           sendMessage(32,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(MekGC1) == 1) AND (objectSide(MekGC1) <> MekGC1Alignment) AND (MekGC1Alignment <> -2)) then
+           sendMessage(33,ObjectSide(MekGC1));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(MekGC2)) AND (MekGC2Alignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(13,121))) then
+           sendMessage(34,0);
+           handleMessage;
+     else
+           sendMessage(35,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(MekGC2) == 1) AND (objectSide(MekGC2) <> MekGC2Alignment) AND (MekGC2Alignment <> -2)) then
+           sendMessage(36,ObjectSide(MekGC2));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(MekGC3)) AND (MekGC3Alignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(12,99))) then
+           sendMessage(37,0);
+           handleMessage;
+     else
+           sendMessage(38,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(MekGC3) == 1) AND (objectSide(MekGC3) <> MekGC3Alignment) AND (MekGC3Alignment <> -2)) then
+           sendMessage(39,ObjectSide(MekGC3));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(MekGC4)) AND (MekGC4Alignment <> -2)) then
+     if (isGateOpen(getterrainobjectpartid(12,137))) then
+           sendMessage(40,0);
+           handleMessage;
+     else
+           sendMessage(41,0);
+           handleMessage;
+     endif;
+else
+     if ((IsCaptured(MekGC4) == 1) AND (objectSide(MekGC4) <> MekGC4Alignment) AND (MekGC4Alignment <> -2)) then
+           sendMessage(42,ObjectSide(MekGC4));
+           handleMessage;
+     endif;
+endif;
+
+if ((isdead(MekTC1)) AND (MekTC1Alignment <> -2)) then
+     SendMessage(43,0);
+     HandleMessage;
+else
+     if ((IsCaptured(MekTC1) == 1) AND (objectSide(MekTC1) <> MekTC1Alignment) AND (MekTC1Alignment <> -2)) then
+           SendMessage(44,ObjectSide(MekTC1));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(MekTC2)) AND (MekTC2Alignment <> -2)) then
+     SendMessage(45,0);
+     HandleMessage;
+else
+     if ((IsCaptured(MekTC2) == 1) AND (objectSide(MekTC2) <> MekTC2Alignment) AND (MekTC2Alignment <> -2)) then
+           SendMessage(46,ObjectSide(MekTC2));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(MekTC3)) AND (MekTC3Alignment <> -2)) then
+     SendMessage(47,0);
+     HandleMessage;
+else
+     if ((IsCaptured(MekTC3) == 1) AND (objectSide(MekTC3) <> MekTC3Alignment) AND (MekTC3Alignment <> -2)) then
+           SendMessage(48,ObjectSide(MekTC3));
+           HandleMessage;
+     endif;
+endif;
+
+if ((isdead(MekTC4)) AND (MekTC4Alignment <> -2)) then
+     SendMessage(49,0);
+     HandleMessage;
+else
+     if ((IsCaptured(MekTC4) == 1) AND (objectSide(MekTC4) <> MekTC4Alignment) AND (MekTC4Alignment <> -2)) then
+           SendMessage(50,ObjectSide(MekTC4));
+           HandleMessage;
+     endif;
+endif;
+
+if (isdead(Gen2)) then
+     setObjectActive(getterrainobjectpartid(12,334),FALSE);
+     setObjectActive(getterrainobjectpartid(12,379),FALSE);
+     setObjectActive(getterrainobjectpartid(13,148),FALSE);
+     setObjectActive(getterrainobjectpartid(13,186),FALSE);
+     setObjectActive(getterrainobjectpartid(13,224),FALSE);
+     setObjectActive(getterrainobjectpartid(13,304),FALSE);
+     setObjectActive(getterrainobjectpartid(13,384),FALSE);
+     setObjectActive(getterrainobjectpartid(18,59),FALSE);
+     setObjectActive(getterrainobjectpartid(19,27),FALSE);
+     setObjectActive(getterrainobjectpartid(19,107),FALSE);
+     setObjectActive(getterrainobjectpartid(19,144),FALSE);
+endif;
+
+if (isdead(Gen3)) then
+     setObjectActive(getterrainobjectpartid(12,377),FALSE);
+     setObjectActive(getterrainobjectpartid(12,399),FALSE);
+     setObjectActive(getterrainobjectpartid(13,167),FALSE);
+     setObjectActive(getterrainobjectpartid(13,226),FALSE);
+     setObjectActive(getterrainobjectpartid(13,264),FALSE);
+     setObjectActive(getterrainobjectpartid(13,344),FALSE);
+     setObjectActive(getterrainobjectpartid(19,25),FALSE);
+     setObjectActive(getterrainobjectpartid(19,67),FALSE);
+     setObjectActive(getterrainobjectpartid(19,105),FALSE);
+     setObjectActive(getterrainobjectpartid(19,143),FALSE);
+endif;
+
+if (isdead(Gen4)) then
+     setObjectActive(getterrainobjectpartid(7,273),FALSE);
+     setObjectActive(getterrainobjectpartid(7,317),FALSE);
+     setObjectActive(getterrainobjectpartid(7,379),FALSE);
+     setObjectActive(getterrainobjectpartid(7,398),FALSE);
+     setObjectActive(getterrainobjectpartid(8,300),FALSE);
+     setObjectActive(getterrainobjectpartid(13,57),FALSE);
+     setObjectActive(getterrainobjectpartid(13,74),FALSE);
+     setObjectActive(getterrainobjectpartid(13,90),FALSE);
+     setObjectActive(getterrainobjectpartid(13,91),FALSE);
+     setObjectActive(getterrainobjectpartid(13,128),FALSE);
+endif;
+
+if (isdead(Gen5)) then
+     setObjectActive(getterrainobjectpartid(7,271),FALSE);
+     setObjectActive(getterrainobjectpartid(7,275),FALSE);
+     setObjectActive(getterrainobjectpartid(7,319),FALSE);
+     setObjectActive(getterrainobjectpartid(7,399),FALSE);
+     setObjectActive(getterrainobjectpartid(8,320),FALSE);
+     setObjectActive(getterrainobjectpartid(13,17),FALSE);
+     setObjectActive(getterrainobjectpartid(13,55),FALSE);
+     setObjectActive(getterrainobjectpartid(13,72),FALSE);
+     setObjectActive(getterrainobjectpartid(13,111),FALSE);
+     setObjectActive(getterrainobjectpartid(13,149),FALSE);
+endif;
+
+if (isAlive(Crate3)) then
+     if ((IsCaptured(Crate3) == 1) AND (Crate3Alignment > -2)) then
+           X = Random(STRIKE_TYPE_LIMIT);
+           sendMessage(51,(((objectCommander(Crate3)+1)*10)+X));
+           handleMessage;
+     else
+           if (Crate3Alignment < -1) then
+                 if (Crate3Alignment > -59) then
+                       if (gametime == nextsecond - 1.0) then
+                             sendMessage(52,0);
+                             handleMessage;
+                       endif;
+                 else
+                       sendMessage(53,0);
+                       handleMessage;
+                 endif;
+           endif;
+     endif;
+endif;

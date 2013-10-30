@@ -1,0 +1,22 @@
+//*********************************************************************************
+// Variable Include file for mission 1_4
+
+     eternal integer                   turretpower;
+     eternal integer                   gatecon;
+     static integer                    gateconAlignment;
+     eternal integer                   turcon1;
+     static integer                    turcon1Alignment;
+     eternal integer                   turcon2;
+     static integer                    turcon2Alignment;
+     eternal integer                   salv1;
+     static integer                    salv1Alignment;
+     eternal integer                   salv2;
+     static integer                    salv2Alignment;
+     eternal integer                   CB1;
+     eternal integer                   CB2;
+     eternal integer                   HQ;
+     eternal integer                   FO;
+     eternal integer                   salv3;
+     static integer                    salv3Alignment;
+     static boolean                    LOP0;
+     static boolean                    LOP1;

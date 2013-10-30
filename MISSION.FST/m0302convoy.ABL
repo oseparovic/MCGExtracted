@@ -1,0 +1,126 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:5/22/98   BY:Rob Nicholls
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0302convoy : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+
+    // PATHS
+    static path                        Ambulance;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+
+         // Paths
+
+         Ambulance[0,0] = 403; // X
+         Ambulance[0,1] = 6119; // Y
+
+         Ambulance[1,0] = -175; // X
+         Ambulance[1,1] = 6060; // Y
+
+         Ambulance[2,0] = -205; // X
+         Ambulance[2,1] = 5029; // Y
+
+         Ambulance[3,0] = -218; // X
+         Ambulance[3,1] = 2795; // Y
+
+         Ambulance[4,0] = -1106; // X
+         Ambulance[4,1] = 2512; // Y
+
+         Ambulance[5,0] = -1241; // X
+         Ambulance[5,1] = 1754; // Y
+
+         Ambulance[6,0] = -1241; // X
+         Ambulance[6,1] = 1127; // Y
+
+         Ambulance[7,0] = -1244; // X
+         Ambulance[7,1] = 431; // Y
+
+         Ambulance[8,0] = -1243; // X
+         Ambulance[8,1] = -412; // Y
+
+         Ambulance[9,0] = -1243; // X
+         Ambulance[9,1] = -1155; // Y
+
+         Ambulance[10,0] = -1241; // X
+         Ambulance[10,1] = -3868; // Y
+
+         Ambulance[11,0] = -3484; // X
+         Ambulance[11,1] = -3893; // Y
+
+         Ambulance[12,0] = -5976; // X
+         Ambulance[12,1] = -3874; // Y
+
+         Ambulance[13,0] = -6006; // X
+         Ambulance[13,1] = -2486; // Y
+
+         Ambulance[14,0] = -7646; // X
+         Ambulance[14,1] = -2081; // Y
+
+         SetEngageRadius(0);
+         SetDisEngageRadius(0);
+         IgnoreNonTargetsON;
+         IdentifySensorContactsOFF;
+         MoveToEngageOFF;
+         StopFighting;
+         SetMinimumDistance(15);
+         SetCurrentTargetMod(0.0);
+         SetGuardMod(0.0);
+         SetConcentrateFireMod(0.0);
+         SelectWeakest;
+         ReturnFireOFF;
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (gametime > 15) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = MovePath(Ambulance,15);
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+
+         return(1);
+endmodule.

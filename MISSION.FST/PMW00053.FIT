@@ -1,0 +1,48 @@
+FITini
+
+// -------------------------------------------------------------------------
+//
+//      MechWarrior:  53   Name: Siren  Callsign: SIREN
+//
+//      Creation Date: 12/15/98   By: jon marcus
+//
+// -------------------------------------------------------------------------
+
+
+
+[General]
+st Brain = "pbrain"
+st Name =                                                  "Siren"
+l Rank =                                                    0 
+st Callsign =                                              "SIREN"
+ul ID =                                                     53 
+l NameIndex =                                               2 
+l DescIndex =                                               303 
+ul HeadIcon =                                               1000 
+l paintScheme =                                             68 
+st pilotAudio =                                            "pilotc"
+st pilotVideo =                                            "PILOT02"
+st Picture =                                               "Pilot02.TGA"
+
+[PersonalityTraits]
+c Professionalism =                                         50 
+c Decorum =                                                 50 
+c Aggressiveness =                                          50 
+c Courage =                                                 50 
+
+[Skills]
+c Piloting =                                                35 
+c Jumping =                                                 40 
+c Sensors =                                                 35 
+c Gunnery =                                                 50 
+
+[Affinities]
+c MechClass =                                               0 
+c MechType =                                                0 
+c WeaponClass =                                             0 
+uc[2] WeaponTypes =                                        0,0
+
+[Status]
+c Wounds =                                                  0 
+
+FITEnd

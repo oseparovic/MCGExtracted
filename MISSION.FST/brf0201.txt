@@ -1,0 +1,24 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:SKYHOOK/02PRDN01%n
+%fc5%c----------%n
+%fc6%c***RESCUE OPERATIVE***%n
+%fc21-Escort Hunchback IIC to%n
+%t9Extraction Point%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 4 Small  0 Large%n
+%t12SENSOR PROBE: 1%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4A Kurita DEST (Special Forces) operative has obtained valuable information concerning enemy supply and communication lines, but is now trapped east of the Clan-controlled Froese River.%n%n
+A massive manhunt is scouring the eastern side of the river, leaving the operative's stolen Hunchback IIC badly outgunned. Unfortunately, because of enemy forces stationed at the river bridges, the Hunchback IIC cannot cross to the western side and proceed to the extraction point without assistance.%n%n
+Due to time constraints, Battalion Transport can only drop a limited force near the river in time. As quickly as possible, rendezvous with the Hunchback IIC and escort it to the Extraction Point to the southwest.%n%n
+There has also been an increase in Clan air power in the area, as well as increased reliance on Aerospace Spotter vehicles to guide in those strikes.%n%n
+%fm%fc6%c**TACTICAL NOTICE**%n
+%fs%fc2*Destroying an Aerospace Spotter vehicle%n
+%t9will stop certain airstrikes. Be careful,%n
+%t9however, the Spotter may call additional%n
+%t9airstrikes down on your forces!%n
+*Sensor Probes scan a large portion of the%n
+%t9battlefield for a limited time.%n%n
+%fc6<<<<END DISPATCH
+

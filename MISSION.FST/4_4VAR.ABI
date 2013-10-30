@@ -1,0 +1,42 @@
+//*********************************************************************************
+// Variable Include file for mission 4_4
+
+     real                              CreateNow;
+     static real                       EndGroupCreateTime;
+     static boolean                    MostlyDead;
+     static integer                    NumCreated;
+     eternal integer                   ubunker;
+     static integer                    ubunkerAlignment;
+     eternal integer                   ubunker2;
+     static integer                    ubunker2Alignment;
+     eternal integer                   warehouse1;
+     static integer                    warehouse1Alignment;
+     eternal integer                   warehouse2;
+     static integer                    warehouse2Alignment;
+     eternal integer                   warehouse3;
+     static integer                    warehouse3Alignment;
+     eternal integer                   warehouse4;
+     static integer                    warehouse4Alignment;
+     eternal integer                   warehouse5;
+     static integer                    warehouse5Alignment;
+     eternal integer                   warehouse6;
+     static integer                    warehouse6Alignment;
+     eternal integer                   r_warehouse1;
+     static integer                    r_warehouse1Alignment;
+     eternal integer                   r_warehouse2;
+     static integer                    r_warehouse2Alignment;
+     eternal integer                   MBay1;
+     static integer                    MBay1Alignment;
+     eternal integer                   BoomTank;
+     eternal integer                   rrwh1;
+     static integer                    rrwh1Alignment;
+     eternal integer                   rrwh2;
+     static integer                    rrwh2Alignment;
+     eternal integer                   rrwh3;
+     static integer                    rrwh3Alignment;
+     eternal integer                   prize1;
+     static integer                    prize1Alignment;
+     eternal integer                   prize2;
+     static integer                    prize2Alignment;
+     static boolean                    LOP0;
+     static boolean                    LOP1;

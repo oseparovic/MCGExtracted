@@ -1,0 +1,9 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cGALAXY COMMAND:GAMBIT/7PRDN6%n
+%fc5%c----------%n
+%fc6%c*** POWER SURGE ***%n
+%fc21-Destroy 6 Generators%n%n
+%fc5%c----------%n
+%fc4The generator stations on this map are essential to enemy production.  Destroy 6 before the timer expires.%n%n
+%fc6<<<<END DISPATCH
+

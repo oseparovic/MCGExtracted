@@ -1,0 +1,18 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:LINCHPIN/04PRDN06%n
+%fc5%c----------%n
+%fc6%c***DESTROY SMOKE***%n
+%c***JAGUAR ORBITAL GUNS***%n
+%fc21-Destroy Mobile Orbital Gun Alpha%n
+%fc22-Destroy Mobile Orbital Gun Beta%n
+%fc23-Destroy Mobile Orbital Gun Gamma%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 3 Small  0 Large%n
+%t12SENSOR PROBE: 0%n
+%t12CAMERA DRONE: 0%n
+%fc5%c----------%n
+%fc4Intelligence has located the Smoke Jaguar Mobile Orbital Guns that were responsible for disabling our cargo and dropships during the initial attack. It is mandatory that those guns be destroyed before the main invasion force reaches orbit.%n%n
+Satellite and aerial recon has determined the positions of each of the weapons, but due to enemy presence in the area we must attack them directly on the ground.%n%n
+Be careful, however, as the enemy will undoubtedly react quickly and violently to your presence in the area.%n%n
+Good luck.%n%n
+%fc6<<<<END DISPATCH

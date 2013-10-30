@@ -1,0 +1,17 @@
+//*********************************************************************************
+// Activation Include file for mission 5_1
+
+if ((gametime > 11) AND (gametime < 13)) then
+     if (gametime > 12) then
+           setobjectActive(VehicleID(CLAN_STAR1,0,0),TRUE);
+     endif;
+     if (gametime > 12) then
+           setobjectActive(VehicleID(CLAN_STAR1,1,0),TRUE);
+     endif;
+     if (gametime > 12) then
+           setobjectActive(VehicleID(CLAN_STAR1,2,0),TRUE);
+     endif;
+     if (gametime > 12) then
+           setobjectActive(VehicleID(CLAN_STAR1,3,0),TRUE);
+     endif;
+endif;

@@ -1,0 +1,22 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cFEDCOM:MINOTAUR/03PRDN02%n
+%fc5%c----------%n
+%fc6%c***ELIMINATE REINFORCEMENTS***%n
+%fc21-Take Out Defenders at Bridge%n
+%fc22-Destroy Elemental Training Cadre%n
+%fc23-Capture Repair Bay%n
+%fc24-Eliminate Three 'Mech Patrol%n
+%fc25-Destroy Forces at Vehicle Depot%n
+%fc26-Take Out All Enemies at Land Bridge%n%n
+%fc6FIRE SUPPORT:%n
+%fc2%t12ARTILLERY: 4 Small  2 Large%n
+%t12SENSOR PROBE: 3%n
+%t12CAMERA DRONE: 2%n%n
+%fc5%c----------%n%n
+%fc4The Command Center on Kathil has been contacted and informed of our situation.  The closest Inner Sphere reinforcements are over 7 days away.  We have been instructed to take any measures necessary to stop the Clan forces ourselves.%n%n
+Your role in this offensive against the Jaguars is crucial.  Strategic has orchestrated a suprise assault upon what seems to be the Clan main base of operations, but the Jaguars have reserve units waiting to bolster the main base.  Your mission is to eliminate all possible Jaguar reinforcements.%n%n
+The %fc2Defenders%fc4 at the northern bridge exit must be eliminated.  The %fc2Elemental Training Cadre%fc4 to the west must be taken down.  The %fc2Repair Bay%fc4 in the center of the land bridge should be captured to prevent its use by any remnant Clan forces.  There is a small %fc2Patrol of 'Mechs%fc4%nalong the east end of the map and they must also be destroyed.  In addition the%n
+%fc2Vehicle Depot%fc4 in the southwest must be destroyed.  Finally the %fc2Nova Cats%fc4 and%n
+%fc2tanks%fc4 guarding the entrance to the land bridge must be neutralized.%n%n
+%fc5%c----------%n
+%fc6<<<<END DISPATCH

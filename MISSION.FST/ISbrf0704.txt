@@ -1,0 +1,8 @@
+%fm%fc1%c****CLASSIFIED****%n
+%fs%fc4%cCOMMAND DESIGNATION:GAMBIT/7PRDN4%n
+%fc5%c----------%n
+%fc6%c*** King of the Hill ***%n
+%fc21-Capture and Hold HQ on Hill%n%n
+%fc5%c----------%n
+%fc4Capture the Base HQ on top of the hill and hold it until the timer expires or the enemy is dead.%n%n
+%fc6<<<<END DISPATCH

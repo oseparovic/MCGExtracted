@@ -1,0 +1,145 @@
+//****************************************************************************************//
+//
+//    UNIVERSAL WARRIOR BRAIN     CREATED:2/11/98   BY:Rob Nicholls
+//                              by the MechCommander(TM) Data Entry Application
+//
+//   Modification, duplication & distribution is strictly limited to non-commercial
+//   enterprise unless otherwise indicated by FASA Interactive Technologies, Inc.
+//
+//           Copyright 1997 FASA Interactive Technologies, Inc.
+//****************************************************************************************//
+
+module WBm0102Base2 : integer;
+
+//****************************************************************************************//
+
+const
+    #include_ "OConst.abi"
+    #include_ "UnitConst.abi"
+type
+
+var
+
+    //-------------------------------------
+    // Enter Additional Variables Here
+
+    static integer                     Order1Status;
+    static integer                     Order2Status;
+    static integer                     Order3Status;
+    static integer                     Order4Status;
+    static integer                     Order5Status;
+    static integer                     Order6Status;
+    static integer                     Order7Status;
+    static integer                     Order8Status;
+    static integer                     Order9Status;
+
+//----------------------------------------------------------------------------------------
+function Init;
+
+    code
+         #include_ "UBInit.abi"
+         //----------------------------------------
+         // Enter Initial Behavior Variations Here
+
+         // OrderStatus
+         Order1Status = INCOMPLETE;
+         Order2Status = INCOMPLETE;
+         Order3Status = INCOMPLETE;
+         Order4Status = INCOMPLETE;
+         Order5Status = INCOMPLETE;
+         Order6Status = INCOMPLETE;
+         Order7Status = INCOMPLETE;
+         Order8Status = INCOMPLETE;
+         Order9Status = INCOMPLETE;
+
+         SetEngageRadius(150);
+         SetDisEngageRadius(250);
+
+endfunction;
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+// Main Code
+//----------------------------------------------------------------------------------------
+
+code
+
+    //Initialize Orders Library
+    initOrders;
+
+    if (isDead(getTerrainObjectPartID(19, 91))) then
+         // Order  2 
+         if (Order2Status == INCOMPLETE) then
+              Flag2 = TRUE;
+              Order2Status = SUCCESS;
+         endif;
+    endif;
+    if (isDead(getTerrainObjectPartID(19, 111))) then
+         // Order  3 
+         if (Order3Status == INCOMPLETE) then
+              Flag2 = TRUE;
+              Order3Status = SUCCESS;
+         endif;
+    endif;
+    if (isDead(getTerrainObjectPartID(19, 131))) then
+         // Order  4 
+         if (Order4Status == INCOMPLETE) then
+              Flag2 = TRUE;
+              Order4Status = SUCCESS;
+         endif;
+    endif;
+    if (isDead(getTerrainObjectPartID(19, 151))) then
+         // Order  5 
+         if (Order5Status == INCOMPLETE) then
+              Flag2 = TRUE;
+              Order5Status = SUCCESS;
+         endif;
+    endif;
+    if (isDead(getTerrainObjectPartID(19, 171))) then
+         // Order  6 
+         if (Order6Status == INCOMPLETE) then
+              Flag2 = TRUE;
+              Order6Status = SUCCESS;
+         endif;
+    endif;
+    if (flag2) then
+         // Order  7 
+         if (Order7Status == INCOMPLETE) then
+              Order7Status = Attack;
+              if (Order7Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+    if (gametime > 50) then
+         // Order  8 
+         if (Order8Status == INCOMPLETE) then
+              Order8Status = MoveTo(-3678,-1430);
+              if (Order8Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         else
+              if (Order8Status <> INCOMPLETE) then
+                   // Order  9 
+                   if (Order9Status == INCOMPLETE) then
+                        Order9Status = Sentry(currentX,CurrentY);
+                        if (Order9Status == INCOMPLETE) then
+                             return(1);
+                        endif;
+                   endif;
+              endif;
+         endif;
+    endif;
+
+    if (TRUE) then
+         // Order  1 
+         if (Order1Status == INCOMPLETE) then
+              Order1Status = Attack;
+              if (Order1Status == INCOMPLETE) then
+                   return(1);
+              endif;
+         endif;
+    endif;
+
+         return(1);
+endmodule.

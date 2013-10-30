@@ -1,0 +1,16 @@
+//*********************************************************************************
+// Init Include file for mission 9_3
+
+     Mbay = getTerrainObjectPartId(28,103);
+     objectChangeSides(Mbay,CLAN);
+     setPotentialContact(Mbay,0);
+     setCaptureable(Mbay, TRUE);
+     MechBays[0] = Mbay;
+     Vbay = getTerrainObjectPartId(28,81);
+     objectChangeSides(Vbay,CLAN);
+     setPotentialContact(Vbay,0);
+     VehicleBays[0] = Vbay;
+     TotalMechBays =  1;
+     TotalVehicleBays =  1;
+     setCaptureable(getVehicleID(CLAN_FORCE,7,0),TRUE);
+     LOP0 = TRUE;

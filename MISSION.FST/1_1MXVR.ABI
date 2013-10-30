@@ -1,0 +1,34 @@
+//*********************************************************************************
+// Variable Include file for mission 1_1
+
+     eternal integer                   TurCon1;
+     static integer                    TurCon1Alignment;
+     eternal integer                   TurCon2;
+     static integer                    TurCon2Alignment;
+     eternal integer                   salv1;
+     static integer                    salv1Alignment;
+     eternal integer                   salv2;
+     static integer                    salv2Alignment;
+     eternal integer                   salv5;
+     static integer                    salv5Alignment;
+     eternal integer                   salv6;
+     static integer                    salv6Alignment;
+     eternal integer                   salv7;
+     static integer                    salv7Alignment;
+     eternal integer                   salv8;
+     static integer                    salv8Alignment;
+     eternal integer                   vent;
+     eternal integer                   power;
+     eternal integer                   salv9;
+     static integer                    salv9Alignment;
+     static boolean                    LOP0;
+     static boolean                    LOP1;
+     static boolean                    LOP2;
+     static boolean                    LOP3;
+     static boolean                    LOP4;
+     static boolean                    LOP5;
+     static boolean                    LOP6;
+     static boolean                    LOP7;
+     static boolean                    LOP8;
+     static boolean                    LOP9;
+     static boolean                    LOP10;
