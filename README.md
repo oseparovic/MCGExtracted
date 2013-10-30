@@ -11,6 +11,15 @@ Extraction
 ---------
 If you'd like to extract the files yourself, several utility scripts have been written by scrivener07 (which I shamelessly tweaked) for this purpose. The scripts are located in the `extraction_tools` directory. To extract a source file, simply place the source file in the extraction tools flder and run the corresponding script and enjoy! The necessary Cmunsta extraction tools are already in place so there's no need to do anything else.
 
+Samples
+-------
+![](https://raw.github.com/oseparovic/MCGExtracted/master/data/art/ART.PAK/1.gif)
+![](https://raw.github.com/oseparovic/MCGExtracted/master/data/art/ART.PAK/2.gif)
+![](https://raw.github.com/oseparovic/MCGExtracted/master/data/art/ART.PAK/3.gif)
+![](https://raw.github.com/oseparovic/MCGExtracted/master/data/art/ART.PAK/4.gif)
+
+![palettex](https://raw.github.com/oseparovic/MCGExtracted/master/MISC.FST/palettex.gif)
+
 Help needed!
 ------------
 There are many source files and currently CMunsta's tools are unable to extract source files with names and file types attached. I'll need help naming files and determining file types of certain files.
