@@ -1,0 +1,139 @@
+FITini
+
+[Elements]
+l numElements = 11
+
+[Element0]
+l ElementType = 0			//Background
+l Left = 0
+l Top = 0
+l Width = 640
+l Height = 480
+st NormalArt = "mm_BKGD.tga"
+b UseBackPalette = T
+
+[Element1]
+l ElementType = 1			//OK Button
+l Left = 515
+l Top = 276
+l Width = 63
+l Height = 14
+st NormalArt = "bh_accept.tga"
+st GreyArt = "bn_accept.tga"
+st OverArt = "bh_accept.tga"
+st PressArt = "bg_accept.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 36
+
+[Element2]
+l ElementType = 1			//Cancel Button
+l Left = 538
+l Top = 110
+l Width = 63
+l Height = 14
+st NormalArt = "bh_cancl.tga"
+st GreyArt = "bn_cancl.tga"
+st OverArt = "bh_cancl.tga"
+st PressArt = "bg_cancl.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 35	// cancel
+
+[Element3]
+l ElementType = 9			// Screen brightness slider
+l Left = 365
+l Top = 175
+l Width = 96
+l Height = 8
+st NormalArt = "pref_02.tga"
+l MinValue = 0
+l MaxValue = 3
+l Callback = 26
+
+[Element4]
+l ElementType = 9			// music volume slider
+l Left = 365
+l Top = 222
+l Width = 96
+l Height = 8
+st NormalArt = "pref_02.tga"
+l MinValue = 0
+l MaxValue = 127
+l Callback = 27
+
+[Element5]
+l ElementType = 9			// radio volume slider
+l Left = 365
+l Top = 248
+l Width = 96
+l Height = 8
+st NormalArt = "pref_02.tga"
+l MinValue = 0
+l MaxValue = 127
+l Callback = 28
+
+[Element6]
+l ElementType = 9			// SFX volume slider
+l Left = 365
+l Top = 275
+l Width = 96
+l Height = 8
+st NormalArt = "pref_02.tga"
+l MinValue = 0
+l MaxValue = 127
+l Callback = 29
+
+[Element7]
+l ElementType = 6			//image
+l Left = 335
+l Top = 93
+l Width = 290
+l Height = 339
+st NormalArt = "prefs_00.tga"
+l OverSFX = -1
+l PressSFX = -1
+
+[Element8]
+l ElementType = 10		//easy check
+l Left = 513
+l Top = 176
+l Width = 7
+l Height = 7
+st NormalArt = "NONE"
+st GreyArt = "NONE"
+st OverArt = "NONE"
+st PressArt = "prefs_01.tga"
+l OverSFX = -1
+l PressSFX = 16
+l Callback = 41
+
+[Element9]
+l ElementType = 10		//regular check
+l Left = 513
+l Top = 189
+l Width = 7
+l Height = 7
+st NormalArt = "NONE"
+st GreyArt = "NONE"
+st OverArt = "NONE"
+st PressArt = "prefs_01.tga"
+l OverSFX = -1
+l PressSFX = 16
+l Callback = 42
+
+[Element10]
+l ElementType = 10		//hard check
+l Left = 512
+l Top = 202
+l Width = 7
+l Height = 7
+st NormalArt = "NONE"
+st GreyArt = "NONE"
+st OverArt = "NONE"
+st PressArt = "prefs_01.tga"
+l OverSFX = -1
+l PressSFX = 16
+l Callback = 43
+
+FITend

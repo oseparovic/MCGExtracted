@@ -1,0 +1,162 @@
+FITini
+
+[Elements]
+l numElements = 12
+
+[Element0]
+l ElementType = 0			//Background
+l Left = 0
+l Top = 0
+l Width = 640
+l Height = 480
+st NormalArt = "mm_bkgd.tga"
+b UseBackPalette = T
+
+[Element1]
+l ElementType = 1			//Cancel Button
+l Left = 549
+l Top = 109
+l Width = 63
+l Height = 14
+st NormalArt = "bh_cancl.tga"
+st GreyArt   = "bn_cancl.tga"
+st PressArt  = "bg_cancl.tga"
+st OverArt   = "bh_cancl.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 16	// canceltoconnect
+
+[Element2]
+l ElementType = 8			//game list
+l Left = 360
+l Top = 172
+l Width = 144
+l Height = 88
+st NormalArt = "NONE"
+st GreyArt   = "NONE"
+st PressArt  = "NONE"
+st OverArt   = "NONE"
+l OverSFX = -1
+l PressSFX = -1
+
+[Element3]
+l ElementType = 7			//player list
+l Left = 529
+l Top = 171
+l Width = 70
+l Height = 89
+st NormalArt = "NONE"
+st GreyArt   = "NONE"
+st PressArt  = "NONE"
+st OverArt   = "NONE"
+l OverSFX = -1
+l PressSFX = -1
+b Scrolling = FALSE
+
+[Element4]
+l ElementType = 4			//Player Name
+l Left = 359
+l Top = 309
+l Width = 114
+l Height = 13
+st NormalArt = "NONE"
+st GreyArt   = "NONE"
+st PressArt  = "NONE"
+st OverArt   = "NONE"
+l OverSFX = -1
+l PressSFX = -1
+
+[Element5]
+l ElementType = 1			//host game button
+l Left = 515
+l Top = 318
+l Width = 86
+l Height = 14
+st NormalArt = "bh_host.tga"
+st GreyArt   = "bn_host.tga"
+st PressArt  = "bg_host.tga"
+st OverArt   = "bh_host.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 18	// host game
+
+[Element6]
+l ElementType = 1			//join game button
+l Left = 515
+l Top = 298
+l Width = 86
+l Height = 14
+st NormalArt = "bh_join.tga"
+st GreyArt   = "bn_join.tga"
+st PressArt  = "bg_join.tga"
+st OverArt   = "bh_join.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 19	// join game
+
+[Element7]
+l ElementType = 6			//image
+l Left = 335
+l Top = 93
+l Width = 290
+l Height = 339
+st NormalArt = "lan00.tga"
+l OverSFX = -1
+l PressSFX = -1
+
+[Element8]
+l ElementType = 6			//create session sub-image
+l Left = 348
+l Top = 281
+l Width = 263
+l Height = 68
+st NormalArt = "lan01.tga"
+l OverSFX = -1
+l PressSFX = -1
+
+[Element9]
+l ElementType = 1			//create session button
+l Left = 515
+l Top = 308
+l Width = 86
+l Height = 14
+st NormalArt = "bh_sessn.tga"
+st GreyArt   = "bn_sessn.tga"
+st PressArt  = "bg_sessn.tga"
+st OverArt   = "bh_sessn.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 20	// serial
+
+[Element10]
+l ElementType = 4			//Session Name
+l Left = 359
+l Top = 309
+l Width = 99
+l Height = 13
+st NormalArt = "NONE"
+st GreyArt   = "NONE"
+st PressArt  = "NONE"
+st OverArt   = "NONE"
+l OverSFX = -1
+l PressSFX = -1
+
+[Element11]
+l ElementType = 4			//Number of Players
+l Left = 464
+l Top = 309
+l Width = 36
+l Height = 13
+st NormalArt = "NONE"
+st GreyArt   = "NONE"
+st PressArt  = "NONE"
+st OverArt   = "NONE"
+l OverSFX = -1
+l PressSFX = -1
+
+[Blocks]
+l Block Count = 2
+uc[12] Block0 = 0, 1, 2, 3, 4, 5, 6, 7, 0, 0, 0, 0
+uc[12] Block1 = 0, 1, 2, 3, 0, 0, 0, 7, 8, 9,10,11
+FITend
+

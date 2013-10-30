@@ -1,0 +1,77 @@
+FITini
+
+[Elements]
+l numElements = 6
+
+[Element0]
+l ElementType = 0			//Background
+l Left = 0
+l Top = 0
+l Width = 640
+l Height = 480
+st NormalArt = "mm_bkgd.tga"
+b UseBackPalette = T
+
+[Element1]
+l ElementType = 1			//Load Button
+l Left = 538
+l Top = 391
+l Width = 63
+l Height = 14
+st NormalArt = "mm_bh02.tga"
+st GreyArt = "mm_bn02.tga"
+st OverArt = "mm_bh02.tga"
+st PressArt = "mm_bg02.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 8	// load
+
+[Element2]
+l ElementType = 1			//Delete Button
+l Left = 467
+l Top = 391
+l Width = 63
+l Height = 14
+st NormalArt = "mm_bh01.tga"
+st GreyArt = "mm_bn01.tga"
+st OverArt = "mm_bh01.tga"
+st PressArt = "mm_bg01.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 10	// Delete
+
+[Element3]
+l ElementType = 1			//Cancel Button
+l Left = 538
+l Top = 110
+l Width = 63
+l Height = 14
+st NormalArt = "mm_bh00.tga"
+st GreyArt = "mm_bn00.tga"
+st OverArt = "mm_bh00.tga"
+st PressArt = "mm_bg00.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 11	// cancel
+
+[Element4]
+l ElementType = 5			//File Scroll Pane
+l Left = 359
+l Top = 172
+l Width = 240
+l Height = 144
+st NormalArt = "NONE"
+l OverSFX = 16
+l PressSFX = 15
+
+[Element5]
+l ElementType = 6			//image
+l Left = 335
+l Top = 93
+l Width = 290
+l Height = 339
+st NormalArt = "mm_wn01.tga"
+l OverSFX = -1
+l PressSFX = -1
+
+FITend

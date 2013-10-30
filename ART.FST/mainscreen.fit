@@ -1,0 +1,174 @@
+FITini
+
+[Elements]
+l numElements = 12
+
+[Element0]
+l ElementType = 0			//Background
+l Left = 0
+l Top = 0
+l Width = 640
+l Height = 480
+st NormalArt = "mm_bkgd.tga"
+b UseBackPalette = T
+
+[Element1]
+l ElementType = 1			//Button
+l Left = 371
+l Top = 119
+l Width = 216
+l Height = 25
+st NormalArt = "mm_xbh00.tga"
+st GreyArt   = "mm_xbn00.tga"
+st PressArt  = "mm_xbg00.tga"
+st OverArt   = "mm_xbh00.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 0	// new cermak
+
+[Element2]
+l ElementType = 1			//Button
+l Left = 371
+l Top = 264
+l Width = 216
+l Height = 25
+st NormalArt = "mm_xbh05.tga"
+st GreyArt   = "mm_xbn05.tga"
+st PressArt  = "mm_xbg05.tga"
+st OverArt   = "mm_xbh05.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 1	// save
+
+[Element3]
+l ElementType = 1			//Button
+l Left = 371
+l Top = 235
+l Width = 216
+l Height = 25
+st NormalArt = "mm_xbh04.tga"
+st GreyArt   = "mm_xbn04.tga"
+st PressArt  = "mm_xbg04.tga"
+st OverArt   = "mm_xbh04.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 2	// load
+
+[Element10]
+l ElementType = 1			//Button
+l Left = 371
+l Top = 177
+l Width = 216
+l Height = 25
+st NormalArt = "mm_xbh02.tga"
+st GreyArt   = "mm_xbn02.tga"
+st PressArt  = "mm_xbg02.tga"
+st OverArt   = "mm_xbh02.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 41	// load solo
+
+[Element4]
+l ElementType = 1			//Button
+l Left = 371
+l Top = 293
+l Width = 216
+l Height = 25
+st NormalArt = "mm_xbh06.tga"
+st GreyArt   = "mm_xbn06.tga"
+st PressArt  = "mm_xbg06.tga"
+st OverArt   = "mm_xbh06.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 3	// prefs
+
+[Element5]
+l ElementType = 1			//Button
+l Left = 371
+l Top = 206
+l Width = 216
+l Height = 25
+st NormalArt = "mm_xbh03.tga"
+st GreyArt   = "mm_xbn03.tga"
+st PressArt  = "mm_xbg03.tga"
+st OverArt   = "mm_xbh03.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 4	// multi-player
+
+[Element6]
+l ElementType = 1			//Button
+l Left = 371
+l Top = 351
+l Width = 216
+l Height = 25
+st NormalArt = "mm_xbh08.tga"
+st GreyArt   = "mm_xbn08.tga"
+st PressArt  = "mm_xbg08.tga"
+st OverArt   = "mm_xbh08.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 5	// cinema
+
+[Element7]
+l ElementType = 1			//Button
+l Left = 371
+l Top = 322
+l Width = 216
+l Height = 25
+st NormalArt = "mm_xbh07.tga"
+st GreyArt   = "mm_xbn07.tga"
+st PressArt  = "mm_xbg07.tga"
+st OverArt   = "mm_xbh07.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 6	// return
+
+[Element8]
+l ElementType = 1			//Button
+l Left = 371
+l Top = 380
+l Width = 216
+l Height = 25
+st NormalArt = "mm_xbh09.tga"
+st GreyArt   = "mm_xbn09.tga"
+st PressArt  = "mm_xbg09.tga"
+st OverArt   = "mm_xbh09.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 7	// quit
+
+[Element9]
+l ElementType = 6			//image
+l Left = 335
+l Top = 93
+l Width = 290
+l Height = 339
+st NormalArt = "mm_wn00.tga"
+l OverSFX = -1
+l PressSFX = -1
+
+[Element11]
+l ElementType = 1			//Button
+l Left = 371
+l Top = 148
+l Width = 216
+l Height = 25
+st NormalArt = "mm_xbh01.tga"
+st GreyArt   = "mm_xbn01.tga"
+st PressArt  = "mm_xbg01.tga"
+st OverArt   = "mm_xbh01.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 40	// load solo
+
+FITend
+
+// callback 0 -- New Campaign
+// callback 1 -- Save Game
+// callback 2 -- Load Game
+// callback 3 -- Prefs
+// callback 4 -- Show Multi-Player
+// callback 5 -- Cinema
+// callback 6 -- Return Game
+// callback 7 -- Quit

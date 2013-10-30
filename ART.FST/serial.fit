@@ -1,0 +1,111 @@
+FITini
+
+[Elements]
+l numElements = 7
+//l numElements = 8
+
+[Element0]
+l ElementType = 0			//Background
+l Left = 0
+l Top = 0
+l Width = 640
+l Height = 480
+st NormalArt = "mm_bkgd.tga"
+b UseBackPalette = T
+
+[Element1]
+l ElementType = 1			//Cancel Button
+l Left = 549
+l Top = 109
+l Width = 63
+l Height = 14
+st NormalArt = "bh_cancl.tga"
+st GreyArt   = "bn_cancl.tga"
+st PressArt  = "bg_cancl.tga"
+st OverArt   = "bh_cancl.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 16	// canceltoconnect
+
+[Element2]
+l ElementType = 1			//join button
+l Left = 512
+l Top = 161
+l Width = 86
+l Height = 14
+st NormalArt = "bh_join.tga"
+st GreyArt   = "bn_join.tga"
+st PressArt  = "bg_join.tga"
+st OverArt   = "bh_join.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 38	// join serial
+
+[Element3]
+l ElementType = 1			//host button
+l Left = 512
+l Top = 181
+l Width = 86
+l Height = 14
+st NormalArt = "bh_host.tga"
+st GreyArt   = "bn_host.tga"
+st PressArt  = "bg_host.tga"
+st OverArt   = "bh_host.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 37 // create serial
+
+[Element4]
+l ElementType = 4			//Player Name
+l Left = 359
+l Top = 161
+l Width = 114
+l Height = 14
+st NormalArt = "NONE"
+st GreyArt   = "NONE"
+st PressArt  = "NONE"
+st OverArt   = "NONE"
+l OverSFX = -1
+l PressSFX = -1
+
+[Element5]
+l ElementType = 4			//Com Port
+l Left = 359
+l Top = 190
+l Width = 114
+l Height = 14
+st NormalArt = "NONE"
+st GreyArt   = "NONE"
+st PressArt  = "NONE"
+st OverArt   = "NONE"
+l OverSFX = -1
+l PressSFX = -1
+
+[Element6]
+l ElementType = 6			//image
+l Left = 335
+l Top = 93
+l Width = 290
+l Height = 339
+st NormalArt = "serial00.tga"
+l OverSFX = -1
+l PressSFX = -1
+
+//[Element7]
+//l ElementType = 6			//image
+//l Left = 346
+//l Top = 65
+//l Width = 263
+//l Height = 68
+//st NormalArt = "serial02.tga"
+//l OverSFX = -1
+//l PressSFX = -1
+
+//[Blocks]
+//l Block Count = 2
+//uc[8] Block0 = 0, 1, 2, 3, 4, 5, 6, 0
+//uc[8] Block1 = 0, 1, 0, 0, 0, 0, 6, 7
+
+
+FITend
+

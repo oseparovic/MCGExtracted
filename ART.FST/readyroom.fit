@@ -1,0 +1,69 @@
+FITini
+
+[Elements]
+l numElements = 5
+
+[Element0]
+l ElementType = 0			//Background
+l Left = 0
+l Top = 0
+l Width = 640
+l Height = 480
+st NormalArt = "mm_bkgd.tga"
+b UseBackPalette = T
+
+[Element1]
+l ElementType = 1			//Cancel Button
+l Left = 549
+l Top = 109
+l Width = 63
+l Height = 14
+st NormalArt = "bh_cancl.tga"
+st GreyArt   = "bn_cancl.tga"
+st PressArt  = "bg_cancl.tga"
+st OverArt   = "bh_cancl.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 16	// canceltoconnect
+//l Callback = 22	// leave
+
+[Element2]
+l ElementType = 1			//go button
+l Left = 529
+l Top = 247
+l Width = 63
+l Height = 14
+st NormalArt = "bh_go.tga"
+st GreyArt   = "bn_go.tga"
+st PressArt  = "bg_go.tga"
+st OverArt   = "bh_go.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 21	// go
+
+[Element3]
+l ElementType = 7			//player list
+l Left = 359
+l Top = 171
+l Width = 131
+l Height = 89
+st NormalArt = "NONE"
+st GreyArt   = "NONE"
+st PressArt  = "NONE"
+st OverArt   = "NONE"
+l OverSFX = -1
+l PressSFX = -1
+b Scrolling = FALSE
+
+[Element4]
+l ElementType = 6			//image
+l Left = 335
+l Top = 93
+l Width = 290
+l Height = 339
+st NormalArt = "rroom00.tga"
+l OverSFX = -1
+l PressSFX = -1
+
+FITend
+

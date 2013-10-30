@@ -1,0 +1,95 @@
+FITini
+
+[Elements]
+l numElements = 7
+
+[Element0]
+l ElementType = 0			//Background
+l Left = 0
+l Top = 0
+l Width = 640
+l Height = 480
+st NormalArt = "mm_bkgd.tga"
+b UseBackPalette = T
+
+[Element1]
+l ElementType = 1			//Cancel Button
+l Left = 549
+l Top = 109
+l Width = 63
+l Height = 14
+st NormalArt = "bh_cancl.tga"
+st GreyArt   = "bn_cancl.tga"
+st PressArt  = "bg_cancl.tga"
+st OverArt   = "bh_cancl.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 11	// cancel
+
+[Element2]
+l ElementType = 1			//Modem Button
+l Left = 390
+l Top = 152
+l Width = 175
+l Height = 28
+st NormalArt = "bh_modem.tga"
+st GreyArt   = "bn_modem.tga"
+st PressArt  = "bg_modem.tga"
+st OverArt   = "bh_modem.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 12	// modem
+
+[Element3]
+l ElementType = 1			//Serial Button
+l Left = 390
+l Top = 183
+l Width = 175
+l Height = 28
+st NormalArt = "bh_seria.tga"
+st GreyArt   = "bn_seria.tga"
+st PressArt  = "bg_seria.tga"
+st OverArt   = "bh_seria.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 13	// serial
+
+[Element4]
+l ElementType = 1			//Lan Button
+l Left = 390
+l Top = 214
+l Width = 175
+l Height = 28
+st NormalArt = "bh_lan.tga"
+st GreyArt   = "bn_lan.tga"
+st PressArt  = "bg_lan.tga"
+st OverArt   = "bh_lan.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 14	// LAN
+
+[Element5]
+l ElementType = 1			//Internet Button
+l Left = 390
+l Top = 245
+l Width = 175
+l Height = 28
+st NormalArt = "bh_inter.tga"
+st GreyArt   = "bn_inter.tga"
+st PressArt  = "bg_inter.tga"
+st OverArt   = "bh_inter.tga"
+l OverSFX = 16
+l PressSFX = 15
+l Callback = 15	// Internet
+
+[Element6]
+l ElementType = 6			//image
+l Left = 335
+l Top = 93
+l Width = 290
+l Height = 339
+st NormalArt = "access00.tga"
+l OverSFX = -1
+l PressSFX = -1
+
+FITend
