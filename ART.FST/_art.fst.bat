@@ -1,6 +1,16 @@
 ECHO ..Extracting ART.FST
-SET extraction_dir = "data/art"
+SET extraction_dir="data\art"
 mkdir %extraction_dir%\logart
+If Not Exist ART.FST (
+	ECHO Could not find ART.FST in current directory. Make sure you place it in the same directory as this extraction script.
+	PAUSE
+	EXIT
+)
+If Not Exist fstextract.exe (
+	ECHO Could not find fstextract.exe in current directory. Make sure you place it in the same directory as this extraction script.
+	PAUSE
+	EXIT
+)
 
 fstextract.exe ART.FST ACCESS00.tga		%extraction_dir%\ACCESS00.tga
 fstextract.exe ART.FST ASKED.tga		%extraction_dir%\ASKED.tga
