@@ -1,0 +1,11 @@
+FITini
+
+[General]
+l numCursors = 1
+st cursorBitmap = "Cursor"
+
+[Cursor0]
+l CursorWidth = 31
+l CursorFrames = 5
+
+FITend

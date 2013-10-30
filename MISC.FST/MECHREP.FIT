@@ -1,0 +1,134 @@
+FITini
+
+[Box0]	//head
+st name = "Head"
+l TextX = 229
+l TextY = 2
+l TextW = 79
+l TextH = 11
+l Front Armor X = 249
+l Front Armor Y = 22
+l Front Armor Range = 9
+l Column1 X = 305
+l Column1 Y = 16
+l Text Height = 85
+l Two Col? = 0
+
+
+[Box1]	//Center Torso
+st name = "Center Torso"
+l TextX = 142
+l TextY = 2
+l TextW = 97
+l TextH = 11
+l Front Armor X = 153
+l Front Armor Y = 22
+l Front Armor Range = 52
+l Rear Armor X = 162
+l Rear Armor Y = 22
+l Rear Armor Range = 29
+l Column1 X = 222
+l Column1 Y = 16
+l Text Height = 85
+l Two Col? = 0
+
+[Box2]	//Left Torso
+st name = "Left Torso"
+l TextX = 310
+l TextY = 2
+l TextW = 135
+l TextH = 11
+l Front Armor X = 420
+l Front Armor Y = 23
+l Front Armor Range = 41
+l Rear Armor X = 429
+l Rear Armor Y = 23
+l Rear Armor Range = 21
+l Column1 X = 358
+l Column1 Y = 16
+l Text Height = 85
+l Two Col? = 1
+l Column2 X = 406
+
+[Box3]	//Right Torso
+st name = "Right Torso"
+l TextX = 3
+l TextY = 2
+l TextW = 135
+l TextH = 11
+l Front Armor X = 16
+l Front Armor Y = 22
+l Front Armor Range = 44
+l Rear Armor X = 25
+l Rear Armor Y = 22
+l Rear Armor Range = 20
+l Column1 X = 85
+l Column1 Y = 16
+l Text Height = 85
+l Two Col? = 1
+l Column2 X = 133
+
+[Box4]	//Left Arm
+st name = "Left Arm"
+l TextX = 332
+l TextY = 101
+l TextW = 113
+l TextH = 11
+l Front Armor X = 428
+l Front Armor Y = 117
+l Front Armor Range = 35
+l Column1 X = 380
+l Column1 Y = 115
+l Text Height = 60
+l Two Col? = 1
+l Column2 X = 423
+
+[Box5]	//Right Arm
+st name = "Right Arm"
+l TextX = 3
+l TextY = 101
+l TextW = 113
+l TextH = 11
+l Front Armor X = 17
+l Front Armor Y = 117
+l Front Armor Range = 35
+l Column1 X = 65
+l Column1 Y = 115
+l Text Height = 60
+l Two Col? = 1
+l Column2 X = 111
+
+[Box6]	//Left Leg
+st name = "Left Leg"
+l TextX = 373
+l TextY = 193
+l TextW = 72
+l TextH = 11
+l Front Armor X = 427
+l Front Armor Y = 211
+l Front Armor Range = 41
+l Column1 X = 422
+l Column1 Y = 207
+l Text Height = 55
+l Two Col? = 0
+
+[Box7]	//Right Leg
+st name = "Right Leg"
+l TextX = 3
+l TextY = 193
+l TextW = 72
+l TextH = 11
+l Front Armor X = 16
+l Front Armor Y = 210
+l Front Armor Range = 41
+l Column1 X = 71
+l Column1 Y = 207
+l Text Height = 55
+l Two Col? = 0
+
+[Ammo]
+l X1 = 182
+l X2 = 310
+l Y = 284
+
+FITend

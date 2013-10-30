@@ -1,0 +1,24 @@
+FITini 
+[Parameters]
+s Drag Distance				= 20
+s Scroll Speed 				= 48
+s Tac Scroll Speed			= 5
+s Scroll Delay				= 100
+s Scroll Start				= 75
+
+[Shape Files]
+st Shape0				= "Head"
+st Shape1				= "ctorso"
+st Shape2				= "ltorso"
+st Shape3				= "rtorso"
+st Shape4				= "larm"
+st Shape5				= "rarm"
+st Shape6				= "lleg"
+st Shape7				= "rleg"
+
+[ABL Window]
+ul X = 0
+ul Y = 400
+ul w = 260
+ul h = 125
+FITend 

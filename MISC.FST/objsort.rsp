@@ -1,0 +1,256 @@
+-1,0,#VALUE!
+-1,1,Fusion Engine
+-1,2,XL Fusion Engine
+-1,3,C XL Fusion Engine
+-1,4,Arm Actuator
+-1,5,Leg Actuator
+-1,6,Cockpit
+-1,7,Heat Sink
+-1,8,Double Heat Sink
+-1,9,C Double Heat Sink
+-1,10,Large Jump Jet
+-1,11,Medium Jump Jet
+-1,12,Small Jump Jet
+41,13,Sensor - Basic
+42,14,Sensor - Intermed
+43,15,Sensor - Advanced
+48,16,C Sensor - Basic
+49,17,C Sensor - Adv
+-1,18,Vehicle Sensor
+-1,19,Adv Vehicle Sensor
+-1,20,Gyroscope IV
+-1,21,Gyroscope III
+-1,22,Gyroscope II
+-1,23,Gyroscope I
+-1,24,Power Amplifier
+-1,25,Ferro-Fibrous Armor
+-1,26,Vehicle Ferro-Fibrous Armor
+-1,27,C Ferro-Fibrous Armor
+-1,28,C Vehicle Ferro-Fibrous
+-1,29,Endosteal Int Str
+-1,30,C Endosteal Int Str
+-1,31,Case
+-1,32,C Case
+-1,33,Shoulder
+-1,34,Hip
+-1,35,LifeSupport
+-1,36,undefined
+44,37,Beagle Probe
+45,38,Guardian ECM
+-1,39,undefined
+-1,40,undefined
+-1,41,undefined
+47,42,C ECM Suite
+46,43,C Active Probe
+-1,44,undefined
+-1,45,undefined
+-1,46,undefined
+-1,47,undefined
+-1,48,undefined
+-1,49,undefined
+-1,50,undefined
+-1,51,undefined
+-1,52,undefined
+-1,53,undefined
+-1,54,undefined
+-1,55,undefined
+-1,56,undefined
+-1,57,undefined
+-1,58,undefined
+-1,59,undefined
+-1,60,undefined
+-1,61,undefined
+-1,62,undefined
+-1,63,undefined
+-1,64,undefined
+-1,65,undefined
+-1,66,undefined
+-1,67,undefined
+-1,68,undefined
+-1,69,undefined
+-1,70,undefined
+-1,71,undefined
+-1,72,undefined
+-1,73,undefined
+-1,74,undefined
+-1,75,undefined
+-1,76,undefined
+-1,77,undefined
+-1,78,undefined
+-1,79,undefined
+-1,80,undefined
+-1,81,undefined
+-1,82,undefined
+-1,83,undefined
+-1,84,undefined
+-1,85,undefined
+-1,86,undefined
+-1,87,undefined
+-1,88,undefined
+-1,89,undefined
+-1,90,undefined
+-1,91,undefined
+-1,92,undefined
+-1,93,undefined
+-1,94,undefined
+-1,95,undefined
+-1,96,undefined
+-1,97,undefined
+40,98,Rail Gun
+39,99,Light Gauss Rifle
+26,100,Light Autocannon
+17,101,Autocannon
+9,102,Hvy Autocannon
+27,103,Lt. Ultra Autocannon
+36,104,Gauss Rifle
+-1,105,Machine Gun
+-1,106,Anti-Missile System
+29,107,Light LBX Autocannon
+19,108,LBX Autocannon
+11,109,Heavy LBX Autocannon
+28,110,C Lt. Ultra Autocannon
+18,111,C  Ultra Autocannon
+10,112,C Hvy Ultra Autocannon
+37,113,C Gauss Rifle
+-1,114,C Machine Gun
+-1,115,C Anti-Missile System
+30,116,C Light LBX
+20,117,C LBX Autocannon
+12,118,C Heavy LBX Autocannon
+-1,119,undefined
+24,120,LRM Rack
+-1,121,LR Missile/15
+-1,122,LR Missile/20
+2,123,SR Missile Pack
+-1,124,SR Missile/6
+5,125,ST SR Missile Pack
+23,126,Heavy Thunderbolt
+-1,127,undefined
+-1,128,undefined
+-1,129,undefined
+25,130,C LR Missile Rack
+-1,131,C LR Missile/15
+-1,132,C LR Missile/20
+3,133,C SR Missile Pack
+-1,134,C SR Missile/6
+6,135,C ST-SR Missile Pack
+-1,136,C ST-SR Missile/6
+-1,137,undefined
+-1,138,undefined
+33,139,Large X Pulse Laser
+16,140,Large Laser
+31,141,Large ER Laser
+13,142,Large PS Laser
+4,143,Laser
+0,144,Pulse Laser
+21,145,PPC
+34,146,ER PPC
+7,147,Heavy Flamer
+-1,148,undefined
+-1,149,undefined
+32,150,C Large ER Laser
+14,151,C Large PS Laser
+15,152,C ER Laser
+1,153,C Pulse  Laser
+35,154,C ER PPC
+8,155,C Heavy Flamer
+-1,156,Small Laser
+-1,157,undefined
+-1,158,undefined
+-1,159,undefined
+38,160,Long Tom
+22,161,Sniper Cannon
+-1,162,undefined
+-1,163,undefined
+-1,164,undefined
+-1,165,undefined
+-1,166,undefined
+-1,167,undefined
+-1,168,undefined
+-1,169,undefined
+-1,170,undefined
+-1,171,undefined
+-1,172,undefined
+-1,173,undefined
+-1,174,undefined
+-1,175,undefined
+-1,176,undefined
+-1,177,undefined
+-1,178,undefined
+-1,179,undefined
+-1,180,undefined
+-1,181,undefined
+-1,182,undefined
+-1,183,undefined
+-1,184,undefined
+-1,185,undefined
+-1,186,undefined
+-1,187,undefined
+-1,188,undefined
+-1,189,undefined
+-1,190,undefined
+-1,191,undefined
+-1,192,undefined
+-1,193,undefined
+-1,194,undefined
+-1,195,undefined
+-1,196,undefined
+-1,197,undefined
+-1,198,Rail Gun Ammo
+-1,199,Lt. Gauss Ammo
+-1,200,Lt. AC Ammo
+-1,201,AC Ammo
+-1,202,Hvy AC Ammo
+-1,203,Ultra Lt.AC Ammo
+-1,204,Gauss Ammo
+-1,205,M Gun Ammo
+-1,206,Anti-Missile Ammo
+-1,207,Lt. LBX Ammo
+-1,208,LBX Ammo
+-1,209,Hvy. LBX Ammo
+-1,210,C Ultra Lt. AC Ammo
+-1,211,C Ultra AC Ammo
+-1,212,C Ultra AC Hvy Ammo
+-1,213,C Gauss Ammo
+-1,214,C M Gun Ammo
+-1,215,C Anti-Missile Ammo
+-1,216,C Lt. LBX Ammo
+-1,217,C LBX Ammo
+-1,218,C Hvy. LBX Ammo
+-1,219,undefined
+-1,220,LRM Ammo
+-1,221,LRM/15 Pack
+-1,222,LRM/20 Pack
+-1,223,SRM Ammo
+-1,224,SRM/6 Pack
+-1,225,ST SRM Ammo
+-1,226,Heavy Thunderbolt Ammo
+-1,227,Long Tom Ammo
+-1,228,Sniper Cannon Ammo
+-1,229,undefined
+-1,230,C LRM Ammo
+-1,231,C LRM/15 Pack
+-1,232,C LRM/20 Pack
+-1,233,C SRM Ammo
+-1,234,C SRM/6 Pack
+-1,235,C ST SRM Ammo
+-1,236,C ST-SRM/2 Pack
+-1,237,undefined
+-1,238,undefined
+-1,239,undefined
+-1,240,undefined
+-1,241,undefined
+-1,242,undefined
+-1,243,undefined
+-1,244,undefined
+-1,245,undefined
+-1,246,undefined
+-1,247,undefined
+-1,248,undefined
+-1,249,undefined
+-1,250,undefined
+-1,251,undefined
+-1,252,undefined
+-1,253,undefined
+-1,254,undefined
+-1,255,#REF!

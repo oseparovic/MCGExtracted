@@ -1,0 +1,153 @@
+FITini
+
+[Main]
+l NumMenus = 8
+
+[Default Commands]
+l Commands		= 8
+l ItemID0		= 2	// GEC_MOVE
+s ItemArt0		= 0
+st ItemHelp0	= "Baby, you move me!"	// this can be up to 63 characters
+l ItemID1		= 4	// GEC_ATTACK
+s ItemArt1		= 165
+l ItemID2		= 46	// GEC_ATTACKCLOSEST
+s ItemArt2		= 187
+l ItemID3		= 12 // GEC_SETAGGRESSIVEATTITUDE
+s ItemArt3		= 220
+l ItemID4		= 19 // GEC_OPENFIRE
+s ItemArt4		= 330
+l ItemID5		= 20 // GEC_CEASEFIRE
+s ItemArt5		= 341
+l ItemID6		= 7 // GEC_BESTSPEED
+s ItemArt6		= 33
+l ItemID7		= 9 // GEC_SLOWSPEED
+s ItemArt7		= 44
+
+[Menu0]
+s Items 		= 0
+st MenuArt		= "Action"
+
+[Menu1]
+s Items 		= 10
+st MenuArt		= "Att"
+l ItemID0		= 11 // GEC_SETNORMALATTITUDE
+s ItemArt0		= 209
+l ItemID1		= 12 // GEC_SETAGGRESSIVEATTITUDE
+st ItemHelp1	= "Get Mad!"
+s ItemArt1		= 220
+l ItemID2		= 13 // GEC_SETCONSERVATIVEATTITUDE
+s ItemArt2		= 231
+l ItemID3		= 14 // GEC_SETCAUTIOUSATTITUDE
+s ItemArt3		= 242
+l ItemID4		= 15 // GEC_SETSUICIDALATTITUDE
+s ItemArt4		= 243
+l ItemID5		= 39 // GEC_REPORTENEMYTHREAT
+s ItemArt5		= 550
+l ItemID6		= 40 // GEC_REPORTENDOFMOVE
+s ItemArt6		= 561
+l ItemID7		= 41 // GEC_REPORTWEAPONSFIRE
+s ItemArt7		= 572
+l ItemID8		= 42 // GEC_REPORTOUTOFAMMO
+s ItemArt8		= 583
+l ItemID9		= 43 // GEC_REPORTCRITDAMAGE
+s ItemArt9		= 594
+
+[Menu2]
+s Items		= 5
+st MenuArt		= "Role"
+l ItemID0		= 31 // GEC_ROLEWINGLEFT
+s ItemArt0		= 451
+l ItemID1		= 35 // GEC_ROLEREARGUARD
+s ItemArt1		= 462
+l ItemID2		= 29 // GEC_ROLESCOUT
+s ItemArt2		= 473
+l ItemID3		= 36 // GEC_ROLEINDIRECTFIRE
+s ItemArt3		= 484
+l ItemID4		= 37 // GEC_ROLEFOWARDOBSERVER
+s ItemArt4		= 495
+
+[Menu3]
+s Items 		= 14
+st MenuArt		= "combat"
+l ItemID0		= 4 // GEC_ATTACK (object)
+s ItemArt0		= 165
+l ItemID1		= 10004 // GEC_ATTACK (threat)
+s ItemArt1		= 176
+l ItemID2		= 46	// GEC_ATTACKCLOSEST
+s ItemArt2		= 187
+l ItemID3		= 19 // GEC_OPENFIRE
+s ItemArt3		= 330
+l ItemID4		= 20 // GEC_CEASEFIRE
+s ItemArt4		= 341
+l ItemID5		= 21 // GEC_FIRELONGRANGE
+s ItemArt5		= 352
+l ItemID6		= 22 // GEC_FIREMEDIUMRANGE
+s ItemArt6		= 363
+l ItemID7		= 23 // GEC_FIRESHORTRANGE
+s ItemArt7		= 374
+l ItemID8		= 24 // GEC_FIRELUCKYODDS
+s ItemArt8		= 385
+l ItemID9		= 25 // GEC_FIREBADODDS
+s ItemArt9		= 396
+l ItemID10		= 26 // GEC_FIREMEDIUMODDS
+s ItemArt10		= 407
+l ItemID11		= 27 // GEC_FIREGOODODDS
+s ItemArt11		= 418
+l ItemID12		= 28 // GEC_FIREGREATODDS
+s ItemArt12		= 429
+l ItemID13		= 49 // GEC_FIREONENEMYFIRE
+s ItemArt13		= 440
+
+[Menu4]
+s Items 		= 10
+st MenuArt		= "move"
+l ItemID0		= 2	// GEC_MOVE (to)
+s ItemArt0		= 0
+l ItemID1		= 10002	// GEC_MOVE (traverse path)
+s ItemArt1		= 11
+l ItemID2		= 3	// GEC_PATROL
+s ItemArt2		= 22
+l ItemID3		= 10 // GEC_MAXSPEED
+s ItemArt3		= 44
+l ItemID4		= 7 // GEC_BESTSPEED
+s ItemArt4		= 33
+l ItemID5		= 8 // GEC_MODERATESPEED
+s ItemArt5		= 66
+l ItemID6		= 9 // GEC_SLOWSPEED
+s ItemArt6		= 55
+l ItemID7		= 48 // GEC_NORMALFORMATION
+s ItemArt7		= 264
+l ItemID8		= 16 // GEC_CLOSEFORMATION
+s ItemArt8		= 275
+l ItemID9		= 17 // GEC_OPENFORMATION
+s ItemArt9		= 286
+l ItemID10		= 18 // GEC_WITHDRAW
+s ItemArt10		= 297
+
+[Menu5]
+s Items 		= 7
+st MenuArt		= "move2"
+l ItemID0		= 50	// GEC_MOVEDIRECTPATTERN
+s ItemArt0		= 77
+l ItemID1		= 51	// GEC_MOVEZIGZAGPATTERN
+s ItemArt1		= 88
+l ItemID2		= 52	// GEC_MOVERANDOMPATTERN
+s ItemArt2		= 99
+l ItemID3		= 53 // GEC_ORBITOBJECT
+s ItemArt3		= 110
+l ItemID4		= 54 // GEC_ORBITSHORTRANGE
+s ItemArt4		= 132
+l ItemID5		= 55 // GEC_ORBITMEDIUMRANGE
+s ItemArt5		= 143
+l ItemID6		= 56 // GEC_ORBITLONGRANGE
+s ItemArt6		= 154
+
+[Menu6]
+s Items 		= 0
+st MenuArt		= "Genord"
+
+[Menu7]
+s Items 		= 0
+st MenuArt		= "data"
+
+FITend

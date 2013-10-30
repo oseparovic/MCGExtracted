@@ -1,0 +1,289 @@
+FITini
+
+[Palette]
+
+l HazeShift = 16
+l NumBitmapHazeLevels = 16
+l NumDepthHazeEntriesShift = 5
+l NumDepthAtHazeLevelTables = 20
+l AltitudeShift = 9
+
+st PaletteFileName = "hb"
+st BWPaletteFileName = "bw"
+st ExPaletteFileName = "ex"
+
+[Tables]
+
+st FadeTableFile = "fade"
+st DepthTableFile = "depth"
+st AllFadeTableFile = "allfade"
+
+[Ranges]
+
+l NumColorRanges = 9
+
+[Range0]
+uc BaseColorIndex = 0
+uc MaxLitColor = 9	
+uc MaxHazedColor = 15
+uc BaseRed = 0
+uc BaseGreen = 0
+uc BaseBlue = 0
+uc LightSourceFlag = 1
+uc DepthCueFlag = 1
+uc CalcLightSource = 1
+uc CalcDepthCue = 1
+
+[Range1]
+uc BaseColorIndex = 16
+uc MaxLitColor = 9
+uc MaxHazedColor = 15
+uc BaseRed = 16
+uc BaseGreen = 8
+uc BaseBlue = 0
+uc LightSourceFlag = 1
+uc DepthCueFlag = 1
+uc CalcLightSource = 1
+uc CalcDepthCue = 1
+
+[Range2]
+uc BaseColorIndex = 32 
+uc MaxLitColor = 9
+uc MaxHazedColor = 15
+uc BaseRed = 0
+uc BaseGreen = 8
+uc BaseBlue = 0
+uc LightSourceFlag = 1
+uc DepthCueFlag = 1
+uc CalcLightSource = 1
+uc CalcDepthCue = 1
+
+[Range3]
+uc BaseColorIndex = 48 
+uc MaxLitColor = 9
+uc MaxHazedColor = 15
+uc BaseRed = 0
+uc BaseGreen = 4
+uc BaseBlue = 8
+uc LightSourceFlag = 1
+uc DepthCueFlag = 1
+uc CalcLightSource = 1
+uc CalcDepthCue = 1
+
+[Range4]
+uc BaseColorIndex = 80
+uc MaxLitColor = 9
+uc MaxHazedColor = 15
+uc BaseRed = 0
+uc BaseGreen = 4
+uc BaseBlue = 8
+uc LightSourceFlag = 1
+uc DepthCueFlag = 1
+uc CalcLightSource = 1
+uc CalcDepthCue = 1
+
+[Range5]
+uc BaseColorIndex = 96
+uc MaxLitColor = 9
+uc MaxHazedColor = 15
+uc BaseRed = 0
+uc BaseGreen = 4
+uc BaseBlue = 8
+uc LightSourceFlag = 1
+uc DepthCueFlag = 1
+uc CalcLightSource = 1
+uc CalcDepthCue = 1
+
+[Range6]
+uc BaseColorIndex = 176
+uc MaxLitColor = 9
+uc MaxHazedColor = 15
+uc BaseRed = 16
+uc BaseGreen = 8
+uc BaseBlue = 0
+uc LightSourceFlag = 1
+uc DepthCueFlag = 1
+uc CalcLightSource = 1
+uc CalcDepthCue = 1
+
+[Range7]
+uc BaseColorIndex = 208
+uc MaxLitColor = 9
+uc MaxHazedColor = 15
+uc BaseRed = 0
+uc BaseGreen = 28
+uc BaseBlue = 40
+uc LightSourceFlag = 1
+uc DepthCueFlag = 1
+uc CalcLightSource = 1
+uc CalcDepthCue = 1
+
+[Range8]
+uc BaseColorIndex = 144
+uc MaxLitColor = 15
+uc MaxHazedColor = 15
+uc BaseRed = 0
+uc BaseGreen = 0
+uc BaseBlue = 24
+uc LightSourceFlag = 1
+uc DepthCueFlag = 1
+uc CalcLightSource = 1
+uc CalcDepthCue = 1
+
+[Build]
+
+l MaxMaxVisibleDistance = 200000
+l MaxMinVisibleDistance = 200000
+
+f HazePower = 3
+
+uc HazeColorRed = 248
+uc HazeColorGreen = 252
+uc HazeColorBlue = 240
+
+uc ShadowColorRed = 0
+uc ShadowColorGreen = 0
+uc ShadowColorBlue = 0
+
+f MaxHazePercent = 1.0
+f MaxShadowPercent = 0.75
+
+uc ColorDistribution = 0	//0 = linear, 1 = parabolic
+
+[FadeTables]
+
+l NumFadeTableEntries = 17
+
+//THE FORMAT FOR THIS DATA IS:
+//if first byte is 0:
+//	red level, from 0 to 63
+//	green level, from 0 to 63
+//	blue level, from 0 to 63
+//	percent towards that level
+//if first byte is 1:
+//	index of first color in range to remap to
+//	index of last color in range to remap to
+//	RGB match if 0, Value match if 1 (can add more options later)
+//	not used
+
+	//Translucency for Menu System
+[FadeTable0]
+uc TableType = 0
+uc RedLevel = 128
+uc GreenLevel = 128 
+uc BlueLevel = 128
+f PercentToward = 0.30
+
+[FadeTable1]
+uc TableType = 0
+uc RedLevel = 128
+uc GreenLevel = 128 
+uc BlueLevel = 128
+f PercentToward = 0.25
+
+[FadeTable2]
+uc TableType = 0
+uc RedLevel = 128
+uc GreenLevel = 128 
+uc BlueLevel = 128
+f PercentToward = 0.20
+
+[FadeTable3]
+uc TableType = 0
+uc RedLevel = 128
+uc GreenLevel = 128 
+uc BlueLevel = 128
+f PercentToward = 0.17
+
+[FadeTable4]
+uc TableType = 0
+uc RedLevel = 128
+uc GreenLevel = 128
+uc BlueLevel = 128
+f PercentToward = 0.15
+
+[FadeTable5]
+uc TableType = 0
+uc RedLevel = 128
+uc GreenLevel = 128 
+uc BlueLevel = 128
+f PercentToward = 0.12
+
+[FadeTable6]
+uc TableType = 0
+uc RedLevel = 128
+uc GreenLevel = 128 
+uc BlueLevel = 128
+f PercentToward = 0.10
+
+[FadeTable7]
+uc TableType = 0
+uc RedLevel = 128
+uc GreenLevel = 128 
+uc BlueLevel = 128
+f PercentToward = 0.05
+
+[FadeTable8]
+uc TableType = 0
+uc RedLevel = 0
+uc GreenLevel = 0 
+uc BlueLevel = 0
+f PercentToward = 0.85
+
+[FadeTable9]
+uc TableType = 0
+uc RedLevel = 0
+uc GreenLevel = 0 
+uc BlueLevel = 0
+f PercentToward = 0.70
+
+[FadeTable10]
+uc TableType = 0
+uc RedLevel = 0
+uc GreenLevel = 0 
+uc BlueLevel = 0
+f PercentToward = 0.55
+
+[FadeTable11]
+uc TableType = 0
+uc RedLevel = 0
+uc GreenLevel = 0 
+uc BlueLevel = 0
+f PercentToward = 0.40
+
+[FadeTable12]
+uc TableType = 0
+uc RedLevel = 0
+uc GreenLevel = 0
+uc BlueLevel = 0
+f PercentToward = 0.25
+
+[FadeTable13]
+uc TableType = 0
+uc RedLevel = 0
+uc GreenLevel = 0 
+uc BlueLevel = 0
+f PercentToward = 0.20
+
+[FadeTable14]
+uc TableType = 0
+uc RedLevel = 0
+uc GreenLevel = 0 
+uc BlueLevel = 0
+f PercentToward = 0.10
+
+[FadeTable15]
+uc TableType = 0
+uc RedLevel = 0
+uc GreenLevel = 0 
+uc BlueLevel = 0
+f PercentToward = 0.05
+
+[FadeTable16]				//used for Water FX
+uc TableType = 0
+uc RedLevel = 60
+uc GreenLevel = 80
+uc BlueLevel = 108
+f PercentToward = 0.15
+
+FITend

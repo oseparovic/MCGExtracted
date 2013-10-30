@@ -1,0 +1,116 @@
+FITini
+
+[CameraInfo]
+ul NumCameras = 1
+
+[ObjectCamera0]
+f PixelScalar 		= 1.0
+f ProjectionAngle 	= 30.0
+f PositionX			= 0.0
+f PositionY			= 0.0
+f PositionZ			= 0.0
+l HazeLevel			= -14
+l HazeInc			= 2
+l CameraScale		= 100
+uc BackgroundColor	= 0
+uc Ready			= 1
+l partNumber		= 512
+l objectClassId		= 1
+ul WindowLeft		= 70
+ul WindowTop		= 30
+ul WindowRight		= 570
+ul WindowBottom		= 362
+f CamDistance		= 150.0
+f DistanceFactor	= 75.0
+f CamSpeed			= 90.0
+l SwoopyCamOff		= 1
+l ScrollyCam		= 1
+f SpeedFactor		= 500.0
+f DistanceThreshold = 20.0
+f JumpThreshold = 200.0
+f MinScrollSpeed	= 100.0
+l MainWindow		= 1
+
+[ObjectCamera1]
+f PixelScalar 		= 1.0
+f ProjectionAngle 	= 30.0
+f PositionX			= 0.0
+f PositionY			= 0.0
+f PositionZ			= 0.0
+l HazeLevel			= -14
+l HazeInc			= 2
+l CameraScale		= 100
+uc BackgroundColor	= 0
+uc Ready			= 1
+l partNumber		= 2
+l objectClassId		= 1
+ul WindowLeft		= 70
+ul WindowTop		= 30
+ul WindowRight		= 570
+ul WindowBottom		= 362
+f CamDistance		= 150.0
+f DistanceFactor	= 75.0
+f CamSpeed			= 90.0
+l SwoopyCamOff		= 1
+l ScrollyCam		= 1
+f SpeedFactor		= 500.0
+f DistanceThreshold = 20.0
+f JumpThreshold = 200.0
+f MinScrollSpeed	= 100.0
+l MainWindow		= 1
+
+[ObjectCamera2]
+f PixelScalar 		= 1.0
+f ProjectionAngle 	= 30.0
+f PositionX			= 0.0
+f PositionY			= 0.0
+f PositionZ			= 0.0
+l HazeLevel			= -14
+l HazeInc			= 2
+l CameraScale		= 100
+uc BackgroundColor	= 0
+uc Ready			= 0
+l partNumber		= 1
+l objectClassId		= 1
+ul WindowLeft		= 0
+ul WindowTop		= 0
+ul WindowRight		= 100
+ul WindowBottom		= 100
+f CamDistance		= 150.0
+f DistanceFactor	= 75.0
+f CamSpeed			= 90.0
+l SwoopyCamOff		= 1
+l ScrollyCam		= 0
+f SpeedFactor		= 500.0
+f DistanceThreshold = 20.0
+f JumpThreshold = 200.0
+f MinScrollSpeed	= 100.0
+
+[ObjectCamera3]
+f PixelScalar 		= 1.0
+f ProjectionAngle 	= 30.0
+f PositionX			= 0.0
+f PositionY			= 0.0
+f PositionZ			= 0.0
+l HazeLevel			= -14
+l HazeInc			= 2
+l CameraScale		= 100
+uc BackgroundColor	= 0
+uc Ready			= 0
+l partNumber		= 1
+l objectClassId		= 1
+ul WindowLeft		= 0
+ul WindowTop		= 0
+ul WindowRight		= 100
+ul WindowBottom		= 100
+f CamDistance		= 150.0
+f DistanceFactor	= 75.0
+f CamSpeed			= 90.0
+l SwoopyCamOff		= 1
+l ScrollyCam		= 0
+f SpeedFactor		= 500.0
+f DistanceThreshold = 20.0
+f JumpThreshold = 200.0
+f MinScrollSpeed	= 100.0
+
+FITend
