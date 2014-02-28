@@ -24,3 +24,7 @@ Help needed!
 ------------
 There are many source files and currently CMunsta's tools are unable to extract source files with names and file types attached. I'll need help naming files and determining file types of certain files.
 
+Contact
+-------
+If you need to contact me you can do so via my twitter [@alexgophermix](https://twitter.com/alexgophermix) or through [this contact form](http://www.thegameengine.org/questions/) on my website.
+
