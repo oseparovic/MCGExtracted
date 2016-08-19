@@ -9,7 +9,7 @@ There has been a recent spur of MCG related modding & tool building activity. As
 
 Extraction
 ---------
-If you'd like to extract the files yourself, several utility scripts have been written by scrivener07 (which I shamelessly tweaked) for this purpose. The scripts are located in the `extraction_tools` directory. To extract a source file, simply place the source file in the extraction tools folder and run the corresponding script and enjoy! The necessary Cmunsta extraction tools are already in place so there's no need to do anything else.
+If you'd like to extract the files yourself, several utility scripts have been written by scrivener07 (which I shamelessly tweaked) for this purpose. The scripts are located in the [extraction_tools](https://github.com/oseparovic/MCGExtracted/tree/master/extraction_tools) directory. To extract a source file, simply place the source file in the extraction tools folder and run the corresponding script and enjoy! The necessary Cmunsta extraction tools are already in place so there's no need to do anything else.
 
 Samples
 -------
