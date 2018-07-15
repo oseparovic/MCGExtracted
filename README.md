@@ -17,7 +17,7 @@ You can do your own file type discovery. Many files still don't have an extensio
 * FST - compression format extractable with cMunsta's extraction tools. Contains file names.
 * PAK - compression format extractable with cMunsta's extraction tools. Only has indices stored so filenames and extensions are hard to determine. Furthermore it seems it compresses into an indextable so when you extract you'll get compressed files along with a bunch of empty files where no file was compressed into.
 * tga - image format viewable with free software like irfanview
-* shp - unknown. Possibly shape source from autocad or other 3d software
+* shp - some kind of spritemap/animation set. You can view/edit/create them with the [IconsTool](http://luis-guzman.com/IconsTool.html)
 * fit - FIT data. All of these appear to be plaintext and contain descriptive variables like mech names and tonnage and rotations etc
 * fnt - unknown
 * abi - unknown
@@ -49,7 +49,7 @@ Here's a list of the project structure and what you can find and where:
 
 * *ART.FST* - lots of GUI elements. Mostly focused on the main menu and the in game menus. Also contains all pilot thumbnails. These are all .tga files which are a just a type of image format. You can use sometimes like irfanview to open them
 * *MISC.FST* - lots of misc files. Notable is [compbas.csv](https://raw.github.com/oseparovic/MCGExtracted/master/MISC.FST/compbas.csv) which contains what appears to be a full breakdown of components including stats hardpoint compatibility and ammo types
-* *MISSION.FST* - lots of information about the campaign. txt files contain some of the briefings. FIT files contain all kinds of info including default variants found in the campaign (AKA) inner sphere store. These are named PM1\*\*\*\*\*.FIT. files ending in 100,300,400 represent different variants of the same mech. Clan mechs start with PM2 and have many different variants representing various custom mechs you run into during the campaign.
+* *MISSION.FST* - lots of information about the campaign. txt files contain some of the briefings. FIT files contain all kinds of info including default variants found in the campaign (AKA) inner sphere store. These are named PM1\*\*\*\*\*.FIT. files ending in 100,300,400 represent different variants of the same mech. Clan mechs start with PM2 and have many different variants representing various custom mechs you run into during the campaign. Also contains mechwarriors and vehicles with formats PMW and PV respectively.
 * *SHAPES.FST* - various shape data in the form of shp, and inf files
 * *TERRAIN.FST* - mission briefing images etc 
 * *data/art/ART.PAK* - lots of gifs likely for animatable buttons? Also flic and undetermined files. Unlike an FST a PAK file doesn't contain filenames just indexes.
