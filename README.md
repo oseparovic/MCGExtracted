@@ -56,8 +56,7 @@ Here's a list of the project structure and what you can find and where:
 * *data/objects/OBJECT2.PAK* - a huge amount of plaintext fit files including mech data. Directory of files can be found here: https://docs.google.com/spreadsheets/d/1vPJxj4EYbdE1xms5G3FCrhgnW293AvwDmEVvcsANJ7M/edit#gid=0
 * *data/sprites/CURSORS.PAK* - unknown files. Likely cursor animation and sprite assets but file types cannot be determined
 * *data/sprites/SHAPES.PAK* - unknown files. TrID came up with no file types. Lots of empty files too because it's a PAK
-* *data/sprites/SPRITES.PAK* - plaintext fit info for a ton of objects. It looks like this mostly for buildings like gates and perimiter alarms
-
+* *data/sprites/SPRITES.PAK* - plaintext fit info for a ton of objects. It looks like this mostly for buildings like gates and perimiter alarms. If you sort by filesize the first 20 or so files are all massive fit files for the various mechs and all the animation sets including framerate and states
 
 Help needed!
 ------------
