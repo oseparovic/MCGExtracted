@@ -13,26 +13,26 @@ If you'd like to extract the files yourself, several utility scripts have been w
 
 File types
 ----------
-You can do your own file type discovery. Many files still don't have an extension because their type cannot be determined. A lot of the research here was done with [TrID](http://mark0.net/soft-trid-e.html)
-* FST - compression format extractable with cMunsta's extraction tools. Contains file names.
-* PAK - compression format extractable with cMunsta's extraction tools. Only has indices stored so filenames and extensions are hard to determine. Furthermore it seems it compresses into an indextable so when you extract you'll get compressed files along with a bunch of empty files where no file was compressed into.
-* tga - image format viewable with free software like irfanview
-* shp - some kind of spritemap/animation set. You can view/edit/create them with the [IconsTool](http://luis-guzman.com/IconsTool.html)
-* fit - FIT data. All of these appear to be plaintext and contain descriptive variables like mech names and tonnage and rotations etc
-* fnt - unknown
-* abi - unknown
-* abl - unknown
-* inf - unknown but plain text
-* hsp - unknown
-* jmp - unknown
-* out - Mac OS X Mach-O 32bit Intel executable
-* hsp - Mac OS X Mach-O 32bit Intel executable
-* bdg - Memo File Apollo Database Engine
-* gmm - unknown
-* pre - unknown
-* elv - Mac OS X Mach-O 32bit Intel executable
-* obj - Mac OS X Mach-O 32bit Intel executable
-* flic - unknown
+You can do your own file type discovery. Many files still don't have an extension because their type cannot be determined. A lot of the research here was done with [TrID](http://mark0.net/soft-trid-e.html) Readable/Extractable formats marked in **bold**
+* **FST** - compression format extractable with cMunsta's extraction tools. Contains file names.
+* **PAK** - compression format extractable with cMunsta's extraction tools. Only has indices stored so filenames and extensions are hard to determine. Furthermore it seems it compresses into an indextable so when you extract you'll get compressed files along with a bunch of empty files where no file was compressed into.
+* **TGA** - image format viewable with free software like irfanview
+* **SHP** - some kind of spritemap/animation set. You can view/edit/create them with the [IconsTool](http://luis-guzman.com/IconsTool.html). Here's an example of what a SHP file looks like when opened with this program: https://imgur.com/Rawv5Gr
+* **FIT** - FIT data. All of these appear to be plaintext and contain descriptive variables like mech names and tonnage and rotations etc
+* FNT - unknown
+* ABI - unknown
+* ABL - unknown
+* INF - unknown but plain text
+* HSP - unknown
+* JMP - unknown
+* OUT - Mac OS X Mach-O 32bit Intel executable
+* HSP - Mac OS X Mach-O 32bit Intel executable
+* BDG - Memo File Apollo Database Engine
+* GMM - unknown
+* PRE - unknown
+* ELV - Mac OS X Mach-O 32bit Intel executable
+* OBJ - Mac OS X Mach-O 32bit Intel executable
+* FLIC - unknown
 
 Samples
 -------
