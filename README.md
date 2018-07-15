@@ -18,7 +18,7 @@ You can do your own file type discovery. Many files still don't have an extensio
 * PAK - compression format extractable with cMunsta's extraction tools. Only has indices stored so filenames and extensions are hard to determine. Furthermore it seems it compresses into an indextable so when you extract you'll get compressed files along with a bunch of empty files where no file was compressed into.
 * tga - image format viewable with free software like irfanview
 * shp - unknown. Possibly shape source from autocad or other 3d software
-* fit - Mechwarrior FIT data. Some are plaintext some are not. Not sure why
+* fit - FIT data. All of these appear to be plaintext and contain descriptive variables like mech names and tonnage and rotations etc
 * fnt - unknown
 * abi - unknown
 * abl - unknown
