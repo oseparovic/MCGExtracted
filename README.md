@@ -49,9 +49,9 @@ Here's a list of the project structure and what you can find and where:
 
 * *ART.FST* - lots of GUI elements. Mostly focused on the main menu and the in game menus. Also contains all pilot thumbnails. These are all .tga files which are a just a type of image format. You can use sometimes like irfanview to open them
 * *MISC.FST* - lots of misc files. Notable is [compbas.csv](https://raw.github.com/oseparovic/MCGExtracted/master/MISC.FST/compbas.csv) which contains what appears to be a full breakdown of components including stats hardpoint compatibility and ammo types
-* *MISSION.FST* - lots of information about the campaign. txt files contain some of the briefings but the rest is buried in abl, abi and fit files
+* *MISSION.FST* - lots of information about the campaign. txt files contain some of the briefings. FIT files contain all kinds of info including default variants found in the campaign (AKA) inner sphere store. These are named PM1\*\*\*\*\*.FIT. files ending in 100,300,400 represent different variants of the same mech. Clan mechs start with PM2 and have many different variants representing various custom mechs you run into during the campaign.
 * *SHAPES.FST* - various shape data in the form of shp, and inf files
-* *TERRAIN.FST* - mission briefing images and 
+* *TERRAIN.FST* - mission briefing images etc 
 * *data/art/ART.PAK* - lots of gifs likely for animatable buttons? Also flic and undetermined files. Unlike an FST a PAK file doesn't contain filenames just indexes.
 * *data/objects/OBJECT2.PAK* - a huge amount of plaintext fit files including mech data. Directory of files can be found here: https://docs.google.com/spreadsheets/d/1vPJxj4EYbdE1xms5G3FCrhgnW293AvwDmEVvcsANJ7M/edit#gid=0
 * *data/sprites/CURSORS.PAK* - unknown files. Likely cursor animation and sprite assets but file types cannot be determined
