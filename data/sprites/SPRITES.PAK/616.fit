@@ -1,0 +1,15 @@
+FITini
+
+[Main Info]
+st Name = "macfire"
+ul HeapSize = 51200
+
+[State]	
+ul NumFrames = 15
+f FrameRate = 15.0
+ul BasePacketNumber = 0
+uc NumRotations = 16
+ul Symmetrical = 1
+uc CheckForHeader = 0
+
+FITend

@@ -1,0 +1,14 @@
+FITini
+
+[Main Info]
+st Name = "jagermechrightarm"
+ul HeapSize = 150000
+
+[State]	
+ul NumFrames = 19
+f FrameRate = 7.0
+ul BasePacketNumber = 0
+uc NumRotations = 32
+ul Symmetrical = 1
+
+FITend

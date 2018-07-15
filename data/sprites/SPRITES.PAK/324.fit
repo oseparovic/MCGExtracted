@@ -1,0 +1,12 @@
+FITini 
+[Main Info]
+st Name="TrnldSilos_a5"
+ul NumFrames=16
+
+[Bounds]
+l UpperLeftX = -60.0
+l UpperLeftY = -60.0
+l LowerRightX = 20.0
+l LowerRightY = 20.0
+
+FITend 

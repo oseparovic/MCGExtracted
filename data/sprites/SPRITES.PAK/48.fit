@@ -1,0 +1,59 @@
+FITini
+
+[Main Info]
+st Name = "l_fire"
+ul HeapSize = 1000000
+
+[States]
+uc NumStates = 6
+uc scaled = 1
+
+[State0]
+uc State = 0
+ul NumFrames = 10
+f FrameRate = 12.0
+ul BasePacketNumber = 0
+uc NumRotations = 1
+uc Symmetrical = 0
+
+[State1]
+uc State = 1
+ul NumFrames = 10
+f FrameRate = 12.0
+ul BasePacketNumber = 2
+uc NumRotations = 1
+uc Symmetrical = 0
+
+[State2]
+uc State = 2
+ul NumFrames = 11
+f FrameRate = 12.0
+ul BasePacketNumber = 4
+uc NumRotations = 1
+uc Symmetrical = 0
+
+[State3]
+uc State = 3
+ul NumFrames = 10
+f FrameRate = 12.0
+ul BasePacketNumber = 0
+uc NumRotations = 1
+uc Symmetrical = 0
+
+[State4]
+uc State = 4
+ul NumFrames = 10
+f FrameRate = 12.0
+ul BasePacketNumber = 2
+uc NumRotations = 1
+uc Symmetrical = 0
+
+[State5]
+uc State = 5
+ul NumFrames = 11
+f FrameRate = 12.0
+ul BasePacketNumber = 4
+uc NumRotations = 1
+uc Symmetrical = 0
+
+FITend

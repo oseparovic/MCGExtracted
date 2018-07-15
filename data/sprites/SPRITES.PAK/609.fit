@@ -1,0 +1,45 @@
+FITini
+
+[Main Info]
+st Name = "Marines"
+ul HeapSize = 409500
+
+[SpecialInfo]
+f jumpMaxDistance = 0.0				//in m  Used to calculate velocity by jumpMaxDistance / (numFrames/15.0)(s)
+
+[Gestures]
+ul NumGestures = 4
+
+[Gestures0]
+uc State = 0							// What Gesture Number -- Stand
+ul NumFrames = 1						// Number of frames to playback
+f FrameRate = 15.0						// Intended Frame rate of Playback
+uc NumRotations = 32
+ul BasePacketNumber = 0					// Index into packet file for this gesture
+f Velocity = 0.0						// Speed at which this gesture moves.
+
+[Gestures1]
+uc State = 1							// What Gesture Number -- Run
+ul NumFrames = 8						// Number of frames to playback
+f FrameRate = 15.0						// Intended Frame rate of Playback
+uc NumRotations = 32
+ul BasePacketNumber = 0					// Index into packet file for this gesture
+f Velocity = 6.0						// Velocity of this gesture
+
+[Gestures2]
+uc State = 2							// What Gesture Number -- Jump DNE for marines
+ul NumFrames = 1						// Number of frames to playback
+f FrameRate = 15.0						// Intended Frame rate of Playback
+uc NumRotations = 32
+ul BasePacketNumber = 0					// Index into packet file for this gesture
+f Velocity = 0.0						// Velocity of this gesture
+
+[Gestures3]
+uc State = 2							// What Gesture Number -- Destroyed  DNE for elementals
+ul NumFrames = 1						// Number of frames to playback
+f FrameRate = 15.0						// Intended Frame rate of Playback
+uc NumRotations = 32
+ul BasePacketNumber = 64				// Index into packet file for this gesture
+f Velocity = 0.0						// Velocity of this gesture
+
+FITend

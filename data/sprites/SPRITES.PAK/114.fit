@@ -1,0 +1,12 @@
+FITini 
+[Main Info]
+st Name="siloB_a2"
+ul NumFrames=16
+
+[Bounds]
+l UpperLeftX = -20.0
+l UpperLeftY = -60.0
+l LowerRightX = 35.0
+l LowerRightY = 00.0
+
+FITend 

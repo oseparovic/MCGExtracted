@@ -1,0 +1,12 @@
+FITini 
+[Main Info]
+st Name="hpmpB_a1"
+ul NumFrames=16
+
+[Bounds]
+l UpperLeftX = -40.0
+l UpperLeftY = -40.0
+l LowerRightX = 40.0
+l LowerRightY = 40.0
+
+FITend 

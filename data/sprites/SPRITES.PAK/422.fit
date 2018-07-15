@@ -1,0 +1,15 @@
+FITini
+
+[Main Info]
+st Name = "srmfx"
+ul HeapSize = 51200
+
+[State]	
+ul NumFrames = 16
+f FrameRate = 15.0
+ul BasePacketNumber = 0
+uc NumRotations = 16
+ul Symmetrical = 0
+uc CheckForHeader = 0
+
+FITend

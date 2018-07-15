@@ -1,0 +1,14 @@
+FITini 
+[Main Info]
+st Name="Comm_a7"
+ul NumFrames=16
+
+[Bounds]
+l UpperLeftX = -40.0
+l UpperLeftY = -35.0
+l LowerRightX = 30.0
+l LowerRightY = 20.0
+
+//these are the numbers for Command Station, object 295
+
+FITend 

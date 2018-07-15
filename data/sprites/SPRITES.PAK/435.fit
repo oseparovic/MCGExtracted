@@ -1,0 +1,33 @@
+FITini
+
+[Main Info]
+st Name = "VonLuckner"
+ul HeapSize = 512000
+ul NumParts = 2
+f TurretOffset = -0.0
+
+[States]
+uc NumStates = 3
+
+[State0]		//STOPPED
+uc State = 0
+ul NumFrames = 1
+f FrameRate = 15.0
+ul BasePacketNumber = 0
+uc NumRotations = 32
+
+[State1]		//MOVING
+uc State = 1
+ul NumFrames = 8
+f FrameRate = 15.0
+ul BasePacketNumber = 0
+uc NumRotations = 32
+
+[State2]		//DESTROYED
+uc State = 2
+ul NumFrames = 1
+f FrameRate = 15.0
+ul BasePacketNumber = 64
+uc NumRotations = 32
+
+FITend
