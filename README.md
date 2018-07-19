@@ -23,17 +23,18 @@ You can do your own file type discovery. Many files still don't have an extensio
 * **FIT** - FIT data. All of these appear to be plaintext and contain descriptive variables like mech names and tonnage and rotations etc
 * FNT - unknown
 * ABI - unknown
-* ABL - unknown
 * INF - unknown but plain text
 * HSP - unknown
 * JMP - unknown
 * OUT - Mac OS X Mach-O 32bit Intel executable
 * HSP - Mac OS X Mach-O 32bit Intel executable
-* BDG - Memo File Apollo Database Engine
-* GMM - unknown
-* PRE - unknown
-* ELV - Mac OS X Mach-O 32bit Intel executable
-* OBJ - Mac OS X Mach-O 32bit Intel executable
+* **ABL** - macro script. Mission related. Not sure how to open.
+* **ELV** - MCEditor elevation files
+* **DAT** - binary file. Purpose unknown
+* **BDG** - binary file with building locations and offsets
+* **GMM** - binary file with movement and zone definitions
+* **PRE** - binary file that has initial TileIDs to preload
+* **OBJ** - binary file with misc object locations and offsets
 * FLIC - unknown
 
 Samples
@@ -59,6 +60,25 @@ Here's a list of the project structure and what you can find and where:
 * *data/sprites/CURSORS.PAK* - unknown files. Likely cursor animation and sprite assets but file types cannot be determined
 * *data/sprites/SHAPES.PAK* - unknown files. TrID came up with no file types. Lots of empty files too because it's a PAK
 * *data/sprites/SPRITES.PAK* - plaintext fit info for a ton of objects. It looks like this mostly for buildings like gates and perimiter alarms. If you sort by filesize the first 20 or so files are all massive fit files for the various mechs and all the animation sets including framerate and states
+
+Mission/Map breakdown
+---------------------
+A Mission/Map on MCG has 2 parts:
+
+Mission: Directory: DATA/Missions. it has 2 files, MCX0101.ABL & MCX0101.FIT, the first one it´s a macro script file that has all the "special" stuff that has to happen on that mission. The fit file it´s the text definition with all the variables of the Mission, and one of the variables it´s the name of the terrain file "st TerrainFileName = "MX0101"".
+
+Map: Directory DATA/Terrain. The Map definition itself: Size, TerrainTiles, Building, enemies...... it has 10 files:
+
+MX0101.fit : Text file Size of the map and what type of Tiles to look, regular or expansion
+MX0101.elv : Binary file with the has the : height, TileID, OverlayID and some extra stuff
+MX0101.bdg : Binary file with the buildings location and offsets.
+MX0101.obj : Binary file with Misc Objects location and offsets.
+MX0101.dat : Binary File. i don´t know what it is. It has some height value a some other value for each Tile
+MX0101.tga Image file for briefings
+MX0101.log.tga Image file small size
+MX0101.pre: Binary file that has the Initial TileIDs to preload
+MX0101.map : Text file
+MX0101.gmm: Binary file. This it´s a really complex file. Mostly stuff for Movement on the map and Definition of Zones & "Doors". It´s similar of the one used on MC2 but it has differences https://github.com/Echelon9/mechcommander2-open/blob/master/Source/MCLib/Move.h
 
 Help needed!
 ------------
