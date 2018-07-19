@@ -69,16 +69,16 @@ Mission: Directory: DATA/Missions. it has 2 files, MCX0101.ABL & MCX0101.FIT, th
 
 Map: Directory DATA/Terrain. The Map definition itself: Size, TerrainTiles, Building, enemies...... it has 10 files:
 
-MX0101.fit : Text file Size of the map and what type of Tiles to look, regular or expansion
-MX0101.elv : Binary file with the has the : height, TileID, OverlayID and some extra stuff
-MX0101.bdg : Binary file with the buildings location and offsets.
-MX0101.obj : Binary file with Misc Objects location and offsets.
-MX0101.dat : Binary File. i don´t know what it is. It has some height value a some other value for each Tile
-MX0101.tga Image file for briefings
-MX0101.log.tga Image file small size
-MX0101.pre: Binary file that has the Initial TileIDs to preload
-MX0101.map : Text file
-MX0101.gmm: Binary file. This it´s a really complex file. Mostly stuff for Movement on the map and Definition of Zones & "Doors". It´s similar of the one used on MC2 but it has differences https://github.com/Echelon9/mechcommander2-open/blob/master/Source/MCLib/Move.h
+* MX0101.fit : Text file Size of the map and what type of Tiles to look, regular or expansion
+* MX0101.elv : Binary file with the has the : height, TileID, OverlayID and some extra stuff
+* MX0101.bdg : Binary file with the buildings location and offsets.
+* MX0101.obj : Binary file with Misc Objects location and offsets.
+* MX0101.dat : Binary File. i don´t know what it is. It has some height value a some other value for each Tile
+* MX0101.tga Image file for briefings
+* MX0101.log.tga Image file small size
+* MX0101.pre: Binary file that has the Initial TileIDs to preload
+* MX0101.map : Text file
+* MX0101.gmm: Binary file. This it´s a really complex file. Mostly stuff for Movement on the map and Definition of Zones & "Doors". It´s similar of the one used on MC2 but it has differences https://github.com/Echelon9/mechcommander2-open/blob/master/Source/MCLib/Move.h
 
 Help needed!
 ------------
